@@ -1,0 +1,36 @@
+# Eclipse project settings
+.project
+.classpath
+.settings/
+
+# Build artifacts
+/bin/
+/build/
+/target/
+/xtend-gen/
+/xtext-gen/
+/model/generated/
+/tests/
+
+# Runtime data
+runtime-*/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# EMF generated files
+*.ecorediag
+*.genmodel
+
+# Java class files
+*.class
+
+# OS-specific files
+.DS_Store
+*.swp
+
+# Launch configurations
+*.launch
+

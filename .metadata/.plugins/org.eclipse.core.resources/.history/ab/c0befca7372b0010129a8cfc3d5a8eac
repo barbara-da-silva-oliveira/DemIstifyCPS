@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="influenceMetamodel" nsURI="http://kairos.inria.fr/influenceMetamodel"
+    nsPrefix="influenceMetamodel">
+  <eClassifiers xsi:type="ecore:EClass" name="InfluenceMetamodel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluences" upperBound="-1"
+        eType="#//Influence" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRequirementSatisfaction"
+        upperBound="-1" eType="#//RequirementSatisfaction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCyberPhysicalPhenomena"
+        upperBound="-1" eType="#//CyberPhysicalPhenomena"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Influence">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evaluatedBy" lowerBound="1"
+        upperBound="-1" eType="#//RequirementSatisfaction"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="affects" lowerBound="1"
+        upperBound="-1" eType="#//SystemResponse" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="produces" lowerBound="1"
+        upperBound="-1" eType="#//EmergentBehavior" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceArtifact" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetArtifact" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourcePhenomena" lowerBound="1"
+        upperBound="-1" eType="#//CyberPhysicalPhenomena"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EmergentBehavior">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemResponse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="observation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CyberPhysicalPhenomena">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="configuration" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementSatisfaction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concerningRequirement"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="satisfaction" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiPhenomenon" eSuperTypes="#//CyberPhysicalPhenomena">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositionOf" upperBound="-1"
+        eType="#//CyberPhysicalPhenomena" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregationOf" upperBound="-1"
+        eType="#//CyberPhysicalPhenomena" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimplePhenomenon" eSuperTypes="#//CyberPhysicalPhenomena"/>
+</ecore:EPackage>

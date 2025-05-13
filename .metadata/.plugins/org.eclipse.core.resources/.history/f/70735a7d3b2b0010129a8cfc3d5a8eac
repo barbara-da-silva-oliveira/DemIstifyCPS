@@ -1,0 +1,152 @@
+/**
+ */
+package fr.inria.kairos.influence.metamodel.influenceMetamodel.impl;
+
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.CyberPhysicalPhenomena;
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodelPackage;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Cyber Physical Phenomena</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.impl.CyberPhysicalPhenomenaImpl#getConfiguration <em>Configuration</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class CyberPhysicalPhenomenaImpl extends MinimalEObjectImpl.Container implements CyberPhysicalPhenomena {
+	/**
+	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> configuration;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CyberPhysicalPhenomenaImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return InfluenceMetamodelPackage.Literals.CYBER_PHYSICAL_PHENOMENA;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<String> getConfiguration() {
+		if (configuration == null) {
+			configuration = new EDataTypeUniqueEList<String>(String.class, this,
+					InfluenceMetamodelPackage.CYBER_PHYSICAL_PHENOMENA__CONFIGURATION);
+		}
+		return configuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+		case InfluenceMetamodelPackage.CYBER_PHYSICAL_PHENOMENA__CONFIGURATION:
+			return getConfiguration();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+		case InfluenceMetamodelPackage.CYBER_PHYSICAL_PHENOMENA__CONFIGURATION:
+			getConfiguration().clear();
+			getConfiguration().addAll((Collection<? extends String>) newValue);
+			return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+		case InfluenceMetamodelPackage.CYBER_PHYSICAL_PHENOMENA__CONFIGURATION:
+			getConfiguration().clear();
+			return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+		case InfluenceMetamodelPackage.CYBER_PHYSICAL_PHENOMENA__CONFIGURATION:
+			return configuration != null && !configuration.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (configuration: ");
+		result.append(configuration);
+		result.append(')');
+		return result.toString();
+	}
+
+} //CyberPhysicalPhenomenaImpl
