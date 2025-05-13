@@ -9,6 +9,8 @@
         upperBound="-1" eType="#//RequirementSatisfaction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCyberPhysicalPhenomena"
         upperBound="-1" eType="#//CyberPhysicalPhenomena" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedArtifacts" upperBound="-1"
+        eType="#//Artifact" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Influence">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -52,4 +54,7 @@
         eType="#//CyberPhysicalPhenomena" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimplePhenomenon" eSuperTypes="#//CyberPhysicalPhenomena"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Artifact">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

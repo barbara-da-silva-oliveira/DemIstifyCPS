@@ -1,0 +1,75 @@
+package fr.inria.kairos.influence.validation;
+
+import org.eclipse.xtext.validation.Check;
+
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.Influence;
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodel;
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodelPackage;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class InfluenceDSLValidator extends AbstractInfluenceDSLValidator {
+
+    private static final int MAX_SOURCE= 2;
+    private static final int MAX_TARGET = 2;
+
+    @Check
+    public void checkSourceArtifactImpact(InfluenceMetamodel model) {
+        Map<String, Integer> impactCount = new HashMap<>();
+
+        for (Influence inf : model.getOwnedInfluences()) {
+            for (String src : inf.getSourceArtifact()) {
+                impactCount.put(src, impactCount.getOrDefault(src, 0) + 1);
+            }
+        }
+
+        for (Map.Entry<String, Integer> entry : impactCount.entrySet()) {
+            if (entry.getValue() > MAX_SOURCE) {
+                warning(
+                		"Artifact '" + entry.getKey() + "' is the source of " + entry.getValue() + " influences",
+                		model,
+                		null,
+                		-1
+                		);
+            }
+        }
+    }
+    
+    
+    @Check
+    public void checkTargetArtifactImpact(InfluenceMetamodel model) {
+        Map<String, Integer> impactCount = new HashMap<>();
+
+        for (Influence inf : model.getOwnedInfluences()) {
+            for (String tgt : inf.getTargetArtifact()) {
+                impactCount.put(tgt, impactCount.getOrDefault(tgt, 0) + 1);
+            }
+        }
+
+        for (Map.Entry<String, Integer> entry : impactCount.entrySet()) {
+            if (entry.getValue() > MAX_TARGET) {
+                warning(
+                		"Artifact '" + entry.getKey() + "' is the target of " + entry.getValue() + " influences",
+                		model,
+                		null,
+                		-1
+                		);
+            }
+        }
+    }
+    
+    @Check
+    public void checkChangeArtifact(Influence inf) {
+        for (String src : inf.getSourceArtifact()) {
+            for (String tgt : inf.getTargetArtifact()) {
+            	info(
+            			"If you modify artifact '" + src + "', you need to contact with the developer responsible for '" + tgt , inf, 
+                        InfluenceMetamodelPackage.Literals.INFLUENCE__SOURCE_ARTIFACT
+                    );
+
+            }
+        }
+    }
+
+}

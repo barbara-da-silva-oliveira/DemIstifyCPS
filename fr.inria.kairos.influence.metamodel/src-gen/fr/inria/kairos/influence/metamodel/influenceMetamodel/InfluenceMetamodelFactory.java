@@ -95,6 +95,15 @@ public interface InfluenceMetamodelFactory extends EFactory {
 	SimplePhenomenon createSimplePhenomenon();
 
 	/**
+	 * Returns a new object of class '<em>Artifact</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Artifact</em>'.
+	 * @generated
+	 */
+	Artifact createArtifact();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

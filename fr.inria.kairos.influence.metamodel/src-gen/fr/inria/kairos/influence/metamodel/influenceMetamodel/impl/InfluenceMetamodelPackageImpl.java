@@ -2,6 +2,7 @@
  */
 package fr.inria.kairos.influence.metamodel.influenceMetamodel.impl;
 
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.Artifact;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.CyberPhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.EmergentBehavior;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.Influence;
@@ -82,6 +83,13 @@ public class InfluenceMetamodelPackageImpl extends EPackageImpl implements Influ
 	 * @generated
 	 */
 	private EClass simplePhenomenonEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass artifactEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -186,6 +194,16 @@ public class InfluenceMetamodelPackageImpl extends EPackageImpl implements Influ
 	@Override
 	public EReference getInfluenceMetamodel_OwnedCyberPhysicalPhenomena() {
 		return (EReference) influenceMetamodelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInfluenceMetamodel_OwnedArtifacts() {
+		return (EReference) influenceMetamodelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -434,6 +452,26 @@ public class InfluenceMetamodelPackageImpl extends EPackageImpl implements Influ
 	 * @generated
 	 */
 	@Override
+	public EClass getArtifact() {
+		return artifactEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getArtifact_Name() {
+		return (EAttribute) artifactEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public InfluenceMetamodelFactory getInfluenceMetamodelFactory() {
 		return (InfluenceMetamodelFactory) getEFactoryInstance();
 	}
@@ -462,6 +500,7 @@ public class InfluenceMetamodelPackageImpl extends EPackageImpl implements Influ
 		createEReference(influenceMetamodelEClass, INFLUENCE_METAMODEL__OWNED_INFLUENCES);
 		createEReference(influenceMetamodelEClass, INFLUENCE_METAMODEL__OWNED_REQUIREMENT_SATISFACTION);
 		createEReference(influenceMetamodelEClass, INFLUENCE_METAMODEL__OWNED_CYBER_PHYSICAL_PHENOMENA);
+		createEReference(influenceMetamodelEClass, INFLUENCE_METAMODEL__OWNED_ARTIFACTS);
 
 		influenceEClass = createEClass(INFLUENCE);
 		createEAttribute(influenceEClass, INFLUENCE__NAME);
@@ -493,6 +532,9 @@ public class InfluenceMetamodelPackageImpl extends EPackageImpl implements Influ
 		createEReference(multiPhenomenonEClass, MULTI_PHENOMENON__AGGREGATION_OF);
 
 		simplePhenomenonEClass = createEClass(SIMPLE_PHENOMENON);
+
+		artifactEClass = createEClass(ARTIFACT);
+		createEAttribute(artifactEClass, ARTIFACT__NAME);
 	}
 
 	/**
@@ -539,6 +581,9 @@ public class InfluenceMetamodelPackageImpl extends EPackageImpl implements Influ
 		initEReference(getInfluenceMetamodel_OwnedCyberPhysicalPhenomena(), this.getCyberPhysicalPhenomena(), null,
 				"ownedCyberPhysicalPhenomena", null, 0, -1, InfluenceMetamodel.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluenceMetamodel_OwnedArtifacts(), this.getArtifact(), null, "ownedArtifacts", null, 0, -1,
+				InfluenceMetamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(influenceEClass, Influence.class, "Influence", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -610,6 +655,11 @@ public class InfluenceMetamodelPackageImpl extends EPackageImpl implements Influ
 
 		initEClass(simplePhenomenonEClass, SimplePhenomenon.class, "SimplePhenomenon", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(artifactEClass, Artifact.class, "Artifact", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getArtifact_Name(), ecorePackage.getEString(), "name", null, 0, 1, Artifact.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

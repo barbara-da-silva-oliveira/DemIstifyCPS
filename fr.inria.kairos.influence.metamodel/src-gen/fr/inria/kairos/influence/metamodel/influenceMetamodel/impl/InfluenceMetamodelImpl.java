@@ -2,6 +2,7 @@
  */
 package fr.inria.kairos.influence.metamodel.influenceMetamodel.impl;
 
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.Artifact;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.CyberPhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.Influence;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodel;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -32,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.impl.InfluenceMetamodelImpl#getOwnedInfluences <em>Owned Influences</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.impl.InfluenceMetamodelImpl#getOwnedRequirementSatisfaction <em>Owned Requirement Satisfaction</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.impl.InfluenceMetamodelImpl#getOwnedCyberPhysicalPhenomena <em>Owned Cyber Physical Phenomena</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.impl.InfluenceMetamodelImpl#getOwnedArtifacts <em>Owned Artifacts</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,6 +68,16 @@ public class InfluenceMetamodelImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
 	protected EList<CyberPhysicalPhenomena> ownedCyberPhysicalPhenomena;
+
+	/**
+	 * The cached value of the '{@link #getOwnedArtifacts() <em>Owned Artifacts</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedArtifacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Artifact> ownedArtifacts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,6 +148,20 @@ public class InfluenceMetamodelImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
+	public EList<Artifact> getOwnedArtifacts() {
+		if (ownedArtifacts == null) {
+			ownedArtifacts = new EObjectResolvingEList<Artifact>(Artifact.class, this,
+					InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_ARTIFACTS);
+		}
+		return ownedArtifacts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_INFLUENCES:
@@ -161,6 +188,8 @@ public class InfluenceMetamodelImpl extends MinimalEObjectImpl.Container impleme
 			return getOwnedRequirementSatisfaction();
 		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
 			return getOwnedCyberPhysicalPhenomena();
+		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_ARTIFACTS:
+			return getOwnedArtifacts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -186,6 +215,10 @@ public class InfluenceMetamodelImpl extends MinimalEObjectImpl.Container impleme
 			getOwnedCyberPhysicalPhenomena().clear();
 			getOwnedCyberPhysicalPhenomena().addAll((Collection<? extends CyberPhysicalPhenomena>) newValue);
 			return;
+		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_ARTIFACTS:
+			getOwnedArtifacts().clear();
+			getOwnedArtifacts().addAll((Collection<? extends Artifact>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -207,6 +240,9 @@ public class InfluenceMetamodelImpl extends MinimalEObjectImpl.Container impleme
 		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
 			getOwnedCyberPhysicalPhenomena().clear();
 			return;
+		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_ARTIFACTS:
+			getOwnedArtifacts().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -225,6 +261,8 @@ public class InfluenceMetamodelImpl extends MinimalEObjectImpl.Container impleme
 			return ownedRequirementSatisfaction != null && !ownedRequirementSatisfaction.isEmpty();
 		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
 			return ownedCyberPhysicalPhenomena != null && !ownedCyberPhysicalPhenomena.isEmpty();
+		case InfluenceMetamodelPackage.INFLUENCE_METAMODEL__OWNED_ARTIFACTS:
+			return ownedArtifacts != null && !ownedArtifacts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

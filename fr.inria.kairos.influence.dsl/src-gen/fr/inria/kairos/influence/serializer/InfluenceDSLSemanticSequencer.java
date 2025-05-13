@@ -4,6 +4,7 @@
 package fr.inria.kairos.influence.serializer;
 
 import com.google.inject.Inject;
+import fr.inria.kairos.influence.metamodel.influenceMetamodel.Artifact;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.CyberPhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.EmergentBehavior;
 import fr.inria.kairos.influence.metamodel.influenceMetamodel.Influence;
@@ -21,7 +22,9 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
+import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
 public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -37,6 +40,9 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == InfluenceMetamodelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case InfluenceMetamodelPackage.ARTIFACT:
+				sequence_Artifact(context, (Artifact) semanticObject); 
+				return; 
 			case InfluenceMetamodelPackage.CYBER_PHYSICAL_PHENOMENA:
 				sequence_CyberPhysicalPhenomena_Impl(context, (CyberPhysicalPhenomena) semanticObject); 
 				return; 
@@ -65,6 +71,26 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Artifact returns Artifact
+	 *
+	 * Constraint:
+	 *     name=EString
+	 * </pre>
+	 */
+	protected void sequence_Artifact(ISerializationContext context, Artifact semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, InfluenceMetamodelPackage.Literals.ARTIFACT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, InfluenceMetamodelPackage.Literals.ARTIFACT__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getArtifactAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * <pre>
@@ -101,7 +127,12 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     InfluenceMetamodel returns InfluenceMetamodel
 	 *
 	 * Constraint:
-	 *     (ownedRequirementSatisfaction+=RequirementSatisfaction* ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena* ownedInfluences+=Influence*)
+	 *     (
+	 *         ownedRequirementSatisfaction+=RequirementSatisfaction* 
+	 *         ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena* 
+	 *         ownedArtifacts+=Artifact* 
+	 *         ownedInfluences+=Influence*
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_InfluenceMetamodel(ISerializationContext context, InfluenceMetamodel semanticObject) {

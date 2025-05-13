@@ -158,9 +158,9 @@ ruleInfluenceMetamodel returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_11='Influences'
+			otherlv_11='Artifacts'
 			{
-				newLeafNode(otherlv_11, grammarAccess.getInfluenceMetamodelAccess().getInfluencesKeyword_5_0());
+				newLeafNode(otherlv_11, grammarAccess.getInfluenceMetamodelAccess().getArtifactsKeyword_5_0());
 			}
 			otherlv_12='{'
 			{
@@ -169,18 +169,18 @@ ruleInfluenceMetamodel returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getInfluenceMetamodelAccess().getOwnedInfluencesInfluenceParserRuleCall_5_2_0());
+						newCompositeNode(grammarAccess.getInfluenceMetamodelAccess().getOwnedArtifactsArtifactParserRuleCall_5_2_0());
 					}
-					lv_ownedInfluences_13_0=ruleInfluence
+					lv_ownedArtifacts_13_0=ruleArtifact
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getInfluenceMetamodelRule());
 						}
 						add(
 							$current,
-							"ownedInfluences",
-							lv_ownedInfluences_13_0,
-							"fr.inria.kairos.influence.InfluenceDSL.Influence");
+							"ownedArtifacts",
+							lv_ownedArtifacts_13_0,
+							"fr.inria.kairos.influence.InfluenceDSL.Artifact");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -190,9 +190,42 @@ ruleInfluenceMetamodel returns [EObject current=null]
 				newLeafNode(otherlv_14, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_5_3());
 			}
 		)?
-		otherlv_15='}'
+		(
+			otherlv_15='Influences'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getInfluenceMetamodelAccess().getInfluencesKeyword_6_0());
+			}
+			otherlv_16='{'
+			{
+				newLeafNode(otherlv_16, grammarAccess.getInfluenceMetamodelAccess().getLeftCurlyBracketKeyword_6_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getInfluenceMetamodelAccess().getOwnedInfluencesInfluenceParserRuleCall_6_2_0());
+					}
+					lv_ownedInfluences_17_0=ruleInfluence
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getInfluenceMetamodelRule());
+						}
+						add(
+							$current,
+							"ownedInfluences",
+							lv_ownedInfluences_17_0,
+							"fr.inria.kairos.influence.InfluenceDSL.Influence");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)*
+			otherlv_18='}'
+			{
+				newLeafNode(otherlv_18, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_6_3());
+			}
+		)?
+		otherlv_19='}'
 		{
-			newLeafNode(otherlv_15, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_19, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -702,6 +735,63 @@ ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 		}
 		{
 			newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1());
+		}
+	)
+;
+
+// Entry rule entryRuleArtifact
+entryRuleArtifact returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getArtifactRule()); }
+	iv_ruleArtifact=ruleArtifact
+	{ $current=$iv_ruleArtifact.current; }
+	EOF;
+
+// Rule Artifact
+ruleArtifact returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getArtifactAccess().getArtifactAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='Artifact'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getArtifactAccess().getArtifactKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getArtifactAccess().getNameEStringParserRuleCall_2_0());
+				}
+				lv_name_2_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getArtifactRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_2_0,
+						"fr.inria.kairos.influence.InfluenceDSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_3='{'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getArtifactAccess().getLeftCurlyBracketKeyword_3());
+		}
+		otherlv_4='}'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getArtifactAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;

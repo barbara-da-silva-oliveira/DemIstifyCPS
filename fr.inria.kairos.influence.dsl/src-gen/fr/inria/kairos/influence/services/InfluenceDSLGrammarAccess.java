@@ -43,12 +43,18 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final RuleCall cOwnedCyberPhysicalPhenomenaCyberPhysicalPhenomenaParserRuleCall_4_2_0 = (RuleCall)cOwnedCyberPhysicalPhenomenaAssignment_4_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cInfluencesKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cArtifactsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cOwnedInfluencesAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cOwnedInfluencesInfluenceParserRuleCall_5_2_0 = (RuleCall)cOwnedInfluencesAssignment_5_2.eContents().get(0);
+		private final Assignment cOwnedArtifactsAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final RuleCall cOwnedArtifactsArtifactParserRuleCall_5_2_0 = (RuleCall)cOwnedArtifactsAssignment_5_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cInfluencesKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cOwnedInfluencesAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cOwnedInfluencesInfluenceParserRuleCall_6_2_0 = (RuleCall)cOwnedInfluencesAssignment_6_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//InfluenceMetamodel returns InfluenceMetamodel:
 		//    {InfluenceMetamodel}
@@ -56,6 +62,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    '{'
 		//        ('Requirements' '{' ownedRequirementSatisfaction += RequirementSatisfaction* '}')?
 		//          ('CyberPhysicalPhenomena' '{' ownedCyberPhysicalPhenomena += CyberPhysicalPhenomena*  '}')?
+		//          ('Artifacts' '{' ownedArtifacts += Artifact* '}')?
 		//          ('Influences' '{' ownedInfluences+=Influence* '}' )?
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
@@ -65,6 +72,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'{'
 		//    ('Requirements' '{' ownedRequirementSatisfaction += RequirementSatisfaction* '}')?
 		//      ('CyberPhysicalPhenomena' '{' ownedCyberPhysicalPhenomena += CyberPhysicalPhenomena*  '}')?
+		//      ('Artifacts' '{' ownedArtifacts += Artifact* '}')?
 		//      ('Influences' '{' ownedInfluences+=Influence* '}' )?
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -114,26 +122,44 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_3() { return cRightCurlyBracketKeyword_4_3; }
 		
-		//('Influences' '{' ownedInfluences+=Influence* '}' )?
+		//('Artifacts' '{' ownedArtifacts += Artifact* '}')?
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'Influences'
-		public Keyword getInfluencesKeyword_5_0() { return cInfluencesKeyword_5_0; }
+		//'Artifacts'
+		public Keyword getArtifactsKeyword_5_0() { return cArtifactsKeyword_5_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5_1() { return cLeftCurlyBracketKeyword_5_1; }
 		
-		//ownedInfluences+=Influence*
-		public Assignment getOwnedInfluencesAssignment_5_2() { return cOwnedInfluencesAssignment_5_2; }
+		//ownedArtifacts += Artifact*
+		public Assignment getOwnedArtifactsAssignment_5_2() { return cOwnedArtifactsAssignment_5_2; }
 		
-		//Influence
-		public RuleCall getOwnedInfluencesInfluenceParserRuleCall_5_2_0() { return cOwnedInfluencesInfluenceParserRuleCall_5_2_0; }
+		//Artifact
+		public RuleCall getOwnedArtifactsArtifactParserRuleCall_5_2_0() { return cOwnedArtifactsArtifactParserRuleCall_5_2_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_3() { return cRightCurlyBracketKeyword_5_3; }
 		
+		//('Influences' '{' ownedInfluences+=Influence* '}' )?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'Influences'
+		public Keyword getInfluencesKeyword_6_0() { return cInfluencesKeyword_6_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
+		
+		//ownedInfluences+=Influence*
+		public Assignment getOwnedInfluencesAssignment_6_2() { return cOwnedInfluencesAssignment_6_2; }
+		
+		//Influence
+		public RuleCall getOwnedInfluencesInfluenceParserRuleCall_6_2_0() { return cOwnedInfluencesInfluenceParserRuleCall_6_2_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_6_3() { return cRightCurlyBracketKeyword_6_3; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class CyberPhysicalPhenomenaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.CyberPhysicalPhenomena");
@@ -495,6 +521,45 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
+	}
+	public class ArtifactElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.Artifact");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cArtifactAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cArtifactKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//Artifact returns Artifact:
+		//    {Artifact}
+		//    'Artifact'
+		//    name=EString '{' '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Artifact}
+		//'Artifact'
+		//name=EString '{' '}'
+		public Group getGroup() { return cGroup; }
+		
+		//{Artifact}
+		public Action getArtifactAction_0() { return cArtifactAction_0; }
+		
+		//'Artifact'
+		public Keyword getArtifactKeyword_1() { return cArtifactKeyword_1; }
+		
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//EString
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class RequirementSatisfactionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.RequirementSatisfaction");
@@ -1038,6 +1103,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	private final CyberPhysicalPhenomenaElements pCyberPhysicalPhenomena;
 	private final InfluenceElements pInfluence;
 	private final EStringElements pEString;
+	private final ArtifactElements pArtifact;
 	private final RequirementSatisfactionElements pRequirementSatisfaction;
 	private final SystemResponseElements pSystemResponse;
 	private final EmergentBehaviorElements pEmergentBehavior;
@@ -1058,6 +1124,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.pCyberPhysicalPhenomena = new CyberPhysicalPhenomenaElements();
 		this.pInfluence = new InfluenceElements();
 		this.pEString = new EStringElements();
+		this.pArtifact = new ArtifactElements();
 		this.pRequirementSatisfaction = new RequirementSatisfactionElements();
 		this.pSystemResponse = new SystemResponseElements();
 		this.pEmergentBehavior = new EmergentBehaviorElements();
@@ -1099,6 +1166,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    '{'
 	//        ('Requirements' '{' ownedRequirementSatisfaction += RequirementSatisfaction* '}')?
 	//          ('CyberPhysicalPhenomena' '{' ownedCyberPhysicalPhenomena += CyberPhysicalPhenomena*  '}')?
+	//          ('Artifacts' '{' ownedArtifacts += Artifact* '}')?
 	//          ('Influences' '{' ownedInfluences+=Influence* '}' )?
 	//    '}';
 	public InfluenceMetamodelElements getInfluenceMetamodelAccess() {
@@ -1147,6 +1215,18 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getEStringRule() {
 		return getEStringAccess().getRule();
+	}
+	
+	//Artifact returns Artifact:
+	//    {Artifact}
+	//    'Artifact'
+	//    name=EString '{' '}';
+	public ArtifactElements getArtifactAccess() {
+		return pArtifact;
+	}
+	
+	public ParserRule getArtifactRule() {
+		return getArtifactAccess().getRule();
 	}
 	
 	//RequirementSatisfaction returns RequirementSatisfaction:

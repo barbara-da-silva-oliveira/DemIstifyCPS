@@ -257,6 +257,29 @@ public class InfluenceMetamodelItemProviderAdapterFactory extends InfluenceMetam
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.influenceMetamodel.Artifact} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ArtifactItemProvider artifactItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.influenceMetamodel.Artifact}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createArtifactAdapter() {
+		if (artifactItemProvider == null) {
+			artifactItemProvider = new ArtifactItemProvider(this);
+		}
+
+		return artifactItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -377,6 +400,8 @@ public class InfluenceMetamodelItemProviderAdapterFactory extends InfluenceMetam
 			multiPhenomenonItemProvider.dispose();
 		if (simplePhenomenonItemProvider != null)
 			simplePhenomenonItemProvider.dispose();
+		if (artifactItemProvider != null)
+			artifactItemProvider.dispose();
 	}
 
 }

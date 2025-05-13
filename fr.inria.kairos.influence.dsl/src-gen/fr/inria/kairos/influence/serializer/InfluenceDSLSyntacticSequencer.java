@@ -21,15 +21,17 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected InfluenceDSLGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_InfluenceMetamodel___ArtifactsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q;
 	protected AbstractElementAlias match_InfluenceMetamodel___CyberPhysicalPhenomenaKeyword_4_0_LeftCurlyBracketKeyword_4_1_RightCurlyBracketKeyword_4_3__q;
-	protected AbstractElementAlias match_InfluenceMetamodel___InfluencesKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q;
+	protected AbstractElementAlias match_InfluenceMetamodel___InfluencesKeyword_6_0_LeftCurlyBracketKeyword_6_1_RightCurlyBracketKeyword_6_3__q;
 	protected AbstractElementAlias match_InfluenceMetamodel___RequirementsKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (InfluenceDSLGrammarAccess) access;
+		match_InfluenceMetamodel___ArtifactsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getArtifactsKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getLeftCurlyBracketKeyword_5_1()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_5_3()));
 		match_InfluenceMetamodel___CyberPhysicalPhenomenaKeyword_4_0_LeftCurlyBracketKeyword_4_1_RightCurlyBracketKeyword_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getCyberPhysicalPhenomenaKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getLeftCurlyBracketKeyword_4_1()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_4_3()));
-		match_InfluenceMetamodel___InfluencesKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getInfluencesKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getLeftCurlyBracketKeyword_5_1()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_5_3()));
+		match_InfluenceMetamodel___InfluencesKeyword_6_0_LeftCurlyBracketKeyword_6_1_RightCurlyBracketKeyword_6_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getInfluencesKeyword_6_0()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getLeftCurlyBracketKeyword_6_1()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_6_3()));
 		match_InfluenceMetamodel___RequirementsKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getRequirementsKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getLeftCurlyBracketKeyword_3_1()), new TokenAlias(false, false, grammarAccess.getInfluenceMetamodelAccess().getRightCurlyBracketKeyword_3_3()));
 	}
 	
@@ -45,10 +47,12 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_InfluenceMetamodel___CyberPhysicalPhenomenaKeyword_4_0_LeftCurlyBracketKeyword_4_1_RightCurlyBracketKeyword_4_3__q.equals(syntax))
+			if (match_InfluenceMetamodel___ArtifactsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q.equals(syntax))
+				emit_InfluenceMetamodel___ArtifactsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_InfluenceMetamodel___CyberPhysicalPhenomenaKeyword_4_0_LeftCurlyBracketKeyword_4_1_RightCurlyBracketKeyword_4_3__q.equals(syntax))
 				emit_InfluenceMetamodel___CyberPhysicalPhenomenaKeyword_4_0_LeftCurlyBracketKeyword_4_1_RightCurlyBracketKeyword_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_InfluenceMetamodel___InfluencesKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q.equals(syntax))
-				emit_InfluenceMetamodel___InfluencesKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_InfluenceMetamodel___InfluencesKeyword_6_0_LeftCurlyBracketKeyword_6_1_RightCurlyBracketKeyword_6_3__q.equals(syntax))
+				emit_InfluenceMetamodel___InfluencesKeyword_6_0_LeftCurlyBracketKeyword_6_1_RightCurlyBracketKeyword_6_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_InfluenceMetamodel___RequirementsKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q.equals(syntax))
 				emit_InfluenceMetamodel___RequirementsKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -58,13 +62,34 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
+	 *     ('Artifacts' '{' '}')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? ('CyberPhysicalPhenomena' '{' '}')? (ambiguity) 'Influences' '{' ownedInfluences+=Influence
+	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? ('CyberPhysicalPhenomena' '{' '}')? (ambiguity) ('Influences' '{' '}')? '}' (rule start)
+	 *     ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena '}' (ambiguity) 'Influences' '{' ownedInfluences+=Influence
+	 *     ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena '}' (ambiguity) ('Influences' '{' '}')? '}' (rule end)
+	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' ('CyberPhysicalPhenomena' '{' '}')? (ambiguity) 'Influences' '{' ownedInfluences+=Influence
+	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' ('CyberPhysicalPhenomena' '{' '}')? (ambiguity) ('Influences' '{' '}')? '}' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_InfluenceMetamodel___ArtifactsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
 	 *     ('CyberPhysicalPhenomena' '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? (ambiguity) 'Influences' '{' ownedInfluences+=Influence
-	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? (ambiguity) ('Influences' '{' '}')? '}' (rule start)
-	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' (ambiguity) 'Influences' '{' ownedInfluences+=Influence
-	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' (ambiguity) ('Influences' '{' '}')? '}' (rule end)
+	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? (ambiguity) 'Artifacts' '{' ownedArtifacts+=Artifact
+	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? (ambiguity) ('Artifacts' '{' '}')? 'Influences' '{' ownedInfluences+=Influence
+	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? (ambiguity) ('Artifacts' '{' '}')? ('Influences' '{' '}')? '}' (rule start)
+	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' (ambiguity) 'Artifacts' '{' ownedArtifacts+=Artifact
+	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' (ambiguity) ('Artifacts' '{' '}')? 'Influences' '{' ownedInfluences+=Influence
+	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' (ambiguity) ('Artifacts' '{' '}')? ('Influences' '{' '}')? '}' (rule end)
 	 
 	 * </pre>
 	 */
@@ -78,13 +103,14 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('Influences' '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? ('CyberPhysicalPhenomena' '{' '}')? (ambiguity) '}' (rule start)
-	 *     ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena '}' (ambiguity) '}' (rule end)
-	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' ('CyberPhysicalPhenomena' '{' '}')? (ambiguity) '}' (rule end)
+	 *     (rule start) 'InfluenceModel' '{' ('Requirements' '{' '}')? ('CyberPhysicalPhenomena' '{' '}')? ('Artifacts' '{' '}')? (ambiguity) '}' (rule start)
+	 *     ownedArtifacts+=Artifact '}' (ambiguity) '}' (rule end)
+	 *     ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena '}' ('Artifacts' '{' '}')? (ambiguity) '}' (rule end)
+	 *     ownedRequirementSatisfaction+=RequirementSatisfaction '}' ('CyberPhysicalPhenomena' '{' '}')? ('Artifacts' '{' '}')? (ambiguity) '}' (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_InfluenceMetamodel___InfluencesKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_InfluenceMetamodel___InfluencesKeyword_6_0_LeftCurlyBracketKeyword_6_1_RightCurlyBracketKeyword_6_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -95,8 +121,9 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) 'InfluenceModel' '{' (ambiguity) 'CyberPhysicalPhenomena' '{' ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena
-	 *     (rule start) 'InfluenceModel' '{' (ambiguity) ('CyberPhysicalPhenomena' '{' '}')? 'Influences' '{' ownedInfluences+=Influence
-	 *     (rule start) 'InfluenceModel' '{' (ambiguity) ('CyberPhysicalPhenomena' '{' '}')? ('Influences' '{' '}')? '}' (rule start)
+	 *     (rule start) 'InfluenceModel' '{' (ambiguity) ('CyberPhysicalPhenomena' '{' '}')? 'Artifacts' '{' ownedArtifacts+=Artifact
+	 *     (rule start) 'InfluenceModel' '{' (ambiguity) ('CyberPhysicalPhenomena' '{' '}')? ('Artifacts' '{' '}')? 'Influences' '{' ownedInfluences+=Influence
+	 *     (rule start) 'InfluenceModel' '{' (ambiguity) ('CyberPhysicalPhenomena' '{' '}')? ('Artifacts' '{' '}')? ('Influences' '{' '}')? '}' (rule start)
 	 
 	 * </pre>
 	 */

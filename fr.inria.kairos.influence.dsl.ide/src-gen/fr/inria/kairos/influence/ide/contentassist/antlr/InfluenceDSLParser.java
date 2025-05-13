@@ -37,6 +37,7 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInfluenceMetamodelAccess().getGroup_3(), "rule__InfluenceMetamodel__Group_3__0");
 			builder.put(grammarAccess.getInfluenceMetamodelAccess().getGroup_4(), "rule__InfluenceMetamodel__Group_4__0");
 			builder.put(grammarAccess.getInfluenceMetamodelAccess().getGroup_5(), "rule__InfluenceMetamodel__Group_5__0");
+			builder.put(grammarAccess.getInfluenceMetamodelAccess().getGroup_6(), "rule__InfluenceMetamodel__Group_6__0");
 			builder.put(grammarAccess.getInfluenceAccess().getGroup(), "rule__Influence__Group__0");
 			builder.put(grammarAccess.getInfluenceAccess().getGroup_6(), "rule__Influence__Group_6__0");
 			builder.put(grammarAccess.getInfluenceAccess().getGroup_11(), "rule__Influence__Group_11__0");
@@ -45,6 +46,7 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInfluenceAccess().getGroup_26(), "rule__Influence__Group_26__0");
 			builder.put(grammarAccess.getInfluenceAccess().getGroup_31(), "rule__Influence__Group_31__0");
 			builder.put(grammarAccess.getInfluenceAccess().getGroup_36(), "rule__Influence__Group_36__0");
+			builder.put(grammarAccess.getArtifactAccess().getGroup(), "rule__Artifact__Group__0");
 			builder.put(grammarAccess.getRequirementSatisfactionAccess().getGroup(), "rule__RequirementSatisfaction__Group__0");
 			builder.put(grammarAccess.getRequirementSatisfactionAccess().getGroup_9(), "rule__RequirementSatisfaction__Group_9__0");
 			builder.put(grammarAccess.getSystemResponseAccess().getGroup(), "rule__SystemResponse__Group__0");
@@ -66,7 +68,8 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSimplePhenomenonAccess().getGroup_4_3(), "rule__SimplePhenomenon__Group_4_3__0");
 			builder.put(grammarAccess.getInfluenceMetamodelAccess().getOwnedRequirementSatisfactionAssignment_3_2(), "rule__InfluenceMetamodel__OwnedRequirementSatisfactionAssignment_3_2");
 			builder.put(grammarAccess.getInfluenceMetamodelAccess().getOwnedCyberPhysicalPhenomenaAssignment_4_2(), "rule__InfluenceMetamodel__OwnedCyberPhysicalPhenomenaAssignment_4_2");
-			builder.put(grammarAccess.getInfluenceMetamodelAccess().getOwnedInfluencesAssignment_5_2(), "rule__InfluenceMetamodel__OwnedInfluencesAssignment_5_2");
+			builder.put(grammarAccess.getInfluenceMetamodelAccess().getOwnedArtifactsAssignment_5_2(), "rule__InfluenceMetamodel__OwnedArtifactsAssignment_5_2");
+			builder.put(grammarAccess.getInfluenceMetamodelAccess().getOwnedInfluencesAssignment_6_2(), "rule__InfluenceMetamodel__OwnedInfluencesAssignment_6_2");
 			builder.put(grammarAccess.getInfluenceAccess().getNameAssignment_1(), "rule__Influence__NameAssignment_1");
 			builder.put(grammarAccess.getInfluenceAccess().getSourceArtifactAssignment_5(), "rule__Influence__SourceArtifactAssignment_5");
 			builder.put(grammarAccess.getInfluenceAccess().getSourceArtifactAssignment_6_1(), "rule__Influence__SourceArtifactAssignment_6_1");
@@ -82,6 +85,7 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInfluenceAccess().getAffectsAssignment_31_1(), "rule__Influence__AffectsAssignment_31_1");
 			builder.put(grammarAccess.getInfluenceAccess().getEvaluatedByAssignment_35(), "rule__Influence__EvaluatedByAssignment_35");
 			builder.put(grammarAccess.getInfluenceAccess().getEvaluatedByAssignment_36_1(), "rule__Influence__EvaluatedByAssignment_36_1");
+			builder.put(grammarAccess.getArtifactAccess().getNameAssignment_2(), "rule__Artifact__NameAssignment_2");
 			builder.put(grammarAccess.getRequirementSatisfactionAccess().getNameAssignment_2(), "rule__RequirementSatisfaction__NameAssignment_2");
 			builder.put(grammarAccess.getRequirementSatisfactionAccess().getConcerningRequirementAssignment_5(), "rule__RequirementSatisfaction__ConcerningRequirementAssignment_5");
 			builder.put(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionAssignment_8(), "rule__RequirementSatisfaction__SatisfactionAssignment_8");

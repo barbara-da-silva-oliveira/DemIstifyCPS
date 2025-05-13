@@ -10,9 +10,10 @@ InfluenceMetamodel returns InfluenceMetamodel:
 	'{'
 		('Requirements' '{' ownedRequirementSatisfaction += RequirementSatisfaction* '}')?
       	('CyberPhysicalPhenomena' '{' ownedCyberPhysicalPhenomena += CyberPhysicalPhenomena*  '}')?
+      	('Artifacts' '{' ownedArtifacts += Artifact* '}')?
       	('Influences' '{' ownedInfluences+=Influence* '}' )?
 	'}';
-
+ 
 
 CyberPhysicalPhenomena returns CyberPhysicalPhenomena:
 	CyberPhysicalPhenomena_Impl | MultiPhenomenon | SimplePhenomenon;
@@ -32,6 +33,11 @@ Influence returns Influence:
 
 EString returns ecore::EString:
 	STRING | ID;
+
+Artifact returns Artifact:
+	{Artifact}
+	'Artifact'
+	name=EString '{' '}';
 
 RequirementSatisfaction returns RequirementSatisfaction:
 	{RequirementSatisfaction}

@@ -55,6 +55,7 @@ public class InfluenceMetamodelItemProvider extends ItemProviderAdapter implemen
 			super.getPropertyDescriptors(object);
 
 			addOwnedInfluencesPropertyDescriptor(object);
+			addOwnedArtifactsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -72,6 +73,22 @@ public class InfluenceMetamodelItemProvider extends ItemProviderAdapter implemen
 						getString("_UI_PropertyDescriptor_description",
 								"_UI_InfluenceMetamodel_ownedInfluences_feature", "_UI_InfluenceMetamodel_type"),
 						InfluenceMetamodelPackage.Literals.INFLUENCE_METAMODEL__OWNED_INFLUENCES, true, false, true,
+						null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Owned Artifacts feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwnedArtifactsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_InfluenceMetamodel_ownedArtifacts_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_InfluenceMetamodel_ownedArtifacts_feature",
+								"_UI_InfluenceMetamodel_type"),
+						InfluenceMetamodelPackage.Literals.INFLUENCE_METAMODEL__OWNED_ARTIFACTS, true, false, true,
 						null, null, null));
 	}
 

@@ -72,6 +72,8 @@ public class InfluenceMetamodelFactoryImpl extends EFactoryImpl implements Influ
 			return createMultiPhenomenon();
 		case InfluenceMetamodelPackage.SIMPLE_PHENOMENON:
 			return createSimplePhenomenon();
+		case InfluenceMetamodelPackage.ARTIFACT:
+			return createArtifact();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -163,6 +165,17 @@ public class InfluenceMetamodelFactoryImpl extends EFactoryImpl implements Influ
 	public SimplePhenomenon createSimplePhenomenon() {
 		SimplePhenomenonImpl simplePhenomenon = new SimplePhenomenonImpl();
 		return simplePhenomenon;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Artifact createArtifact() {
+		ArtifactImpl artifact = new ArtifactImpl();
+		return artifact;
 	}
 
 	/**

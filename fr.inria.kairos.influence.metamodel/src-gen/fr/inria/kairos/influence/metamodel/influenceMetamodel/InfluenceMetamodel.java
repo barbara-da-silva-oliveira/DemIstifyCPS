@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodel#getOwnedInfluences <em>Owned Influences</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodel#getOwnedRequirementSatisfaction <em>Owned Requirement Satisfaction</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodel#getOwnedCyberPhysicalPhenomena <em>Owned Cyber Physical Phenomena</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodel#getOwnedArtifacts <em>Owned Artifacts</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodelPackage#getInfluenceMetamodel()
@@ -60,5 +61,17 @@ public interface InfluenceMetamodel extends EObject {
 	 * @generated
 	 */
 	EList<CyberPhysicalPhenomena> getOwnedCyberPhysicalPhenomena();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Artifacts</b></em>' reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.influenceMetamodel.Artifact}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Artifacts</em>' reference list.
+	 * @see fr.inria.kairos.influence.metamodel.influenceMetamodel.InfluenceMetamodelPackage#getInfluenceMetamodel_OwnedArtifacts()
+	 * @model
+	 * @generated
+	 */
+	EList<Artifact> getOwnedArtifacts();
 
 } // InfluenceMetamodel
