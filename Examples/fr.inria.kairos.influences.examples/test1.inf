@@ -1,0 +1,17 @@
+InfluenceModel test1
+
+	Artifact a1 -> doorClosed
+	Artifact a2 -> P22
+	Artifact a3 -> doorOpened
+	
+	Requirement Satisfaction rs1 : from  Requirement "req1" satisfied when "the req1 is bla "
+			
+	AtomicPhenomenon cp1 configuration "zaza" 
+		
+	#** "This influence is a simple test" **#	
+	Influence i1 from a1 and from phenomena cp1 emerges Emergent Behavior characterized by "an oscillation of phase" that implies system response resulting in "a huge energy consumtpion increase" which may violate rs1 it can be compensated by modifying a2
+	
+	
+	#** "This influence is a minimal test" **#	
+	Influence i2 from a1 and from phenomena cp1 emerges Emergent Behavior that implies system response which may violate rs1 it can be compensated by modifying a3
+	
