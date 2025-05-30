@@ -58,6 +58,9 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSystemResponseAccess().getGroup_3(), "rule__SystemResponse__Group_3__0");
 			builder.put(grammarAccess.getEmergentBehaviorAccess().getGroup(), "rule__EmergentBehavior__Group__0");
 			builder.put(grammarAccess.getEmergentBehaviorAccess().getGroup_3(), "rule__EmergentBehavior__Group_3__0");
+			builder.put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+			builder.put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
+			builder.put(grammarAccess.getQualifiedNameWithWildCardAccess().getGroup(), "rule__QualifiedNameWithWildCard__Group__0");
 			builder.put(grammarAccess.getInfluenceModelAccess().getNameAssignment_2(), "rule__InfluenceModel__NameAssignment_2");
 			builder.put(grammarAccess.getInfluenceModelAccess().getOwnedArtifactsAssignment_3_0(), "rule__InfluenceModel__OwnedArtifactsAssignment_3_0");
 			builder.put(grammarAccess.getInfluenceModelAccess().getOwnedRequirementSatisfactionAssignment_3_1(), "rule__InfluenceModel__OwnedRequirementSatisfactionAssignment_3_1");

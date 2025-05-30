@@ -1,6 +1,6 @@
 InfluenceModel test1
 
-	Artifact a1 -> doorClosed
+	Artifact a1 -> PictureTaking.Shoot
 	Artifact a2 -> P22
 	Artifact a3 -> doorOpened
 	

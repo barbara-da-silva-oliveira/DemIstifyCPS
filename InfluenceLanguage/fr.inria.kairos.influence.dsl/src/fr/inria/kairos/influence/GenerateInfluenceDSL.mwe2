@@ -22,6 +22,8 @@ Workflow {
 					enabled = true
 				}
 				createEclipseMetaData = true
+				
+				
 			}
 			code = {
 				encoding = "UTF-8"
@@ -34,7 +36,7 @@ Workflow {
 			name = "fr.inria.kairos.influence.InfluenceDSL"
 			fileExtensions = "inf"
 			referencedResource = "platform:/resource/fr.inria.kairos.influence.metamodel/model/metamodel.genmodel"
-			
+						
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 
 			fragment = exporting.QualifiedNamesFragment2 auto-inject {}

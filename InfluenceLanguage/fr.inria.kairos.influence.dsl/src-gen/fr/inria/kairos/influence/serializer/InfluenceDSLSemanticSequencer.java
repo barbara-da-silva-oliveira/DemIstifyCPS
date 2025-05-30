@@ -74,7 +74,7 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     Artifact returns Artifact
 	 *
 	 * Constraint:
-	 *     (name=EString ref=[EObject|ID])
+	 *     (name=EString ref=[EObject|QualifiedName])
 	 * </pre>
 	 */
 	protected void sequence_Artifact(ISerializationContext context, Artifact semanticObject) {
@@ -86,7 +86,7 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getArtifactAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getArtifactAccess().getRefEObjectIDTerminalRuleCall_4_0_1(), semanticObject.eGet(MetamodelPackage.Literals.ARTIFACT__REF, false));
+		feeder.accept(grammarAccess.getArtifactAccess().getRefEObjectQualifiedNameParserRuleCall_4_0_1(), semanticObject.eGet(MetamodelPackage.Literals.ARTIFACT__REF, false));
 		feeder.finish();
 	}
 	
@@ -147,8 +147,8 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *         affects+=SystemResponse* 
 	 *         evaluatedBy+=[RequirementSatisfaction|EString] 
 	 *         evaluatedBy+=[RequirementSatisfaction|EString]* 
-	 *         targetArtifact+=[Artifact|ID] 
-	 *         targetArtifact+=[Artifact|ID]*
+	 *         targetArtifact+=[Artifact|QualifiedName] 
+	 *         targetArtifact+=[Artifact|QualifiedName]*
 	 *     )
 	 * </pre>
 	 */

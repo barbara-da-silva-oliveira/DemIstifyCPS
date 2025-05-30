@@ -776,9 +776,9 @@ ruleInfluence returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_30='and'
+			otherlv_30=','
 			{
-				newLeafNode(otherlv_30, grammarAccess.getInfluenceAccess().getAndKeyword_25_0());
+				newLeafNode(otherlv_30, grammarAccess.getInfluenceAccess().getCommaKeyword_25_0());
 			}
 			(
 				(
@@ -828,9 +828,12 @@ ruleInfluence returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getInfluenceRule());
 					}
 				}
-				otherlv_38=RULE_ID
 				{
-					newLeafNode(otherlv_38, grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_32_0());
+					newCompositeNode(grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_32_0());
+				}
+				ruleQualifiedName
+				{
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -846,9 +849,12 @@ ruleInfluence returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getInfluenceRule());
 						}
 					}
-					otherlv_40=RULE_ID
 					{
-						newLeafNode(otherlv_40, grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_33_1_0());
+						newCompositeNode(grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_33_1_0());
+					}
+					ruleQualifiedName
+					{
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
@@ -1042,9 +1048,12 @@ ruleArtifact returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getArtifactRule());
 					}
 				}
-				otherlv_4=RULE_ID
 				{
-					newLeafNode(otherlv_4, grammarAccess.getArtifactAccess().getRefEObjectCrossReference_4_0());
+					newCompositeNode(grammarAccess.getArtifactAccess().getRefEObjectCrossReference_4_0());
+				}
+				ruleQualifiedName
+				{
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1208,6 +1217,46 @@ ruleEmergentBehavior returns [EObject current=null]
 				)
 			)
 		)?
+	)
+;
+
+// Entry rule entryRuleQualifiedName
+entryRuleQualifiedName returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getQualifiedNameRule()); }
+	iv_ruleQualifiedName=ruleQualifiedName
+	{ $current=$iv_ruleQualifiedName.current.getText(); }
+	EOF;
+
+// Rule QualifiedName
+ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_ID_0=RULE_ID
+		{
+			$current.merge(this_ID_0);
+		}
+		{
+			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
+		}
+		(
+			kw='.'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0());
+			}
+			this_ID_2=RULE_ID
+			{
+				$current.merge(this_ID_2);
+			}
+			{
+				newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1());
+			}
+		)*
 	)
 ;
 

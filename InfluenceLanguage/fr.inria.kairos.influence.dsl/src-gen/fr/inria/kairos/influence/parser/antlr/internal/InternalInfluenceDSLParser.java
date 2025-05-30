@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'InfluenceModel'", "'CompositeCyberPhysicalPhenomenon'", "'definedBy'", "','", "'configuration'", "'AtomicPhenomenon'", "'#**'", "'**#'", "'Influence'", "'from'", "'and'", "'phenomena'", "'emerges'", "'that'", "'implies'", "'which'", "'may'", "'violate'", "'it'", "'can'", "'be'", "'compensated'", "'by'", "'modifying'", "'Requirement'", "'Satisfaction'", "':'", "'satisfied'", "'when'", "'Artifact'", "'->'", "'system'", "'response'", "'resulting'", "'in'", "'Emergent'", "'Behavior'", "'characterized'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'InfluenceModel'", "'CompositeCyberPhysicalPhenomenon'", "'definedBy'", "','", "'configuration'", "'AtomicPhenomenon'", "'#**'", "'**#'", "'Influence'", "'from'", "'and'", "'phenomena'", "'emerges'", "'that'", "'implies'", "'which'", "'may'", "'violate'", "'it'", "'can'", "'be'", "'compensated'", "'by'", "'modifying'", "'Requirement'", "'Satisfaction'", "':'", "'satisfied'", "'when'", "'Artifact'", "'->'", "'system'", "'response'", "'resulting'", "'in'", "'Emergent'", "'Behavior'", "'characterized'", "'.'"
     };
     public static final int T__19=19;
     public static final int T__15=15;
@@ -61,6 +61,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
     public static final int RULE_WS=9;
     public static final int RULE_ANY_OTHER=10;
     public static final int T__48=48;
+    public static final int T__49=49;
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int T__46=46;
@@ -1176,7 +1177,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInfluence"
-    // InternalInfluenceDSL.g:479:1: ruleInfluence returns [EObject current=null] : (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= 'and' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( (otherlv_38= RULE_ID ) ) (otherlv_39= ',' ( (otherlv_40= RULE_ID ) ) )* ) ;
+    // InternalInfluenceDSL.g:479:1: ruleInfluence returns [EObject current=null] : (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= ',' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( ( ruleQualifiedName ) ) (otherlv_39= ',' ( ( ruleQualifiedName ) ) )* ) ;
     public final EObject ruleInfluence() throws RecognitionException {
         EObject current = null;
 
@@ -1207,9 +1208,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_35=null;
         Token otherlv_36=null;
         Token otherlv_37=null;
-        Token otherlv_38=null;
         Token otherlv_39=null;
-        Token otherlv_40=null;
         AntlrDatatypeRuleToken lv_description_1_0 = null;
 
         AntlrDatatypeRuleToken lv_description_3_0 = null;
@@ -1229,11 +1228,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:485:2: ( (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= 'and' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( (otherlv_38= RULE_ID ) ) (otherlv_39= ',' ( (otherlv_40= RULE_ID ) ) )* ) )
-            // InternalInfluenceDSL.g:486:2: (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= 'and' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( (otherlv_38= RULE_ID ) ) (otherlv_39= ',' ( (otherlv_40= RULE_ID ) ) )* )
+            // InternalInfluenceDSL.g:485:2: ( (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= ',' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( ( ruleQualifiedName ) ) (otherlv_39= ',' ( ( ruleQualifiedName ) ) )* ) )
+            // InternalInfluenceDSL.g:486:2: (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= ',' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( ( ruleQualifiedName ) ) (otherlv_39= ',' ( ( ruleQualifiedName ) ) )* )
             {
-            // InternalInfluenceDSL.g:486:2: (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= 'and' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( (otherlv_38= RULE_ID ) ) (otherlv_39= ',' ( (otherlv_40= RULE_ID ) ) )* )
-            // InternalInfluenceDSL.g:487:3: otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= 'and' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( (otherlv_38= RULE_ID ) ) (otherlv_39= ',' ( (otherlv_40= RULE_ID ) ) )*
+            // InternalInfluenceDSL.g:486:2: (otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= ',' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( ( ruleQualifiedName ) ) (otherlv_39= ',' ( ( ruleQualifiedName ) ) )* )
+            // InternalInfluenceDSL.g:487:3: otherlv_0= '#**' ( (lv_description_1_0= ruleEString ) ) (otherlv_2= ',' ( (lv_description_3_0= ruleEString ) ) )* (otherlv_4= '**#' )? otherlv_5= 'Influence' ( (lv_name_6_0= ruleEString ) ) otherlv_7= 'from' ( (otherlv_8= RULE_ID ) ) (otherlv_9= ',' ( (otherlv_10= RULE_ID ) ) )* otherlv_11= 'and' otherlv_12= 'from' otherlv_13= 'phenomena' ( ( ruleEString ) ) (otherlv_15= ',' ( ( ruleEString ) ) )* otherlv_17= 'emerges' ( (lv_produces_18_0= ruleEmergentBehavior ) ) (otherlv_19= ',' ( (lv_produces_20_0= ruleEmergentBehavior ) ) )* otherlv_21= 'that' otherlv_22= 'implies' ( (lv_affects_23_0= ruleSystemResponse ) ) (otherlv_24= ',' ( (lv_affects_25_0= ruleSystemResponse ) ) )* otherlv_26= 'which' otherlv_27= 'may' otherlv_28= 'violate' ( ( ruleEString ) ) (otherlv_30= ',' ( ( ruleEString ) ) )* otherlv_32= 'it' otherlv_33= 'can' otherlv_34= 'be' otherlv_35= 'compensated' otherlv_36= 'by' otherlv_37= 'modifying' ( ( ruleQualifiedName ) ) (otherlv_39= ',' ( ( ruleQualifiedName ) ) )*
             {
             otherlv_0=(Token)match(input,17,FOLLOW_3); 
 
@@ -1787,24 +1786,24 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalInfluenceDSL.g:778:3: (otherlv_30= 'and' ( ( ruleEString ) ) )*
+            // InternalInfluenceDSL.g:778:3: (otherlv_30= ',' ( ( ruleEString ) ) )*
             loop15:
             do {
                 int alt15=2;
                 int LA15_0 = input.LA(1);
 
-                if ( (LA15_0==21) ) {
+                if ( (LA15_0==14) ) {
                     alt15=1;
                 }
 
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:779:4: otherlv_30= 'and' ( ( ruleEString ) )
+            	    // InternalInfluenceDSL.g:779:4: otherlv_30= ',' ( ( ruleEString ) )
             	    {
-            	    otherlv_30=(Token)match(input,21,FOLLOW_3); 
+            	    otherlv_30=(Token)match(input,14,FOLLOW_3); 
 
-            	    				newLeafNode(otherlv_30, grammarAccess.getInfluenceAccess().getAndKeyword_25_0());
+            	    				newLeafNode(otherlv_30, grammarAccess.getInfluenceAccess().getCommaKeyword_25_0());
             	    			
             	    // InternalInfluenceDSL.g:783:4: ( ( ruleEString ) )
             	    // InternalInfluenceDSL.g:784:5: ( ruleEString )
@@ -1867,20 +1866,27 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_37, grammarAccess.getInfluenceAccess().getModifyingKeyword_31());
             		
-            // InternalInfluenceDSL.g:824:3: ( (otherlv_38= RULE_ID ) )
-            // InternalInfluenceDSL.g:825:4: (otherlv_38= RULE_ID )
+            // InternalInfluenceDSL.g:824:3: ( ( ruleQualifiedName ) )
+            // InternalInfluenceDSL.g:825:4: ( ruleQualifiedName )
             {
-            // InternalInfluenceDSL.g:825:4: (otherlv_38= RULE_ID )
-            // InternalInfluenceDSL.g:826:5: otherlv_38= RULE_ID
+            // InternalInfluenceDSL.g:825:4: ( ruleQualifiedName )
+            // InternalInfluenceDSL.g:826:5: ruleQualifiedName
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getInfluenceRule());
             					}
             				
-            otherlv_38=(Token)match(input,RULE_ID,FOLLOW_7); 
 
-            					newLeafNode(otherlv_38, grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_32_0());
+            					newCompositeNode(grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_32_0());
+            				
+            pushFollow(FOLLOW_7);
+            ruleQualifiedName();
+
+            state._fsp--;
+
+
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -1888,7 +1894,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalInfluenceDSL.g:837:3: (otherlv_39= ',' ( (otherlv_40= RULE_ID ) ) )*
+            // InternalInfluenceDSL.g:840:3: (otherlv_39= ',' ( ( ruleQualifiedName ) ) )*
             loop16:
             do {
                 int alt16=2;
@@ -1901,26 +1907,33 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
                 switch (alt16) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:838:4: otherlv_39= ',' ( (otherlv_40= RULE_ID ) )
+            	    // InternalInfluenceDSL.g:841:4: otherlv_39= ',' ( ( ruleQualifiedName ) )
             	    {
             	    otherlv_39=(Token)match(input,14,FOLLOW_12); 
 
             	    				newLeafNode(otherlv_39, grammarAccess.getInfluenceAccess().getCommaKeyword_33_0());
             	    			
-            	    // InternalInfluenceDSL.g:842:4: ( (otherlv_40= RULE_ID ) )
-            	    // InternalInfluenceDSL.g:843:5: (otherlv_40= RULE_ID )
+            	    // InternalInfluenceDSL.g:845:4: ( ( ruleQualifiedName ) )
+            	    // InternalInfluenceDSL.g:846:5: ( ruleQualifiedName )
             	    {
-            	    // InternalInfluenceDSL.g:843:5: (otherlv_40= RULE_ID )
-            	    // InternalInfluenceDSL.g:844:6: otherlv_40= RULE_ID
+            	    // InternalInfluenceDSL.g:846:5: ( ruleQualifiedName )
+            	    // InternalInfluenceDSL.g:847:6: ruleQualifiedName
             	    {
 
             	    						if (current==null) {
             	    							current = createModelElement(grammarAccess.getInfluenceRule());
             	    						}
             	    					
-            	    otherlv_40=(Token)match(input,RULE_ID,FOLLOW_7); 
 
-            	    						newLeafNode(otherlv_40, grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_33_1_0());
+            	    						newCompositeNode(grammarAccess.getInfluenceAccess().getTargetArtifactArtifactCrossReference_33_1_0());
+            	    					
+            	    pushFollow(FOLLOW_7);
+            	    ruleQualifiedName();
+
+            	    state._fsp--;
+
+
+            	    						afterParserOrEnumRuleCall();
             	    					
 
             	    }
@@ -1960,7 +1973,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRequirementSatisfaction"
-    // InternalInfluenceDSL.g:860:1: entryRuleRequirementSatisfaction returns [EObject current=null] : iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF ;
+    // InternalInfluenceDSL.g:866:1: entryRuleRequirementSatisfaction returns [EObject current=null] : iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF ;
     public final EObject entryRuleRequirementSatisfaction() throws RecognitionException {
         EObject current = null;
 
@@ -1968,8 +1981,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:860:64: (iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF )
-            // InternalInfluenceDSL.g:861:2: iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF
+            // InternalInfluenceDSL.g:866:64: (iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF )
+            // InternalInfluenceDSL.g:867:2: iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF
             {
              newCompositeNode(grammarAccess.getRequirementSatisfactionRule()); 
             pushFollow(FOLLOW_1);
@@ -1996,7 +2009,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRequirementSatisfaction"
-    // InternalInfluenceDSL.g:867:1: ruleRequirementSatisfaction returns [EObject current=null] : (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* ) ;
+    // InternalInfluenceDSL.g:873:1: ruleRequirementSatisfaction returns [EObject current=null] : (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* ) ;
     public final EObject ruleRequirementSatisfaction() throws RecognitionException {
         EObject current = null;
 
@@ -2021,11 +2034,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:873:2: ( (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* ) )
-            // InternalInfluenceDSL.g:874:2: (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* )
+            // InternalInfluenceDSL.g:879:2: ( (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* ) )
+            // InternalInfluenceDSL.g:880:2: (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* )
             {
-            // InternalInfluenceDSL.g:874:2: (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* )
-            // InternalInfluenceDSL.g:875:3: otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )*
+            // InternalInfluenceDSL.g:880:2: (otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )* )
+            // InternalInfluenceDSL.g:881:3: otherlv_0= 'Requirement' otherlv_1= 'Satisfaction' ( (lv_name_2_0= ruleEString ) ) otherlv_3= ':' otherlv_4= 'from' otherlv_5= 'Requirement' ( (lv_concerningRequirement_6_0= ruleEString ) ) otherlv_7= 'satisfied' otherlv_8= 'when' ( (lv_satisfaction_9_0= ruleEString ) ) (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )*
             {
             otherlv_0=(Token)match(input,35,FOLLOW_29); 
 
@@ -2035,11 +2048,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getRequirementSatisfactionAccess().getSatisfactionKeyword_1());
             		
-            // InternalInfluenceDSL.g:883:3: ( (lv_name_2_0= ruleEString ) )
-            // InternalInfluenceDSL.g:884:4: (lv_name_2_0= ruleEString )
+            // InternalInfluenceDSL.g:889:3: ( (lv_name_2_0= ruleEString ) )
+            // InternalInfluenceDSL.g:890:4: (lv_name_2_0= ruleEString )
             {
-            // InternalInfluenceDSL.g:884:4: (lv_name_2_0= ruleEString )
-            // InternalInfluenceDSL.g:885:5: lv_name_2_0= ruleEString
+            // InternalInfluenceDSL.g:890:4: (lv_name_2_0= ruleEString )
+            // InternalInfluenceDSL.g:891:5: lv_name_2_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getNameEStringParserRuleCall_2_0());
@@ -2078,11 +2091,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getRequirementSatisfactionAccess().getRequirementKeyword_5());
             		
-            // InternalInfluenceDSL.g:914:3: ( (lv_concerningRequirement_6_0= ruleEString ) )
-            // InternalInfluenceDSL.g:915:4: (lv_concerningRequirement_6_0= ruleEString )
+            // InternalInfluenceDSL.g:920:3: ( (lv_concerningRequirement_6_0= ruleEString ) )
+            // InternalInfluenceDSL.g:921:4: (lv_concerningRequirement_6_0= ruleEString )
             {
-            // InternalInfluenceDSL.g:915:4: (lv_concerningRequirement_6_0= ruleEString )
-            // InternalInfluenceDSL.g:916:5: lv_concerningRequirement_6_0= ruleEString
+            // InternalInfluenceDSL.g:921:4: (lv_concerningRequirement_6_0= ruleEString )
+            // InternalInfluenceDSL.g:922:5: lv_concerningRequirement_6_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getConcerningRequirementEStringParserRuleCall_6_0());
@@ -2117,11 +2130,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_8, grammarAccess.getRequirementSatisfactionAccess().getWhenKeyword_8());
             		
-            // InternalInfluenceDSL.g:941:3: ( (lv_satisfaction_9_0= ruleEString ) )
-            // InternalInfluenceDSL.g:942:4: (lv_satisfaction_9_0= ruleEString )
+            // InternalInfluenceDSL.g:947:3: ( (lv_satisfaction_9_0= ruleEString ) )
+            // InternalInfluenceDSL.g:948:4: (lv_satisfaction_9_0= ruleEString )
             {
-            // InternalInfluenceDSL.g:942:4: (lv_satisfaction_9_0= ruleEString )
-            // InternalInfluenceDSL.g:943:5: lv_satisfaction_9_0= ruleEString
+            // InternalInfluenceDSL.g:948:4: (lv_satisfaction_9_0= ruleEString )
+            // InternalInfluenceDSL.g:949:5: lv_satisfaction_9_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_9_0());
@@ -2148,7 +2161,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalInfluenceDSL.g:960:3: (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )*
+            // InternalInfluenceDSL.g:966:3: (otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) ) )*
             loop17:
             do {
                 int alt17=2;
@@ -2161,17 +2174,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
                 switch (alt17) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:961:4: otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) )
+            	    // InternalInfluenceDSL.g:967:4: otherlv_10= ',' ( (lv_satisfaction_11_0= ruleEString ) )
             	    {
             	    otherlv_10=(Token)match(input,14,FOLLOW_3); 
 
             	    				newLeafNode(otherlv_10, grammarAccess.getRequirementSatisfactionAccess().getCommaKeyword_10_0());
             	    			
-            	    // InternalInfluenceDSL.g:965:4: ( (lv_satisfaction_11_0= ruleEString ) )
-            	    // InternalInfluenceDSL.g:966:5: (lv_satisfaction_11_0= ruleEString )
+            	    // InternalInfluenceDSL.g:971:4: ( (lv_satisfaction_11_0= ruleEString ) )
+            	    // InternalInfluenceDSL.g:972:5: (lv_satisfaction_11_0= ruleEString )
             	    {
-            	    // InternalInfluenceDSL.g:966:5: (lv_satisfaction_11_0= ruleEString )
-            	    // InternalInfluenceDSL.g:967:6: lv_satisfaction_11_0= ruleEString
+            	    // InternalInfluenceDSL.g:972:5: (lv_satisfaction_11_0= ruleEString )
+            	    // InternalInfluenceDSL.g:973:6: lv_satisfaction_11_0= ruleEString
             	    {
 
             	    						newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_10_1_0());
@@ -2230,7 +2243,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArtifact"
-    // InternalInfluenceDSL.g:989:1: entryRuleArtifact returns [EObject current=null] : iv_ruleArtifact= ruleArtifact EOF ;
+    // InternalInfluenceDSL.g:995:1: entryRuleArtifact returns [EObject current=null] : iv_ruleArtifact= ruleArtifact EOF ;
     public final EObject entryRuleArtifact() throws RecognitionException {
         EObject current = null;
 
@@ -2238,8 +2251,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:989:49: (iv_ruleArtifact= ruleArtifact EOF )
-            // InternalInfluenceDSL.g:990:2: iv_ruleArtifact= ruleArtifact EOF
+            // InternalInfluenceDSL.g:995:49: (iv_ruleArtifact= ruleArtifact EOF )
+            // InternalInfluenceDSL.g:996:2: iv_ruleArtifact= ruleArtifact EOF
             {
              newCompositeNode(grammarAccess.getArtifactRule()); 
             pushFollow(FOLLOW_1);
@@ -2266,13 +2279,12 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArtifact"
-    // InternalInfluenceDSL.g:996:1: ruleArtifact returns [EObject current=null] : ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( (otherlv_4= RULE_ID ) ) ) ;
+    // InternalInfluenceDSL.g:1002:1: ruleArtifact returns [EObject current=null] : ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) ) ;
     public final EObject ruleArtifact() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_3=null;
-        Token otherlv_4=null;
         AntlrDatatypeRuleToken lv_name_2_0 = null;
 
 
@@ -2280,14 +2292,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:1002:2: ( ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( (otherlv_4= RULE_ID ) ) ) )
-            // InternalInfluenceDSL.g:1003:2: ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( (otherlv_4= RULE_ID ) ) )
+            // InternalInfluenceDSL.g:1008:2: ( ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) ) )
+            // InternalInfluenceDSL.g:1009:2: ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) )
             {
-            // InternalInfluenceDSL.g:1003:2: ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( (otherlv_4= RULE_ID ) ) )
-            // InternalInfluenceDSL.g:1004:3: () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( (otherlv_4= RULE_ID ) )
+            // InternalInfluenceDSL.g:1009:2: ( () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) )
+            // InternalInfluenceDSL.g:1010:3: () otherlv_1= 'Artifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) )
             {
-            // InternalInfluenceDSL.g:1004:3: ()
-            // InternalInfluenceDSL.g:1005:4: 
+            // InternalInfluenceDSL.g:1010:3: ()
+            // InternalInfluenceDSL.g:1011:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2301,11 +2313,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getArtifactAccess().getArtifactKeyword_1());
             		
-            // InternalInfluenceDSL.g:1015:3: ( (lv_name_2_0= ruleEString ) )
-            // InternalInfluenceDSL.g:1016:4: (lv_name_2_0= ruleEString )
+            // InternalInfluenceDSL.g:1021:3: ( (lv_name_2_0= ruleEString ) )
+            // InternalInfluenceDSL.g:1022:4: (lv_name_2_0= ruleEString )
             {
-            // InternalInfluenceDSL.g:1016:4: (lv_name_2_0= ruleEString )
-            // InternalInfluenceDSL.g:1017:5: lv_name_2_0= ruleEString
+            // InternalInfluenceDSL.g:1022:4: (lv_name_2_0= ruleEString )
+            // InternalInfluenceDSL.g:1023:5: lv_name_2_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getArtifactAccess().getNameEStringParserRuleCall_2_0());
@@ -2336,20 +2348,27 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getArtifactAccess().getHyphenMinusGreaterThanSignKeyword_3());
             		
-            // InternalInfluenceDSL.g:1038:3: ( (otherlv_4= RULE_ID ) )
-            // InternalInfluenceDSL.g:1039:4: (otherlv_4= RULE_ID )
+            // InternalInfluenceDSL.g:1044:3: ( ( ruleQualifiedName ) )
+            // InternalInfluenceDSL.g:1045:4: ( ruleQualifiedName )
             {
-            // InternalInfluenceDSL.g:1039:4: (otherlv_4= RULE_ID )
-            // InternalInfluenceDSL.g:1040:5: otherlv_4= RULE_ID
+            // InternalInfluenceDSL.g:1045:4: ( ruleQualifiedName )
+            // InternalInfluenceDSL.g:1046:5: ruleQualifiedName
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getArtifactRule());
             					}
             				
-            otherlv_4=(Token)match(input,RULE_ID,FOLLOW_2); 
 
-            					newLeafNode(otherlv_4, grammarAccess.getArtifactAccess().getRefEObjectCrossReference_4_0());
+            					newCompositeNode(grammarAccess.getArtifactAccess().getRefEObjectCrossReference_4_0());
+            				
+            pushFollow(FOLLOW_2);
+            ruleQualifiedName();
+
+            state._fsp--;
+
+
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -2380,7 +2399,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEString"
-    // InternalInfluenceDSL.g:1055:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
+    // InternalInfluenceDSL.g:1064:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
     public final String entryRuleEString() throws RecognitionException {
         String current = null;
 
@@ -2388,8 +2407,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:1055:47: (iv_ruleEString= ruleEString EOF )
-            // InternalInfluenceDSL.g:1056:2: iv_ruleEString= ruleEString EOF
+            // InternalInfluenceDSL.g:1064:47: (iv_ruleEString= ruleEString EOF )
+            // InternalInfluenceDSL.g:1065:2: iv_ruleEString= ruleEString EOF
             {
              newCompositeNode(grammarAccess.getEStringRule()); 
             pushFollow(FOLLOW_1);
@@ -2416,7 +2435,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEString"
-    // InternalInfluenceDSL.g:1062:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
+    // InternalInfluenceDSL.g:1071:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
     public final AntlrDatatypeRuleToken ruleEString() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2427,10 +2446,10 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:1068:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
-            // InternalInfluenceDSL.g:1069:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            // InternalInfluenceDSL.g:1077:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
+            // InternalInfluenceDSL.g:1078:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
             {
-            // InternalInfluenceDSL.g:1069:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            // InternalInfluenceDSL.g:1078:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -2448,7 +2467,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt18) {
                 case 1 :
-                    // InternalInfluenceDSL.g:1070:3: this_STRING_0= RULE_STRING
+                    // InternalInfluenceDSL.g:1079:3: this_STRING_0= RULE_STRING
                     {
                     this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -2461,7 +2480,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalInfluenceDSL.g:1078:3: this_ID_1= RULE_ID
+                    // InternalInfluenceDSL.g:1087:3: this_ID_1= RULE_ID
                     {
                     this_ID_1=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -2496,7 +2515,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSystemResponse"
-    // InternalInfluenceDSL.g:1089:1: entryRuleSystemResponse returns [EObject current=null] : iv_ruleSystemResponse= ruleSystemResponse EOF ;
+    // InternalInfluenceDSL.g:1098:1: entryRuleSystemResponse returns [EObject current=null] : iv_ruleSystemResponse= ruleSystemResponse EOF ;
     public final EObject entryRuleSystemResponse() throws RecognitionException {
         EObject current = null;
 
@@ -2504,8 +2523,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:1089:55: (iv_ruleSystemResponse= ruleSystemResponse EOF )
-            // InternalInfluenceDSL.g:1090:2: iv_ruleSystemResponse= ruleSystemResponse EOF
+            // InternalInfluenceDSL.g:1098:55: (iv_ruleSystemResponse= ruleSystemResponse EOF )
+            // InternalInfluenceDSL.g:1099:2: iv_ruleSystemResponse= ruleSystemResponse EOF
             {
              newCompositeNode(grammarAccess.getSystemResponseRule()); 
             pushFollow(FOLLOW_1);
@@ -2532,7 +2551,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSystemResponse"
-    // InternalInfluenceDSL.g:1096:1: ruleSystemResponse returns [EObject current=null] : ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? ) ;
+    // InternalInfluenceDSL.g:1105:1: ruleSystemResponse returns [EObject current=null] : ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? ) ;
     public final EObject ruleSystemResponse() throws RecognitionException {
         EObject current = null;
 
@@ -2547,14 +2566,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:1102:2: ( ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? ) )
-            // InternalInfluenceDSL.g:1103:2: ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? )
+            // InternalInfluenceDSL.g:1111:2: ( ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? ) )
+            // InternalInfluenceDSL.g:1112:2: ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? )
             {
-            // InternalInfluenceDSL.g:1103:2: ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? )
-            // InternalInfluenceDSL.g:1104:3: () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )?
+            // InternalInfluenceDSL.g:1112:2: ( () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )? )
+            // InternalInfluenceDSL.g:1113:3: () otherlv_1= 'system' otherlv_2= 'response' (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )?
             {
-            // InternalInfluenceDSL.g:1104:3: ()
-            // InternalInfluenceDSL.g:1105:4: 
+            // InternalInfluenceDSL.g:1113:3: ()
+            // InternalInfluenceDSL.g:1114:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2572,7 +2591,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getSystemResponseAccess().getResponseKeyword_2());
             		
-            // InternalInfluenceDSL.g:1119:3: (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )?
+            // InternalInfluenceDSL.g:1128:3: (otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) ) )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -2581,7 +2600,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt19) {
                 case 1 :
-                    // InternalInfluenceDSL.g:1120:4: otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) )
+                    // InternalInfluenceDSL.g:1129:4: otherlv_3= 'resulting' otherlv_4= 'in' ( (lv_observation_5_0= ruleEString ) )
                     {
                     otherlv_3=(Token)match(input,44,FOLLOW_37); 
 
@@ -2591,11 +2610,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_4, grammarAccess.getSystemResponseAccess().getInKeyword_3_1());
                     			
-                    // InternalInfluenceDSL.g:1128:4: ( (lv_observation_5_0= ruleEString ) )
-                    // InternalInfluenceDSL.g:1129:5: (lv_observation_5_0= ruleEString )
+                    // InternalInfluenceDSL.g:1137:4: ( (lv_observation_5_0= ruleEString ) )
+                    // InternalInfluenceDSL.g:1138:5: (lv_observation_5_0= ruleEString )
                     {
-                    // InternalInfluenceDSL.g:1129:5: (lv_observation_5_0= ruleEString )
-                    // InternalInfluenceDSL.g:1130:6: lv_observation_5_0= ruleEString
+                    // InternalInfluenceDSL.g:1138:5: (lv_observation_5_0= ruleEString )
+                    // InternalInfluenceDSL.g:1139:6: lv_observation_5_0= ruleEString
                     {
 
                     						newCompositeNode(grammarAccess.getSystemResponseAccess().getObservationEStringParserRuleCall_3_2_0());
@@ -2651,7 +2670,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEmergentBehavior"
-    // InternalInfluenceDSL.g:1152:1: entryRuleEmergentBehavior returns [EObject current=null] : iv_ruleEmergentBehavior= ruleEmergentBehavior EOF ;
+    // InternalInfluenceDSL.g:1161:1: entryRuleEmergentBehavior returns [EObject current=null] : iv_ruleEmergentBehavior= ruleEmergentBehavior EOF ;
     public final EObject entryRuleEmergentBehavior() throws RecognitionException {
         EObject current = null;
 
@@ -2659,8 +2678,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:1152:57: (iv_ruleEmergentBehavior= ruleEmergentBehavior EOF )
-            // InternalInfluenceDSL.g:1153:2: iv_ruleEmergentBehavior= ruleEmergentBehavior EOF
+            // InternalInfluenceDSL.g:1161:57: (iv_ruleEmergentBehavior= ruleEmergentBehavior EOF )
+            // InternalInfluenceDSL.g:1162:2: iv_ruleEmergentBehavior= ruleEmergentBehavior EOF
             {
              newCompositeNode(grammarAccess.getEmergentBehaviorRule()); 
             pushFollow(FOLLOW_1);
@@ -2687,7 +2706,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEmergentBehavior"
-    // InternalInfluenceDSL.g:1159:1: ruleEmergentBehavior returns [EObject current=null] : ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? ) ;
+    // InternalInfluenceDSL.g:1168:1: ruleEmergentBehavior returns [EObject current=null] : ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? ) ;
     public final EObject ruleEmergentBehavior() throws RecognitionException {
         EObject current = null;
 
@@ -2702,14 +2721,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:1165:2: ( ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? ) )
-            // InternalInfluenceDSL.g:1166:2: ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? )
+            // InternalInfluenceDSL.g:1174:2: ( ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? ) )
+            // InternalInfluenceDSL.g:1175:2: ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? )
             {
-            // InternalInfluenceDSL.g:1166:2: ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? )
-            // InternalInfluenceDSL.g:1167:3: () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )?
+            // InternalInfluenceDSL.g:1175:2: ( () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )? )
+            // InternalInfluenceDSL.g:1176:3: () otherlv_1= 'Emergent' otherlv_2= 'Behavior' (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )?
             {
-            // InternalInfluenceDSL.g:1167:3: ()
-            // InternalInfluenceDSL.g:1168:4: 
+            // InternalInfluenceDSL.g:1176:3: ()
+            // InternalInfluenceDSL.g:1177:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2727,7 +2746,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getEmergentBehaviorAccess().getBehaviorKeyword_2());
             		
-            // InternalInfluenceDSL.g:1182:3: (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )?
+            // InternalInfluenceDSL.g:1191:3: (otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) ) )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -2736,7 +2755,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt20) {
                 case 1 :
-                    // InternalInfluenceDSL.g:1183:4: otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) )
+                    // InternalInfluenceDSL.g:1192:4: otherlv_3= 'characterized' otherlv_4= 'by' ( (lv_description_5_0= ruleEString ) )
                     {
                     otherlv_3=(Token)match(input,48,FOLLOW_27); 
 
@@ -2746,11 +2765,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_4, grammarAccess.getEmergentBehaviorAccess().getByKeyword_3_1());
                     			
-                    // InternalInfluenceDSL.g:1191:4: ( (lv_description_5_0= ruleEString ) )
-                    // InternalInfluenceDSL.g:1192:5: (lv_description_5_0= ruleEString )
+                    // InternalInfluenceDSL.g:1200:4: ( (lv_description_5_0= ruleEString ) )
+                    // InternalInfluenceDSL.g:1201:5: (lv_description_5_0= ruleEString )
                     {
-                    // InternalInfluenceDSL.g:1192:5: (lv_description_5_0= ruleEString )
-                    // InternalInfluenceDSL.g:1193:6: lv_description_5_0= ruleEString
+                    // InternalInfluenceDSL.g:1201:5: (lv_description_5_0= ruleEString )
+                    // InternalInfluenceDSL.g:1202:6: lv_description_5_0= ruleEString
                     {
 
                     						newCompositeNode(grammarAccess.getEmergentBehaviorAccess().getDescriptionEStringParserRuleCall_3_2_0());
@@ -2804,6 +2823,126 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleEmergentBehavior"
 
+
+    // $ANTLR start "entryRuleQualifiedName"
+    // InternalInfluenceDSL.g:1224:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    public final String entryRuleQualifiedName() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleQualifiedName = null;
+
+
+        try {
+            // InternalInfluenceDSL.g:1224:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // InternalInfluenceDSL.g:1225:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            {
+             newCompositeNode(grammarAccess.getQualifiedNameRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleQualifiedName=ruleQualifiedName();
+
+            state._fsp--;
+
+             current =iv_ruleQualifiedName.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleQualifiedName"
+
+
+    // $ANTLR start "ruleQualifiedName"
+    // InternalInfluenceDSL.g:1231:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_ID_0=null;
+        Token kw=null;
+        Token this_ID_2=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalInfluenceDSL.g:1237:2: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // InternalInfluenceDSL.g:1238:2: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            {
+            // InternalInfluenceDSL.g:1238:2: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // InternalInfluenceDSL.g:1239:3: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            {
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_40); 
+
+            			current.merge(this_ID_0);
+            		
+
+            			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
+            		
+            // InternalInfluenceDSL.g:1246:3: (kw= '.' this_ID_2= RULE_ID )*
+            loop21:
+            do {
+                int alt21=2;
+                int LA21_0 = input.LA(1);
+
+                if ( (LA21_0==49) ) {
+                    alt21=1;
+                }
+
+
+                switch (alt21) {
+            	case 1 :
+            	    // InternalInfluenceDSL.g:1247:4: kw= '.' this_ID_2= RULE_ID
+            	    {
+            	    kw=(Token)match(input,49,FOLLOW_12); 
+
+            	    				current.merge(kw);
+            	    				newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0());
+            	    			
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_40); 
+
+            	    				current.merge(this_ID_2);
+            	    			
+
+            	    				newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1());
+            	    			
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop21;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleQualifiedName"
+
     // Delegated rules
 
 
@@ -2831,7 +2970,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000004004000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000020200000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000020004000L});
     public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000040000000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000100000000L});
@@ -2848,5 +2987,6 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000200000000000L});
     public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000800000000000L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0001000000000002L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0002000000000002L});
 
 }

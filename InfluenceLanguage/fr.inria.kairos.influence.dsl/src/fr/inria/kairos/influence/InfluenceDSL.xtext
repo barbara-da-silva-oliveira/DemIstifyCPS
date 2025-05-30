@@ -46,7 +46,7 @@ Influence returns Influence:
 		'emerges' produces+=EmergentBehavior ( "," produces+=EmergentBehavior)*  
 		'that' 'implies' affects+=SystemResponse ( "," affects+=SystemResponse)* 
 		'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "," evaluatedBy+=[RequirementSatisfaction|EString])* 
-		'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|ID] ( "," targetArtifact+=[Artifact|ID])* 
+		'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|QualifiedName] ( "," targetArtifact+=[Artifact|QualifiedName])* 
 		
 		 
 		
@@ -63,7 +63,7 @@ RequirementSatisfaction returns RequirementSatisfaction:
 Artifact returns Artifact:
 	{Artifact}
 	'Artifact'
-	name=EString "->" ref=[ecore::EObject|ID];
+	name=EString "->" ref=[ecore::EObject|QualifiedName];
 	
 
 EString returns ecore::EString:
@@ -81,4 +81,10 @@ EmergentBehavior returns EmergentBehavior:
 		('characterized' 'by' description=EString)?
 	;
 
+QualifiedName:
+    ID ('.' ID)*
+;
 
+QualifiedNameWithWildCard:
+    QualifiedName '.*'?
+;

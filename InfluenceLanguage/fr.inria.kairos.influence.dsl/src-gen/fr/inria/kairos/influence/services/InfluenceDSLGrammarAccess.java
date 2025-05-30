@@ -350,7 +350,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final CrossReference cEvaluatedByRequirementSatisfactionCrossReference_24_0 = (CrossReference)cEvaluatedByAssignment_24.eContents().get(0);
 		private final RuleCall cEvaluatedByRequirementSatisfactionEStringParserRuleCall_24_0_1 = (RuleCall)cEvaluatedByRequirementSatisfactionCrossReference_24_0.eContents().get(1);
 		private final Group cGroup_25 = (Group)cGroup.eContents().get(25);
-		private final Keyword cAndKeyword_25_0 = (Keyword)cGroup_25.eContents().get(0);
+		private final Keyword cCommaKeyword_25_0 = (Keyword)cGroup_25.eContents().get(0);
 		private final Assignment cEvaluatedByAssignment_25_1 = (Assignment)cGroup_25.eContents().get(1);
 		private final CrossReference cEvaluatedByRequirementSatisfactionCrossReference_25_1_0 = (CrossReference)cEvaluatedByAssignment_25_1.eContents().get(0);
 		private final RuleCall cEvaluatedByRequirementSatisfactionEStringParserRuleCall_25_1_0_1 = (RuleCall)cEvaluatedByRequirementSatisfactionCrossReference_25_1_0.eContents().get(1);
@@ -362,12 +362,12 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cModifyingKeyword_31 = (Keyword)cGroup.eContents().get(31);
 		private final Assignment cTargetArtifactAssignment_32 = (Assignment)cGroup.eContents().get(32);
 		private final CrossReference cTargetArtifactArtifactCrossReference_32_0 = (CrossReference)cTargetArtifactAssignment_32.eContents().get(0);
-		private final RuleCall cTargetArtifactArtifactIDTerminalRuleCall_32_0_1 = (RuleCall)cTargetArtifactArtifactCrossReference_32_0.eContents().get(1);
+		private final RuleCall cTargetArtifactArtifactQualifiedNameParserRuleCall_32_0_1 = (RuleCall)cTargetArtifactArtifactCrossReference_32_0.eContents().get(1);
 		private final Group cGroup_33 = (Group)cGroup.eContents().get(33);
 		private final Keyword cCommaKeyword_33_0 = (Keyword)cGroup_33.eContents().get(0);
 		private final Assignment cTargetArtifactAssignment_33_1 = (Assignment)cGroup_33.eContents().get(1);
 		private final CrossReference cTargetArtifactArtifactCrossReference_33_1_0 = (CrossReference)cTargetArtifactAssignment_33_1.eContents().get(0);
-		private final RuleCall cTargetArtifactArtifactIDTerminalRuleCall_33_1_0_1 = (RuleCall)cTargetArtifactArtifactCrossReference_33_1_0.eContents().get(1);
+		private final RuleCall cTargetArtifactArtifactQualifiedNameParserRuleCall_33_1_0_1 = (RuleCall)cTargetArtifactArtifactCrossReference_33_1_0.eContents().get(1);
 		
 		//Influence returns Influence:
 		//    '#**' description+=EString ( "," description+=EString)* '**#'?
@@ -377,8 +377,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//        'and' 'from' 'phenomena' sourcePhenomena+=[CyberPhysicalPhenomena|EString] ( "," sourcePhenomena+=[CyberPhysicalPhenomena|EString])*
 		//        'emerges' produces+=EmergentBehavior ( "," produces+=EmergentBehavior)*
 		//        'that' 'implies' affects+=SystemResponse ( "," affects+=SystemResponse)*
-		//        'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "and" evaluatedBy+=[RequirementSatisfaction|EString])*
-		//        'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|ID] ( "," targetArtifact+=[Artifact|ID])*
+		//        'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "," evaluatedBy+=[RequirementSatisfaction|EString])*
+		//        'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|QualifiedName] ( "," targetArtifact+=[Artifact|QualifiedName])*
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -389,8 +389,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    'and' 'from' 'phenomena' sourcePhenomena+=[CyberPhysicalPhenomena|EString] ( "," sourcePhenomena+=[CyberPhysicalPhenomena|EString])*
 		//    'emerges' produces+=EmergentBehavior ( "," produces+=EmergentBehavior)*
 		//    'that' 'implies' affects+=SystemResponse ( "," affects+=SystemResponse)*
-		//    'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "and" evaluatedBy+=[RequirementSatisfaction|EString])*
-		//    'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|ID] ( "," targetArtifact+=[Artifact|ID])*
+		//    'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "," evaluatedBy+=[RequirementSatisfaction|EString])*
+		//    'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|QualifiedName] ( "," targetArtifact+=[Artifact|QualifiedName])*
 		public Group getGroup() { return cGroup; }
 		
 		//'#**'
@@ -549,11 +549,11 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getEvaluatedByRequirementSatisfactionEStringParserRuleCall_24_0_1() { return cEvaluatedByRequirementSatisfactionEStringParserRuleCall_24_0_1; }
 		
-		//( "and" evaluatedBy+=[RequirementSatisfaction|EString])*
+		//( "," evaluatedBy+=[RequirementSatisfaction|EString])*
 		public Group getGroup_25() { return cGroup_25; }
 		
-		//"and"
-		public Keyword getAndKeyword_25_0() { return cAndKeyword_25_0; }
+		//","
+		public Keyword getCommaKeyword_25_0() { return cCommaKeyword_25_0; }
 		
 		//evaluatedBy+=[RequirementSatisfaction|EString]
 		public Assignment getEvaluatedByAssignment_25_1() { return cEvaluatedByAssignment_25_1; }
@@ -582,29 +582,29 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'modifying'
 		public Keyword getModifyingKeyword_31() { return cModifyingKeyword_31; }
 		
-		//targetArtifact+=[Artifact|ID]
+		//targetArtifact+=[Artifact|QualifiedName]
 		public Assignment getTargetArtifactAssignment_32() { return cTargetArtifactAssignment_32; }
 		
-		//[Artifact|ID]
+		//[Artifact|QualifiedName]
 		public CrossReference getTargetArtifactArtifactCrossReference_32_0() { return cTargetArtifactArtifactCrossReference_32_0; }
 		
-		//ID
-		public RuleCall getTargetArtifactArtifactIDTerminalRuleCall_32_0_1() { return cTargetArtifactArtifactIDTerminalRuleCall_32_0_1; }
+		//QualifiedName
+		public RuleCall getTargetArtifactArtifactQualifiedNameParserRuleCall_32_0_1() { return cTargetArtifactArtifactQualifiedNameParserRuleCall_32_0_1; }
 		
-		//( "," targetArtifact+=[Artifact|ID])*
+		//( "," targetArtifact+=[Artifact|QualifiedName])*
 		public Group getGroup_33() { return cGroup_33; }
 		
 		//","
 		public Keyword getCommaKeyword_33_0() { return cCommaKeyword_33_0; }
 		
-		//targetArtifact+=[Artifact|ID]
+		//targetArtifact+=[Artifact|QualifiedName]
 		public Assignment getTargetArtifactAssignment_33_1() { return cTargetArtifactAssignment_33_1; }
 		
-		//[Artifact|ID]
+		//[Artifact|QualifiedName]
 		public CrossReference getTargetArtifactArtifactCrossReference_33_1_0() { return cTargetArtifactArtifactCrossReference_33_1_0; }
 		
-		//ID
-		public RuleCall getTargetArtifactArtifactIDTerminalRuleCall_33_1_0_1() { return cTargetArtifactArtifactIDTerminalRuleCall_33_1_0_1; }
+		//QualifiedName
+		public RuleCall getTargetArtifactArtifactQualifiedNameParserRuleCall_33_1_0_1() { return cTargetArtifactArtifactQualifiedNameParserRuleCall_33_1_0_1; }
 	}
 	public class RequirementSatisfactionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.RequirementSatisfaction");
@@ -704,17 +704,17 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cRefAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cRefEObjectCrossReference_4_0 = (CrossReference)cRefAssignment_4.eContents().get(0);
-		private final RuleCall cRefEObjectIDTerminalRuleCall_4_0_1 = (RuleCall)cRefEObjectCrossReference_4_0.eContents().get(1);
+		private final RuleCall cRefEObjectQualifiedNameParserRuleCall_4_0_1 = (RuleCall)cRefEObjectCrossReference_4_0.eContents().get(1);
 		
 		//Artifact returns Artifact:
 		//    {Artifact}
 		//    'Artifact'
-		//    name=EString "->" ref=[ecore::EObject|ID];
+		//    name=EString "->" ref=[ecore::EObject|QualifiedName];
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{Artifact}
 		//'Artifact'
-		//name=EString "->" ref=[ecore::EObject|ID]
+		//name=EString "->" ref=[ecore::EObject|QualifiedName]
 		public Group getGroup() { return cGroup; }
 		
 		//{Artifact}
@@ -732,14 +732,14 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//"->"
 		public Keyword getHyphenMinusGreaterThanSignKeyword_3() { return cHyphenMinusGreaterThanSignKeyword_3; }
 		
-		//ref=[ecore::EObject|ID]
+		//ref=[ecore::EObject|QualifiedName]
 		public Assignment getRefAssignment_4() { return cRefAssignment_4; }
 		
-		//[ecore::EObject|ID]
+		//[ecore::EObject|QualifiedName]
 		public CrossReference getRefEObjectCrossReference_4_0() { return cRefEObjectCrossReference_4_0; }
 		
-		//ID
-		public RuleCall getRefEObjectIDTerminalRuleCall_4_0_1() { return cRefEObjectIDTerminalRuleCall_4_0_1; }
+		//QualifiedName
+		public RuleCall getRefEObjectQualifiedNameParserRuleCall_4_0_1() { return cRefEObjectQualifiedNameParserRuleCall_4_0_1; }
 	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.EString");
@@ -856,6 +856,54 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getDescriptionEStringParserRuleCall_3_2_0() { return cDescriptionEStringParserRuleCall_3_2_0; }
 	}
+	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.QualifiedName");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifiedName:
+		//    ID ('.' ID)*
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ID ('.' ID)*
+		public Group getGroup() { return cGroup; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		
+		//('.' ID)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+	}
+	public class QualifiedNameWithWildCardElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.QualifiedNameWithWildCard");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//QualifiedNameWithWildCard:
+		//    QualifiedName '.*'?
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//QualifiedName '.*'?
+		public Group getGroup() { return cGroup; }
+		
+		//QualifiedName
+		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
+		
+		//'.*'?
+		public Keyword getFullStopAsteriskKeyword_1() { return cFullStopAsteriskKeyword_1; }
+	}
 	
 	
 	private final InfluenceModelElements pInfluenceModel;
@@ -868,6 +916,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	private final EStringElements pEString;
 	private final SystemResponseElements pSystemResponse;
 	private final EmergentBehaviorElements pEmergentBehavior;
+	private final QualifiedNameElements pQualifiedName;
+	private final QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
 	
 	private final Grammar grammar;
 	
@@ -888,6 +938,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.pEString = new EStringElements();
 		this.pSystemResponse = new SystemResponseElements();
 		this.pEmergentBehavior = new EmergentBehaviorElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pQualifiedNameWithWildCard = new QualifiedNameWithWildCardElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -980,8 +1032,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//        'and' 'from' 'phenomena' sourcePhenomena+=[CyberPhysicalPhenomena|EString] ( "," sourcePhenomena+=[CyberPhysicalPhenomena|EString])*
 	//        'emerges' produces+=EmergentBehavior ( "," produces+=EmergentBehavior)*
 	//        'that' 'implies' affects+=SystemResponse ( "," affects+=SystemResponse)*
-	//        'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "and" evaluatedBy+=[RequirementSatisfaction|EString])*
-	//        'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|ID] ( "," targetArtifact+=[Artifact|ID])*
+	//        'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "," evaluatedBy+=[RequirementSatisfaction|EString])*
+	//        'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|QualifiedName] ( "," targetArtifact+=[Artifact|QualifiedName])*
 	//    ;
 	public InfluenceElements getInfluenceAccess() {
 		return pInfluence;
@@ -1009,7 +1061,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//Artifact returns Artifact:
 	//    {Artifact}
 	//    'Artifact'
-	//    name=EString "->" ref=[ecore::EObject|ID];
+	//    name=EString "->" ref=[ecore::EObject|QualifiedName];
 	public ArtifactElements getArtifactAccess() {
 		return pArtifact;
 	}
@@ -1052,6 +1104,28 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getEmergentBehaviorRule() {
 		return getEmergentBehaviorAccess().getRule();
+	}
+	
+	//QualifiedName:
+	//    ID ('.' ID)*
+	//;
+	public QualifiedNameElements getQualifiedNameAccess() {
+		return pQualifiedName;
+	}
+	
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
+	}
+	
+	//QualifiedNameWithWildCard:
+	//    QualifiedName '.*'?
+	//;
+	public QualifiedNameWithWildCardElements getQualifiedNameWithWildCardAccess() {
+		return pQualifiedNameWithWildCard;
+	}
+	
+	public ParserRule getQualifiedNameWithWildCardRule() {
+		return getQualifiedNameWithWildCardAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

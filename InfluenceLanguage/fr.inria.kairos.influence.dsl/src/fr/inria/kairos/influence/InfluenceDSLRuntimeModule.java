@@ -3,6 +3,9 @@
  */
 package fr.inria.kairos.influence;
 
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+
 import com.google.inject.Binder;
 
 /**
@@ -17,7 +20,14 @@ public class InfluenceDSLRuntimeModule extends AbstractInfluenceDSLRuntimeModule
 //                Multibinder.newSetBinder(binder, IResourceDescription.Event.Listener.class);
 //            listeners.addBinding().to(MyIndexChangeListener.class);
             
-            
+        
+//        binder.bind(IDefaultResourceDescriptionStrategy.class).to(InfluenceResourceDescriptionStrategy.class);
 
     }
+	
+	
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+	    return InfluenceQualifiedNameProvider.class;
+	}
 }
