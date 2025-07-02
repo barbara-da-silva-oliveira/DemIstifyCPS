@@ -17,7 +17,8 @@ Require-Bundle: fr.inria.kairos.influence.metamodel,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  org.eclipse.ui.workbench,
  org.eclipse.xtext.ui,
- org.eclipse.ui.ide;bundle-version="3.22.100"
+ org.eclipse.ui.ide;bundle-version="3.22.100",
+ org.eclipse.emf.validation;bundle-version="1.8.3"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: fr.inria.kairos.influence.services,
  fr.inria.kairos.influence.scoping,

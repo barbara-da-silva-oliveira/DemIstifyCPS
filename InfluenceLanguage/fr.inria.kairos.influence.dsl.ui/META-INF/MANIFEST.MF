@@ -19,7 +19,8 @@ Require-Bundle: fr.inria.kairos.influence.dsl,
  org.eclipse.xtext.builder
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: fr.inria.kairos.influence.dsl.ui.internal,
+Export-Package: fr.inria.kairos.influence.ui,
+ fr.inria.kairos.influence.dsl.ui.internal,
  fr.inria.kairos.influence.ui.contentassist,
  fr.inria.kairos.influence.ui.quickfix
 Bundle-Activator: fr.inria.kairos.influence.dsl.ui.internal.DslActivator
