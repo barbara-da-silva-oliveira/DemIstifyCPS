@@ -2,27 +2,20 @@
  */
 package fr.inria.kairos.influence.metamodel.impl;
 
-import fr.inria.kairos.influence.metamodel.Artifact;
-import fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena;
-import fr.inria.kairos.influence.metamodel.EmergentBehavior;
+import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-import fr.inria.kairos.influence.metamodel.RequirementSatisfaction;
+import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
+import fr.inria.kairos.influence.metamodel.Requirement;
 import fr.inria.kairos.influence.metamodel.SystemResponse;
 
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -36,48 +29,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getEvaluatedBy <em>Evaluated By</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getRelatedTo <em>Related To</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getAffects <em>Affects</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getProduces <em>Produces</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getSourcePhenomena <em>Source Phenomena</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOriginatorPhenomena <em>Originator Phenomena</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getSourceArtifact <em>Source Artifact</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getTargetArtifact <em>Target Artifact</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOriginatorArtifact <em>Originator Artifact</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOriginatorSystemResponse <em>Originator System Response</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influence {
+public class InfluenceImpl extends NamedElementImpl implements Influence {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getRelatedTo() <em>Related To</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getRelatedTo()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getEvaluatedBy() <em>Evaluated By</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEvaluatedBy()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<RequirementSatisfaction> evaluatedBy;
+	protected EList<Requirement> relatedTo;
 
 	/**
 	 * The cached value of the '{@link #getAffects() <em>Affects</em>}' containment reference list.
@@ -90,24 +61,14 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	protected EList<SystemResponse> affects;
 
 	/**
-	 * The cached value of the '{@link #getProduces() <em>Produces</em>}' containment reference list.
+	 * The cached value of the '{@link #getOriginatorPhenomena() <em>Originator Phenomena</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProduces()
+	 * @see #getOriginatorPhenomena()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EmergentBehavior> produces;
-
-	/**
-	 * The cached value of the '{@link #getSourcePhenomena() <em>Source Phenomena</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSourcePhenomena()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<CyberPhysicalPhenomena> sourcePhenomena;
+	protected EList<PhysicalPhenomena> originatorPhenomena;
 
 	/**
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute list.
@@ -120,24 +81,24 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	protected EList<String> description;
 
 	/**
-	 * The cached value of the '{@link #getSourceArtifact() <em>Source Artifact</em>}' reference list.
+	 * The cached value of the '{@link #getOriginatorArtifact() <em>Originator Artifact</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSourceArtifact()
+	 * @see #getOriginatorArtifact()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Artifact> sourceArtifact;
+	protected EList<DesignArtifact> originatorArtifact;
 
 	/**
-	 * The cached value of the '{@link #getTargetArtifact() <em>Target Artifact</em>}' reference list.
+	 * The cached value of the '{@link #getOriginatorSystemResponse() <em>Originator System Response</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetArtifact()
+	 * @see #getOriginatorSystemResponse()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Artifact> targetArtifact;
+	protected EList<SystemResponse> originatorSystemResponse;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,35 +125,12 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	 * @generated
 	 */
 	@Override
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.INFLUENCE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<RequirementSatisfaction> getEvaluatedBy() {
-		if (evaluatedBy == null) {
-			evaluatedBy = new EObjectResolvingEList<RequirementSatisfaction>(RequirementSatisfaction.class, this,
-					MetamodelPackage.INFLUENCE__EVALUATED_BY);
+	public EList<Requirement> getRelatedTo() {
+		if (relatedTo == null) {
+			relatedTo = new EObjectResolvingEList<Requirement>(Requirement.class, this,
+					MetamodelPackage.INFLUENCE__RELATED_TO);
 		}
-		return evaluatedBy;
+		return relatedTo;
 	}
 
 	/**
@@ -215,54 +153,12 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	 * @generated
 	 */
 	@Override
-	public EList<EmergentBehavior> getProduces() {
-		if (produces == null) {
-			produces = new EObjectContainmentEList<EmergentBehavior>(EmergentBehavior.class, this,
-					MetamodelPackage.INFLUENCE__PRODUCES);
+	public EList<PhysicalPhenomena> getOriginatorPhenomena() {
+		if (originatorPhenomena == null) {
+			originatorPhenomena = new EObjectResolvingEList<PhysicalPhenomena>(PhysicalPhenomena.class, this,
+					MetamodelPackage.INFLUENCE__ORIGINATOR_PHENOMENA);
 		}
-		return produces;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Artifact> getSourceArtifact() {
-		if (sourceArtifact == null) {
-			sourceArtifact = new EObjectResolvingEList<Artifact>(Artifact.class, this,
-					MetamodelPackage.INFLUENCE__SOURCE_ARTIFACT);
-		}
-		return sourceArtifact;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Artifact> getTargetArtifact() {
-		if (targetArtifact == null) {
-			targetArtifact = new EObjectResolvingEList<Artifact>(Artifact.class, this,
-					MetamodelPackage.INFLUENCE__TARGET_ARTIFACT);
-		}
-		return targetArtifact;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<CyberPhysicalPhenomena> getSourcePhenomena() {
-		if (sourcePhenomena == null) {
-			sourcePhenomena = new EObjectResolvingEList<CyberPhysicalPhenomena>(CyberPhysicalPhenomena.class, this,
-					MetamodelPackage.INFLUENCE__SOURCE_PHENOMENA);
-		}
-		return sourcePhenomena;
+		return originatorPhenomena;
 	}
 
 	/**
@@ -284,12 +180,38 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	 * @generated
 	 */
 	@Override
+	public EList<DesignArtifact> getOriginatorArtifact() {
+		if (originatorArtifact == null) {
+			originatorArtifact = new EObjectResolvingEList<DesignArtifact>(DesignArtifact.class, this,
+					MetamodelPackage.INFLUENCE__ORIGINATOR_ARTIFACT);
+		}
+		return originatorArtifact;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<SystemResponse> getOriginatorSystemResponse() {
+		if (originatorSystemResponse == null) {
+			originatorSystemResponse = new EObjectResolvingEList<SystemResponse>(SystemResponse.class, this,
+					MetamodelPackage.INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE);
+		}
+		return originatorSystemResponse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE__AFFECTS:
 			return ((InternalEList<?>) getAffects()).basicRemove(otherEnd, msgs);
-		case MetamodelPackage.INFLUENCE__PRODUCES:
-			return ((InternalEList<?>) getProduces()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -302,22 +224,18 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__NAME:
-			return getName();
-		case MetamodelPackage.INFLUENCE__EVALUATED_BY:
-			return getEvaluatedBy();
+		case MetamodelPackage.INFLUENCE__RELATED_TO:
+			return getRelatedTo();
 		case MetamodelPackage.INFLUENCE__AFFECTS:
 			return getAffects();
-		case MetamodelPackage.INFLUENCE__PRODUCES:
-			return getProduces();
-		case MetamodelPackage.INFLUENCE__SOURCE_PHENOMENA:
-			return getSourcePhenomena();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_PHENOMENA:
+			return getOriginatorPhenomena();
 		case MetamodelPackage.INFLUENCE__DESCRIPTION:
 			return getDescription();
-		case MetamodelPackage.INFLUENCE__SOURCE_ARTIFACT:
-			return getSourceArtifact();
-		case MetamodelPackage.INFLUENCE__TARGET_ARTIFACT:
-			return getTargetArtifact();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_ARTIFACT:
+			return getOriginatorArtifact();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE:
+			return getOriginatorSystemResponse();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -331,36 +249,29 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__NAME:
-			setName((String) newValue);
-			return;
-		case MetamodelPackage.INFLUENCE__EVALUATED_BY:
-			getEvaluatedBy().clear();
-			getEvaluatedBy().addAll((Collection<? extends RequirementSatisfaction>) newValue);
+		case MetamodelPackage.INFLUENCE__RELATED_TO:
+			getRelatedTo().clear();
+			getRelatedTo().addAll((Collection<? extends Requirement>) newValue);
 			return;
 		case MetamodelPackage.INFLUENCE__AFFECTS:
 			getAffects().clear();
 			getAffects().addAll((Collection<? extends SystemResponse>) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE__PRODUCES:
-			getProduces().clear();
-			getProduces().addAll((Collection<? extends EmergentBehavior>) newValue);
-			return;
-		case MetamodelPackage.INFLUENCE__SOURCE_PHENOMENA:
-			getSourcePhenomena().clear();
-			getSourcePhenomena().addAll((Collection<? extends CyberPhysicalPhenomena>) newValue);
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_PHENOMENA:
+			getOriginatorPhenomena().clear();
+			getOriginatorPhenomena().addAll((Collection<? extends PhysicalPhenomena>) newValue);
 			return;
 		case MetamodelPackage.INFLUENCE__DESCRIPTION:
 			getDescription().clear();
 			getDescription().addAll((Collection<? extends String>) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE__SOURCE_ARTIFACT:
-			getSourceArtifact().clear();
-			getSourceArtifact().addAll((Collection<? extends Artifact>) newValue);
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_ARTIFACT:
+			getOriginatorArtifact().clear();
+			getOriginatorArtifact().addAll((Collection<? extends DesignArtifact>) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE__TARGET_ARTIFACT:
-			getTargetArtifact().clear();
-			getTargetArtifact().addAll((Collection<? extends Artifact>) newValue);
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE:
+			getOriginatorSystemResponse().clear();
+			getOriginatorSystemResponse().addAll((Collection<? extends SystemResponse>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -374,29 +285,23 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case MetamodelPackage.INFLUENCE__EVALUATED_BY:
-			getEvaluatedBy().clear();
+		case MetamodelPackage.INFLUENCE__RELATED_TO:
+			getRelatedTo().clear();
 			return;
 		case MetamodelPackage.INFLUENCE__AFFECTS:
 			getAffects().clear();
 			return;
-		case MetamodelPackage.INFLUENCE__PRODUCES:
-			getProduces().clear();
-			return;
-		case MetamodelPackage.INFLUENCE__SOURCE_PHENOMENA:
-			getSourcePhenomena().clear();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_PHENOMENA:
+			getOriginatorPhenomena().clear();
 			return;
 		case MetamodelPackage.INFLUENCE__DESCRIPTION:
 			getDescription().clear();
 			return;
-		case MetamodelPackage.INFLUENCE__SOURCE_ARTIFACT:
-			getSourceArtifact().clear();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_ARTIFACT:
+			getOriginatorArtifact().clear();
 			return;
-		case MetamodelPackage.INFLUENCE__TARGET_ARTIFACT:
-			getTargetArtifact().clear();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE:
+			getOriginatorSystemResponse().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -410,22 +315,18 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case MetamodelPackage.INFLUENCE__EVALUATED_BY:
-			return evaluatedBy != null && !evaluatedBy.isEmpty();
+		case MetamodelPackage.INFLUENCE__RELATED_TO:
+			return relatedTo != null && !relatedTo.isEmpty();
 		case MetamodelPackage.INFLUENCE__AFFECTS:
 			return affects != null && !affects.isEmpty();
-		case MetamodelPackage.INFLUENCE__PRODUCES:
-			return produces != null && !produces.isEmpty();
-		case MetamodelPackage.INFLUENCE__SOURCE_PHENOMENA:
-			return sourcePhenomena != null && !sourcePhenomena.isEmpty();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_PHENOMENA:
+			return originatorPhenomena != null && !originatorPhenomena.isEmpty();
 		case MetamodelPackage.INFLUENCE__DESCRIPTION:
 			return description != null && !description.isEmpty();
-		case MetamodelPackage.INFLUENCE__SOURCE_ARTIFACT:
-			return sourceArtifact != null && !sourceArtifact.isEmpty();
-		case MetamodelPackage.INFLUENCE__TARGET_ARTIFACT:
-			return targetArtifact != null && !targetArtifact.isEmpty();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_ARTIFACT:
+			return originatorArtifact != null && !originatorArtifact.isEmpty();
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE:
+			return originatorSystemResponse != null && !originatorSystemResponse.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -441,9 +342,7 @@ public class InfluenceImpl extends MinimalEObjectImpl.Container implements Influ
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", description: ");
+		result.append(" (description: ");
 		result.append(description);
 		result.append(')');
 		return result.toString();

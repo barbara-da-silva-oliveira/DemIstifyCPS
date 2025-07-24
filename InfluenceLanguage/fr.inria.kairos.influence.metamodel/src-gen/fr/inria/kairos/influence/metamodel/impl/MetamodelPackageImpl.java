@@ -2,16 +2,15 @@
  */
 package fr.inria.kairos.influence.metamodel.impl;
 
-import fr.inria.kairos.influence.metamodel.Artifact;
-import fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena;
-import fr.inria.kairos.influence.metamodel.EmergentBehavior;
+import fr.inria.kairos.influence.metamodel.CompositeInfluence;
+import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelFactory;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-import fr.inria.kairos.influence.metamodel.MultiPhenomenon;
-import fr.inria.kairos.influence.metamodel.RequirementSatisfaction;
-import fr.inria.kairos.influence.metamodel.SimplePhenomenon;
+import fr.inria.kairos.influence.metamodel.NamedElement;
+import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
+import fr.inria.kairos.influence.metamodel.Requirement;
 import fr.inria.kairos.influence.metamodel.SystemResponse;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -47,13 +46,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass emergentBehaviorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass systemResponseEClass = null;
 
 	/**
@@ -61,35 +53,35 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass cyberPhysicalPhenomenaEClass = null;
+	private EClass physicalPhenomenaEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass requirementSatisfactionEClass = null;
+	private EClass requirementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass multiPhenomenonEClass = null;
+	private EClass designArtifactEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass simplePhenomenonEClass = null;
+	private EClass compositeInfluenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass artifactEClass = null;
+	private EClass namedElementEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -181,7 +173,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluenceModel_OwnedRequirementSatisfaction() {
+	public EReference getInfluenceModel_OwnedRequirements() {
 		return (EReference) influenceModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -191,7 +183,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluenceModel_OwnedCyberPhysicalPhenomena() {
+	public EReference getInfluenceModel_OwnedPhysicalPhenomena() {
 		return (EReference) influenceModelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -211,16 +203,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInfluenceModel_Name() {
-		return (EAttribute) influenceModelEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getInfluence() {
 		return influenceEClass;
 	}
@@ -231,18 +213,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInfluence_Name() {
-		return (EAttribute) influenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getInfluence_EvaluatedBy() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(1);
+	public EReference getInfluence_RelatedTo() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -252,6 +224,16 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 */
 	@Override
 	public EReference getInfluence_Affects() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInfluence_OriginatorPhenomena() {
 		return (EReference) influenceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -261,8 +243,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_Produces() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(3);
+	public EAttribute getInfluence_Description() {
+		return (EAttribute) influenceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -271,27 +253,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_SourceArtifact() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getInfluence_TargetArtifact() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getInfluence_SourcePhenomena() {
+	public EReference getInfluence_OriginatorArtifact() {
 		return (EReference) influenceEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -301,28 +263,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInfluence_Description() {
-		return (EAttribute) influenceEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getEmergentBehavior() {
-		return emergentBehaviorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getEmergentBehavior_Description() {
-		return (EAttribute) emergentBehaviorEClass.getEStructuralFeatures().get(0);
+	public EReference getInfluence_OriginatorSystemResponse() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -341,7 +283,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getSystemResponse_Observation() {
+	public EAttribute getSystemResponse_Description() {
 		return (EAttribute) systemResponseEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -351,8 +293,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getCyberPhysicalPhenomena() {
-		return cyberPhysicalPhenomenaEClass;
+	public EReference getSystemResponse_UsedIn() {
+		return (EReference) systemResponseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -361,8 +303,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCyberPhysicalPhenomena_Name() {
-		return (EAttribute) cyberPhysicalPhenomenaEClass.getEStructuralFeatures().get(0);
+	public EClass getPhysicalPhenomena() {
+		return physicalPhenomenaEClass;
 	}
 
 	/**
@@ -371,8 +313,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCyberPhysicalPhenomena_Configuration() {
-		return (EAttribute) cyberPhysicalPhenomenaEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPhysicalPhenomena_Description() {
+		return (EAttribute) physicalPhenomenaEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -381,8 +323,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getRequirementSatisfaction() {
-		return requirementSatisfactionEClass;
+	public EClass getRequirement() {
+		return requirementEClass;
 	}
 
 	/**
@@ -391,8 +333,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRequirementSatisfaction_Name() {
-		return (EAttribute) requirementSatisfactionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getRequirement_Satisfaction() {
+		return (EAttribute) requirementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -401,8 +343,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRequirementSatisfaction_ConcerningRequirement() {
-		return (EAttribute) requirementSatisfactionEClass.getEStructuralFeatures().get(1);
+	public EClass getDesignArtifact() {
+		return designArtifactEClass;
 	}
 
 	/**
@@ -411,8 +353,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRequirementSatisfaction_Satisfaction() {
-		return (EAttribute) requirementSatisfactionEClass.getEStructuralFeatures().get(2);
+	public EReference getDesignArtifact_Ref() {
+		return (EReference) designArtifactEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -421,8 +363,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getMultiPhenomenon() {
-		return multiPhenomenonEClass;
+	public EClass getCompositeInfluence() {
+		return compositeInfluenceEClass;
 	}
 
 	/**
@@ -431,8 +373,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getMultiPhenomenon_AggregationOf() {
-		return (EReference) multiPhenomenonEClass.getEStructuralFeatures().get(0);
+	public EReference getCompositeInfluence_InternalInfluences() {
+		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -441,8 +383,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getSimplePhenomenon() {
-		return simplePhenomenonEClass;
+	public EClass getNamedElement() {
+		return namedElementEClass;
 	}
 
 	/**
@@ -451,28 +393,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getArtifact() {
-		return artifactEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getArtifact_Name() {
-		return (EAttribute) artifactEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getArtifact_Ref() {
-		return (EReference) artifactEClass.getEStructuralFeatures().get(1);
+	public EAttribute getNamedElement_Name() {
+		return (EAttribute) namedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -507,44 +429,36 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		// Create classes and their features
 		influenceModelEClass = createEClass(INFLUENCE_MODEL);
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_INFLUENCES);
-		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION);
-		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA);
+		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_REQUIREMENTS);
+		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA);
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_ARTIFACTS);
-		createEAttribute(influenceModelEClass, INFLUENCE_MODEL__NAME);
 
 		influenceEClass = createEClass(INFLUENCE);
-		createEAttribute(influenceEClass, INFLUENCE__NAME);
-		createEReference(influenceEClass, INFLUENCE__EVALUATED_BY);
+		createEReference(influenceEClass, INFLUENCE__RELATED_TO);
 		createEReference(influenceEClass, INFLUENCE__AFFECTS);
-		createEReference(influenceEClass, INFLUENCE__PRODUCES);
-		createEReference(influenceEClass, INFLUENCE__SOURCE_PHENOMENA);
+		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_PHENOMENA);
 		createEAttribute(influenceEClass, INFLUENCE__DESCRIPTION);
-		createEReference(influenceEClass, INFLUENCE__SOURCE_ARTIFACT);
-		createEReference(influenceEClass, INFLUENCE__TARGET_ARTIFACT);
-
-		emergentBehaviorEClass = createEClass(EMERGENT_BEHAVIOR);
-		createEAttribute(emergentBehaviorEClass, EMERGENT_BEHAVIOR__DESCRIPTION);
+		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_ARTIFACT);
+		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE);
 
 		systemResponseEClass = createEClass(SYSTEM_RESPONSE);
-		createEAttribute(systemResponseEClass, SYSTEM_RESPONSE__OBSERVATION);
+		createEAttribute(systemResponseEClass, SYSTEM_RESPONSE__DESCRIPTION);
+		createEReference(systemResponseEClass, SYSTEM_RESPONSE__USED_IN);
 
-		cyberPhysicalPhenomenaEClass = createEClass(CYBER_PHYSICAL_PHENOMENA);
-		createEAttribute(cyberPhysicalPhenomenaEClass, CYBER_PHYSICAL_PHENOMENA__NAME);
-		createEAttribute(cyberPhysicalPhenomenaEClass, CYBER_PHYSICAL_PHENOMENA__CONFIGURATION);
+		physicalPhenomenaEClass = createEClass(PHYSICAL_PHENOMENA);
+		createEAttribute(physicalPhenomenaEClass, PHYSICAL_PHENOMENA__DESCRIPTION);
 
-		requirementSatisfactionEClass = createEClass(REQUIREMENT_SATISFACTION);
-		createEAttribute(requirementSatisfactionEClass, REQUIREMENT_SATISFACTION__NAME);
-		createEAttribute(requirementSatisfactionEClass, REQUIREMENT_SATISFACTION__CONCERNING_REQUIREMENT);
-		createEAttribute(requirementSatisfactionEClass, REQUIREMENT_SATISFACTION__SATISFACTION);
+		requirementEClass = createEClass(REQUIREMENT);
+		createEAttribute(requirementEClass, REQUIREMENT__SATISFACTION);
 
-		multiPhenomenonEClass = createEClass(MULTI_PHENOMENON);
-		createEReference(multiPhenomenonEClass, MULTI_PHENOMENON__AGGREGATION_OF);
+		designArtifactEClass = createEClass(DESIGN_ARTIFACT);
+		createEReference(designArtifactEClass, DESIGN_ARTIFACT__REF);
 
-		simplePhenomenonEClass = createEClass(SIMPLE_PHENOMENON);
+		compositeInfluenceEClass = createEClass(COMPOSITE_INFLUENCE);
+		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES);
 
-		artifactEClass = createEClass(ARTIFACT);
-		createEAttribute(artifactEClass, ARTIFACT__NAME);
-		createEReference(artifactEClass, ARTIFACT__REF);
+		namedElementEClass = createEClass(NAMED_ELEMENT);
+		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 	}
 
 	/**
@@ -576,8 +490,13 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		multiPhenomenonEClass.getESuperTypes().add(this.getCyberPhysicalPhenomena());
-		simplePhenomenonEClass.getESuperTypes().add(this.getCyberPhysicalPhenomena());
+		influenceModelEClass.getESuperTypes().add(this.getNamedElement());
+		influenceEClass.getESuperTypes().add(this.getNamedElement());
+		systemResponseEClass.getESuperTypes().add(this.getNamedElement());
+		physicalPhenomenaEClass.getESuperTypes().add(this.getNamedElement());
+		requirementEClass.getESuperTypes().add(this.getNamedElement());
+		designArtifactEClass.getESuperTypes().add(this.getNamedElement());
+		compositeInfluenceEClass.getESuperTypes().add(this.getInfluence());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(influenceModelEClass, InfluenceModel.class, "InfluenceModel", !IS_ABSTRACT, !IS_INTERFACE,
@@ -585,93 +504,74 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getInfluenceModel_OwnedInfluences(), this.getInfluence(), null, "ownedInfluences", null, 0, -1,
 				InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluenceModel_OwnedRequirementSatisfaction(), this.getRequirementSatisfaction(), null,
-				"ownedRequirementSatisfaction", null, 0, -1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluenceModel_OwnedCyberPhysicalPhenomena(), this.getCyberPhysicalPhenomena(), null,
-				"ownedCyberPhysicalPhenomena", null, 0, -1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluenceModel_OwnedArtifacts(), this.getArtifact(), null, "ownedArtifacts", null, 0, -1,
-				InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getInfluenceModel_OwnedRequirements(), this.getRequirement(), null, "ownedRequirements", null, 0,
+				-1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInfluenceModel_Name(), ecorePackage.getEString(), "name", null, 1, 1, InfluenceModel.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluenceModel_OwnedPhysicalPhenomena(), this.getPhysicalPhenomena(), null,
+				"ownedPhysicalPhenomena", null, 0, -1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluenceModel_OwnedArtifacts(), this.getDesignArtifact(), null, "ownedArtifacts", null, 0,
+				-1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(influenceEClass, Influence.class, "Influence", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInfluence_Name(), ecorePackage.getEString(), "name", null, 1, 1, Influence.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_EvaluatedBy(), this.getRequirementSatisfaction(), null, "evaluatedBy", null, 1, -1,
-				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluence_RelatedTo(), this.getRequirement(), null, "relatedTo", null, 0, -1, Influence.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInfluence_Affects(), this.getSystemResponse(), null, "affects", null, 1, -1, Influence.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_Produces(), this.getEmergentBehavior(), null, "produces", null, 1, -1,
-				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_SourcePhenomena(), this.getCyberPhysicalPhenomena(), null, "sourcePhenomena", null,
-				1, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluence_OriginatorPhenomena(), this.getPhysicalPhenomena(), null, "originatorPhenomena",
+				null, 0, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInfluence_Description(), ecorePackage.getEString(), "description", null, 1, -1,
 				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_SourceArtifact(), this.getArtifact(), null, "sourceArtifact", null, 0, -1,
-				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getInfluence_OriginatorArtifact(), this.getDesignArtifact(), null, "originatorArtifact", null, 0,
+				-1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_TargetArtifact(), this.getArtifact(), null, "targetArtifact", null, 0, -1,
-				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(emergentBehaviorEClass, EmergentBehavior.class, "EmergentBehavior", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEmergentBehavior_Description(), ecorePackage.getEString(), "description", null, 0, 1,
-				EmergentBehavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluence_OriginatorSystemResponse(), this.getSystemResponse(), null,
+				"originatorSystemResponse", null, 0, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemResponseEClass, SystemResponse.class, "SystemResponse", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSystemResponse_Observation(), ecorePackage.getEString(), "observation", null, 0, 1,
+		initEAttribute(getSystemResponse_Description(), ecorePackage.getEString(), "description", null, 0, 1,
 				SystemResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEReference(getSystemResponse_UsedIn(), this.getRequirement(), null, "usedIn", null, 0, -1,
+				SystemResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(cyberPhysicalPhenomenaEClass, CyberPhysicalPhenomena.class, "CyberPhysicalPhenomena", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCyberPhysicalPhenomena_Name(), ecorePackage.getEString(), "name", null, 0, 1,
-				CyberPhysicalPhenomena.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCyberPhysicalPhenomena_Configuration(), ecorePackage.getEString(), "configuration", null, 0,
-				-1, CyberPhysicalPhenomena.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(requirementSatisfactionEClass, RequirementSatisfaction.class, "RequirementSatisfaction",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRequirementSatisfaction_Name(), ecorePackage.getEString(), "name", null, 1, 1,
-				RequirementSatisfaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRequirementSatisfaction_ConcerningRequirement(), ecorePackage.getEString(),
-				"concerningRequirement", null, 1, 1, RequirementSatisfaction.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRequirementSatisfaction_Satisfaction(), ecorePackage.getEString(), "satisfaction", null, 1,
-				-1, RequirementSatisfaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(multiPhenomenonEClass, MultiPhenomenon.class, "MultiPhenomenon", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(physicalPhenomenaEClass, PhysicalPhenomena.class, "PhysicalPhenomena", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMultiPhenomenon_AggregationOf(), this.getCyberPhysicalPhenomena(), null, "aggregationOf",
-				null, 0, -1, MultiPhenomenon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+		initEAttribute(getPhysicalPhenomena_Description(), ecorePackage.getEString(), "description", null, 0, -1,
+				PhysicalPhenomena.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(requirementEClass, Requirement.class, "Requirement", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRequirement_Satisfaction(), ecorePackage.getEString(), "satisfaction", null, 1, -1,
+				Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(designArtifactEClass, DesignArtifact.class, "DesignArtifact", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDesignArtifact_Ref(), ecorePackage.getEObject(), null, "ref", null, 0, 1,
+				DesignArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compositeInfluenceEClass, CompositeInfluence.class, "CompositeInfluence", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompositeInfluence_InternalInfluences(), this.getInfluence(), null, "internalInfluences",
+				null, 2, -1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(simplePhenomenonEClass, SimplePhenomenon.class, "SimplePhenomenon", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(artifactEClass, Artifact.class, "Artifact", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getArtifact_Name(), ecorePackage.getEString(), "name", null, 0, 1, Artifact.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getArtifact_Ref(), ecorePackage.getEObject(), null, "ref", null, 0, 1, Artifact.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

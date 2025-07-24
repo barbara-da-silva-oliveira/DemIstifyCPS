@@ -4,8 +4,6 @@ package fr.inria.kairos.influence.metamodel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Influence</b></em>'.
@@ -15,54 +13,30 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getName <em>Name</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getEvaluatedBy <em>Evaluated By</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getRelatedTo <em>Related To</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getAffects <em>Affects</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getProduces <em>Produces</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getSourcePhenomena <em>Source Phenomena</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorPhenomena <em>Originator Phenomena</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getSourceArtifact <em>Source Artifact</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getTargetArtifact <em>Target Artifact</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact <em>Originator Artifact</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorSystemResponse <em>Originator System Response</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence()
  * @model
  * @generated
  */
-public interface Influence extends EObject {
+public interface Influence extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Related To</b></em>' reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Requirement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_Name()
-	 * @model required="true"
+	 * @return the value of the '<em>Related To</em>' reference list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_RelatedTo()
+	 * @model
 	 * @generated
 	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Influence#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Evaluated By</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Evaluated By</em>' reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_EvaluatedBy()
-	 * @model required="true"
-	 * @generated
-	 */
-	EList<RequirementSatisfaction> getEvaluatedBy();
+	EList<Requirement> getRelatedTo();
 
 	/**
 	 * Returns the value of the '<em><b>Affects</b></em>' containment reference list.
@@ -77,52 +51,16 @@ public interface Influence extends EObject {
 	EList<SystemResponse> getAffects();
 
 	/**
-	 * Returns the value of the '<em><b>Produces</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.EmergentBehavior}.
+	 * Returns the value of the '<em><b>Originator Phenomena</b></em>' reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Produces</em>' containment reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_Produces()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<EmergentBehavior> getProduces();
-
-	/**
-	 * Returns the value of the '<em><b>Source Artifact</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Artifact}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Artifact</em>' reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_SourceArtifact()
+	 * @return the value of the '<em>Originator Phenomena</em>' reference list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OriginatorPhenomena()
 	 * @model
 	 * @generated
 	 */
-	EList<Artifact> getSourceArtifact();
-
-	/**
-	 * Returns the value of the '<em><b>Target Artifact</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Artifact}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Artifact</em>' reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_TargetArtifact()
-	 * @model
-	 * @generated
-	 */
-	EList<Artifact> getTargetArtifact();
-
-	/**
-	 * Returns the value of the '<em><b>Source Phenomena</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Phenomena</em>' reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_SourcePhenomena()
-	 * @model required="true"
-	 * @generated
-	 */
-	EList<CyberPhysicalPhenomena> getSourcePhenomena();
+	EList<PhysicalPhenomena> getOriginatorPhenomena();
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute list.
@@ -135,5 +73,29 @@ public interface Influence extends EObject {
 	 * @generated
 	 */
 	EList<String> getDescription();
+
+	/**
+	 * Returns the value of the '<em><b>Originator Artifact</b></em>' reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.DesignArtifact}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Originator Artifact</em>' reference list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OriginatorArtifact()
+	 * @model
+	 * @generated
+	 */
+	EList<DesignArtifact> getOriginatorArtifact();
+
+	/**
+	 * Returns the value of the '<em><b>Originator System Response</b></em>' reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.SystemResponse}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Originator System Response</em>' reference list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OriginatorSystemResponse()
+	 * @model
+	 * @generated
+	 */
+	EList<SystemResponse> getOriginatorSystemResponse();
 
 } // Influence

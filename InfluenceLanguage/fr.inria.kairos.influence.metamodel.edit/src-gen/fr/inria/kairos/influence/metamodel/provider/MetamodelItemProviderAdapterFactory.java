@@ -119,29 +119,6 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.EmergentBehavior} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EmergentBehaviorItemProvider emergentBehaviorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.EmergentBehavior}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEmergentBehaviorAdapter() {
-		if (emergentBehaviorItemProvider == null) {
-			emergentBehaviorItemProvider = new EmergentBehaviorItemProvider(this);
-		}
-
-		return emergentBehaviorItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SystemResponse} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,95 +142,95 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RequirementSatisfactionItemProvider requirementSatisfactionItemProvider;
+	protected PhysicalPhenomenaItemProvider physicalPhenomenaItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createRequirementSatisfactionAdapter() {
-		if (requirementSatisfactionItemProvider == null) {
-			requirementSatisfactionItemProvider = new RequirementSatisfactionItemProvider(this);
+	public Adapter createPhysicalPhenomenaAdapter() {
+		if (physicalPhenomenaItemProvider == null) {
+			physicalPhenomenaItemProvider = new PhysicalPhenomenaItemProvider(this);
 		}
 
-		return requirementSatisfactionItemProvider;
+		return physicalPhenomenaItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.MultiPhenomenon} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Requirement} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MultiPhenomenonItemProvider multiPhenomenonItemProvider;
+	protected RequirementItemProvider requirementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.MultiPhenomenon}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Requirement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createMultiPhenomenonAdapter() {
-		if (multiPhenomenonItemProvider == null) {
-			multiPhenomenonItemProvider = new MultiPhenomenonItemProvider(this);
+	public Adapter createRequirementAdapter() {
+		if (requirementItemProvider == null) {
+			requirementItemProvider = new RequirementItemProvider(this);
 		}
 
-		return multiPhenomenonItemProvider;
+		return requirementItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SimplePhenomenon} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.DesignArtifact} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SimplePhenomenonItemProvider simplePhenomenonItemProvider;
+	protected DesignArtifactItemProvider designArtifactItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.SimplePhenomenon}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.DesignArtifact}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSimplePhenomenonAdapter() {
-		if (simplePhenomenonItemProvider == null) {
-			simplePhenomenonItemProvider = new SimplePhenomenonItemProvider(this);
+	public Adapter createDesignArtifactAdapter() {
+		if (designArtifactItemProvider == null) {
+			designArtifactItemProvider = new DesignArtifactItemProvider(this);
 		}
 
-		return simplePhenomenonItemProvider;
+		return designArtifactItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Artifact} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.CompositeInfluence} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ArtifactItemProvider artifactItemProvider;
+	protected CompositeInfluenceItemProvider compositeInfluenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Artifact}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.CompositeInfluence}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createArtifactAdapter() {
-		if (artifactItemProvider == null) {
-			artifactItemProvider = new ArtifactItemProvider(this);
+	public Adapter createCompositeInfluenceAdapter() {
+		if (compositeInfluenceItemProvider == null) {
+			compositeInfluenceItemProvider = new CompositeInfluenceItemProvider(this);
 		}
 
-		return artifactItemProvider;
+		return compositeInfluenceItemProvider;
 	}
 
 	/**
@@ -365,18 +342,16 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 			influenceModelItemProvider.dispose();
 		if (influenceItemProvider != null)
 			influenceItemProvider.dispose();
-		if (emergentBehaviorItemProvider != null)
-			emergentBehaviorItemProvider.dispose();
 		if (systemResponseItemProvider != null)
 			systemResponseItemProvider.dispose();
-		if (requirementSatisfactionItemProvider != null)
-			requirementSatisfactionItemProvider.dispose();
-		if (multiPhenomenonItemProvider != null)
-			multiPhenomenonItemProvider.dispose();
-		if (simplePhenomenonItemProvider != null)
-			simplePhenomenonItemProvider.dispose();
-		if (artifactItemProvider != null)
-			artifactItemProvider.dispose();
+		if (physicalPhenomenaItemProvider != null)
+			physicalPhenomenaItemProvider.dispose();
+		if (requirementItemProvider != null)
+			requirementItemProvider.dispose();
+		if (designArtifactItemProvider != null)
+			designArtifactItemProvider.dispose();
+		if (compositeInfluenceItemProvider != null)
+			compositeInfluenceItemProvider.dispose();
 	}
 
 }

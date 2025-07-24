@@ -7,32 +7,28 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 InfluenceModel returns InfluenceModel:
 	{InfluenceModel}
 	'InfluenceModel' name=EString
-		(ownedArtifacts+=Artifact |
-        ownedRequirementSatisfaction+=RequirementSatisfaction |
-        ownedCyberPhysicalPhenomena+=CyberPhysicalPhenomena |
-		ownedInfluences+=Influence )*
+		(ownedArtifacts+=DesignArtifact |
+        ownedRequirements+=RequirementSatisfaction |
+        ownedPhysicalPhenomena+=PhysicalPhenomena |
+		ownedInfluences+=(Influence | CompositeInfluence) )*
 		
 	;
 
-
-
-
-CyberPhysicalPhenomena returns CyberPhysicalPhenomena:
-	MultiPhenomenon | SimplePhenomenon;
-
-MultiPhenomenon returns MultiPhenomenon:
-	{MultiPhenomenon}
-	'CompositeCyberPhysicalPhenomenon'
+CompositeInfluence returns CompositeInfluence:
+	'#**' description+=EString ( "," description+=EString)* '**#'? 
+	'Composite' 'Influence'
 	name=EString
-	('definedBy' aggregationOf+=[CyberPhysicalPhenomena|EString] ( "," aggregationOf+=[CyberPhysicalPhenomena|EString])* )?
-	('configuration'  configuration+=EString ( "," configuration+=EString)* )?
-	;
+	'encapsulate' 
+		(internalInfluences+=[Influence|EString] | internalInfluences+=[CompositeInfluence|EString])*
+;
 
-SimplePhenomenon returns SimplePhenomenon:
-	{SimplePhenomenon}
-	'AtomicPhenomenon'
+
+
+
+PhysicalPhenomena returns PhysicalPhenomena:
+	'Phenomenon'
 	name=EString
-	('configuration' configuration+=EString ( "," configuration+=EString)* )?
+	(':' description+=EString ( "," description+=EString)* )?
 	;
 
 
@@ -40,29 +36,19 @@ Influence returns Influence:
 	'#**' description+=EString ( "," description+=EString)* '**#'? 
 	'Influence'
 	name=EString
-	
-		'from' sourceArtifact+=[Artifact|ID] ( "," sourceArtifact+=[Artifact|ID])* 
-		'and' 'from' 'phenomena' sourcePhenomena+=[CyberPhysicalPhenomena|EString] ( "," sourcePhenomena+=[CyberPhysicalPhenomena|EString])* 
-		'emerges' produces+=EmergentBehavior ( "," produces+=EmergentBehavior)*  
-		'that' 'implies' affects+=SystemResponse ( "," affects+=SystemResponse)* 
-		'which' 'may' 'violate' evaluatedBy+=[RequirementSatisfaction|EString] ( "," evaluatedBy+=[RequirementSatisfaction|EString])* 
-		'it' 'can' 'be' 'compensated' 'by' 'modifying' targetArtifact+=[Artifact|QualifiedName] ( "," targetArtifact+=[Artifact|QualifiedName])* 
-		
-		 
-		
+		'originators' ':' (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]) ( "," (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]))* 
+		'affects' affects+=SystemResponse ( "," affects+=SystemResponse)* 
+		('which' 'may' 'violate' relatedTo+=[Requirement|EString] ( "and/or" relatedTo+=[Requirement|EString])*)?  	
 	;
 
-RequirementSatisfaction returns RequirementSatisfaction:
-	'Requirement' 'Satisfaction'
-	name=EString
-	':'
-		'from' 'Requirement' concerningRequirement=EString
-		'satisfied' 'when' satisfaction+=EString ( "," satisfaction+=EString)* 
+RequirementSatisfaction returns Requirement:
+	'Requirement' name=EString	':'
+	'satisfied' 'when' satisfaction+=EString ( "," satisfaction+=EString)* 
 	;
 
-Artifact returns Artifact:
-	{Artifact}
-	'Artifact'
+DesignArtifact returns DesignArtifact:
+	{DesignArtifact}
+	'DesignArtifact'
 	name=EString "->" ref=[ecore::EObject|QualifiedName];
 	
 
@@ -71,15 +57,10 @@ EString returns ecore::EString:
 
 SystemResponse returns SystemResponse:
 	{SystemResponse}
-	'system' 'response'
-	('resulting' 'in' observation=EString)?
+	'system' 'response' name=EString
+	('used' 'in' usedIn+=[Requirement|EString] ("and" usedIn+=[Requirement|EString])*)?
 	;
 
-EmergentBehavior returns EmergentBehavior:
-	{EmergentBehavior}
-	'Emergent' 'Behavior' 
-		('characterized' 'by' description=EString)?
-	;
 
 QualifiedName:
     ID ('.' ID)*

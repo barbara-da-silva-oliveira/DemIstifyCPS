@@ -25,7 +25,6 @@ Export-Package: fr.inria.kairos.influence.services,
  fr.inria.kairos.influence.parser.antlr.internal,
  fr.inria.kairos.influence.generator,
  fr.inria.kairos.influence.serializer,
- fr.inria.kairos.influence.parser.antlr,
  fr.inria.kairos.influence.validation,
  fr.inria.kairos.influence,
  fr.inria.kairos.influence.formatting2

@@ -2,7 +2,7 @@
  */
 package fr.inria.kairos.influence.metamodel;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,34 +13,47 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.inria.kairos.influence.metamodel.SystemResponse#getObservation <em>Observation</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.SystemResponse#getDescription <em>Description</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.SystemResponse#getUsedIn <em>Used In</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getSystemResponse()
  * @model
  * @generated
  */
-public interface SystemResponse extends EObject {
+public interface SystemResponse extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Observation</b></em>' attribute.
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Observation</em>' attribute.
-	 * @see #setObservation(String)
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getSystemResponse_Observation()
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getSystemResponse_Description()
 	 * @model
 	 * @generated
 	 */
-	String getObservation();
+	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.SystemResponse#getObservation <em>Observation</em>}' attribute.
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.SystemResponse#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Observation</em>' attribute.
-	 * @see #getObservation()
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
 	 * @generated
 	 */
-	void setObservation(String value);
+	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Used In</b></em>' reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Requirement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Used In</em>' reference list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getSystemResponse_UsedIn()
+	 * @model
+	 * @generated
+	 */
+	EList<Requirement> getUsedIn();
 
 } // SystemResponse

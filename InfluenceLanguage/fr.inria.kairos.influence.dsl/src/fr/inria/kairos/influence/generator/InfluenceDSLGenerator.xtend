@@ -32,14 +32,14 @@ class InfluenceDSLGenerator extends AbstractGenerator {
 				jsonFile.append("\t\t{\n")
 	            jsonFile.append("\t\t\t\"name\": \"").append(inf.name).append("\",\n")
 	            jsonFile.append("\t\t\t\"sources\": \"")
-	                       .append(inf.sourceArtifact.join(", ")).append("\",\n")
-	            jsonFile.append("\t\t\t\"targets\": \"")
-	                       .append(inf.targetArtifact.join(", ")).append("\"\n")
+	                       .append(inf.originatorArtifact.join(", ")).append("\",\n")
+	                       .append(inf.originatorPhenomena.join(", ")).append("\"\n")
 	            jsonFile.append("\t\t},\n")
 	            
-	            infoFile += inf.name+ ":" + inf.sourceArtifact + "\n\t->\n\t" + inf.targetArtifact +'\n'
-	            for (sourceName : inf.sourceArtifact){
-	            	for (targetName: inf.targetArtifact){
+	            infoFile += inf.name+ ":" + inf.originatorArtifact + "\n\t->\n\t" + inf.relatedTo +'\n'
+	            
+	            for (sourceName : inf.originatorArtifact){
+	            	for (targetName: inf.relatedTo){
 	            		graph.addVertex(sourceName.name)
 						graph.addVertex(targetName.name)
 						graph.addEdge(sourceName.name, targetName.name)

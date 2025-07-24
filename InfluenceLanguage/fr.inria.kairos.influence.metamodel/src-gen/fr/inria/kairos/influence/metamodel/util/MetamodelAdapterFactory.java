@@ -77,38 +77,33 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseEmergentBehavior(EmergentBehavior object) {
-			return createEmergentBehaviorAdapter();
-		}
-
-		@Override
 		public Adapter caseSystemResponse(SystemResponse object) {
 			return createSystemResponseAdapter();
 		}
 
 		@Override
-		public Adapter caseCyberPhysicalPhenomena(CyberPhysicalPhenomena object) {
-			return createCyberPhysicalPhenomenaAdapter();
+		public Adapter casePhysicalPhenomena(PhysicalPhenomena object) {
+			return createPhysicalPhenomenaAdapter();
 		}
 
 		@Override
-		public Adapter caseRequirementSatisfaction(RequirementSatisfaction object) {
-			return createRequirementSatisfactionAdapter();
+		public Adapter caseRequirement(Requirement object) {
+			return createRequirementAdapter();
 		}
 
 		@Override
-		public Adapter caseMultiPhenomenon(MultiPhenomenon object) {
-			return createMultiPhenomenonAdapter();
+		public Adapter caseDesignArtifact(DesignArtifact object) {
+			return createDesignArtifactAdapter();
 		}
 
 		@Override
-		public Adapter caseSimplePhenomenon(SimplePhenomenon object) {
-			return createSimplePhenomenonAdapter();
+		public Adapter caseCompositeInfluence(CompositeInfluence object) {
+			return createCompositeInfluenceAdapter();
 		}
 
 		@Override
-		public Adapter caseArtifact(Artifact object) {
-			return createArtifactAdapter();
+		public Adapter caseNamedElement(NamedElement object) {
+			return createNamedElementAdapter();
 		}
 
 		@Override
@@ -159,20 +154,6 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.EmergentBehavior <em>Emergent Behavior</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.EmergentBehavior
-	 * @generated
-	 */
-	public Adapter createEmergentBehaviorAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.SystemResponse <em>System Response</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -187,72 +168,72 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena <em>Cyber Physical Phenomena</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena <em>Physical Phenomena</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena
+	 * @see fr.inria.kairos.influence.metamodel.PhysicalPhenomena
 	 * @generated
 	 */
-	public Adapter createCyberPhysicalPhenomenaAdapter() {
+	public Adapter createPhysicalPhenomenaAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction <em>Requirement Satisfaction</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.Requirement <em>Requirement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.RequirementSatisfaction
+	 * @see fr.inria.kairos.influence.metamodel.Requirement
 	 * @generated
 	 */
-	public Adapter createRequirementSatisfactionAdapter() {
+	public Adapter createRequirementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.MultiPhenomenon <em>Multi Phenomenon</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.DesignArtifact <em>Design Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.MultiPhenomenon
+	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact
 	 * @generated
 	 */
-	public Adapter createMultiPhenomenonAdapter() {
+	public Adapter createDesignArtifactAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.SimplePhenomenon <em>Simple Phenomenon</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence <em>Composite Influence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.SimplePhenomenon
+	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence
 	 * @generated
 	 */
-	public Adapter createSimplePhenomenonAdapter() {
+	public Adapter createCompositeInfluenceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.Artifact <em>Artifact</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.Artifact
+	 * @see fr.inria.kairos.influence.metamodel.NamedElement
 	 * @generated
 	 */
-	public Adapter createArtifactAdapter() {
+	public Adapter createNamedElementAdapter() {
 		return null;
 	}
 

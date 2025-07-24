@@ -57,6 +57,43 @@ public interface MetamodelPackage extends EPackage {
 	MetamodelPackage eINSTANCE = fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.NamedElementImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getNamedElement()
+	 * @generated
+	 */
+	int NAMED_ELEMENT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Named Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Named Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl <em>Influence Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,31 +104,40 @@ public interface MetamodelPackage extends EPackage {
 	int INFLUENCE_MODEL = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE_MODEL__NAME = NAMED_ELEMENT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Owned Influences</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_MODEL__OWNED_INFLUENCES = 0;
+	int INFLUENCE_MODEL__OWNED_INFLUENCES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Requirement Satisfaction</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Owned Requirements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION = 1;
+	int INFLUENCE_MODEL__OWNED_REQUIREMENTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Owned Cyber Physical Phenomena</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Owned Physical Phenomena</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA = 2;
+	int INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Owned Artifacts</b></em>' containment reference list.
@@ -100,16 +146,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_MODEL__OWNED_ARTIFACTS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFLUENCE_MODEL__NAME = 4;
+	int INFLUENCE_MODEL__OWNED_ARTIFACTS = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Influence Model</em>' class.
@@ -118,7 +155,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_MODEL_FEATURE_COUNT = 5;
+	int INFLUENCE_MODEL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Influence Model</em>' class.
@@ -127,7 +164,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_MODEL_OPERATION_COUNT = 0;
+	int INFLUENCE_MODEL_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
@@ -146,16 +183,16 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__NAME = 0;
+	int INFLUENCE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Evaluated By</b></em>' reference list.
+	 * The feature id for the '<em><b>Related To</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__EVALUATED_BY = 1;
+	int INFLUENCE__RELATED_TO = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Affects</b></em>' containment reference list.
@@ -164,25 +201,16 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__AFFECTS = 2;
+	int INFLUENCE__AFFECTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Produces</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Originator Phenomena</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__PRODUCES = 3;
-
-	/**
-	 * The feature id for the '<em><b>Source Phenomena</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFLUENCE__SOURCE_PHENOMENA = 4;
+	int INFLUENCE__ORIGINATOR_PHENOMENA = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute list.
@@ -191,25 +219,25 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__DESCRIPTION = 5;
+	int INFLUENCE__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Source Artifact</b></em>' reference list.
+	 * The feature id for the '<em><b>Originator Artifact</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__SOURCE_ARTIFACT = 6;
+	int INFLUENCE__ORIGINATOR_ARTIFACT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Target Artifact</b></em>' reference list.
+	 * The feature id for the '<em><b>Originator System Response</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__TARGET_ARTIFACT = 7;
+	int INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Influence</em>' class.
@@ -218,7 +246,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_FEATURE_COUNT = 8;
+	int INFLUENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Influence</em>' class.
@@ -227,44 +255,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.EmergentBehaviorImpl <em>Emergent Behavior</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.EmergentBehaviorImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEmergentBehavior()
-	 * @generated
-	 */
-	int EMERGENT_BEHAVIOR = 2;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMERGENT_BEHAVIOR__DESCRIPTION = 0;
-
-	/**
-	 * The number of structural features of the '<em>Emergent Behavior</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMERGENT_BEHAVIOR_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Emergent Behavior</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMERGENT_BEHAVIOR_OPERATION_COUNT = 0;
+	int INFLUENCE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponseImpl <em>System Response</em>}' class.
@@ -274,16 +265,34 @@ public interface MetamodelPackage extends EPackage {
 	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSystemResponse()
 	 * @generated
 	 */
-	int SYSTEM_RESPONSE = 3;
+	int SYSTEM_RESPONSE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Observation</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_RESPONSE__OBSERVATION = 0;
+	int SYSTEM_RESPONSE__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_RESPONSE__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Used In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_RESPONSE__USED_IN = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>System Response</em>' class.
@@ -292,7 +301,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_RESPONSE_FEATURE_COUNT = 1;
+	int SYSTEM_RESPONSE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>System Response</em>' class.
@@ -301,63 +310,17 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_RESPONSE_OPERATION_COUNT = 0;
+	int SYSTEM_RESPONSE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.CyberPhysicalPhenomenaImpl <em>Cyber Physical Phenomena</em>}' class.
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.PhysicalPhenomenaImpl <em>Physical Phenomena</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.CyberPhysicalPhenomenaImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCyberPhysicalPhenomena()
+	 * @see fr.inria.kairos.influence.metamodel.impl.PhysicalPhenomenaImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getPhysicalPhenomena()
 	 * @generated
 	 */
-	int CYBER_PHYSICAL_PHENOMENA = 4;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CYBER_PHYSICAL_PHENOMENA__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CYBER_PHYSICAL_PHENOMENA__CONFIGURATION = 1;
-
-	/**
-	 * The number of structural features of the '<em>Cyber Physical Phenomena</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CYBER_PHYSICAL_PHENOMENA_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Cyber Physical Phenomena</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CYBER_PHYSICAL_PHENOMENA_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.RequirementSatisfactionImpl <em>Requirement Satisfaction</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.RequirementSatisfactionImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getRequirementSatisfaction()
-	 * @generated
-	 */
-	int REQUIREMENT_SATISFACTION = 5;
+	int PHYSICAL_PHENOMENA = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -366,16 +329,53 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_SATISFACTION__NAME = 0;
+	int PHYSICAL_PHENOMENA__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Concerning Requirement</b></em>' attribute.
+	 * The feature id for the '<em><b>Description</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_SATISFACTION__CONCERNING_REQUIREMENT = 1;
+	int PHYSICAL_PHENOMENA__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Physical Phenomena</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_PHENOMENA_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Physical Phenomena</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_PHENOMENA_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.RequirementImpl <em>Requirement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.RequirementImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getRequirement()
+	 * @generated
+	 */
+	int REQUIREMENT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIREMENT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Satisfaction</b></em>' attribute list.
@@ -384,35 +384,35 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_SATISFACTION__SATISFACTION = 2;
+	int REQUIREMENT__SATISFACTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Requirement Satisfaction</em>' class.
+	 * The number of structural features of the '<em>Requirement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_SATISFACTION_FEATURE_COUNT = 3;
+	int REQUIREMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Requirement Satisfaction</em>' class.
+	 * The number of operations of the '<em>Requirement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUIREMENT_SATISFACTION_OPERATION_COUNT = 0;
+	int REQUIREMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.MultiPhenomenonImpl <em>Multi Phenomenon</em>}' class.
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl <em>Design Artifact</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.MultiPhenomenonImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getMultiPhenomenon()
+	 * @see fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getDesignArtifact()
 	 * @generated
 	 */
-	int MULTI_PHENOMENON = 6;
+	int DESIGN_ARTIFACT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -421,108 +421,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MULTI_PHENOMENON__NAME = CYBER_PHYSICAL_PHENOMENA__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTI_PHENOMENON__CONFIGURATION = CYBER_PHYSICAL_PHENOMENA__CONFIGURATION;
-
-	/**
-	 * The feature id for the '<em><b>Aggregation Of</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTI_PHENOMENON__AGGREGATION_OF = CYBER_PHYSICAL_PHENOMENA_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Multi Phenomenon</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTI_PHENOMENON_FEATURE_COUNT = CYBER_PHYSICAL_PHENOMENA_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Multi Phenomenon</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTI_PHENOMENON_OPERATION_COUNT = CYBER_PHYSICAL_PHENOMENA_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SimplePhenomenonImpl <em>Simple Phenomenon</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.SimplePhenomenonImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSimplePhenomenon()
-	 * @generated
-	 */
-	int SIMPLE_PHENOMENON = 7;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_PHENOMENON__NAME = CYBER_PHYSICAL_PHENOMENA__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_PHENOMENON__CONFIGURATION = CYBER_PHYSICAL_PHENOMENA__CONFIGURATION;
-
-	/**
-	 * The number of structural features of the '<em>Simple Phenomenon</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_PHENOMENON_FEATURE_COUNT = CYBER_PHYSICAL_PHENOMENA_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Simple Phenomenon</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_PHENOMENON_OPERATION_COUNT = CYBER_PHYSICAL_PHENOMENA_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.ArtifactImpl <em>Artifact</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.ArtifactImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getArtifact()
-	 * @generated
-	 */
-	int ARTIFACT = 8;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__NAME = 0;
+	int DESIGN_ARTIFACT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -531,25 +430,125 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ARTIFACT__REF = 1;
+	int DESIGN_ARTIFACT__REF = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Artifact</em>' class.
+	 * The number of structural features of the '<em>Design Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARTIFACT_FEATURE_COUNT = 2;
+	int DESIGN_ARTIFACT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Artifact</em>' class.
+	 * The number of operations of the '<em>Design Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARTIFACT_OPERATION_COUNT = 0;
+	int DESIGN_ARTIFACT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl <em>Composite Influence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeInfluence()
+	 * @generated
+	 */
+	int COMPOSITE_INFLUENCE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__NAME = INFLUENCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Related To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__RELATED_TO = INFLUENCE__RELATED_TO;
+
+	/**
+	 * The feature id for the '<em><b>Affects</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__AFFECTS = INFLUENCE__AFFECTS;
+
+	/**
+	 * The feature id for the '<em><b>Originator Phenomena</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__ORIGINATOR_PHENOMENA = INFLUENCE__ORIGINATOR_PHENOMENA;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__DESCRIPTION = INFLUENCE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Originator Artifact</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__ORIGINATOR_ARTIFACT = INFLUENCE__ORIGINATOR_ARTIFACT;
+
+	/**
+	 * The feature id for the '<em><b>Originator System Response</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE;
+
+	/**
+	 * The feature id for the '<em><b>Internal Influences</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = INFLUENCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Composite Influence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE_FEATURE_COUNT = INFLUENCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Composite Influence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE_OPERATION_COUNT = INFLUENCE_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.InfluenceModel <em>Influence Model</em>}'.
@@ -573,26 +572,26 @@ public interface MetamodelPackage extends EPackage {
 	EReference getInfluenceModel_OwnedInfluences();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedRequirementSatisfaction <em>Owned Requirement Satisfaction</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedRequirements <em>Owned Requirements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Requirement Satisfaction</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedRequirementSatisfaction()
+	 * @return the meta object for the containment reference list '<em>Owned Requirements</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedRequirements()
 	 * @see #getInfluenceModel()
 	 * @generated
 	 */
-	EReference getInfluenceModel_OwnedRequirementSatisfaction();
+	EReference getInfluenceModel_OwnedRequirements();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedCyberPhysicalPhenomena <em>Owned Cyber Physical Phenomena</em>}'.
+	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedPhysicalPhenomena <em>Owned Physical Phenomena</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Cyber Physical Phenomena</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedCyberPhysicalPhenomena()
+	 * @return the meta object for the containment reference list '<em>Owned Physical Phenomena</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedPhysicalPhenomena()
 	 * @see #getInfluenceModel()
 	 * @generated
 	 */
-	EReference getInfluenceModel_OwnedCyberPhysicalPhenomena();
+	EReference getInfluenceModel_OwnedPhysicalPhenomena();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.InfluenceModel#getOwnedArtifacts <em>Owned Artifacts</em>}'.
@@ -606,17 +605,6 @@ public interface MetamodelPackage extends EPackage {
 	EReference getInfluenceModel_OwnedArtifacts();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.InfluenceModel#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.InfluenceModel#getName()
-	 * @see #getInfluenceModel()
-	 * @generated
-	 */
-	EAttribute getInfluenceModel_Name();
-
-	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Influence <em>Influence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -627,26 +615,15 @@ public interface MetamodelPackage extends EPackage {
 	EClass getInfluence();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Influence#getName <em>Name</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getRelatedTo <em>Related To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getName()
+	 * @return the meta object for the reference list '<em>Related To</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getRelatedTo()
 	 * @see #getInfluence()
 	 * @generated
 	 */
-	EAttribute getInfluence_Name();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getEvaluatedBy <em>Evaluated By</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Evaluated By</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getEvaluatedBy()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EReference getInfluence_EvaluatedBy();
+	EReference getInfluence_RelatedTo();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getAffects <em>Affects</em>}'.
@@ -660,48 +637,15 @@ public interface MetamodelPackage extends EPackage {
 	EReference getInfluence_Affects();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getProduces <em>Produces</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorPhenomena <em>Originator Phenomena</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Produces</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getProduces()
+	 * @return the meta object for the reference list '<em>Originator Phenomena</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getOriginatorPhenomena()
 	 * @see #getInfluence()
 	 * @generated
 	 */
-	EReference getInfluence_Produces();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getSourceArtifact <em>Source Artifact</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Source Artifact</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getSourceArtifact()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EReference getInfluence_SourceArtifact();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getTargetArtifact <em>Target Artifact</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Target Artifact</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getTargetArtifact()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EReference getInfluence_TargetArtifact();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getSourcePhenomena <em>Source Phenomena</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Source Phenomena</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getSourcePhenomena()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EReference getInfluence_SourcePhenomena();
+	EReference getInfluence_OriginatorPhenomena();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.Influence#getDescription <em>Description</em>}'.
@@ -715,25 +659,26 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getInfluence_Description();
 
 	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.EmergentBehavior <em>Emergent Behavior</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact <em>Originator Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Emergent Behavior</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.EmergentBehavior
+	 * @return the meta object for the reference list '<em>Originator Artifact</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact()
+	 * @see #getInfluence()
 	 * @generated
 	 */
-	EClass getEmergentBehavior();
+	EReference getInfluence_OriginatorArtifact();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.EmergentBehavior#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorSystemResponse <em>Originator System Response</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.EmergentBehavior#getDescription()
-	 * @see #getEmergentBehavior()
+	 * @return the meta object for the reference list '<em>Originator System Response</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getOriginatorSystemResponse()
+	 * @see #getInfluence()
 	 * @generated
 	 */
-	EAttribute getEmergentBehavior_Description();
+	EReference getInfluence_OriginatorSystemResponse();
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.SystemResponse <em>System Response</em>}'.
@@ -746,153 +691,131 @@ public interface MetamodelPackage extends EPackage {
 	EClass getSystemResponse();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.SystemResponse#getObservation <em>Observation</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.SystemResponse#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Observation</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.SystemResponse#getObservation()
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.SystemResponse#getDescription()
 	 * @see #getSystemResponse()
 	 * @generated
 	 */
-	EAttribute getSystemResponse_Observation();
+	EAttribute getSystemResponse_Description();
 
 	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena <em>Cyber Physical Phenomena</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.SystemResponse#getUsedIn <em>Used In</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cyber Physical Phenomena</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena
+	 * @return the meta object for the reference list '<em>Used In</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.SystemResponse#getUsedIn()
+	 * @see #getSystemResponse()
 	 * @generated
 	 */
-	EClass getCyberPhysicalPhenomena();
+	EReference getSystemResponse_UsedIn();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena#getName <em>Name</em>}'.
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena <em>Physical Phenomena</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena#getName()
-	 * @see #getCyberPhysicalPhenomena()
+	 * @return the meta object for class '<em>Physical Phenomena</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.PhysicalPhenomena
 	 * @generated
 	 */
-	EAttribute getCyberPhysicalPhenomena_Name();
+	EClass getPhysicalPhenomena();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena#getConfiguration <em>Configuration</em>}'.
+	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Configuration</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena#getConfiguration()
-	 * @see #getCyberPhysicalPhenomena()
+	 * @return the meta object for the attribute list '<em>Description</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.PhysicalPhenomena#getDescription()
+	 * @see #getPhysicalPhenomena()
 	 * @generated
 	 */
-	EAttribute getCyberPhysicalPhenomena_Configuration();
+	EAttribute getPhysicalPhenomena_Description();
 
 	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction <em>Requirement Satisfaction</em>}'.
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Requirement <em>Requirement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Requirement Satisfaction</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.RequirementSatisfaction
+	 * @return the meta object for class '<em>Requirement</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Requirement
 	 * @generated
 	 */
-	EClass getRequirementSatisfaction();
+	EClass getRequirement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.RequirementSatisfaction#getName()
-	 * @see #getRequirementSatisfaction()
-	 * @generated
-	 */
-	EAttribute getRequirementSatisfaction_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction#getConcerningRequirement <em>Concerning Requirement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Concerning Requirement</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.RequirementSatisfaction#getConcerningRequirement()
-	 * @see #getRequirementSatisfaction()
-	 * @generated
-	 */
-	EAttribute getRequirementSatisfaction_ConcerningRequirement();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.RequirementSatisfaction#getSatisfaction <em>Satisfaction</em>}'.
+	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.Requirement#getSatisfaction <em>Satisfaction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Satisfaction</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.RequirementSatisfaction#getSatisfaction()
-	 * @see #getRequirementSatisfaction()
+	 * @see fr.inria.kairos.influence.metamodel.Requirement#getSatisfaction()
+	 * @see #getRequirement()
 	 * @generated
 	 */
-	EAttribute getRequirementSatisfaction_Satisfaction();
+	EAttribute getRequirement_Satisfaction();
 
 	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.MultiPhenomenon <em>Multi Phenomenon</em>}'.
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.DesignArtifact <em>Design Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Multi Phenomenon</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.MultiPhenomenon
+	 * @return the meta object for class '<em>Design Artifact</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact
 	 * @generated
 	 */
-	EClass getMultiPhenomenon();
+	EClass getDesignArtifact();
 
 	/**
-	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.MultiPhenomenon#getAggregationOf <em>Aggregation Of</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Aggregation Of</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.MultiPhenomenon#getAggregationOf()
-	 * @see #getMultiPhenomenon()
-	 * @generated
-	 */
-	EReference getMultiPhenomenon_AggregationOf();
-
-	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.SimplePhenomenon <em>Simple Phenomenon</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Simple Phenomenon</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.SimplePhenomenon
-	 * @generated
-	 */
-	EClass getSimplePhenomenon();
-
-	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Artifact <em>Artifact</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Artifact</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Artifact
-	 * @generated
-	 */
-	EClass getArtifact();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Artifact#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Artifact#getName()
-	 * @see #getArtifact()
-	 * @generated
-	 */
-	EAttribute getArtifact_Name();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.Artifact#getRef <em>Ref</em>}'.
+	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getRef <em>Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Ref</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Artifact#getRef()
-	 * @see #getArtifact()
+	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact#getRef()
+	 * @see #getDesignArtifact()
 	 * @generated
 	 */
-	EReference getArtifact_Ref();
+	EReference getDesignArtifact_Ref();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence <em>Composite Influence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Composite Influence</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence
+	 * @generated
+	 */
+	EClass getCompositeInfluence();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences <em>Internal Influences</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Internal Influences</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences()
+	 * @see #getCompositeInfluence()
+	 * @generated
+	 */
+	EReference getCompositeInfluence_InternalInfluences();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Named Element</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.NamedElement
+	 * @generated
+	 */
+	EClass getNamedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.NamedElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.NamedElement#getName()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EAttribute getNamedElement_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -936,22 +859,20 @@ public interface MetamodelPackage extends EPackage {
 		EReference INFLUENCE_MODEL__OWNED_INFLUENCES = eINSTANCE.getInfluenceModel_OwnedInfluences();
 
 		/**
-		 * The meta object literal for the '<em><b>Owned Requirement Satisfaction</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Owned Requirements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION = eINSTANCE
-				.getInfluenceModel_OwnedRequirementSatisfaction();
+		EReference INFLUENCE_MODEL__OWNED_REQUIREMENTS = eINSTANCE.getInfluenceModel_OwnedRequirements();
 
 		/**
-		 * The meta object literal for the '<em><b>Owned Cyber Physical Phenomena</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Owned Physical Phenomena</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA = eINSTANCE
-				.getInfluenceModel_OwnedCyberPhysicalPhenomena();
+		EReference INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA = eINSTANCE.getInfluenceModel_OwnedPhysicalPhenomena();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Artifacts</b></em>' containment reference list feature.
@@ -960,14 +881,6 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INFLUENCE_MODEL__OWNED_ARTIFACTS = eINSTANCE.getInfluenceModel_OwnedArtifacts();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INFLUENCE_MODEL__NAME = eINSTANCE.getInfluenceModel_Name();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
@@ -980,20 +893,12 @@ public interface MetamodelPackage extends EPackage {
 		EClass INFLUENCE = eINSTANCE.getInfluence();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Related To</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute INFLUENCE__NAME = eINSTANCE.getInfluence_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Evaluated By</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INFLUENCE__EVALUATED_BY = eINSTANCE.getInfluence_EvaluatedBy();
+		EReference INFLUENCE__RELATED_TO = eINSTANCE.getInfluence_RelatedTo();
 
 		/**
 		 * The meta object literal for the '<em><b>Affects</b></em>' containment reference list feature.
@@ -1004,36 +909,12 @@ public interface MetamodelPackage extends EPackage {
 		EReference INFLUENCE__AFFECTS = eINSTANCE.getInfluence_Affects();
 
 		/**
-		 * The meta object literal for the '<em><b>Produces</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Originator Phenomena</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INFLUENCE__PRODUCES = eINSTANCE.getInfluence_Produces();
-
-		/**
-		 * The meta object literal for the '<em><b>Source Artifact</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INFLUENCE__SOURCE_ARTIFACT = eINSTANCE.getInfluence_SourceArtifact();
-
-		/**
-		 * The meta object literal for the '<em><b>Target Artifact</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INFLUENCE__TARGET_ARTIFACT = eINSTANCE.getInfluence_TargetArtifact();
-
-		/**
-		 * The meta object literal for the '<em><b>Source Phenomena</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INFLUENCE__SOURCE_PHENOMENA = eINSTANCE.getInfluence_SourcePhenomena();
+		EReference INFLUENCE__ORIGINATOR_PHENOMENA = eINSTANCE.getInfluence_OriginatorPhenomena();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute list feature.
@@ -1044,22 +925,20 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute INFLUENCE__DESCRIPTION = eINSTANCE.getInfluence_Description();
 
 		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.EmergentBehaviorImpl <em>Emergent Behavior</em>}' class.
+		 * The meta object literal for the '<em><b>Originator Artifact</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.EmergentBehaviorImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEmergentBehavior()
 		 * @generated
 		 */
-		EClass EMERGENT_BEHAVIOR = eINSTANCE.getEmergentBehavior();
+		EReference INFLUENCE__ORIGINATOR_ARTIFACT = eINSTANCE.getInfluence_OriginatorArtifact();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Originator System Response</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EMERGENT_BEHAVIOR__DESCRIPTION = eINSTANCE.getEmergentBehavior_Description();
+		EReference INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = eINSTANCE.getInfluence_OriginatorSystemResponse();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponseImpl <em>System Response</em>}' class.
@@ -1072,65 +951,48 @@ public interface MetamodelPackage extends EPackage {
 		EClass SYSTEM_RESPONSE = eINSTANCE.getSystemResponse();
 
 		/**
-		 * The meta object literal for the '<em><b>Observation</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SYSTEM_RESPONSE__OBSERVATION = eINSTANCE.getSystemResponse_Observation();
+		EAttribute SYSTEM_RESPONSE__DESCRIPTION = eINSTANCE.getSystemResponse_Description();
 
 		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.CyberPhysicalPhenomenaImpl <em>Cyber Physical Phenomena</em>}' class.
+		 * The meta object literal for the '<em><b>Used In</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.CyberPhysicalPhenomenaImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCyberPhysicalPhenomena()
 		 * @generated
 		 */
-		EClass CYBER_PHYSICAL_PHENOMENA = eINSTANCE.getCyberPhysicalPhenomena();
+		EReference SYSTEM_RESPONSE__USED_IN = eINSTANCE.getSystemResponse_UsedIn();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.PhysicalPhenomenaImpl <em>Physical Phenomena</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.PhysicalPhenomenaImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getPhysicalPhenomena()
 		 * @generated
 		 */
-		EAttribute CYBER_PHYSICAL_PHENOMENA__NAME = eINSTANCE.getCyberPhysicalPhenomena_Name();
+		EClass PHYSICAL_PHENOMENA = eINSTANCE.getPhysicalPhenomena();
 
 		/**
-		 * The meta object literal for the '<em><b>Configuration</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CYBER_PHYSICAL_PHENOMENA__CONFIGURATION = eINSTANCE.getCyberPhysicalPhenomena_Configuration();
+		EAttribute PHYSICAL_PHENOMENA__DESCRIPTION = eINSTANCE.getPhysicalPhenomena_Description();
 
 		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.RequirementSatisfactionImpl <em>Requirement Satisfaction</em>}' class.
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.RequirementImpl <em>Requirement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.RequirementSatisfactionImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getRequirementSatisfaction()
+		 * @see fr.inria.kairos.influence.metamodel.impl.RequirementImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getRequirement()
 		 * @generated
 		 */
-		EClass REQUIREMENT_SATISFACTION = eINSTANCE.getRequirementSatisfaction();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REQUIREMENT_SATISFACTION__NAME = eINSTANCE.getRequirementSatisfaction_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Concerning Requirement</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REQUIREMENT_SATISFACTION__CONCERNING_REQUIREMENT = eINSTANCE
-				.getRequirementSatisfaction_ConcerningRequirement();
+		EClass REQUIREMENT = eINSTANCE.getRequirement();
 
 		/**
 		 * The meta object literal for the '<em><b>Satisfaction</b></em>' attribute list feature.
@@ -1138,53 +1000,17 @@ public interface MetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute REQUIREMENT_SATISFACTION__SATISFACTION = eINSTANCE.getRequirementSatisfaction_Satisfaction();
+		EAttribute REQUIREMENT__SATISFACTION = eINSTANCE.getRequirement_Satisfaction();
 
 		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.MultiPhenomenonImpl <em>Multi Phenomenon</em>}' class.
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl <em>Design Artifact</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.MultiPhenomenonImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getMultiPhenomenon()
+		 * @see fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getDesignArtifact()
 		 * @generated
 		 */
-		EClass MULTI_PHENOMENON = eINSTANCE.getMultiPhenomenon();
-
-		/**
-		 * The meta object literal for the '<em><b>Aggregation Of</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MULTI_PHENOMENON__AGGREGATION_OF = eINSTANCE.getMultiPhenomenon_AggregationOf();
-
-		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.SimplePhenomenonImpl <em>Simple Phenomenon</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.SimplePhenomenonImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSimplePhenomenon()
-		 * @generated
-		 */
-		EClass SIMPLE_PHENOMENON = eINSTANCE.getSimplePhenomenon();
-
-		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.ArtifactImpl <em>Artifact</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.ArtifactImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getArtifact()
-		 * @generated
-		 */
-		EClass ARTIFACT = eINSTANCE.getArtifact();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ARTIFACT__NAME = eINSTANCE.getArtifact_Name();
+		EClass DESIGN_ARTIFACT = eINSTANCE.getDesignArtifact();
 
 		/**
 		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
@@ -1192,7 +1018,43 @@ public interface MetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ARTIFACT__REF = eINSTANCE.getArtifact_Ref();
+		EReference DESIGN_ARTIFACT__REF = eINSTANCE.getDesignArtifact_Ref();
+
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl <em>Composite Influence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeInfluence()
+		 * @generated
+		 */
+		EClass COMPOSITE_INFLUENCE = eINSTANCE.getCompositeInfluence();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal Influences</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = eINSTANCE.getCompositeInfluence_InternalInfluences();
+
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.NamedElementImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getNamedElement()
+		 * @generated
+		 */
+		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 	}
 

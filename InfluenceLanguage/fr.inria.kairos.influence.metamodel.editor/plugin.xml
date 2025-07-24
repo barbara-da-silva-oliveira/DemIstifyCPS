@@ -33,5 +33,4 @@
             contributorClass="fr.inria.kairos.influence.metamodel.presentation.MetamodelActionBarContributor">
       </editor>
    </extension>
-
 </plugin>

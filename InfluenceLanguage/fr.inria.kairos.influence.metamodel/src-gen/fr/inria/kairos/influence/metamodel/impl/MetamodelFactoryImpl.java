@@ -60,18 +60,16 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 			return createInfluenceModel();
 		case MetamodelPackage.INFLUENCE:
 			return createInfluence();
-		case MetamodelPackage.EMERGENT_BEHAVIOR:
-			return createEmergentBehavior();
 		case MetamodelPackage.SYSTEM_RESPONSE:
 			return createSystemResponse();
-		case MetamodelPackage.REQUIREMENT_SATISFACTION:
-			return createRequirementSatisfaction();
-		case MetamodelPackage.MULTI_PHENOMENON:
-			return createMultiPhenomenon();
-		case MetamodelPackage.SIMPLE_PHENOMENON:
-			return createSimplePhenomenon();
-		case MetamodelPackage.ARTIFACT:
-			return createArtifact();
+		case MetamodelPackage.PHYSICAL_PHENOMENA:
+			return createPhysicalPhenomena();
+		case MetamodelPackage.REQUIREMENT:
+			return createRequirement();
+		case MetamodelPackage.DESIGN_ARTIFACT:
+			return createDesignArtifact();
+		case MetamodelPackage.COMPOSITE_INFLUENCE:
+			return createCompositeInfluence();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -105,17 +103,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * @generated
 	 */
 	@Override
-	public EmergentBehavior createEmergentBehavior() {
-		EmergentBehaviorImpl emergentBehavior = new EmergentBehaviorImpl();
-		return emergentBehavior;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public SystemResponse createSystemResponse() {
 		SystemResponseImpl systemResponse = new SystemResponseImpl();
 		return systemResponse;
@@ -127,9 +114,9 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * @generated
 	 */
 	@Override
-	public RequirementSatisfaction createRequirementSatisfaction() {
-		RequirementSatisfactionImpl requirementSatisfaction = new RequirementSatisfactionImpl();
-		return requirementSatisfaction;
+	public PhysicalPhenomena createPhysicalPhenomena() {
+		PhysicalPhenomenaImpl physicalPhenomena = new PhysicalPhenomenaImpl();
+		return physicalPhenomena;
 	}
 
 	/**
@@ -138,9 +125,9 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * @generated
 	 */
 	@Override
-	public MultiPhenomenon createMultiPhenomenon() {
-		MultiPhenomenonImpl multiPhenomenon = new MultiPhenomenonImpl();
-		return multiPhenomenon;
+	public Requirement createRequirement() {
+		RequirementImpl requirement = new RequirementImpl();
+		return requirement;
 	}
 
 	/**
@@ -149,9 +136,9 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * @generated
 	 */
 	@Override
-	public SimplePhenomenon createSimplePhenomenon() {
-		SimplePhenomenonImpl simplePhenomenon = new SimplePhenomenonImpl();
-		return simplePhenomenon;
+	public DesignArtifact createDesignArtifact() {
+		DesignArtifactImpl designArtifact = new DesignArtifactImpl();
+		return designArtifact;
 	}
 
 	/**
@@ -160,9 +147,9 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * @generated
 	 */
 	@Override
-	public Artifact createArtifact() {
-		ArtifactImpl artifact = new ArtifactImpl();
-		return artifact;
+	public CompositeInfluence createCompositeInfluence() {
+		CompositeInfluenceImpl compositeInfluence = new CompositeInfluenceImpl();
+		return compositeInfluence;
 	}
 
 	/**

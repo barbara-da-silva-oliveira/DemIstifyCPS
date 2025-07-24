@@ -2,26 +2,20 @@
  */
 package fr.inria.kairos.influence.metamodel.impl;
 
-import fr.inria.kairos.influence.metamodel.Artifact;
-import fr.inria.kairos.influence.metamodel.CyberPhysicalPhenomena;
+import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-import fr.inria.kairos.influence.metamodel.RequirementSatisfaction;
+import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
+import fr.inria.kairos.influence.metamodel.Requirement;
 
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -34,15 +28,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedInfluences <em>Owned Influences</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedRequirementSatisfaction <em>Owned Requirement Satisfaction</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedCyberPhysicalPhenomena <em>Owned Cyber Physical Phenomena</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedRequirements <em>Owned Requirements</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedPhysicalPhenomena <em>Owned Physical Phenomena</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedArtifacts <em>Owned Artifacts</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements InfluenceModel {
+public class InfluenceModelImpl extends NamedElementImpl implements InfluenceModel {
 	/**
 	 * The cached value of the '{@link #getOwnedInfluences() <em>Owned Influences</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -54,24 +47,24 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 	protected EList<Influence> ownedInfluences;
 
 	/**
-	 * The cached value of the '{@link #getOwnedRequirementSatisfaction() <em>Owned Requirement Satisfaction</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedRequirements() <em>Owned Requirements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedRequirementSatisfaction()
+	 * @see #getOwnedRequirements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RequirementSatisfaction> ownedRequirementSatisfaction;
+	protected EList<Requirement> ownedRequirements;
 
 	/**
-	 * The cached value of the '{@link #getOwnedCyberPhysicalPhenomena() <em>Owned Cyber Physical Phenomena</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedPhysicalPhenomena() <em>Owned Physical Phenomena</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCyberPhysicalPhenomena()
+	 * @see #getOwnedPhysicalPhenomena()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CyberPhysicalPhenomena> ownedCyberPhysicalPhenomena;
+	protected EList<PhysicalPhenomena> ownedPhysicalPhenomena;
 
 	/**
 	 * The cached value of the '{@link #getOwnedArtifacts() <em>Owned Artifacts</em>}' containment reference list.
@@ -81,27 +74,7 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Artifact> ownedArtifacts;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected EList<DesignArtifact> ownedArtifacts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,13 +115,12 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public EList<RequirementSatisfaction> getOwnedRequirementSatisfaction() {
-		if (ownedRequirementSatisfaction == null) {
-			ownedRequirementSatisfaction = new EObjectContainmentEList<RequirementSatisfaction>(
-					RequirementSatisfaction.class, this,
-					MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION);
+	public EList<Requirement> getOwnedRequirements() {
+		if (ownedRequirements == null) {
+			ownedRequirements = new EObjectContainmentEList<Requirement>(Requirement.class, this,
+					MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS);
 		}
-		return ownedRequirementSatisfaction;
+		return ownedRequirements;
 	}
 
 	/**
@@ -157,13 +129,12 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public EList<CyberPhysicalPhenomena> getOwnedCyberPhysicalPhenomena() {
-		if (ownedCyberPhysicalPhenomena == null) {
-			ownedCyberPhysicalPhenomena = new EObjectContainmentEList<CyberPhysicalPhenomena>(
-					CyberPhysicalPhenomena.class, this,
-					MetamodelPackage.INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA);
+	public EList<PhysicalPhenomena> getOwnedPhysicalPhenomena() {
+		if (ownedPhysicalPhenomena == null) {
+			ownedPhysicalPhenomena = new EObjectContainmentEList<PhysicalPhenomena>(PhysicalPhenomena.class, this,
+					MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA);
 		}
-		return ownedCyberPhysicalPhenomena;
+		return ownedPhysicalPhenomena;
 	}
 
 	/**
@@ -172,36 +143,12 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public EList<Artifact> getOwnedArtifacts() {
+	public EList<DesignArtifact> getOwnedArtifacts() {
 		if (ownedArtifacts == null) {
-			ownedArtifacts = new EObjectContainmentEList<Artifact>(Artifact.class, this,
+			ownedArtifacts = new EObjectContainmentEList<DesignArtifact>(DesignArtifact.class, this,
 					MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS);
 		}
 		return ownedArtifacts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.INFLUENCE_MODEL__NAME, oldName,
-					name));
 	}
 
 	/**
@@ -214,10 +161,10 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			return ((InternalEList<?>) getOwnedInfluences()).basicRemove(otherEnd, msgs);
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION:
-			return ((InternalEList<?>) getOwnedRequirementSatisfaction()).basicRemove(otherEnd, msgs);
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
-			return ((InternalEList<?>) getOwnedCyberPhysicalPhenomena()).basicRemove(otherEnd, msgs);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
+			return ((InternalEList<?>) getOwnedRequirements()).basicRemove(otherEnd, msgs);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
+			return ((InternalEList<?>) getOwnedPhysicalPhenomena()).basicRemove(otherEnd, msgs);
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return ((InternalEList<?>) getOwnedArtifacts()).basicRemove(otherEnd, msgs);
 		}
@@ -234,14 +181,12 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			return getOwnedInfluences();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION:
-			return getOwnedRequirementSatisfaction();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
-			return getOwnedCyberPhysicalPhenomena();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
+			return getOwnedRequirements();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
+			return getOwnedPhysicalPhenomena();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return getOwnedArtifacts();
-		case MetamodelPackage.INFLUENCE_MODEL__NAME:
-			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,20 +204,17 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 			getOwnedInfluences().clear();
 			getOwnedInfluences().addAll((Collection<? extends Influence>) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION:
-			getOwnedRequirementSatisfaction().clear();
-			getOwnedRequirementSatisfaction().addAll((Collection<? extends RequirementSatisfaction>) newValue);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
+			getOwnedRequirements().clear();
+			getOwnedRequirements().addAll((Collection<? extends Requirement>) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
-			getOwnedCyberPhysicalPhenomena().clear();
-			getOwnedCyberPhysicalPhenomena().addAll((Collection<? extends CyberPhysicalPhenomena>) newValue);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
+			getOwnedPhysicalPhenomena().clear();
+			getOwnedPhysicalPhenomena().addAll((Collection<? extends PhysicalPhenomena>) newValue);
 			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			getOwnedArtifacts().clear();
-			getOwnedArtifacts().addAll((Collection<? extends Artifact>) newValue);
-			return;
-		case MetamodelPackage.INFLUENCE_MODEL__NAME:
-			setName((String) newValue);
+			getOwnedArtifacts().addAll((Collection<? extends DesignArtifact>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -289,17 +231,14 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			getOwnedInfluences().clear();
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION:
-			getOwnedRequirementSatisfaction().clear();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
+			getOwnedRequirements().clear();
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
-			getOwnedCyberPhysicalPhenomena().clear();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
+			getOwnedPhysicalPhenomena().clear();
 			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			getOwnedArtifacts().clear();
-			return;
-		case MetamodelPackage.INFLUENCE_MODEL__NAME:
-			setName(NAME_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -315,33 +254,14 @@ public class InfluenceModelImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			return ownedInfluences != null && !ownedInfluences.isEmpty();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENT_SATISFACTION:
-			return ownedRequirementSatisfaction != null && !ownedRequirementSatisfaction.isEmpty();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_CYBER_PHYSICAL_PHENOMENA:
-			return ownedCyberPhysicalPhenomena != null && !ownedCyberPhysicalPhenomena.isEmpty();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
+			return ownedRequirements != null && !ownedRequirements.isEmpty();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
+			return ownedPhysicalPhenomena != null && !ownedPhysicalPhenomena.isEmpty();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return ownedArtifacts != null && !ownedArtifacts.isEmpty();
-		case MetamodelPackage.INFLUENCE_MODEL__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //InfluenceModelImpl

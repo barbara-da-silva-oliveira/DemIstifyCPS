@@ -11,20 +11,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -33,8 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InfluenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class InfluenceItemProvider extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -56,90 +46,44 @@ public class InfluenceItemProvider extends ItemProviderAdapter implements IEditi
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addEvaluatedByPropertyDescriptor(object);
-			addSourcePhenomenaPropertyDescriptor(object);
+			addRelatedToPropertyDescriptor(object);
+			addOriginatorPhenomenaPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
-			addSourceArtifactPropertyDescriptor(object);
-			addTargetArtifactPropertyDescriptor(object);
+			addOriginatorArtifactPropertyDescriptor(object);
+			addOriginatorSystemResponsePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Related To feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addRelatedToPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_name_feature",
+						getResourceLocator(), getString("_UI_Influence_relatedTo_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Influence_relatedTo_feature",
 								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						MetamodelPackage.Literals.INFLUENCE__RELATED_TO, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Evaluated By feature.
+	 * This adds a property descriptor for the Originator Phenomena feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addEvaluatedByPropertyDescriptor(Object object) {
+	protected void addOriginatorPhenomenaPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_evaluatedBy_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_evaluatedBy_feature",
+						getResourceLocator(), getString("_UI_Influence_originatorPhenomena_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Influence_originatorPhenomena_feature",
 								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__EVALUATED_BY, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Source Artifact feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSourceArtifactPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_sourceArtifact_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_sourceArtifact_feature",
-								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__SOURCE_ARTIFACT, true, false, false, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Target Artifact feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTargetArtifactPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_targetArtifact_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_targetArtifact_feature",
-								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__TARGET_ARTIFACT, true, false, false, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Source Phenomena feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSourcePhenomenaPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_sourcePhenomena_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_sourcePhenomena_feature",
-								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__SOURCE_PHENOMENA, true, false, true, null, null, null));
+						MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_PHENOMENA, true, false, true, null, null,
+						null));
 	}
 
 	/**
@@ -159,6 +103,37 @@ public class InfluenceItemProvider extends ItemProviderAdapter implements IEditi
 	}
 
 	/**
+	 * This adds a property descriptor for the Originator Artifact feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOriginatorArtifactPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Influence_originatorArtifact_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Influence_originatorArtifact_feature",
+								"_UI_Influence_type"),
+						MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_ARTIFACT, true, false, false, null, null,
+						null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Originator System Response feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOriginatorSystemResponsePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_Influence_originatorSystemResponse_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Influence_originatorSystemResponse_feature",
+						"_UI_Influence_type"),
+				MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE, true, false, true, null, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -171,7 +146,6 @@ public class InfluenceItemProvider extends ItemProviderAdapter implements IEditi
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__AFFECTS);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__PRODUCES);
 		}
 		return childrenFeatures;
 	}
@@ -235,14 +209,11 @@ public class InfluenceItemProvider extends ItemProviderAdapter implements IEditi
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Influence.class)) {
-		case MetamodelPackage.INFLUENCE__NAME:
 		case MetamodelPackage.INFLUENCE__DESCRIPTION:
-		case MetamodelPackage.INFLUENCE__SOURCE_ARTIFACT:
-		case MetamodelPackage.INFLUENCE__TARGET_ARTIFACT:
+		case MetamodelPackage.INFLUENCE__ORIGINATOR_ARTIFACT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case MetamodelPackage.INFLUENCE__AFFECTS:
-		case MetamodelPackage.INFLUENCE__PRODUCES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -262,20 +233,6 @@ public class InfluenceItemProvider extends ItemProviderAdapter implements IEditi
 
 		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__AFFECTS,
 				MetamodelFactory.eINSTANCE.createSystemResponse()));
-
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__PRODUCES,
-				MetamodelFactory.eINSTANCE.createEmergentBehavior()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return MetamodelEditPlugin.INSTANCE;
 	}
 
 }

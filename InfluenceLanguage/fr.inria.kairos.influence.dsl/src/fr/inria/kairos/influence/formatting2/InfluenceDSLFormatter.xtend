@@ -19,10 +19,10 @@ class InfluenceDSLFormatter extends AbstractFormatter2 {
 		for (influence : influenceModel.ownedInfluences) {
 			influence.format
 		}
-		for (requirementSatisfaction : influenceModel.ownedRequirementSatisfaction) {
+		for (requirementSatisfaction : influenceModel.ownedRequirements) {
 			requirementSatisfaction.format
 		}
-		for (cyberPhysicalPhenomena : influenceModel.ownedCyberPhysicalPhenomena) {
+		for (cyberPhysicalPhenomena : influenceModel.ownedPhysicalPhenomena) {
 			cyberPhysicalPhenomena.format
 		}
 		for (artifact : influenceModel.ownedArtifacts) {
@@ -35,8 +35,8 @@ class InfluenceDSLFormatter extends AbstractFormatter2 {
 		for (systemResponse : influence.affects) {
 			systemResponse.format
 		}
-		for (emergentBehavior : influence.produces) {
-			emergentBehavior.format
+		for (systemResponse : influence.affects) {
+			systemResponse.format
 		}
 	}
 	

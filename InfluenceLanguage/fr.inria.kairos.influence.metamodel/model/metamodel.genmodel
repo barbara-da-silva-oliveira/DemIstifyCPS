@@ -12,43 +12,36 @@
       fileExtensions=".influences" ecorePackage="metamodel.ecore#/">
     <genClasses ecoreClass="metamodel.ecore#//InfluenceModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedInfluences"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedRequirementSatisfaction"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedCyberPhysicalPhenomena"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedRequirements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedPhysicalPhenomena"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedArtifacts"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//InfluenceModel/name"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Influence">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Influence/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/evaluatedBy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/relatedTo"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/affects"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/produces"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/sourcePhenomena"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorPhenomena"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Influence/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/sourceArtifact"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/targetArtifact"/>
-    </genClasses>
-    <genClasses ecoreClass="metamodel.ecore#//EmergentBehavior">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//EmergentBehavior/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorArtifact"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorSystemResponse"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//SystemResponse">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//SystemResponse/observation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//SystemResponse/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//SystemResponse/usedIn"/>
     </genClasses>
-    <genClasses ecoreClass="metamodel.ecore#//CyberPhysicalPhenomena">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//CyberPhysicalPhenomena/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//CyberPhysicalPhenomena/configuration"/>
+    <genClasses ecoreClass="metamodel.ecore#//PhysicalPhenomena">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//PhysicalPhenomena/description"/>
     </genClasses>
-    <genClasses ecoreClass="metamodel.ecore#//RequirementSatisfaction">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//RequirementSatisfaction/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//RequirementSatisfaction/concerningRequirement"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//RequirementSatisfaction/satisfaction"/>
+    <genClasses ecoreClass="metamodel.ecore#//Requirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Requirement/satisfaction"/>
     </genClasses>
-    <genClasses ecoreClass="metamodel.ecore#//MultiPhenomenon">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//MultiPhenomenon/aggregationOf"/>
+    <genClasses ecoreClass="metamodel.ecore#//DesignArtifact">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//DesignArtifact/ref"/>
     </genClasses>
-    <genClasses ecoreClass="metamodel.ecore#//SimplePhenomenon"/>
-    <genClasses ecoreClass="metamodel.ecore#//Artifact">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Artifact/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Artifact/ref"/>
+    <genClasses ecoreClass="metamodel.ecore#//CompositeInfluence">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeInfluence/internalInfluences"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//NamedElement/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

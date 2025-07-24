@@ -70,6 +70,8 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			InfluenceModel influenceModel = (InfluenceModel) theEObject;
 			T result = caseInfluenceModel(influenceModel);
 			if (result == null)
+				result = caseNamedElement(influenceModel);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -77,12 +79,7 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			Influence influence = (Influence) theEObject;
 			T result = caseInfluence(influence);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.EMERGENT_BEHAVIOR: {
-			EmergentBehavior emergentBehavior = (EmergentBehavior) theEObject;
-			T result = caseEmergentBehavior(emergentBehavior);
+				result = caseNamedElement(influence);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -91,44 +88,52 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			SystemResponse systemResponse = (SystemResponse) theEObject;
 			T result = caseSystemResponse(systemResponse);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.CYBER_PHYSICAL_PHENOMENA: {
-			CyberPhysicalPhenomena cyberPhysicalPhenomena = (CyberPhysicalPhenomena) theEObject;
-			T result = caseCyberPhysicalPhenomena(cyberPhysicalPhenomena);
+				result = caseNamedElement(systemResponse);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.REQUIREMENT_SATISFACTION: {
-			RequirementSatisfaction requirementSatisfaction = (RequirementSatisfaction) theEObject;
-			T result = caseRequirementSatisfaction(requirementSatisfaction);
+		case MetamodelPackage.PHYSICAL_PHENOMENA: {
+			PhysicalPhenomena physicalPhenomena = (PhysicalPhenomena) theEObject;
+			T result = casePhysicalPhenomena(physicalPhenomena);
+			if (result == null)
+				result = caseNamedElement(physicalPhenomena);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.MULTI_PHENOMENON: {
-			MultiPhenomenon multiPhenomenon = (MultiPhenomenon) theEObject;
-			T result = caseMultiPhenomenon(multiPhenomenon);
+		case MetamodelPackage.REQUIREMENT: {
+			Requirement requirement = (Requirement) theEObject;
+			T result = caseRequirement(requirement);
 			if (result == null)
-				result = caseCyberPhysicalPhenomena(multiPhenomenon);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.SIMPLE_PHENOMENON: {
-			SimplePhenomenon simplePhenomenon = (SimplePhenomenon) theEObject;
-			T result = caseSimplePhenomenon(simplePhenomenon);
-			if (result == null)
-				result = caseCyberPhysicalPhenomena(simplePhenomenon);
+				result = caseNamedElement(requirement);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.ARTIFACT: {
-			Artifact artifact = (Artifact) theEObject;
-			T result = caseArtifact(artifact);
+		case MetamodelPackage.DESIGN_ARTIFACT: {
+			DesignArtifact designArtifact = (DesignArtifact) theEObject;
+			T result = caseDesignArtifact(designArtifact);
+			if (result == null)
+				result = caseNamedElement(designArtifact);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.COMPOSITE_INFLUENCE: {
+			CompositeInfluence compositeInfluence = (CompositeInfluence) theEObject;
+			T result = caseCompositeInfluence(compositeInfluence);
+			if (result == null)
+				result = caseInfluence(compositeInfluence);
+			if (result == null)
+				result = caseNamedElement(compositeInfluence);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.NAMED_ELEMENT: {
+			NamedElement namedElement = (NamedElement) theEObject;
+			T result = caseNamedElement(namedElement);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -169,21 +174,6 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Emergent Behavior</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Emergent Behavior</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEmergentBehavior(EmergentBehavior object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>System Response</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -199,77 +189,77 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cyber Physical Phenomena</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Physical Phenomena</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cyber Physical Phenomena</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Physical Phenomena</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCyberPhysicalPhenomena(CyberPhysicalPhenomena object) {
+	public T casePhysicalPhenomena(PhysicalPhenomena object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Requirement Satisfaction</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Requirement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Requirement Satisfaction</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Requirement</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRequirementSatisfaction(RequirementSatisfaction object) {
+	public T caseRequirement(Requirement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Multi Phenomenon</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Design Artifact</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Multi Phenomenon</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Design Artifact</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMultiPhenomenon(MultiPhenomenon object) {
+	public T caseDesignArtifact(DesignArtifact object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Simple Phenomenon</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Composite Influence</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Simple Phenomenon</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Composite Influence</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSimplePhenomenon(SimplePhenomenon object) {
+	public T caseCompositeInfluence(CompositeInfluence object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Artifact</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Artifact</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseArtifact(Artifact object) {
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 

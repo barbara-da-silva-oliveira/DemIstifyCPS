@@ -40,15 +40,6 @@ public interface MetamodelFactory extends EFactory {
 	Influence createInfluence();
 
 	/**
-	 * Returns a new object of class '<em>Emergent Behavior</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Emergent Behavior</em>'.
-	 * @generated
-	 */
-	EmergentBehavior createEmergentBehavior();
-
-	/**
 	 * Returns a new object of class '<em>System Response</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,40 +49,40 @@ public interface MetamodelFactory extends EFactory {
 	SystemResponse createSystemResponse();
 
 	/**
-	 * Returns a new object of class '<em>Requirement Satisfaction</em>'.
+	 * Returns a new object of class '<em>Physical Phenomena</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Requirement Satisfaction</em>'.
+	 * @return a new object of class '<em>Physical Phenomena</em>'.
 	 * @generated
 	 */
-	RequirementSatisfaction createRequirementSatisfaction();
+	PhysicalPhenomena createPhysicalPhenomena();
 
 	/**
-	 * Returns a new object of class '<em>Multi Phenomenon</em>'.
+	 * Returns a new object of class '<em>Requirement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Multi Phenomenon</em>'.
+	 * @return a new object of class '<em>Requirement</em>'.
 	 * @generated
 	 */
-	MultiPhenomenon createMultiPhenomenon();
+	Requirement createRequirement();
 
 	/**
-	 * Returns a new object of class '<em>Simple Phenomenon</em>'.
+	 * Returns a new object of class '<em>Design Artifact</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Simple Phenomenon</em>'.
+	 * @return a new object of class '<em>Design Artifact</em>'.
 	 * @generated
 	 */
-	SimplePhenomenon createSimplePhenomenon();
+	DesignArtifact createDesignArtifact();
 
 	/**
-	 * Returns a new object of class '<em>Artifact</em>'.
+	 * Returns a new object of class '<em>Composite Influence</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Artifact</em>'.
+	 * @return a new object of class '<em>Composite Influence</em>'.
 	 * @generated
 	 */
-	Artifact createArtifact();
+	CompositeInfluence createCompositeInfluence();
 
 	/**
 	 * Returns the package supported by this factory.
