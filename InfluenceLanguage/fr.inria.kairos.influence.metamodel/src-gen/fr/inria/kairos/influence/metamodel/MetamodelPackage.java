@@ -167,14 +167,14 @@ public interface MetamodelPackage extends EPackage {
 	int INFLUENCE_MODEL_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.AbstractInfluenceImpl <em>Abstract Influence</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.InfluenceImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getInfluence()
+	 * @see fr.inria.kairos.influence.metamodel.impl.AbstractInfluenceImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getAbstractInfluence()
 	 * @generated
 	 */
-	int INFLUENCE = 1;
+	int ABSTRACT_INFLUENCE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -183,7 +183,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__NAME = NAMED_ELEMENT__NAME;
+	int ABSTRACT_INFLUENCE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Related To</b></em>' reference list.
@@ -192,7 +192,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__RELATED_TO = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int ABSTRACT_INFLUENCE__RELATED_TO = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Affects</b></em>' containment reference list.
@@ -201,16 +201,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__AFFECTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Originator Phenomena</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFLUENCE__ORIGINATOR_PHENOMENA = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ABSTRACT_INFLUENCE__AFFECTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute list.
@@ -219,43 +210,35 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_INFLUENCE__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Originator Artifact</b></em>' reference list.
+	 * The number of structural features of the '<em>Abstract Influence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__ORIGINATOR_ARTIFACT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int ABSTRACT_INFLUENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Originator System Response</b></em>' reference list.
+	 * The number of operations of the '<em>Abstract Influence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int ABSTRACT_INFLUENCE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Influence</em>' class.
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.InfluenceImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getInfluence()
 	 * @generated
-	 * @ordered
 	 */
-	int INFLUENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The number of operations of the '<em>Influence</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFLUENCE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int INFLUENCE = 8;
 
 	/**
 	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponseImpl <em>System Response</em>}' class.
@@ -467,7 +450,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE__NAME = INFLUENCE__NAME;
+	int COMPOSITE_INFLUENCE__NAME = ABSTRACT_INFLUENCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Related To</b></em>' reference list.
@@ -476,7 +459,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE__RELATED_TO = INFLUENCE__RELATED_TO;
+	int COMPOSITE_INFLUENCE__RELATED_TO = ABSTRACT_INFLUENCE__RELATED_TO;
 
 	/**
 	 * The feature id for the '<em><b>Affects</b></em>' containment reference list.
@@ -485,16 +468,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE__AFFECTS = INFLUENCE__AFFECTS;
-
-	/**
-	 * The feature id for the '<em><b>Originator Phenomena</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_INFLUENCE__ORIGINATOR_PHENOMENA = INFLUENCE__ORIGINATOR_PHENOMENA;
+	int COMPOSITE_INFLUENCE__AFFECTS = ABSTRACT_INFLUENCE__AFFECTS;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute list.
@@ -503,25 +477,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE__DESCRIPTION = INFLUENCE__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Originator Artifact</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_INFLUENCE__ORIGINATOR_ARTIFACT = INFLUENCE__ORIGINATOR_ARTIFACT;
-
-	/**
-	 * The feature id for the '<em><b>Originator System Response</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE;
+	int COMPOSITE_INFLUENCE__DESCRIPTION = ABSTRACT_INFLUENCE__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Internal Influences</b></em>' reference list.
@@ -530,7 +486,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = INFLUENCE_FEATURE_COUNT + 0;
+	int COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = ABSTRACT_INFLUENCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Composite Influence</em>' class.
@@ -539,7 +495,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE_FEATURE_COUNT = INFLUENCE_FEATURE_COUNT + 1;
+	int COMPOSITE_INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Composite Influence</em>' class.
@@ -548,7 +504,88 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE_OPERATION_COUNT = INFLUENCE_OPERATION_COUNT + 0;
+	int COMPOSITE_INFLUENCE_OPERATION_COUNT = ABSTRACT_INFLUENCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__NAME = ABSTRACT_INFLUENCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Related To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__RELATED_TO = ABSTRACT_INFLUENCE__RELATED_TO;
+
+	/**
+	 * The feature id for the '<em><b>Affects</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__AFFECTS = ABSTRACT_INFLUENCE__AFFECTS;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__DESCRIPTION = ABSTRACT_INFLUENCE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Originator Phenomena</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__ORIGINATOR_PHENOMENA = ABSTRACT_INFLUENCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Originator Artifact</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__ORIGINATOR_ARTIFACT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Originator System Response</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = ABSTRACT_INFLUENCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Influence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Influence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE_OPERATION_COUNT = ABSTRACT_INFLUENCE_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.InfluenceModel <em>Influence Model</em>}'.
@@ -605,6 +642,49 @@ public interface MetamodelPackage extends EPackage {
 	EReference getInfluenceModel_OwnedArtifacts();
 
 	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence <em>Abstract Influence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Influence</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.AbstractInfluence
+	 * @generated
+	 */
+	EClass getAbstractInfluence();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getRelatedTo <em>Related To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Related To</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.AbstractInfluence#getRelatedTo()
+	 * @see #getAbstractInfluence()
+	 * @generated
+	 */
+	EReference getAbstractInfluence_RelatedTo();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getAffects <em>Affects</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Affects</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.AbstractInfluence#getAffects()
+	 * @see #getAbstractInfluence()
+	 * @generated
+	 */
+	EReference getAbstractInfluence_Affects();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Description</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.AbstractInfluence#getDescription()
+	 * @see #getAbstractInfluence()
+	 * @generated
+	 */
+	EAttribute getAbstractInfluence_Description();
+
+	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Influence <em>Influence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -613,28 +693,6 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getInfluence();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getRelatedTo <em>Related To</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Related To</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getRelatedTo()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EReference getInfluence_RelatedTo();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getAffects <em>Affects</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Affects</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getAffects()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EReference getInfluence_Affects();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorPhenomena <em>Originator Phenomena</em>}'.
@@ -646,17 +704,6 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInfluence_OriginatorPhenomena();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.Influence#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Description</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getDescription()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EAttribute getInfluence_Description();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact <em>Originator Artifact</em>}'.
@@ -883,6 +930,40 @@ public interface MetamodelPackage extends EPackage {
 		EReference INFLUENCE_MODEL__OWNED_ARTIFACTS = eINSTANCE.getInfluenceModel_OwnedArtifacts();
 
 		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.AbstractInfluenceImpl <em>Abstract Influence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.AbstractInfluenceImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getAbstractInfluence()
+		 * @generated
+		 */
+		EClass ABSTRACT_INFLUENCE = eINSTANCE.getAbstractInfluence();
+
+		/**
+		 * The meta object literal for the '<em><b>Related To</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_INFLUENCE__RELATED_TO = eINSTANCE.getAbstractInfluence_RelatedTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Affects</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_INFLUENCE__AFFECTS = eINSTANCE.getAbstractInfluence_Affects();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_INFLUENCE__DESCRIPTION = eINSTANCE.getAbstractInfluence_Description();
+
+		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -893,36 +974,12 @@ public interface MetamodelPackage extends EPackage {
 		EClass INFLUENCE = eINSTANCE.getInfluence();
 
 		/**
-		 * The meta object literal for the '<em><b>Related To</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INFLUENCE__RELATED_TO = eINSTANCE.getInfluence_RelatedTo();
-
-		/**
-		 * The meta object literal for the '<em><b>Affects</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INFLUENCE__AFFECTS = eINSTANCE.getInfluence_Affects();
-
-		/**
 		 * The meta object literal for the '<em><b>Originator Phenomena</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference INFLUENCE__ORIGINATOR_PHENOMENA = eINSTANCE.getInfluence_OriginatorPhenomena();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INFLUENCE__DESCRIPTION = eINSTANCE.getInfluence_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Originator Artifact</b></em>' reference list feature.

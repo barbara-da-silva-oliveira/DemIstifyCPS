@@ -75,11 +75,11 @@ public class MetamodelSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.INFLUENCE: {
-			Influence influence = (Influence) theEObject;
-			T result = caseInfluence(influence);
+		case MetamodelPackage.ABSTRACT_INFLUENCE: {
+			AbstractInfluence abstractInfluence = (AbstractInfluence) theEObject;
+			T result = caseAbstractInfluence(abstractInfluence);
 			if (result == null)
-				result = caseNamedElement(influence);
+				result = caseNamedElement(abstractInfluence);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -124,7 +124,7 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			CompositeInfluence compositeInfluence = (CompositeInfluence) theEObject;
 			T result = caseCompositeInfluence(compositeInfluence);
 			if (result == null)
-				result = caseInfluence(compositeInfluence);
+				result = caseAbstractInfluence(compositeInfluence);
 			if (result == null)
 				result = caseNamedElement(compositeInfluence);
 			if (result == null)
@@ -134,6 +134,17 @@ public class MetamodelSwitch<T> extends Switch<T> {
 		case MetamodelPackage.NAMED_ELEMENT: {
 			NamedElement namedElement = (NamedElement) theEObject;
 			T result = caseNamedElement(namedElement);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.INFLUENCE: {
+			Influence influence = (Influence) theEObject;
+			T result = caseInfluence(influence);
+			if (result == null)
+				result = caseAbstractInfluence(influence);
+			if (result == null)
+				result = caseNamedElement(influence);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -155,6 +166,21 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInfluenceModel(InfluenceModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Influence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Influence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractInfluence(AbstractInfluence object) {
 		return null;
 	}
 

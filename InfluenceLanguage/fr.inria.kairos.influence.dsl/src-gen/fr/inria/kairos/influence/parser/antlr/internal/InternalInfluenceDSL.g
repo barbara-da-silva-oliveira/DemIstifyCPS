@@ -169,42 +169,60 @@ ruleInfluenceModel returns [EObject current=null]
 			    |
 			(
 				(
-					(
-						{
-							newCompositeNode(grammarAccess.getInfluenceModelAccess().getOwnedInfluencesInfluenceParserRuleCall_3_3_0_0());
+					{
+						newCompositeNode(grammarAccess.getInfluenceModelAccess().getOwnedInfluencesAbstractInfluenceParserRuleCall_3_3_0());
+					}
+					lv_ownedInfluences_6_0=ruleAbstractInfluence
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getInfluenceModelRule());
 						}
-						lv_ownedInfluences_6_1=ruleInfluence
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getInfluenceModelRule());
-							}
-							add(
-								$current,
-								"ownedInfluences",
-								lv_ownedInfluences_6_1,
-								"fr.inria.kairos.influence.InfluenceDSL.Influence");
-							afterParserOrEnumRuleCall();
-						}
-						    |
-						{
-							newCompositeNode(grammarAccess.getInfluenceModelAccess().getOwnedInfluencesCompositeInfluenceParserRuleCall_3_3_0_1());
-						}
-						lv_ownedInfluences_6_2=ruleCompositeInfluence
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getInfluenceModelRule());
-							}
-							add(
-								$current,
-								"ownedInfluences",
-								lv_ownedInfluences_6_2,
-								"fr.inria.kairos.influence.InfluenceDSL.CompositeInfluence");
-							afterParserOrEnumRuleCall();
-						}
-					)
+						add(
+							$current,
+							"ownedInfluences",
+							lv_ownedInfluences_6_0,
+							"fr.inria.kairos.influence.InfluenceDSL.AbstractInfluence");
+						afterParserOrEnumRuleCall();
+					}
 				)
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleAbstractInfluence
+entryRuleAbstractInfluence returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAbstractInfluenceRule()); }
+	iv_ruleAbstractInfluence=ruleAbstractInfluence
+	{ $current=$iv_ruleAbstractInfluence.current; }
+	EOF;
+
+// Rule AbstractInfluence
+ruleAbstractInfluence returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getAbstractInfluenceAccess().getInfluenceParserRuleCall_0());
+		}
+		this_Influence_0=ruleInfluence
+		{
+			$current = $this_Influence_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getAbstractInfluenceAccess().getCompositeInfluenceParserRuleCall_1());
+		}
+		this_CompositeInfluence_1=ruleCompositeInfluence
+		{
+			$current = $this_CompositeInfluence_1.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -224,74 +242,20 @@ ruleCompositeInfluence returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='#**'
+		otherlv_0='Composite'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getCompositeInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getCompositeInfluenceAccess().getCompositeKeyword_0());
+		}
+		otherlv_1='Influence'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getCompositeInfluenceAccess().getInfluenceKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getDescriptionEStringParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getNameEStringParserRuleCall_2_0());
 				}
-				lv_description_1_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
-					}
-					add(
-						$current,
-						"description",
-						lv_description_1_0,
-						"fr.inria.kairos.influence.InfluenceDSL.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_2=','
-			{
-				newLeafNode(otherlv_2, grammarAccess.getCompositeInfluenceAccess().getCommaKeyword_2_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getDescriptionEStringParserRuleCall_2_1_0());
-					}
-					lv_description_3_0=ruleEString
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
-						}
-						add(
-							$current,
-							"description",
-							lv_description_3_0,
-							"fr.inria.kairos.influence.InfluenceDSL.EString");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)*
-		(
-			otherlv_4='**#'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getCompositeInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_3());
-			}
-		)?
-		otherlv_5='Composite'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getCompositeInfluenceAccess().getCompositeKeyword_4());
-		}
-		otherlv_6='Influence'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getCompositeInfluenceAccess().getInfluenceKeyword_5());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getNameEStringParserRuleCall_6_0());
-				}
-				lv_name_7_0=ruleEString
+				lv_name_2_0=ruleEString
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
@@ -299,46 +263,429 @@ ruleCompositeInfluence returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_7_0,
+						lv_name_2_0,
 						"fr.inria.kairos.influence.InfluenceDSL.EString");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		otherlv_3='#**'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getCompositeInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_3());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getDescriptionEStringParserRuleCall_4_0());
+				}
+				lv_description_4_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
+					}
+					add(
+						$current,
+						"description",
+						lv_description_4_0,
+						"fr.inria.kairos.influence.InfluenceDSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_5=','
+			{
+				newLeafNode(otherlv_5, grammarAccess.getCompositeInfluenceAccess().getCommaKeyword_5_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getDescriptionEStringParserRuleCall_5_1_0());
+					}
+					lv_description_6_0=ruleEString
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
+						}
+						add(
+							$current,
+							"description",
+							lv_description_6_0,
+							"fr.inria.kairos.influence.InfluenceDSL.EString");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		(
+			otherlv_7='**#'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getCompositeInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_6());
+			}
+		)?
 		otherlv_8='encapsulate'
 		{
 			newLeafNode(otherlv_8, grammarAccess.getCompositeInfluenceAccess().getEncapsulateKeyword_7());
 		}
 		(
 			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCompositeInfluenceRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getInternalInfluencesAbstractInfluenceCrossReference_8_0());
+				}
+				ruleEString
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_10='affects'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getCompositeInfluenceAccess().getAffectsKeyword_9());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_10_0());
+				}
+				lv_affects_11_0=ruleSystemResponse
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
+					}
+					add(
+						$current,
+						"affects",
+						lv_affects_11_0,
+						"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_12='and'
+			{
+				newLeafNode(otherlv_12, grammarAccess.getCompositeInfluenceAccess().getAndKeyword_11_0());
+			}
+			(
 				(
 					{
+						newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_11_1_0());
+					}
+					lv_affects_13_0=ruleSystemResponse
+					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getCompositeInfluenceRule());
+							$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
 						}
-					}
-					{
-						newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getInternalInfluencesInfluenceCrossReference_8_0_0());
-					}
-					ruleEString
-					{
+						add(
+							$current,
+							"affects",
+							lv_affects_13_0,
+							"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			    |
+		)*
+	)
+;
+
+// Entry rule entryRuleInfluence
+entryRuleInfluence returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getInfluenceRule()); }
+	iv_ruleInfluence=ruleInfluence
+	{ $current=$iv_ruleInfluence.current; }
+	EOF;
+
+// Rule Influence
+ruleInfluence returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Influence'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getInfluenceAccess().getInfluenceKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getInfluenceAccess().getNameEStringParserRuleCall_1_0());
+				}
+				lv_name_1_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_1_0,
+						"fr.inria.kairos.influence.InfluenceDSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='#**'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getInfluenceAccess().getDescriptionEStringParserRuleCall_3_0());
+				}
+				lv_description_3_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
+					}
+					add(
+						$current,
+						"description",
+						lv_description_3_0,
+						"fr.inria.kairos.influence.InfluenceDSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_4=','
+			{
+				newLeafNode(otherlv_4, grammarAccess.getInfluenceAccess().getCommaKeyword_4_0());
+			}
 			(
 				(
 					{
+						newCompositeNode(grammarAccess.getInfluenceAccess().getDescriptionEStringParserRuleCall_4_1_0());
+					}
+					lv_description_5_0=ruleEString
+					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getCompositeInfluenceRule());
+							$current = createModelElementForParent(grammarAccess.getInfluenceRule());
 						}
+						add(
+							$current,
+							"description",
+							lv_description_5_0,
+							"fr.inria.kairos.influence.InfluenceDSL.EString");
+						afterParserOrEnumRuleCall();
 					}
+				)
+			)
+		)*
+		(
+			otherlv_6='**#'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_5());
+			}
+		)?
+		otherlv_7='originators'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getInfluenceAccess().getOriginatorsKeyword_6());
+		}
+		otherlv_8=':'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getInfluenceAccess().getColonKeyword_7());
+		}
+		(
+			(
+				otherlv_9='artifact'
+				{
+					newLeafNode(otherlv_9, grammarAccess.getInfluenceAccess().getArtifactKeyword_8_0_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getInfluenceRule());
+							}
+						}
+						otherlv_10=RULE_ID
+						{
+							newLeafNode(otherlv_10, grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_8_0_1_0());
+						}
+					)
+				)
+			)
+			    |
+			(
+				otherlv_11='phenomena'
+				{
+					newLeafNode(otherlv_11, grammarAccess.getInfluenceAccess().getPhenomenaKeyword_8_1_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getInfluenceRule());
+							}
+						}
+						{
+							newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_1_0());
+						}
+						ruleEString
+						{
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+			    |
+			(
+				otherlv_13='system'
+				{
+					newLeafNode(otherlv_13, grammarAccess.getInfluenceAccess().getSystemKeyword_8_2_0());
+				}
+				otherlv_14='response'
+				{
+					newLeafNode(otherlv_14, grammarAccess.getInfluenceAccess().getResponseKeyword_8_2_1());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getInfluenceRule());
+							}
+						}
+						{
+							newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseCrossReference_8_2_2_0());
+						}
+						ruleEString
+						{
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+		)
+		(
+			otherlv_16='and'
+			{
+				newLeafNode(otherlv_16, grammarAccess.getInfluenceAccess().getAndKeyword_9_0());
+			}
+			(
+				(
+					otherlv_17='artifact'
 					{
-						newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getInternalInfluencesCompositeInfluenceCrossReference_8_1_0());
+						newLeafNode(otherlv_17, grammarAccess.getInfluenceAccess().getArtifactKeyword_9_1_0_0());
 					}
-					ruleEString
+					(
+						(
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getInfluenceRule());
+								}
+							}
+							otherlv_18=RULE_ID
+							{
+								newLeafNode(otherlv_18, grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0());
+							}
+						)
+					)
+				)
+				    |
+				(
+					otherlv_19='phenomena'
 					{
+						newLeafNode(otherlv_19, grammarAccess.getInfluenceAccess().getPhenomenaKeyword_9_1_1_0());
+					}
+					(
+						(
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getInfluenceRule());
+								}
+							}
+							{
+								newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_1_0());
+							}
+							ruleEString
+							{
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+				    |
+				(
+					otherlv_21='system'
+					{
+						newLeafNode(otherlv_21, grammarAccess.getInfluenceAccess().getSystemKeyword_9_1_2_0());
+					}
+					otherlv_22='response'
+					{
+						newLeafNode(otherlv_22, grammarAccess.getInfluenceAccess().getResponseKeyword_9_1_2_1());
+					}
+					(
+						(
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getInfluenceRule());
+								}
+							}
+							{
+								newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0());
+							}
+							ruleEString
+							{
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)
+			)
+		)*
+		otherlv_24='affects'
+		{
+			newLeafNode(otherlv_24, grammarAccess.getInfluenceAccess().getAffectsKeyword_10());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_11_0());
+				}
+				lv_affects_25_0=ruleSystemResponse
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
+					}
+					add(
+						$current,
+						"affects",
+						lv_affects_25_0,
+						"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_26='and'
+			{
+				newLeafNode(otherlv_26, grammarAccess.getInfluenceAccess().getAndKeyword_12_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_1_0());
+					}
+					lv_affects_27_0=ruleSystemResponse
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getInfluenceRule());
+						}
+						add(
+							$current,
+							"affects",
+							lv_affects_27_0,
+							"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -430,280 +777,6 @@ rulePhysicalPhenomena returns [EObject current=null]
 								"description",
 								lv_description_5_0,
 								"fr.inria.kairos.influence.InfluenceDSL.EString");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-		)?
-	)
-;
-
-// Entry rule entryRuleInfluence
-entryRuleInfluence returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getInfluenceRule()); }
-	iv_ruleInfluence=ruleInfluence
-	{ $current=$iv_ruleInfluence.current; }
-	EOF;
-
-// Rule Influence
-ruleInfluence returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='#**'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_0());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getInfluenceAccess().getDescriptionEStringParserRuleCall_1_0());
-				}
-				lv_description_1_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
-					}
-					add(
-						$current,
-						"description",
-						lv_description_1_0,
-						"fr.inria.kairos.influence.InfluenceDSL.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_2=','
-			{
-				newLeafNode(otherlv_2, grammarAccess.getInfluenceAccess().getCommaKeyword_2_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getInfluenceAccess().getDescriptionEStringParserRuleCall_2_1_0());
-					}
-					lv_description_3_0=ruleEString
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getInfluenceRule());
-						}
-						add(
-							$current,
-							"description",
-							lv_description_3_0,
-							"fr.inria.kairos.influence.InfluenceDSL.EString");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)*
-		(
-			otherlv_4='**#'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_3());
-			}
-		)?
-		otherlv_5='Influence'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getInfluenceAccess().getInfluenceKeyword_4());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getInfluenceAccess().getNameEStringParserRuleCall_5_0());
-				}
-				lv_name_6_0=ruleEString
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_6_0,
-						"fr.inria.kairos.influence.InfluenceDSL.EString");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_7='originators'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getInfluenceAccess().getOriginatorsKeyword_6());
-		}
-		otherlv_8=':'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getInfluenceAccess().getColonKeyword_7());
-		}
-		(
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getInfluenceRule());
-						}
-					}
-					otherlv_9=RULE_ID
-					{
-						newLeafNode(otherlv_9, grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_8_0_0());
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getInfluenceRule());
-						}
-					}
-					{
-						newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_0());
-					}
-					ruleEString
-					{
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)
-		(
-			otherlv_11=','
-			{
-				newLeafNode(otherlv_11, grammarAccess.getInfluenceAccess().getCommaKeyword_9_0());
-			}
-			(
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getInfluenceRule());
-							}
-						}
-						otherlv_12=RULE_ID
-						{
-							newLeafNode(otherlv_12, grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_9_1_0_0());
-						}
-					)
-				)
-				    |
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getInfluenceRule());
-							}
-						}
-						{
-							newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_0());
-						}
-						ruleEString
-						{
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)
-		)*
-		otherlv_14='affects'
-		{
-			newLeafNode(otherlv_14, grammarAccess.getInfluenceAccess().getAffectsKeyword_10());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_11_0());
-				}
-				lv_affects_15_0=ruleSystemResponse
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
-					}
-					add(
-						$current,
-						"affects",
-						lv_affects_15_0,
-						"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_16=','
-			{
-				newLeafNode(otherlv_16, grammarAccess.getInfluenceAccess().getCommaKeyword_12_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_1_0());
-					}
-					lv_affects_17_0=ruleSystemResponse
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getInfluenceRule());
-						}
-						add(
-							$current,
-							"affects",
-							lv_affects_17_0,
-							"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)*
-		(
-			otherlv_18='which'
-			{
-				newLeafNode(otherlv_18, grammarAccess.getInfluenceAccess().getWhichKeyword_13_0());
-			}
-			otherlv_19='may'
-			{
-				newLeafNode(otherlv_19, grammarAccess.getInfluenceAccess().getMayKeyword_13_1());
-			}
-			otherlv_20='violate'
-			{
-				newLeafNode(otherlv_20, grammarAccess.getInfluenceAccess().getViolateKeyword_13_2());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getInfluenceRule());
-						}
-					}
-					{
-						newCompositeNode(grammarAccess.getInfluenceAccess().getRelatedToRequirementCrossReference_13_3_0());
-					}
-					ruleEString
-					{
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_22='and/or'
-				{
-					newLeafNode(otherlv_22, grammarAccess.getInfluenceAccess().getAndOrKeyword_13_4_0());
-				}
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getInfluenceRule());
-							}
-						}
-						{
-							newCompositeNode(grammarAccess.getInfluenceAccess().getRelatedToRequirementCrossReference_13_4_1_0());
-						}
-						ruleEString
-						{
 							afterParserOrEnumRuleCall();
 						}
 					)

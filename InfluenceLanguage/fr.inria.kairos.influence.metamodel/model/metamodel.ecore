@@ -3,7 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="metamodel" nsURI="http://kairos.inria.fr/influences" nsPrefix="metamodel">
   <eClassifiers xsi:type="ecore:EClass" name="InfluenceModel" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluences" upperBound="-1"
-        eType="#//Influence" containment="true"/>
+        eType="#//AbstractInfluence" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRequirements" upperBound="-1"
         eType="#//Requirement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalPhenomena"
@@ -11,19 +11,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedArtifacts" upperBound="-1"
         eType="#//DesignArtifact" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Influence" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractInfluence" abstract="true" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="relatedTo" upperBound="-1"
-        eType="#//Requirement"/>
+        eType="#//Requirement" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="affects" lowerBound="1"
         upperBound="-1" eType="#//SystemResponse" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorPhenomena" upperBound="-1"
-        eType="#//PhysicalPhenomena"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorArtifact" upperBound="-1"
-        eType="#//DesignArtifact"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorSystemResponse"
-        upperBound="-1" eType="#//SystemResponse"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemResponse" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -41,11 +35,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="DesignArtifact" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompositeInfluence" eSuperTypes="#//Influence">
+  <eClassifiers xsi:type="ecore:EClass" name="CompositeInfluence" eSuperTypes="#//AbstractInfluence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="internalInfluences" lowerBound="2"
-        upperBound="-1" eType="#//Influence"/>
+        upperBound="-1" eType="#//AbstractInfluence"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Influence" eSuperTypes="#//AbstractInfluence">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorPhenomena" upperBound="-1"
+        eType="#//PhysicalPhenomena"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorArtifact" upperBound="-1"
+        eType="#//DesignArtifact"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorSystemResponse"
+        upperBound="-1" eType="#//SystemResponse"/>
   </eClassifiers>
 </ecore:EPackage>

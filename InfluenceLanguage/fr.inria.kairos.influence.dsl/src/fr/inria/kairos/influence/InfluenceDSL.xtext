@@ -10,20 +10,27 @@ InfluenceModel returns InfluenceModel:
 		(ownedArtifacts+=DesignArtifact |
         ownedRequirements+=RequirementSatisfaction |
         ownedPhysicalPhenomena+=PhysicalPhenomena |
-		ownedInfluences+=(Influence | CompositeInfluence) )*
+		ownedInfluences+=AbstractInfluence
+		)*
 		
 	;
 
+AbstractInfluence returns AbstractInfluence:
+	Influence | CompositeInfluence
+;
 CompositeInfluence returns CompositeInfluence:
-	'#**' description+=EString ( "," description+=EString)* '**#'? 
-	'Composite' 'Influence'
-	name=EString
+	'Composite' 'Influence'	name=EString '#**' description+=EString ( "," description+=EString)* '**#'? 
 	'encapsulate' 
-		(internalInfluences+=[Influence|EString] | internalInfluences+=[CompositeInfluence|EString])*
+		(internalInfluences+=[AbstractInfluence|EString])*
+	'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)* 
 ;
 
-
-
+Influence returns Influence:
+	'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'? 
+		'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+						  ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))* 
+		'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)* 
+	;
 
 PhysicalPhenomena returns PhysicalPhenomena:
 	'Phenomenon'
@@ -32,14 +39,7 @@ PhysicalPhenomena returns PhysicalPhenomena:
 	;
 
 
-Influence returns Influence:
-	'#**' description+=EString ( "," description+=EString)* '**#'? 
-	'Influence'
-	name=EString
-		'originators' ':' (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]) ( "," (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]))* 
-		'affects' affects+=SystemResponse ( "," affects+=SystemResponse)* 
-		('which' 'may' 'violate' relatedTo+=[Requirement|EString] ( "and/or" relatedTo+=[Requirement|EString])*)?  	
-	;
+
 
 RequirementSatisfaction returns Requirement:
 	'Requirement' name=EString	':'

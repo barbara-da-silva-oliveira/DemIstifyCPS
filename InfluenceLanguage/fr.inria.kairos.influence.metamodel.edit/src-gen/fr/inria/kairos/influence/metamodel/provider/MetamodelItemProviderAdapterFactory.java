@@ -340,8 +340,6 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	public void dispose() {
 		if (influenceModelItemProvider != null)
 			influenceModelItemProvider.dispose();
-		if (influenceItemProvider != null)
-			influenceItemProvider.dispose();
 		if (systemResponseItemProvider != null)
 			systemResponseItemProvider.dispose();
 		if (physicalPhenomenaItemProvider != null)
@@ -352,6 +350,8 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 			designArtifactItemProvider.dispose();
 		if (compositeInfluenceItemProvider != null)
 			compositeInfluenceItemProvider.dispose();
+		if (influenceItemProvider != null)
+			influenceItemProvider.dispose();
 	}
 
 }

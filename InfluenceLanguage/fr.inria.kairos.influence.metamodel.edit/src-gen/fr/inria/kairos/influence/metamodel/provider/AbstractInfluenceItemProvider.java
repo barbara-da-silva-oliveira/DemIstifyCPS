@@ -2,7 +2,7 @@
  */
 package fr.inria.kairos.influence.metamodel.provider;
 
-import fr.inria.kairos.influence.metamodel.InfluenceModel;
+import fr.inria.kairos.influence.metamodel.AbstractInfluence;
 import fr.inria.kairos.influence.metamodel.MetamodelFactory;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 
@@ -11,24 +11,28 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link fr.inria.kairos.influence.metamodel.InfluenceModel} object.
+ * This is the item provider adapter for a {@link fr.inria.kairos.influence.metamodel.AbstractInfluence} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class InfluenceModelItemProvider extends NamedElementItemProvider {
+public class AbstractInfluenceItemProvider extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InfluenceModelItemProvider(AdapterFactory adapterFactory) {
+	public AbstractInfluenceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -43,8 +47,41 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addRelatedToPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Related To feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRelatedToPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AbstractInfluence_relatedTo_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AbstractInfluence_relatedTo_feature",
+								"_UI_AbstractInfluence_type"),
+						MetamodelPackage.Literals.ABSTRACT_INFLUENCE__RELATED_TO, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_AbstractInfluence_description_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_AbstractInfluence_description_feature",
+						"_UI_AbstractInfluence_type"),
+				MetamodelPackage.Literals.ABSTRACT_INFLUENCE__DESCRIPTION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -59,10 +96,7 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_REQUIREMENTS);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ARTIFACTS);
+			childrenFeatures.add(MetamodelPackage.Literals.ABSTRACT_INFLUENCE__AFFECTS);
 		}
 		return childrenFeatures;
 	}
@@ -81,14 +115,14 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This returns InfluenceModel.gif.
+	 * This returns AbstractInfluence.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/InfluenceModel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AbstractInfluence"));
 	}
 
 	/**
@@ -109,9 +143,9 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((InfluenceModel) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_InfluenceModel_type")
-				: getString("_UI_InfluenceModel_type") + " " + label;
+		String label = ((AbstractInfluence) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_AbstractInfluence_type")
+				: getString("_UI_AbstractInfluence_type") + " " + label;
 	}
 
 	/**
@@ -125,11 +159,11 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(InfluenceModel.class)) {
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
+		switch (notification.getFeatureID(AbstractInfluence.class)) {
+		case MetamodelPackage.ABSTRACT_INFLUENCE__DESCRIPTION:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case MetamodelPackage.ABSTRACT_INFLUENCE__AFFECTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -147,21 +181,8 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES,
-				MetamodelFactory.eINSTANCE.createCompositeInfluence()));
-
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES,
-				MetamodelFactory.eINSTANCE.createInfluence()));
-
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_REQUIREMENTS,
-				MetamodelFactory.eINSTANCE.createRequirement()));
-
-		newChildDescriptors
-				.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA,
-						MetamodelFactory.eINSTANCE.createPhysicalPhenomena()));
-
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ARTIFACTS,
-				MetamodelFactory.eINSTANCE.createDesignArtifact()));
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.ABSTRACT_INFLUENCE__AFFECTS,
+				MetamodelFactory.eINSTANCE.createSystemResponse()));
 	}
 
 }

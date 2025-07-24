@@ -2,6 +2,7 @@
  */
 package fr.inria.kairos.influence.metamodel.impl;
 
+import fr.inria.kairos.influence.metamodel.AbstractInfluence;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Influence;
@@ -33,6 +34,13 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	private EClass influenceModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractInfluenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,6 +211,46 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EClass getAbstractInfluence() {
+		return abstractInfluenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAbstractInfluence_RelatedTo() {
+		return (EReference) abstractInfluenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAbstractInfluence_Affects() {
+		return (EReference) abstractInfluenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAbstractInfluence_Description() {
+		return (EAttribute) abstractInfluenceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getInfluence() {
 		return influenceEClass;
 	}
@@ -213,7 +261,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_RelatedTo() {
+	public EReference getInfluence_OriginatorPhenomena() {
 		return (EReference) influenceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -223,7 +271,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_Affects() {
+	public EReference getInfluence_OriginatorArtifact() {
 		return (EReference) influenceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -233,38 +281,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_OriginatorPhenomena() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getInfluence_Description() {
-		return (EAttribute) influenceEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getInfluence_OriginatorArtifact() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getInfluence_OriginatorSystemResponse() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(5);
+		return (EReference) influenceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -433,13 +451,10 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA);
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_ARTIFACTS);
 
-		influenceEClass = createEClass(INFLUENCE);
-		createEReference(influenceEClass, INFLUENCE__RELATED_TO);
-		createEReference(influenceEClass, INFLUENCE__AFFECTS);
-		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_PHENOMENA);
-		createEAttribute(influenceEClass, INFLUENCE__DESCRIPTION);
-		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_ARTIFACT);
-		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE);
+		abstractInfluenceEClass = createEClass(ABSTRACT_INFLUENCE);
+		createEReference(abstractInfluenceEClass, ABSTRACT_INFLUENCE__RELATED_TO);
+		createEReference(abstractInfluenceEClass, ABSTRACT_INFLUENCE__AFFECTS);
+		createEAttribute(abstractInfluenceEClass, ABSTRACT_INFLUENCE__DESCRIPTION);
 
 		systemResponseEClass = createEClass(SYSTEM_RESPONSE);
 		createEAttribute(systemResponseEClass, SYSTEM_RESPONSE__DESCRIPTION);
@@ -459,6 +474,11 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+
+		influenceEClass = createEClass(INFLUENCE);
+		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_PHENOMENA);
+		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_ARTIFACT);
+		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE);
 	}
 
 	/**
@@ -491,19 +511,20 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		// Add supertypes to classes
 		influenceModelEClass.getESuperTypes().add(this.getNamedElement());
-		influenceEClass.getESuperTypes().add(this.getNamedElement());
+		abstractInfluenceEClass.getESuperTypes().add(this.getNamedElement());
 		systemResponseEClass.getESuperTypes().add(this.getNamedElement());
 		physicalPhenomenaEClass.getESuperTypes().add(this.getNamedElement());
 		requirementEClass.getESuperTypes().add(this.getNamedElement());
 		designArtifactEClass.getESuperTypes().add(this.getNamedElement());
-		compositeInfluenceEClass.getESuperTypes().add(this.getInfluence());
+		compositeInfluenceEClass.getESuperTypes().add(this.getAbstractInfluence());
+		influenceEClass.getESuperTypes().add(this.getAbstractInfluence());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(influenceModelEClass, InfluenceModel.class, "InfluenceModel", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInfluenceModel_OwnedInfluences(), this.getInfluence(), null, "ownedInfluences", null, 0, -1,
-				InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluenceModel_OwnedInfluences(), this.getAbstractInfluence(), null, "ownedInfluences", null,
+				0, -1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInfluenceModel_OwnedRequirements(), this.getRequirement(), null, "ownedRequirements", null, 0,
 				-1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -514,26 +535,17 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 				-1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(influenceEClass, Influence.class, "Influence", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(abstractInfluenceEClass, AbstractInfluence.class, "AbstractInfluence", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInfluence_RelatedTo(), this.getRequirement(), null, "relatedTo", null, 0, -1, Influence.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_Affects(), this.getSystemResponse(), null, "affects", null, 1, -1, Influence.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_OriginatorPhenomena(), this.getPhysicalPhenomena(), null, "originatorPhenomena",
-				null, 0, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInfluence_Description(), ecorePackage.getEString(), "description", null, 1, -1,
-				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_OriginatorArtifact(), this.getDesignArtifact(), null, "originatorArtifact", null, 0,
-				-1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getAbstractInfluence_RelatedTo(), this.getRequirement(), null, "relatedTo", null, 0, -1,
+				AbstractInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractInfluence_Affects(), this.getSystemResponse(), null, "affects", null, 1, -1,
+				AbstractInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluence_OriginatorSystemResponse(), this.getSystemResponse(), null,
-				"originatorSystemResponse", null, 0, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractInfluence_Description(), ecorePackage.getEString(), "description", null, 1, -1,
+				AbstractInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemResponseEClass, SystemResponse.class, "SystemResponse", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -564,14 +576,26 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		initEClass(compositeInfluenceEClass, CompositeInfluence.class, "CompositeInfluence", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCompositeInfluence_InternalInfluences(), this.getInfluence(), null, "internalInfluences",
-				null, 2, -1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompositeInfluence_InternalInfluences(), this.getAbstractInfluence(), null,
+				"internalInfluences", null, 2, -1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(influenceEClass, Influence.class, "Influence", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInfluence_OriginatorPhenomena(), this.getPhysicalPhenomena(), null, "originatorPhenomena",
+				null, 0, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluence_OriginatorArtifact(), this.getDesignArtifact(), null, "originatorArtifact", null, 0,
+				-1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluence_OriginatorSystemResponse(), this.getSystemResponse(), null,
+				"originatorSystemResponse", null, 0, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

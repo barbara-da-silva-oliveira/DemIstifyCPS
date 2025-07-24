@@ -2,8 +2,8 @@
  */
 package fr.inria.kairos.influence.metamodel.impl;
 
+import fr.inria.kairos.influence.metamodel.AbstractInfluence;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
-import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 
 import java.util.Collection;
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class CompositeInfluenceImpl extends InfluenceImpl implements CompositeInfluence {
+public class CompositeInfluenceImpl extends AbstractInfluenceImpl implements CompositeInfluence {
 	/**
 	 * The cached value of the '{@link #getInternalInfluences() <em>Internal Influences</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class CompositeInfluenceImpl extends InfluenceImpl implements CompositeIn
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Influence> internalInfluences;
+	protected EList<AbstractInfluence> internalInfluences;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,9 +61,9 @@ public class CompositeInfluenceImpl extends InfluenceImpl implements CompositeIn
 	 * @generated
 	 */
 	@Override
-	public EList<Influence> getInternalInfluences() {
+	public EList<AbstractInfluence> getInternalInfluences() {
 		if (internalInfluences == null) {
-			internalInfluences = new EObjectResolvingEList<Influence>(Influence.class, this,
+			internalInfluences = new EObjectResolvingEList<AbstractInfluence>(AbstractInfluence.class, this,
 					MetamodelPackage.COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES);
 		}
 		return internalInfluences;
@@ -94,7 +94,7 @@ public class CompositeInfluenceImpl extends InfluenceImpl implements CompositeIn
 		switch (featureID) {
 		case MetamodelPackage.COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES:
 			getInternalInfluences().clear();
-			getInternalInfluences().addAll((Collection<? extends Influence>) newValue);
+			getInternalInfluences().addAll((Collection<? extends AbstractInfluence>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

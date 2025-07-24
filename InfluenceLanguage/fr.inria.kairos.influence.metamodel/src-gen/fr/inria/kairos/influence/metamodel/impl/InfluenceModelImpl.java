@@ -2,8 +2,8 @@
  */
 package fr.inria.kairos.influence.metamodel.impl;
 
+import fr.inria.kairos.influence.metamodel.AbstractInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
-import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
@@ -44,7 +44,7 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Influence> ownedInfluences;
+	protected EList<AbstractInfluence> ownedInfluences;
 
 	/**
 	 * The cached value of the '{@link #getOwnedRequirements() <em>Owned Requirements</em>}' containment reference list.
@@ -101,9 +101,9 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	 * @generated
 	 */
 	@Override
-	public EList<Influence> getOwnedInfluences() {
+	public EList<AbstractInfluence> getOwnedInfluences() {
 		if (ownedInfluences == null) {
-			ownedInfluences = new EObjectContainmentEList<Influence>(Influence.class, this,
+			ownedInfluences = new EObjectContainmentEList<AbstractInfluence>(AbstractInfluence.class, this,
 					MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES);
 		}
 		return ownedInfluences;
@@ -202,7 +202,7 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			getOwnedInfluences().clear();
-			getOwnedInfluences().addAll((Collection<? extends Influence>) newValue);
+			getOwnedInfluences().addAll((Collection<? extends AbstractInfluence>) newValue);
 			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
 			getOwnedRequirements().clear();

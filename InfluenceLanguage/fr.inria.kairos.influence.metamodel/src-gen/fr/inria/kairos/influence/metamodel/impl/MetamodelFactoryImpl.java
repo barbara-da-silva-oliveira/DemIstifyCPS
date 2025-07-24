@@ -58,8 +58,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 		switch (eClass.getClassifierID()) {
 		case MetamodelPackage.INFLUENCE_MODEL:
 			return createInfluenceModel();
-		case MetamodelPackage.INFLUENCE:
-			return createInfluence();
 		case MetamodelPackage.SYSTEM_RESPONSE:
 			return createSystemResponse();
 		case MetamodelPackage.PHYSICAL_PHENOMENA:
@@ -70,6 +68,8 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 			return createDesignArtifact();
 		case MetamodelPackage.COMPOSITE_INFLUENCE:
 			return createCompositeInfluence();
+		case MetamodelPackage.INFLUENCE:
+			return createInfluence();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

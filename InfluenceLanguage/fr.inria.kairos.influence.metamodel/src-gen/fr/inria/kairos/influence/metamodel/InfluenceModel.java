@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
 public interface InfluenceModel extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Owned Influences</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Influence}.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.AbstractInfluence}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Influences</em>' containment reference list.
@@ -34,7 +34,7 @@ public interface InfluenceModel extends NamedElement {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Influence> getOwnedInfluences();
+	EList<AbstractInfluence> getOwnedInfluences();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Requirements</b></em>' containment reference list.

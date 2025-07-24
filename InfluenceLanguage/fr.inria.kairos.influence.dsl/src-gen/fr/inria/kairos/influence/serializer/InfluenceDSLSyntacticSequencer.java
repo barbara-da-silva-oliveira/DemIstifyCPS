@@ -20,14 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected InfluenceDSLGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_3_q;
-	protected AbstractElementAlias match_Influence_AsteriskAsteriskNumberSignKeyword_3_q;
+	protected AbstractElementAlias match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q;
+	protected AbstractElementAlias match_Influence_AsteriskAsteriskNumberSignKeyword_5_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (InfluenceDSLGrammarAccess) access;
-		match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_3_q = new TokenAlias(false, true, grammarAccess.getCompositeInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_3());
-		match_Influence_AsteriskAsteriskNumberSignKeyword_3_q = new TokenAlias(false, true, grammarAccess.getInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_3());
+		match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q = new TokenAlias(false, true, grammarAccess.getCompositeInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_6());
+		match_Influence_AsteriskAsteriskNumberSignKeyword_5_q = new TokenAlias(false, true, grammarAccess.getInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_5());
 	}
 	
 	@Override
@@ -42,10 +42,10 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_3_q.equals(syntax))
-				emit_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Influence_AsteriskAsteriskNumberSignKeyword_3_q.equals(syntax))
-				emit_Influence_AsteriskAsteriskNumberSignKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q.equals(syntax))
+				emit_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Influence_AsteriskAsteriskNumberSignKeyword_5_q.equals(syntax))
+				emit_Influence_AsteriskAsteriskNumberSignKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -56,11 +56,12 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '**#'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     description+=EString (ambiguity) 'Composite' 'Influence' name=EString
+	 *     description+=EString (ambiguity) 'encapsulate' 'affects' affects+=SystemResponse
+	 *     description+=EString (ambiguity) 'encapsulate' internalInfluences+=[AbstractInfluence|EString]
 	 
 	 * </pre>
 	 */
-	protected void emit_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -70,11 +71,13 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '**#'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     description+=EString (ambiguity) 'Influence' name=EString
+	 *     description+=EString (ambiguity) 'originators' ':' 'artifact' originatorArtifact+=[DesignArtifact|ID]
+	 *     description+=EString (ambiguity) 'originators' ':' 'phenomena' originatorPhenomena+=[PhysicalPhenomena|EString]
+	 *     description+=EString (ambiguity) 'originators' ':' 'system' 'response' originatorSystemResponse+=[SystemResponse|EString]
 	 
 	 * </pre>
 	 */
-	protected void emit_Influence_AsteriskAsteriskNumberSignKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Influence_AsteriskAsteriskNumberSignKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

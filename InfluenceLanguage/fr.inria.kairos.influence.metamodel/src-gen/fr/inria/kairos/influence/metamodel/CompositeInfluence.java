@@ -20,10 +20,10 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface CompositeInfluence extends Influence {
+public interface CompositeInfluence extends AbstractInfluence {
 	/**
 	 * Returns the value of the '<em><b>Internal Influences</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Influence}.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.AbstractInfluence}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Internal Influences</em>' reference list.
@@ -31,6 +31,6 @@ public interface CompositeInfluence extends Influence {
 	 * @model lower="2"
 	 * @generated
 	 */
-	EList<Influence> getInternalInfluences();
+	EList<AbstractInfluence> getInternalInfluences();
 
 } // CompositeInfluence

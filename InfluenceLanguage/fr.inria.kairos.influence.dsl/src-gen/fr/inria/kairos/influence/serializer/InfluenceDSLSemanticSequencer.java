@@ -67,14 +67,17 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     AbstractInfluence returns CompositeInfluence
 	 *     CompositeInfluence returns CompositeInfluence
 	 *
 	 * Constraint:
 	 *     (
+	 *         name=EString 
 	 *         description+=EString 
 	 *         description+=EString* 
-	 *         name=EString 
-	 *         (internalInfluences+=[Influence|EString] | internalInfluences+=[CompositeInfluence|EString])*
+	 *         internalInfluences+=[AbstractInfluence|EString]* 
+	 *         affects+=SystemResponse 
+	 *         affects+=SystemResponse*
 	 *     )
 	 * </pre>
 	 */
@@ -118,8 +121,7 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *             ownedArtifacts+=DesignArtifact | 
 	 *             ownedRequirements+=RequirementSatisfaction | 
 	 *             ownedPhysicalPhenomena+=PhysicalPhenomena | 
-	 *             ownedInfluences+=Influence | 
-	 *             ownedInfluences+=CompositeInfluence
+	 *             ownedInfluences+=AbstractInfluence
 	 *         )*
 	 *     )
 	 * </pre>
@@ -132,19 +134,22 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     AbstractInfluence returns Influence
 	 *     Influence returns Influence
 	 *
 	 * Constraint:
 	 *     (
+	 *         name=EString 
 	 *         description+=EString 
 	 *         description+=EString* 
-	 *         name=EString 
-	 *         (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]) 
+	 *         (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString] | originatorSystemResponse+=[SystemResponse|EString]) 
 	 *         originatorArtifact+=[DesignArtifact|ID]? 
-	 *         (originatorPhenomena+=[PhysicalPhenomena|EString]? originatorArtifact+=[DesignArtifact|ID]?)* 
+	 *         (
+	 *             (originatorPhenomena+=[PhysicalPhenomena|EString] | originatorSystemResponse+=[SystemResponse|EString])? 
+	 *             originatorArtifact+=[DesignArtifact|ID]?
+	 *         )* 
 	 *         affects+=SystemResponse 
-	 *         affects+=SystemResponse* 
-	 *         (relatedTo+=[Requirement|EString] relatedTo+=[Requirement|EString]*)?
+	 *         affects+=SystemResponse*
 	 *     )
 	 * </pre>
 	 */

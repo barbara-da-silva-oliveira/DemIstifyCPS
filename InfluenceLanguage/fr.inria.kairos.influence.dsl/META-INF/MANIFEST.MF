@@ -27,5 +27,6 @@ Export-Package: fr.inria.kairos.influence.services,
  fr.inria.kairos.influence.serializer,
  fr.inria.kairos.influence.validation,
  fr.inria.kairos.influence,
- fr.inria.kairos.influence.formatting2
+ fr.inria.kairos.influence.formatting2,
+ fr.inria.kairos.influence.parser.antlr
 Import-Package: org.apache.log4j

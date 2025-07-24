@@ -39,9 +39,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cOwnedPhysicalPhenomenaAssignment_3_2 = (Assignment)cAlternatives_3.eContents().get(2);
 		private final RuleCall cOwnedPhysicalPhenomenaPhysicalPhenomenaParserRuleCall_3_2_0 = (RuleCall)cOwnedPhysicalPhenomenaAssignment_3_2.eContents().get(0);
 		private final Assignment cOwnedInfluencesAssignment_3_3 = (Assignment)cAlternatives_3.eContents().get(3);
-		private final Alternatives cOwnedInfluencesAlternatives_3_3_0 = (Alternatives)cOwnedInfluencesAssignment_3_3.eContents().get(0);
-		private final RuleCall cOwnedInfluencesInfluenceParserRuleCall_3_3_0_0 = (RuleCall)cOwnedInfluencesAlternatives_3_3_0.eContents().get(0);
-		private final RuleCall cOwnedInfluencesCompositeInfluenceParserRuleCall_3_3_0_1 = (RuleCall)cOwnedInfluencesAlternatives_3_3_0.eContents().get(1);
+		private final RuleCall cOwnedInfluencesAbstractInfluenceParserRuleCall_3_3_0 = (RuleCall)cOwnedInfluencesAssignment_3_3.eContents().get(0);
 		
 		//InfluenceModel returns InfluenceModel:
 		//    {InfluenceModel}
@@ -49,7 +47,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//        (ownedArtifacts+=DesignArtifact |
 		//        ownedRequirements+=RequirementSatisfaction |
 		//        ownedPhysicalPhenomena+=PhysicalPhenomena |
-		//        ownedInfluences+=(Influence | CompositeInfluence) )*
+		//        ownedInfluences+=AbstractInfluence
+		//        )*
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -58,7 +57,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    (ownedArtifacts+=DesignArtifact |
 		//    ownedRequirements+=RequirementSatisfaction |
 		//    ownedPhysicalPhenomena+=PhysicalPhenomena |
-		//    ownedInfluences+=(Influence | CompositeInfluence) )*
+		//    ownedInfluences+=AbstractInfluence
+		//    )*
 		public Group getGroup() { return cGroup; }
 		
 		//{InfluenceModel}
@@ -76,7 +76,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//(ownedArtifacts+=DesignArtifact |
 		//ownedRequirements+=RequirementSatisfaction |
 		//ownedPhysicalPhenomena+=PhysicalPhenomena |
-		//ownedInfluences+=(Influence | CompositeInfluence) )*
+		//ownedInfluences+=AbstractInfluence
+		//)*
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
 		//ownedArtifacts+=DesignArtifact
@@ -97,117 +98,383 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//PhysicalPhenomena
 		public RuleCall getOwnedPhysicalPhenomenaPhysicalPhenomenaParserRuleCall_3_2_0() { return cOwnedPhysicalPhenomenaPhysicalPhenomenaParserRuleCall_3_2_0; }
 		
-		//ownedInfluences+=(Influence | CompositeInfluence)
+		//ownedInfluences+=AbstractInfluence
 		public Assignment getOwnedInfluencesAssignment_3_3() { return cOwnedInfluencesAssignment_3_3; }
 		
-		//(Influence | CompositeInfluence)
-		public Alternatives getOwnedInfluencesAlternatives_3_3_0() { return cOwnedInfluencesAlternatives_3_3_0; }
+		//AbstractInfluence
+		public RuleCall getOwnedInfluencesAbstractInfluenceParserRuleCall_3_3_0() { return cOwnedInfluencesAbstractInfluenceParserRuleCall_3_3_0; }
+	}
+	public class AbstractInfluenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.AbstractInfluence");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cInfluenceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCompositeInfluenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//AbstractInfluence returns AbstractInfluence:
+		//    Influence | CompositeInfluence
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Influence | CompositeInfluence
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Influence
-		public RuleCall getOwnedInfluencesInfluenceParserRuleCall_3_3_0_0() { return cOwnedInfluencesInfluenceParserRuleCall_3_3_0_0; }
+		public RuleCall getInfluenceParserRuleCall_0() { return cInfluenceParserRuleCall_0; }
 		
 		//CompositeInfluence
-		public RuleCall getOwnedInfluencesCompositeInfluenceParserRuleCall_3_3_0_1() { return cOwnedInfluencesCompositeInfluenceParserRuleCall_3_3_0_1; }
+		public RuleCall getCompositeInfluenceParserRuleCall_1() { return cCompositeInfluenceParserRuleCall_1; }
 	}
 	public class CompositeInfluenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.CompositeInfluence");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNumberSignAsteriskAsteriskKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cDescriptionAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_1_0 = (RuleCall)cDescriptionAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cDescriptionAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_2_1_0 = (RuleCall)cDescriptionAssignment_2_1.eContents().get(0);
-		private final Keyword cAsteriskAsteriskNumberSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cCompositeKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cInfluenceKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cNameEStringParserRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cCompositeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cInfluenceKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cNumberSignAsteriskAsteriskKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cDescriptionAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cDescriptionEStringParserRuleCall_4_0 = (RuleCall)cDescriptionAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cCommaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cDescriptionAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cDescriptionEStringParserRuleCall_5_1_0 = (RuleCall)cDescriptionAssignment_5_1.eContents().get(0);
+		private final Keyword cAsteriskAsteriskNumberSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Keyword cEncapsulateKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Alternatives cAlternatives_8 = (Alternatives)cGroup.eContents().get(8);
-		private final Assignment cInternalInfluencesAssignment_8_0 = (Assignment)cAlternatives_8.eContents().get(0);
-		private final CrossReference cInternalInfluencesInfluenceCrossReference_8_0_0 = (CrossReference)cInternalInfluencesAssignment_8_0.eContents().get(0);
-		private final RuleCall cInternalInfluencesInfluenceEStringParserRuleCall_8_0_0_1 = (RuleCall)cInternalInfluencesInfluenceCrossReference_8_0_0.eContents().get(1);
-		private final Assignment cInternalInfluencesAssignment_8_1 = (Assignment)cAlternatives_8.eContents().get(1);
-		private final CrossReference cInternalInfluencesCompositeInfluenceCrossReference_8_1_0 = (CrossReference)cInternalInfluencesAssignment_8_1.eContents().get(0);
-		private final RuleCall cInternalInfluencesCompositeInfluenceEStringParserRuleCall_8_1_0_1 = (RuleCall)cInternalInfluencesCompositeInfluenceCrossReference_8_1_0.eContents().get(1);
+		private final Assignment cInternalInfluencesAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cInternalInfluencesAbstractInfluenceCrossReference_8_0 = (CrossReference)cInternalInfluencesAssignment_8.eContents().get(0);
+		private final RuleCall cInternalInfluencesAbstractInfluenceEStringParserRuleCall_8_0_1 = (RuleCall)cInternalInfluencesAbstractInfluenceCrossReference_8_0.eContents().get(1);
+		private final Keyword cAffectsKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cAffectsAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_10_0 = (RuleCall)cAffectsAssignment_10.eContents().get(0);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cAndKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Assignment cAffectsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_11_1_0 = (RuleCall)cAffectsAssignment_11_1.eContents().get(0);
 		
 		//CompositeInfluence returns CompositeInfluence:
-		//    '#**' description+=EString ( "," description+=EString)* '**#'?
-		//    'Composite' 'Influence'
-		//    name=EString
+		//    'Composite' 'Influence'    name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 		//    'encapsulate'
-		//        (internalInfluences+=[Influence|EString] | internalInfluences+=[CompositeInfluence|EString])*
+		//        (internalInfluences+=[AbstractInfluence|EString])*
+		//    'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'#**' description+=EString ( "," description+=EString)* '**#'?
-		//'Composite' 'Influence'
-		//name=EString
+		//'Composite' 'Influence'    name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 		//'encapsulate'
-		//    (internalInfluences+=[Influence|EString] | internalInfluences+=[CompositeInfluence|EString])*
+		//    (internalInfluences+=[AbstractInfluence|EString])*
+		//'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		public Group getGroup() { return cGroup; }
 		
-		//'#**'
-		public Keyword getNumberSignAsteriskAsteriskKeyword_0() { return cNumberSignAsteriskAsteriskKeyword_0; }
-		
-		//description+=EString
-		public Assignment getDescriptionAssignment_1() { return cDescriptionAssignment_1; }
-		
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_1_0() { return cDescriptionEStringParserRuleCall_1_0; }
-		
-		//( "," description+=EString)*
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//","
-		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
-		
-		//description+=EString
-		public Assignment getDescriptionAssignment_2_1() { return cDescriptionAssignment_2_1; }
-		
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_2_1_0() { return cDescriptionEStringParserRuleCall_2_1_0; }
-		
-		//'**#'?
-		public Keyword getAsteriskAsteriskNumberSignKeyword_3() { return cAsteriskAsteriskNumberSignKeyword_3; }
-		
 		//'Composite'
-		public Keyword getCompositeKeyword_4() { return cCompositeKeyword_4; }
+		public Keyword getCompositeKeyword_0() { return cCompositeKeyword_0; }
 		
 		//'Influence'
-		public Keyword getInfluenceKeyword_5() { return cInfluenceKeyword_5; }
+		public Keyword getInfluenceKeyword_1() { return cInfluenceKeyword_1; }
 		
 		//name=EString
-		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//EString
-		public RuleCall getNameEStringParserRuleCall_6_0() { return cNameEStringParserRuleCall_6_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		
+		//'#**'
+		public Keyword getNumberSignAsteriskAsteriskKeyword_3() { return cNumberSignAsteriskAsteriskKeyword_3; }
+		
+		//description+=EString
+		public Assignment getDescriptionAssignment_4() { return cDescriptionAssignment_4; }
+		
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_4_0() { return cDescriptionEStringParserRuleCall_4_0; }
+		
+		//( "," description+=EString)*
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//","
+		public Keyword getCommaKeyword_5_0() { return cCommaKeyword_5_0; }
+		
+		//description+=EString
+		public Assignment getDescriptionAssignment_5_1() { return cDescriptionAssignment_5_1; }
+		
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_5_1_0() { return cDescriptionEStringParserRuleCall_5_1_0; }
+		
+		//'**#'?
+		public Keyword getAsteriskAsteriskNumberSignKeyword_6() { return cAsteriskAsteriskNumberSignKeyword_6; }
 		
 		//'encapsulate'
 		public Keyword getEncapsulateKeyword_7() { return cEncapsulateKeyword_7; }
 		
-		//(internalInfluences+=[Influence|EString] | internalInfluences+=[CompositeInfluence|EString])*
+		//(internalInfluences+=[AbstractInfluence|EString])*
+		public Assignment getInternalInfluencesAssignment_8() { return cInternalInfluencesAssignment_8; }
+		
+		//[AbstractInfluence|EString]
+		public CrossReference getInternalInfluencesAbstractInfluenceCrossReference_8_0() { return cInternalInfluencesAbstractInfluenceCrossReference_8_0; }
+		
+		//EString
+		public RuleCall getInternalInfluencesAbstractInfluenceEStringParserRuleCall_8_0_1() { return cInternalInfluencesAbstractInfluenceEStringParserRuleCall_8_0_1; }
+		
+		//'affects'
+		public Keyword getAffectsKeyword_9() { return cAffectsKeyword_9; }
+		
+		//affects+=SystemResponse
+		public Assignment getAffectsAssignment_10() { return cAffectsAssignment_10; }
+		
+		//SystemResponse
+		public RuleCall getAffectsSystemResponseParserRuleCall_10_0() { return cAffectsSystemResponseParserRuleCall_10_0; }
+		
+		//( "and" affects+=SystemResponse)*
+		public Group getGroup_11() { return cGroup_11; }
+		
+		//"and"
+		public Keyword getAndKeyword_11_0() { return cAndKeyword_11_0; }
+		
+		//affects+=SystemResponse
+		public Assignment getAffectsAssignment_11_1() { return cAffectsAssignment_11_1; }
+		
+		//SystemResponse
+		public RuleCall getAffectsSystemResponseParserRuleCall_11_1_0() { return cAffectsSystemResponseParserRuleCall_11_1_0; }
+	}
+	public class InfluenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.Influence");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cInfluenceKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cNumberSignAsteriskAsteriskKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDescriptionEStringParserRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
+		private final Keyword cAsteriskAsteriskNumberSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cOriginatorsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Alternatives cAlternatives_8 = (Alternatives)cGroup.eContents().get(8);
+		private final Group cGroup_8_0 = (Group)cAlternatives_8.eContents().get(0);
+		private final Keyword cArtifactKeyword_8_0_0 = (Keyword)cGroup_8_0.eContents().get(0);
+		private final Assignment cOriginatorArtifactAssignment_8_0_1 = (Assignment)cGroup_8_0.eContents().get(1);
+		private final CrossReference cOriginatorArtifactDesignArtifactCrossReference_8_0_1_0 = (CrossReference)cOriginatorArtifactAssignment_8_0_1.eContents().get(0);
+		private final RuleCall cOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_1_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_8_0_1_0.eContents().get(1);
+		private final Group cGroup_8_1 = (Group)cAlternatives_8.eContents().get(1);
+		private final Keyword cPhenomenaKeyword_8_1_0 = (Keyword)cGroup_8_1.eContents().get(0);
+		private final Assignment cOriginatorPhenomenaAssignment_8_1_1 = (Assignment)cGroup_8_1.eContents().get(1);
+		private final CrossReference cOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_1_0 = (CrossReference)cOriginatorPhenomenaAssignment_8_1_1.eContents().get(0);
+		private final RuleCall cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_8_1_1_0_1 = (RuleCall)cOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_1_0.eContents().get(1);
+		private final Group cGroup_8_2 = (Group)cAlternatives_8.eContents().get(2);
+		private final Keyword cSystemKeyword_8_2_0 = (Keyword)cGroup_8_2.eContents().get(0);
+		private final Keyword cResponseKeyword_8_2_1 = (Keyword)cGroup_8_2.eContents().get(1);
+		private final Assignment cOriginatorSystemResponseAssignment_8_2_2 = (Assignment)cGroup_8_2.eContents().get(2);
+		private final CrossReference cOriginatorSystemResponseSystemResponseCrossReference_8_2_2_0 = (CrossReference)cOriginatorSystemResponseAssignment_8_2_2.eContents().get(0);
+		private final RuleCall cOriginatorSystemResponseSystemResponseEStringParserRuleCall_8_2_2_0_1 = (RuleCall)cOriginatorSystemResponseSystemResponseCrossReference_8_2_2_0.eContents().get(1);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cAndKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Alternatives cAlternatives_9_1 = (Alternatives)cGroup_9.eContents().get(1);
+		private final Group cGroup_9_1_0 = (Group)cAlternatives_9_1.eContents().get(0);
+		private final Keyword cArtifactKeyword_9_1_0_0 = (Keyword)cGroup_9_1_0.eContents().get(0);
+		private final Assignment cOriginatorArtifactAssignment_9_1_0_1 = (Assignment)cGroup_9_1_0.eContents().get(1);
+		private final CrossReference cOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0 = (CrossReference)cOriginatorArtifactAssignment_9_1_0_1.eContents().get(0);
+		private final RuleCall cOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_1_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0.eContents().get(1);
+		private final Group cGroup_9_1_1 = (Group)cAlternatives_9_1.eContents().get(1);
+		private final Keyword cPhenomenaKeyword_9_1_1_0 = (Keyword)cGroup_9_1_1.eContents().get(0);
+		private final Assignment cOriginatorPhenomenaAssignment_9_1_1_1 = (Assignment)cGroup_9_1_1.eContents().get(1);
+		private final CrossReference cOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_1_0 = (CrossReference)cOriginatorPhenomenaAssignment_9_1_1_1.eContents().get(0);
+		private final RuleCall cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_9_1_1_1_0_1 = (RuleCall)cOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_1_0.eContents().get(1);
+		private final Group cGroup_9_1_2 = (Group)cAlternatives_9_1.eContents().get(2);
+		private final Keyword cSystemKeyword_9_1_2_0 = (Keyword)cGroup_9_1_2.eContents().get(0);
+		private final Keyword cResponseKeyword_9_1_2_1 = (Keyword)cGroup_9_1_2.eContents().get(1);
+		private final Assignment cOriginatorSystemResponseAssignment_9_1_2_2 = (Assignment)cGroup_9_1_2.eContents().get(2);
+		private final CrossReference cOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0 = (CrossReference)cOriginatorSystemResponseAssignment_9_1_2_2.eContents().get(0);
+		private final RuleCall cOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1 = (RuleCall)cOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0.eContents().get(1);
+		private final Keyword cAffectsKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cAffectsAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_11_0 = (RuleCall)cAffectsAssignment_11.eContents().get(0);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cAndKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cAffectsAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_12_1_0 = (RuleCall)cAffectsAssignment_12_1.eContents().get(0);
+		
+		//Influence returns Influence:
+		//    'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
+		//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+		//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//        'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
+		//    ;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
+		//    'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+		//                      ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//    'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
+		public Group getGroup() { return cGroup; }
+		
+		//'Influence'
+		public Keyword getInfluenceKeyword_0() { return cInfluenceKeyword_0; }
+		
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		
+		//'#**'
+		public Keyword getNumberSignAsteriskAsteriskKeyword_2() { return cNumberSignAsteriskAsteriskKeyword_2; }
+		
+		//description+=EString
+		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
+		
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_3_0() { return cDescriptionEStringParserRuleCall_3_0; }
+		
+		//( "," description+=EString)*
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//","
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
+		
+		//description+=EString
+		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
+		
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
+		
+		//'**#'?
+		public Keyword getAsteriskAsteriskNumberSignKeyword_5() { return cAsteriskAsteriskNumberSignKeyword_5; }
+		
+		//'originators'
+		public Keyword getOriginatorsKeyword_6() { return cOriginatorsKeyword_6; }
+		
+		//':'
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+		
+		//(("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 		public Alternatives getAlternatives_8() { return cAlternatives_8; }
 		
-		//internalInfluences+=[Influence|EString]
-		public Assignment getInternalInfluencesAssignment_8_0() { return cInternalInfluencesAssignment_8_0; }
+		//("artifact" originatorArtifact+=[DesignArtifact|ID])
+		public Group getGroup_8_0() { return cGroup_8_0; }
 		
-		//[Influence|EString]
-		public CrossReference getInternalInfluencesInfluenceCrossReference_8_0_0() { return cInternalInfluencesInfluenceCrossReference_8_0_0; }
+		//"artifact"
+		public Keyword getArtifactKeyword_8_0_0() { return cArtifactKeyword_8_0_0; }
+		
+		//originatorArtifact+=[DesignArtifact|ID]
+		public Assignment getOriginatorArtifactAssignment_8_0_1() { return cOriginatorArtifactAssignment_8_0_1; }
+		
+		//[DesignArtifact|ID]
+		public CrossReference getOriginatorArtifactDesignArtifactCrossReference_8_0_1_0() { return cOriginatorArtifactDesignArtifactCrossReference_8_0_1_0; }
+		
+		//ID
+		public RuleCall getOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_1_0_1() { return cOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_1_0_1; }
+		
+		//("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString])
+		public Group getGroup_8_1() { return cGroup_8_1; }
+		
+		//"phenomena"
+		public Keyword getPhenomenaKeyword_8_1_0() { return cPhenomenaKeyword_8_1_0; }
+		
+		//originatorPhenomena+=[PhysicalPhenomena|EString]
+		public Assignment getOriginatorPhenomenaAssignment_8_1_1() { return cOriginatorPhenomenaAssignment_8_1_1; }
+		
+		//[PhysicalPhenomena|EString]
+		public CrossReference getOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_1_0() { return cOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_1_0; }
 		
 		//EString
-		public RuleCall getInternalInfluencesInfluenceEStringParserRuleCall_8_0_0_1() { return cInternalInfluencesInfluenceEStringParserRuleCall_8_0_0_1; }
+		public RuleCall getOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_8_1_1_0_1() { return cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_8_1_1_0_1; }
 		
-		//internalInfluences+=[CompositeInfluence|EString]
-		public Assignment getInternalInfluencesAssignment_8_1() { return cInternalInfluencesAssignment_8_1; }
+		//("system" "response" originatorSystemResponse+=[SystemResponse|EString])
+		public Group getGroup_8_2() { return cGroup_8_2; }
 		
-		//[CompositeInfluence|EString]
-		public CrossReference getInternalInfluencesCompositeInfluenceCrossReference_8_1_0() { return cInternalInfluencesCompositeInfluenceCrossReference_8_1_0; }
+		//"system"
+		public Keyword getSystemKeyword_8_2_0() { return cSystemKeyword_8_2_0; }
+		
+		//"response"
+		public Keyword getResponseKeyword_8_2_1() { return cResponseKeyword_8_2_1; }
+		
+		//originatorSystemResponse+=[SystemResponse|EString]
+		public Assignment getOriginatorSystemResponseAssignment_8_2_2() { return cOriginatorSystemResponseAssignment_8_2_2; }
+		
+		//[SystemResponse|EString]
+		public CrossReference getOriginatorSystemResponseSystemResponseCrossReference_8_2_2_0() { return cOriginatorSystemResponseSystemResponseCrossReference_8_2_2_0; }
 		
 		//EString
-		public RuleCall getInternalInfluencesCompositeInfluenceEStringParserRuleCall_8_1_0_1() { return cInternalInfluencesCompositeInfluenceEStringParserRuleCall_8_1_0_1; }
+		public RuleCall getOriginatorSystemResponseSystemResponseEStringParserRuleCall_8_2_2_0_1() { return cOriginatorSystemResponseSystemResponseEStringParserRuleCall_8_2_2_0_1; }
+		
+		//( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		public Group getGroup_9() { return cGroup_9; }
+		
+		//"and"
+		public Keyword getAndKeyword_9_0() { return cAndKeyword_9_0; }
+		
+		//(("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+		public Alternatives getAlternatives_9_1() { return cAlternatives_9_1; }
+		
+		//("artifact" originatorArtifact+=[DesignArtifact|ID])
+		public Group getGroup_9_1_0() { return cGroup_9_1_0; }
+		
+		//"artifact"
+		public Keyword getArtifactKeyword_9_1_0_0() { return cArtifactKeyword_9_1_0_0; }
+		
+		//originatorArtifact+=[DesignArtifact|ID]
+		public Assignment getOriginatorArtifactAssignment_9_1_0_1() { return cOriginatorArtifactAssignment_9_1_0_1; }
+		
+		//[DesignArtifact|ID]
+		public CrossReference getOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0() { return cOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0; }
+		
+		//ID
+		public RuleCall getOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_1_0_1() { return cOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_1_0_1; }
+		
+		//("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString])
+		public Group getGroup_9_1_1() { return cGroup_9_1_1; }
+		
+		//"phenomena"
+		public Keyword getPhenomenaKeyword_9_1_1_0() { return cPhenomenaKeyword_9_1_1_0; }
+		
+		//originatorPhenomena+=[PhysicalPhenomena|EString]
+		public Assignment getOriginatorPhenomenaAssignment_9_1_1_1() { return cOriginatorPhenomenaAssignment_9_1_1_1; }
+		
+		//[PhysicalPhenomena|EString]
+		public CrossReference getOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_1_0() { return cOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_1_0; }
+		
+		//EString
+		public RuleCall getOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_9_1_1_1_0_1() { return cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_9_1_1_1_0_1; }
+		
+		//("system" "response" originatorSystemResponse+=[SystemResponse|EString])
+		public Group getGroup_9_1_2() { return cGroup_9_1_2; }
+		
+		//"system"
+		public Keyword getSystemKeyword_9_1_2_0() { return cSystemKeyword_9_1_2_0; }
+		
+		//"response"
+		public Keyword getResponseKeyword_9_1_2_1() { return cResponseKeyword_9_1_2_1; }
+		
+		//originatorSystemResponse+=[SystemResponse|EString]
+		public Assignment getOriginatorSystemResponseAssignment_9_1_2_2() { return cOriginatorSystemResponseAssignment_9_1_2_2; }
+		
+		//[SystemResponse|EString]
+		public CrossReference getOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0() { return cOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0; }
+		
+		//EString
+		public RuleCall getOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1() { return cOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1; }
+		
+		//'affects'
+		public Keyword getAffectsKeyword_10() { return cAffectsKeyword_10; }
+		
+		//affects+=SystemResponse
+		public Assignment getAffectsAssignment_11() { return cAffectsAssignment_11; }
+		
+		//SystemResponse
+		public RuleCall getAffectsSystemResponseParserRuleCall_11_0() { return cAffectsSystemResponseParserRuleCall_11_0; }
+		
+		//( "and" affects+=SystemResponse)*
+		public Group getGroup_12() { return cGroup_12; }
+		
+		//"and"
+		public Keyword getAndKeyword_12_0() { return cAndKeyword_12_0; }
+		
+		//affects+=SystemResponse
+		public Assignment getAffectsAssignment_12_1() { return cAffectsAssignment_12_1; }
+		
+		//SystemResponse
+		public RuleCall getAffectsSystemResponseParserRuleCall_12_1_0() { return cAffectsSystemResponseParserRuleCall_12_1_0; }
 	}
 	public class PhysicalPhenomenaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.PhysicalPhenomena");
@@ -268,220 +535,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//EString
 		public RuleCall getDescriptionEStringParserRuleCall_2_2_1_0() { return cDescriptionEStringParserRuleCall_2_2_1_0; }
-	}
-	public class InfluenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.Influence");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNumberSignAsteriskAsteriskKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cDescriptionAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_1_0 = (RuleCall)cDescriptionAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cDescriptionAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_2_1_0 = (RuleCall)cDescriptionAssignment_2_1.eContents().get(0);
-		private final Keyword cAsteriskAsteriskNumberSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cInfluenceKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cNameEStringParserRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
-		private final Keyword cOriginatorsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Alternatives cAlternatives_8 = (Alternatives)cGroup.eContents().get(8);
-		private final Assignment cOriginatorArtifactAssignment_8_0 = (Assignment)cAlternatives_8.eContents().get(0);
-		private final CrossReference cOriginatorArtifactDesignArtifactCrossReference_8_0_0 = (CrossReference)cOriginatorArtifactAssignment_8_0.eContents().get(0);
-		private final RuleCall cOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_8_0_0.eContents().get(1);
-		private final Assignment cOriginatorPhenomenaAssignment_8_1 = (Assignment)cAlternatives_8.eContents().get(1);
-		private final CrossReference cOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_0 = (CrossReference)cOriginatorPhenomenaAssignment_8_1.eContents().get(0);
-		private final RuleCall cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_8_1_0_1 = (RuleCall)cOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_0.eContents().get(1);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cCommaKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Alternatives cAlternatives_9_1 = (Alternatives)cGroup_9.eContents().get(1);
-		private final Assignment cOriginatorArtifactAssignment_9_1_0 = (Assignment)cAlternatives_9_1.eContents().get(0);
-		private final CrossReference cOriginatorArtifactDesignArtifactCrossReference_9_1_0_0 = (CrossReference)cOriginatorArtifactAssignment_9_1_0.eContents().get(0);
-		private final RuleCall cOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_9_1_0_0.eContents().get(1);
-		private final Assignment cOriginatorPhenomenaAssignment_9_1_1 = (Assignment)cAlternatives_9_1.eContents().get(1);
-		private final CrossReference cOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_0 = (CrossReference)cOriginatorPhenomenaAssignment_9_1_1.eContents().get(0);
-		private final RuleCall cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_9_1_1_0_1 = (RuleCall)cOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_0.eContents().get(1);
-		private final Keyword cAffectsKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cAffectsAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_11_0 = (RuleCall)cAffectsAssignment_11.eContents().get(0);
-		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cCommaKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Assignment cAffectsAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_12_1_0 = (RuleCall)cAffectsAssignment_12_1.eContents().get(0);
-		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
-		private final Keyword cWhichKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
-		private final Keyword cMayKeyword_13_1 = (Keyword)cGroup_13.eContents().get(1);
-		private final Keyword cViolateKeyword_13_2 = (Keyword)cGroup_13.eContents().get(2);
-		private final Assignment cRelatedToAssignment_13_3 = (Assignment)cGroup_13.eContents().get(3);
-		private final CrossReference cRelatedToRequirementCrossReference_13_3_0 = (CrossReference)cRelatedToAssignment_13_3.eContents().get(0);
-		private final RuleCall cRelatedToRequirementEStringParserRuleCall_13_3_0_1 = (RuleCall)cRelatedToRequirementCrossReference_13_3_0.eContents().get(1);
-		private final Group cGroup_13_4 = (Group)cGroup_13.eContents().get(4);
-		private final Keyword cAndOrKeyword_13_4_0 = (Keyword)cGroup_13_4.eContents().get(0);
-		private final Assignment cRelatedToAssignment_13_4_1 = (Assignment)cGroup_13_4.eContents().get(1);
-		private final CrossReference cRelatedToRequirementCrossReference_13_4_1_0 = (CrossReference)cRelatedToAssignment_13_4_1.eContents().get(0);
-		private final RuleCall cRelatedToRequirementEStringParserRuleCall_13_4_1_0_1 = (RuleCall)cRelatedToRequirementCrossReference_13_4_1_0.eContents().get(1);
-		
-		//Influence returns Influence:
-		//    '#**' description+=EString ( "," description+=EString)* '**#'?
-		//    'Influence'
-		//    name=EString
-		//        'originators' ':' (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]) ( "," (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]))*
-		//        'affects' affects+=SystemResponse ( "," affects+=SystemResponse)*
-		//        ('which' 'may' 'violate' relatedTo+=[Requirement|EString] ( "and/or" relatedTo+=[Requirement|EString])*)?
-		//    ;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'#**' description+=EString ( "," description+=EString)* '**#'?
-		//'Influence'
-		//name=EString
-		//    'originators' ':' (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]) ( "," (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]))*
-		//    'affects' affects+=SystemResponse ( "," affects+=SystemResponse)*
-		//    ('which' 'may' 'violate' relatedTo+=[Requirement|EString] ( "and/or" relatedTo+=[Requirement|EString])*)?
-		public Group getGroup() { return cGroup; }
-		
-		//'#**'
-		public Keyword getNumberSignAsteriskAsteriskKeyword_0() { return cNumberSignAsteriskAsteriskKeyword_0; }
-		
-		//description+=EString
-		public Assignment getDescriptionAssignment_1() { return cDescriptionAssignment_1; }
-		
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_1_0() { return cDescriptionEStringParserRuleCall_1_0; }
-		
-		//( "," description+=EString)*
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//","
-		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
-		
-		//description+=EString
-		public Assignment getDescriptionAssignment_2_1() { return cDescriptionAssignment_2_1; }
-		
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_2_1_0() { return cDescriptionEStringParserRuleCall_2_1_0; }
-		
-		//'**#'?
-		public Keyword getAsteriskAsteriskNumberSignKeyword_3() { return cAsteriskAsteriskNumberSignKeyword_3; }
-		
-		//'Influence'
-		public Keyword getInfluenceKeyword_4() { return cInfluenceKeyword_4; }
-		
-		//name=EString
-		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
-		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_5_0() { return cNameEStringParserRuleCall_5_0; }
-		
-		//'originators'
-		public Keyword getOriginatorsKeyword_6() { return cOriginatorsKeyword_6; }
-		
-		//':'
-		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
-		
-		//(originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString])
-		public Alternatives getAlternatives_8() { return cAlternatives_8; }
-		
-		//originatorArtifact+=[DesignArtifact|ID]
-		public Assignment getOriginatorArtifactAssignment_8_0() { return cOriginatorArtifactAssignment_8_0; }
-		
-		//[DesignArtifact|ID]
-		public CrossReference getOriginatorArtifactDesignArtifactCrossReference_8_0_0() { return cOriginatorArtifactDesignArtifactCrossReference_8_0_0; }
-		
-		//ID
-		public RuleCall getOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_0_1() { return cOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_0_1; }
-		
-		//originatorPhenomena+=[PhysicalPhenomena|EString]
-		public Assignment getOriginatorPhenomenaAssignment_8_1() { return cOriginatorPhenomenaAssignment_8_1; }
-		
-		//[PhysicalPhenomena|EString]
-		public CrossReference getOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_0() { return cOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_0; }
-		
-		//EString
-		public RuleCall getOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_8_1_0_1() { return cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_8_1_0_1; }
-		
-		//( "," (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]))*
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//","
-		public Keyword getCommaKeyword_9_0() { return cCommaKeyword_9_0; }
-		
-		//(originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString])
-		public Alternatives getAlternatives_9_1() { return cAlternatives_9_1; }
-		
-		//originatorArtifact+=[DesignArtifact|ID]
-		public Assignment getOriginatorArtifactAssignment_9_1_0() { return cOriginatorArtifactAssignment_9_1_0; }
-		
-		//[DesignArtifact|ID]
-		public CrossReference getOriginatorArtifactDesignArtifactCrossReference_9_1_0_0() { return cOriginatorArtifactDesignArtifactCrossReference_9_1_0_0; }
-		
-		//ID
-		public RuleCall getOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_0_1() { return cOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_0_1; }
-		
-		//originatorPhenomena+=[PhysicalPhenomena|EString]
-		public Assignment getOriginatorPhenomenaAssignment_9_1_1() { return cOriginatorPhenomenaAssignment_9_1_1; }
-		
-		//[PhysicalPhenomena|EString]
-		public CrossReference getOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_0() { return cOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_0; }
-		
-		//EString
-		public RuleCall getOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_9_1_1_0_1() { return cOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_9_1_1_0_1; }
-		
-		//'affects'
-		public Keyword getAffectsKeyword_10() { return cAffectsKeyword_10; }
-		
-		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_11() { return cAffectsAssignment_11; }
-		
-		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_11_0() { return cAffectsSystemResponseParserRuleCall_11_0; }
-		
-		//( "," affects+=SystemResponse)*
-		public Group getGroup_12() { return cGroup_12; }
-		
-		//","
-		public Keyword getCommaKeyword_12_0() { return cCommaKeyword_12_0; }
-		
-		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_12_1() { return cAffectsAssignment_12_1; }
-		
-		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_12_1_0() { return cAffectsSystemResponseParserRuleCall_12_1_0; }
-		
-		//('which' 'may' 'violate' relatedTo+=[Requirement|EString] ( "and/or" relatedTo+=[Requirement|EString])*)?
-		public Group getGroup_13() { return cGroup_13; }
-		
-		//'which'
-		public Keyword getWhichKeyword_13_0() { return cWhichKeyword_13_0; }
-		
-		//'may'
-		public Keyword getMayKeyword_13_1() { return cMayKeyword_13_1; }
-		
-		//'violate'
-		public Keyword getViolateKeyword_13_2() { return cViolateKeyword_13_2; }
-		
-		//relatedTo+=[Requirement|EString]
-		public Assignment getRelatedToAssignment_13_3() { return cRelatedToAssignment_13_3; }
-		
-		//[Requirement|EString]
-		public CrossReference getRelatedToRequirementCrossReference_13_3_0() { return cRelatedToRequirementCrossReference_13_3_0; }
-		
-		//EString
-		public RuleCall getRelatedToRequirementEStringParserRuleCall_13_3_0_1() { return cRelatedToRequirementEStringParserRuleCall_13_3_0_1; }
-		
-		//( "and/or" relatedTo+=[Requirement|EString])*
-		public Group getGroup_13_4() { return cGroup_13_4; }
-		
-		//"and/or"
-		public Keyword getAndOrKeyword_13_4_0() { return cAndOrKeyword_13_4_0; }
-		
-		//relatedTo+=[Requirement|EString]
-		public Assignment getRelatedToAssignment_13_4_1() { return cRelatedToAssignment_13_4_1; }
-		
-		//[Requirement|EString]
-		public CrossReference getRelatedToRequirementCrossReference_13_4_1_0() { return cRelatedToRequirementCrossReference_13_4_1_0; }
-		
-		//EString
-		public RuleCall getRelatedToRequirementEStringParserRuleCall_13_4_1_0_1() { return cRelatedToRequirementEStringParserRuleCall_13_4_1_0_1; }
 	}
 	public class RequirementSatisfactionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.RequirementSatisfaction");
@@ -742,9 +795,10 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	
 	private final InfluenceModelElements pInfluenceModel;
+	private final AbstractInfluenceElements pAbstractInfluence;
 	private final CompositeInfluenceElements pCompositeInfluence;
-	private final PhysicalPhenomenaElements pPhysicalPhenomena;
 	private final InfluenceElements pInfluence;
+	private final PhysicalPhenomenaElements pPhysicalPhenomena;
 	private final RequirementSatisfactionElements pRequirementSatisfaction;
 	private final DesignArtifactElements pDesignArtifact;
 	private final EStringElements pEString;
@@ -762,9 +816,10 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pInfluenceModel = new InfluenceModelElements();
+		this.pAbstractInfluence = new AbstractInfluenceElements();
 		this.pCompositeInfluence = new CompositeInfluenceElements();
-		this.pPhysicalPhenomena = new PhysicalPhenomenaElements();
 		this.pInfluence = new InfluenceElements();
+		this.pPhysicalPhenomena = new PhysicalPhenomenaElements();
 		this.pRequirementSatisfaction = new RequirementSatisfactionElements();
 		this.pDesignArtifact = new DesignArtifactElements();
 		this.pEString = new EStringElements();
@@ -806,7 +861,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//        (ownedArtifacts+=DesignArtifact |
 	//        ownedRequirements+=RequirementSatisfaction |
 	//        ownedPhysicalPhenomena+=PhysicalPhenomena |
-	//        ownedInfluences+=(Influence | CompositeInfluence) )*
+	//        ownedInfluences+=AbstractInfluence
+	//        )*
 	//    ;
 	public InfluenceModelElements getInfluenceModelAccess() {
 		return pInfluenceModel;
@@ -816,12 +872,22 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getInfluenceModelAccess().getRule();
 	}
 	
+	//AbstractInfluence returns AbstractInfluence:
+	//    Influence | CompositeInfluence
+	//;
+	public AbstractInfluenceElements getAbstractInfluenceAccess() {
+		return pAbstractInfluence;
+	}
+	
+	public ParserRule getAbstractInfluenceRule() {
+		return getAbstractInfluenceAccess().getRule();
+	}
+	
 	//CompositeInfluence returns CompositeInfluence:
-	//    '#**' description+=EString ( "," description+=EString)* '**#'?
-	//    'Composite' 'Influence'
-	//    name=EString
+	//    'Composite' 'Influence'    name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 	//    'encapsulate'
-	//        (internalInfluences+=[Influence|EString] | internalInfluences+=[CompositeInfluence|EString])*
+	//        (internalInfluences+=[AbstractInfluence|EString])*
+	//    'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 	//;
 	public CompositeInfluenceElements getCompositeInfluenceAccess() {
 		return pCompositeInfluence;
@@ -829,6 +895,20 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getCompositeInfluenceRule() {
 		return getCompositeInfluenceAccess().getRule();
+	}
+	
+	//Influence returns Influence:
+	//    'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
+	//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+	//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+	//        'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
+	//    ;
+	public InfluenceElements getInfluenceAccess() {
+		return pInfluence;
+	}
+	
+	public ParserRule getInfluenceRule() {
+		return getInfluenceAccess().getRule();
 	}
 	
 	//PhysicalPhenomena returns PhysicalPhenomena:
@@ -842,22 +922,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getPhysicalPhenomenaRule() {
 		return getPhysicalPhenomenaAccess().getRule();
-	}
-	
-	//Influence returns Influence:
-	//    '#**' description+=EString ( "," description+=EString)* '**#'?
-	//    'Influence'
-	//    name=EString
-	//        'originators' ':' (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]) ( "," (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString]))*
-	//        'affects' affects+=SystemResponse ( "," affects+=SystemResponse)*
-	//        ('which' 'may' 'violate' relatedTo+=[Requirement|EString] ( "and/or" relatedTo+=[Requirement|EString])*)?
-	//    ;
-	public InfluenceElements getInfluenceAccess() {
-		return pInfluence;
-	}
-	
-	public ParserRule getInfluenceRule() {
-		return getInfluenceAccess().getRule();
 	}
 	
 	//RequirementSatisfaction returns Requirement:
