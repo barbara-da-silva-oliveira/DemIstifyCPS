@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/kiel/diagram" xmlns:layout="http://www.eclipse.org/elk/ElkLayout" xmlns:influences="http://kairos.inria.fr/influences" xmi:id="_InfluenceDSL_Diagram">
+  <!-- This file is now mostly a placeholder. The actual diagram synthesis is done by the Xtend function. -->
+  <!-- Global layout options can still be defined here if desired, but are also set in the synthesizer. -->
+</diagram:Diagram>

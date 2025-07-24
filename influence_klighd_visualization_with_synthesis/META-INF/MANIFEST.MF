@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: KlighD Influence DSL Visualization
+Bundle-SymbolicName: fr.inria.kairos.influence.klighd;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Inria Kairos
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.sirius.diagram.layout.elk,
+ org.eclipse.sirius.diagram.layout.elk.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-ActivationPolicy: lazy

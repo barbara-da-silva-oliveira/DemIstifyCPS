@@ -1,24 +1,32 @@
 InfluenceModel test1
+ 
+	DesignArtifact motorSpeed -> PictureTaking.Shoot
+	DesignArtifact motorType -> P22
+	DesignArtifact threshold -> doorOpened
+	DesignArtifact ultraSonicSensorType -> doorClosed
+	  
+	
+	Requirement noCollision : satisfied when "the number of Obstacle Collision is equals to 0"
+			 
+	Phenomenon wind: "wind"
+	Phenomenon temperature: "temperature" 
+	Phenomenon humidity: "humidity" 
+ 	  
+	Influence i1 #** "This influence is a simple test" **#
+	    originators: artifact motorSpeed and artifact motorType and phenomena wind 
+		affects system response TTC
+		 
+	 
+	Influence i2 #** "This influence is a minimal test" **#	
+	originators: system response "i1.TTC" and artifact threshold
+	affects system response StoppedDistanceToObstacle 
+	
+	Influence i3 #** "This influence is a another test" **#	
+	originators: system response "i1.TTC" and artifact ultraSonicSensorType and phenomena humidity and phenomena temperature
+	affects system response DistanceMeasureAccuracy 
+	
+	Composite Influence i4 #** "This is a composite Influence" **#
+	encapsulate i1 i2 i3
+	affects system response numberCollision used in noCollision
 
-	Artifact a1 -> PictureTaking.Shoot
-	Artifact a2 -> P22
-	Artifact a3 -> doorOpened
-	
-	Requirement Satisfaction rs1 : from  Requirement "req1" satisfied when "the req1 is bla "
-			
-	AtomicPhenomenon cp1 configuration "zaza" 
-		
-	#** "This influence is a simple test" **#	
-	Influence i1 from a1 and from phenomena cp1 
-		emerges Emergent Behavior characterized by "an oscillation of phase" 
-		that implies system response resulting in "a huge energy consumtpion increase" 
-		which may violate rs1 it can be compensated by modifying a2
-	
-	
-	#** "This influence is a minimal test" **#	
-	Influence i2 from a1 and from phenomena cp1 
-	emerges Emergent Behavior 
-	that implies system response 
-	which may violate rs1 
-	it can be compensated by modifying a3
 	

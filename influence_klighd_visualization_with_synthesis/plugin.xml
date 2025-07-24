@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.diagram.ui.diagramRepresentation">
+      <representation
+            editorId="fr.inria.kairos.influence.KlighDInfluenceModel"
+            fileExtension="influencemodel"
+            id="fr.inria.kairos.influence.KlighDInfluenceModel"
+            label="Influence Diagram"
+            modelId="http://kairos.inria.fr/influences"
+            synthesizer="fr.inria.kairos.influence.klighd.synthesis.InfluenceModelSynthesis">
+      </representation>
+   </extension>
+</plugin>
