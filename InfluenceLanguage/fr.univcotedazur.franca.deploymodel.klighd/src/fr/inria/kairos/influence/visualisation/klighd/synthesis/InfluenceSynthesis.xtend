@@ -46,6 +46,8 @@ import org.eclipse.emf.ecore.EObject
 import fr.inria.kairos.influence.metamodel.CompositeInfluence
 import fr.inria.kairos.influence.metamodel.SystemResponse
 import fr.inria.kairos.influence.metamodel.Requirement
+import fr.inria.kairos.influence.metamodel.Function
+import fr.inria.kairos.influence.metamodel.CompositeFunction
 
 /**
  * Diagram synthesis for Influence programs.
@@ -68,19 +70,21 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 	@Inject extension InfluenceShapeExtensions
 	@Inject extension UtilityExtensions
 
-	
 	// -------------------------------------------------------------------------
-
 	// -- INTERNAL --
 //	public static val REACTOR_INSTANCE = new Property<BreadCrumbTrail<Instantiation>>("org.lflang.linguafranca.diagram.synthesis.reactor.instantiation")
-	public static val REACTOR_RECURSIVE_INSTANTIATION = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.recursive.instantiation", false)
-    public static val REACTOR_HAS_BANK_PORT_OFFSET = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.bank.offset", false)
-    public static val REACTOR_INPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.input", false)
-    public static val REACTOR_OUTPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.output", false)
-	
+	public static val REACTOR_RECURSIVE_INSTANTIATION = new Property<Boolean>(
+		"org.lflang.linguafranca.diagram.synthesis.reactor.recursive.instantiation", false)
+	public static val REACTOR_HAS_BANK_PORT_OFFSET = new Property<Boolean>(
+		"org.lflang.linguafranca.diagram.synthesis.reactor.bank.offset", false)
+	public static val REACTOR_INPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.input",
+		false)
+	public static val REACTOR_OUTPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.output",
+		false)
+
 	// -- STYLE --	
 	public static val ALTERNATIVE_DASH_PATTERN = #[3.0f]
-	
+
 	// -- TEXT --
 	public static val TEXT_ERROR_RECURSIVE = "Recursive reactor instantiation!"
 	public static val TEXT_ERROR_CONTAINS_RECURSION = "Reactor contains recursive instantiation!"
@@ -93,108 +97,110 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 	public static val TEXT_REACTOR_NULL = "Reactor is null"
 	public static val TEXT_HIDE_ACTION = "[Hide]"
 	public static val TEXT_SHOW_ACTION = "[Details]"
-	
+
 	// -------------------------------------------------------------------------
-	
 	/** Synthesis category */
 	public static val SynthesisOption APPEARANCE = SynthesisOption.createCategory("Appearance", true)
 	public static val SynthesisOption EXPERIMENTAL = SynthesisOption.createCategory("Experimental", true)
-	
-	/** Synthesis options */	
-	public static val SynthesisOption SHOW_USER_LABELS = SynthesisOption.createCheckOption("User Labels (@label in JavaDoc)", true).setCategory(APPEARANCE)
-	public static val SynthesisOption SHOW_HYPERLINKS = SynthesisOption.createCheckOption("Expand/Collapse Hyperlinks", false).setCategory(APPEARANCE)
-	public static val SynthesisOption USE_ALTERNATIVE_DASH_PATTERN = SynthesisOption.createCheckOption("Alternative Dependency Line Style", false).setCategory(APPEARANCE)
-	public static val SynthesisOption SHOW_REACTOR_HOST = SynthesisOption.createCheckOption("Reactor Host Addresses", true).setCategory(APPEARANCE)
-	public static val SynthesisOption SHOW_INSTANCE_NAMES = SynthesisOption.createCheckOption("Reactor Instance Names", false).setCategory(APPEARANCE)
-	
+
+	/** Synthesis options */
+	public static val SynthesisOption SHOW_USER_LABELS = SynthesisOption.createCheckOption(
+		"User Labels (@label in JavaDoc)", true).setCategory(APPEARANCE)
+	public static val SynthesisOption SHOW_HYPERLINKS = SynthesisOption.createCheckOption("Expand/Collapse Hyperlinks",
+		false).setCategory(APPEARANCE)
+	public static val SynthesisOption USE_ALTERNATIVE_DASH_PATTERN = SynthesisOption.createCheckOption(
+		"Alternative Dependency Line Style", false).setCategory(APPEARANCE)
+	public static val SynthesisOption SHOW_REACTOR_HOST = SynthesisOption.createCheckOption("Reactor Host Addresses",
+		true).setCategory(APPEARANCE)
+	public static val SynthesisOption SHOW_INSTANCE_NAMES = SynthesisOption.createCheckOption("Reactor Instance Names",
+		false).setCategory(APPEARANCE)
+
 //    /** Synthesis actions */
 //    public static val DisplayedActionData COLLAPSE_ALL = DisplayedActionData.create(CollapseAllReactorsAction.ID, "Hide all Details")
 //    public static val DisplayedActionData EXPAND_ALL = DisplayedActionData.create(ExpandAllReactorsAction.ID, "Show all Details")
-	
-	
-	
-
-	
-	
 	override getDisplayedSynthesisOptions() {
 		return #[
 //			MEMORIZE_EXPANSION_STATES,
 			SHOW_USER_LABELS,
 			SHOW_HYPERLINKS,
-			//LinguaFrancaSynthesisInterfaceDependencies.SHOW_INTERFACE_DEPENDENCIES,
+			// LinguaFrancaSynthesisInterfaceDependencies.SHOW_INTERFACE_DEPENDENCIES,
 			USE_ALTERNATIVE_DASH_PATTERN,
 			SHOW_REACTOR_HOST,
 			SHOW_INSTANCE_NAMES
 		]
 	}
-	
+
 //    override getDisplayedActions() {
 //        return #[COLLAPSE_ALL, EXPAND_ALL]
 //    }
-	
 	// -------------------------------------------------------------------------
-	
-	private var elemToNode = new HashMap<EObject,KNode>()	
-	
-	
+	private var elemToNode = new HashMap<EObject, KNode>()
+
 	override KNode transform(InfluenceModel model) {
 		val rootNode = KGraphUtil.createInitializedNode()
-		elemToNode.put(model,rootNode)
+		elemToNode.put(model, rootNode)
 		try {
 			// Find main
 			val main = model
 			if (main !== null) {
-				for(artifact : main.ownedArtifacts){
+				for (artifact : main.ownedArtifacts) {
 					var artNode = artifact.createArtifact
 					rootNode.children += artNode
-					elemToNode.put(artifact,artNode)  
+					elemToNode.put(artifact, artNode)
 				}
-				for(phenomena : main.ownedPhysicalPhenomena){
+				for (phenomena : main.ownedPhysicalPhenomena) {
 					var pheNode = phenomena.createPhenomena
 					rootNode.children += pheNode
-					elemToNode.put(phenomena,pheNode)  
-					 
+					elemToNode.put(phenomena, pheNode)
+
 				}
-				for(AbstractInfluence absInf: main.ownedInfluences){
+				for (AbstractInfluence absInf : main.ownedInfluences) {
 					var infNode = absInf.createInfluencePass1
 					rootNode.children += infNode
-					elemToNode.put(absInf,infNode)  
+					elemToNode.put(absInf, infNode)
 				}
-				for(AbstractInfluence absInf: main.ownedInfluences){
-					absInf.createInfluencePass2		
+				for (AbstractInfluence absInf : main.ownedInfluences) {
+					absInf.createInfluencePass2
 				}
-				for(AbstractInfluence absInf: main.ownedInfluences){
+				for (AbstractInfluence absInf : main.ownedInfluences) {
 					absInf.createInfluencePass3
 				}
-				for(Requirement req: main.ownedRequirements){
+				for (Requirement req : main.ownedRequirements) {
 					var reqNode = req.createRequirement
 					rootNode.children += reqNode
-					elemToNode.put(req,reqNode)
+					elemToNode.put(req, reqNode)
 				}
-				for(AbstractInfluence absInf: main.ownedInfluences){
-					for (sr : absInf.affects){
-						if (sr.usedIn.size()>0){
-							for (req: sr.usedIn){
+				for (AbstractInfluence absInf : main.ownedInfluences) {
+					for (sr : absInf.affects) {
+						if (sr.usedIn.size() > 0) {
+							for (req : sr.usedIn) {
 								var srNode = elemToNode.get(sr)
 								var reqNode = elemToNode.get(req)
 								var dest = reqNode.addPort() => [
-										setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-									]
+									setLayoutOption(CoreOptions.PORT_SIDE, PortSide.SOUTH)
+								]
 								var src = srNode.addPort() => [
-										setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-									]
-								createDelayEdge().connect(src,dest)
+									setLayoutOption(CoreOptions.PORT_SIDE, PortSide.NORTH)
+								]
+								createDelayEdge().connect(src, dest)
 							}
 						}
 					}
 				}
 			} else {
 				val messageNode = KGraphUtil.createInitializedNode()
-				messageNode.addErrorMessage(fr.inria.kairos.influence.visualisation.klighd.synthesis.InfluenceSynthesis.TEXT_NO_INFLUENCE_MODEL, null)
+				messageNode.addErrorMessage(
+					fr.inria.kairos.influence.visualisation.klighd.synthesis.InfluenceSynthesis.TEXT_NO_INFLUENCE_MODEL,
+					null)
 				rootNode.children += messageNode
 			}
-			
-			// Show all reactors
+
+
+			rootNode.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+			rootNode.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+
+
+		// Show all reactors
 //			if (main === null || SHOW_ALL_REACTORS.booleanValue) {
 //				val reactorNodes = newArrayList()
 //				val Iterable<FDExtensionRoot> allFDExtensionRoots = model.deployments.filter[depl|depl instanceof FDExtensionRoot].map( d | d as FDExtensionRoot)
@@ -227,363 +233,454 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //		   }
 		} catch (Exception e) {
 			e.printStackTrace
-			
+
 			val messageNode = KGraphUtil.createInitializedNode()
-			messageNode.addErrorMessage("Error in Diagram Synthesis", e.class.simpleName + " occurred. Could not create diagram.")
+			messageNode.addErrorMessage("Error in Diagram Synthesis",
+				e.class.simpleName + " occurred. Could not create diagram.")
 			rootNode.children += messageNode
 		}
 
 		return rootNode
 	}
-	
+
 	private dispatch def KNode createInfluencePass1(Influence influence) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(influence)
 		node.ID = influence.name
 
 		val label = influence.createNamedElementLabel
-	
+
 		if (influence === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
 			val figure = node.addInfluenceFigure(influence, label)
-			figure.addChildArea()
-			
-			for(or: influence.originatorArtifact){
+			var childArea = figure.addChildArea()
+			var funNode = influence.ownedFunction.createFunction
+			node.children.add(funNode)
+			for (or : influence.originatorArtifact) {
 				var dest = node.addPort() => [
-						setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-					]
+					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+				]
 				var src = elemToNode.get(or).addPort() => [
-						setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-					]
-				var edge = createArrowEdge().connect(src,dest)
+					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+				]
+				var edge = createArrowEdge().connect(src, dest)
 				node.incomingEdges.add(edge)
 				elemToNode.get(or).outgoingEdges.add(edge)
 			}
-			for(or: influence.originatorPhenomena){
+			for (or : influence.originatorPhenomena) {
 				var dest = node.addPort() => [
-						setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-					]
+					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+				]
 				var src = elemToNode.get(or).addPort() => [
-						setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-					]
-				var edge = createArrowEdge().connect(src,dest)
+					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+				]
+				var edge = createArrowEdge().connect(src, dest)
 				node.incomingEdges.add(edge)
 				elemToNode.get(or).outgoingEdges.add(edge)
 			}
-			
-			
+
 			node.configureInterfaceNodeLayout()
-			
+
 			// Additional layout adjustment for main node
 			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
 			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
 			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
 			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
 			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
 			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-			
+
 			if (!SHOW_HYPERLINKS.booleanValue) {
 				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
 			}
-		} 
-		
-		
-		return node	
-	}
-	
-	private dispatch def KNode createInfluencePass2(Influence influence) {
-		val node = elemToNode.get(influence)
-	
-		for(sr: influence.affects){
-			var srNode = sr.createSystemResponseNode
-			node.parent.children.add(srNode)
-			elemToNode.put(sr,srNode)
-			var dest = srNode.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-				]
-			var src = node.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-				]
-			var edge = createArrowEdge().connect(src,dest)
-			node.incomingEdges.add(edge)
-			
 		}
 
-		
-		return node	
+		return node
 	}
-	
+
+	private dispatch def KNode createInfluencePass2(Influence influence) {
+		val node = elemToNode.get(influence)
+
+		for (sr : influence.affects) {
+			var srNode = sr.createSystemResponseNode
+			node.parent.children.add(srNode)
+			elemToNode.put(sr, srNode)
+			var dest = srNode.addPort() => [
+				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+			]
+			var src = node.addPort() => [
+				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+			]
+			var edge = createArrowEdge().connect(src, dest)
+			node.incomingEdges.add(edge)
+
+		}
+
+		return node
+	}
+
 	private dispatch def KNode createInfluencePass3(Influence influence) {
 		val node = elemToNode.get(influence)
-	
-		for(or: influence.originatorSystemResponse){
+
+		for (or : influence.originatorSystemResponse) {
 			var dest = node.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-				]
+				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+			]
 			var src = elemToNode.get(or).addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-				]
-			var edge = createArrowEdge().connect(src,dest)
+				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+			]
+			var edge = createArrowEdge().connect(src, dest)
 			node.incomingEdges.add(edge)
-			
+
 		}
-				
-		return node	
+
+		return node
 	}
-	
-	
-	
+
 	private dispatch def KNode createInfluencePass1(CompositeInfluence influence) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(influence)
 		node.ID = influence.name
 
 		val label = influence.createNamedElementLabel
-	
+
 		if (influence === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
 			val figure = node.addCompositeInfluenceFigure(influence, label)
 			figure.addChildArea()
-			
-			for(internInf : influence.internalInfluences){
+
+			for (internInf : influence.internalInfluences) {
 				var infNode = elemToNode.get(internInf)
 				node.children.add(infNode)
-				if (internInf instanceof Influence){
-					for (or : internInf.originatorArtifact){
+				if (internInf instanceof Influence) {
+					for (or : internInf.originatorArtifact) {
+//						var src = elemToNode.get(or).addInvisiblePort() => [
+//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+//						]
+//						var dest = node.addInvisiblePort() => [
+//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+//						]
+//						createInvisibleEdge().connect(src,dest)
 						var orNode = elemToNode.get(or)
 						node.children.add(orNode)
 					}
-					for (or : internInf.originatorPhenomena){
+					for (or : internInf.originatorPhenomena) {
+//						var src = elemToNode.get(or).addInvisiblePort() => [
+//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+//						]
+//						var dest = node.addInvisiblePort() => [
+//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+//						]
+//						createInvisibleEdge().connect(src,dest)
 						var orNode = elemToNode.get(or)
 						node.children.add(orNode)
 					}
 				}
-				
+
 			}
-			
-		
+
 			node.configureInterfaceNodeLayout()
-			
+
 			// Additional layout adjustment for main node
 			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
 			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
 			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
 			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
 			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
 			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-			
+
 			if (!SHOW_HYPERLINKS.booleanValue) {
 				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
 			}
-		} 
-		
-		
-		return node	
-	}
-	
-		private dispatch def KNode createInfluencePass2(CompositeInfluence influence) {
-		val node = elemToNode.get(influence)
-	
-		for(sr: influence.affects){
-			var srNode = sr.createSystemResponseNode
-			node.parent.children.add(srNode)
-			elemToNode.put(sr,srNode)
-			var dest = srNode.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-				]
-			var src = node.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-				]
-			var edge = createArrowEdge().connect(src,dest)
-			node.incomingEdges.add(edge)
-			
 		}
 
-		
-		return node	
+		return node
 	}
-	
+
+	private dispatch def KNode createInfluencePass2(CompositeInfluence influence) {
+		val node = elemToNode.get(influence)
+
+		for (sr : influence.affects) {
+			var srNode = sr.createSystemResponseNode
+			node.parent.children.add(srNode)
+			elemToNode.put(sr, srNode)
+			var dest = srNode.addPort() => [
+				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+			]
+			var src = node.addPort() => [
+				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+			]
+			var edge = createArrowEdge().connect(src, dest)
+			node.incomingEdges.add(edge)
+
+		}
+
+		return node
+	}
+
 	private dispatch def KNode createInfluencePass3(CompositeInfluence influence) {
 		val node = elemToNode.get(influence)
-	
-//		for(or: influence.originatorSystemResponse){
-//			var dest = node.addPort() => [
-//					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-//				]
-//			var src = elemToNode.get(or).addPort() => [
-//					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-//				]
-//			var edge = createArrowEdge().connect(src,dest)
-//			node.incomingEdges.add(edge)
-//			
-//		}
-				
-		return node	
+
+		var funNode = influence.ownedFunction.createFunction
+		node.children.add(funNode)
+
+		return node
 	}
-	
-	
+
 	private def KNode createArtifact(DesignArtifact artifact) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(artifact)
 		node.ID = artifact.name
 
 		val label = artifact.createNamedElementLabel
-	
+
 		if (artifact === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
 			val figure = node.addDesignArtifactFigure(artifact, label)
 			figure.addChildArea()
-			
-		
-			
+
 			node.configureInterfaceNodeLayout()
-			
+
 			// Additional layout adjustment for main node
 			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
 			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
 			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
 			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
 			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
 			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-			
+
 			if (!SHOW_HYPERLINKS.booleanValue) {
 				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
 			}
-		} 
-		
-		return node	
+		}
+
+		return node
 	}
-	
+
+	private dispatch def KNode createFunction(Function fun) {
+		val node = KGraphUtil.createInitializedNode()
+		node.associateWith(fun)
+		node.ID = fun.name
+
+		val label = fun.createFunctionLabel
+
+		if (fun === null) {
+			node.addErrorMessage(TEXT_REACTOR_NULL, null)
+		} else {
+			val figure = node.addFunctionFigure(fun, label)
+			figure.addChildArea()
+
+			node.configureInterfaceNodeLayout()
+
+			// Additional layout adjustment for main node
+			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+
+			if (!SHOW_HYPERLINKS.booleanValue) {
+				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+			}
+		}
+
+		return node
+	}
+
+	private dispatch def KNode createFunction(CompositeFunction fun) {
+		val node = KGraphUtil.createInitializedNode()
+		node.associateWith(fun)
+		node.ID = fun.name
+
+		val label = fun.createNamedElementLabel
+
+		if (fun === null) {
+			node.addErrorMessage(TEXT_REACTOR_NULL, null)
+		} else {
+			val figure = node.addCompositeFunctionFigure(fun, label)
+			figure.addChildArea()
+			for (input : fun.inputs) {
+				var src = elemToNode.get(input).addPort() => [
+					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+				]
+				var dest = node.addPort() => [
+					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+				]
+				createArrowEdge().connect(src, dest)
+			}
+
+			node.configureInterfaceNodeLayout()
+
+			// Additional layout adjustment for main node
+			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+
+			if (!SHOW_HYPERLINKS.booleanValue) {
+				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+			}
+		}
+
+		return node
+	}
+
 	private def KNode createRequirement(Requirement req) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(req)
 		node.ID = req.name
 
 		val label = req.createNamedElementLabel
-	
+
 		if (req === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
 			val figure = node.addRequirementFigure(req, label)
 			figure.addChildArea()
-			
-		
-			
+
 			node.configureInterfaceNodeLayout()
-			
+
 			// Additional layout adjustment for main node
 			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
 			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
 			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
 			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
 			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
 			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-			
+
 			if (!SHOW_HYPERLINKS.booleanValue) {
 				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
 			}
-		} 
-		
-		
-		return node	// To allow ordering, we need box layout but we also need layered layout for ports thus wrap all node
-					// TODO use rect packing in the future
-					//reactorNodes.add(0, node.children.head)
+		}
+
+		return node // To allow ordering, we need box layout but we also need layered layout for ports thus wrap all node
+		// TODO use rect packing in the future
+		// reactorNodes.add(0, node.children.head)
 	}
 
-	
-		private def KNode createPhenomena(PhysicalPhenomena phenomena) {
+	private def KNode createPhenomena(PhysicalPhenomena phenomena) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(phenomena)
 		node.ID = phenomena.name
 
 		val label = phenomena.createNamedElementLabel
-	
+
 		if (phenomena === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
 			val figure = node.addPhenomenaFigure(phenomena, label)
 			figure.addChildArea()
-			
+
 			node.configureInterfaceNodeLayout()
-			
+
 			// Additional layout adjustment for main node
 			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
 			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
 			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
 			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
 			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
 			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-			
+
 			if (!SHOW_HYPERLINKS.booleanValue) {
 				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
 			}
-		} 
-		
-		
+		}
+
 		return node
 	}
-	
-			private def KNode createSystemResponseNode(SystemResponse sr) {
+
+	private def KNode createSystemResponseNode(SystemResponse sr) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(sr)
 		node.ID = sr.name
 
 		val label = sr.createNamedElementLabel
-	
+
 		if (sr === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
 			val figure = node.addSystemResponseFigure(sr, label)
 			figure.addChildArea()
-			
+
 			node.configureInterfaceNodeLayout()
-			
+
 			// Additional layout adjustment for main node
 			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
 			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
 			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
 			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
 			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
 			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-			
+
 			if (!SHOW_HYPERLINKS.booleanValue) {
 				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
 			}
-		} 
-		
-		
+		}
+
 		return node
 	}
-	
-	
-	
+
 //	private def Collection<KNode> createInterfaceNode(
 //		AbstractInfluence influence,
 //		boolean isComposite,
@@ -709,9 +806,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //		
 //		return nodes
 //	}
-	
 	private def configureInterfaceNodeLayout(KNode node) {
-		
 
 //		
 		node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.minimumSizeWithPorts)
@@ -721,21 +816,30 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		if (!SHOW_HYPERLINKS.booleanValue) {
 			node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(2, 6, 6, 6))
 			node.setLayoutOption(LayeredOptions.SPACING_NODE_NODE, LayeredOptions.SPACING_NODE_NODE.^default * 0.75f)
-			node.setLayoutOption(LayeredOptions.SPACING_NODE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_NODE_NODE_BETWEEN_LAYERS.^default * 0.75f)
+			node.setLayoutOption(LayeredOptions.SPACING_NODE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_NODE_NODE_BETWEEN_LAYERS.^default * 0.75f)
 			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 0.75f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 0.75f)
+			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 0.75f)
 		}
 	}
-	
-	
+
 	private def String createNamedElementLabel(NamedElement ne) {
-        val b = new StringBuilder
-        b.append(
-            ne === null ? "<NULL>" : ne.name ?:
-                "<Unresolved Element>")
-        return b.toString()
-    }
-	
+		val b = new StringBuilder
+		b.append(ne === null
+			? "<NULL>"
+			: ne.name ?: "<Unresolved Element>")
+		return b.toString()
+	}
+
+	private def String createFunctionLabel(Function fun) {
+		val b = new StringBuilder
+		b.append(fun === null
+			? "<NULL>"
+			: fun.name ?: "<Unresolved Element>")
+		b.append("(" + fun.definition + ")")
+		return b.toString()
+	}
 
 //	private def addParameterList(KContainerRendering container, List<Parameter> parameters) {
 //		var cols = 1
@@ -766,7 +870,6 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //		}
 //		return b.toString()
 //	}
-	
 	private def createDelayEdge(Object associate) {
 		return createEdge => [
 			associateWith(associate)
@@ -781,7 +884,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 			]
 		]
 	}
-	
+
 	private def createIODependencyEdge(Object associate) {
 		return createEdge => [
 			if (associate !== null) {
@@ -792,7 +895,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 			]
 		]
 	}
-	
+
 	private def createDependencyEdge(Object associate) {
 		return createEdge => [
 			if (associate !== null) {
@@ -809,7 +912,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 			]
 		]
 	}
-	
+
 	private def createOrderEdge() {
 		return createEdge => [
 			addPolyline() => [
@@ -817,53 +920,66 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 				lineStyle = LineStyle.DOT
 				foreground = Colors.CHOCOLATE_1
 				boldLineSelectionStyle()
-				//addFixedTailArrowDecorator() // Fix for bug: https://github.com/kieler/KLighD/issues/38
+				// addFixedTailArrowDecorator() // Fix for bug: https://github.com/kieler/KLighD/issues/38
 				addHeadArrowDecorator()
 			]
 		]
 	}
-	
+
 	private def createArrowEdge() {
 		return createEdge => [
 			addPolyline() => [
 				lineWidth = 1.5f
 				foreground = Colors.CHOCOLATE_1
 				boldLineSelectionStyle()
-				//addFixedTailArrowDecorator() // Fix for bug: https://github.com/kieler/KLighD/issues/38
+				// addFixedTailArrowDecorator() // Fix for bug: https://github.com/kieler/KLighD/issues/38
 				addHeadArrowDecorator()
 			]
 		]
 	}
-	
+
+	private def createInvisibleEdge() {
+		return createEdge => [
+			addPolyline() => [
+				lineWidth = 0
+				foreground = Colors.WHITE
+				boldLineSelectionStyle()
+			]
+		]
+	}
+
 	private def dispatch KEdge connect(KEdge edge, KNode src, KNode dst) {
 		edge.source = src
 		edge.target = dst
-		
+
 		return edge
 	}
+
 	private def dispatch KEdge connect(KEdge edge, KNode src, KPort dst) {
 		edge.source = src
 		edge.targetPort = dst
 		edge.target = dst?.node
-		
+
 		return edge
 	}
+
 	private def dispatch KEdge connect(KEdge edge, KPort src, KNode dst) {
 		edge.sourcePort = src
 		edge.source = src?.node
 		edge.target = dst
-		
+
 		return edge
 	}
+
 	private def dispatch KEdge connect(KEdge edge, KPort src, KPort dst) {
 		edge.sourcePort = src
 		edge.source = src?.node
 		edge.targetPort = dst
 		edge.target = dst?.node
-		
+
 		return edge
 	}
-	
+
 //	/**
 //	 * Translate an input/output into a port.
 //	 */
@@ -892,25 +1008,22 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //		port.addOutsidePortLabel(label, 8).associateWith(lfPort)
 //		return port
 //	}
-
 	private def KPort addInvisiblePort(KNode node) {
 		val port = createPort
 		node.ports += port
-		
-		port.setSize(0, 0) // invisible
 
+		port.setSize(0, 0) // invisible
 		return port
 	}
-	
+
 	private def KPort addPort(KNode node) {
 		val port = createPort
 		node.ports += port
-		
-		port.setSize(3, 3) // invisible
 
+		port.setSize(3, 3) // invisible
 		return port
 	}
-	
+
 //	private def KNode addErrorComment(KNode node, String message) {
 //		val comment = KGraphUtil.createInitializedNode()
 //        comment.setLayoutOption(CoreOptions.COMMENT_BOX, true)
@@ -928,7 +1041,6 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //        
 //        return comment
 //	}
-	
 //	private def Iterable<KNode> createUserComments(EObject element, KNode targetNode) {
 //		if (SHOW_USER_LABELS.booleanValue) {
 //			val commentText = ASTUtils.findAnnotationInComments(element, "@label")
@@ -952,5 +1064,4 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //		}
 //		return #[]
 //	}
-
 }

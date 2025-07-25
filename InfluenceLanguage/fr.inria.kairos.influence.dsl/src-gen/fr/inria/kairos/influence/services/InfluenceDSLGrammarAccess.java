@@ -143,18 +143,21 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cInternalInfluencesAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final CrossReference cInternalInfluencesAbstractInfluenceCrossReference_8_0 = (CrossReference)cInternalInfluencesAssignment_8.eContents().get(0);
 		private final RuleCall cInternalInfluencesAbstractInfluenceEStringParserRuleCall_8_0_1 = (RuleCall)cInternalInfluencesAbstractInfluenceCrossReference_8_0.eContents().get(1);
-		private final Keyword cAffectsKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cAffectsAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_10_0 = (RuleCall)cAffectsAssignment_10.eContents().get(0);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cAndKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Assignment cAffectsAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_11_1_0 = (RuleCall)cAffectsAssignment_11_1.eContents().get(0);
+		private final Assignment cOwnedFunctionAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cOwnedFunctionCompositeFunctionParserRuleCall_9_0 = (RuleCall)cOwnedFunctionAssignment_9.eContents().get(0);
+		private final Keyword cAffectsKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cAffectsAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_11_0 = (RuleCall)cAffectsAssignment_11.eContents().get(0);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cAndKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cAffectsAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_12_1_0 = (RuleCall)cAffectsAssignment_12_1.eContents().get(0);
 		
 		//CompositeInfluence returns CompositeInfluence:
 		//    'Composite' 'Influence'    name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 		//    'encapsulate'
 		//        (internalInfluences+=[AbstractInfluence|EString])*
+		//     ownedFunction=CompositeFunction
 		//    'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -162,6 +165,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'Composite' 'Influence'    name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 		//'encapsulate'
 		//    (internalInfluences+=[AbstractInfluence|EString])*
+		// ownedFunction=CompositeFunction
 		//'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		public Group getGroup() { return cGroup; }
 		
@@ -213,26 +217,32 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getInternalInfluencesAbstractInfluenceEStringParserRuleCall_8_0_1() { return cInternalInfluencesAbstractInfluenceEStringParserRuleCall_8_0_1; }
 		
+		//ownedFunction=CompositeFunction
+		public Assignment getOwnedFunctionAssignment_9() { return cOwnedFunctionAssignment_9; }
+		
+		//CompositeFunction
+		public RuleCall getOwnedFunctionCompositeFunctionParserRuleCall_9_0() { return cOwnedFunctionCompositeFunctionParserRuleCall_9_0; }
+		
 		//'affects'
-		public Keyword getAffectsKeyword_9() { return cAffectsKeyword_9; }
+		public Keyword getAffectsKeyword_10() { return cAffectsKeyword_10; }
 		
 		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_10() { return cAffectsAssignment_10; }
+		public Assignment getAffectsAssignment_11() { return cAffectsAssignment_11; }
 		
 		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_10_0() { return cAffectsSystemResponseParserRuleCall_10_0; }
+		public RuleCall getAffectsSystemResponseParserRuleCall_11_0() { return cAffectsSystemResponseParserRuleCall_11_0; }
 		
 		//( "and" affects+=SystemResponse)*
-		public Group getGroup_11() { return cGroup_11; }
+		public Group getGroup_12() { return cGroup_12; }
 		
 		//"and"
-		public Keyword getAndKeyword_11_0() { return cAndKeyword_11_0; }
+		public Keyword getAndKeyword_12_0() { return cAndKeyword_12_0; }
 		
 		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_11_1() { return cAffectsAssignment_11_1; }
+		public Assignment getAffectsAssignment_12_1() { return cAffectsAssignment_12_1; }
 		
 		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_11_1_0() { return cAffectsSystemResponseParserRuleCall_11_1_0; }
+		public RuleCall getAffectsSystemResponseParserRuleCall_12_1_0() { return cAffectsSystemResponseParserRuleCall_12_1_0; }
 	}
 	public class InfluenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.Influence");
@@ -286,18 +296,21 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cOriginatorSystemResponseAssignment_9_1_2_2 = (Assignment)cGroup_9_1_2.eContents().get(2);
 		private final CrossReference cOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0 = (CrossReference)cOriginatorSystemResponseAssignment_9_1_2_2.eContents().get(0);
 		private final RuleCall cOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1 = (RuleCall)cOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0.eContents().get(1);
-		private final Keyword cAffectsKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cAffectsAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_11_0 = (RuleCall)cAffectsAssignment_11.eContents().get(0);
-		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cAndKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Assignment cAffectsAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_12_1_0 = (RuleCall)cAffectsAssignment_12_1.eContents().get(0);
+		private final Assignment cOwnedFunctionAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cOwnedFunctionFunctionParserRuleCall_10_0 = (RuleCall)cOwnedFunctionAssignment_10.eContents().get(0);
+		private final Keyword cAffectsKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cAffectsAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_12_0 = (RuleCall)cAffectsAssignment_12.eContents().get(0);
+		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
+		private final Keyword cAndKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
+		private final Assignment cAffectsAssignment_13_1 = (Assignment)cGroup_13.eContents().get(1);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_13_1_0 = (RuleCall)cAffectsAssignment_13_1.eContents().get(0);
 		
 		//Influence returns Influence:
 		//    'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 		//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 		//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//        ownedFunction=Function
 		//        'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
@@ -305,6 +318,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 		//    'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 		//                      ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//    ownedFunction=Function
 		//    'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		public Group getGroup() { return cGroup; }
 		
@@ -455,26 +469,136 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1() { return cOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1; }
 		
+		//ownedFunction=Function
+		public Assignment getOwnedFunctionAssignment_10() { return cOwnedFunctionAssignment_10; }
+		
+		//Function
+		public RuleCall getOwnedFunctionFunctionParserRuleCall_10_0() { return cOwnedFunctionFunctionParserRuleCall_10_0; }
+		
 		//'affects'
-		public Keyword getAffectsKeyword_10() { return cAffectsKeyword_10; }
+		public Keyword getAffectsKeyword_11() { return cAffectsKeyword_11; }
 		
 		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_11() { return cAffectsAssignment_11; }
+		public Assignment getAffectsAssignment_12() { return cAffectsAssignment_12; }
 		
 		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_11_0() { return cAffectsSystemResponseParserRuleCall_11_0; }
+		public RuleCall getAffectsSystemResponseParserRuleCall_12_0() { return cAffectsSystemResponseParserRuleCall_12_0; }
 		
 		//( "and" affects+=SystemResponse)*
-		public Group getGroup_12() { return cGroup_12; }
+		public Group getGroup_13() { return cGroup_13; }
 		
 		//"and"
-		public Keyword getAndKeyword_12_0() { return cAndKeyword_12_0; }
+		public Keyword getAndKeyword_13_0() { return cAndKeyword_13_0; }
 		
 		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_12_1() { return cAffectsAssignment_12_1; }
+		public Assignment getAffectsAssignment_13_1() { return cAffectsAssignment_13_1; }
 		
 		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_12_1_0() { return cAffectsSystemResponseParserRuleCall_12_1_0; }
+		public RuleCall getAffectsSystemResponseParserRuleCall_13_1_0() { return cAffectsSystemResponseParserRuleCall_13_1_0; }
+	}
+	public class FunctionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.Function");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFunKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cDefinitionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDefinitionEStringParserRuleCall_3_0 = (RuleCall)cDefinitionAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//Function:
+		//    'fun' name=ID '(' definition=EString ')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'fun' name=ID '(' definition=EString ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'fun'
+		public Keyword getFunKeyword_0() { return cFunKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//definition=EString
+		public Assignment getDefinitionAssignment_3() { return cDefinitionAssignment_3; }
+		
+		//EString
+		public RuleCall getDefinitionEStringParserRuleCall_3_0() { return cDefinitionEStringParserRuleCall_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+	}
+	public class CompositeFunctionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.CompositeFunction");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFunKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cInputsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cInputsSystemResponseCrossReference_3_0 = (CrossReference)cInputsAssignment_3.eContents().get(0);
+		private final RuleCall cInputsSystemResponseEStringParserRuleCall_3_0_1 = (RuleCall)cInputsSystemResponseCrossReference_3_0.eContents().get(1);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cInputsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cInputsSystemResponseCrossReference_4_1_0 = (CrossReference)cInputsAssignment_4_1.eContents().get(0);
+		private final RuleCall cInputsSystemResponseEStringParserRuleCall_4_1_0_1 = (RuleCall)cInputsSystemResponseCrossReference_4_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//CompositeFunction:
+		//    'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')'
+		public Group getGroup() { return cGroup; }
+		
+		//'fun'
+		public Keyword getFunKeyword_0() { return cFunKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//inputs+=[SystemResponse|EString]
+		public Assignment getInputsAssignment_3() { return cInputsAssignment_3; }
+		
+		//[SystemResponse|EString]
+		public CrossReference getInputsSystemResponseCrossReference_3_0() { return cInputsSystemResponseCrossReference_3_0; }
+		
+		//EString
+		public RuleCall getInputsSystemResponseEStringParserRuleCall_3_0_1() { return cInputsSystemResponseEStringParserRuleCall_3_0_1; }
+		
+		//(','inputs+=[SystemResponse|EString])*
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//','
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
+		
+		//inputs+=[SystemResponse|EString]
+		public Assignment getInputsAssignment_4_1() { return cInputsAssignment_4_1; }
+		
+		//[SystemResponse|EString]
+		public CrossReference getInputsSystemResponseCrossReference_4_1_0() { return cInputsSystemResponseCrossReference_4_1_0; }
+		
+		//EString
+		public RuleCall getInputsSystemResponseEStringParserRuleCall_4_1_0_1() { return cInputsSystemResponseEStringParserRuleCall_4_1_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 	public class PhysicalPhenomenaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.PhysicalPhenomena");
@@ -798,6 +922,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	private final AbstractInfluenceElements pAbstractInfluence;
 	private final CompositeInfluenceElements pCompositeInfluence;
 	private final InfluenceElements pInfluence;
+	private final FunctionElements pFunction;
+	private final CompositeFunctionElements pCompositeFunction;
 	private final PhysicalPhenomenaElements pPhysicalPhenomena;
 	private final RequirementSatisfactionElements pRequirementSatisfaction;
 	private final DesignArtifactElements pDesignArtifact;
@@ -819,6 +945,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.pAbstractInfluence = new AbstractInfluenceElements();
 		this.pCompositeInfluence = new CompositeInfluenceElements();
 		this.pInfluence = new InfluenceElements();
+		this.pFunction = new FunctionElements();
+		this.pCompositeFunction = new CompositeFunctionElements();
 		this.pPhysicalPhenomena = new PhysicalPhenomenaElements();
 		this.pRequirementSatisfaction = new RequirementSatisfactionElements();
 		this.pDesignArtifact = new DesignArtifactElements();
@@ -887,6 +1015,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    'Composite' 'Influence'    name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 	//    'encapsulate'
 	//        (internalInfluences+=[AbstractInfluence|EString])*
+	//     ownedFunction=CompositeFunction
 	//    'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 	//;
 	public CompositeInfluenceElements getCompositeInfluenceAccess() {
@@ -901,6 +1030,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
 	//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 	//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+	//        ownedFunction=Function
 	//        'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 	//    ;
 	public InfluenceElements getInfluenceAccess() {
@@ -909,6 +1039,28 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	public ParserRule getInfluenceRule() {
 		return getInfluenceAccess().getRule();
+	}
+	
+	//Function:
+	//    'fun' name=ID '(' definition=EString ')'
+	//;
+	public FunctionElements getFunctionAccess() {
+		return pFunction;
+	}
+	
+	public ParserRule getFunctionRule() {
+		return getFunctionAccess().getRule();
+	}
+	
+	//CompositeFunction:
+	//    'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')'
+	//;
+	public CompositeFunctionElements getCompositeFunctionAccess() {
+		return pCompositeFunction;
+	}
+	
+	public ParserRule getCompositeFunctionRule() {
+		return getCompositeFunctionAccess().getRule();
 	}
 	
 	//PhysicalPhenomena returns PhysicalPhenomena:

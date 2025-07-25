@@ -9,6 +9,7 @@ import de.cau.cs.kieler.klighd.kgraph.KNode;
 import de.cau.cs.kieler.klighd.kgraph.KPort;
 import de.cau.cs.kieler.klighd.kgraph.util.KGraphUtil;
 import de.cau.cs.kieler.klighd.krendering.Colors;
+import de.cau.cs.kieler.klighd.krendering.KChildArea;
 import de.cau.cs.kieler.klighd.krendering.KPolyline;
 import de.cau.cs.kieler.klighd.krendering.KRoundedRectangle;
 import de.cau.cs.kieler.klighd.krendering.LineStyle;
@@ -22,8 +23,10 @@ import de.cau.cs.kieler.klighd.krendering.extensions.KPortExtensions;
 import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions;
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis;
 import fr.inria.kairos.influence.metamodel.AbstractInfluence;
+import fr.inria.kairos.influence.metamodel.CompositeFunction;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
+import fr.inria.kairos.influence.metamodel.Function;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.NamedElement;
@@ -107,13 +110,17 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
   @Extension
   private UtilityExtensions _utilityExtensions;
 
-  public static final Property<Boolean> REACTOR_RECURSIVE_INSTANTIATION = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.recursive.instantiation", Boolean.valueOf(false));
+  public static final Property<Boolean> REACTOR_RECURSIVE_INSTANTIATION = new Property<Boolean>(
+    "org.lflang.linguafranca.diagram.synthesis.reactor.recursive.instantiation", Boolean.valueOf(false));
 
-  public static final Property<Boolean> REACTOR_HAS_BANK_PORT_OFFSET = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.bank.offset", Boolean.valueOf(false));
+  public static final Property<Boolean> REACTOR_HAS_BANK_PORT_OFFSET = new Property<Boolean>(
+    "org.lflang.linguafranca.diagram.synthesis.reactor.bank.offset", Boolean.valueOf(false));
 
-  public static final Property<Boolean> REACTOR_INPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.input", Boolean.valueOf(false));
+  public static final Property<Boolean> REACTOR_INPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.input", 
+    Boolean.valueOf(false));
 
-  public static final Property<Boolean> REACTOR_OUTPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.output", Boolean.valueOf(false));
+  public static final Property<Boolean> REACTOR_OUTPUT = new Property<Boolean>("org.lflang.linguafranca.diagram.synthesis.reactor.output", 
+    Boolean.valueOf(false));
 
   public static final List<Float> ALTERNATIVE_DASH_PATTERN = Collections.<Float>unmodifiableList(CollectionLiterals.<Float>newArrayList(Float.valueOf(3.0f)));
 
@@ -149,15 +156,20 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
   /**
    * Synthesis options
    */
-  public static final SynthesisOption SHOW_USER_LABELS = SynthesisOption.createCheckOption("User Labels (@label in JavaDoc)", Boolean.valueOf(true)).setCategory(InfluenceSynthesis.APPEARANCE);
+  public static final SynthesisOption SHOW_USER_LABELS = SynthesisOption.createCheckOption(
+    "User Labels (@label in JavaDoc)", Boolean.valueOf(true)).setCategory(InfluenceSynthesis.APPEARANCE);
 
-  public static final SynthesisOption SHOW_HYPERLINKS = SynthesisOption.createCheckOption("Expand/Collapse Hyperlinks", Boolean.valueOf(false)).setCategory(InfluenceSynthesis.APPEARANCE);
+  public static final SynthesisOption SHOW_HYPERLINKS = SynthesisOption.createCheckOption("Expand/Collapse Hyperlinks", 
+    Boolean.valueOf(false)).setCategory(InfluenceSynthesis.APPEARANCE);
 
-  public static final SynthesisOption USE_ALTERNATIVE_DASH_PATTERN = SynthesisOption.createCheckOption("Alternative Dependency Line Style", Boolean.valueOf(false)).setCategory(InfluenceSynthesis.APPEARANCE);
+  public static final SynthesisOption USE_ALTERNATIVE_DASH_PATTERN = SynthesisOption.createCheckOption(
+    "Alternative Dependency Line Style", Boolean.valueOf(false)).setCategory(InfluenceSynthesis.APPEARANCE);
 
-  public static final SynthesisOption SHOW_REACTOR_HOST = SynthesisOption.createCheckOption("Reactor Host Addresses", Boolean.valueOf(true)).setCategory(InfluenceSynthesis.APPEARANCE);
+  public static final SynthesisOption SHOW_REACTOR_HOST = SynthesisOption.createCheckOption("Reactor Host Addresses", 
+    Boolean.valueOf(true)).setCategory(InfluenceSynthesis.APPEARANCE);
 
-  public static final SynthesisOption SHOW_INSTANCE_NAMES = SynthesisOption.createCheckOption("Reactor Instance Names", Boolean.valueOf(false)).setCategory(InfluenceSynthesis.APPEARANCE);
+  public static final SynthesisOption SHOW_INSTANCE_NAMES = SynthesisOption.createCheckOption("Reactor Instance Names", 
+    Boolean.valueOf(false)).setCategory(InfluenceSynthesis.APPEARANCE);
 
   @Override
   public List<SynthesisOption> getDisplayedSynthesisOptions() {
@@ -231,12 +243,12 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
                   KNode reqNode = this.elemToNode.get(req_1);
                   KPort _addPort = this.addPort(reqNode);
                   final Procedure1<KPort> _function = (KPort it) -> {
-                    this.<KPort, PortSide>setLayoutOption(it, CoreOptions.PORT_SIDE, PortSide.WEST);
+                    this.<KPort, PortSide>setLayoutOption(it, CoreOptions.PORT_SIDE, PortSide.SOUTH);
                   };
                   KPort dest = ObjectExtensions.<KPort>operator_doubleArrow(_addPort, _function);
                   KPort _addPort_1 = this.addPort(srNode);
                   final Procedure1<KPort> _function_1 = (KPort it) -> {
-                    this.<KPort, PortSide>setLayoutOption(it, CoreOptions.PORT_SIDE, PortSide.EAST);
+                    this.<KPort, PortSide>setLayoutOption(it, CoreOptions.PORT_SIDE, PortSide.NORTH);
                   };
                   KPort src = ObjectExtensions.<KPort>operator_doubleArrow(_addPort_1, _function_1);
                   this.connect(this.createDelayEdge(this), src, dest);
@@ -247,10 +259,14 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
         }
       } else {
         final KNode messageNode = KGraphUtil.createInitializedNode();
-        this._influenceShapeExtensions.addErrorMessage(messageNode, InfluenceSynthesis.TEXT_NO_INFLUENCE_MODEL, null);
+        this._influenceShapeExtensions.addErrorMessage(messageNode, 
+          InfluenceSynthesis.TEXT_NO_INFLUENCE_MODEL, 
+          null);
         EList<KNode> _children = rootNode.getChildren();
         _children.add(messageNode);
       }
+      this.<KNode, String>setLayoutOption(rootNode, CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID);
+      this.<KNode, Direction>setLayoutOption(rootNode, CoreOptions.DIRECTION, Direction.RIGHT);
     } catch (final Throwable _t) {
       if (_t instanceof Exception) {
         final Exception e = (Exception)_t;
@@ -277,7 +293,9 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       this._influenceShapeExtensions.addErrorMessage(node, InfluenceSynthesis.TEXT_REACTOR_NULL, null);
     } else {
       final KRoundedRectangle figure = this._influenceShapeExtensions.addInfluenceFigure(node, influence, label);
-      this._kContainerRenderingExtensions.addChildArea(figure);
+      KChildArea childArea = this._kContainerRenderingExtensions.addChildArea(figure);
+      KNode funNode = this.createFunction(influence.getOwnedFunction());
+      node.getChildren().add(funNode);
       EList<DesignArtifact> _originatorArtifact = influence.getOriginatorArtifact();
       for (final DesignArtifact or : _originatorArtifact) {
         {
@@ -319,7 +337,8 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
       this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
       this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
-      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
       Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
       double _multiply = ((_default).doubleValue() * 1.1f);
       this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
@@ -426,7 +445,8 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
       this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
       this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
-      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
       Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
       double _multiply = ((_default).doubleValue() * 1.1f);
       this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
@@ -475,6 +495,8 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
 
   private KNode _createInfluencePass3(final CompositeInfluence influence) {
     final KNode node = this.elemToNode.get(influence);
+    KNode funNode = this.createFunction(influence.getOwnedFunction());
+    node.getChildren().add(funNode);
     return node;
   }
 
@@ -493,7 +515,100 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
       this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
       this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
-      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
+      double _multiply = ((_default).doubleValue() * 1.1f);
+      this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
+      Double _default_1 = LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.getDefault();
+      double _multiply_1 = ((_default_1).doubleValue() * 1.1f);
+      this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, Double.valueOf(_multiply_1));
+      this.<KNode, Boolean>setLayoutOption(node, LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, Boolean.valueOf(true));
+      this.<KNode, EdgeRouting>setLayoutOption(node, LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES);
+      boolean _booleanValue = this.getBooleanValue(InfluenceSynthesis.SHOW_HYPERLINKS);
+      boolean _not = (!_booleanValue);
+      if (_not) {
+        ElkPadding _elkPadding = new ElkPadding((-1), 6, 6, 6);
+        this.<KNode, ElkPadding>setLayoutOption(node, CoreOptions.PADDING, _elkPadding);
+        Double _default_2 = LayeredOptions.SPACING_COMPONENT_COMPONENT.getDefault();
+        double _multiply_2 = ((_default_2).doubleValue() * 0.5f);
+        this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_COMPONENT_COMPONENT, Double.valueOf(_multiply_2));
+      }
+    }
+    return node;
+  }
+
+  private KNode _createFunction(final Function fun) {
+    final KNode node = KGraphUtil.createInitializedNode();
+    this.<KNode>associateWith(node, fun);
+    this._utilityExtensions.setID(node, fun.getName());
+    final String label = this.createFunctionLabel(fun);
+    if ((fun == null)) {
+      this._influenceShapeExtensions.addErrorMessage(node, InfluenceSynthesis.TEXT_REACTOR_NULL, null);
+    } else {
+      final KRoundedRectangle figure = this._influenceShapeExtensions.addFunctionFigure(node, fun, label);
+      this._kContainerRenderingExtensions.addChildArea(figure);
+      this.configureInterfaceNodeLayout(node);
+      this.<KNode, String>setLayoutOption(node, CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID);
+      this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
+      this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
+      this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
+      double _multiply = ((_default).doubleValue() * 1.1f);
+      this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
+      Double _default_1 = LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.getDefault();
+      double _multiply_1 = ((_default_1).doubleValue() * 1.1f);
+      this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, Double.valueOf(_multiply_1));
+      this.<KNode, Boolean>setLayoutOption(node, LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, Boolean.valueOf(true));
+      this.<KNode, EdgeRouting>setLayoutOption(node, LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES);
+      boolean _booleanValue = this.getBooleanValue(InfluenceSynthesis.SHOW_HYPERLINKS);
+      boolean _not = (!_booleanValue);
+      if (_not) {
+        ElkPadding _elkPadding = new ElkPadding((-1), 6, 6, 6);
+        this.<KNode, ElkPadding>setLayoutOption(node, CoreOptions.PADDING, _elkPadding);
+        Double _default_2 = LayeredOptions.SPACING_COMPONENT_COMPONENT.getDefault();
+        double _multiply_2 = ((_default_2).doubleValue() * 0.5f);
+        this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_COMPONENT_COMPONENT, Double.valueOf(_multiply_2));
+      }
+    }
+    return node;
+  }
+
+  private KNode _createFunction(final CompositeFunction fun) {
+    final KNode node = KGraphUtil.createInitializedNode();
+    this.<KNode>associateWith(node, fun);
+    this._utilityExtensions.setID(node, fun.getName());
+    final String label = this.createNamedElementLabel(fun);
+    if ((fun == null)) {
+      this._influenceShapeExtensions.addErrorMessage(node, InfluenceSynthesis.TEXT_REACTOR_NULL, null);
+    } else {
+      final KRoundedRectangle figure = this._influenceShapeExtensions.addCompositeFunctionFigure(node, fun, label);
+      this._kContainerRenderingExtensions.addChildArea(figure);
+      EList<SystemResponse> _inputs = fun.getInputs();
+      for (final SystemResponse input : _inputs) {
+        {
+          KPort _addPort = this.addPort(this.elemToNode.get(input));
+          final Procedure1<KPort> _function = (KPort it) -> {
+            this.<KPort, PortSide>setLayoutOption(it, CoreOptions.PORT_SIDE, PortSide.EAST);
+          };
+          KPort src = ObjectExtensions.<KPort>operator_doubleArrow(_addPort, _function);
+          KPort _addPort_1 = this.addPort(node);
+          final Procedure1<KPort> _function_1 = (KPort it) -> {
+            this.<KPort, PortSide>setLayoutOption(it, CoreOptions.PORT_SIDE, PortSide.WEST);
+          };
+          KPort dest = ObjectExtensions.<KPort>operator_doubleArrow(_addPort_1, _function_1);
+          this.connect(this.createArrowEdge(), src, dest);
+        }
+      }
+      this.configureInterfaceNodeLayout(node);
+      this.<KNode, String>setLayoutOption(node, CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID);
+      this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
+      this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
+      this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
       Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
       double _multiply = ((_default).doubleValue() * 1.1f);
       this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
@@ -530,7 +645,8 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
       this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
       this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
-      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
       Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
       double _multiply = ((_default).doubleValue() * 1.1f);
       this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
@@ -567,7 +683,8 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
       this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
       this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
-      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
       Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
       double _multiply = ((_default).doubleValue() * 1.1f);
       this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
@@ -604,7 +721,8 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       this.<KNode, Direction>setLayoutOption(node, CoreOptions.DIRECTION, Direction.RIGHT);
       this.<KNode, EnumSet<SizeConstraint>>setLayoutOption(node, CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.<SizeConstraint>of(SizeConstraint.MINIMUM_SIZE));
       this.<KNode, FixedAlignment>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED);
-      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
+      this.<KNode, EdgeStraighteningStrategy>setLayoutOption(node, LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, 
+        EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS);
       Double _default = LayeredOptions.SPACING_EDGE_NODE.getDefault();
       double _multiply = ((_default).doubleValue() * 1.1f);
       this.<KNode, Double>setLayoutOption(node, LayeredOptions.SPACING_EDGE_NODE, Double.valueOf(_multiply));
@@ -677,6 +795,29 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
       _xifexpression = _elvis;
     }
     b.append(_xifexpression);
+    return b.toString();
+  }
+
+  private String createFunctionLabel(final Function fun) {
+    final StringBuilder b = new StringBuilder();
+    String _xifexpression = null;
+    if ((fun == null)) {
+      _xifexpression = "<NULL>";
+    } else {
+      String _elvis = null;
+      String _name = fun.getName();
+      if (_name != null) {
+        _elvis = _name;
+      } else {
+        _elvis = "<Unresolved Element>";
+      }
+      _xifexpression = _elvis;
+    }
+    b.append(_xifexpression);
+    String _definition = fun.getDefinition();
+    String _plus = ("(" + _definition);
+    String _plus_1 = (_plus + ")");
+    b.append(_plus_1);
     return b.toString();
   }
 
@@ -764,6 +905,20 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
         this._kRenderingExtensions.setForeground(it_1, Colors.CHOCOLATE_1);
         this._influenceStyleExtensions.boldLineSelectionStyle(it_1);
         this._kPolylineExtensions.addHeadArrowDecorator(it_1);
+      };
+      ObjectExtensions.<KPolyline>operator_doubleArrow(_addPolyline, _function_1);
+    };
+    return ObjectExtensions.<KEdge>operator_doubleArrow(_createEdge, _function);
+  }
+
+  private KEdge createInvisibleEdge() {
+    KEdge _createEdge = this._kEdgeExtensions.createEdge();
+    final Procedure1<KEdge> _function = (KEdge it) -> {
+      KPolyline _addPolyline = this._kEdgeExtensions.addPolyline(it);
+      final Procedure1<KPolyline> _function_1 = (KPolyline it_1) -> {
+        this._kRenderingExtensions.setLineWidth(it_1, 0);
+        this._kRenderingExtensions.setForeground(it_1, Colors.WHITE);
+        this._influenceStyleExtensions.boldLineSelectionStyle(it_1);
       };
       ObjectExtensions.<KPolyline>operator_doubleArrow(_addPolyline, _function_1);
     };
@@ -860,6 +1015,17 @@ public class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel>
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(influence).toString());
+    }
+  }
+
+  private KNode createFunction(final NamedElement fun) {
+    if (fun instanceof CompositeFunction) {
+      return _createFunction((CompositeFunction)fun);
+    } else if (fun instanceof Function) {
+      return _createFunction((Function)fun);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(fun).toString());
     }
   }
 

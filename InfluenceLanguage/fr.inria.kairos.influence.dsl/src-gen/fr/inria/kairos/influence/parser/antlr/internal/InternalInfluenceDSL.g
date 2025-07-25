@@ -343,16 +343,35 @@ ruleCompositeInfluence returns [EObject current=null]
 				}
 			)
 		)*
-		otherlv_10='affects'
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getOwnedFunctionCompositeFunctionParserRuleCall_9_0());
+				}
+				lv_ownedFunction_10_0=ruleCompositeFunction
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
+					}
+					set(
+						$current,
+						"ownedFunction",
+						lv_ownedFunction_10_0,
+						"fr.inria.kairos.influence.InfluenceDSL.CompositeFunction");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_11='affects'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getCompositeInfluenceAccess().getAffectsKeyword_9());
+			newLeafNode(otherlv_11, grammarAccess.getCompositeInfluenceAccess().getAffectsKeyword_10());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_10_0());
+					newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_11_0());
 				}
-				lv_affects_11_0=ruleSystemResponse
+				lv_affects_12_0=ruleSystemResponse
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
@@ -360,23 +379,23 @@ ruleCompositeInfluence returns [EObject current=null]
 					add(
 						$current,
 						"affects",
-						lv_affects_11_0,
+						lv_affects_12_0,
 						"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_12='and'
+			otherlv_13='and'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getCompositeInfluenceAccess().getAndKeyword_11_0());
+				newLeafNode(otherlv_13, grammarAccess.getCompositeInfluenceAccess().getAndKeyword_12_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_11_1_0());
+						newCompositeNode(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_1_0());
 					}
-					lv_affects_13_0=ruleSystemResponse
+					lv_affects_14_0=ruleSystemResponse
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCompositeInfluenceRule());
@@ -384,7 +403,7 @@ ruleCompositeInfluence returns [EObject current=null]
 						add(
 							$current,
 							"affects",
-							lv_affects_13_0,
+							lv_affects_14_0,
 							"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
 						afterParserOrEnumRuleCall();
 					}
@@ -643,16 +662,35 @@ ruleInfluence returns [EObject current=null]
 				)
 			)
 		)*
-		otherlv_24='affects'
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getInfluenceAccess().getOwnedFunctionFunctionParserRuleCall_10_0());
+				}
+				lv_ownedFunction_24_0=ruleFunction
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
+					}
+					set(
+						$current,
+						"ownedFunction",
+						lv_ownedFunction_24_0,
+						"fr.inria.kairos.influence.InfluenceDSL.Function");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_25='affects'
 		{
-			newLeafNode(otherlv_24, grammarAccess.getInfluenceAccess().getAffectsKeyword_10());
+			newLeafNode(otherlv_25, grammarAccess.getInfluenceAccess().getAffectsKeyword_11());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_11_0());
+					newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_0());
 				}
-				lv_affects_25_0=ruleSystemResponse
+				lv_affects_26_0=ruleSystemResponse
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getInfluenceRule());
@@ -660,23 +698,23 @@ ruleInfluence returns [EObject current=null]
 					add(
 						$current,
 						"affects",
-						lv_affects_25_0,
+						lv_affects_26_0,
 						"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_26='and'
+			otherlv_27='and'
 			{
-				newLeafNode(otherlv_26, grammarAccess.getInfluenceAccess().getAndKeyword_12_0());
+				newLeafNode(otherlv_27, grammarAccess.getInfluenceAccess().getAndKeyword_13_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_1_0());
+						newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_13_1_0());
 					}
-					lv_affects_27_0=ruleSystemResponse
+					lv_affects_28_0=ruleSystemResponse
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getInfluenceRule());
@@ -684,13 +722,168 @@ ruleInfluence returns [EObject current=null]
 						add(
 							$current,
 							"affects",
-							lv_affects_27_0,
+							lv_affects_28_0,
 							"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
+	)
+;
+
+// Entry rule entryRuleFunction
+entryRuleFunction returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFunctionRule()); }
+	iv_ruleFunction=ruleFunction
+	{ $current=$iv_ruleFunction.current; }
+	EOF;
+
+// Rule Function
+ruleFunction returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='fun'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFunctionAccess().getFunKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getFunctionAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFunctionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='('
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFunctionAccess().getDefinitionEStringParserRuleCall_3_0());
+				}
+				lv_definition_3_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFunctionRule());
+					}
+					set(
+						$current,
+						"definition",
+						lv_definition_3_0,
+						"fr.inria.kairos.influence.InfluenceDSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4=')'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleCompositeFunction
+entryRuleCompositeFunction returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCompositeFunctionRule()); }
+	iv_ruleCompositeFunction=ruleCompositeFunction
+	{ $current=$iv_ruleCompositeFunction.current; }
+	EOF;
+
+// Rule CompositeFunction
+ruleCompositeFunction returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='fun'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getCompositeFunctionAccess().getFunKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getCompositeFunctionAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCompositeFunctionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='('
+		{
+			newLeafNode(otherlv_2, grammarAccess.getCompositeFunctionAccess().getLeftParenthesisKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCompositeFunctionRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseCrossReference_3_0());
+				}
+				ruleEString
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_4=','
+			{
+				newLeafNode(otherlv_4, grammarAccess.getCompositeFunctionAccess().getCommaKeyword_4_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getCompositeFunctionRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseCrossReference_4_1_0());
+					}
+					ruleEString
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_6=')'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getCompositeFunctionAccess().getRightParenthesisKeyword_5());
+		}
 	)
 ;
 

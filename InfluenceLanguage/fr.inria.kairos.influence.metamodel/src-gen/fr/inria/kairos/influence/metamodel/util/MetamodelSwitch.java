@@ -149,6 +149,24 @@ public class MetamodelSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case MetamodelPackage.FUNCTION: {
+			Function function = (Function) theEObject;
+			T result = caseFunction(function);
+			if (result == null)
+				result = caseNamedElement(function);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.COMPOSITE_FUNCTION: {
+			CompositeFunction compositeFunction = (CompositeFunction) theEObject;
+			T result = caseCompositeFunction(compositeFunction);
+			if (result == null)
+				result = caseNamedElement(compositeFunction);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -196,6 +214,36 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInfluence(Influence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFunction(Function object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Composite Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Composite Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompositeFunction(CompositeFunction object) {
 		return null;
 	}
 

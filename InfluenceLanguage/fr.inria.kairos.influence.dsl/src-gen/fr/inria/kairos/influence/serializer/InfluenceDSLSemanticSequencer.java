@@ -4,8 +4,10 @@
 package fr.inria.kairos.influence.serializer;
 
 import com.google.inject.Inject;
+import fr.inria.kairos.influence.metamodel.CompositeFunction;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
+import fr.inria.kairos.influence.metamodel.Function;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
@@ -38,11 +40,17 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MetamodelPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case MetamodelPackage.COMPOSITE_FUNCTION:
+				sequence_CompositeFunction(context, (CompositeFunction) semanticObject); 
+				return; 
 			case MetamodelPackage.COMPOSITE_INFLUENCE:
 				sequence_CompositeInfluence(context, (CompositeInfluence) semanticObject); 
 				return; 
 			case MetamodelPackage.DESIGN_ARTIFACT:
 				sequence_DesignArtifact(context, (DesignArtifact) semanticObject); 
+				return; 
+			case MetamodelPackage.FUNCTION:
+				sequence_Function(context, (Function) semanticObject); 
 				return; 
 			case MetamodelPackage.INFLUENCE:
 				sequence_Influence(context, (Influence) semanticObject); 
@@ -67,6 +75,20 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     CompositeFunction returns CompositeFunction
+	 *
+	 * Constraint:
+	 *     (name=ID inputs+=[SystemResponse|EString] inputs+=[SystemResponse|EString]*)
+	 * </pre>
+	 */
+	protected void sequence_CompositeFunction(ISerializationContext context, CompositeFunction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     AbstractInfluence returns CompositeInfluence
 	 *     CompositeInfluence returns CompositeInfluence
 	 *
@@ -76,6 +98,7 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *         description+=EString 
 	 *         description+=EString* 
 	 *         internalInfluences+=[AbstractInfluence|EString]* 
+	 *         ownedFunction=CompositeFunction 
 	 *         affects+=SystemResponse 
 	 *         affects+=SystemResponse*
 	 *     )
@@ -105,6 +128,29 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDesignArtifactAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getDesignArtifactAccess().getRefEObjectQualifiedNameParserRuleCall_4_0_1(), semanticObject.eGet(MetamodelPackage.Literals.DESIGN_ARTIFACT__REF, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Function returns Function
+	 *
+	 * Constraint:
+	 *     (name=ID definition=EString)
+	 * </pre>
+	 */
+	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MetamodelPackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MetamodelPackage.Literals.NAMED_ELEMENT__NAME));
+			if (transientValues.isValueTransient(semanticObject, MetamodelPackage.Literals.FUNCTION__DEFINITION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MetamodelPackage.Literals.FUNCTION__DEFINITION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFunctionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getFunctionAccess().getDefinitionEStringParserRuleCall_3_0(), semanticObject.getDefinition());
 		feeder.finish();
 	}
 	
@@ -148,6 +194,7 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *             (originatorPhenomena+=[PhysicalPhenomena|EString] | originatorSystemResponse+=[SystemResponse|EString])? 
 	 *             originatorArtifact+=[DesignArtifact|ID]?
 	 *         )* 
+	 *         ownedFunction=Function 
 	 *         affects+=SystemResponse 
 	 *         affects+=SystemResponse*
 	 *     )

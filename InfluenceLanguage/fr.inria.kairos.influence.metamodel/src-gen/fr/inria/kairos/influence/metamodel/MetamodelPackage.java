@@ -489,13 +489,22 @@ public interface MetamodelPackage extends EPackage {
 	int COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = ABSTRACT_INFLUENCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Owned Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__OWNED_FUNCTION = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Composite Influence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
+	int COMPOSITE_INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Composite Influence</em>' class.
@@ -570,13 +579,22 @@ public interface MetamodelPackage extends EPackage {
 	int INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = ABSTRACT_INFLUENCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Owned Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__OWNED_FUNCTION = ABSTRACT_INFLUENCE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Influence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 3;
+	int INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Influence</em>' class.
@@ -586,6 +604,98 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int INFLUENCE_OPERATION_COUNT = ABSTRACT_INFLUENCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.FunctionImpl <em>Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.FunctionImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getFunction()
+	 * @generated
+	 */
+	int FUNCTION = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION__DEFINITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeFunctionImpl <em>Composite Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.CompositeFunctionImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeFunction()
+	 * @generated
+	 */
+	int COMPOSITE_FUNCTION = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_FUNCTION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_FUNCTION__INPUTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Composite Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_FUNCTION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Composite Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_FUNCTION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.InfluenceModel <em>Influence Model</em>}'.
@@ -728,6 +838,59 @@ public interface MetamodelPackage extends EPackage {
 	EReference getInfluence_OriginatorSystemResponse();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction <em>Owned Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Owned Function</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction()
+	 * @see #getInfluence()
+	 * @generated
+	 */
+	EReference getInfluence_OwnedFunction();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Function <em>Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Function</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Function
+	 * @generated
+	 */
+	EClass getFunction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Function#getDefinition <em>Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Definition</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Function#getDefinition()
+	 * @see #getFunction()
+	 * @generated
+	 */
+	EAttribute getFunction_Definition();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.CompositeFunction <em>Composite Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Composite Function</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.CompositeFunction
+	 * @generated
+	 */
+	EClass getCompositeFunction();
+
+	/**
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.CompositeFunction#getInputs <em>Inputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Inputs</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.CompositeFunction#getInputs()
+	 * @see #getCompositeFunction()
+	 * @generated
+	 */
+	EReference getCompositeFunction_Inputs();
+
+	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.SystemResponse <em>System Response</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -842,6 +1005,17 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCompositeInfluence_InternalInfluences();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedFunction <em>Owned Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Owned Function</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedFunction()
+	 * @see #getCompositeInfluence()
+	 * @generated
+	 */
+	EReference getCompositeInfluence_OwnedFunction();
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.NamedElement <em>Named Element</em>}'.
@@ -998,6 +1172,50 @@ public interface MetamodelPackage extends EPackage {
 		EReference INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE = eINSTANCE.getInfluence_OriginatorSystemResponse();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Function</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFLUENCE__OWNED_FUNCTION = eINSTANCE.getInfluence_OwnedFunction();
+
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.FunctionImpl <em>Function</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.FunctionImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getFunction()
+		 * @generated
+		 */
+		EClass FUNCTION = eINSTANCE.getFunction();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FUNCTION__DEFINITION = eINSTANCE.getFunction_Definition();
+
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeFunctionImpl <em>Composite Function</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.CompositeFunctionImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeFunction()
+		 * @generated
+		 */
+		EClass COMPOSITE_FUNCTION = eINSTANCE.getCompositeFunction();
+
+		/**
+		 * The meta object literal for the '<em><b>Inputs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_FUNCTION__INPUTS = eINSTANCE.getCompositeFunction_Inputs();
+
+		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponseImpl <em>System Response</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1094,6 +1312,14 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = eINSTANCE.getCompositeInfluence_InternalInfluences();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Function</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_INFLUENCE__OWNED_FUNCTION = eINSTANCE.getCompositeInfluence_OwnedFunction();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.NamedElementImpl <em>Named Element</em>}' class.

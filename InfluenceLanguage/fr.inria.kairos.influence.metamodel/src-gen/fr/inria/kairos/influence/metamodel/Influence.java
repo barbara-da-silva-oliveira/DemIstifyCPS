@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorPhenomena <em>Originator Phenomena</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact <em>Originator Artifact</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorSystemResponse <em>Originator System Response</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction <em>Owned Function</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence()
@@ -59,5 +60,27 @@ public interface Influence extends AbstractInfluence {
 	 * @generated
 	 */
 	EList<SystemResponse> getOriginatorSystemResponse();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Function</em>' containment reference.
+	 * @see #setOwnedFunction(Function)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OwnedFunction()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Function getOwnedFunction();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction <em>Owned Function</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Owned Function</em>' containment reference.
+	 * @see #getOwnedFunction()
+	 * @generated
+	 */
+	void setOwnedFunction(Function value);
 
 } // Influence

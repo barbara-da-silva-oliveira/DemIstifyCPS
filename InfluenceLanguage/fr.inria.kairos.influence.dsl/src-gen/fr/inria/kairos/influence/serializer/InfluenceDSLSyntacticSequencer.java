@@ -56,8 +56,8 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '**#'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     description+=EString (ambiguity) 'encapsulate' 'affects' affects+=SystemResponse
 	 *     description+=EString (ambiguity) 'encapsulate' internalInfluences+=[AbstractInfluence|EString]
+	 *     description+=EString (ambiguity) 'encapsulate' ownedFunction=CompositeFunction
 	 
 	 * </pre>
 	 */

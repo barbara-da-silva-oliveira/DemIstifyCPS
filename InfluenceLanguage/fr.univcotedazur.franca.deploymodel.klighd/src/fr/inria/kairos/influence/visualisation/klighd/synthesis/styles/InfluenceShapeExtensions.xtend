@@ -42,6 +42,8 @@ import com.google.inject.Inject
 import fr.inria.kairos.influence.metamodel.CompositeInfluence
 import fr.inria.kairos.influence.metamodel.SystemResponse
 import fr.inria.kairos.influence.metamodel.Requirement
+import fr.inria.kairos.influence.metamodel.Function
+import fr.inria.kairos.influence.metamodel.CompositeFunction
 
 /**
  * Extension class that provides shapes and figures for the Lingua France diagram synthesis.
@@ -177,6 +179,70 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 //						placement.numColumns = 3
 //					}
 //				}
+			]
+		]
+		
+		return figure
+	}
+	
+	/**
+	 * Creates the function frame.
+	 */
+	def addFunctionFigure(KNode node, Function fun, String text) {
+		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
+		val figure = node.addRoundedRectangle(8, 8, 1) => [
+			setGridPlacement(1)
+			lineWidth = 0
+			foreground = Colors.CHARTREUSE_4
+			boldLineSelectionStyle
+		]
+		
+		figure.addRectangle() => [
+			invisible = true
+			setGridPlacementData().from(LEFT, padding, 0, TOP, padding, 0).to(RIGHT, padding, 0, BOTTOM, 4, 0)
+			
+			addRectangle() => [ // Centered child container
+				invisible = true
+				setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0)
+				val placement = setGridPlacement(1)
+				
+				addText(text) => [
+					suppressSelectability
+					underlineSelectionStyle
+				]
+				
+			]
+		]
+		
+		return figure
+	}
+	
+	/**
+	 * Creates the function frame.
+	 */
+	def addCompositeFunctionFigure(KNode node, CompositeFunction fun, String text) {
+		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
+		val figure = node.addRoundedRectangle(8, 8, 1) => [
+			setGridPlacement(1)
+			lineWidth = 1
+			foreground = Colors.CHARTREUSE_4
+			boldLineSelectionStyle
+		]
+		
+		figure.addRectangle() => [
+			invisible = true
+			setGridPlacementData().from(LEFT, padding, 0, TOP, padding, 0).to(RIGHT, padding, 0, BOTTOM, 4, 0)
+			
+			addRectangle() => [ // Centered child container
+				invisible = true
+				setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0)
+				val placement = setGridPlacement(1)
+				
+				addText(text) => [
+					suppressSelectability
+					underlineSelectionStyle
+				]
+				
 			]
 		]
 		

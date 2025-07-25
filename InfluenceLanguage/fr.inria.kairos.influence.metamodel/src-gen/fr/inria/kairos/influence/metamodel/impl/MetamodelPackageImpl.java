@@ -3,8 +3,10 @@
 package fr.inria.kairos.influence.metamodel.impl;
 
 import fr.inria.kairos.influence.metamodel.AbstractInfluence;
+import fr.inria.kairos.influence.metamodel.CompositeFunction;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
+import fr.inria.kairos.influence.metamodel.Function;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelFactory;
@@ -48,6 +50,20 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	private EClass influenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass functionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compositeFunctionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -291,6 +307,56 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EReference getInfluence_OwnedFunction() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFunction() {
+		return functionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFunction_Definition() {
+		return (EAttribute) functionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCompositeFunction() {
+		return compositeFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCompositeFunction_Inputs() {
+		return (EReference) compositeFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getSystemResponse() {
 		return systemResponseEClass;
 	}
@@ -401,6 +467,16 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EReference getCompositeInfluence_OwnedFunction() {
+		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -471,6 +547,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		compositeInfluenceEClass = createEClass(COMPOSITE_INFLUENCE);
 		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES);
+		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__OWNED_FUNCTION);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -479,6 +556,13 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_PHENOMENA);
 		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_ARTIFACT);
 		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE);
+		createEReference(influenceEClass, INFLUENCE__OWNED_FUNCTION);
+
+		functionEClass = createEClass(FUNCTION);
+		createEAttribute(functionEClass, FUNCTION__DEFINITION);
+
+		compositeFunctionEClass = createEClass(COMPOSITE_FUNCTION);
+		createEReference(compositeFunctionEClass, COMPOSITE_FUNCTION__INPUTS);
 	}
 
 	/**
@@ -518,6 +602,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		designArtifactEClass.getESuperTypes().add(this.getNamedElement());
 		compositeInfluenceEClass.getESuperTypes().add(this.getAbstractInfluence());
 		influenceEClass.getESuperTypes().add(this.getAbstractInfluence());
+		functionEClass.getESuperTypes().add(this.getNamedElement());
+		compositeFunctionEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(influenceModelEClass, InfluenceModel.class, "InfluenceModel", !IS_ABSTRACT, !IS_INTERFACE,
@@ -579,6 +665,9 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getCompositeInfluence_InternalInfluences(), this.getAbstractInfluence(), null,
 				"internalInfluences", null, 2, -1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompositeInfluence_OwnedFunction(), this.getCompositeFunction(), null, "ownedFunction", null,
+				1, 1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -596,6 +685,20 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getInfluence_OriginatorSystemResponse(), this.getSystemResponse(), null,
 				"originatorSystemResponse", null, 0, -1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluence_OwnedFunction(), this.getFunction(), null, "ownedFunction", null, 1, 1,
+				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFunction_Definition(), ecorePackage.getEString(), "definition", null, 0, 1, Function.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compositeFunctionEClass, CompositeFunction.class, "CompositeFunction", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompositeFunction_Inputs(), this.getSystemResponse(), null, "inputs", null, 0, -1,
+				CompositeFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

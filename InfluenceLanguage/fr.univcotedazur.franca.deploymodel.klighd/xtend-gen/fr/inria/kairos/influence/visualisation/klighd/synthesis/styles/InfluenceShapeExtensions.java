@@ -31,8 +31,10 @@ import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions;
 import de.cau.cs.kieler.klighd.krendering.extensions.PositionReferenceX;
 import de.cau.cs.kieler.klighd.krendering.extensions.PositionReferenceY;
 import de.cau.cs.kieler.klighd.syntheses.DiagramSyntheses;
+import fr.inria.kairos.influence.metamodel.CompositeFunction;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
+import fr.inria.kairos.influence.metamodel.Function;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.Requirement;
@@ -230,6 +232,90 @@ public class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
         };
         ObjectExtensions.<KContainerRendering>operator_doubleArrow(_addCloudIcon, _function_4);
         placement.setNumColumns(2);
+      };
+      ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle_1, _function_2);
+    };
+    ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle, _function_1);
+    return figure;
+  }
+
+  /**
+   * Creates the function frame.
+   */
+  public KRoundedRectangle addFunctionFigure(final KNode node, final Function fun, final String text) {
+    int _xifexpression = (int) 0;
+    boolean _booleanValue = this.getBooleanValue(InfluenceSynthesis.SHOW_HYPERLINKS);
+    if (_booleanValue) {
+      _xifexpression = 8;
+    } else {
+      _xifexpression = 6;
+    }
+    final int padding = _xifexpression;
+    KRoundedRectangle _addRoundedRectangle = this._kRenderingExtensions.addRoundedRectangle(node, 8, 8, 1);
+    final Procedure1<KRoundedRectangle> _function = (KRoundedRectangle it) -> {
+      this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+      this._kRenderingExtensions.setLineWidth(it, 0);
+      this._kRenderingExtensions.setForeground(it, Colors.CHARTREUSE_4);
+      this._influenceStyleExtensions.boldLineSelectionStyle(it);
+    };
+    final KRoundedRectangle figure = ObjectExtensions.<KRoundedRectangle>operator_doubleArrow(_addRoundedRectangle, _function);
+    KRectangle _addRectangle = this._kContainerRenderingExtensions.addRectangle(figure);
+    final Procedure1<KRectangle> _function_1 = (KRectangle it) -> {
+      this._kRenderingExtensions.setInvisible(it, true);
+      this._kRenderingExtensions.to(this._kRenderingExtensions.from(this._kRenderingExtensions.setGridPlacementData(it), this._kRenderingExtensions.LEFT, padding, 0, this._kRenderingExtensions.TOP, padding, 0), this._kRenderingExtensions.RIGHT, padding, 0, this._kRenderingExtensions.BOTTOM, 4, 0);
+      KRectangle _addRectangle_1 = this._kContainerRenderingExtensions.addRectangle(it);
+      final Procedure1<KRectangle> _function_2 = (KRectangle it_1) -> {
+        this._kRenderingExtensions.setInvisible(it_1, true);
+        this._kRenderingExtensions.<KRectangle>setPointPlacementData(it_1, this._kRenderingExtensions.LEFT, 0, 0.5f, this._kRenderingExtensions.TOP, 0, 0.5f, this._kRenderingExtensions.H_CENTRAL, this._kRenderingExtensions.V_CENTRAL, 0, 0, 0, 0);
+        final KGridPlacement placement = this._kContainerRenderingExtensions.setGridPlacement(it_1, 1);
+        KText _addText = this._kContainerRenderingExtensions.addText(it_1, text);
+        final Procedure1<KText> _function_3 = (KText it_2) -> {
+          DiagramSyntheses.suppressSelectability(it_2);
+          this._influenceStyleExtensions.underlineSelectionStyle(it_2);
+        };
+        ObjectExtensions.<KText>operator_doubleArrow(_addText, _function_3);
+      };
+      ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle_1, _function_2);
+    };
+    ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle, _function_1);
+    return figure;
+  }
+
+  /**
+   * Creates the function frame.
+   */
+  public KRoundedRectangle addCompositeFunctionFigure(final KNode node, final CompositeFunction fun, final String text) {
+    int _xifexpression = (int) 0;
+    boolean _booleanValue = this.getBooleanValue(InfluenceSynthesis.SHOW_HYPERLINKS);
+    if (_booleanValue) {
+      _xifexpression = 8;
+    } else {
+      _xifexpression = 6;
+    }
+    final int padding = _xifexpression;
+    KRoundedRectangle _addRoundedRectangle = this._kRenderingExtensions.addRoundedRectangle(node, 8, 8, 1);
+    final Procedure1<KRoundedRectangle> _function = (KRoundedRectangle it) -> {
+      this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+      this._kRenderingExtensions.setLineWidth(it, 1);
+      this._kRenderingExtensions.setForeground(it, Colors.CHARTREUSE_4);
+      this._influenceStyleExtensions.boldLineSelectionStyle(it);
+    };
+    final KRoundedRectangle figure = ObjectExtensions.<KRoundedRectangle>operator_doubleArrow(_addRoundedRectangle, _function);
+    KRectangle _addRectangle = this._kContainerRenderingExtensions.addRectangle(figure);
+    final Procedure1<KRectangle> _function_1 = (KRectangle it) -> {
+      this._kRenderingExtensions.setInvisible(it, true);
+      this._kRenderingExtensions.to(this._kRenderingExtensions.from(this._kRenderingExtensions.setGridPlacementData(it), this._kRenderingExtensions.LEFT, padding, 0, this._kRenderingExtensions.TOP, padding, 0), this._kRenderingExtensions.RIGHT, padding, 0, this._kRenderingExtensions.BOTTOM, 4, 0);
+      KRectangle _addRectangle_1 = this._kContainerRenderingExtensions.addRectangle(it);
+      final Procedure1<KRectangle> _function_2 = (KRectangle it_1) -> {
+        this._kRenderingExtensions.setInvisible(it_1, true);
+        this._kRenderingExtensions.<KRectangle>setPointPlacementData(it_1, this._kRenderingExtensions.LEFT, 0, 0.5f, this._kRenderingExtensions.TOP, 0, 0.5f, this._kRenderingExtensions.H_CENTRAL, this._kRenderingExtensions.V_CENTRAL, 0, 0, 0, 0);
+        final KGridPlacement placement = this._kContainerRenderingExtensions.setGridPlacement(it_1, 1);
+        KText _addText = this._kContainerRenderingExtensions.addText(it_1, text);
+        final Procedure1<KText> _function_3 = (KText it_2) -> {
+          DiagramSyntheses.suppressSelectability(it_2);
+          this._influenceStyleExtensions.underlineSelectionStyle(it_2);
+        };
+        ObjectExtensions.<KText>operator_doubleArrow(_addText, _function_3);
       };
       ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle_1, _function_2);
     };

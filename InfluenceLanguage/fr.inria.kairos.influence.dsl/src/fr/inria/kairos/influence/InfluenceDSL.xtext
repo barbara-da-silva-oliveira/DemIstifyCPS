@@ -22,6 +22,7 @@ CompositeInfluence returns CompositeInfluence:
 	'Composite' 'Influence'	name=EString '#**' description+=EString ( "," description+=EString)* '**#'? 
 	'encapsulate' 
 		(internalInfluences+=[AbstractInfluence|EString])*
+	 ownedFunction=CompositeFunction
 	'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)* 
 ;
 
@@ -29,8 +30,17 @@ Influence returns Influence:
 	'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'? 
 		'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 						  ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))* 
+		ownedFunction=Function
 		'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)* 
 	;
+
+Function:
+	'fun' name=ID '(' definition=EString ')' 
+;
+
+CompositeFunction:
+	'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')' 
+;
 
 PhysicalPhenomena returns PhysicalPhenomena:
 	'Phenomenon'

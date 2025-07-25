@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences <em>Internal Influences</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedFunction <em>Owned Function</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getCompositeInfluence()
@@ -32,5 +33,27 @@ public interface CompositeInfluence extends AbstractInfluence {
 	 * @generated
 	 */
 	EList<AbstractInfluence> getInternalInfluences();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Function</em>' containment reference.
+	 * @see #setOwnedFunction(CompositeFunction)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getCompositeInfluence_OwnedFunction()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	CompositeFunction getOwnedFunction();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedFunction <em>Owned Function</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Owned Function</em>' containment reference.
+	 * @see #getOwnedFunction()
+	 * @generated
+	 */
+	void setOwnedFunction(CompositeFunction value);
 
 } // CompositeInfluence

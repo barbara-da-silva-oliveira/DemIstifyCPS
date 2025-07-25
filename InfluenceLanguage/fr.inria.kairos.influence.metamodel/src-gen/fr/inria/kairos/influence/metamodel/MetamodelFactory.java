@@ -40,6 +40,24 @@ public interface MetamodelFactory extends EFactory {
 	Influence createInfluence();
 
 	/**
+	 * Returns a new object of class '<em>Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Function</em>'.
+	 * @generated
+	 */
+	Function createFunction();
+
+	/**
+	 * Returns a new object of class '<em>Composite Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Composite Function</em>'.
+	 * @generated
+	 */
+	CompositeFunction createCompositeFunction();
+
+	/**
 	 * Returns a new object of class '<em>System Response</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

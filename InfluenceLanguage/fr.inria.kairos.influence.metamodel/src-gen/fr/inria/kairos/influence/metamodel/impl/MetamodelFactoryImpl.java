@@ -70,6 +70,10 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 			return createCompositeInfluence();
 		case MetamodelPackage.INFLUENCE:
 			return createInfluence();
+		case MetamodelPackage.FUNCTION:
+			return createFunction();
+		case MetamodelPackage.COMPOSITE_FUNCTION:
+			return createCompositeFunction();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +99,28 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	public Influence createInfluence() {
 		InfluenceImpl influence = new InfluenceImpl();
 		return influence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Function createFunction() {
+		FunctionImpl function = new FunctionImpl();
+		return function;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CompositeFunction createCompositeFunction() {
+		CompositeFunctionImpl compositeFunction = new CompositeFunctionImpl();
+		return compositeFunction;
 	}
 
 	/**
