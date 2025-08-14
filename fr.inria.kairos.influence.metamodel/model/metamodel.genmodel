@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/fr.inria.kairos.influence.metamodel/src-gen" creationIcons="false"
+    editDirectory="/fr.inria.kairos.influence.metamodel.edit/src-gen" editorDirectory="/fr.inria.kairos.influence.metamodel.editor/src-gen"
+    modelPluginID="fr.inria.kairos.influence.metamodel" modelName="Metamodel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>metamodel.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Metamodel" basePackage="fr.inria.kairos.influence" disposableProviderFactory="true"
+      fileExtensions=".influences" ecorePackage="metamodel.ecore#/">
+    <genClasses ecoreClass="metamodel.ecore#//InfluenceModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedInfluences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedRequirements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedPhysicalPhenomena"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedArtifacts"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//AbstractInfluence">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//AbstractInfluence/relatedTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//AbstractInfluence/affects"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//AbstractInfluence/description"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//SystemResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//SystemResponse/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//SystemResponse/usedIn"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//PhysicalPhenomena">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//PhysicalPhenomena/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//PhysicalPhenomena/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Requirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Requirement/satisfaction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Requirement/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//DesignArtifact">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//DesignArtifact/ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//DesignArtifact/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//CompositeInfluence">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeInfluence/internalInfluences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeInfluence/ownedFunction"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Influence">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorPhenomena"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorArtifact"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorSystemResponse"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/ownedFunction"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Function/definition"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//CompositeFunction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeFunction/inputs"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
