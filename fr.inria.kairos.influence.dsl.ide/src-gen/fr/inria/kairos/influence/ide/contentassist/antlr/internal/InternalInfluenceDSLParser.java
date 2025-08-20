@@ -22,18 +22,19 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalInfluenceDSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'InfluenceModel'", "'Composite'", "'Influence'", "'#**'", "'**#'", "'encapsulate'", "'affects'", "','", "'and'", "'originators'", "':'", "'artifact'", "'phenomena'", "'system'", "'response'", "'fun'", "'('", "')'", "'Phenomenon'", "'metadata'", "'Requirement'", "'satisfied'", "'when'", "'DesignArtifact'", "'->'", "'used'", "'in'", "'.'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_DOUBLE", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'InfluenceModel'", "'Composite'", "'Influence'", "'#**'", "'**#'", "'encapsulate'", "'affects'", "','", "'and'", "'originators'", "':'", "'artifact'", "'phenomena'", "'system'", "'response'", "'fun'", "'('", "')'", "'Phenomenon'", "'Requirement'", "'satisfied'", "'when'", "'metadata'", "'DesignArtifact'", "'->'", "'used'", "'in'", "'.'"
     };
     public static final int RULE_STRING=4;
-    public static final int RULE_SL_COMMENT=8;
+    public static final int RULE_SL_COMMENT=9;
     public static final int T__19=19;
     public static final int T__15=15;
     public static final int T__37=37;
+    public static final int RULE_DOUBLE=7;
     public static final int T__16=16;
     public static final int T__38=38;
     public static final int T__17=17;
+    public static final int T__39=39;
     public static final int T__18=18;
-    public static final int T__11=11;
     public static final int T__33=33;
     public static final int T__12=12;
     public static final int T__34=34;
@@ -46,15 +47,15 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
     public static final int T__31=31;
     public static final int T__32=32;
     public static final int RULE_ID=5;
-    public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
+    public static final int RULE_WS=10;
+    public static final int RULE_ANY_OTHER=11;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
     public static final int RULE_INT=6;
     public static final int T__29=29;
     public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=7;
+    public static final int RULE_ML_COMMENT=8;
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
@@ -1030,7 +1031,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:356:1: ( ( ( rule__InfluenceModel__OwnedArtifactsAssignment_3_0 ) ) | ( ( rule__InfluenceModel__OwnedRequirementsAssignment_3_1 ) ) | ( ( rule__InfluenceModel__OwnedPhysicalPhenomenaAssignment_3_2 ) ) | ( ( rule__InfluenceModel__OwnedInfluencesAssignment_3_3 ) ) )
             int alt1=4;
             switch ( input.LA(1) ) {
-            case 34:
+            case 35:
                 {
                 alt1=1;
                 }
@@ -1040,13 +1041,13 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 alt1=2;
                 }
                 break;
-            case 29:
+            case 30:
                 {
                 alt1=3;
                 }
                 break;
-            case 12:
             case 13:
+            case 14:
                 {
                 alt1=4;
                 }
@@ -1187,10 +1188,10 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==13) ) {
+            if ( (LA2_0==14) ) {
                 alt2=1;
             }
-            else if ( (LA2_0==12) ) {
+            else if ( (LA2_0==13) ) {
                 alt2=2;
             }
             else {
@@ -1265,17 +1266,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:410:1: ( ( ( rule__Influence__Group_8_0__0 ) ) | ( ( rule__Influence__Group_8_1__0 ) ) | ( ( rule__Influence__Group_8_2__0 ) ) )
             int alt3=3;
             switch ( input.LA(1) ) {
-            case 22:
+            case 23:
                 {
                 alt3=1;
                 }
                 break;
-            case 23:
+            case 24:
                 {
                 alt3=2;
                 }
                 break;
-            case 24:
+            case 25:
                 {
                 alt3=3;
                 }
@@ -1390,17 +1391,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:437:1: ( ( ( rule__Influence__Group_9_1_0__0 ) ) | ( ( rule__Influence__Group_9_1_1__0 ) ) | ( ( rule__Influence__Group_9_1_2__0 ) ) )
             int alt4=3;
             switch ( input.LA(1) ) {
-            case 22:
+            case 23:
                 {
                 alt4=1;
                 }
                 break;
-            case 23:
+            case 24:
                 {
                 alt4=2;
                 }
                 break;
-            case 24:
+            case 25:
                 {
                 alt4=3;
                 }
@@ -1703,7 +1704,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:526:2: 'InfluenceModel'
             {
              before(grammarAccess.getInfluenceModelAccess().getInfluenceModelKeyword_1()); 
-            match(input,11,FOLLOW_2); 
+            match(input,12,FOLLOW_2); 
              after(grammarAccess.getInfluenceModelAccess().getInfluenceModelKeyword_1()); 
 
             }
@@ -1864,7 +1865,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
-                if ( ((LA6_0>=12 && LA6_0<=13)||LA6_0==29||LA6_0==31||LA6_0==34) ) {
+                if ( ((LA6_0>=13 && LA6_0<=14)||(LA6_0>=30 && LA6_0<=31)||LA6_0==35) ) {
                     alt6=1;
                 }
 
@@ -1961,7 +1962,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:607:2: 'Composite'
             {
              before(grammarAccess.getCompositeInfluenceAccess().getCompositeKeyword_0()); 
-            match(input,12,FOLLOW_2); 
+            match(input,13,FOLLOW_2); 
              after(grammarAccess.getCompositeInfluenceAccess().getCompositeKeyword_0()); 
 
             }
@@ -2036,7 +2037,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:634:2: 'Influence'
             {
              before(grammarAccess.getCompositeInfluenceAccess().getInfluenceKeyword_1()); 
-            match(input,13,FOLLOW_2); 
+            match(input,14,FOLLOW_2); 
              after(grammarAccess.getCompositeInfluenceAccess().getInfluenceKeyword_1()); 
 
             }
@@ -2196,7 +2197,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:688:2: '#**'
             {
              before(grammarAccess.getCompositeInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_3()); 
-            match(input,14,FOLLOW_2); 
+            match(input,15,FOLLOW_2); 
              after(grammarAccess.getCompositeInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_3()); 
 
             }
@@ -2362,7 +2363,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==18) ) {
+                if ( (LA7_0==19) ) {
                     alt7=1;
                 }
 
@@ -2463,14 +2464,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==15) ) {
+            if ( (LA8_0==16) ) {
                 alt8=1;
             }
             switch (alt8) {
                 case 1 :
                     // InternalInfluenceDSL.g:770:3: '**#'
                     {
-                    match(input,15,FOLLOW_2); 
+                    match(input,16,FOLLOW_2); 
 
                     }
                     break;
@@ -2551,7 +2552,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:796:2: 'encapsulate'
             {
              before(grammarAccess.getCompositeInfluenceAccess().getEncapsulateKeyword_7()); 
-            match(input,16,FOLLOW_2); 
+            match(input,17,FOLLOW_2); 
              after(grammarAccess.getCompositeInfluenceAccess().getEncapsulateKeyword_7()); 
 
             }
@@ -2814,7 +2815,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:877:2: 'affects'
             {
              before(grammarAccess.getCompositeInfluenceAccess().getAffectsKeyword_10()); 
-            match(input,17,FOLLOW_2); 
+            match(input,18,FOLLOW_2); 
              after(grammarAccess.getCompositeInfluenceAccess().getAffectsKeyword_10()); 
 
             }
@@ -2975,7 +2976,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==19) ) {
+                if ( (LA10_0==20) ) {
                     alt10=1;
                 }
 
@@ -3072,7 +3073,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:958:2: ','
             {
              before(grammarAccess.getCompositeInfluenceAccess().getCommaKeyword_5_0()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getCompositeInfluenceAccess().getCommaKeyword_5_0()); 
 
             }
@@ -3227,7 +3228,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1012:2: 'and'
             {
              before(grammarAccess.getCompositeInfluenceAccess().getAndKeyword_12_0()); 
-            match(input,19,FOLLOW_2); 
+            match(input,20,FOLLOW_2); 
              after(grammarAccess.getCompositeInfluenceAccess().getAndKeyword_12_0()); 
 
             }
@@ -3382,7 +3383,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1066:2: 'Influence'
             {
              before(grammarAccess.getInfluenceAccess().getInfluenceKeyword_0()); 
-            match(input,13,FOLLOW_2); 
+            match(input,14,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getInfluenceKeyword_0()); 
 
             }
@@ -3542,7 +3543,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1120:2: '#**'
             {
              before(grammarAccess.getInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_2()); 
-            match(input,14,FOLLOW_2); 
+            match(input,15,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_2()); 
 
             }
@@ -3708,7 +3709,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0==18) ) {
+                if ( (LA11_0==19) ) {
                     alt11=1;
                 }
 
@@ -3809,14 +3810,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==15) ) {
+            if ( (LA12_0==16) ) {
                 alt12=1;
             }
             switch (alt12) {
                 case 1 :
                     // InternalInfluenceDSL.g:1202:3: '**#'
                     {
-                    match(input,15,FOLLOW_2); 
+                    match(input,16,FOLLOW_2); 
 
                     }
                     break;
@@ -3897,7 +3898,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1228:2: 'originators'
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorsKeyword_6()); 
-            match(input,20,FOLLOW_2); 
+            match(input,21,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getOriginatorsKeyword_6()); 
 
             }
@@ -3972,7 +3973,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1255:2: ':'
             {
              before(grammarAccess.getInfluenceAccess().getColonKeyword_7()); 
-            match(input,21,FOLLOW_2); 
+            match(input,22,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getColonKeyword_7()); 
 
             }
@@ -4138,7 +4139,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 int alt13=2;
                 int LA13_0 = input.LA(1);
 
-                if ( (LA13_0==19) ) {
+                if ( (LA13_0==20) ) {
                     alt13=1;
                 }
 
@@ -4320,7 +4321,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1363:2: 'affects'
             {
              before(grammarAccess.getInfluenceAccess().getAffectsKeyword_11()); 
-            match(input,17,FOLLOW_2); 
+            match(input,18,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getAffectsKeyword_11()); 
 
             }
@@ -4481,7 +4482,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 int alt14=2;
                 int LA14_0 = input.LA(1);
 
-                if ( (LA14_0==19) ) {
+                if ( (LA14_0==20) ) {
                     alt14=1;
                 }
 
@@ -4578,7 +4579,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1444:2: ','
             {
              before(grammarAccess.getInfluenceAccess().getCommaKeyword_4_0()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getCommaKeyword_4_0()); 
 
             }
@@ -4733,7 +4734,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1498:2: 'artifact'
             {
              before(grammarAccess.getInfluenceAccess().getArtifactKeyword_8_0_0()); 
-            match(input,22,FOLLOW_2); 
+            match(input,23,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getArtifactKeyword_8_0_0()); 
 
             }
@@ -4888,7 +4889,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1552:2: 'phenomena'
             {
              before(grammarAccess.getInfluenceAccess().getPhenomenaKeyword_8_1_0()); 
-            match(input,23,FOLLOW_2); 
+            match(input,24,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getPhenomenaKeyword_8_1_0()); 
 
             }
@@ -5043,7 +5044,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1606:2: 'system'
             {
              before(grammarAccess.getInfluenceAccess().getSystemKeyword_8_2_0()); 
-            match(input,24,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getSystemKeyword_8_2_0()); 
 
             }
@@ -5118,7 +5119,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1633:2: 'response'
             {
              before(grammarAccess.getInfluenceAccess().getResponseKeyword_8_2_1()); 
-            match(input,25,FOLLOW_2); 
+            match(input,26,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getResponseKeyword_8_2_1()); 
 
             }
@@ -5273,7 +5274,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1687:2: 'and'
             {
              before(grammarAccess.getInfluenceAccess().getAndKeyword_9_0()); 
-            match(input,19,FOLLOW_2); 
+            match(input,20,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getAndKeyword_9_0()); 
 
             }
@@ -5428,7 +5429,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1741:2: 'artifact'
             {
              before(grammarAccess.getInfluenceAccess().getArtifactKeyword_9_1_0_0()); 
-            match(input,22,FOLLOW_2); 
+            match(input,23,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getArtifactKeyword_9_1_0_0()); 
 
             }
@@ -5583,7 +5584,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1795:2: 'phenomena'
             {
              before(grammarAccess.getInfluenceAccess().getPhenomenaKeyword_9_1_1_0()); 
-            match(input,23,FOLLOW_2); 
+            match(input,24,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getPhenomenaKeyword_9_1_1_0()); 
 
             }
@@ -5738,7 +5739,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1849:2: 'system'
             {
              before(grammarAccess.getInfluenceAccess().getSystemKeyword_9_1_2_0()); 
-            match(input,24,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getSystemKeyword_9_1_2_0()); 
 
             }
@@ -5813,7 +5814,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1876:2: 'response'
             {
              before(grammarAccess.getInfluenceAccess().getResponseKeyword_9_1_2_1()); 
-            match(input,25,FOLLOW_2); 
+            match(input,26,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getResponseKeyword_9_1_2_1()); 
 
             }
@@ -5968,7 +5969,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1930:2: 'and'
             {
              before(grammarAccess.getInfluenceAccess().getAndKeyword_13_0()); 
-            match(input,19,FOLLOW_2); 
+            match(input,20,FOLLOW_2); 
              after(grammarAccess.getInfluenceAccess().getAndKeyword_13_0()); 
 
             }
@@ -6123,7 +6124,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:1984:2: 'fun'
             {
              before(grammarAccess.getFunctionAccess().getFunKeyword_0()); 
-            match(input,26,FOLLOW_2); 
+            match(input,27,FOLLOW_2); 
              after(grammarAccess.getFunctionAccess().getFunKeyword_0()); 
 
             }
@@ -6283,7 +6284,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2038:2: '('
             {
              before(grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_2()); 
-            match(input,27,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -6438,7 +6439,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2091:2: ')'
             {
              before(grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4()); 
-            match(input,28,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4()); 
 
             }
@@ -6513,7 +6514,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2119:2: 'fun'
             {
              before(grammarAccess.getCompositeFunctionAccess().getFunKeyword_0()); 
-            match(input,26,FOLLOW_2); 
+            match(input,27,FOLLOW_2); 
              after(grammarAccess.getCompositeFunctionAccess().getFunKeyword_0()); 
 
             }
@@ -6673,7 +6674,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2173:2: '('
             {
              before(grammarAccess.getCompositeFunctionAccess().getLeftParenthesisKeyword_2()); 
-            match(input,27,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getCompositeFunctionAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -6839,7 +6840,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
                 int alt15=2;
                 int LA15_0 = input.LA(1);
 
-                if ( (LA15_0==18) ) {
+                if ( (LA15_0==19) ) {
                     alt15=1;
                 }
 
@@ -6931,7 +6932,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2253:2: ')'
             {
              before(grammarAccess.getCompositeFunctionAccess().getRightParenthesisKeyword_5()); 
-            match(input,28,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getCompositeFunctionAccess().getRightParenthesisKeyword_5()); 
 
             }
@@ -7006,7 +7007,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2281:2: ','
             {
              before(grammarAccess.getCompositeFunctionAccess().getCommaKeyword_4_0()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getCompositeFunctionAccess().getCommaKeyword_4_0()); 
 
             }
@@ -7161,7 +7162,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2335:2: 'Phenomenon'
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getPhenomenonKeyword_0()); 
-            match(input,29,FOLLOW_2); 
+            match(input,30,FOLLOW_2); 
              after(grammarAccess.getPhysicalPhenomenaAccess().getPhenomenonKeyword_0()); 
 
             }
@@ -7194,7 +7195,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             // InternalInfluenceDSL.g:2348:1: ( rule__PhysicalPhenomena__Group__1__Impl rule__PhysicalPhenomena__Group__2 )
             // InternalInfluenceDSL.g:2349:2: rule__PhysicalPhenomena__Group__1__Impl rule__PhysicalPhenomena__Group__2
             {
-            pushFollow(FOLLOW_26);
+            pushFollow(FOLLOW_18);
             rule__PhysicalPhenomena__Group__1__Impl();
 
             state._fsp--;
@@ -7270,22 +7271,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group__2"
-    // InternalInfluenceDSL.g:2371:1: rule__PhysicalPhenomena__Group__2 : rule__PhysicalPhenomena__Group__2__Impl rule__PhysicalPhenomena__Group__3 ;
+    // InternalInfluenceDSL.g:2371:1: rule__PhysicalPhenomena__Group__2 : rule__PhysicalPhenomena__Group__2__Impl ;
     public final void rule__PhysicalPhenomena__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2375:1: ( rule__PhysicalPhenomena__Group__2__Impl rule__PhysicalPhenomena__Group__3 )
-            // InternalInfluenceDSL.g:2376:2: rule__PhysicalPhenomena__Group__2__Impl rule__PhysicalPhenomena__Group__3
+            // InternalInfluenceDSL.g:2375:1: ( rule__PhysicalPhenomena__Group__2__Impl )
+            // InternalInfluenceDSL.g:2376:2: rule__PhysicalPhenomena__Group__2__Impl
             {
-            pushFollow(FOLLOW_26);
-            rule__PhysicalPhenomena__Group__2__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__PhysicalPhenomena__Group__3();
+            rule__PhysicalPhenomena__Group__2__Impl();
 
             state._fsp--;
 
@@ -7308,29 +7304,29 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group__2__Impl"
-    // InternalInfluenceDSL.g:2383:1: rule__PhysicalPhenomena__Group__2__Impl : ( ( rule__PhysicalPhenomena__Group_2__0 )? ) ;
+    // InternalInfluenceDSL.g:2382:1: rule__PhysicalPhenomena__Group__2__Impl : ( ( rule__PhysicalPhenomena__Group_2__0 )? ) ;
     public final void rule__PhysicalPhenomena__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2387:1: ( ( ( rule__PhysicalPhenomena__Group_2__0 )? ) )
-            // InternalInfluenceDSL.g:2388:1: ( ( rule__PhysicalPhenomena__Group_2__0 )? )
+            // InternalInfluenceDSL.g:2386:1: ( ( ( rule__PhysicalPhenomena__Group_2__0 )? ) )
+            // InternalInfluenceDSL.g:2387:1: ( ( rule__PhysicalPhenomena__Group_2__0 )? )
             {
-            // InternalInfluenceDSL.g:2388:1: ( ( rule__PhysicalPhenomena__Group_2__0 )? )
-            // InternalInfluenceDSL.g:2389:2: ( rule__PhysicalPhenomena__Group_2__0 )?
+            // InternalInfluenceDSL.g:2387:1: ( ( rule__PhysicalPhenomena__Group_2__0 )? )
+            // InternalInfluenceDSL.g:2388:2: ( rule__PhysicalPhenomena__Group_2__0 )?
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getGroup_2()); 
-            // InternalInfluenceDSL.g:2390:2: ( rule__PhysicalPhenomena__Group_2__0 )?
+            // InternalInfluenceDSL.g:2389:2: ( rule__PhysicalPhenomena__Group_2__0 )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==21) ) {
+            if ( (LA16_0==22) ) {
                 alt16=1;
             }
             switch (alt16) {
                 case 1 :
-                    // InternalInfluenceDSL.g:2390:3: rule__PhysicalPhenomena__Group_2__0
+                    // InternalInfluenceDSL.g:2389:3: rule__PhysicalPhenomena__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__PhysicalPhenomena__Group_2__0();
@@ -7365,106 +7361,15 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__PhysicalPhenomena__Group__2__Impl"
 
 
-    // $ANTLR start "rule__PhysicalPhenomena__Group__3"
-    // InternalInfluenceDSL.g:2398:1: rule__PhysicalPhenomena__Group__3 : rule__PhysicalPhenomena__Group__3__Impl ;
-    public final void rule__PhysicalPhenomena__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2402:1: ( rule__PhysicalPhenomena__Group__3__Impl )
-            // InternalInfluenceDSL.g:2403:2: rule__PhysicalPhenomena__Group__3__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__PhysicalPhenomena__Group__3__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group__3"
-
-
-    // $ANTLR start "rule__PhysicalPhenomena__Group__3__Impl"
-    // InternalInfluenceDSL.g:2409:1: rule__PhysicalPhenomena__Group__3__Impl : ( ( rule__PhysicalPhenomena__Group_3__0 )? ) ;
-    public final void rule__PhysicalPhenomena__Group__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2413:1: ( ( ( rule__PhysicalPhenomena__Group_3__0 )? ) )
-            // InternalInfluenceDSL.g:2414:1: ( ( rule__PhysicalPhenomena__Group_3__0 )? )
-            {
-            // InternalInfluenceDSL.g:2414:1: ( ( rule__PhysicalPhenomena__Group_3__0 )? )
-            // InternalInfluenceDSL.g:2415:2: ( rule__PhysicalPhenomena__Group_3__0 )?
-            {
-             before(grammarAccess.getPhysicalPhenomenaAccess().getGroup_3()); 
-            // InternalInfluenceDSL.g:2416:2: ( rule__PhysicalPhenomena__Group_3__0 )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
-
-            if ( (LA17_0==30) ) {
-                alt17=1;
-            }
-            switch (alt17) {
-                case 1 :
-                    // InternalInfluenceDSL.g:2416:3: rule__PhysicalPhenomena__Group_3__0
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__PhysicalPhenomena__Group_3__0();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-             after(grammarAccess.getPhysicalPhenomenaAccess().getGroup_3()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group__3__Impl"
-
-
     // $ANTLR start "rule__PhysicalPhenomena__Group_2__0"
-    // InternalInfluenceDSL.g:2425:1: rule__PhysicalPhenomena__Group_2__0 : rule__PhysicalPhenomena__Group_2__0__Impl rule__PhysicalPhenomena__Group_2__1 ;
+    // InternalInfluenceDSL.g:2398:1: rule__PhysicalPhenomena__Group_2__0 : rule__PhysicalPhenomena__Group_2__0__Impl rule__PhysicalPhenomena__Group_2__1 ;
     public final void rule__PhysicalPhenomena__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2429:1: ( rule__PhysicalPhenomena__Group_2__0__Impl rule__PhysicalPhenomena__Group_2__1 )
-            // InternalInfluenceDSL.g:2430:2: rule__PhysicalPhenomena__Group_2__0__Impl rule__PhysicalPhenomena__Group_2__1
+            // InternalInfluenceDSL.g:2402:1: ( rule__PhysicalPhenomena__Group_2__0__Impl rule__PhysicalPhenomena__Group_2__1 )
+            // InternalInfluenceDSL.g:2403:2: rule__PhysicalPhenomena__Group_2__0__Impl rule__PhysicalPhenomena__Group_2__1
             {
             pushFollow(FOLLOW_4);
             rule__PhysicalPhenomena__Group_2__0__Impl();
@@ -7495,20 +7400,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2__0__Impl"
-    // InternalInfluenceDSL.g:2437:1: rule__PhysicalPhenomena__Group_2__0__Impl : ( ':' ) ;
+    // InternalInfluenceDSL.g:2410:1: rule__PhysicalPhenomena__Group_2__0__Impl : ( ':' ) ;
     public final void rule__PhysicalPhenomena__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2441:1: ( ( ':' ) )
-            // InternalInfluenceDSL.g:2442:1: ( ':' )
+            // InternalInfluenceDSL.g:2414:1: ( ( ':' ) )
+            // InternalInfluenceDSL.g:2415:1: ( ':' )
             {
-            // InternalInfluenceDSL.g:2442:1: ( ':' )
-            // InternalInfluenceDSL.g:2443:2: ':'
+            // InternalInfluenceDSL.g:2415:1: ( ':' )
+            // InternalInfluenceDSL.g:2416:2: ':'
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getColonKeyword_2_0()); 
-            match(input,21,FOLLOW_2); 
+            match(input,22,FOLLOW_2); 
              after(grammarAccess.getPhysicalPhenomenaAccess().getColonKeyword_2_0()); 
 
             }
@@ -7532,16 +7437,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2__1"
-    // InternalInfluenceDSL.g:2452:1: rule__PhysicalPhenomena__Group_2__1 : rule__PhysicalPhenomena__Group_2__1__Impl rule__PhysicalPhenomena__Group_2__2 ;
+    // InternalInfluenceDSL.g:2425:1: rule__PhysicalPhenomena__Group_2__1 : rule__PhysicalPhenomena__Group_2__1__Impl rule__PhysicalPhenomena__Group_2__2 ;
     public final void rule__PhysicalPhenomena__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2456:1: ( rule__PhysicalPhenomena__Group_2__1__Impl rule__PhysicalPhenomena__Group_2__2 )
-            // InternalInfluenceDSL.g:2457:2: rule__PhysicalPhenomena__Group_2__1__Impl rule__PhysicalPhenomena__Group_2__2
+            // InternalInfluenceDSL.g:2429:1: ( rule__PhysicalPhenomena__Group_2__1__Impl rule__PhysicalPhenomena__Group_2__2 )
+            // InternalInfluenceDSL.g:2430:2: rule__PhysicalPhenomena__Group_2__1__Impl rule__PhysicalPhenomena__Group_2__2
             {
-            pushFollow(FOLLOW_27);
+            pushFollow(FOLLOW_26);
             rule__PhysicalPhenomena__Group_2__1__Impl();
 
             state._fsp--;
@@ -7570,21 +7475,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2__1__Impl"
-    // InternalInfluenceDSL.g:2464:1: rule__PhysicalPhenomena__Group_2__1__Impl : ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) ) ;
+    // InternalInfluenceDSL.g:2437:1: rule__PhysicalPhenomena__Group_2__1__Impl : ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) ) ;
     public final void rule__PhysicalPhenomena__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2468:1: ( ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) ) )
-            // InternalInfluenceDSL.g:2469:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) )
+            // InternalInfluenceDSL.g:2441:1: ( ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) ) )
+            // InternalInfluenceDSL.g:2442:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) )
             {
-            // InternalInfluenceDSL.g:2469:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) )
-            // InternalInfluenceDSL.g:2470:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 )
+            // InternalInfluenceDSL.g:2442:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 ) )
+            // InternalInfluenceDSL.g:2443:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 )
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getDescriptionAssignment_2_1()); 
-            // InternalInfluenceDSL.g:2471:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 )
-            // InternalInfluenceDSL.g:2471:3: rule__PhysicalPhenomena__DescriptionAssignment_2_1
+            // InternalInfluenceDSL.g:2444:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_1 )
+            // InternalInfluenceDSL.g:2444:3: rule__PhysicalPhenomena__DescriptionAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__PhysicalPhenomena__DescriptionAssignment_2_1();
@@ -7617,14 +7522,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2__2"
-    // InternalInfluenceDSL.g:2479:1: rule__PhysicalPhenomena__Group_2__2 : rule__PhysicalPhenomena__Group_2__2__Impl ;
+    // InternalInfluenceDSL.g:2452:1: rule__PhysicalPhenomena__Group_2__2 : rule__PhysicalPhenomena__Group_2__2__Impl ;
     public final void rule__PhysicalPhenomena__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2483:1: ( rule__PhysicalPhenomena__Group_2__2__Impl )
-            // InternalInfluenceDSL.g:2484:2: rule__PhysicalPhenomena__Group_2__2__Impl
+            // InternalInfluenceDSL.g:2456:1: ( rule__PhysicalPhenomena__Group_2__2__Impl )
+            // InternalInfluenceDSL.g:2457:2: rule__PhysicalPhenomena__Group_2__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PhysicalPhenomena__Group_2__2__Impl();
@@ -7650,33 +7555,33 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2__2__Impl"
-    // InternalInfluenceDSL.g:2490:1: rule__PhysicalPhenomena__Group_2__2__Impl : ( ( rule__PhysicalPhenomena__Group_2_2__0 )* ) ;
+    // InternalInfluenceDSL.g:2463:1: rule__PhysicalPhenomena__Group_2__2__Impl : ( ( rule__PhysicalPhenomena__Group_2_2__0 )* ) ;
     public final void rule__PhysicalPhenomena__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2494:1: ( ( ( rule__PhysicalPhenomena__Group_2_2__0 )* ) )
-            // InternalInfluenceDSL.g:2495:1: ( ( rule__PhysicalPhenomena__Group_2_2__0 )* )
+            // InternalInfluenceDSL.g:2467:1: ( ( ( rule__PhysicalPhenomena__Group_2_2__0 )* ) )
+            // InternalInfluenceDSL.g:2468:1: ( ( rule__PhysicalPhenomena__Group_2_2__0 )* )
             {
-            // InternalInfluenceDSL.g:2495:1: ( ( rule__PhysicalPhenomena__Group_2_2__0 )* )
-            // InternalInfluenceDSL.g:2496:2: ( rule__PhysicalPhenomena__Group_2_2__0 )*
+            // InternalInfluenceDSL.g:2468:1: ( ( rule__PhysicalPhenomena__Group_2_2__0 )* )
+            // InternalInfluenceDSL.g:2469:2: ( rule__PhysicalPhenomena__Group_2_2__0 )*
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getGroup_2_2()); 
-            // InternalInfluenceDSL.g:2497:2: ( rule__PhysicalPhenomena__Group_2_2__0 )*
-            loop18:
+            // InternalInfluenceDSL.g:2470:2: ( rule__PhysicalPhenomena__Group_2_2__0 )*
+            loop17:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-                if ( (LA18_0==18) ) {
-                    alt18=1;
+                if ( (LA17_0==19) ) {
+                    alt17=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt17) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:2497:3: rule__PhysicalPhenomena__Group_2_2__0
+            	    // InternalInfluenceDSL.g:2470:3: rule__PhysicalPhenomena__Group_2_2__0
             	    {
             	    pushFollow(FOLLOW_10);
             	    rule__PhysicalPhenomena__Group_2_2__0();
@@ -7688,7 +7593,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop17;
                 }
             } while (true);
 
@@ -7715,14 +7620,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2_2__0"
-    // InternalInfluenceDSL.g:2506:1: rule__PhysicalPhenomena__Group_2_2__0 : rule__PhysicalPhenomena__Group_2_2__0__Impl rule__PhysicalPhenomena__Group_2_2__1 ;
+    // InternalInfluenceDSL.g:2479:1: rule__PhysicalPhenomena__Group_2_2__0 : rule__PhysicalPhenomena__Group_2_2__0__Impl rule__PhysicalPhenomena__Group_2_2__1 ;
     public final void rule__PhysicalPhenomena__Group_2_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2510:1: ( rule__PhysicalPhenomena__Group_2_2__0__Impl rule__PhysicalPhenomena__Group_2_2__1 )
-            // InternalInfluenceDSL.g:2511:2: rule__PhysicalPhenomena__Group_2_2__0__Impl rule__PhysicalPhenomena__Group_2_2__1
+            // InternalInfluenceDSL.g:2483:1: ( rule__PhysicalPhenomena__Group_2_2__0__Impl rule__PhysicalPhenomena__Group_2_2__1 )
+            // InternalInfluenceDSL.g:2484:2: rule__PhysicalPhenomena__Group_2_2__0__Impl rule__PhysicalPhenomena__Group_2_2__1
             {
             pushFollow(FOLLOW_4);
             rule__PhysicalPhenomena__Group_2_2__0__Impl();
@@ -7753,20 +7658,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2_2__0__Impl"
-    // InternalInfluenceDSL.g:2518:1: rule__PhysicalPhenomena__Group_2_2__0__Impl : ( ',' ) ;
+    // InternalInfluenceDSL.g:2491:1: rule__PhysicalPhenomena__Group_2_2__0__Impl : ( ',' ) ;
     public final void rule__PhysicalPhenomena__Group_2_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2522:1: ( ( ',' ) )
-            // InternalInfluenceDSL.g:2523:1: ( ',' )
+            // InternalInfluenceDSL.g:2495:1: ( ( ',' ) )
+            // InternalInfluenceDSL.g:2496:1: ( ',' )
             {
-            // InternalInfluenceDSL.g:2523:1: ( ',' )
-            // InternalInfluenceDSL.g:2524:2: ','
+            // InternalInfluenceDSL.g:2496:1: ( ',' )
+            // InternalInfluenceDSL.g:2497:2: ','
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getCommaKeyword_2_2_0()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getPhysicalPhenomenaAccess().getCommaKeyword_2_2_0()); 
 
             }
@@ -7790,14 +7695,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2_2__1"
-    // InternalInfluenceDSL.g:2533:1: rule__PhysicalPhenomena__Group_2_2__1 : rule__PhysicalPhenomena__Group_2_2__1__Impl ;
+    // InternalInfluenceDSL.g:2506:1: rule__PhysicalPhenomena__Group_2_2__1 : rule__PhysicalPhenomena__Group_2_2__1__Impl ;
     public final void rule__PhysicalPhenomena__Group_2_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2537:1: ( rule__PhysicalPhenomena__Group_2_2__1__Impl )
-            // InternalInfluenceDSL.g:2538:2: rule__PhysicalPhenomena__Group_2_2__1__Impl
+            // InternalInfluenceDSL.g:2510:1: ( rule__PhysicalPhenomena__Group_2_2__1__Impl )
+            // InternalInfluenceDSL.g:2511:2: rule__PhysicalPhenomena__Group_2_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PhysicalPhenomena__Group_2_2__1__Impl();
@@ -7823,21 +7728,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__Group_2_2__1__Impl"
-    // InternalInfluenceDSL.g:2544:1: rule__PhysicalPhenomena__Group_2_2__1__Impl : ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) ) ;
+    // InternalInfluenceDSL.g:2517:1: rule__PhysicalPhenomena__Group_2_2__1__Impl : ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) ) ;
     public final void rule__PhysicalPhenomena__Group_2_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2548:1: ( ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) ) )
-            // InternalInfluenceDSL.g:2549:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) )
+            // InternalInfluenceDSL.g:2521:1: ( ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) ) )
+            // InternalInfluenceDSL.g:2522:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) )
             {
-            // InternalInfluenceDSL.g:2549:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) )
-            // InternalInfluenceDSL.g:2550:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 )
+            // InternalInfluenceDSL.g:2522:1: ( ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 ) )
+            // InternalInfluenceDSL.g:2523:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 )
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getDescriptionAssignment_2_2_1()); 
-            // InternalInfluenceDSL.g:2551:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 )
-            // InternalInfluenceDSL.g:2551:3: rule__PhysicalPhenomena__DescriptionAssignment_2_2_1
+            // InternalInfluenceDSL.g:2524:2: ( rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 )
+            // InternalInfluenceDSL.g:2524:3: rule__PhysicalPhenomena__DescriptionAssignment_2_2_1
             {
             pushFollow(FOLLOW_2);
             rule__PhysicalPhenomena__DescriptionAssignment_2_2_1();
@@ -7869,245 +7774,15 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__PhysicalPhenomena__Group_2_2__1__Impl"
 
 
-    // $ANTLR start "rule__PhysicalPhenomena__Group_3__0"
-    // InternalInfluenceDSL.g:2560:1: rule__PhysicalPhenomena__Group_3__0 : rule__PhysicalPhenomena__Group_3__0__Impl rule__PhysicalPhenomena__Group_3__1 ;
-    public final void rule__PhysicalPhenomena__Group_3__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2564:1: ( rule__PhysicalPhenomena__Group_3__0__Impl rule__PhysicalPhenomena__Group_3__1 )
-            // InternalInfluenceDSL.g:2565:2: rule__PhysicalPhenomena__Group_3__0__Impl rule__PhysicalPhenomena__Group_3__1
-            {
-            pushFollow(FOLLOW_18);
-            rule__PhysicalPhenomena__Group_3__0__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__PhysicalPhenomena__Group_3__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group_3__0"
-
-
-    // $ANTLR start "rule__PhysicalPhenomena__Group_3__0__Impl"
-    // InternalInfluenceDSL.g:2572:1: rule__PhysicalPhenomena__Group_3__0__Impl : ( 'metadata' ) ;
-    public final void rule__PhysicalPhenomena__Group_3__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2576:1: ( ( 'metadata' ) )
-            // InternalInfluenceDSL.g:2577:1: ( 'metadata' )
-            {
-            // InternalInfluenceDSL.g:2577:1: ( 'metadata' )
-            // InternalInfluenceDSL.g:2578:2: 'metadata'
-            {
-             before(grammarAccess.getPhysicalPhenomenaAccess().getMetadataKeyword_3_0()); 
-            match(input,30,FOLLOW_2); 
-             after(grammarAccess.getPhysicalPhenomenaAccess().getMetadataKeyword_3_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group_3__0__Impl"
-
-
-    // $ANTLR start "rule__PhysicalPhenomena__Group_3__1"
-    // InternalInfluenceDSL.g:2587:1: rule__PhysicalPhenomena__Group_3__1 : rule__PhysicalPhenomena__Group_3__1__Impl rule__PhysicalPhenomena__Group_3__2 ;
-    public final void rule__PhysicalPhenomena__Group_3__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2591:1: ( rule__PhysicalPhenomena__Group_3__1__Impl rule__PhysicalPhenomena__Group_3__2 )
-            // InternalInfluenceDSL.g:2592:2: rule__PhysicalPhenomena__Group_3__1__Impl rule__PhysicalPhenomena__Group_3__2
-            {
-            pushFollow(FOLLOW_4);
-            rule__PhysicalPhenomena__Group_3__1__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__PhysicalPhenomena__Group_3__2();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group_3__1"
-
-
-    // $ANTLR start "rule__PhysicalPhenomena__Group_3__1__Impl"
-    // InternalInfluenceDSL.g:2599:1: rule__PhysicalPhenomena__Group_3__1__Impl : ( ':' ) ;
-    public final void rule__PhysicalPhenomena__Group_3__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2603:1: ( ( ':' ) )
-            // InternalInfluenceDSL.g:2604:1: ( ':' )
-            {
-            // InternalInfluenceDSL.g:2604:1: ( ':' )
-            // InternalInfluenceDSL.g:2605:2: ':'
-            {
-             before(grammarAccess.getPhysicalPhenomenaAccess().getColonKeyword_3_1()); 
-            match(input,21,FOLLOW_2); 
-             after(grammarAccess.getPhysicalPhenomenaAccess().getColonKeyword_3_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group_3__1__Impl"
-
-
-    // $ANTLR start "rule__PhysicalPhenomena__Group_3__2"
-    // InternalInfluenceDSL.g:2614:1: rule__PhysicalPhenomena__Group_3__2 : rule__PhysicalPhenomena__Group_3__2__Impl ;
-    public final void rule__PhysicalPhenomena__Group_3__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2618:1: ( rule__PhysicalPhenomena__Group_3__2__Impl )
-            // InternalInfluenceDSL.g:2619:2: rule__PhysicalPhenomena__Group_3__2__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__PhysicalPhenomena__Group_3__2__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group_3__2"
-
-
-    // $ANTLR start "rule__PhysicalPhenomena__Group_3__2__Impl"
-    // InternalInfluenceDSL.g:2625:1: rule__PhysicalPhenomena__Group_3__2__Impl : ( ( rule__PhysicalPhenomena__MetadataAssignment_3_2 ) ) ;
-    public final void rule__PhysicalPhenomena__Group_3__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:2629:1: ( ( ( rule__PhysicalPhenomena__MetadataAssignment_3_2 ) ) )
-            // InternalInfluenceDSL.g:2630:1: ( ( rule__PhysicalPhenomena__MetadataAssignment_3_2 ) )
-            {
-            // InternalInfluenceDSL.g:2630:1: ( ( rule__PhysicalPhenomena__MetadataAssignment_3_2 ) )
-            // InternalInfluenceDSL.g:2631:2: ( rule__PhysicalPhenomena__MetadataAssignment_3_2 )
-            {
-             before(grammarAccess.getPhysicalPhenomenaAccess().getMetadataAssignment_3_2()); 
-            // InternalInfluenceDSL.g:2632:2: ( rule__PhysicalPhenomena__MetadataAssignment_3_2 )
-            // InternalInfluenceDSL.g:2632:3: rule__PhysicalPhenomena__MetadataAssignment_3_2
-            {
-            pushFollow(FOLLOW_2);
-            rule__PhysicalPhenomena__MetadataAssignment_3_2();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getPhysicalPhenomenaAccess().getMetadataAssignment_3_2()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__Group_3__2__Impl"
-
-
     // $ANTLR start "rule__RequirementSatisfaction__Group__0"
-    // InternalInfluenceDSL.g:2641:1: rule__RequirementSatisfaction__Group__0 : rule__RequirementSatisfaction__Group__0__Impl rule__RequirementSatisfaction__Group__1 ;
+    // InternalInfluenceDSL.g:2533:1: rule__RequirementSatisfaction__Group__0 : rule__RequirementSatisfaction__Group__0__Impl rule__RequirementSatisfaction__Group__1 ;
     public final void rule__RequirementSatisfaction__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2645:1: ( rule__RequirementSatisfaction__Group__0__Impl rule__RequirementSatisfaction__Group__1 )
-            // InternalInfluenceDSL.g:2646:2: rule__RequirementSatisfaction__Group__0__Impl rule__RequirementSatisfaction__Group__1
+            // InternalInfluenceDSL.g:2537:1: ( rule__RequirementSatisfaction__Group__0__Impl rule__RequirementSatisfaction__Group__1 )
+            // InternalInfluenceDSL.g:2538:2: rule__RequirementSatisfaction__Group__0__Impl rule__RequirementSatisfaction__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__RequirementSatisfaction__Group__0__Impl();
@@ -8138,17 +7813,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__0__Impl"
-    // InternalInfluenceDSL.g:2653:1: rule__RequirementSatisfaction__Group__0__Impl : ( 'Requirement' ) ;
+    // InternalInfluenceDSL.g:2545:1: rule__RequirementSatisfaction__Group__0__Impl : ( 'Requirement' ) ;
     public final void rule__RequirementSatisfaction__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2657:1: ( ( 'Requirement' ) )
-            // InternalInfluenceDSL.g:2658:1: ( 'Requirement' )
+            // InternalInfluenceDSL.g:2549:1: ( ( 'Requirement' ) )
+            // InternalInfluenceDSL.g:2550:1: ( 'Requirement' )
             {
-            // InternalInfluenceDSL.g:2658:1: ( 'Requirement' )
-            // InternalInfluenceDSL.g:2659:2: 'Requirement'
+            // InternalInfluenceDSL.g:2550:1: ( 'Requirement' )
+            // InternalInfluenceDSL.g:2551:2: 'Requirement'
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getRequirementKeyword_0()); 
             match(input,31,FOLLOW_2); 
@@ -8175,14 +7850,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__1"
-    // InternalInfluenceDSL.g:2668:1: rule__RequirementSatisfaction__Group__1 : rule__RequirementSatisfaction__Group__1__Impl rule__RequirementSatisfaction__Group__2 ;
+    // InternalInfluenceDSL.g:2560:1: rule__RequirementSatisfaction__Group__1 : rule__RequirementSatisfaction__Group__1__Impl rule__RequirementSatisfaction__Group__2 ;
     public final void rule__RequirementSatisfaction__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2672:1: ( rule__RequirementSatisfaction__Group__1__Impl rule__RequirementSatisfaction__Group__2 )
-            // InternalInfluenceDSL.g:2673:2: rule__RequirementSatisfaction__Group__1__Impl rule__RequirementSatisfaction__Group__2
+            // InternalInfluenceDSL.g:2564:1: ( rule__RequirementSatisfaction__Group__1__Impl rule__RequirementSatisfaction__Group__2 )
+            // InternalInfluenceDSL.g:2565:2: rule__RequirementSatisfaction__Group__1__Impl rule__RequirementSatisfaction__Group__2
             {
             pushFollow(FOLLOW_18);
             rule__RequirementSatisfaction__Group__1__Impl();
@@ -8213,21 +7888,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__1__Impl"
-    // InternalInfluenceDSL.g:2680:1: rule__RequirementSatisfaction__Group__1__Impl : ( ( rule__RequirementSatisfaction__NameAssignment_1 ) ) ;
+    // InternalInfluenceDSL.g:2572:1: rule__RequirementSatisfaction__Group__1__Impl : ( ( rule__RequirementSatisfaction__NameAssignment_1 ) ) ;
     public final void rule__RequirementSatisfaction__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2684:1: ( ( ( rule__RequirementSatisfaction__NameAssignment_1 ) ) )
-            // InternalInfluenceDSL.g:2685:1: ( ( rule__RequirementSatisfaction__NameAssignment_1 ) )
+            // InternalInfluenceDSL.g:2576:1: ( ( ( rule__RequirementSatisfaction__NameAssignment_1 ) ) )
+            // InternalInfluenceDSL.g:2577:1: ( ( rule__RequirementSatisfaction__NameAssignment_1 ) )
             {
-            // InternalInfluenceDSL.g:2685:1: ( ( rule__RequirementSatisfaction__NameAssignment_1 ) )
-            // InternalInfluenceDSL.g:2686:2: ( rule__RequirementSatisfaction__NameAssignment_1 )
+            // InternalInfluenceDSL.g:2577:1: ( ( rule__RequirementSatisfaction__NameAssignment_1 ) )
+            // InternalInfluenceDSL.g:2578:2: ( rule__RequirementSatisfaction__NameAssignment_1 )
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getNameAssignment_1()); 
-            // InternalInfluenceDSL.g:2687:2: ( rule__RequirementSatisfaction__NameAssignment_1 )
-            // InternalInfluenceDSL.g:2687:3: rule__RequirementSatisfaction__NameAssignment_1
+            // InternalInfluenceDSL.g:2579:2: ( rule__RequirementSatisfaction__NameAssignment_1 )
+            // InternalInfluenceDSL.g:2579:3: rule__RequirementSatisfaction__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__RequirementSatisfaction__NameAssignment_1();
@@ -8260,16 +7935,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__2"
-    // InternalInfluenceDSL.g:2695:1: rule__RequirementSatisfaction__Group__2 : rule__RequirementSatisfaction__Group__2__Impl rule__RequirementSatisfaction__Group__3 ;
+    // InternalInfluenceDSL.g:2587:1: rule__RequirementSatisfaction__Group__2 : rule__RequirementSatisfaction__Group__2__Impl rule__RequirementSatisfaction__Group__3 ;
     public final void rule__RequirementSatisfaction__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2699:1: ( rule__RequirementSatisfaction__Group__2__Impl rule__RequirementSatisfaction__Group__3 )
-            // InternalInfluenceDSL.g:2700:2: rule__RequirementSatisfaction__Group__2__Impl rule__RequirementSatisfaction__Group__3
+            // InternalInfluenceDSL.g:2591:1: ( rule__RequirementSatisfaction__Group__2__Impl rule__RequirementSatisfaction__Group__3 )
+            // InternalInfluenceDSL.g:2592:2: rule__RequirementSatisfaction__Group__2__Impl rule__RequirementSatisfaction__Group__3
             {
-            pushFollow(FOLLOW_28);
+            pushFollow(FOLLOW_27);
             rule__RequirementSatisfaction__Group__2__Impl();
 
             state._fsp--;
@@ -8298,20 +7973,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__2__Impl"
-    // InternalInfluenceDSL.g:2707:1: rule__RequirementSatisfaction__Group__2__Impl : ( ':' ) ;
+    // InternalInfluenceDSL.g:2599:1: rule__RequirementSatisfaction__Group__2__Impl : ( ':' ) ;
     public final void rule__RequirementSatisfaction__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2711:1: ( ( ':' ) )
-            // InternalInfluenceDSL.g:2712:1: ( ':' )
+            // InternalInfluenceDSL.g:2603:1: ( ( ':' ) )
+            // InternalInfluenceDSL.g:2604:1: ( ':' )
             {
-            // InternalInfluenceDSL.g:2712:1: ( ':' )
-            // InternalInfluenceDSL.g:2713:2: ':'
+            // InternalInfluenceDSL.g:2604:1: ( ':' )
+            // InternalInfluenceDSL.g:2605:2: ':'
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_2()); 
-            match(input,21,FOLLOW_2); 
+            match(input,22,FOLLOW_2); 
              after(grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_2()); 
 
             }
@@ -8335,16 +8010,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__3"
-    // InternalInfluenceDSL.g:2722:1: rule__RequirementSatisfaction__Group__3 : rule__RequirementSatisfaction__Group__3__Impl rule__RequirementSatisfaction__Group__4 ;
+    // InternalInfluenceDSL.g:2614:1: rule__RequirementSatisfaction__Group__3 : rule__RequirementSatisfaction__Group__3__Impl rule__RequirementSatisfaction__Group__4 ;
     public final void rule__RequirementSatisfaction__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2726:1: ( rule__RequirementSatisfaction__Group__3__Impl rule__RequirementSatisfaction__Group__4 )
-            // InternalInfluenceDSL.g:2727:2: rule__RequirementSatisfaction__Group__3__Impl rule__RequirementSatisfaction__Group__4
+            // InternalInfluenceDSL.g:2618:1: ( rule__RequirementSatisfaction__Group__3__Impl rule__RequirementSatisfaction__Group__4 )
+            // InternalInfluenceDSL.g:2619:2: rule__RequirementSatisfaction__Group__3__Impl rule__RequirementSatisfaction__Group__4
             {
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_28);
             rule__RequirementSatisfaction__Group__3__Impl();
 
             state._fsp--;
@@ -8373,17 +8048,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__3__Impl"
-    // InternalInfluenceDSL.g:2734:1: rule__RequirementSatisfaction__Group__3__Impl : ( 'satisfied' ) ;
+    // InternalInfluenceDSL.g:2626:1: rule__RequirementSatisfaction__Group__3__Impl : ( 'satisfied' ) ;
     public final void rule__RequirementSatisfaction__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2738:1: ( ( 'satisfied' ) )
-            // InternalInfluenceDSL.g:2739:1: ( 'satisfied' )
+            // InternalInfluenceDSL.g:2630:1: ( ( 'satisfied' ) )
+            // InternalInfluenceDSL.g:2631:1: ( 'satisfied' )
             {
-            // InternalInfluenceDSL.g:2739:1: ( 'satisfied' )
-            // InternalInfluenceDSL.g:2740:2: 'satisfied'
+            // InternalInfluenceDSL.g:2631:1: ( 'satisfied' )
+            // InternalInfluenceDSL.g:2632:2: 'satisfied'
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getSatisfiedKeyword_3()); 
             match(input,32,FOLLOW_2); 
@@ -8410,14 +8085,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__4"
-    // InternalInfluenceDSL.g:2749:1: rule__RequirementSatisfaction__Group__4 : rule__RequirementSatisfaction__Group__4__Impl rule__RequirementSatisfaction__Group__5 ;
+    // InternalInfluenceDSL.g:2641:1: rule__RequirementSatisfaction__Group__4 : rule__RequirementSatisfaction__Group__4__Impl rule__RequirementSatisfaction__Group__5 ;
     public final void rule__RequirementSatisfaction__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2753:1: ( rule__RequirementSatisfaction__Group__4__Impl rule__RequirementSatisfaction__Group__5 )
-            // InternalInfluenceDSL.g:2754:2: rule__RequirementSatisfaction__Group__4__Impl rule__RequirementSatisfaction__Group__5
+            // InternalInfluenceDSL.g:2645:1: ( rule__RequirementSatisfaction__Group__4__Impl rule__RequirementSatisfaction__Group__5 )
+            // InternalInfluenceDSL.g:2646:2: rule__RequirementSatisfaction__Group__4__Impl rule__RequirementSatisfaction__Group__5
             {
             pushFollow(FOLLOW_4);
             rule__RequirementSatisfaction__Group__4__Impl();
@@ -8448,17 +8123,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__4__Impl"
-    // InternalInfluenceDSL.g:2761:1: rule__RequirementSatisfaction__Group__4__Impl : ( 'when' ) ;
+    // InternalInfluenceDSL.g:2653:1: rule__RequirementSatisfaction__Group__4__Impl : ( 'when' ) ;
     public final void rule__RequirementSatisfaction__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2765:1: ( ( 'when' ) )
-            // InternalInfluenceDSL.g:2766:1: ( 'when' )
+            // InternalInfluenceDSL.g:2657:1: ( ( 'when' ) )
+            // InternalInfluenceDSL.g:2658:1: ( 'when' )
             {
-            // InternalInfluenceDSL.g:2766:1: ( 'when' )
-            // InternalInfluenceDSL.g:2767:2: 'when'
+            // InternalInfluenceDSL.g:2658:1: ( 'when' )
+            // InternalInfluenceDSL.g:2659:2: 'when'
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getWhenKeyword_4()); 
             match(input,33,FOLLOW_2); 
@@ -8485,16 +8160,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__5"
-    // InternalInfluenceDSL.g:2776:1: rule__RequirementSatisfaction__Group__5 : rule__RequirementSatisfaction__Group__5__Impl rule__RequirementSatisfaction__Group__6 ;
+    // InternalInfluenceDSL.g:2668:1: rule__RequirementSatisfaction__Group__5 : rule__RequirementSatisfaction__Group__5__Impl rule__RequirementSatisfaction__Group__6 ;
     public final void rule__RequirementSatisfaction__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2780:1: ( rule__RequirementSatisfaction__Group__5__Impl rule__RequirementSatisfaction__Group__6 )
-            // InternalInfluenceDSL.g:2781:2: rule__RequirementSatisfaction__Group__5__Impl rule__RequirementSatisfaction__Group__6
+            // InternalInfluenceDSL.g:2672:1: ( rule__RequirementSatisfaction__Group__5__Impl rule__RequirementSatisfaction__Group__6 )
+            // InternalInfluenceDSL.g:2673:2: rule__RequirementSatisfaction__Group__5__Impl rule__RequirementSatisfaction__Group__6
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_29);
             rule__RequirementSatisfaction__Group__5__Impl();
 
             state._fsp--;
@@ -8523,21 +8198,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__5__Impl"
-    // InternalInfluenceDSL.g:2788:1: rule__RequirementSatisfaction__Group__5__Impl : ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) ) ;
+    // InternalInfluenceDSL.g:2680:1: rule__RequirementSatisfaction__Group__5__Impl : ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) ) ;
     public final void rule__RequirementSatisfaction__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2792:1: ( ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) ) )
-            // InternalInfluenceDSL.g:2793:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) )
+            // InternalInfluenceDSL.g:2684:1: ( ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) ) )
+            // InternalInfluenceDSL.g:2685:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) )
             {
-            // InternalInfluenceDSL.g:2793:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) )
-            // InternalInfluenceDSL.g:2794:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_5 )
+            // InternalInfluenceDSL.g:2685:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_5 ) )
+            // InternalInfluenceDSL.g:2686:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_5 )
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionAssignment_5()); 
-            // InternalInfluenceDSL.g:2795:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_5 )
-            // InternalInfluenceDSL.g:2795:3: rule__RequirementSatisfaction__SatisfactionAssignment_5
+            // InternalInfluenceDSL.g:2687:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_5 )
+            // InternalInfluenceDSL.g:2687:3: rule__RequirementSatisfaction__SatisfactionAssignment_5
             {
             pushFollow(FOLLOW_2);
             rule__RequirementSatisfaction__SatisfactionAssignment_5();
@@ -8570,16 +8245,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__6"
-    // InternalInfluenceDSL.g:2803:1: rule__RequirementSatisfaction__Group__6 : rule__RequirementSatisfaction__Group__6__Impl rule__RequirementSatisfaction__Group__7 ;
+    // InternalInfluenceDSL.g:2695:1: rule__RequirementSatisfaction__Group__6 : rule__RequirementSatisfaction__Group__6__Impl rule__RequirementSatisfaction__Group__7 ;
     public final void rule__RequirementSatisfaction__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2807:1: ( rule__RequirementSatisfaction__Group__6__Impl rule__RequirementSatisfaction__Group__7 )
-            // InternalInfluenceDSL.g:2808:2: rule__RequirementSatisfaction__Group__6__Impl rule__RequirementSatisfaction__Group__7
+            // InternalInfluenceDSL.g:2699:1: ( rule__RequirementSatisfaction__Group__6__Impl rule__RequirementSatisfaction__Group__7 )
+            // InternalInfluenceDSL.g:2700:2: rule__RequirementSatisfaction__Group__6__Impl rule__RequirementSatisfaction__Group__7
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_29);
             rule__RequirementSatisfaction__Group__6__Impl();
 
             state._fsp--;
@@ -8608,33 +8283,33 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__6__Impl"
-    // InternalInfluenceDSL.g:2815:1: rule__RequirementSatisfaction__Group__6__Impl : ( ( rule__RequirementSatisfaction__Group_6__0 )* ) ;
+    // InternalInfluenceDSL.g:2707:1: rule__RequirementSatisfaction__Group__6__Impl : ( ( rule__RequirementSatisfaction__Group_6__0 )* ) ;
     public final void rule__RequirementSatisfaction__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2819:1: ( ( ( rule__RequirementSatisfaction__Group_6__0 )* ) )
-            // InternalInfluenceDSL.g:2820:1: ( ( rule__RequirementSatisfaction__Group_6__0 )* )
+            // InternalInfluenceDSL.g:2711:1: ( ( ( rule__RequirementSatisfaction__Group_6__0 )* ) )
+            // InternalInfluenceDSL.g:2712:1: ( ( rule__RequirementSatisfaction__Group_6__0 )* )
             {
-            // InternalInfluenceDSL.g:2820:1: ( ( rule__RequirementSatisfaction__Group_6__0 )* )
-            // InternalInfluenceDSL.g:2821:2: ( rule__RequirementSatisfaction__Group_6__0 )*
+            // InternalInfluenceDSL.g:2712:1: ( ( rule__RequirementSatisfaction__Group_6__0 )* )
+            // InternalInfluenceDSL.g:2713:2: ( rule__RequirementSatisfaction__Group_6__0 )*
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getGroup_6()); 
-            // InternalInfluenceDSL.g:2822:2: ( rule__RequirementSatisfaction__Group_6__0 )*
-            loop19:
+            // InternalInfluenceDSL.g:2714:2: ( rule__RequirementSatisfaction__Group_6__0 )*
+            loop18:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-                if ( (LA19_0==18) ) {
-                    alt19=1;
+                if ( (LA18_0==19) ) {
+                    alt18=1;
                 }
 
 
-                switch (alt19) {
+                switch (alt18) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:2822:3: rule__RequirementSatisfaction__Group_6__0
+            	    // InternalInfluenceDSL.g:2714:3: rule__RequirementSatisfaction__Group_6__0
             	    {
             	    pushFollow(FOLLOW_10);
             	    rule__RequirementSatisfaction__Group_6__0();
@@ -8646,7 +8321,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop18;
                 }
             } while (true);
 
@@ -8673,14 +8348,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__7"
-    // InternalInfluenceDSL.g:2830:1: rule__RequirementSatisfaction__Group__7 : rule__RequirementSatisfaction__Group__7__Impl ;
+    // InternalInfluenceDSL.g:2722:1: rule__RequirementSatisfaction__Group__7 : rule__RequirementSatisfaction__Group__7__Impl ;
     public final void rule__RequirementSatisfaction__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2834:1: ( rule__RequirementSatisfaction__Group__7__Impl )
-            // InternalInfluenceDSL.g:2835:2: rule__RequirementSatisfaction__Group__7__Impl
+            // InternalInfluenceDSL.g:2726:1: ( rule__RequirementSatisfaction__Group__7__Impl )
+            // InternalInfluenceDSL.g:2727:2: rule__RequirementSatisfaction__Group__7__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RequirementSatisfaction__Group__7__Impl();
@@ -8706,29 +8381,29 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group__7__Impl"
-    // InternalInfluenceDSL.g:2841:1: rule__RequirementSatisfaction__Group__7__Impl : ( ( rule__RequirementSatisfaction__Group_7__0 )? ) ;
+    // InternalInfluenceDSL.g:2733:1: rule__RequirementSatisfaction__Group__7__Impl : ( ( rule__RequirementSatisfaction__Group_7__0 )? ) ;
     public final void rule__RequirementSatisfaction__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2845:1: ( ( ( rule__RequirementSatisfaction__Group_7__0 )? ) )
-            // InternalInfluenceDSL.g:2846:1: ( ( rule__RequirementSatisfaction__Group_7__0 )? )
+            // InternalInfluenceDSL.g:2737:1: ( ( ( rule__RequirementSatisfaction__Group_7__0 )? ) )
+            // InternalInfluenceDSL.g:2738:1: ( ( rule__RequirementSatisfaction__Group_7__0 )? )
             {
-            // InternalInfluenceDSL.g:2846:1: ( ( rule__RequirementSatisfaction__Group_7__0 )? )
-            // InternalInfluenceDSL.g:2847:2: ( rule__RequirementSatisfaction__Group_7__0 )?
+            // InternalInfluenceDSL.g:2738:1: ( ( rule__RequirementSatisfaction__Group_7__0 )? )
+            // InternalInfluenceDSL.g:2739:2: ( rule__RequirementSatisfaction__Group_7__0 )?
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getGroup_7()); 
-            // InternalInfluenceDSL.g:2848:2: ( rule__RequirementSatisfaction__Group_7__0 )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // InternalInfluenceDSL.g:2740:2: ( rule__RequirementSatisfaction__Group_7__0 )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA20_0==30) ) {
-                alt20=1;
+            if ( (LA19_0==34) ) {
+                alt19=1;
             }
-            switch (alt20) {
+            switch (alt19) {
                 case 1 :
-                    // InternalInfluenceDSL.g:2848:3: rule__RequirementSatisfaction__Group_7__0
+                    // InternalInfluenceDSL.g:2740:3: rule__RequirementSatisfaction__Group_7__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__RequirementSatisfaction__Group_7__0();
@@ -8764,14 +8439,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_6__0"
-    // InternalInfluenceDSL.g:2857:1: rule__RequirementSatisfaction__Group_6__0 : rule__RequirementSatisfaction__Group_6__0__Impl rule__RequirementSatisfaction__Group_6__1 ;
+    // InternalInfluenceDSL.g:2749:1: rule__RequirementSatisfaction__Group_6__0 : rule__RequirementSatisfaction__Group_6__0__Impl rule__RequirementSatisfaction__Group_6__1 ;
     public final void rule__RequirementSatisfaction__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2861:1: ( rule__RequirementSatisfaction__Group_6__0__Impl rule__RequirementSatisfaction__Group_6__1 )
-            // InternalInfluenceDSL.g:2862:2: rule__RequirementSatisfaction__Group_6__0__Impl rule__RequirementSatisfaction__Group_6__1
+            // InternalInfluenceDSL.g:2753:1: ( rule__RequirementSatisfaction__Group_6__0__Impl rule__RequirementSatisfaction__Group_6__1 )
+            // InternalInfluenceDSL.g:2754:2: rule__RequirementSatisfaction__Group_6__0__Impl rule__RequirementSatisfaction__Group_6__1
             {
             pushFollow(FOLLOW_4);
             rule__RequirementSatisfaction__Group_6__0__Impl();
@@ -8802,20 +8477,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_6__0__Impl"
-    // InternalInfluenceDSL.g:2869:1: rule__RequirementSatisfaction__Group_6__0__Impl : ( ',' ) ;
+    // InternalInfluenceDSL.g:2761:1: rule__RequirementSatisfaction__Group_6__0__Impl : ( ',' ) ;
     public final void rule__RequirementSatisfaction__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2873:1: ( ( ',' ) )
-            // InternalInfluenceDSL.g:2874:1: ( ',' )
+            // InternalInfluenceDSL.g:2765:1: ( ( ',' ) )
+            // InternalInfluenceDSL.g:2766:1: ( ',' )
             {
-            // InternalInfluenceDSL.g:2874:1: ( ',' )
-            // InternalInfluenceDSL.g:2875:2: ','
+            // InternalInfluenceDSL.g:2766:1: ( ',' )
+            // InternalInfluenceDSL.g:2767:2: ','
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getCommaKeyword_6_0()); 
-            match(input,18,FOLLOW_2); 
+            match(input,19,FOLLOW_2); 
              after(grammarAccess.getRequirementSatisfactionAccess().getCommaKeyword_6_0()); 
 
             }
@@ -8839,14 +8514,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_6__1"
-    // InternalInfluenceDSL.g:2884:1: rule__RequirementSatisfaction__Group_6__1 : rule__RequirementSatisfaction__Group_6__1__Impl ;
+    // InternalInfluenceDSL.g:2776:1: rule__RequirementSatisfaction__Group_6__1 : rule__RequirementSatisfaction__Group_6__1__Impl ;
     public final void rule__RequirementSatisfaction__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2888:1: ( rule__RequirementSatisfaction__Group_6__1__Impl )
-            // InternalInfluenceDSL.g:2889:2: rule__RequirementSatisfaction__Group_6__1__Impl
+            // InternalInfluenceDSL.g:2780:1: ( rule__RequirementSatisfaction__Group_6__1__Impl )
+            // InternalInfluenceDSL.g:2781:2: rule__RequirementSatisfaction__Group_6__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RequirementSatisfaction__Group_6__1__Impl();
@@ -8872,21 +8547,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_6__1__Impl"
-    // InternalInfluenceDSL.g:2895:1: rule__RequirementSatisfaction__Group_6__1__Impl : ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) ) ;
+    // InternalInfluenceDSL.g:2787:1: rule__RequirementSatisfaction__Group_6__1__Impl : ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) ) ;
     public final void rule__RequirementSatisfaction__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2899:1: ( ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) ) )
-            // InternalInfluenceDSL.g:2900:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) )
+            // InternalInfluenceDSL.g:2791:1: ( ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) ) )
+            // InternalInfluenceDSL.g:2792:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) )
             {
-            // InternalInfluenceDSL.g:2900:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) )
-            // InternalInfluenceDSL.g:2901:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 )
+            // InternalInfluenceDSL.g:2792:1: ( ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 ) )
+            // InternalInfluenceDSL.g:2793:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 )
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionAssignment_6_1()); 
-            // InternalInfluenceDSL.g:2902:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 )
-            // InternalInfluenceDSL.g:2902:3: rule__RequirementSatisfaction__SatisfactionAssignment_6_1
+            // InternalInfluenceDSL.g:2794:2: ( rule__RequirementSatisfaction__SatisfactionAssignment_6_1 )
+            // InternalInfluenceDSL.g:2794:3: rule__RequirementSatisfaction__SatisfactionAssignment_6_1
             {
             pushFollow(FOLLOW_2);
             rule__RequirementSatisfaction__SatisfactionAssignment_6_1();
@@ -8919,14 +8594,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_7__0"
-    // InternalInfluenceDSL.g:2911:1: rule__RequirementSatisfaction__Group_7__0 : rule__RequirementSatisfaction__Group_7__0__Impl rule__RequirementSatisfaction__Group_7__1 ;
+    // InternalInfluenceDSL.g:2803:1: rule__RequirementSatisfaction__Group_7__0 : rule__RequirementSatisfaction__Group_7__0__Impl rule__RequirementSatisfaction__Group_7__1 ;
     public final void rule__RequirementSatisfaction__Group_7__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2915:1: ( rule__RequirementSatisfaction__Group_7__0__Impl rule__RequirementSatisfaction__Group_7__1 )
-            // InternalInfluenceDSL.g:2916:2: rule__RequirementSatisfaction__Group_7__0__Impl rule__RequirementSatisfaction__Group_7__1
+            // InternalInfluenceDSL.g:2807:1: ( rule__RequirementSatisfaction__Group_7__0__Impl rule__RequirementSatisfaction__Group_7__1 )
+            // InternalInfluenceDSL.g:2808:2: rule__RequirementSatisfaction__Group_7__0__Impl rule__RequirementSatisfaction__Group_7__1
             {
             pushFollow(FOLLOW_18);
             rule__RequirementSatisfaction__Group_7__0__Impl();
@@ -8957,20 +8632,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_7__0__Impl"
-    // InternalInfluenceDSL.g:2923:1: rule__RequirementSatisfaction__Group_7__0__Impl : ( 'metadata' ) ;
+    // InternalInfluenceDSL.g:2815:1: rule__RequirementSatisfaction__Group_7__0__Impl : ( 'metadata' ) ;
     public final void rule__RequirementSatisfaction__Group_7__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2927:1: ( ( 'metadata' ) )
-            // InternalInfluenceDSL.g:2928:1: ( 'metadata' )
+            // InternalInfluenceDSL.g:2819:1: ( ( 'metadata' ) )
+            // InternalInfluenceDSL.g:2820:1: ( 'metadata' )
             {
-            // InternalInfluenceDSL.g:2928:1: ( 'metadata' )
-            // InternalInfluenceDSL.g:2929:2: 'metadata'
+            // InternalInfluenceDSL.g:2820:1: ( 'metadata' )
+            // InternalInfluenceDSL.g:2821:2: 'metadata'
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getMetadataKeyword_7_0()); 
-            match(input,30,FOLLOW_2); 
+            match(input,34,FOLLOW_2); 
              after(grammarAccess.getRequirementSatisfactionAccess().getMetadataKeyword_7_0()); 
 
             }
@@ -8994,14 +8669,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_7__1"
-    // InternalInfluenceDSL.g:2938:1: rule__RequirementSatisfaction__Group_7__1 : rule__RequirementSatisfaction__Group_7__1__Impl rule__RequirementSatisfaction__Group_7__2 ;
+    // InternalInfluenceDSL.g:2830:1: rule__RequirementSatisfaction__Group_7__1 : rule__RequirementSatisfaction__Group_7__1__Impl rule__RequirementSatisfaction__Group_7__2 ;
     public final void rule__RequirementSatisfaction__Group_7__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2942:1: ( rule__RequirementSatisfaction__Group_7__1__Impl rule__RequirementSatisfaction__Group_7__2 )
-            // InternalInfluenceDSL.g:2943:2: rule__RequirementSatisfaction__Group_7__1__Impl rule__RequirementSatisfaction__Group_7__2
+            // InternalInfluenceDSL.g:2834:1: ( rule__RequirementSatisfaction__Group_7__1__Impl rule__RequirementSatisfaction__Group_7__2 )
+            // InternalInfluenceDSL.g:2835:2: rule__RequirementSatisfaction__Group_7__1__Impl rule__RequirementSatisfaction__Group_7__2
             {
             pushFollow(FOLLOW_4);
             rule__RequirementSatisfaction__Group_7__1__Impl();
@@ -9032,20 +8707,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_7__1__Impl"
-    // InternalInfluenceDSL.g:2950:1: rule__RequirementSatisfaction__Group_7__1__Impl : ( ':' ) ;
+    // InternalInfluenceDSL.g:2842:1: rule__RequirementSatisfaction__Group_7__1__Impl : ( ':' ) ;
     public final void rule__RequirementSatisfaction__Group_7__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2954:1: ( ( ':' ) )
-            // InternalInfluenceDSL.g:2955:1: ( ':' )
+            // InternalInfluenceDSL.g:2846:1: ( ( ':' ) )
+            // InternalInfluenceDSL.g:2847:1: ( ':' )
             {
-            // InternalInfluenceDSL.g:2955:1: ( ':' )
-            // InternalInfluenceDSL.g:2956:2: ':'
+            // InternalInfluenceDSL.g:2847:1: ( ':' )
+            // InternalInfluenceDSL.g:2848:2: ':'
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_7_1()); 
-            match(input,21,FOLLOW_2); 
+            match(input,22,FOLLOW_2); 
              after(grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_7_1()); 
 
             }
@@ -9069,14 +8744,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_7__2"
-    // InternalInfluenceDSL.g:2965:1: rule__RequirementSatisfaction__Group_7__2 : rule__RequirementSatisfaction__Group_7__2__Impl ;
+    // InternalInfluenceDSL.g:2857:1: rule__RequirementSatisfaction__Group_7__2 : rule__RequirementSatisfaction__Group_7__2__Impl ;
     public final void rule__RequirementSatisfaction__Group_7__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2969:1: ( rule__RequirementSatisfaction__Group_7__2__Impl )
-            // InternalInfluenceDSL.g:2970:2: rule__RequirementSatisfaction__Group_7__2__Impl
+            // InternalInfluenceDSL.g:2861:1: ( rule__RequirementSatisfaction__Group_7__2__Impl )
+            // InternalInfluenceDSL.g:2862:2: rule__RequirementSatisfaction__Group_7__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RequirementSatisfaction__Group_7__2__Impl();
@@ -9102,21 +8777,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__Group_7__2__Impl"
-    // InternalInfluenceDSL.g:2976:1: rule__RequirementSatisfaction__Group_7__2__Impl : ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) ) ;
+    // InternalInfluenceDSL.g:2868:1: rule__RequirementSatisfaction__Group_7__2__Impl : ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) ) ;
     public final void rule__RequirementSatisfaction__Group_7__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2980:1: ( ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) ) )
-            // InternalInfluenceDSL.g:2981:1: ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) )
+            // InternalInfluenceDSL.g:2872:1: ( ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) ) )
+            // InternalInfluenceDSL.g:2873:1: ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) )
             {
-            // InternalInfluenceDSL.g:2981:1: ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) )
-            // InternalInfluenceDSL.g:2982:2: ( rule__RequirementSatisfaction__MetadataAssignment_7_2 )
+            // InternalInfluenceDSL.g:2873:1: ( ( rule__RequirementSatisfaction__MetadataAssignment_7_2 ) )
+            // InternalInfluenceDSL.g:2874:2: ( rule__RequirementSatisfaction__MetadataAssignment_7_2 )
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getMetadataAssignment_7_2()); 
-            // InternalInfluenceDSL.g:2983:2: ( rule__RequirementSatisfaction__MetadataAssignment_7_2 )
-            // InternalInfluenceDSL.g:2983:3: rule__RequirementSatisfaction__MetadataAssignment_7_2
+            // InternalInfluenceDSL.g:2875:2: ( rule__RequirementSatisfaction__MetadataAssignment_7_2 )
+            // InternalInfluenceDSL.g:2875:3: rule__RequirementSatisfaction__MetadataAssignment_7_2
             {
             pushFollow(FOLLOW_2);
             rule__RequirementSatisfaction__MetadataAssignment_7_2();
@@ -9149,16 +8824,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__0"
-    // InternalInfluenceDSL.g:2992:1: rule__DesignArtifact__Group__0 : rule__DesignArtifact__Group__0__Impl rule__DesignArtifact__Group__1 ;
+    // InternalInfluenceDSL.g:2884:1: rule__DesignArtifact__Group__0 : rule__DesignArtifact__Group__0__Impl rule__DesignArtifact__Group__1 ;
     public final void rule__DesignArtifact__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:2996:1: ( rule__DesignArtifact__Group__0__Impl rule__DesignArtifact__Group__1 )
-            // InternalInfluenceDSL.g:2997:2: rule__DesignArtifact__Group__0__Impl rule__DesignArtifact__Group__1
+            // InternalInfluenceDSL.g:2888:1: ( rule__DesignArtifact__Group__0__Impl rule__DesignArtifact__Group__1 )
+            // InternalInfluenceDSL.g:2889:2: rule__DesignArtifact__Group__0__Impl rule__DesignArtifact__Group__1
             {
-            pushFollow(FOLLOW_31);
+            pushFollow(FOLLOW_30);
             rule__DesignArtifact__Group__0__Impl();
 
             state._fsp--;
@@ -9187,21 +8862,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__0__Impl"
-    // InternalInfluenceDSL.g:3004:1: rule__DesignArtifact__Group__0__Impl : ( () ) ;
+    // InternalInfluenceDSL.g:2896:1: rule__DesignArtifact__Group__0__Impl : ( () ) ;
     public final void rule__DesignArtifact__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3008:1: ( ( () ) )
-            // InternalInfluenceDSL.g:3009:1: ( () )
+            // InternalInfluenceDSL.g:2900:1: ( ( () ) )
+            // InternalInfluenceDSL.g:2901:1: ( () )
             {
-            // InternalInfluenceDSL.g:3009:1: ( () )
-            // InternalInfluenceDSL.g:3010:2: ()
+            // InternalInfluenceDSL.g:2901:1: ( () )
+            // InternalInfluenceDSL.g:2902:2: ()
             {
              before(grammarAccess.getDesignArtifactAccess().getDesignArtifactAction_0()); 
-            // InternalInfluenceDSL.g:3011:2: ()
-            // InternalInfluenceDSL.g:3011:3: 
+            // InternalInfluenceDSL.g:2903:2: ()
+            // InternalInfluenceDSL.g:2903:3: 
             {
             }
 
@@ -9224,14 +8899,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__1"
-    // InternalInfluenceDSL.g:3019:1: rule__DesignArtifact__Group__1 : rule__DesignArtifact__Group__1__Impl rule__DesignArtifact__Group__2 ;
+    // InternalInfluenceDSL.g:2911:1: rule__DesignArtifact__Group__1 : rule__DesignArtifact__Group__1__Impl rule__DesignArtifact__Group__2 ;
     public final void rule__DesignArtifact__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3023:1: ( rule__DesignArtifact__Group__1__Impl rule__DesignArtifact__Group__2 )
-            // InternalInfluenceDSL.g:3024:2: rule__DesignArtifact__Group__1__Impl rule__DesignArtifact__Group__2
+            // InternalInfluenceDSL.g:2915:1: ( rule__DesignArtifact__Group__1__Impl rule__DesignArtifact__Group__2 )
+            // InternalInfluenceDSL.g:2916:2: rule__DesignArtifact__Group__1__Impl rule__DesignArtifact__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__DesignArtifact__Group__1__Impl();
@@ -9262,20 +8937,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__1__Impl"
-    // InternalInfluenceDSL.g:3031:1: rule__DesignArtifact__Group__1__Impl : ( 'DesignArtifact' ) ;
+    // InternalInfluenceDSL.g:2923:1: rule__DesignArtifact__Group__1__Impl : ( 'DesignArtifact' ) ;
     public final void rule__DesignArtifact__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3035:1: ( ( 'DesignArtifact' ) )
-            // InternalInfluenceDSL.g:3036:1: ( 'DesignArtifact' )
+            // InternalInfluenceDSL.g:2927:1: ( ( 'DesignArtifact' ) )
+            // InternalInfluenceDSL.g:2928:1: ( 'DesignArtifact' )
             {
-            // InternalInfluenceDSL.g:3036:1: ( 'DesignArtifact' )
-            // InternalInfluenceDSL.g:3037:2: 'DesignArtifact'
+            // InternalInfluenceDSL.g:2928:1: ( 'DesignArtifact' )
+            // InternalInfluenceDSL.g:2929:2: 'DesignArtifact'
             {
              before(grammarAccess.getDesignArtifactAccess().getDesignArtifactKeyword_1()); 
-            match(input,34,FOLLOW_2); 
+            match(input,35,FOLLOW_2); 
              after(grammarAccess.getDesignArtifactAccess().getDesignArtifactKeyword_1()); 
 
             }
@@ -9299,16 +8974,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__2"
-    // InternalInfluenceDSL.g:3046:1: rule__DesignArtifact__Group__2 : rule__DesignArtifact__Group__2__Impl rule__DesignArtifact__Group__3 ;
+    // InternalInfluenceDSL.g:2938:1: rule__DesignArtifact__Group__2 : rule__DesignArtifact__Group__2__Impl rule__DesignArtifact__Group__3 ;
     public final void rule__DesignArtifact__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3050:1: ( rule__DesignArtifact__Group__2__Impl rule__DesignArtifact__Group__3 )
-            // InternalInfluenceDSL.g:3051:2: rule__DesignArtifact__Group__2__Impl rule__DesignArtifact__Group__3
+            // InternalInfluenceDSL.g:2942:1: ( rule__DesignArtifact__Group__2__Impl rule__DesignArtifact__Group__3 )
+            // InternalInfluenceDSL.g:2943:2: rule__DesignArtifact__Group__2__Impl rule__DesignArtifact__Group__3
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_31);
             rule__DesignArtifact__Group__2__Impl();
 
             state._fsp--;
@@ -9337,21 +9012,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__2__Impl"
-    // InternalInfluenceDSL.g:3058:1: rule__DesignArtifact__Group__2__Impl : ( ( rule__DesignArtifact__NameAssignment_2 ) ) ;
+    // InternalInfluenceDSL.g:2950:1: rule__DesignArtifact__Group__2__Impl : ( ( rule__DesignArtifact__NameAssignment_2 ) ) ;
     public final void rule__DesignArtifact__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3062:1: ( ( ( rule__DesignArtifact__NameAssignment_2 ) ) )
-            // InternalInfluenceDSL.g:3063:1: ( ( rule__DesignArtifact__NameAssignment_2 ) )
+            // InternalInfluenceDSL.g:2954:1: ( ( ( rule__DesignArtifact__NameAssignment_2 ) ) )
+            // InternalInfluenceDSL.g:2955:1: ( ( rule__DesignArtifact__NameAssignment_2 ) )
             {
-            // InternalInfluenceDSL.g:3063:1: ( ( rule__DesignArtifact__NameAssignment_2 ) )
-            // InternalInfluenceDSL.g:3064:2: ( rule__DesignArtifact__NameAssignment_2 )
+            // InternalInfluenceDSL.g:2955:1: ( ( rule__DesignArtifact__NameAssignment_2 ) )
+            // InternalInfluenceDSL.g:2956:2: ( rule__DesignArtifact__NameAssignment_2 )
             {
              before(grammarAccess.getDesignArtifactAccess().getNameAssignment_2()); 
-            // InternalInfluenceDSL.g:3065:2: ( rule__DesignArtifact__NameAssignment_2 )
-            // InternalInfluenceDSL.g:3065:3: rule__DesignArtifact__NameAssignment_2
+            // InternalInfluenceDSL.g:2957:2: ( rule__DesignArtifact__NameAssignment_2 )
+            // InternalInfluenceDSL.g:2957:3: rule__DesignArtifact__NameAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__DesignArtifact__NameAssignment_2();
@@ -9384,14 +9059,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__3"
-    // InternalInfluenceDSL.g:3073:1: rule__DesignArtifact__Group__3 : rule__DesignArtifact__Group__3__Impl rule__DesignArtifact__Group__4 ;
+    // InternalInfluenceDSL.g:2965:1: rule__DesignArtifact__Group__3 : rule__DesignArtifact__Group__3__Impl rule__DesignArtifact__Group__4 ;
     public final void rule__DesignArtifact__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3077:1: ( rule__DesignArtifact__Group__3__Impl rule__DesignArtifact__Group__4 )
-            // InternalInfluenceDSL.g:3078:2: rule__DesignArtifact__Group__3__Impl rule__DesignArtifact__Group__4
+            // InternalInfluenceDSL.g:2969:1: ( rule__DesignArtifact__Group__3__Impl rule__DesignArtifact__Group__4 )
+            // InternalInfluenceDSL.g:2970:2: rule__DesignArtifact__Group__3__Impl rule__DesignArtifact__Group__4
             {
             pushFollow(FOLLOW_21);
             rule__DesignArtifact__Group__3__Impl();
@@ -9422,20 +9097,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__3__Impl"
-    // InternalInfluenceDSL.g:3085:1: rule__DesignArtifact__Group__3__Impl : ( '->' ) ;
+    // InternalInfluenceDSL.g:2977:1: rule__DesignArtifact__Group__3__Impl : ( '->' ) ;
     public final void rule__DesignArtifact__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3089:1: ( ( '->' ) )
-            // InternalInfluenceDSL.g:3090:1: ( '->' )
+            // InternalInfluenceDSL.g:2981:1: ( ( '->' ) )
+            // InternalInfluenceDSL.g:2982:1: ( '->' )
             {
-            // InternalInfluenceDSL.g:3090:1: ( '->' )
-            // InternalInfluenceDSL.g:3091:2: '->'
+            // InternalInfluenceDSL.g:2982:1: ( '->' )
+            // InternalInfluenceDSL.g:2983:2: '->'
             {
              before(grammarAccess.getDesignArtifactAccess().getHyphenMinusGreaterThanSignKeyword_3()); 
-            match(input,35,FOLLOW_2); 
+            match(input,36,FOLLOW_2); 
              after(grammarAccess.getDesignArtifactAccess().getHyphenMinusGreaterThanSignKeyword_3()); 
 
             }
@@ -9459,22 +9134,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__4"
-    // InternalInfluenceDSL.g:3100:1: rule__DesignArtifact__Group__4 : rule__DesignArtifact__Group__4__Impl rule__DesignArtifact__Group__5 ;
+    // InternalInfluenceDSL.g:2992:1: rule__DesignArtifact__Group__4 : rule__DesignArtifact__Group__4__Impl ;
     public final void rule__DesignArtifact__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3104:1: ( rule__DesignArtifact__Group__4__Impl rule__DesignArtifact__Group__5 )
-            // InternalInfluenceDSL.g:3105:2: rule__DesignArtifact__Group__4__Impl rule__DesignArtifact__Group__5
+            // InternalInfluenceDSL.g:2996:1: ( rule__DesignArtifact__Group__4__Impl )
+            // InternalInfluenceDSL.g:2997:2: rule__DesignArtifact__Group__4__Impl
             {
-            pushFollow(FOLLOW_33);
-            rule__DesignArtifact__Group__4__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__DesignArtifact__Group__5();
+            rule__DesignArtifact__Group__4__Impl();
 
             state._fsp--;
 
@@ -9497,21 +9167,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__Group__4__Impl"
-    // InternalInfluenceDSL.g:3112:1: rule__DesignArtifact__Group__4__Impl : ( ( rule__DesignArtifact__RefAssignment_4 ) ) ;
+    // InternalInfluenceDSL.g:3003:1: rule__DesignArtifact__Group__4__Impl : ( ( rule__DesignArtifact__RefAssignment_4 ) ) ;
     public final void rule__DesignArtifact__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3116:1: ( ( ( rule__DesignArtifact__RefAssignment_4 ) ) )
-            // InternalInfluenceDSL.g:3117:1: ( ( rule__DesignArtifact__RefAssignment_4 ) )
+            // InternalInfluenceDSL.g:3007:1: ( ( ( rule__DesignArtifact__RefAssignment_4 ) ) )
+            // InternalInfluenceDSL.g:3008:1: ( ( rule__DesignArtifact__RefAssignment_4 ) )
             {
-            // InternalInfluenceDSL.g:3117:1: ( ( rule__DesignArtifact__RefAssignment_4 ) )
-            // InternalInfluenceDSL.g:3118:2: ( rule__DesignArtifact__RefAssignment_4 )
+            // InternalInfluenceDSL.g:3008:1: ( ( rule__DesignArtifact__RefAssignment_4 ) )
+            // InternalInfluenceDSL.g:3009:2: ( rule__DesignArtifact__RefAssignment_4 )
             {
              before(grammarAccess.getDesignArtifactAccess().getRefAssignment_4()); 
-            // InternalInfluenceDSL.g:3119:2: ( rule__DesignArtifact__RefAssignment_4 )
-            // InternalInfluenceDSL.g:3119:3: rule__DesignArtifact__RefAssignment_4
+            // InternalInfluenceDSL.g:3010:2: ( rule__DesignArtifact__RefAssignment_4 )
+            // InternalInfluenceDSL.g:3010:3: rule__DesignArtifact__RefAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__DesignArtifact__RefAssignment_4();
@@ -9543,336 +9213,15 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__DesignArtifact__Group__4__Impl"
 
 
-    // $ANTLR start "rule__DesignArtifact__Group__5"
-    // InternalInfluenceDSL.g:3127:1: rule__DesignArtifact__Group__5 : rule__DesignArtifact__Group__5__Impl ;
-    public final void rule__DesignArtifact__Group__5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3131:1: ( rule__DesignArtifact__Group__5__Impl )
-            // InternalInfluenceDSL.g:3132:2: rule__DesignArtifact__Group__5__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__DesignArtifact__Group__5__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group__5"
-
-
-    // $ANTLR start "rule__DesignArtifact__Group__5__Impl"
-    // InternalInfluenceDSL.g:3138:1: rule__DesignArtifact__Group__5__Impl : ( ( rule__DesignArtifact__Group_5__0 )? ) ;
-    public final void rule__DesignArtifact__Group__5__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3142:1: ( ( ( rule__DesignArtifact__Group_5__0 )? ) )
-            // InternalInfluenceDSL.g:3143:1: ( ( rule__DesignArtifact__Group_5__0 )? )
-            {
-            // InternalInfluenceDSL.g:3143:1: ( ( rule__DesignArtifact__Group_5__0 )? )
-            // InternalInfluenceDSL.g:3144:2: ( rule__DesignArtifact__Group_5__0 )?
-            {
-             before(grammarAccess.getDesignArtifactAccess().getGroup_5()); 
-            // InternalInfluenceDSL.g:3145:2: ( rule__DesignArtifact__Group_5__0 )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
-
-            if ( (LA21_0==30) ) {
-                alt21=1;
-            }
-            switch (alt21) {
-                case 1 :
-                    // InternalInfluenceDSL.g:3145:3: rule__DesignArtifact__Group_5__0
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__DesignArtifact__Group_5__0();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-             after(grammarAccess.getDesignArtifactAccess().getGroup_5()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group__5__Impl"
-
-
-    // $ANTLR start "rule__DesignArtifact__Group_5__0"
-    // InternalInfluenceDSL.g:3154:1: rule__DesignArtifact__Group_5__0 : rule__DesignArtifact__Group_5__0__Impl rule__DesignArtifact__Group_5__1 ;
-    public final void rule__DesignArtifact__Group_5__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3158:1: ( rule__DesignArtifact__Group_5__0__Impl rule__DesignArtifact__Group_5__1 )
-            // InternalInfluenceDSL.g:3159:2: rule__DesignArtifact__Group_5__0__Impl rule__DesignArtifact__Group_5__1
-            {
-            pushFollow(FOLLOW_18);
-            rule__DesignArtifact__Group_5__0__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__DesignArtifact__Group_5__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group_5__0"
-
-
-    // $ANTLR start "rule__DesignArtifact__Group_5__0__Impl"
-    // InternalInfluenceDSL.g:3166:1: rule__DesignArtifact__Group_5__0__Impl : ( 'metadata' ) ;
-    public final void rule__DesignArtifact__Group_5__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3170:1: ( ( 'metadata' ) )
-            // InternalInfluenceDSL.g:3171:1: ( 'metadata' )
-            {
-            // InternalInfluenceDSL.g:3171:1: ( 'metadata' )
-            // InternalInfluenceDSL.g:3172:2: 'metadata'
-            {
-             before(grammarAccess.getDesignArtifactAccess().getMetadataKeyword_5_0()); 
-            match(input,30,FOLLOW_2); 
-             after(grammarAccess.getDesignArtifactAccess().getMetadataKeyword_5_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group_5__0__Impl"
-
-
-    // $ANTLR start "rule__DesignArtifact__Group_5__1"
-    // InternalInfluenceDSL.g:3181:1: rule__DesignArtifact__Group_5__1 : rule__DesignArtifact__Group_5__1__Impl rule__DesignArtifact__Group_5__2 ;
-    public final void rule__DesignArtifact__Group_5__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3185:1: ( rule__DesignArtifact__Group_5__1__Impl rule__DesignArtifact__Group_5__2 )
-            // InternalInfluenceDSL.g:3186:2: rule__DesignArtifact__Group_5__1__Impl rule__DesignArtifact__Group_5__2
-            {
-            pushFollow(FOLLOW_4);
-            rule__DesignArtifact__Group_5__1__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__DesignArtifact__Group_5__2();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group_5__1"
-
-
-    // $ANTLR start "rule__DesignArtifact__Group_5__1__Impl"
-    // InternalInfluenceDSL.g:3193:1: rule__DesignArtifact__Group_5__1__Impl : ( ':' ) ;
-    public final void rule__DesignArtifact__Group_5__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3197:1: ( ( ':' ) )
-            // InternalInfluenceDSL.g:3198:1: ( ':' )
-            {
-            // InternalInfluenceDSL.g:3198:1: ( ':' )
-            // InternalInfluenceDSL.g:3199:2: ':'
-            {
-             before(grammarAccess.getDesignArtifactAccess().getColonKeyword_5_1()); 
-            match(input,21,FOLLOW_2); 
-             after(grammarAccess.getDesignArtifactAccess().getColonKeyword_5_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group_5__1__Impl"
-
-
-    // $ANTLR start "rule__DesignArtifact__Group_5__2"
-    // InternalInfluenceDSL.g:3208:1: rule__DesignArtifact__Group_5__2 : rule__DesignArtifact__Group_5__2__Impl ;
-    public final void rule__DesignArtifact__Group_5__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3212:1: ( rule__DesignArtifact__Group_5__2__Impl )
-            // InternalInfluenceDSL.g:3213:2: rule__DesignArtifact__Group_5__2__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__DesignArtifact__Group_5__2__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group_5__2"
-
-
-    // $ANTLR start "rule__DesignArtifact__Group_5__2__Impl"
-    // InternalInfluenceDSL.g:3219:1: rule__DesignArtifact__Group_5__2__Impl : ( ( rule__DesignArtifact__MetadataAssignment_5_2 ) ) ;
-    public final void rule__DesignArtifact__Group_5__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:3223:1: ( ( ( rule__DesignArtifact__MetadataAssignment_5_2 ) ) )
-            // InternalInfluenceDSL.g:3224:1: ( ( rule__DesignArtifact__MetadataAssignment_5_2 ) )
-            {
-            // InternalInfluenceDSL.g:3224:1: ( ( rule__DesignArtifact__MetadataAssignment_5_2 ) )
-            // InternalInfluenceDSL.g:3225:2: ( rule__DesignArtifact__MetadataAssignment_5_2 )
-            {
-             before(grammarAccess.getDesignArtifactAccess().getMetadataAssignment_5_2()); 
-            // InternalInfluenceDSL.g:3226:2: ( rule__DesignArtifact__MetadataAssignment_5_2 )
-            // InternalInfluenceDSL.g:3226:3: rule__DesignArtifact__MetadataAssignment_5_2
-            {
-            pushFollow(FOLLOW_2);
-            rule__DesignArtifact__MetadataAssignment_5_2();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getDesignArtifactAccess().getMetadataAssignment_5_2()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__Group_5__2__Impl"
-
-
     // $ANTLR start "rule__SystemResponse__Group__0"
-    // InternalInfluenceDSL.g:3235:1: rule__SystemResponse__Group__0 : rule__SystemResponse__Group__0__Impl rule__SystemResponse__Group__1 ;
+    // InternalInfluenceDSL.g:3019:1: rule__SystemResponse__Group__0 : rule__SystemResponse__Group__0__Impl rule__SystemResponse__Group__1 ;
     public final void rule__SystemResponse__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3239:1: ( rule__SystemResponse__Group__0__Impl rule__SystemResponse__Group__1 )
-            // InternalInfluenceDSL.g:3240:2: rule__SystemResponse__Group__0__Impl rule__SystemResponse__Group__1
+            // InternalInfluenceDSL.g:3023:1: ( rule__SystemResponse__Group__0__Impl rule__SystemResponse__Group__1 )
+            // InternalInfluenceDSL.g:3024:2: rule__SystemResponse__Group__0__Impl rule__SystemResponse__Group__1
             {
             pushFollow(FOLLOW_14);
             rule__SystemResponse__Group__0__Impl();
@@ -9903,21 +9252,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__0__Impl"
-    // InternalInfluenceDSL.g:3247:1: rule__SystemResponse__Group__0__Impl : ( () ) ;
+    // InternalInfluenceDSL.g:3031:1: rule__SystemResponse__Group__0__Impl : ( () ) ;
     public final void rule__SystemResponse__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3251:1: ( ( () ) )
-            // InternalInfluenceDSL.g:3252:1: ( () )
+            // InternalInfluenceDSL.g:3035:1: ( ( () ) )
+            // InternalInfluenceDSL.g:3036:1: ( () )
             {
-            // InternalInfluenceDSL.g:3252:1: ( () )
-            // InternalInfluenceDSL.g:3253:2: ()
+            // InternalInfluenceDSL.g:3036:1: ( () )
+            // InternalInfluenceDSL.g:3037:2: ()
             {
              before(grammarAccess.getSystemResponseAccess().getSystemResponseAction_0()); 
-            // InternalInfluenceDSL.g:3254:2: ()
-            // InternalInfluenceDSL.g:3254:3: 
+            // InternalInfluenceDSL.g:3038:2: ()
+            // InternalInfluenceDSL.g:3038:3: 
             {
             }
 
@@ -9940,14 +9289,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__1"
-    // InternalInfluenceDSL.g:3262:1: rule__SystemResponse__Group__1 : rule__SystemResponse__Group__1__Impl rule__SystemResponse__Group__2 ;
+    // InternalInfluenceDSL.g:3046:1: rule__SystemResponse__Group__1 : rule__SystemResponse__Group__1__Impl rule__SystemResponse__Group__2 ;
     public final void rule__SystemResponse__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3266:1: ( rule__SystemResponse__Group__1__Impl rule__SystemResponse__Group__2 )
-            // InternalInfluenceDSL.g:3267:2: rule__SystemResponse__Group__1__Impl rule__SystemResponse__Group__2
+            // InternalInfluenceDSL.g:3050:1: ( rule__SystemResponse__Group__1__Impl rule__SystemResponse__Group__2 )
+            // InternalInfluenceDSL.g:3051:2: rule__SystemResponse__Group__1__Impl rule__SystemResponse__Group__2
             {
             pushFollow(FOLLOW_22);
             rule__SystemResponse__Group__1__Impl();
@@ -9978,20 +9327,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__1__Impl"
-    // InternalInfluenceDSL.g:3274:1: rule__SystemResponse__Group__1__Impl : ( 'system' ) ;
+    // InternalInfluenceDSL.g:3058:1: rule__SystemResponse__Group__1__Impl : ( 'system' ) ;
     public final void rule__SystemResponse__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3278:1: ( ( 'system' ) )
-            // InternalInfluenceDSL.g:3279:1: ( 'system' )
+            // InternalInfluenceDSL.g:3062:1: ( ( 'system' ) )
+            // InternalInfluenceDSL.g:3063:1: ( 'system' )
             {
-            // InternalInfluenceDSL.g:3279:1: ( 'system' )
-            // InternalInfluenceDSL.g:3280:2: 'system'
+            // InternalInfluenceDSL.g:3063:1: ( 'system' )
+            // InternalInfluenceDSL.g:3064:2: 'system'
             {
              before(grammarAccess.getSystemResponseAccess().getSystemKeyword_1()); 
-            match(input,24,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getSystemResponseAccess().getSystemKeyword_1()); 
 
             }
@@ -10015,14 +9364,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__2"
-    // InternalInfluenceDSL.g:3289:1: rule__SystemResponse__Group__2 : rule__SystemResponse__Group__2__Impl rule__SystemResponse__Group__3 ;
+    // InternalInfluenceDSL.g:3073:1: rule__SystemResponse__Group__2 : rule__SystemResponse__Group__2__Impl rule__SystemResponse__Group__3 ;
     public final void rule__SystemResponse__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3293:1: ( rule__SystemResponse__Group__2__Impl rule__SystemResponse__Group__3 )
-            // InternalInfluenceDSL.g:3294:2: rule__SystemResponse__Group__2__Impl rule__SystemResponse__Group__3
+            // InternalInfluenceDSL.g:3077:1: ( rule__SystemResponse__Group__2__Impl rule__SystemResponse__Group__3 )
+            // InternalInfluenceDSL.g:3078:2: rule__SystemResponse__Group__2__Impl rule__SystemResponse__Group__3
             {
             pushFollow(FOLLOW_4);
             rule__SystemResponse__Group__2__Impl();
@@ -10053,20 +9402,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__2__Impl"
-    // InternalInfluenceDSL.g:3301:1: rule__SystemResponse__Group__2__Impl : ( 'response' ) ;
+    // InternalInfluenceDSL.g:3085:1: rule__SystemResponse__Group__2__Impl : ( 'response' ) ;
     public final void rule__SystemResponse__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3305:1: ( ( 'response' ) )
-            // InternalInfluenceDSL.g:3306:1: ( 'response' )
+            // InternalInfluenceDSL.g:3089:1: ( ( 'response' ) )
+            // InternalInfluenceDSL.g:3090:1: ( 'response' )
             {
-            // InternalInfluenceDSL.g:3306:1: ( 'response' )
-            // InternalInfluenceDSL.g:3307:2: 'response'
+            // InternalInfluenceDSL.g:3090:1: ( 'response' )
+            // InternalInfluenceDSL.g:3091:2: 'response'
             {
              before(grammarAccess.getSystemResponseAccess().getResponseKeyword_2()); 
-            match(input,25,FOLLOW_2); 
+            match(input,26,FOLLOW_2); 
              after(grammarAccess.getSystemResponseAccess().getResponseKeyword_2()); 
 
             }
@@ -10090,16 +9439,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__3"
-    // InternalInfluenceDSL.g:3316:1: rule__SystemResponse__Group__3 : rule__SystemResponse__Group__3__Impl rule__SystemResponse__Group__4 ;
+    // InternalInfluenceDSL.g:3100:1: rule__SystemResponse__Group__3 : rule__SystemResponse__Group__3__Impl rule__SystemResponse__Group__4 ;
     public final void rule__SystemResponse__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3320:1: ( rule__SystemResponse__Group__3__Impl rule__SystemResponse__Group__4 )
-            // InternalInfluenceDSL.g:3321:2: rule__SystemResponse__Group__3__Impl rule__SystemResponse__Group__4
+            // InternalInfluenceDSL.g:3104:1: ( rule__SystemResponse__Group__3__Impl rule__SystemResponse__Group__4 )
+            // InternalInfluenceDSL.g:3105:2: rule__SystemResponse__Group__3__Impl rule__SystemResponse__Group__4
             {
-            pushFollow(FOLLOW_34);
+            pushFollow(FOLLOW_32);
             rule__SystemResponse__Group__3__Impl();
 
             state._fsp--;
@@ -10128,21 +9477,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__3__Impl"
-    // InternalInfluenceDSL.g:3328:1: rule__SystemResponse__Group__3__Impl : ( ( rule__SystemResponse__NameAssignment_3 ) ) ;
+    // InternalInfluenceDSL.g:3112:1: rule__SystemResponse__Group__3__Impl : ( ( rule__SystemResponse__NameAssignment_3 ) ) ;
     public final void rule__SystemResponse__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3332:1: ( ( ( rule__SystemResponse__NameAssignment_3 ) ) )
-            // InternalInfluenceDSL.g:3333:1: ( ( rule__SystemResponse__NameAssignment_3 ) )
+            // InternalInfluenceDSL.g:3116:1: ( ( ( rule__SystemResponse__NameAssignment_3 ) ) )
+            // InternalInfluenceDSL.g:3117:1: ( ( rule__SystemResponse__NameAssignment_3 ) )
             {
-            // InternalInfluenceDSL.g:3333:1: ( ( rule__SystemResponse__NameAssignment_3 ) )
-            // InternalInfluenceDSL.g:3334:2: ( rule__SystemResponse__NameAssignment_3 )
+            // InternalInfluenceDSL.g:3117:1: ( ( rule__SystemResponse__NameAssignment_3 ) )
+            // InternalInfluenceDSL.g:3118:2: ( rule__SystemResponse__NameAssignment_3 )
             {
              before(grammarAccess.getSystemResponseAccess().getNameAssignment_3()); 
-            // InternalInfluenceDSL.g:3335:2: ( rule__SystemResponse__NameAssignment_3 )
-            // InternalInfluenceDSL.g:3335:3: rule__SystemResponse__NameAssignment_3
+            // InternalInfluenceDSL.g:3119:2: ( rule__SystemResponse__NameAssignment_3 )
+            // InternalInfluenceDSL.g:3119:3: rule__SystemResponse__NameAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__SystemResponse__NameAssignment_3();
@@ -10175,14 +9524,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__4"
-    // InternalInfluenceDSL.g:3343:1: rule__SystemResponse__Group__4 : rule__SystemResponse__Group__4__Impl ;
+    // InternalInfluenceDSL.g:3127:1: rule__SystemResponse__Group__4 : rule__SystemResponse__Group__4__Impl ;
     public final void rule__SystemResponse__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3347:1: ( rule__SystemResponse__Group__4__Impl )
-            // InternalInfluenceDSL.g:3348:2: rule__SystemResponse__Group__4__Impl
+            // InternalInfluenceDSL.g:3131:1: ( rule__SystemResponse__Group__4__Impl )
+            // InternalInfluenceDSL.g:3132:2: rule__SystemResponse__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SystemResponse__Group__4__Impl();
@@ -10208,29 +9557,29 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group__4__Impl"
-    // InternalInfluenceDSL.g:3354:1: rule__SystemResponse__Group__4__Impl : ( ( rule__SystemResponse__Group_4__0 )? ) ;
+    // InternalInfluenceDSL.g:3138:1: rule__SystemResponse__Group__4__Impl : ( ( rule__SystemResponse__Group_4__0 )? ) ;
     public final void rule__SystemResponse__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3358:1: ( ( ( rule__SystemResponse__Group_4__0 )? ) )
-            // InternalInfluenceDSL.g:3359:1: ( ( rule__SystemResponse__Group_4__0 )? )
+            // InternalInfluenceDSL.g:3142:1: ( ( ( rule__SystemResponse__Group_4__0 )? ) )
+            // InternalInfluenceDSL.g:3143:1: ( ( rule__SystemResponse__Group_4__0 )? )
             {
-            // InternalInfluenceDSL.g:3359:1: ( ( rule__SystemResponse__Group_4__0 )? )
-            // InternalInfluenceDSL.g:3360:2: ( rule__SystemResponse__Group_4__0 )?
+            // InternalInfluenceDSL.g:3143:1: ( ( rule__SystemResponse__Group_4__0 )? )
+            // InternalInfluenceDSL.g:3144:2: ( rule__SystemResponse__Group_4__0 )?
             {
              before(grammarAccess.getSystemResponseAccess().getGroup_4()); 
-            // InternalInfluenceDSL.g:3361:2: ( rule__SystemResponse__Group_4__0 )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            // InternalInfluenceDSL.g:3145:2: ( rule__SystemResponse__Group_4__0 )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA22_0==36) ) {
-                alt22=1;
+            if ( (LA20_0==37) ) {
+                alt20=1;
             }
-            switch (alt22) {
+            switch (alt20) {
                 case 1 :
-                    // InternalInfluenceDSL.g:3361:3: rule__SystemResponse__Group_4__0
+                    // InternalInfluenceDSL.g:3145:3: rule__SystemResponse__Group_4__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__SystemResponse__Group_4__0();
@@ -10266,16 +9615,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__0"
-    // InternalInfluenceDSL.g:3370:1: rule__SystemResponse__Group_4__0 : rule__SystemResponse__Group_4__0__Impl rule__SystemResponse__Group_4__1 ;
+    // InternalInfluenceDSL.g:3154:1: rule__SystemResponse__Group_4__0 : rule__SystemResponse__Group_4__0__Impl rule__SystemResponse__Group_4__1 ;
     public final void rule__SystemResponse__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3374:1: ( rule__SystemResponse__Group_4__0__Impl rule__SystemResponse__Group_4__1 )
-            // InternalInfluenceDSL.g:3375:2: rule__SystemResponse__Group_4__0__Impl rule__SystemResponse__Group_4__1
+            // InternalInfluenceDSL.g:3158:1: ( rule__SystemResponse__Group_4__0__Impl rule__SystemResponse__Group_4__1 )
+            // InternalInfluenceDSL.g:3159:2: rule__SystemResponse__Group_4__0__Impl rule__SystemResponse__Group_4__1
             {
-            pushFollow(FOLLOW_35);
+            pushFollow(FOLLOW_33);
             rule__SystemResponse__Group_4__0__Impl();
 
             state._fsp--;
@@ -10304,20 +9653,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__0__Impl"
-    // InternalInfluenceDSL.g:3382:1: rule__SystemResponse__Group_4__0__Impl : ( 'used' ) ;
+    // InternalInfluenceDSL.g:3166:1: rule__SystemResponse__Group_4__0__Impl : ( 'used' ) ;
     public final void rule__SystemResponse__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3386:1: ( ( 'used' ) )
-            // InternalInfluenceDSL.g:3387:1: ( 'used' )
+            // InternalInfluenceDSL.g:3170:1: ( ( 'used' ) )
+            // InternalInfluenceDSL.g:3171:1: ( 'used' )
             {
-            // InternalInfluenceDSL.g:3387:1: ( 'used' )
-            // InternalInfluenceDSL.g:3388:2: 'used'
+            // InternalInfluenceDSL.g:3171:1: ( 'used' )
+            // InternalInfluenceDSL.g:3172:2: 'used'
             {
              before(grammarAccess.getSystemResponseAccess().getUsedKeyword_4_0()); 
-            match(input,36,FOLLOW_2); 
+            match(input,37,FOLLOW_2); 
              after(grammarAccess.getSystemResponseAccess().getUsedKeyword_4_0()); 
 
             }
@@ -10341,14 +9690,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__1"
-    // InternalInfluenceDSL.g:3397:1: rule__SystemResponse__Group_4__1 : rule__SystemResponse__Group_4__1__Impl rule__SystemResponse__Group_4__2 ;
+    // InternalInfluenceDSL.g:3181:1: rule__SystemResponse__Group_4__1 : rule__SystemResponse__Group_4__1__Impl rule__SystemResponse__Group_4__2 ;
     public final void rule__SystemResponse__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3401:1: ( rule__SystemResponse__Group_4__1__Impl rule__SystemResponse__Group_4__2 )
-            // InternalInfluenceDSL.g:3402:2: rule__SystemResponse__Group_4__1__Impl rule__SystemResponse__Group_4__2
+            // InternalInfluenceDSL.g:3185:1: ( rule__SystemResponse__Group_4__1__Impl rule__SystemResponse__Group_4__2 )
+            // InternalInfluenceDSL.g:3186:2: rule__SystemResponse__Group_4__1__Impl rule__SystemResponse__Group_4__2
             {
             pushFollow(FOLLOW_4);
             rule__SystemResponse__Group_4__1__Impl();
@@ -10379,20 +9728,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__1__Impl"
-    // InternalInfluenceDSL.g:3409:1: rule__SystemResponse__Group_4__1__Impl : ( 'in' ) ;
+    // InternalInfluenceDSL.g:3193:1: rule__SystemResponse__Group_4__1__Impl : ( 'in' ) ;
     public final void rule__SystemResponse__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3413:1: ( ( 'in' ) )
-            // InternalInfluenceDSL.g:3414:1: ( 'in' )
+            // InternalInfluenceDSL.g:3197:1: ( ( 'in' ) )
+            // InternalInfluenceDSL.g:3198:1: ( 'in' )
             {
-            // InternalInfluenceDSL.g:3414:1: ( 'in' )
-            // InternalInfluenceDSL.g:3415:2: 'in'
+            // InternalInfluenceDSL.g:3198:1: ( 'in' )
+            // InternalInfluenceDSL.g:3199:2: 'in'
             {
              before(grammarAccess.getSystemResponseAccess().getInKeyword_4_1()); 
-            match(input,37,FOLLOW_2); 
+            match(input,38,FOLLOW_2); 
              after(grammarAccess.getSystemResponseAccess().getInKeyword_4_1()); 
 
             }
@@ -10416,14 +9765,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__2"
-    // InternalInfluenceDSL.g:3424:1: rule__SystemResponse__Group_4__2 : rule__SystemResponse__Group_4__2__Impl rule__SystemResponse__Group_4__3 ;
+    // InternalInfluenceDSL.g:3208:1: rule__SystemResponse__Group_4__2 : rule__SystemResponse__Group_4__2__Impl rule__SystemResponse__Group_4__3 ;
     public final void rule__SystemResponse__Group_4__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3428:1: ( rule__SystemResponse__Group_4__2__Impl rule__SystemResponse__Group_4__3 )
-            // InternalInfluenceDSL.g:3429:2: rule__SystemResponse__Group_4__2__Impl rule__SystemResponse__Group_4__3
+            // InternalInfluenceDSL.g:3212:1: ( rule__SystemResponse__Group_4__2__Impl rule__SystemResponse__Group_4__3 )
+            // InternalInfluenceDSL.g:3213:2: rule__SystemResponse__Group_4__2__Impl rule__SystemResponse__Group_4__3
             {
             pushFollow(FOLLOW_15);
             rule__SystemResponse__Group_4__2__Impl();
@@ -10454,21 +9803,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__2__Impl"
-    // InternalInfluenceDSL.g:3436:1: rule__SystemResponse__Group_4__2__Impl : ( ( rule__SystemResponse__UsedInAssignment_4_2 ) ) ;
+    // InternalInfluenceDSL.g:3220:1: rule__SystemResponse__Group_4__2__Impl : ( ( rule__SystemResponse__UsedInAssignment_4_2 ) ) ;
     public final void rule__SystemResponse__Group_4__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3440:1: ( ( ( rule__SystemResponse__UsedInAssignment_4_2 ) ) )
-            // InternalInfluenceDSL.g:3441:1: ( ( rule__SystemResponse__UsedInAssignment_4_2 ) )
+            // InternalInfluenceDSL.g:3224:1: ( ( ( rule__SystemResponse__UsedInAssignment_4_2 ) ) )
+            // InternalInfluenceDSL.g:3225:1: ( ( rule__SystemResponse__UsedInAssignment_4_2 ) )
             {
-            // InternalInfluenceDSL.g:3441:1: ( ( rule__SystemResponse__UsedInAssignment_4_2 ) )
-            // InternalInfluenceDSL.g:3442:2: ( rule__SystemResponse__UsedInAssignment_4_2 )
+            // InternalInfluenceDSL.g:3225:1: ( ( rule__SystemResponse__UsedInAssignment_4_2 ) )
+            // InternalInfluenceDSL.g:3226:2: ( rule__SystemResponse__UsedInAssignment_4_2 )
             {
              before(grammarAccess.getSystemResponseAccess().getUsedInAssignment_4_2()); 
-            // InternalInfluenceDSL.g:3443:2: ( rule__SystemResponse__UsedInAssignment_4_2 )
-            // InternalInfluenceDSL.g:3443:3: rule__SystemResponse__UsedInAssignment_4_2
+            // InternalInfluenceDSL.g:3227:2: ( rule__SystemResponse__UsedInAssignment_4_2 )
+            // InternalInfluenceDSL.g:3227:3: rule__SystemResponse__UsedInAssignment_4_2
             {
             pushFollow(FOLLOW_2);
             rule__SystemResponse__UsedInAssignment_4_2();
@@ -10501,14 +9850,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__3"
-    // InternalInfluenceDSL.g:3451:1: rule__SystemResponse__Group_4__3 : rule__SystemResponse__Group_4__3__Impl ;
+    // InternalInfluenceDSL.g:3235:1: rule__SystemResponse__Group_4__3 : rule__SystemResponse__Group_4__3__Impl ;
     public final void rule__SystemResponse__Group_4__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3455:1: ( rule__SystemResponse__Group_4__3__Impl )
-            // InternalInfluenceDSL.g:3456:2: rule__SystemResponse__Group_4__3__Impl
+            // InternalInfluenceDSL.g:3239:1: ( rule__SystemResponse__Group_4__3__Impl )
+            // InternalInfluenceDSL.g:3240:2: rule__SystemResponse__Group_4__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SystemResponse__Group_4__3__Impl();
@@ -10534,39 +9883,39 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4__3__Impl"
-    // InternalInfluenceDSL.g:3462:1: rule__SystemResponse__Group_4__3__Impl : ( ( rule__SystemResponse__Group_4_3__0 )* ) ;
+    // InternalInfluenceDSL.g:3246:1: rule__SystemResponse__Group_4__3__Impl : ( ( rule__SystemResponse__Group_4_3__0 )* ) ;
     public final void rule__SystemResponse__Group_4__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3466:1: ( ( ( rule__SystemResponse__Group_4_3__0 )* ) )
-            // InternalInfluenceDSL.g:3467:1: ( ( rule__SystemResponse__Group_4_3__0 )* )
+            // InternalInfluenceDSL.g:3250:1: ( ( ( rule__SystemResponse__Group_4_3__0 )* ) )
+            // InternalInfluenceDSL.g:3251:1: ( ( rule__SystemResponse__Group_4_3__0 )* )
             {
-            // InternalInfluenceDSL.g:3467:1: ( ( rule__SystemResponse__Group_4_3__0 )* )
-            // InternalInfluenceDSL.g:3468:2: ( rule__SystemResponse__Group_4_3__0 )*
+            // InternalInfluenceDSL.g:3251:1: ( ( rule__SystemResponse__Group_4_3__0 )* )
+            // InternalInfluenceDSL.g:3252:2: ( rule__SystemResponse__Group_4_3__0 )*
             {
              before(grammarAccess.getSystemResponseAccess().getGroup_4_3()); 
-            // InternalInfluenceDSL.g:3469:2: ( rule__SystemResponse__Group_4_3__0 )*
-            loop23:
+            // InternalInfluenceDSL.g:3253:2: ( rule__SystemResponse__Group_4_3__0 )*
+            loop21:
             do {
-                int alt23=2;
-                int LA23_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA23_0==19) ) {
-                    int LA23_2 = input.LA(2);
+                if ( (LA21_0==20) ) {
+                    int LA21_2 = input.LA(2);
 
-                    if ( ((LA23_2>=RULE_STRING && LA23_2<=RULE_ID)) ) {
-                        alt23=1;
+                    if ( ((LA21_2>=RULE_STRING && LA21_2<=RULE_ID)) ) {
+                        alt21=1;
                     }
 
 
                 }
 
 
-                switch (alt23) {
+                switch (alt21) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:3469:3: rule__SystemResponse__Group_4_3__0
+            	    // InternalInfluenceDSL.g:3253:3: rule__SystemResponse__Group_4_3__0
             	    {
             	    pushFollow(FOLLOW_16);
             	    rule__SystemResponse__Group_4_3__0();
@@ -10578,7 +9927,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             	    break;
 
             	default :
-            	    break loop23;
+            	    break loop21;
                 }
             } while (true);
 
@@ -10605,14 +9954,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4_3__0"
-    // InternalInfluenceDSL.g:3478:1: rule__SystemResponse__Group_4_3__0 : rule__SystemResponse__Group_4_3__0__Impl rule__SystemResponse__Group_4_3__1 ;
+    // InternalInfluenceDSL.g:3262:1: rule__SystemResponse__Group_4_3__0 : rule__SystemResponse__Group_4_3__0__Impl rule__SystemResponse__Group_4_3__1 ;
     public final void rule__SystemResponse__Group_4_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3482:1: ( rule__SystemResponse__Group_4_3__0__Impl rule__SystemResponse__Group_4_3__1 )
-            // InternalInfluenceDSL.g:3483:2: rule__SystemResponse__Group_4_3__0__Impl rule__SystemResponse__Group_4_3__1
+            // InternalInfluenceDSL.g:3266:1: ( rule__SystemResponse__Group_4_3__0__Impl rule__SystemResponse__Group_4_3__1 )
+            // InternalInfluenceDSL.g:3267:2: rule__SystemResponse__Group_4_3__0__Impl rule__SystemResponse__Group_4_3__1
             {
             pushFollow(FOLLOW_4);
             rule__SystemResponse__Group_4_3__0__Impl();
@@ -10643,20 +9992,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4_3__0__Impl"
-    // InternalInfluenceDSL.g:3490:1: rule__SystemResponse__Group_4_3__0__Impl : ( 'and' ) ;
+    // InternalInfluenceDSL.g:3274:1: rule__SystemResponse__Group_4_3__0__Impl : ( 'and' ) ;
     public final void rule__SystemResponse__Group_4_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3494:1: ( ( 'and' ) )
-            // InternalInfluenceDSL.g:3495:1: ( 'and' )
+            // InternalInfluenceDSL.g:3278:1: ( ( 'and' ) )
+            // InternalInfluenceDSL.g:3279:1: ( 'and' )
             {
-            // InternalInfluenceDSL.g:3495:1: ( 'and' )
-            // InternalInfluenceDSL.g:3496:2: 'and'
+            // InternalInfluenceDSL.g:3279:1: ( 'and' )
+            // InternalInfluenceDSL.g:3280:2: 'and'
             {
              before(grammarAccess.getSystemResponseAccess().getAndKeyword_4_3_0()); 
-            match(input,19,FOLLOW_2); 
+            match(input,20,FOLLOW_2); 
              after(grammarAccess.getSystemResponseAccess().getAndKeyword_4_3_0()); 
 
             }
@@ -10680,14 +10029,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4_3__1"
-    // InternalInfluenceDSL.g:3505:1: rule__SystemResponse__Group_4_3__1 : rule__SystemResponse__Group_4_3__1__Impl ;
+    // InternalInfluenceDSL.g:3289:1: rule__SystemResponse__Group_4_3__1 : rule__SystemResponse__Group_4_3__1__Impl ;
     public final void rule__SystemResponse__Group_4_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3509:1: ( rule__SystemResponse__Group_4_3__1__Impl )
-            // InternalInfluenceDSL.g:3510:2: rule__SystemResponse__Group_4_3__1__Impl
+            // InternalInfluenceDSL.g:3293:1: ( rule__SystemResponse__Group_4_3__1__Impl )
+            // InternalInfluenceDSL.g:3294:2: rule__SystemResponse__Group_4_3__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SystemResponse__Group_4_3__1__Impl();
@@ -10713,21 +10062,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__Group_4_3__1__Impl"
-    // InternalInfluenceDSL.g:3516:1: rule__SystemResponse__Group_4_3__1__Impl : ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) ) ;
+    // InternalInfluenceDSL.g:3300:1: rule__SystemResponse__Group_4_3__1__Impl : ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) ) ;
     public final void rule__SystemResponse__Group_4_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3520:1: ( ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) ) )
-            // InternalInfluenceDSL.g:3521:1: ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) )
+            // InternalInfluenceDSL.g:3304:1: ( ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) ) )
+            // InternalInfluenceDSL.g:3305:1: ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) )
             {
-            // InternalInfluenceDSL.g:3521:1: ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) )
-            // InternalInfluenceDSL.g:3522:2: ( rule__SystemResponse__UsedInAssignment_4_3_1 )
+            // InternalInfluenceDSL.g:3305:1: ( ( rule__SystemResponse__UsedInAssignment_4_3_1 ) )
+            // InternalInfluenceDSL.g:3306:2: ( rule__SystemResponse__UsedInAssignment_4_3_1 )
             {
              before(grammarAccess.getSystemResponseAccess().getUsedInAssignment_4_3_1()); 
-            // InternalInfluenceDSL.g:3523:2: ( rule__SystemResponse__UsedInAssignment_4_3_1 )
-            // InternalInfluenceDSL.g:3523:3: rule__SystemResponse__UsedInAssignment_4_3_1
+            // InternalInfluenceDSL.g:3307:2: ( rule__SystemResponse__UsedInAssignment_4_3_1 )
+            // InternalInfluenceDSL.g:3307:3: rule__SystemResponse__UsedInAssignment_4_3_1
             {
             pushFollow(FOLLOW_2);
             rule__SystemResponse__UsedInAssignment_4_3_1();
@@ -10760,16 +10109,16 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group__0"
-    // InternalInfluenceDSL.g:3532:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
+    // InternalInfluenceDSL.g:3316:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
     public final void rule__QualifiedName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3536:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
-            // InternalInfluenceDSL.g:3537:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
+            // InternalInfluenceDSL.g:3320:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
+            // InternalInfluenceDSL.g:3321:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
-            pushFollow(FOLLOW_36);
+            pushFollow(FOLLOW_34);
             rule__QualifiedName__Group__0__Impl();
 
             state._fsp--;
@@ -10798,17 +10147,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group__0__Impl"
-    // InternalInfluenceDSL.g:3544:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
+    // InternalInfluenceDSL.g:3328:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3548:1: ( ( RULE_ID ) )
-            // InternalInfluenceDSL.g:3549:1: ( RULE_ID )
+            // InternalInfluenceDSL.g:3332:1: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3333:1: ( RULE_ID )
             {
-            // InternalInfluenceDSL.g:3549:1: ( RULE_ID )
-            // InternalInfluenceDSL.g:3550:2: RULE_ID
+            // InternalInfluenceDSL.g:3333:1: ( RULE_ID )
+            // InternalInfluenceDSL.g:3334:2: RULE_ID
             {
              before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10835,14 +10184,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group__1"
-    // InternalInfluenceDSL.g:3559:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
+    // InternalInfluenceDSL.g:3343:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
     public final void rule__QualifiedName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3563:1: ( rule__QualifiedName__Group__1__Impl )
-            // InternalInfluenceDSL.g:3564:2: rule__QualifiedName__Group__1__Impl
+            // InternalInfluenceDSL.g:3347:1: ( rule__QualifiedName__Group__1__Impl )
+            // InternalInfluenceDSL.g:3348:2: rule__QualifiedName__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedName__Group__1__Impl();
@@ -10868,35 +10217,35 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group__1__Impl"
-    // InternalInfluenceDSL.g:3570:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
+    // InternalInfluenceDSL.g:3354:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
     public final void rule__QualifiedName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3574:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
-            // InternalInfluenceDSL.g:3575:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // InternalInfluenceDSL.g:3358:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
+            // InternalInfluenceDSL.g:3359:1: ( ( rule__QualifiedName__Group_1__0 )* )
             {
-            // InternalInfluenceDSL.g:3575:1: ( ( rule__QualifiedName__Group_1__0 )* )
-            // InternalInfluenceDSL.g:3576:2: ( rule__QualifiedName__Group_1__0 )*
+            // InternalInfluenceDSL.g:3359:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // InternalInfluenceDSL.g:3360:2: ( rule__QualifiedName__Group_1__0 )*
             {
              before(grammarAccess.getQualifiedNameAccess().getGroup_1()); 
-            // InternalInfluenceDSL.g:3577:2: ( rule__QualifiedName__Group_1__0 )*
-            loop24:
+            // InternalInfluenceDSL.g:3361:2: ( rule__QualifiedName__Group_1__0 )*
+            loop22:
             do {
-                int alt24=2;
-                int LA24_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA24_0==38) ) {
-                    alt24=1;
+                if ( (LA22_0==39) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt24) {
+                switch (alt22) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:3577:3: rule__QualifiedName__Group_1__0
+            	    // InternalInfluenceDSL.g:3361:3: rule__QualifiedName__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_37);
+            	    pushFollow(FOLLOW_35);
             	    rule__QualifiedName__Group_1__0();
 
             	    state._fsp--;
@@ -10906,7 +10255,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop22;
                 }
             } while (true);
 
@@ -10933,14 +10282,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0"
-    // InternalInfluenceDSL.g:3586:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
+    // InternalInfluenceDSL.g:3370:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
     public final void rule__QualifiedName__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3590:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
-            // InternalInfluenceDSL.g:3591:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
+            // InternalInfluenceDSL.g:3374:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
+            // InternalInfluenceDSL.g:3375:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
             pushFollow(FOLLOW_21);
             rule__QualifiedName__Group_1__0__Impl();
@@ -10971,20 +10320,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0__Impl"
-    // InternalInfluenceDSL.g:3598:1: rule__QualifiedName__Group_1__0__Impl : ( '.' ) ;
+    // InternalInfluenceDSL.g:3382:1: rule__QualifiedName__Group_1__0__Impl : ( '.' ) ;
     public final void rule__QualifiedName__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3602:1: ( ( '.' ) )
-            // InternalInfluenceDSL.g:3603:1: ( '.' )
+            // InternalInfluenceDSL.g:3386:1: ( ( '.' ) )
+            // InternalInfluenceDSL.g:3387:1: ( '.' )
             {
-            // InternalInfluenceDSL.g:3603:1: ( '.' )
-            // InternalInfluenceDSL.g:3604:2: '.'
+            // InternalInfluenceDSL.g:3387:1: ( '.' )
+            // InternalInfluenceDSL.g:3388:2: '.'
             {
              before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
-            match(input,38,FOLLOW_2); 
+            match(input,39,FOLLOW_2); 
              after(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
 
             }
@@ -11008,14 +10357,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1"
-    // InternalInfluenceDSL.g:3613:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
+    // InternalInfluenceDSL.g:3397:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
     public final void rule__QualifiedName__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3617:1: ( rule__QualifiedName__Group_1__1__Impl )
-            // InternalInfluenceDSL.g:3618:2: rule__QualifiedName__Group_1__1__Impl
+            // InternalInfluenceDSL.g:3401:1: ( rule__QualifiedName__Group_1__1__Impl )
+            // InternalInfluenceDSL.g:3402:2: rule__QualifiedName__Group_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedName__Group_1__1__Impl();
@@ -11041,17 +10390,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1__Impl"
-    // InternalInfluenceDSL.g:3624:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
+    // InternalInfluenceDSL.g:3408:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3628:1: ( ( RULE_ID ) )
-            // InternalInfluenceDSL.g:3629:1: ( RULE_ID )
+            // InternalInfluenceDSL.g:3412:1: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3413:1: ( RULE_ID )
             {
-            // InternalInfluenceDSL.g:3629:1: ( RULE_ID )
-            // InternalInfluenceDSL.g:3630:2: RULE_ID
+            // InternalInfluenceDSL.g:3413:1: ( RULE_ID )
+            // InternalInfluenceDSL.g:3414:2: RULE_ID
             {
              before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -11078,17 +10427,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__InfluenceModel__NameAssignment_2"
-    // InternalInfluenceDSL.g:3640:1: rule__InfluenceModel__NameAssignment_2 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3424:1: rule__InfluenceModel__NameAssignment_2 : ( ruleEString ) ;
     public final void rule__InfluenceModel__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3644:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3645:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3428:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3429:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:3645:2: ( ruleEString )
-            // InternalInfluenceDSL.g:3646:3: ruleEString
+            // InternalInfluenceDSL.g:3429:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3430:3: ruleEString
             {
              before(grammarAccess.getInfluenceModelAccess().getNameEStringParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -11119,17 +10468,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__InfluenceModel__OwnedArtifactsAssignment_3_0"
-    // InternalInfluenceDSL.g:3655:1: rule__InfluenceModel__OwnedArtifactsAssignment_3_0 : ( ruleDesignArtifact ) ;
+    // InternalInfluenceDSL.g:3439:1: rule__InfluenceModel__OwnedArtifactsAssignment_3_0 : ( ruleDesignArtifact ) ;
     public final void rule__InfluenceModel__OwnedArtifactsAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3659:1: ( ( ruleDesignArtifact ) )
-            // InternalInfluenceDSL.g:3660:2: ( ruleDesignArtifact )
+            // InternalInfluenceDSL.g:3443:1: ( ( ruleDesignArtifact ) )
+            // InternalInfluenceDSL.g:3444:2: ( ruleDesignArtifact )
             {
-            // InternalInfluenceDSL.g:3660:2: ( ruleDesignArtifact )
-            // InternalInfluenceDSL.g:3661:3: ruleDesignArtifact
+            // InternalInfluenceDSL.g:3444:2: ( ruleDesignArtifact )
+            // InternalInfluenceDSL.g:3445:3: ruleDesignArtifact
             {
              before(grammarAccess.getInfluenceModelAccess().getOwnedArtifactsDesignArtifactParserRuleCall_3_0_0()); 
             pushFollow(FOLLOW_2);
@@ -11160,17 +10509,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__InfluenceModel__OwnedRequirementsAssignment_3_1"
-    // InternalInfluenceDSL.g:3670:1: rule__InfluenceModel__OwnedRequirementsAssignment_3_1 : ( ruleRequirementSatisfaction ) ;
+    // InternalInfluenceDSL.g:3454:1: rule__InfluenceModel__OwnedRequirementsAssignment_3_1 : ( ruleRequirementSatisfaction ) ;
     public final void rule__InfluenceModel__OwnedRequirementsAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3674:1: ( ( ruleRequirementSatisfaction ) )
-            // InternalInfluenceDSL.g:3675:2: ( ruleRequirementSatisfaction )
+            // InternalInfluenceDSL.g:3458:1: ( ( ruleRequirementSatisfaction ) )
+            // InternalInfluenceDSL.g:3459:2: ( ruleRequirementSatisfaction )
             {
-            // InternalInfluenceDSL.g:3675:2: ( ruleRequirementSatisfaction )
-            // InternalInfluenceDSL.g:3676:3: ruleRequirementSatisfaction
+            // InternalInfluenceDSL.g:3459:2: ( ruleRequirementSatisfaction )
+            // InternalInfluenceDSL.g:3460:3: ruleRequirementSatisfaction
             {
              before(grammarAccess.getInfluenceModelAccess().getOwnedRequirementsRequirementSatisfactionParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
@@ -11201,17 +10550,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__InfluenceModel__OwnedPhysicalPhenomenaAssignment_3_2"
-    // InternalInfluenceDSL.g:3685:1: rule__InfluenceModel__OwnedPhysicalPhenomenaAssignment_3_2 : ( rulePhysicalPhenomena ) ;
+    // InternalInfluenceDSL.g:3469:1: rule__InfluenceModel__OwnedPhysicalPhenomenaAssignment_3_2 : ( rulePhysicalPhenomena ) ;
     public final void rule__InfluenceModel__OwnedPhysicalPhenomenaAssignment_3_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3689:1: ( ( rulePhysicalPhenomena ) )
-            // InternalInfluenceDSL.g:3690:2: ( rulePhysicalPhenomena )
+            // InternalInfluenceDSL.g:3473:1: ( ( rulePhysicalPhenomena ) )
+            // InternalInfluenceDSL.g:3474:2: ( rulePhysicalPhenomena )
             {
-            // InternalInfluenceDSL.g:3690:2: ( rulePhysicalPhenomena )
-            // InternalInfluenceDSL.g:3691:3: rulePhysicalPhenomena
+            // InternalInfluenceDSL.g:3474:2: ( rulePhysicalPhenomena )
+            // InternalInfluenceDSL.g:3475:3: rulePhysicalPhenomena
             {
              before(grammarAccess.getInfluenceModelAccess().getOwnedPhysicalPhenomenaPhysicalPhenomenaParserRuleCall_3_2_0()); 
             pushFollow(FOLLOW_2);
@@ -11242,17 +10591,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__InfluenceModel__OwnedInfluencesAssignment_3_3"
-    // InternalInfluenceDSL.g:3700:1: rule__InfluenceModel__OwnedInfluencesAssignment_3_3 : ( ruleAbstractInfluence ) ;
+    // InternalInfluenceDSL.g:3484:1: rule__InfluenceModel__OwnedInfluencesAssignment_3_3 : ( ruleAbstractInfluence ) ;
     public final void rule__InfluenceModel__OwnedInfluencesAssignment_3_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3704:1: ( ( ruleAbstractInfluence ) )
-            // InternalInfluenceDSL.g:3705:2: ( ruleAbstractInfluence )
+            // InternalInfluenceDSL.g:3488:1: ( ( ruleAbstractInfluence ) )
+            // InternalInfluenceDSL.g:3489:2: ( ruleAbstractInfluence )
             {
-            // InternalInfluenceDSL.g:3705:2: ( ruleAbstractInfluence )
-            // InternalInfluenceDSL.g:3706:3: ruleAbstractInfluence
+            // InternalInfluenceDSL.g:3489:2: ( ruleAbstractInfluence )
+            // InternalInfluenceDSL.g:3490:3: ruleAbstractInfluence
             {
              before(grammarAccess.getInfluenceModelAccess().getOwnedInfluencesAbstractInfluenceParserRuleCall_3_3_0()); 
             pushFollow(FOLLOW_2);
@@ -11283,17 +10632,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeInfluence__NameAssignment_2"
-    // InternalInfluenceDSL.g:3715:1: rule__CompositeInfluence__NameAssignment_2 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3499:1: rule__CompositeInfluence__NameAssignment_2 : ( ruleEString ) ;
     public final void rule__CompositeInfluence__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3719:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3720:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3503:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3504:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:3720:2: ( ruleEString )
-            // InternalInfluenceDSL.g:3721:3: ruleEString
+            // InternalInfluenceDSL.g:3504:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3505:3: ruleEString
             {
              before(grammarAccess.getCompositeInfluenceAccess().getNameEStringParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -11324,17 +10673,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeInfluence__DescriptionAssignment_4"
-    // InternalInfluenceDSL.g:3730:1: rule__CompositeInfluence__DescriptionAssignment_4 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3514:1: rule__CompositeInfluence__DescriptionAssignment_4 : ( ruleEString ) ;
     public final void rule__CompositeInfluence__DescriptionAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3734:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3735:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3518:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3519:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:3735:2: ( ruleEString )
-            // InternalInfluenceDSL.g:3736:3: ruleEString
+            // InternalInfluenceDSL.g:3519:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3520:3: ruleEString
             {
              before(grammarAccess.getCompositeInfluenceAccess().getDescriptionEStringParserRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -11365,17 +10714,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeInfluence__DescriptionAssignment_5_1"
-    // InternalInfluenceDSL.g:3745:1: rule__CompositeInfluence__DescriptionAssignment_5_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3529:1: rule__CompositeInfluence__DescriptionAssignment_5_1 : ( ruleEString ) ;
     public final void rule__CompositeInfluence__DescriptionAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3749:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3750:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3533:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3534:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:3750:2: ( ruleEString )
-            // InternalInfluenceDSL.g:3751:3: ruleEString
+            // InternalInfluenceDSL.g:3534:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3535:3: ruleEString
             {
              before(grammarAccess.getCompositeInfluenceAccess().getDescriptionEStringParserRuleCall_5_1_0()); 
             pushFollow(FOLLOW_2);
@@ -11406,21 +10755,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeInfluence__InternalInfluencesAssignment_8"
-    // InternalInfluenceDSL.g:3760:1: rule__CompositeInfluence__InternalInfluencesAssignment_8 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:3544:1: rule__CompositeInfluence__InternalInfluencesAssignment_8 : ( ( ruleEString ) ) ;
     public final void rule__CompositeInfluence__InternalInfluencesAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3764:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:3765:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3548:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:3549:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:3765:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3766:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3549:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3550:3: ( ruleEString )
             {
              before(grammarAccess.getCompositeInfluenceAccess().getInternalInfluencesAbstractInfluenceCrossReference_8_0()); 
-            // InternalInfluenceDSL.g:3767:3: ( ruleEString )
-            // InternalInfluenceDSL.g:3768:4: ruleEString
+            // InternalInfluenceDSL.g:3551:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3552:4: ruleEString
             {
              before(grammarAccess.getCompositeInfluenceAccess().getInternalInfluencesAbstractInfluenceEStringParserRuleCall_8_0_1()); 
             pushFollow(FOLLOW_2);
@@ -11455,17 +10804,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeInfluence__OwnedFunctionAssignment_9"
-    // InternalInfluenceDSL.g:3779:1: rule__CompositeInfluence__OwnedFunctionAssignment_9 : ( ruleCompositeFunction ) ;
+    // InternalInfluenceDSL.g:3563:1: rule__CompositeInfluence__OwnedFunctionAssignment_9 : ( ruleCompositeFunction ) ;
     public final void rule__CompositeInfluence__OwnedFunctionAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3783:1: ( ( ruleCompositeFunction ) )
-            // InternalInfluenceDSL.g:3784:2: ( ruleCompositeFunction )
+            // InternalInfluenceDSL.g:3567:1: ( ( ruleCompositeFunction ) )
+            // InternalInfluenceDSL.g:3568:2: ( ruleCompositeFunction )
             {
-            // InternalInfluenceDSL.g:3784:2: ( ruleCompositeFunction )
-            // InternalInfluenceDSL.g:3785:3: ruleCompositeFunction
+            // InternalInfluenceDSL.g:3568:2: ( ruleCompositeFunction )
+            // InternalInfluenceDSL.g:3569:3: ruleCompositeFunction
             {
              before(grammarAccess.getCompositeInfluenceAccess().getOwnedFunctionCompositeFunctionParserRuleCall_9_0()); 
             pushFollow(FOLLOW_2);
@@ -11496,17 +10845,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeInfluence__AffectsAssignment_11"
-    // InternalInfluenceDSL.g:3794:1: rule__CompositeInfluence__AffectsAssignment_11 : ( ruleSystemResponse ) ;
+    // InternalInfluenceDSL.g:3578:1: rule__CompositeInfluence__AffectsAssignment_11 : ( ruleSystemResponse ) ;
     public final void rule__CompositeInfluence__AffectsAssignment_11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3798:1: ( ( ruleSystemResponse ) )
-            // InternalInfluenceDSL.g:3799:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3582:1: ( ( ruleSystemResponse ) )
+            // InternalInfluenceDSL.g:3583:2: ( ruleSystemResponse )
             {
-            // InternalInfluenceDSL.g:3799:2: ( ruleSystemResponse )
-            // InternalInfluenceDSL.g:3800:3: ruleSystemResponse
+            // InternalInfluenceDSL.g:3583:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3584:3: ruleSystemResponse
             {
              before(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_11_0()); 
             pushFollow(FOLLOW_2);
@@ -11537,17 +10886,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeInfluence__AffectsAssignment_12_1"
-    // InternalInfluenceDSL.g:3809:1: rule__CompositeInfluence__AffectsAssignment_12_1 : ( ruleSystemResponse ) ;
+    // InternalInfluenceDSL.g:3593:1: rule__CompositeInfluence__AffectsAssignment_12_1 : ( ruleSystemResponse ) ;
     public final void rule__CompositeInfluence__AffectsAssignment_12_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3813:1: ( ( ruleSystemResponse ) )
-            // InternalInfluenceDSL.g:3814:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3597:1: ( ( ruleSystemResponse ) )
+            // InternalInfluenceDSL.g:3598:2: ( ruleSystemResponse )
             {
-            // InternalInfluenceDSL.g:3814:2: ( ruleSystemResponse )
-            // InternalInfluenceDSL.g:3815:3: ruleSystemResponse
+            // InternalInfluenceDSL.g:3598:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3599:3: ruleSystemResponse
             {
              before(grammarAccess.getCompositeInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_1_0()); 
             pushFollow(FOLLOW_2);
@@ -11578,17 +10927,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__NameAssignment_1"
-    // InternalInfluenceDSL.g:3824:1: rule__Influence__NameAssignment_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3608:1: rule__Influence__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__Influence__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3828:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3829:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3612:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3613:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:3829:2: ( ruleEString )
-            // InternalInfluenceDSL.g:3830:3: ruleEString
+            // InternalInfluenceDSL.g:3613:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3614:3: ruleEString
             {
              before(grammarAccess.getInfluenceAccess().getNameEStringParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -11619,17 +10968,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__DescriptionAssignment_3"
-    // InternalInfluenceDSL.g:3839:1: rule__Influence__DescriptionAssignment_3 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3623:1: rule__Influence__DescriptionAssignment_3 : ( ruleEString ) ;
     public final void rule__Influence__DescriptionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3843:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3844:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3627:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3628:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:3844:2: ( ruleEString )
-            // InternalInfluenceDSL.g:3845:3: ruleEString
+            // InternalInfluenceDSL.g:3628:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3629:3: ruleEString
             {
              before(grammarAccess.getInfluenceAccess().getDescriptionEStringParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -11660,17 +11009,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__DescriptionAssignment_4_1"
-    // InternalInfluenceDSL.g:3854:1: rule__Influence__DescriptionAssignment_4_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3638:1: rule__Influence__DescriptionAssignment_4_1 : ( ruleEString ) ;
     public final void rule__Influence__DescriptionAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3858:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3859:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3642:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3643:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:3859:2: ( ruleEString )
-            // InternalInfluenceDSL.g:3860:3: ruleEString
+            // InternalInfluenceDSL.g:3643:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3644:3: ruleEString
             {
              before(grammarAccess.getInfluenceAccess().getDescriptionEStringParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
@@ -11701,21 +11050,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__OriginatorArtifactAssignment_8_0_1"
-    // InternalInfluenceDSL.g:3869:1: rule__Influence__OriginatorArtifactAssignment_8_0_1 : ( ( RULE_ID ) ) ;
+    // InternalInfluenceDSL.g:3653:1: rule__Influence__OriginatorArtifactAssignment_8_0_1 : ( ( RULE_ID ) ) ;
     public final void rule__Influence__OriginatorArtifactAssignment_8_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3873:1: ( ( ( RULE_ID ) ) )
-            // InternalInfluenceDSL.g:3874:2: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3657:1: ( ( ( RULE_ID ) ) )
+            // InternalInfluenceDSL.g:3658:2: ( ( RULE_ID ) )
             {
-            // InternalInfluenceDSL.g:3874:2: ( ( RULE_ID ) )
-            // InternalInfluenceDSL.g:3875:3: ( RULE_ID )
+            // InternalInfluenceDSL.g:3658:2: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3659:3: ( RULE_ID )
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_8_0_1_0()); 
-            // InternalInfluenceDSL.g:3876:3: ( RULE_ID )
-            // InternalInfluenceDSL.g:3877:4: RULE_ID
+            // InternalInfluenceDSL.g:3660:3: ( RULE_ID )
+            // InternalInfluenceDSL.g:3661:4: RULE_ID
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -11746,21 +11095,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__OriginatorPhenomenaAssignment_8_1_1"
-    // InternalInfluenceDSL.g:3888:1: rule__Influence__OriginatorPhenomenaAssignment_8_1_1 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:3672:1: rule__Influence__OriginatorPhenomenaAssignment_8_1_1 : ( ( ruleEString ) ) ;
     public final void rule__Influence__OriginatorPhenomenaAssignment_8_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3892:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:3893:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3676:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:3677:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:3893:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3894:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3677:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3678:3: ( ruleEString )
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_1_0()); 
-            // InternalInfluenceDSL.g:3895:3: ( ruleEString )
-            // InternalInfluenceDSL.g:3896:4: ruleEString
+            // InternalInfluenceDSL.g:3679:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3680:4: ruleEString
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_8_1_1_0_1()); 
             pushFollow(FOLLOW_2);
@@ -11795,21 +11144,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__OriginatorSystemResponseAssignment_8_2_2"
-    // InternalInfluenceDSL.g:3907:1: rule__Influence__OriginatorSystemResponseAssignment_8_2_2 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:3691:1: rule__Influence__OriginatorSystemResponseAssignment_8_2_2 : ( ( ruleEString ) ) ;
     public final void rule__Influence__OriginatorSystemResponseAssignment_8_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3911:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:3912:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3695:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:3696:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:3912:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3913:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3696:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3697:3: ( ruleEString )
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseCrossReference_8_2_2_0()); 
-            // InternalInfluenceDSL.g:3914:3: ( ruleEString )
-            // InternalInfluenceDSL.g:3915:4: ruleEString
+            // InternalInfluenceDSL.g:3698:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3699:4: ruleEString
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseEStringParserRuleCall_8_2_2_0_1()); 
             pushFollow(FOLLOW_2);
@@ -11844,21 +11193,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__OriginatorArtifactAssignment_9_1_0_1"
-    // InternalInfluenceDSL.g:3926:1: rule__Influence__OriginatorArtifactAssignment_9_1_0_1 : ( ( RULE_ID ) ) ;
+    // InternalInfluenceDSL.g:3710:1: rule__Influence__OriginatorArtifactAssignment_9_1_0_1 : ( ( RULE_ID ) ) ;
     public final void rule__Influence__OriginatorArtifactAssignment_9_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3930:1: ( ( ( RULE_ID ) ) )
-            // InternalInfluenceDSL.g:3931:2: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3714:1: ( ( ( RULE_ID ) ) )
+            // InternalInfluenceDSL.g:3715:2: ( ( RULE_ID ) )
             {
-            // InternalInfluenceDSL.g:3931:2: ( ( RULE_ID ) )
-            // InternalInfluenceDSL.g:3932:3: ( RULE_ID )
+            // InternalInfluenceDSL.g:3715:2: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3716:3: ( RULE_ID )
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0()); 
-            // InternalInfluenceDSL.g:3933:3: ( RULE_ID )
-            // InternalInfluenceDSL.g:3934:4: RULE_ID
+            // InternalInfluenceDSL.g:3717:3: ( RULE_ID )
+            // InternalInfluenceDSL.g:3718:4: RULE_ID
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -11889,21 +11238,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__OriginatorPhenomenaAssignment_9_1_1_1"
-    // InternalInfluenceDSL.g:3945:1: rule__Influence__OriginatorPhenomenaAssignment_9_1_1_1 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:3729:1: rule__Influence__OriginatorPhenomenaAssignment_9_1_1_1 : ( ( ruleEString ) ) ;
     public final void rule__Influence__OriginatorPhenomenaAssignment_9_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3949:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:3950:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3733:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:3734:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:3950:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3951:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3734:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3735:3: ( ruleEString )
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_1_0()); 
-            // InternalInfluenceDSL.g:3952:3: ( ruleEString )
-            // InternalInfluenceDSL.g:3953:4: ruleEString
+            // InternalInfluenceDSL.g:3736:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3737:4: ruleEString
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaEStringParserRuleCall_9_1_1_1_0_1()); 
             pushFollow(FOLLOW_2);
@@ -11938,21 +11287,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__OriginatorSystemResponseAssignment_9_1_2_2"
-    // InternalInfluenceDSL.g:3964:1: rule__Influence__OriginatorSystemResponseAssignment_9_1_2_2 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:3748:1: rule__Influence__OriginatorSystemResponseAssignment_9_1_2_2 : ( ( ruleEString ) ) ;
     public final void rule__Influence__OriginatorSystemResponseAssignment_9_1_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3968:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:3969:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3752:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:3753:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:3969:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:3970:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3753:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3754:3: ( ruleEString )
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0()); 
-            // InternalInfluenceDSL.g:3971:3: ( ruleEString )
-            // InternalInfluenceDSL.g:3972:4: ruleEString
+            // InternalInfluenceDSL.g:3755:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3756:4: ruleEString
             {
              before(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1()); 
             pushFollow(FOLLOW_2);
@@ -11987,17 +11336,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__OwnedFunctionAssignment_10"
-    // InternalInfluenceDSL.g:3983:1: rule__Influence__OwnedFunctionAssignment_10 : ( ruleFunction ) ;
+    // InternalInfluenceDSL.g:3767:1: rule__Influence__OwnedFunctionAssignment_10 : ( ruleFunction ) ;
     public final void rule__Influence__OwnedFunctionAssignment_10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:3987:1: ( ( ruleFunction ) )
-            // InternalInfluenceDSL.g:3988:2: ( ruleFunction )
+            // InternalInfluenceDSL.g:3771:1: ( ( ruleFunction ) )
+            // InternalInfluenceDSL.g:3772:2: ( ruleFunction )
             {
-            // InternalInfluenceDSL.g:3988:2: ( ruleFunction )
-            // InternalInfluenceDSL.g:3989:3: ruleFunction
+            // InternalInfluenceDSL.g:3772:2: ( ruleFunction )
+            // InternalInfluenceDSL.g:3773:3: ruleFunction
             {
              before(grammarAccess.getInfluenceAccess().getOwnedFunctionFunctionParserRuleCall_10_0()); 
             pushFollow(FOLLOW_2);
@@ -12028,17 +11377,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__AffectsAssignment_12"
-    // InternalInfluenceDSL.g:3998:1: rule__Influence__AffectsAssignment_12 : ( ruleSystemResponse ) ;
+    // InternalInfluenceDSL.g:3782:1: rule__Influence__AffectsAssignment_12 : ( ruleSystemResponse ) ;
     public final void rule__Influence__AffectsAssignment_12() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4002:1: ( ( ruleSystemResponse ) )
-            // InternalInfluenceDSL.g:4003:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3786:1: ( ( ruleSystemResponse ) )
+            // InternalInfluenceDSL.g:3787:2: ( ruleSystemResponse )
             {
-            // InternalInfluenceDSL.g:4003:2: ( ruleSystemResponse )
-            // InternalInfluenceDSL.g:4004:3: ruleSystemResponse
+            // InternalInfluenceDSL.g:3787:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3788:3: ruleSystemResponse
             {
              before(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_0()); 
             pushFollow(FOLLOW_2);
@@ -12069,17 +11418,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Influence__AffectsAssignment_13_1"
-    // InternalInfluenceDSL.g:4013:1: rule__Influence__AffectsAssignment_13_1 : ( ruleSystemResponse ) ;
+    // InternalInfluenceDSL.g:3797:1: rule__Influence__AffectsAssignment_13_1 : ( ruleSystemResponse ) ;
     public final void rule__Influence__AffectsAssignment_13_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4017:1: ( ( ruleSystemResponse ) )
-            // InternalInfluenceDSL.g:4018:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3801:1: ( ( ruleSystemResponse ) )
+            // InternalInfluenceDSL.g:3802:2: ( ruleSystemResponse )
             {
-            // InternalInfluenceDSL.g:4018:2: ( ruleSystemResponse )
-            // InternalInfluenceDSL.g:4019:3: ruleSystemResponse
+            // InternalInfluenceDSL.g:3802:2: ( ruleSystemResponse )
+            // InternalInfluenceDSL.g:3803:3: ruleSystemResponse
             {
              before(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_13_1_0()); 
             pushFollow(FOLLOW_2);
@@ -12110,17 +11459,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Function__NameAssignment_1"
-    // InternalInfluenceDSL.g:4028:1: rule__Function__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalInfluenceDSL.g:3812:1: rule__Function__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Function__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4032:1: ( ( RULE_ID ) )
-            // InternalInfluenceDSL.g:4033:2: ( RULE_ID )
+            // InternalInfluenceDSL.g:3816:1: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3817:2: ( RULE_ID )
             {
-            // InternalInfluenceDSL.g:4033:2: ( RULE_ID )
-            // InternalInfluenceDSL.g:4034:3: RULE_ID
+            // InternalInfluenceDSL.g:3817:2: ( RULE_ID )
+            // InternalInfluenceDSL.g:3818:3: RULE_ID
             {
              before(grammarAccess.getFunctionAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -12147,17 +11496,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__Function__DefinitionAssignment_3"
-    // InternalInfluenceDSL.g:4043:1: rule__Function__DefinitionAssignment_3 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3827:1: rule__Function__DefinitionAssignment_3 : ( ruleEString ) ;
     public final void rule__Function__DefinitionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4047:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4048:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3831:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3832:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4048:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4049:3: ruleEString
+            // InternalInfluenceDSL.g:3832:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3833:3: ruleEString
             {
              before(grammarAccess.getFunctionAccess().getDefinitionEStringParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -12188,17 +11537,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeFunction__NameAssignment_1"
-    // InternalInfluenceDSL.g:4058:1: rule__CompositeFunction__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalInfluenceDSL.g:3842:1: rule__CompositeFunction__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__CompositeFunction__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4062:1: ( ( RULE_ID ) )
-            // InternalInfluenceDSL.g:4063:2: ( RULE_ID )
+            // InternalInfluenceDSL.g:3846:1: ( ( RULE_ID ) )
+            // InternalInfluenceDSL.g:3847:2: ( RULE_ID )
             {
-            // InternalInfluenceDSL.g:4063:2: ( RULE_ID )
-            // InternalInfluenceDSL.g:4064:3: RULE_ID
+            // InternalInfluenceDSL.g:3847:2: ( RULE_ID )
+            // InternalInfluenceDSL.g:3848:3: RULE_ID
             {
              before(grammarAccess.getCompositeFunctionAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -12225,21 +11574,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeFunction__InputsAssignment_3"
-    // InternalInfluenceDSL.g:4073:1: rule__CompositeFunction__InputsAssignment_3 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:3857:1: rule__CompositeFunction__InputsAssignment_3 : ( ( ruleEString ) ) ;
     public final void rule__CompositeFunction__InputsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4077:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:4078:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3861:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:3862:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:4078:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4079:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3862:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3863:3: ( ruleEString )
             {
              before(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseCrossReference_3_0()); 
-            // InternalInfluenceDSL.g:4080:3: ( ruleEString )
-            // InternalInfluenceDSL.g:4081:4: ruleEString
+            // InternalInfluenceDSL.g:3864:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3865:4: ruleEString
             {
              before(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseEStringParserRuleCall_3_0_1()); 
             pushFollow(FOLLOW_2);
@@ -12274,21 +11623,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__CompositeFunction__InputsAssignment_4_1"
-    // InternalInfluenceDSL.g:4092:1: rule__CompositeFunction__InputsAssignment_4_1 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:3876:1: rule__CompositeFunction__InputsAssignment_4_1 : ( ( ruleEString ) ) ;
     public final void rule__CompositeFunction__InputsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4096:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:4097:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3880:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:3881:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:4097:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4098:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3881:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3882:3: ( ruleEString )
             {
              before(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseCrossReference_4_1_0()); 
-            // InternalInfluenceDSL.g:4099:3: ( ruleEString )
-            // InternalInfluenceDSL.g:4100:4: ruleEString
+            // InternalInfluenceDSL.g:3883:3: ( ruleEString )
+            // InternalInfluenceDSL.g:3884:4: ruleEString
             {
              before(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseEStringParserRuleCall_4_1_0_1()); 
             pushFollow(FOLLOW_2);
@@ -12323,17 +11672,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__NameAssignment_1"
-    // InternalInfluenceDSL.g:4111:1: rule__PhysicalPhenomena__NameAssignment_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3895:1: rule__PhysicalPhenomena__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__PhysicalPhenomena__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4115:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4116:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3899:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3900:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4116:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4117:3: ruleEString
+            // InternalInfluenceDSL.g:3900:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3901:3: ruleEString
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getNameEStringParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -12364,17 +11713,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__DescriptionAssignment_2_1"
-    // InternalInfluenceDSL.g:4126:1: rule__PhysicalPhenomena__DescriptionAssignment_2_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3910:1: rule__PhysicalPhenomena__DescriptionAssignment_2_1 : ( ruleEString ) ;
     public final void rule__PhysicalPhenomena__DescriptionAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4130:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4131:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3914:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3915:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4131:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4132:3: ruleEString
+            // InternalInfluenceDSL.g:3915:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3916:3: ruleEString
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getDescriptionEStringParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -12405,17 +11754,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__PhysicalPhenomena__DescriptionAssignment_2_2_1"
-    // InternalInfluenceDSL.g:4141:1: rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3925:1: rule__PhysicalPhenomena__DescriptionAssignment_2_2_1 : ( ruleEString ) ;
     public final void rule__PhysicalPhenomena__DescriptionAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4145:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4146:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3929:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3930:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4146:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4147:3: ruleEString
+            // InternalInfluenceDSL.g:3930:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3931:3: ruleEString
             {
              before(grammarAccess.getPhysicalPhenomenaAccess().getDescriptionEStringParserRuleCall_2_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -12445,59 +11794,18 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__PhysicalPhenomena__DescriptionAssignment_2_2_1"
 
 
-    // $ANTLR start "rule__PhysicalPhenomena__MetadataAssignment_3_2"
-    // InternalInfluenceDSL.g:4156:1: rule__PhysicalPhenomena__MetadataAssignment_3_2 : ( ruleEString ) ;
-    public final void rule__PhysicalPhenomena__MetadataAssignment_3_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:4160:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4161:2: ( ruleEString )
-            {
-            // InternalInfluenceDSL.g:4161:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4162:3: ruleEString
-            {
-             before(grammarAccess.getPhysicalPhenomenaAccess().getMetadataEStringParserRuleCall_3_2_0()); 
-            pushFollow(FOLLOW_2);
-            ruleEString();
-
-            state._fsp--;
-
-             after(grammarAccess.getPhysicalPhenomenaAccess().getMetadataEStringParserRuleCall_3_2_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PhysicalPhenomena__MetadataAssignment_3_2"
-
-
     // $ANTLR start "rule__RequirementSatisfaction__NameAssignment_1"
-    // InternalInfluenceDSL.g:4171:1: rule__RequirementSatisfaction__NameAssignment_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3940:1: rule__RequirementSatisfaction__NameAssignment_1 : ( ruleEString ) ;
     public final void rule__RequirementSatisfaction__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4175:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4176:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3944:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3945:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4176:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4177:3: ruleEString
+            // InternalInfluenceDSL.g:3945:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3946:3: ruleEString
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getNameEStringParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -12528,17 +11836,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__SatisfactionAssignment_5"
-    // InternalInfluenceDSL.g:4186:1: rule__RequirementSatisfaction__SatisfactionAssignment_5 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3955:1: rule__RequirementSatisfaction__SatisfactionAssignment_5 : ( ruleEString ) ;
     public final void rule__RequirementSatisfaction__SatisfactionAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4190:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4191:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3959:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3960:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4191:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4192:3: ruleEString
+            // InternalInfluenceDSL.g:3960:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3961:3: ruleEString
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -12569,17 +11877,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__SatisfactionAssignment_6_1"
-    // InternalInfluenceDSL.g:4201:1: rule__RequirementSatisfaction__SatisfactionAssignment_6_1 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3970:1: rule__RequirementSatisfaction__SatisfactionAssignment_6_1 : ( ruleEString ) ;
     public final void rule__RequirementSatisfaction__SatisfactionAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4205:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4206:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3974:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3975:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4206:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4207:3: ruleEString
+            // InternalInfluenceDSL.g:3975:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3976:3: ruleEString
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_6_1_0()); 
             pushFollow(FOLLOW_2);
@@ -12610,17 +11918,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__RequirementSatisfaction__MetadataAssignment_7_2"
-    // InternalInfluenceDSL.g:4216:1: rule__RequirementSatisfaction__MetadataAssignment_7_2 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:3985:1: rule__RequirementSatisfaction__MetadataAssignment_7_2 : ( ruleEString ) ;
     public final void rule__RequirementSatisfaction__MetadataAssignment_7_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4220:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4221:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3989:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:3990:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4221:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4222:3: ruleEString
+            // InternalInfluenceDSL.g:3990:2: ( ruleEString )
+            // InternalInfluenceDSL.g:3991:3: ruleEString
             {
              before(grammarAccess.getRequirementSatisfactionAccess().getMetadataEStringParserRuleCall_7_2_0()); 
             pushFollow(FOLLOW_2);
@@ -12651,17 +11959,17 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__NameAssignment_2"
-    // InternalInfluenceDSL.g:4231:1: rule__DesignArtifact__NameAssignment_2 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:4000:1: rule__DesignArtifact__NameAssignment_2 : ( ruleEString ) ;
     public final void rule__DesignArtifact__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4235:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4236:2: ( ruleEString )
+            // InternalInfluenceDSL.g:4004:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:4005:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4236:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4237:3: ruleEString
+            // InternalInfluenceDSL.g:4005:2: ( ruleEString )
+            // InternalInfluenceDSL.g:4006:3: ruleEString
             {
              before(grammarAccess.getDesignArtifactAccess().getNameEStringParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -12692,21 +12000,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__DesignArtifact__RefAssignment_4"
-    // InternalInfluenceDSL.g:4246:1: rule__DesignArtifact__RefAssignment_4 : ( ( ruleQualifiedName ) ) ;
+    // InternalInfluenceDSL.g:4015:1: rule__DesignArtifact__RefAssignment_4 : ( ( ruleQualifiedName ) ) ;
     public final void rule__DesignArtifact__RefAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4250:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalInfluenceDSL.g:4251:2: ( ( ruleQualifiedName ) )
+            // InternalInfluenceDSL.g:4019:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalInfluenceDSL.g:4020:2: ( ( ruleQualifiedName ) )
             {
-            // InternalInfluenceDSL.g:4251:2: ( ( ruleQualifiedName ) )
-            // InternalInfluenceDSL.g:4252:3: ( ruleQualifiedName )
+            // InternalInfluenceDSL.g:4020:2: ( ( ruleQualifiedName ) )
+            // InternalInfluenceDSL.g:4021:3: ( ruleQualifiedName )
             {
              before(grammarAccess.getDesignArtifactAccess().getRefEObjectCrossReference_4_0()); 
-            // InternalInfluenceDSL.g:4253:3: ( ruleQualifiedName )
-            // InternalInfluenceDSL.g:4254:4: ruleQualifiedName
+            // InternalInfluenceDSL.g:4022:3: ( ruleQualifiedName )
+            // InternalInfluenceDSL.g:4023:4: ruleQualifiedName
             {
              before(grammarAccess.getDesignArtifactAccess().getRefEObjectQualifiedNameParserRuleCall_4_0_1()); 
             pushFollow(FOLLOW_2);
@@ -12740,59 +12048,18 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__DesignArtifact__RefAssignment_4"
 
 
-    // $ANTLR start "rule__DesignArtifact__MetadataAssignment_5_2"
-    // InternalInfluenceDSL.g:4265:1: rule__DesignArtifact__MetadataAssignment_5_2 : ( ruleEString ) ;
-    public final void rule__DesignArtifact__MetadataAssignment_5_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalInfluenceDSL.g:4269:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4270:2: ( ruleEString )
-            {
-            // InternalInfluenceDSL.g:4270:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4271:3: ruleEString
-            {
-             before(grammarAccess.getDesignArtifactAccess().getMetadataEStringParserRuleCall_5_2_0()); 
-            pushFollow(FOLLOW_2);
-            ruleEString();
-
-            state._fsp--;
-
-             after(grammarAccess.getDesignArtifactAccess().getMetadataEStringParserRuleCall_5_2_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__DesignArtifact__MetadataAssignment_5_2"
-
-
     // $ANTLR start "rule__SystemResponse__NameAssignment_3"
-    // InternalInfluenceDSL.g:4280:1: rule__SystemResponse__NameAssignment_3 : ( ruleEString ) ;
+    // InternalInfluenceDSL.g:4034:1: rule__SystemResponse__NameAssignment_3 : ( ruleEString ) ;
     public final void rule__SystemResponse__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4284:1: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4285:2: ( ruleEString )
+            // InternalInfluenceDSL.g:4038:1: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:4039:2: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:4285:2: ( ruleEString )
-            // InternalInfluenceDSL.g:4286:3: ruleEString
+            // InternalInfluenceDSL.g:4039:2: ( ruleEString )
+            // InternalInfluenceDSL.g:4040:3: ruleEString
             {
              before(grammarAccess.getSystemResponseAccess().getNameEStringParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -12823,21 +12090,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__UsedInAssignment_4_2"
-    // InternalInfluenceDSL.g:4295:1: rule__SystemResponse__UsedInAssignment_4_2 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:4049:1: rule__SystemResponse__UsedInAssignment_4_2 : ( ( ruleEString ) ) ;
     public final void rule__SystemResponse__UsedInAssignment_4_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4299:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:4300:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:4053:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:4054:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:4300:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4301:3: ( ruleEString )
+            // InternalInfluenceDSL.g:4054:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:4055:3: ( ruleEString )
             {
              before(grammarAccess.getSystemResponseAccess().getUsedInRequirementCrossReference_4_2_0()); 
-            // InternalInfluenceDSL.g:4302:3: ( ruleEString )
-            // InternalInfluenceDSL.g:4303:4: ruleEString
+            // InternalInfluenceDSL.g:4056:3: ( ruleEString )
+            // InternalInfluenceDSL.g:4057:4: ruleEString
             {
              before(grammarAccess.getSystemResponseAccess().getUsedInRequirementEStringParserRuleCall_4_2_0_1()); 
             pushFollow(FOLLOW_2);
@@ -12872,21 +12139,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__SystemResponse__UsedInAssignment_4_3_1"
-    // InternalInfluenceDSL.g:4314:1: rule__SystemResponse__UsedInAssignment_4_3_1 : ( ( ruleEString ) ) ;
+    // InternalInfluenceDSL.g:4068:1: rule__SystemResponse__UsedInAssignment_4_3_1 : ( ( ruleEString ) ) ;
     public final void rule__SystemResponse__UsedInAssignment_4_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalInfluenceDSL.g:4318:1: ( ( ( ruleEString ) ) )
-            // InternalInfluenceDSL.g:4319:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:4072:1: ( ( ( ruleEString ) ) )
+            // InternalInfluenceDSL.g:4073:2: ( ( ruleEString ) )
             {
-            // InternalInfluenceDSL.g:4319:2: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:4320:3: ( ruleEString )
+            // InternalInfluenceDSL.g:4073:2: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:4074:3: ( ruleEString )
             {
              before(grammarAccess.getSystemResponseAccess().getUsedInRequirementCrossReference_4_3_1_0()); 
-            // InternalInfluenceDSL.g:4321:3: ( ruleEString )
-            // InternalInfluenceDSL.g:4322:4: ruleEString
+            // InternalInfluenceDSL.g:4075:3: ( ruleEString )
+            // InternalInfluenceDSL.g:4076:4: ruleEString
             {
              before(grammarAccess.getSystemResponseAccess().getUsedInRequirementEStringParserRuleCall_4_3_1_0_1()); 
             pushFollow(FOLLOW_2);
@@ -12926,40 +12193,38 @@ public class InternalInfluenceDSLParser extends AbstractInternalContentAssistPar
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x00000004A0003000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000004A0003002L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000058000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000004000030L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x00000008C0006000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000008C0006002L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x00000000000B0000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000008000030L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000032L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000148000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000001C00000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000004080000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000290000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000003800000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000008100000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000010040000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000040200000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000040040000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000020080000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000400080000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000008000000002L});
 
 }

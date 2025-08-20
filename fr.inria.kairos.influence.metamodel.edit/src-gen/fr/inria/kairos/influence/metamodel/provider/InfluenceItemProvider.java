@@ -109,6 +109,7 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__OWNED_FUNCTION);
+			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__PER_ELEMENT_METADATA);
 		}
 		return childrenFeatures;
 	}
@@ -173,6 +174,7 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 
 		switch (notification.getFeatureID(Influence.class)) {
 		case MetamodelPackage.INFLUENCE__OWNED_FUNCTION:
+		case MetamodelPackage.INFLUENCE__PER_ELEMENT_METADATA:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -192,6 +194,9 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 
 		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_FUNCTION,
 				MetamodelFactory.eINSTANCE.createFunction()));
+
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__PER_ELEMENT_METADATA,
+				MetamodelFactory.eINSTANCE.createMetadata()));
 	}
 
 }

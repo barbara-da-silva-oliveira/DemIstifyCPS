@@ -165,6 +165,29 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Metadata} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MetadataItemProvider metadataItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Metadata}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMetadataAdapter() {
+		if (metadataItemProvider == null) {
+			metadataItemProvider = new MetadataItemProvider(this);
+		}
+
+		return metadataItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SystemResponse} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -402,6 +425,8 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 			functionItemProvider.dispose();
 		if (compositeFunctionItemProvider != null)
 			compositeFunctionItemProvider.dispose();
+		if (metadataItemProvider != null)
+			metadataItemProvider.dispose();
 	}
 
 }

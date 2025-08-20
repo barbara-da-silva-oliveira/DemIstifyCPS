@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.PhysicalPhenomenaImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.PhysicalPhenomenaImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,16 +34,6 @@ public class PhysicalPhenomenaImpl extends NamedElementImpl implements PhysicalP
 	 * @ordered
 	 */
 	protected EList<String> description;
-
-	/**
-	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMetadata()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<String> metadata;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,26 +74,10 @@ public class PhysicalPhenomenaImpl extends NamedElementImpl implements PhysicalP
 	 * @generated
 	 */
 	@Override
-	public EList<String> getMetadata() {
-		if (metadata == null) {
-			metadata = new EDataTypeUniqueEList<String>(String.class, this,
-					MetamodelPackage.PHYSICAL_PHENOMENA__METADATA);
-		}
-		return metadata;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case MetamodelPackage.PHYSICAL_PHENOMENA__DESCRIPTION:
 			return getDescription();
-		case MetamodelPackage.PHYSICAL_PHENOMENA__METADATA:
-			return getMetadata();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -122,10 +95,6 @@ public class PhysicalPhenomenaImpl extends NamedElementImpl implements PhysicalP
 			getDescription().clear();
 			getDescription().addAll((Collection<? extends String>) newValue);
 			return;
-		case MetamodelPackage.PHYSICAL_PHENOMENA__METADATA:
-			getMetadata().clear();
-			getMetadata().addAll((Collection<? extends String>) newValue);
-			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -141,9 +110,6 @@ public class PhysicalPhenomenaImpl extends NamedElementImpl implements PhysicalP
 		case MetamodelPackage.PHYSICAL_PHENOMENA__DESCRIPTION:
 			getDescription().clear();
 			return;
-		case MetamodelPackage.PHYSICAL_PHENOMENA__METADATA:
-			getMetadata().clear();
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -158,8 +124,6 @@ public class PhysicalPhenomenaImpl extends NamedElementImpl implements PhysicalP
 		switch (featureID) {
 		case MetamodelPackage.PHYSICAL_PHENOMENA__DESCRIPTION:
 			return description != null && !description.isEmpty();
-		case MetamodelPackage.PHYSICAL_PHENOMENA__METADATA:
-			return metadata != null && !metadata.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -177,8 +141,6 @@ public class PhysicalPhenomenaImpl extends NamedElementImpl implements PhysicalP
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (description: ");
 		result.append(description);
-		result.append(", metadata: ");
-		result.append(metadata);
 		result.append(')');
 		return result.toString();
 	}

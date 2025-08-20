@@ -44,7 +44,6 @@ public class PhysicalPhenomenaItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addDescriptionPropertyDescriptor(object);
-			addMetadataPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -63,22 +62,6 @@ public class PhysicalPhenomenaItemProvider extends NamedElementItemProvider {
 						"_UI_PhysicalPhenomena_type"),
 				MetamodelPackage.Literals.PHYSICAL_PHENOMENA__DESCRIPTION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Metadata feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMetadataPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_PhysicalPhenomena_metadata_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_PhysicalPhenomena_metadata_feature",
-								"_UI_PhysicalPhenomena_type"),
-						MetamodelPackage.Literals.PHYSICAL_PHENOMENA__METADATA, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -128,7 +111,6 @@ public class PhysicalPhenomenaItemProvider extends NamedElementItemProvider {
 
 		switch (notification.getFeatureID(PhysicalPhenomena.class)) {
 		case MetamodelPackage.PHYSICAL_PHENOMENA__DESCRIPTION:
-		case MetamodelPackage.PHYSICAL_PHENOMENA__METADATA:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

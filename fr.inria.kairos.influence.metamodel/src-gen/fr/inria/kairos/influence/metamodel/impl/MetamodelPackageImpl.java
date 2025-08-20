@@ -9,6 +9,7 @@ import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Function;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
+import fr.inria.kairos.influence.metamodel.Metadata;
 import fr.inria.kairos.influence.metamodel.MetamodelFactory;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 import fr.inria.kairos.influence.metamodel.NamedElement;
@@ -64,6 +65,13 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	private EClass compositeFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass metadataEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -317,6 +325,16 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EReference getInfluence_PerElementMetadata() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getFunction() {
 		return functionEClass;
 	}
@@ -349,6 +367,56 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	@Override
 	public EReference getCompositeFunction_Inputs() {
 		return (EReference) compositeFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMetadata() {
+		return metadataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMetadata_Likelihood() {
+		return (EAttribute) metadataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMetadata_Confidence() {
+		return (EAttribute) metadataEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMetadata_Strength() {
+		return (EAttribute) metadataEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMetadata_Element() {
+		return (EReference) metadataEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -407,16 +475,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPhysicalPhenomena_Metadata() {
-		return (EAttribute) physicalPhenomenaEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getRequirement() {
 		return requirementEClass;
 	}
@@ -459,16 +517,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	@Override
 	public EReference getDesignArtifact_Ref() {
 		return (EReference) designArtifactEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDesignArtifact_Metadata() {
-		return (EAttribute) designArtifactEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -568,7 +616,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		physicalPhenomenaEClass = createEClass(PHYSICAL_PHENOMENA);
 		createEAttribute(physicalPhenomenaEClass, PHYSICAL_PHENOMENA__DESCRIPTION);
-		createEAttribute(physicalPhenomenaEClass, PHYSICAL_PHENOMENA__METADATA);
 
 		requirementEClass = createEClass(REQUIREMENT);
 		createEAttribute(requirementEClass, REQUIREMENT__SATISFACTION);
@@ -576,7 +623,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		designArtifactEClass = createEClass(DESIGN_ARTIFACT);
 		createEReference(designArtifactEClass, DESIGN_ARTIFACT__REF);
-		createEAttribute(designArtifactEClass, DESIGN_ARTIFACT__METADATA);
 
 		compositeInfluenceEClass = createEClass(COMPOSITE_INFLUENCE);
 		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES);
@@ -590,12 +636,19 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_ARTIFACT);
 		createEReference(influenceEClass, INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE);
 		createEReference(influenceEClass, INFLUENCE__OWNED_FUNCTION);
+		createEReference(influenceEClass, INFLUENCE__PER_ELEMENT_METADATA);
 
 		functionEClass = createEClass(FUNCTION);
 		createEAttribute(functionEClass, FUNCTION__DEFINITION);
 
 		compositeFunctionEClass = createEClass(COMPOSITE_FUNCTION);
 		createEReference(compositeFunctionEClass, COMPOSITE_FUNCTION__INPUTS);
+
+		metadataEClass = createEClass(METADATA);
+		createEAttribute(metadataEClass, METADATA__LIKELIHOOD);
+		createEAttribute(metadataEClass, METADATA__CONFIDENCE);
+		createEAttribute(metadataEClass, METADATA__STRENGTH);
+		createEReference(metadataEClass, METADATA__ELEMENT);
 	}
 
 	/**
@@ -680,9 +733,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEAttribute(getPhysicalPhenomena_Description(), ecorePackage.getEString(), "description", null, 0, -1,
 				PhysicalPhenomena.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPhysicalPhenomena_Metadata(), ecorePackage.getEString(), "metadata", null, 0, -1,
-				PhysicalPhenomena.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(requirementEClass, Requirement.class, "Requirement", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -697,9 +747,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getDesignArtifact_Ref(), ecorePackage.getEObject(), null, "ref", null, 0, 1,
 				DesignArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDesignArtifact_Metadata(), ecorePackage.getEString(), "metadata", null, 0, -1,
-				DesignArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositeInfluenceEClass, CompositeInfluence.class, "CompositeInfluence", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -729,6 +776,9 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getInfluence_OwnedFunction(), this.getFunction(), null, "ownedFunction", null, 1, 1,
 				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluence_PerElementMetadata(), this.getMetadata(), null, "perElementMetadata", null, 0, -1,
+				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -740,6 +790,18 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getCompositeFunction_Inputs(), this.getSystemResponse(), null, "inputs", null, 0, -1,
 				CompositeFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMetadata_Likelihood(), ecorePackage.getEDouble(), "likelihood", null, 0, 1, Metadata.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetadata_Confidence(), ecorePackage.getEDouble(), "confidence", null, 0, 1, Metadata.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetadata_Strength(), ecorePackage.getEDouble(), "strength", null, 0, 1, Metadata.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMetadata_Element(), this.getNamedElement(), null, "element", null, 0, 1, Metadata.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

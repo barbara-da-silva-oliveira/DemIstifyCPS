@@ -2,7 +2,6 @@
  */
 package fr.inria.kairos.influence.metamodel;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getRef <em>Ref</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getDesignArtifact()
@@ -44,17 +42,5 @@ public interface DesignArtifact extends NamedElement {
 	 * @generated
 	 */
 	void setRef(EObject value);
-
-	/**
-	 * Returns the value of the '<em><b>Metadata</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Metadata</em>' attribute list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getDesignArtifact_Metadata()
-	 * @model
-	 * @generated
-	 */
-	EList<String> getMetadata();
 
 } // DesignArtifact

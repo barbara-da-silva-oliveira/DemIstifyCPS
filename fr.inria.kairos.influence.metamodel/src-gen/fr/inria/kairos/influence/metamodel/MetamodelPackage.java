@@ -324,22 +324,13 @@ public interface MetamodelPackage extends EPackage {
 	int PHYSICAL_PHENOMENA__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_PHENOMENA__METADATA = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Physical Phenomena</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PHYSICAL_PHENOMENA_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int PHYSICAL_PHENOMENA_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Physical Phenomena</em>' class.
@@ -434,22 +425,13 @@ public interface MetamodelPackage extends EPackage {
 	int DESIGN_ARTIFACT__REF = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESIGN_ARTIFACT__METADATA = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Design Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESIGN_ARTIFACT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int DESIGN_ARTIFACT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Design Artifact</em>' class.
@@ -615,13 +597,22 @@ public interface MetamodelPackage extends EPackage {
 	int INFLUENCE__OWNED_FUNCTION = ABSTRACT_INFLUENCE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Per Element Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__PER_ELEMENT_METADATA = ABSTRACT_INFLUENCE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Influence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 4;
+	int INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Influence</em>' class.
@@ -723,6 +714,70 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPOSITE_FUNCTION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.MetadataImpl <em>Metadata</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetadataImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getMetadata()
+	 * @generated
+	 */
+	int METADATA = 11;
+
+	/**
+	 * The feature id for the '<em><b>Likelihood</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__LIKELIHOOD = 0;
+
+	/**
+	 * The feature id for the '<em><b>Confidence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__CONFIDENCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Strength</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__STRENGTH = 2;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__ELEMENT = 3;
+
+	/**
+	 * The number of structural features of the '<em>Metadata</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Metadata</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA_OPERATION_COUNT = 0;
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.InfluenceModel <em>Influence Model</em>}'.
@@ -876,6 +931,17 @@ public interface MetamodelPackage extends EPackage {
 	EReference getInfluence_OwnedFunction();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getPerElementMetadata <em>Per Element Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Per Element Metadata</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getPerElementMetadata()
+	 * @see #getInfluence()
+	 * @generated
+	 */
+	EReference getInfluence_PerElementMetadata();
+
+	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Function <em>Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -916,6 +982,60 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCompositeFunction_Inputs();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Metadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Metadata</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Metadata
+	 * @generated
+	 */
+	EClass getMetadata();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Metadata#getLikelihood <em>Likelihood</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Likelihood</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Metadata#getLikelihood()
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	EAttribute getMetadata_Likelihood();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Metadata#getConfidence <em>Confidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Confidence</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Metadata#getConfidence()
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	EAttribute getMetadata_Confidence();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Metadata#getStrength <em>Strength</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Strength</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Metadata#getStrength()
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	EAttribute getMetadata_Strength();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.Metadata#getElement <em>Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Element</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Metadata#getElement()
+	 * @see #getMetadata()
+	 * @generated
+	 */
+	EReference getMetadata_Element();
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.SystemResponse <em>System Response</em>}'.
@@ -971,17 +1091,6 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getPhysicalPhenomena_Description();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena#getMetadata <em>Metadata</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Metadata</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.PhysicalPhenomena#getMetadata()
-	 * @see #getPhysicalPhenomena()
-	 * @generated
-	 */
-	EAttribute getPhysicalPhenomena_Metadata();
-
-	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Requirement <em>Requirement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1033,17 +1142,6 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDesignArtifact_Ref();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getMetadata <em>Metadata</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Metadata</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact#getMetadata()
-	 * @see #getDesignArtifact()
-	 * @generated
-	 */
-	EAttribute getDesignArtifact_Metadata();
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence <em>Composite Influence</em>}'.
@@ -1240,6 +1338,14 @@ public interface MetamodelPackage extends EPackage {
 		EReference INFLUENCE__OWNED_FUNCTION = eINSTANCE.getInfluence_OwnedFunction();
 
 		/**
+		 * The meta object literal for the '<em><b>Per Element Metadata</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFLUENCE__PER_ELEMENT_METADATA = eINSTANCE.getInfluence_PerElementMetadata();
+
+		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.FunctionImpl <em>Function</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1274,6 +1380,48 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPOSITE_FUNCTION__INPUTS = eINSTANCE.getCompositeFunction_Inputs();
+
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.MetadataImpl <em>Metadata</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetadataImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getMetadata()
+		 * @generated
+		 */
+		EClass METADATA = eINSTANCE.getMetadata();
+
+		/**
+		 * The meta object literal for the '<em><b>Likelihood</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METADATA__LIKELIHOOD = eINSTANCE.getMetadata_Likelihood();
+
+		/**
+		 * The meta object literal for the '<em><b>Confidence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METADATA__CONFIDENCE = eINSTANCE.getMetadata_Confidence();
+
+		/**
+		 * The meta object literal for the '<em><b>Strength</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METADATA__STRENGTH = eINSTANCE.getMetadata_Strength();
+
+		/**
+		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference METADATA__ELEMENT = eINSTANCE.getMetadata_Element();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponseImpl <em>System Response</em>}' class.
@@ -1320,14 +1468,6 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute PHYSICAL_PHENOMENA__DESCRIPTION = eINSTANCE.getPhysicalPhenomena_Description();
 
 		/**
-		 * The meta object literal for the '<em><b>Metadata</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PHYSICAL_PHENOMENA__METADATA = eINSTANCE.getPhysicalPhenomena_Metadata();
-
-		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.RequirementImpl <em>Requirement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1370,14 +1510,6 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DESIGN_ARTIFACT__REF = eINSTANCE.getDesignArtifact_Ref();
-
-		/**
-		 * The meta object literal for the '<em><b>Metadata</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DESIGN_ARTIFACT__METADATA = eINSTANCE.getDesignArtifact_Metadata();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl <em>Composite Influence</em>}' class.

@@ -27,7 +27,6 @@
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//PhysicalPhenomena">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//PhysicalPhenomena/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//PhysicalPhenomena/metadata"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Requirement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Requirement/satisfaction"/>
@@ -35,7 +34,6 @@
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//DesignArtifact">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//DesignArtifact/ref"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//DesignArtifact/metadata"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//CompositeInfluence">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeInfluence/internalInfluences"/>
@@ -49,12 +47,19 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorArtifact"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/originatorSystemResponse"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/ownedFunction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/perElementMetadata"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Function/definition"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//CompositeFunction">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeFunction/inputs"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Metadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Metadata/likelihood"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Metadata/confidence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Metadata/strength"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Metadata/element"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

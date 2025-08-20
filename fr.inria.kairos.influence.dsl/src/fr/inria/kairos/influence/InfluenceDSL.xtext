@@ -30,6 +30,7 @@ Influence returns Influence:
 	'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'? 
 		'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 						  ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))* 
+		('metadata' ':' perElementMetadata+=Metadata ('and' perElementMetadata+=Metadata)*)?
 		ownedFunction=Function
 		'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)* 
 	;
@@ -46,7 +47,6 @@ PhysicalPhenomena returns PhysicalPhenomena:
 	'Phenomenon'
 	name=EString
 	(':' description+=EString ( "," description+=EString)* )?
-	('metadata' ':' metadata+=EString)?
 	;
 
 
@@ -62,12 +62,30 @@ DesignArtifact returns DesignArtifact:
 	{DesignArtifact}
 	'DesignArtifact'
 	name=EString "->" ref=[ecore::EObject|QualifiedName]
-	('metadata' ':' metadata+=EString)?
 	;
 	
 
 EString returns ecore::EString:
 	STRING | ID;
+
+
+terminal DOUBLE returns ecore::EDouble:
+    ('-')? INT ('.' INT)? (('E'|'e') ('+'|'-')? INT)?;
+
+
+Metadata returns Metadata:
+    (
+      'artifact'        element=[DesignArtifact|ID]
+    | 'phenomena'       element=[PhysicalPhenomena|EString]
+    | 'system' 'response' element=[SystemResponse|EString]
+    )
+    (
+      ('with' | ',')?
+      ('likelihood' '=' likelihood=DOUBLE)?
+      (',' 'strength' '=' strength=DOUBLE)?
+      (',' 'confidence' '=' confidence=DOUBLE)?
+    )?
+;
 
 SystemResponse returns SystemResponse:
 	{SystemResponse}

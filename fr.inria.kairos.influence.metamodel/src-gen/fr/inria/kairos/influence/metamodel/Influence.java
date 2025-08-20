@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact <em>Originator Artifact</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorSystemResponse <em>Originator System Response</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction <em>Owned Function</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getPerElementMetadata <em>Per Element Metadata</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence()
@@ -82,5 +83,17 @@ public interface Influence extends AbstractInfluence {
 	 * @generated
 	 */
 	void setOwnedFunction(Function value);
+
+	/**
+	 * Returns the value of the '<em><b>Per Element Metadata</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Metadata}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Per Element Metadata</em>' containment reference list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_PerElementMetadata()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Metadata> getPerElementMetadata();
 
 } // Influence

@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena#getDescription <em>Description</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getPhysicalPhenomena()
@@ -33,17 +32,5 @@ public interface PhysicalPhenomena extends NamedElement {
 	 * @generated
 	 */
 	EList<String> getDescription();
-
-	/**
-	 * Returns the value of the '<em><b>Metadata</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Metadata</em>' attribute list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getPhysicalPhenomena_Metadata()
-	 * @model
-	 * @generated
-	 */
-	EList<String> getMetadata();
 
 } // PhysicalPhenomena

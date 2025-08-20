@@ -74,6 +74,8 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 			return createFunction();
 		case MetamodelPackage.COMPOSITE_FUNCTION:
 			return createCompositeFunction();
+		case MetamodelPackage.METADATA:
+			return createMetadata();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -121,6 +123,17 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	public CompositeFunction createCompositeFunction() {
 		CompositeFunctionImpl compositeFunction = new CompositeFunctionImpl();
 		return compositeFunction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Metadata createMetadata() {
+		MetadataImpl metadata = new MetadataImpl();
+		return metadata;
 	}
 
 	/**

@@ -27,8 +27,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="PhysicalPhenomena" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="satisfaction" lowerBound="1"
@@ -38,8 +36,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DesignArtifact" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeInfluence" eSuperTypes="#//AbstractInfluence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="internalInfluences" lowerBound="2"
@@ -59,6 +55,8 @@
         upperBound="-1" eType="#//SystemResponse"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedFunction" lowerBound="1"
         eType="#//Function" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="perElementMetadata" upperBound="-1"
+        eType="#//Metadata" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -66,5 +64,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="CompositeFunction" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
         eType="#//SystemResponse"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Metadata">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="likelihood" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="confidence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//NamedElement"/>
   </eClassifiers>
 </ecore:EPackage>
