@@ -5,10 +5,12 @@ Bundle-Name: fr.inria.kairos.influence.dsl
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: fr.inria.kairos.influence.dsl; singleton:=true
-Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  thirdparty/jgrapht-1.5.2/lib/jgrapht-core-1.5.2.jar,
- thirdparty/jgrapht-1.5.2/lib/jgrapht-io-1.5.2.jar
+ thirdparty/jgrapht-1.5.2/lib/jgrapht-io-1.5.2.jar,
+ thirdparty/orson-charts-2.1.1/target/org.jfree.chart3d-2.1.1-SNAPSHOT.jar,
+ thirdparty/orson-charts-2.1.1/target/org.jfree.chart3d-2.1.1-SNAPSHOT-javadoc.jar,
+ thirdparty/jfreechart-1.5.6/target/jfreechart-1.5.6.jar
 Require-Bundle: fr.inria.kairos.influence.metamodel,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,

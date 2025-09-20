@@ -265,7 +265,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cArtifactKeyword_8_0_0 = (Keyword)cGroup_8_0.eContents().get(0);
 		private final Assignment cOriginatorArtifactAssignment_8_0_1 = (Assignment)cGroup_8_0.eContents().get(1);
 		private final CrossReference cOriginatorArtifactDesignArtifactCrossReference_8_0_1_0 = (CrossReference)cOriginatorArtifactAssignment_8_0_1.eContents().get(0);
-		private final RuleCall cOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_1_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_8_0_1_0.eContents().get(1);
+		private final RuleCall cOriginatorArtifactDesignArtifactEStringParserRuleCall_8_0_1_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_8_0_1_0.eContents().get(1);
 		private final Group cGroup_8_1 = (Group)cAlternatives_8.eContents().get(1);
 		private final Keyword cPhenomenaKeyword_8_1_0 = (Keyword)cGroup_8_1.eContents().get(0);
 		private final Assignment cOriginatorPhenomenaAssignment_8_1_1 = (Assignment)cGroup_8_1.eContents().get(1);
@@ -284,7 +284,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cArtifactKeyword_9_1_0_0 = (Keyword)cGroup_9_1_0.eContents().get(0);
 		private final Assignment cOriginatorArtifactAssignment_9_1_0_1 = (Assignment)cGroup_9_1_0.eContents().get(1);
 		private final CrossReference cOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0 = (CrossReference)cOriginatorArtifactAssignment_9_1_0_1.eContents().get(0);
-		private final RuleCall cOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_1_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0.eContents().get(1);
+		private final RuleCall cOriginatorArtifactDesignArtifactEStringParserRuleCall_9_1_0_1_0_1 = (RuleCall)cOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0.eContents().get(1);
 		private final Group cGroup_9_1_1 = (Group)cAlternatives_9_1.eContents().get(1);
 		private final Keyword cPhenomenaKeyword_9_1_1_0 = (Keyword)cGroup_9_1_1.eContents().get(0);
 		private final Assignment cOriginatorPhenomenaAssignment_9_1_1_1 = (Assignment)cGroup_9_1_1.eContents().get(1);
@@ -296,28 +296,55 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cOriginatorSystemResponseAssignment_9_1_2_2 = (Assignment)cGroup_9_1_2.eContents().get(2);
 		private final CrossReference cOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0 = (CrossReference)cOriginatorSystemResponseAssignment_9_1_2_2.eContents().get(0);
 		private final RuleCall cOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1 = (RuleCall)cOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0.eContents().get(1);
-		private final Assignment cOwnedFunctionAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cOwnedFunctionFunctionParserRuleCall_10_0 = (RuleCall)cOwnedFunctionAssignment_10.eContents().get(0);
-		private final Keyword cAffectsKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Assignment cAffectsAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_12_0 = (RuleCall)cAffectsAssignment_12.eContents().get(0);
-		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
-		private final Keyword cAndKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
-		private final Assignment cAffectsAssignment_13_1 = (Assignment)cGroup_13.eContents().get(1);
-		private final RuleCall cAffectsSystemResponseParserRuleCall_13_1_0 = (RuleCall)cAffectsAssignment_13_1.eContents().get(0);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cMetadataKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Keyword cColonKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
+		private final Keyword cLikelihoodKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
+		private final Keyword cColonKeyword_10_2_1 = (Keyword)cGroup_10_2.eContents().get(1);
+		private final Assignment cLikelihoodPerElementAssignment_10_2_2 = (Assignment)cGroup_10_2.eContents().get(2);
+		private final RuleCall cLikelihoodPerElementEStringParserRuleCall_10_2_2_0 = (RuleCall)cLikelihoodPerElementAssignment_10_2_2.eContents().get(0);
+		private final Group cGroup_10_2_3 = (Group)cGroup_10_2.eContents().get(3);
+		private final Keyword cCommaKeyword_10_2_3_0 = (Keyword)cGroup_10_2_3.eContents().get(0);
+		private final Assignment cLikelihoodPerElementAssignment_10_2_3_1 = (Assignment)cGroup_10_2_3.eContents().get(1);
+		private final RuleCall cLikelihoodPerElementEStringParserRuleCall_10_2_3_1_0 = (RuleCall)cLikelihoodPerElementAssignment_10_2_3_1.eContents().get(0);
+		private final Group cGroup_10_3 = (Group)cGroup_10.eContents().get(3);
+		private final Keyword cConfidenceKeyword_10_3_0 = (Keyword)cGroup_10_3.eContents().get(0);
+		private final Keyword cColonKeyword_10_3_1 = (Keyword)cGroup_10_3.eContents().get(1);
+		private final Assignment cConfidenceAssignment_10_3_2 = (Assignment)cGroup_10_3.eContents().get(2);
+		private final RuleCall cConfidenceEStringParserRuleCall_10_3_2_0 = (RuleCall)cConfidenceAssignment_10_3_2.eContents().get(0);
+		private final Group cGroup_10_3_3 = (Group)cGroup_10_3.eContents().get(3);
+		private final Keyword cCommaKeyword_10_3_3_0 = (Keyword)cGroup_10_3_3.eContents().get(0);
+		private final Assignment cConfidenceAssignment_10_3_3_1 = (Assignment)cGroup_10_3_3.eContents().get(1);
+		private final RuleCall cConfidenceEStringParserRuleCall_10_3_3_1_0 = (RuleCall)cConfidenceAssignment_10_3_3_1.eContents().get(0);
+		private final Assignment cOwnedFunctionAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cOwnedFunctionFunctionParserRuleCall_11_0 = (RuleCall)cOwnedFunctionAssignment_11.eContents().get(0);
+		private final Keyword cAffectsKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cAffectsAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_13_0 = (RuleCall)cAffectsAssignment_13.eContents().get(0);
+		private final Group cGroup_14 = (Group)cGroup.eContents().get(14);
+		private final Keyword cAndKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
+		private final Assignment cAffectsAssignment_14_1 = (Assignment)cGroup_14.eContents().get(1);
+		private final RuleCall cAffectsSystemResponseParserRuleCall_14_1_0 = (RuleCall)cAffectsAssignment_14_1.eContents().get(0);
 		
 		//Influence returns Influence:
 		//    'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
-		//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
-		//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+		//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//        ( 'metadata' ':' ( 'likelihood' ':' likelihoodPerElement+=EString (',' likelihoodPerElement+=EString)* )?
+		//        (  'confidence' ':' confidence+=EString (',' confidence+=EString)* )?
+		//    )?
 		//        ownedFunction=Function
 		//        'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
-		//    'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
-		//                      ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//    'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+		//                      ( "and" (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//    ( 'metadata' ':' ( 'likelihood' ':' likelihoodPerElement+=EString (',' likelihoodPerElement+=EString)* )?
+		//    (  'confidence' ':' confidence+=EString (',' confidence+=EString)* )?
+		//)?
 		//    ownedFunction=Function
 		//    'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 		public Group getGroup() { return cGroup; }
@@ -361,23 +388,23 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//':'
 		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
 		
-		//(("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+		//(("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 		public Alternatives getAlternatives_8() { return cAlternatives_8; }
 		
-		//("artifact" originatorArtifact+=[DesignArtifact|ID])
+		//("artifact" originatorArtifact+=[DesignArtifact|EString])
 		public Group getGroup_8_0() { return cGroup_8_0; }
 		
 		//"artifact"
 		public Keyword getArtifactKeyword_8_0_0() { return cArtifactKeyword_8_0_0; }
 		
-		//originatorArtifact+=[DesignArtifact|ID]
+		//originatorArtifact+=[DesignArtifact|EString]
 		public Assignment getOriginatorArtifactAssignment_8_0_1() { return cOriginatorArtifactAssignment_8_0_1; }
 		
-		//[DesignArtifact|ID]
+		//[DesignArtifact|EString]
 		public CrossReference getOriginatorArtifactDesignArtifactCrossReference_8_0_1_0() { return cOriginatorArtifactDesignArtifactCrossReference_8_0_1_0; }
 		
-		//ID
-		public RuleCall getOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_1_0_1() { return cOriginatorArtifactDesignArtifactIDTerminalRuleCall_8_0_1_0_1; }
+		//EString
+		public RuleCall getOriginatorArtifactDesignArtifactEStringParserRuleCall_8_0_1_0_1() { return cOriginatorArtifactDesignArtifactEStringParserRuleCall_8_0_1_0_1; }
 		
 		//("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString])
 		public Group getGroup_8_1() { return cGroup_8_1; }
@@ -412,29 +439,29 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getOriginatorSystemResponseSystemResponseEStringParserRuleCall_8_2_2_0_1() { return cOriginatorSystemResponseSystemResponseEStringParserRuleCall_8_2_2_0_1; }
 		
-		//( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+		//( "and" (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
 		public Group getGroup_9() { return cGroup_9; }
 		
 		//"and"
 		public Keyword getAndKeyword_9_0() { return cAndKeyword_9_0; }
 		
-		//(("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+		//(("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
 		public Alternatives getAlternatives_9_1() { return cAlternatives_9_1; }
 		
-		//("artifact" originatorArtifact+=[DesignArtifact|ID])
+		//("artifact" originatorArtifact+=[DesignArtifact|EString])
 		public Group getGroup_9_1_0() { return cGroup_9_1_0; }
 		
 		//"artifact"
 		public Keyword getArtifactKeyword_9_1_0_0() { return cArtifactKeyword_9_1_0_0; }
 		
-		//originatorArtifact+=[DesignArtifact|ID]
+		//originatorArtifact+=[DesignArtifact|EString]
 		public Assignment getOriginatorArtifactAssignment_9_1_0_1() { return cOriginatorArtifactAssignment_9_1_0_1; }
 		
-		//[DesignArtifact|ID]
+		//[DesignArtifact|EString]
 		public CrossReference getOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0() { return cOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0; }
 		
-		//ID
-		public RuleCall getOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_1_0_1() { return cOriginatorArtifactDesignArtifactIDTerminalRuleCall_9_1_0_1_0_1; }
+		//EString
+		public RuleCall getOriginatorArtifactDesignArtifactEStringParserRuleCall_9_1_0_1_0_1() { return cOriginatorArtifactDesignArtifactEStringParserRuleCall_9_1_0_1_0_1; }
 		
 		//("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString])
 		public Group getGroup_9_1_1() { return cGroup_9_1_1; }
@@ -469,32 +496,97 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1() { return cOriginatorSystemResponseSystemResponseEStringParserRuleCall_9_1_2_2_0_1; }
 		
+		//    ( 'metadata' ':' ( 'likelihood' ':' likelihoodPerElement+=EString (',' likelihoodPerElement+=EString)* )?
+		//    (  'confidence' ':' confidence+=EString (',' confidence+=EString)* )?
+		//)?
+		public Group getGroup_10() { return cGroup_10; }
+		
+		//'metadata'
+		public Keyword getMetadataKeyword_10_0() { return cMetadataKeyword_10_0; }
+		
+		//':'
+		public Keyword getColonKeyword_10_1() { return cColonKeyword_10_1; }
+		
+		//( 'likelihood' ':' likelihoodPerElement+=EString (',' likelihoodPerElement+=EString)* )?
+		public Group getGroup_10_2() { return cGroup_10_2; }
+		
+		//'likelihood'
+		public Keyword getLikelihoodKeyword_10_2_0() { return cLikelihoodKeyword_10_2_0; }
+		
+		//':'
+		public Keyword getColonKeyword_10_2_1() { return cColonKeyword_10_2_1; }
+		
+		//likelihoodPerElement+=EString
+		public Assignment getLikelihoodPerElementAssignment_10_2_2() { return cLikelihoodPerElementAssignment_10_2_2; }
+		
+		//EString
+		public RuleCall getLikelihoodPerElementEStringParserRuleCall_10_2_2_0() { return cLikelihoodPerElementEStringParserRuleCall_10_2_2_0; }
+		
+		//(',' likelihoodPerElement+=EString)*
+		public Group getGroup_10_2_3() { return cGroup_10_2_3; }
+		
+		//','
+		public Keyword getCommaKeyword_10_2_3_0() { return cCommaKeyword_10_2_3_0; }
+		
+		//likelihoodPerElement+=EString
+		public Assignment getLikelihoodPerElementAssignment_10_2_3_1() { return cLikelihoodPerElementAssignment_10_2_3_1; }
+		
+		//EString
+		public RuleCall getLikelihoodPerElementEStringParserRuleCall_10_2_3_1_0() { return cLikelihoodPerElementEStringParserRuleCall_10_2_3_1_0; }
+		
+		//(  'confidence' ':' confidence+=EString (',' confidence+=EString)* )?
+		public Group getGroup_10_3() { return cGroup_10_3; }
+		
+		//'confidence'
+		public Keyword getConfidenceKeyword_10_3_0() { return cConfidenceKeyword_10_3_0; }
+		
+		//':'
+		public Keyword getColonKeyword_10_3_1() { return cColonKeyword_10_3_1; }
+		
+		//confidence+=EString
+		public Assignment getConfidenceAssignment_10_3_2() { return cConfidenceAssignment_10_3_2; }
+		
+		//EString
+		public RuleCall getConfidenceEStringParserRuleCall_10_3_2_0() { return cConfidenceEStringParserRuleCall_10_3_2_0; }
+		
+		//(',' confidence+=EString)*
+		public Group getGroup_10_3_3() { return cGroup_10_3_3; }
+		
+		//','
+		public Keyword getCommaKeyword_10_3_3_0() { return cCommaKeyword_10_3_3_0; }
+		
+		//confidence+=EString
+		public Assignment getConfidenceAssignment_10_3_3_1() { return cConfidenceAssignment_10_3_3_1; }
+		
+		//EString
+		public RuleCall getConfidenceEStringParserRuleCall_10_3_3_1_0() { return cConfidenceEStringParserRuleCall_10_3_3_1_0; }
+		
 		//ownedFunction=Function
-		public Assignment getOwnedFunctionAssignment_10() { return cOwnedFunctionAssignment_10; }
+		public Assignment getOwnedFunctionAssignment_11() { return cOwnedFunctionAssignment_11; }
 		
 		//Function
-		public RuleCall getOwnedFunctionFunctionParserRuleCall_10_0() { return cOwnedFunctionFunctionParserRuleCall_10_0; }
+		public RuleCall getOwnedFunctionFunctionParserRuleCall_11_0() { return cOwnedFunctionFunctionParserRuleCall_11_0; }
 		
 		//'affects'
-		public Keyword getAffectsKeyword_11() { return cAffectsKeyword_11; }
+		public Keyword getAffectsKeyword_12() { return cAffectsKeyword_12; }
 		
 		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_12() { return cAffectsAssignment_12; }
+		public Assignment getAffectsAssignment_13() { return cAffectsAssignment_13; }
 		
 		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_12_0() { return cAffectsSystemResponseParserRuleCall_12_0; }
+		public RuleCall getAffectsSystemResponseParserRuleCall_13_0() { return cAffectsSystemResponseParserRuleCall_13_0; }
 		
 		//( "and" affects+=SystemResponse)*
-		public Group getGroup_13() { return cGroup_13; }
+		public Group getGroup_14() { return cGroup_14; }
 		
 		//"and"
-		public Keyword getAndKeyword_13_0() { return cAndKeyword_13_0; }
+		public Keyword getAndKeyword_14_0() { return cAndKeyword_14_0; }
 		
 		//affects+=SystemResponse
-		public Assignment getAffectsAssignment_13_1() { return cAffectsAssignment_13_1; }
+		public Assignment getAffectsAssignment_14_1() { return cAffectsAssignment_14_1; }
 		
 		//SystemResponse
-		public RuleCall getAffectsSystemResponseParserRuleCall_13_1_0() { return cAffectsSystemResponseParserRuleCall_13_1_0; }
+		public RuleCall getAffectsSystemResponseParserRuleCall_14_1_0() { return cAffectsSystemResponseParserRuleCall_14_1_0; }
 	}
 	public class FunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.Function");
@@ -508,8 +600,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Function:
-		//    'fun' name=ID '(' definition=EString ')'
-		//;
+		//  'fun' name=ID '(' definition=EString ')' ;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'fun' name=ID '(' definition=EString ')'
@@ -539,7 +630,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	public class CompositeFunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.CompositeFunction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cFunKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cCompositeFunKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -554,15 +645,14 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//CompositeFunction:
-		//    'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')'
-		//;
+		//  'compositeFun' name=ID '(' inputs+=[SystemResponse|EString] (',' inputs+=[SystemResponse|EString])* ')' ;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')'
+		//'compositeFun' name=ID '(' inputs+=[SystemResponse|EString] (',' inputs+=[SystemResponse|EString])* ')'
 		public Group getGroup() { return cGroup; }
 		
-		//'fun'
-		public Keyword getFunKeyword_0() { return cFunKeyword_0; }
+		//'compositeFun'
+		public Keyword getCompositeFunKeyword_0() { return cCompositeFunKeyword_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -582,7 +672,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getInputsSystemResponseEStringParserRuleCall_3_0_1() { return cInputsSystemResponseEStringParserRuleCall_3_0_1; }
 		
-		//(','inputs+=[SystemResponse|EString])*
+		//(',' inputs+=[SystemResponse|EString])*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//','
@@ -680,17 +770,21 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cColonKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
 		private final Assignment cMetadataAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
 		private final RuleCall cMetadataEStringParserRuleCall_7_2_0 = (RuleCall)cMetadataAssignment_7_2.eContents().get(0);
+		private final Group cGroup_7_3 = (Group)cGroup_7.eContents().get(3);
+		private final Keyword cCommaKeyword_7_3_0 = (Keyword)cGroup_7_3.eContents().get(0);
+		private final Assignment cMetadataAssignment_7_3_1 = (Assignment)cGroup_7_3.eContents().get(1);
+		private final RuleCall cMetadataEStringParserRuleCall_7_3_1_0 = (RuleCall)cMetadataAssignment_7_3_1.eContents().get(0);
 		
 		//RequirementSatisfaction returns Requirement:
 		//    'Requirement' name=EString    ':'
 		//    'satisfied' 'when' satisfaction+=EString ( "," satisfaction+=EString)*
-		//    ('metadata' ':' metadata+=EString)?
-		//    ;
+		//      ( 'metadata' ':' metadata+=EString (',' metadata+=EString)* )?
+		//      ;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Requirement' name=EString    ':'
 		//'satisfied' 'when' satisfaction+=EString ( "," satisfaction+=EString)*
-		//('metadata' ':' metadata+=EString)?
+		//  ( 'metadata' ':' metadata+=EString (',' metadata+=EString)* )?
 		public Group getGroup() { return cGroup; }
 		
 		//'Requirement'
@@ -729,7 +823,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//EString
 		public RuleCall getSatisfactionEStringParserRuleCall_6_1_0() { return cSatisfactionEStringParserRuleCall_6_1_0; }
 		
-		//('metadata' ':' metadata+=EString)?
+		//( 'metadata' ':' metadata+=EString (',' metadata+=EString)* )?
 		public Group getGroup_7() { return cGroup_7; }
 		
 		//'metadata'
@@ -743,6 +837,18 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//EString
 		public RuleCall getMetadataEStringParserRuleCall_7_2_0() { return cMetadataEStringParserRuleCall_7_2_0; }
+		
+		//(',' metadata+=EString)*
+		public Group getGroup_7_3() { return cGroup_7_3; }
+		
+		//','
+		public Keyword getCommaKeyword_7_3_0() { return cCommaKeyword_7_3_0; }
+		
+		//metadata+=EString
+		public Assignment getMetadataAssignment_7_3_1() { return cMetadataAssignment_7_3_1; }
+		
+		//EString
+		public RuleCall getMetadataEStringParserRuleCall_7_3_1_0() { return cMetadataEStringParserRuleCall_7_3_1_0; }
 	}
 	public class DesignArtifactElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.DesignArtifact");
@@ -755,17 +861,24 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cRefAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cRefEObjectCrossReference_4_0 = (CrossReference)cRefAssignment_4.eContents().get(0);
 		private final RuleCall cRefEObjectQualifiedNameParserRuleCall_4_0_1 = (RuleCall)cRefEObjectCrossReference_4_0.eContents().get(1);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cChangeabilityKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Assignment cChangeabilityAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final RuleCall cChangeabilityDOUBLETerminalRuleCall_5_2_0 = (RuleCall)cChangeabilityAssignment_5_2.eContents().get(0);
 		
 		//DesignArtifact returns DesignArtifact:
 		//    {DesignArtifact}
 		//    'DesignArtifact'
 		//    name=EString "->" ref=[ecore::EObject|QualifiedName]
+		//    ('changeability' '=' changeability=DOUBLE)?
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{DesignArtifact}
 		//'DesignArtifact'
 		//name=EString "->" ref=[ecore::EObject|QualifiedName]
+		//('changeability' '=' changeability=DOUBLE)?
 		public Group getGroup() { return cGroup; }
 		
 		//{DesignArtifact}
@@ -791,6 +904,21 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//QualifiedName
 		public RuleCall getRefEObjectQualifiedNameParserRuleCall_4_0_1() { return cRefEObjectQualifiedNameParserRuleCall_4_0_1; }
+		
+		//('changeability' '=' changeability=DOUBLE)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'changeability'
+		public Keyword getChangeabilityKeyword_5_0() { return cChangeabilityKeyword_5_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_5_1() { return cEqualsSignKeyword_5_1; }
+		
+		//changeability=DOUBLE
+		public Assignment getChangeabilityAssignment_5_2() { return cChangeabilityAssignment_5_2; }
+		
+		//DOUBLE
+		public RuleCall getChangeabilityDOUBLETerminalRuleCall_5_2_0() { return cChangeabilityDOUBLETerminalRuleCall_5_2_0; }
 	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.EString");
@@ -810,199 +938,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
-	}
-	public class MetadataElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.Metadata");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
-		private final Keyword cArtifactKeyword_0_0_0 = (Keyword)cGroup_0_0.eContents().get(0);
-		private final Assignment cElementAssignment_0_0_1 = (Assignment)cGroup_0_0.eContents().get(1);
-		private final CrossReference cElementDesignArtifactCrossReference_0_0_1_0 = (CrossReference)cElementAssignment_0_0_1.eContents().get(0);
-		private final RuleCall cElementDesignArtifactIDTerminalRuleCall_0_0_1_0_1 = (RuleCall)cElementDesignArtifactCrossReference_0_0_1_0.eContents().get(1);
-		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
-		private final Keyword cPhenomenaKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cElementAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final CrossReference cElementPhysicalPhenomenaCrossReference_0_1_1_0 = (CrossReference)cElementAssignment_0_1_1.eContents().get(0);
-		private final RuleCall cElementPhysicalPhenomenaEStringParserRuleCall_0_1_1_0_1 = (RuleCall)cElementPhysicalPhenomenaCrossReference_0_1_1_0.eContents().get(1);
-		private final Group cGroup_0_2 = (Group)cAlternatives_0.eContents().get(2);
-		private final Keyword cSystemKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
-		private final Keyword cResponseKeyword_0_2_1 = (Keyword)cGroup_0_2.eContents().get(1);
-		private final Assignment cElementAssignment_0_2_2 = (Assignment)cGroup_0_2.eContents().get(2);
-		private final CrossReference cElementSystemResponseCrossReference_0_2_2_0 = (CrossReference)cElementAssignment_0_2_2.eContents().get(0);
-		private final RuleCall cElementSystemResponseEStringParserRuleCall_0_2_2_0_1 = (RuleCall)cElementSystemResponseCrossReference_0_2_2_0.eContents().get(1);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_1_0 = (Alternatives)cGroup_1.eContents().get(0);
-		private final Keyword cWithKeyword_1_0_0 = (Keyword)cAlternatives_1_0.eContents().get(0);
-		private final Keyword cCommaKeyword_1_0_1 = (Keyword)cAlternatives_1_0.eContents().get(1);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cLikelihoodKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
-		private final Assignment cLikelihoodAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
-		private final RuleCall cLikelihoodDOUBLETerminalRuleCall_1_1_2_0 = (RuleCall)cLikelihoodAssignment_1_1_2.eContents().get(0);
-		private final Group cGroup_1_2 = (Group)cGroup_1.eContents().get(2);
-		private final Keyword cCommaKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
-		private final Keyword cStrengthKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_1_2_2 = (Keyword)cGroup_1_2.eContents().get(2);
-		private final Assignment cStrengthAssignment_1_2_3 = (Assignment)cGroup_1_2.eContents().get(3);
-		private final RuleCall cStrengthDOUBLETerminalRuleCall_1_2_3_0 = (RuleCall)cStrengthAssignment_1_2_3.eContents().get(0);
-		private final Group cGroup_1_3 = (Group)cGroup_1.eContents().get(3);
-		private final Keyword cCommaKeyword_1_3_0 = (Keyword)cGroup_1_3.eContents().get(0);
-		private final Keyword cConfidenceKeyword_1_3_1 = (Keyword)cGroup_1_3.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_1_3_2 = (Keyword)cGroup_1_3.eContents().get(2);
-		private final Assignment cConfidenceAssignment_1_3_3 = (Assignment)cGroup_1_3.eContents().get(3);
-		private final RuleCall cConfidenceDOUBLETerminalRuleCall_1_3_3_0 = (RuleCall)cConfidenceAssignment_1_3_3.eContents().get(0);
-		
-		//Metadata returns Metadata:
-		//    (
-		//      'artifact'        element=[DesignArtifact|ID]
-		//    | 'phenomena'       element=[PhysicalPhenomena|EString]
-		//    | 'system' 'response' element=[SystemResponse|EString]
-		//    )
-		//    (
-		//      ('with' | ',')?
-		//      ('likelihood' '=' likelihood=DOUBLE)?
-		//      (',' 'strength' '=' strength=DOUBLE)?
-		//      (',' 'confidence' '=' confidence=DOUBLE)?
-		//    )?
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(
-		//  'artifact'        element=[DesignArtifact|ID]
-		//| 'phenomena'       element=[PhysicalPhenomena|EString]
-		//| 'system' 'response' element=[SystemResponse|EString]
-		//)
-		//(
-		//  ('with' | ',')?
-		//  ('likelihood' '=' likelihood=DOUBLE)?
-		//  (',' 'strength' '=' strength=DOUBLE)?
-		//  (',' 'confidence' '=' confidence=DOUBLE)?
-		//)?
-		public Group getGroup() { return cGroup; }
-		
-		//(
-		//  'artifact'        element=[DesignArtifact|ID]
-		//| 'phenomena'       element=[PhysicalPhenomena|EString]
-		//| 'system' 'response' element=[SystemResponse|EString]
-		//)
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'artifact'        element=[DesignArtifact|ID]
-		public Group getGroup_0_0() { return cGroup_0_0; }
-		
-		//'artifact'
-		public Keyword getArtifactKeyword_0_0_0() { return cArtifactKeyword_0_0_0; }
-		
-		//element=[DesignArtifact|ID]
-		public Assignment getElementAssignment_0_0_1() { return cElementAssignment_0_0_1; }
-		
-		//[DesignArtifact|ID]
-		public CrossReference getElementDesignArtifactCrossReference_0_0_1_0() { return cElementDesignArtifactCrossReference_0_0_1_0; }
-		
-		//ID
-		public RuleCall getElementDesignArtifactIDTerminalRuleCall_0_0_1_0_1() { return cElementDesignArtifactIDTerminalRuleCall_0_0_1_0_1; }
-		
-		//'phenomena'       element=[PhysicalPhenomena|EString]
-		public Group getGroup_0_1() { return cGroup_0_1; }
-		
-		//'phenomena'
-		public Keyword getPhenomenaKeyword_0_1_0() { return cPhenomenaKeyword_0_1_0; }
-		
-		//element=[PhysicalPhenomena|EString]
-		public Assignment getElementAssignment_0_1_1() { return cElementAssignment_0_1_1; }
-		
-		//[PhysicalPhenomena|EString]
-		public CrossReference getElementPhysicalPhenomenaCrossReference_0_1_1_0() { return cElementPhysicalPhenomenaCrossReference_0_1_1_0; }
-		
-		//EString
-		public RuleCall getElementPhysicalPhenomenaEStringParserRuleCall_0_1_1_0_1() { return cElementPhysicalPhenomenaEStringParserRuleCall_0_1_1_0_1; }
-		
-		//'system' 'response' element=[SystemResponse|EString]
-		public Group getGroup_0_2() { return cGroup_0_2; }
-		
-		//'system'
-		public Keyword getSystemKeyword_0_2_0() { return cSystemKeyword_0_2_0; }
-		
-		//'response'
-		public Keyword getResponseKeyword_0_2_1() { return cResponseKeyword_0_2_1; }
-		
-		//element=[SystemResponse|EString]
-		public Assignment getElementAssignment_0_2_2() { return cElementAssignment_0_2_2; }
-		
-		//[SystemResponse|EString]
-		public CrossReference getElementSystemResponseCrossReference_0_2_2_0() { return cElementSystemResponseCrossReference_0_2_2_0; }
-		
-		//EString
-		public RuleCall getElementSystemResponseEStringParserRuleCall_0_2_2_0_1() { return cElementSystemResponseEStringParserRuleCall_0_2_2_0_1; }
-		
-		//(
-		//  ('with' | ',')?
-		//  ('likelihood' '=' likelihood=DOUBLE)?
-		//  (',' 'strength' '=' strength=DOUBLE)?
-		//  (',' 'confidence' '=' confidence=DOUBLE)?
-		//)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//('with' | ',')?
-		public Alternatives getAlternatives_1_0() { return cAlternatives_1_0; }
-		
-		//'with'
-		public Keyword getWithKeyword_1_0_0() { return cWithKeyword_1_0_0; }
-		
-		//','
-		public Keyword getCommaKeyword_1_0_1() { return cCommaKeyword_1_0_1; }
-		
-		//('likelihood' '=' likelihood=DOUBLE)?
-		public Group getGroup_1_1() { return cGroup_1_1; }
-		
-		//'likelihood'
-		public Keyword getLikelihoodKeyword_1_1_0() { return cLikelihoodKeyword_1_1_0; }
-		
-		//'='
-		public Keyword getEqualsSignKeyword_1_1_1() { return cEqualsSignKeyword_1_1_1; }
-		
-		//likelihood=DOUBLE
-		public Assignment getLikelihoodAssignment_1_1_2() { return cLikelihoodAssignment_1_1_2; }
-		
-		//DOUBLE
-		public RuleCall getLikelihoodDOUBLETerminalRuleCall_1_1_2_0() { return cLikelihoodDOUBLETerminalRuleCall_1_1_2_0; }
-		
-		//(',' 'strength' '=' strength=DOUBLE)?
-		public Group getGroup_1_2() { return cGroup_1_2; }
-		
-		//','
-		public Keyword getCommaKeyword_1_2_0() { return cCommaKeyword_1_2_0; }
-		
-		//'strength'
-		public Keyword getStrengthKeyword_1_2_1() { return cStrengthKeyword_1_2_1; }
-		
-		//'='
-		public Keyword getEqualsSignKeyword_1_2_2() { return cEqualsSignKeyword_1_2_2; }
-		
-		//strength=DOUBLE
-		public Assignment getStrengthAssignment_1_2_3() { return cStrengthAssignment_1_2_3; }
-		
-		//DOUBLE
-		public RuleCall getStrengthDOUBLETerminalRuleCall_1_2_3_0() { return cStrengthDOUBLETerminalRuleCall_1_2_3_0; }
-		
-		//(',' 'confidence' '=' confidence=DOUBLE)?
-		public Group getGroup_1_3() { return cGroup_1_3; }
-		
-		//','
-		public Keyword getCommaKeyword_1_3_0() { return cCommaKeyword_1_3_0; }
-		
-		//'confidence'
-		public Keyword getConfidenceKeyword_1_3_1() { return cConfidenceKeyword_1_3_1; }
-		
-		//'='
-		public Keyword getEqualsSignKeyword_1_3_2() { return cEqualsSignKeyword_1_3_2; }
-		
-		//confidence=DOUBLE
-		public Assignment getConfidenceAssignment_1_3_3() { return cConfidenceAssignment_1_3_3; }
-		
-		//DOUBLE
-		public RuleCall getConfidenceDOUBLETerminalRuleCall_1_3_3_0() { return cConfidenceDOUBLETerminalRuleCall_1_3_3_0; }
 	}
 	public class SystemResponseElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
@@ -1145,7 +1080,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	private final DesignArtifactElements pDesignArtifact;
 	private final EStringElements pEString;
 	private final TerminalRule tDOUBLE;
-	private final MetadataElements pMetadata;
+	private final TerminalRule tEXP;
 	private final SystemResponseElements pSystemResponse;
 	private final QualifiedNameElements pQualifiedName;
 	private final QualifiedNameWithWildCardElements pQualifiedNameWithWildCard;
@@ -1170,7 +1105,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		this.pDesignArtifact = new DesignArtifactElements();
 		this.pEString = new EStringElements();
 		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.DOUBLE");
-		this.pMetadata = new MetadataElements();
+		this.tEXP = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.EXP");
 		this.pSystemResponse = new SystemResponseElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pQualifiedNameWithWildCard = new QualifiedNameWithWildCardElements();
@@ -1248,8 +1183,11 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	
 	//Influence returns Influence:
 	//    'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'?
-	//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
-	//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+	//        'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+	//                          ( "and" (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))*
+	//        ( 'metadata' ':' ( 'likelihood' ':' likelihoodPerElement+=EString (',' likelihoodPerElement+=EString)* )?
+	//        (  'confidence' ':' confidence+=EString (',' confidence+=EString)* )?
+	//    )?
 	//        ownedFunction=Function
 	//        'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)*
 	//    ;
@@ -1262,8 +1200,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//Function:
-	//    'fun' name=ID '(' definition=EString ')'
-	//;
+	//  'fun' name=ID '(' definition=EString ')' ;
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
 	}
@@ -1273,8 +1210,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//CompositeFunction:
-	//    'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')'
-	//;
+	//  'compositeFun' name=ID '(' inputs+=[SystemResponse|EString] (',' inputs+=[SystemResponse|EString])* ')' ;
 	public CompositeFunctionElements getCompositeFunctionAccess() {
 		return pCompositeFunction;
 	}
@@ -1299,8 +1235,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//RequirementSatisfaction returns Requirement:
 	//    'Requirement' name=EString    ':'
 	//    'satisfied' 'when' satisfaction+=EString ( "," satisfaction+=EString)*
-	//    ('metadata' ':' metadata+=EString)?
-	//    ;
+	//      ( 'metadata' ':' metadata+=EString (',' metadata+=EString)* )?
+	//      ;
 	public RequirementSatisfactionElements getRequirementSatisfactionAccess() {
 		return pRequirementSatisfaction;
 	}
@@ -1313,6 +1249,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//    {DesignArtifact}
 	//    'DesignArtifact'
 	//    name=EString "->" ref=[ecore::EObject|QualifiedName]
+	//    ('changeability' '=' changeability=DOUBLE)?
 	//    ;
 	public DesignArtifactElements getDesignArtifactAccess() {
 		return pDesignArtifact;
@@ -1333,30 +1270,14 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	}
 	
 	//terminal DOUBLE returns ecore::EDouble:
-	//    ('-')? INT ('.' INT)? (('E'|'e') ('+'|'-')? INT)?;
+	//    ('0'..'9')+ '.' ('0'..'9')+;
 	public TerminalRule getDOUBLERule() {
 		return tDOUBLE;
 	}
 	
-	//Metadata returns Metadata:
-	//    (
-	//      'artifact'        element=[DesignArtifact|ID]
-	//    | 'phenomena'       element=[PhysicalPhenomena|EString]
-	//    | 'system' 'response' element=[SystemResponse|EString]
-	//    )
-	//    (
-	//      ('with' | ',')?
-	//      ('likelihood' '=' likelihood=DOUBLE)?
-	//      (',' 'strength' '=' strength=DOUBLE)?
-	//      (',' 'confidence' '=' confidence=DOUBLE)?
-	//    )?
-	//;
-	public MetadataElements getMetadataAccess() {
-		return pMetadata;
-	}
-	
-	public ParserRule getMetadataRule() {
-		return getMetadataAccess().getRule();
+	//terminal fragment EXP: ('e'|'E') ('+'|'-')? INT;
+	public TerminalRule getEXPRule() {
+		return tEXP;
 	}
 	
 	//SystemResponse returns SystemResponse:

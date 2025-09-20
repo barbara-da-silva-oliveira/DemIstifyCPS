@@ -4,383 +4,198 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.jgrapht.nio.dot.DOTExporter
-import java.io.StringWriter
-import org.jgrapht.alg.cycle.CycleDetector
-import fr.inria.kairos.influence.metamodel.Influence
-import org.jgrapht.graph.DefaultDirectedGraph
-import org.jgrapht.graph.DefaultEdge
-import java.util.Map.Entry
-import java.util.ArrayList
-import java.util.HashMap
-import java.util.HashSet
-import fr.inria.kairos.influence.MetadataUtil
+import fr.inria.kairos.influence.export.GraphBuilder
+import fr.inria.kairos.influence.export.DotExporter
+import fr.inria.kairos.influence.export.JsonExporter
+import fr.inria.kairos.influence.export.InfoExporter
+
+import fr.inria.kairos.influence.analysis.ImpactMetrics
+import fr.inria.kairos.influence.analysis.RequirementTraceability
+import fr.inria.kairos.influence.analysis.CompensationFinder
 import org.eclipse.emf.ecore.EObject
-import fr.inria.kairos.influence.metamodel.DesignArtifact
-import fr.inria.kairos.influence.metamodel.Requirement
-import java.util.LinkedHashSet
-import java.util.Map
-import java.util.ArrayDeque
+import org.jgrapht.graph.DefaultDirectedGraph
+import org.jgrapht.alg.cycle.CycleDetector
+import org.jgrapht.graph.DefaultEdge
+
+import org.jfree.data.category.DefaultCategoryDataset
+import org.jfree.chart.ChartFactory
+import org.jfree.chart.ChartUtils
+import java.io.ByteArrayOutputStream
+import java.io.ByteArrayInputStream
+import fr.inria.kairos.influence.analysis.ChartGenerator
+import fr.inria.kairos.influence.export.TablesExporter
+import fr.inria.kairos.influence.analysis.TradeOff
+import fr.inria.kairos.influence.analysis.StakeholdersOwner
 
 class InfluenceDSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val infoFile = new StringBuilder("Quick Info:\n")
 
-		val jsonFile = new StringBuilder
-		jsonFile.append("{\n\t\"influences\": [\n")
-		var firstInfluence = true
-
-		val graph = new DefaultDirectedGraph<String,DefaultEdge>(DefaultEdge)
-
-		val outEdges = new HashMap<String, LinkedHashSet<String>>()
-		val inEdges  = new HashMap<String, LinkedHashSet<String>>()
-
-		// Requirement name -> set of SR names that feed it
-		val reqToSRs = new HashMap<String, LinkedHashSet<String>>()
-		
-		// ----- unweighted (counts) -----
-		val impactArtifacts   = new HashMap<String, Integer>() // d in Origin(I_k)
-		val impactPhenomena   = new HashMap<String, Integer>() // φ in Origin(I_k)
-		val sensArtifacts     = new HashMap<String, Integer>() // artifact in relatedTo (non-Requirement)
-		val sensRequirements  = new HashMap<String, Integer>() // requirement in relatedTo
-
-		// ----- weighted (likelihood / priority) -----
-		val impactArtifactsW  = new HashMap<String, Double>()  // sum of likelihood(d.metadata)
-		val impactPhenomenaW  = new HashMap<String, Double>()  // sum of likelihood(phen.metadata) if available
-		val sensArtifactsW    = new HashMap<String, Double>()  // sum of likelihood(artifact.metadata) if available
-		val sensRequirementsW = new HashMap<String, Double>()  // sum of priority(req.metadata) in [0..1]
-
-
-		
-		val ite = resource.allContents
-		while (ite.hasNext) {
-			val content = ite.next
-			if (content instanceof Influence) {
-				val inf = content as Influence
-
-				if (!firstInfluence) jsonFile.append(",\n")
-				jsonFile.append("\t\t{\n")
-				jsonFile.append("\t\t\t\"name\": \"").append(inf.name).append("\",\n")
-				jsonFile.append("\t\t\t\"sources\": \"")
-					.append(inf.originatorArtifact.join(", ")).append("\",\n")
-					.append(inf.originatorPhenomena.join(", ")).append("\"\n")
-				jsonFile.append("\t\t}")
-				firstInfluence = false
-
-				infoFile.append(inf.name).append(": ").append(inf.originatorArtifact)
-					.append("\n\t->\n\t").append(inf.affects).append("\n")
-				infoFile.append(inf.name).append(": ").append(inf.originatorArtifact)
-					.append("\n\t->\n\t").append(inf.relatedTo).append("\n")
-
-				for (sourceName : inf.originatorArtifact) {
-					for (systemResponse : inf.affects) {
-						graph.addVertex(sourceName.name)
-						graph.addVertex(systemResponse.name)
-						graph.addEdge(sourceName.name, systemResponse.name)
-						detectCycle(graph)
-					}
-				}
-
-				val seenImpactArt = new HashSet<String>
-				val seenImpactPhe = new HashSet<String>
-				val seenSensArt   = new HashSet<String>
-				val seenSensReq   = new HashSet<String>
-
-				// Originator artifacts
-				for (a : inf.originatorArtifact) {
-					if (a !== null && a.name !== null) {
-						seenImpactArt.add(a.name)
-					}
-				}
-				// Originator phenomena
-				for (p : inf.originatorPhenomena) {
-					if (p !== null && p.name !== null) {
-						seenImpactPhe.add(p.name)
-					}
-				}
-
-				// Requirements
-				for (sr : inf.affects) {
-				  for (r : sr.usedIn) {
-				    if (r !== null && r.name !== null) {
-				      seenSensReq.add(r.name)
-				    }
-				  }
-				}
-
-				// ----- increment unweighted (counts) -----
-				for (k : seenImpactArt)  impactArtifacts.put(k, (impactArtifacts.getOrDefault(k, 0) + 1))
-				for (k : seenImpactPhe)  impactPhenomena.put(k, (impactPhenomena.getOrDefault(k, 0) + 1))
-				for (k : seenSensArt)    sensArtifacts.put(k, (sensArtifacts.getOrDefault(k, 0) + 1))
-				for (k : seenSensReq)    sensRequirements.put(k, (sensRequirements.getOrDefault(k, 0) + 1))
-
-				// ----- increment weighted -----
-				// Impact (artifacts)
-				for (a : inf.originatorArtifact) {
-				  if (a !== null && a.name !== null && seenImpactArt.contains(a.name)) {
-				    val lw = MetadataUtil.parseWeights(metadataSafe(a)).likelihood
-				    impactArtifactsW.put(a.name, impactArtifactsW.getOrDefault(a.name, 0d) + lw)
-				  }
-				}
-				
-				// Impact (phenomena)
-				for (p : inf.originatorPhenomena) {
-				  if (p !== null && p.name !== null && seenImpactPhe.contains(p.name)) {
-				    val lw = MetadataUtil.parseWeights(metadataSafe(p)).likelihood
-				    impactPhenomenaW.put(p.name, impactPhenomenaW.getOrDefault(p.name, 0d) + lw)
-				  }
-				}
-				
-				// Sensibility (artifacts in relatedTo)
-				for (t : inf.relatedTo) {
-				  if (t instanceof DesignArtifact) {
-				    val da = t as DesignArtifact
-				    if (da.name !== null && seenSensArt.contains(da.name)) {
-				      val lw = MetadataUtil.parseWeights(MetadataUtil.metadataSafe(da)).likelihood
-				      sensArtifactsW.put(da.name, sensArtifactsW.getOrDefault(da.name, 0d) + lw)
-				    }
-				  }
-				}
-				
-				// Sensibility (requirements) – use requirement priority
-				for (t : inf.relatedTo) {
-				  if (t instanceof Requirement) {
-				    val r = t as Requirement
-				    if (r.name !== null && seenSensReq.contains(r.name)) {
-				      val pw = MetadataUtil.priorityWeight(metadataSafe(r))
-				      sensRequirementsW.put(r.name, sensRequirementsW.getOrDefault(r.name, 0d) + pw)
-				    }
-				  }
-				}
-				
-				
-        // build adjacency + req->SRs for tracing 
-        for (sr : inf.affects) {
-          if (sr !== null && sr.name !== null) {
-
-            // A -> SR
-            for (a : inf.originatorArtifact) {
-              if (a !== null && a.name !== null) {
-                addAdjEdge(outEdges, inEdges, toA(a.name), toSR(sr.name))
-              }
-            }
-
-            // P -> SR
-            for (p : inf.originatorPhenomena) {
-              if (p !== null && p.name !== null) {
-                addAdjEdge(outEdges, inEdges, toP(p.name), toSR(sr.name))
-              }
-            }
-
-            // SR -> SR (chains)
-            for (sr0 : inf.originatorSystemResponse) {
-              if (sr0 !== null && sr0.name !== null) {
-                addAdjEdge(outEdges, inEdges, toSR(sr0.name), toSR(sr.name))
-              }
-            }
-
-            // requirement usage
-            for (r : sr.usedIn) {
-              if (r !== null && r.name !== null) {
-                reqToSRs.computeIfAbsent(r.name) [ new LinkedHashSet<String>() ].add(sr.name)
-              }
-            }
-          }
-        }
-
-
-			}
-		}
-
-		jsonFile.append("\n\t]\n}\n")
-
-		exportGraphToDot(graph, fsa, "influenceGraph.dot")
-		fsa.generateFile("influences.json", jsonFile.toString)
-
-		// Unweighted sections
-		// Impact of Artifacts (counts)
-		infoFile.append("\nImpact of Artifacts (origin count):\n")
-		printSortedIntMap(infoFile, impactArtifacts)
-
-		// Impact of Phenomena (counts)
-		infoFile.append("\nImpact of Phenomena (origin count):\n")
-		printSortedIntMap(infoFile, impactPhenomena)
-
-		// Sensibility of Artifacts (counts)
-		infoFile.append("\nSensibility of Artifacts:\n")
-		printSortedIntMap(infoFile, sensArtifacts)
-
-		// Sensibility of Requirements (counts)
-		infoFile.append("\nSensibility of Requirements:\n")
-		printSortedIntMap(infoFile, sensRequirements)
-
-		// Weighted
-		// Impact of Artifacts (likelihood-weighted)
-		infoFile.append("\nImpact of Artifacts (likelihood-weighted):\n")
-		printSortedDoubleMap(infoFile, impactArtifactsW)
-
-		// Impact of Phenomena (likelihood-weighted)
-		infoFile.append("\nImpact of Phenomena (likelihood-weighted):\n")
-		printSortedDoubleMap(infoFile, impactPhenomenaW)
-
-		// Sensibility of Artifacts (likelihood-weighted)
-		infoFile.append("\nSensibility of Artifacts (likelihood-weighted):\n")
-		printSortedDoubleMap(infoFile, sensArtifactsW)
-
-		// Sensibility of Requirements (priority-weighted) 
-		infoFile.append("\nSensibility of Requirements (priority-weighted):\n")
-		printSortedDoubleMap(infoFile, sensRequirementsW)
-		
-		
-		
-		infoFile.append("\nCandidate of compensators traced per requirement:\n")
-
-		// For each requirement, union all upstream artifacts over its SRs; keep min hop distance
+		val gb     = new GraphBuilder
+	    val built  = gb.build(resource)
+	
+	    val graph = built.graph
+	    val vertexLabels = built.vertexLabels
+	    val edgeLabels = built.edgeLabels
+	    val inEdges = built.inEdges
+		val reqToSRs = built.reqToSRs
+	
+	    new DotExporter().exportGraphToDot(graph, vertexLabels, edgeLabels, fsa, "graph/influenceHypergraph.dot")
+	    new JsonExporter().exportInfluences(resource, fsa)
+	
+	    val metrics = new ImpactMetrics().compute(resource)
+	
+	    val sb  = new StringBuilder("Metrics on the Influences:\n")
+	    val out = new InfoExporter
+	
+	    sb.append("\nImpact of Artifacts (origin count):\n")
+	    out.appendSortedIntMap(sb, new java.util.HashMap<String, Integer>(metrics.impactArtifacts))
+	
+	    sb.append("\nImpact of Phenomena (origin count):\n")
+	    out.appendSortedIntMap(sb, new java.util.HashMap<String, Integer>(metrics.impactPhenomena))
+	
+	    sb.append("\nSensibility of Requirements (counts):\n")
+	    out.appendSortedIntMap(sb, new java.util.HashMap<String, Integer>(metrics.sensRequirements))
+	
+	    sb.append("\nImpact of Artifacts (likelihood-weighted):\n")
+	    out.appendSortedDoubleMap(sb, new java.util.HashMap<String, Double>(metrics.impactArtifactsW))
+	
+	    sb.append("\nImpact of Phenomena (likelihood-weighted):\n")
+	    out.appendSortedDoubleMap(sb, new java.util.HashMap<String, Double>(metrics.impactPhenomenaW))
+	
+	    sb.append("\nSensibility of Requirements (priority-weighted):\n")
+	    out.appendSortedDoubleMap(sb, new java.util.HashMap<String, Double>(metrics.sensRequirementsW))
+	
+	    sb.append("\nCandidate of compensators traced per requirement:\n")
+	    val trace = new RequirementTraceability
 		for (reqName : new java.util.TreeSet<String>(reqToSRs.keySet)) {
-		  val agg = new HashMap<String, Integer>()
-		  for (srName : reqToSRs.get(reqName)) {
-		    val m = upstreamArtifacts(toSR(srName), inEdges)
-		    for (e : m.entrySet) {
-		      val prev = agg.get(e.key)
-		      if (prev === null || e.value < prev) agg.put(e.key, e.value)
-		    }
-		  }
-		
-		  // pretty print sorted by hop distance, then name
-		  val items = new ArrayList<java.util.Map$Entry<String, Integer>>(agg.entrySet)
-		  items.sort [ a, b |
-		    val c = Integer.compare(a.value, b.value)
-		    if (c != 0) c else a.key.compareTo(b.key)
-		  ]
-		
-		  infoFile.append("  ").append(reqName).append(": ")
-		  if (items.empty) {
-		    infoFile.append("(none)\n")
-		  } else {
-		    val line = items.map [ it.key + " (" + it.value + " hop" + (it.value == 1 ? "" : "s") + ")" ].join(", ")
-		    infoFile.append(line).append("\n")
-		  }
-		}
-		
-		
-		// Write info file
-		fsa.generateFile("info.txt", infoFile.toString)
-	}
-
-	  private def static String toA(String n)  { 'A:'  + n }
-	  private def static String toP(String n)  { 'P:'  + n }
-	  private def static String toSR(String n) { 'SR:' + n }
-	
-	  // add adjacency edge both ways
-	  private def static void addAdjEdge(
-	    Map<String, LinkedHashSet<String>> outE,
-	    Map<String, LinkedHashSet<String>> inE,
-	    String from, String to
-	  ) {
-	    var os = outE.get(from)
-	    if (os === null) { os = new LinkedHashSet<String>(); outE.put(from, os) }
-	    os.add(to)
-	
-	    var is = inE.get(to)
-	    if (is === null) { is = new LinkedHashSet<String>(); inE.put(to, is) }
-	    is.add(from)
-	  }
-	
-	  // simple holder for BFS
-	  private static class NodeDepth {
-	    val String node
-	    val int depth
-	    new(String n, int d) { node = n; depth = d }
-	  }
-	
-	  /** Reverse BFS from SR-node to collect upstream artifacts with min hop distance. */
-	  private def static HashMap<String, Integer> upstreamArtifacts(
-	    String srNode,
-	    Map<String, LinkedHashSet<String>> inEdges
-	  ) {
-	    val result  = new HashMap<String, Integer>()
-	    val visited = new HashSet<String>()
-	    val q       = new ArrayDeque<NodeDepth>()
-	
-	    visited.add(srNode)
-	    q.add(new NodeDepth(srNode, 0))
-	
-	    while (!q.isEmpty) {
-	      val cur   = q.removeFirst
-	      val preds = inEdges.get(cur.node)
-	
-	      if (preds !== null) {
-	        for (p : preds) {
-	          if (visited.add(p)) {
-	            if (p.startsWith("A:")) {
-	              val name = p.substring(2)
-	              val old  = result.get(name)
-	              if (old === null || cur.depth + 1 < old) result.put(name, cur.depth + 1)
-	            }
-	            q.add(new NodeDepth(p, cur.depth + 1))
+	      val agg = new java.util.HashMap<String, Integer>()
+	      val srs = reqToSRs.get(reqName)
+	      if (srs !== null) {
+	        for (srName : srs) {
+	          val m = trace.upstreamArtifacts("SR:" + srName, inEdges)
+	          for (e : m.entrySet) {
+	            val prev = agg.get(e.key)
+	            if (prev === null || e.value < prev) agg.put(e.key, e.value)
 	          }
 	        }
 	      }
+	      val items = new java.util.ArrayList<java.util.Map$Entry<String, Integer>>(agg.entrySet)
+	      items.sort [ a, b |
+	        val c = Integer.compare(a.value, b.value)
+	        if (c != 0) c else a.key.compareTo(b.key)
+	      ]
+	      sb.append("  ").append(reqName).append(": ")
+	      if (items.empty) {
+	        sb.append("(none)\n")
+	      } else {
+	        val line = items.map [ it.key + " (" + it.value + " hop" + (it.value == 1 ? "" : "s") + ")" ].join(", ")
+	        sb.append(line).append("\n")
+	      }
 	    }
-	    result
-	  }
+	
+	    new CompensationFinder().appendCompensatorsByChangeability(resource, sb, reqToSRs, inEdges)  
+//     
+//	  val impact = new fr.inria.kairos.influence.analysis.ImpactMetrics().compute(resource).impactArtifacts
+//	  val ds1 = new DefaultCategoryDataset
+//	  for (e : new java.util.TreeMap<String, Integer>(impact).entrySet) {
+//	  	ds1.addValue(e.value as Number, "Impact", e.key)
+//  		}
+//  		
+//	  val chart1 = ChartFactory.createBarChart(
+//	    "Impact by Artifact",
+//	    "Artifact",
+//	    "Origin count",
+//	    ds1
+//	  )
+//	  val baos1 = new ByteArrayOutputStream
+//	  ChartUtils.writeChartAsPNG(baos1, chart1, 1100, 650)
+//	  fsa.generateFile("charts/impact.png", new ByteArrayInputStream(baos1.toByteArray))
+//	  
+		val cfinder = new fr.inria.kairos.influence.analysis.CompensationFinder
+		val hardest = cfinder.bestCompensatorByChangeability(resource, reqToSRs, inEdges)
+		  
+	    sb.append("\nLess costly compensator per requirement:\n")
+	    for (reqName : new java.util.TreeSet<String>(hardest.keySet)) {
+	    	val p = hardest.get(reqName)     // Pair<String, Double>
+	        val name = p.key
+	        val cval = p.value
+	        sb.append("  ").append(reqName).append(": ")
+	          .append(name).append(" (changeability=")
+	          .append(String.format(java.util.Locale.US, "%.2f", cval))
+	          .append(")\n")
+	      }
+	      
+		val charts = new ChartGenerator
+		charts.exportImpactBarPng(resource, fsa, "charts/impactArtifact.png", 1100, 650)
+		charts.exportPropagationImpactBarPng(resource, fsa, "charts/impactPropagationArtifact.png", 1100, 650)
+	
+		charts.exportPhenomenaBarPng(resource, fsa, "charts/impactPhenomena.png", 1100, 650)
 
-	def void exportGraphToDot(DefaultDirectedGraph<String, DefaultEdge> graph, IFileSystemAccess2 fsa, String filename) {
-		val dotExporter = new DOTExporter<String, DefaultEdge>()
-		val writer = new StringWriter
-		dotExporter.exportGraph(graph, writer)
-		fsa.generateFile(filename, writer.toString)
-	}
-
+		val perInf = charts.exportInfluenceBubblesPng(
+	    resource, reqToSRs, inEdges, fsa,
+	    "charts/influence_compensation_bubbles.png", 1200, 900
+	  	)
+		if (!perInf.isEmpty) {
+	    sb.append("\n Less costly compensator per influence (originator -> compensator, changeability):\n")
+		    for (r : perInf) {
+		      sb.append("  ").append(r.originator).append(" -> ").append(r.compensator)
+		        .append("  (").append(String.format(java.util.Locale.US, "%.2f", r.changeability)).append(")\n")
+		    }
+    	}
+	    
+	    
+		val tables = new TablesExporter
+		val traceData = new RequirementTraceability().buildTrace(resource)
+		val trade = new TradeOff
+		trade.exportCSV(resource, fsa, "tables/tradeoffs_compensator_is_originator.csv", traceData.reqToSRs, traceData.inEdges)
+		
+		// now pass the fields from TraceData:
+		tables.exportCandidatesByReqCSV(
+		  resource, fsa, "tables/candidates_by_req.csv",
+		  traceData.reqToSRs, traceData.inEdges
+		)
+		
+		tables.exportCompensatorRankingByReqCSV(
+		  resource, fsa, "tables/compensator_ranking_by_req.csv",
+		  traceData.reqToSRs, traceData.inEdges
+		)
+		
+		tables.exportHardestCompensatorByReqCSV(
+		  resource, fsa, "tables/best_compensator_by_req.csv",
+		  traceData.reqToSRs, traceData.inEdges
+		)
+		
+		new StakeholdersOwner().exportCSV(resource, fsa, "tables/influence_model_spread.csv")
+		
+		fsa.generateFile("file/info.txt", sb.toString)
+		detectCycle(graph)
+    	}
+    
 	def static boolean detectCycle(DefaultDirectedGraph<String, DefaultEdge> graph) {
 		val cycleDetector = new CycleDetector<String, DefaultEdge>(graph)
-		if (cycleDetector.detectCycles()) {
-			println("Cycle detected" + cycleDetector.findCycles())
-			return true
+	    if (cycleDetector.detectCycles()) {
+	    	println("Cycle detected" + cycleDetector.findCycles())
+	  			return true
 		} else {
 			println("No cycles detected")
-			return false
-		}
-	}
-
-	/** Safely get 'metadata' as a single String from any EObject. Joins lists with ", ". */
+		      	return false
+		    }
+		  }
+  
+  
 	def static String metadataSafe(EObject o) {
-		if (o === null) return null
-		val f = o.eClass?.getEStructuralFeature("metadata")
+	    if (o === null) return null
+	    val f = o.eClass?.getEStructuralFeature("metadata")
 		if (f === null) return null
 		val v = o.eGet(f)
-		switch v {
-		case v instanceof String            : v as String
-	    case v instanceof java.util.List<?> : (v as java.util.List<?>)
-                                          .filter[it !== null]
-                                          .map[String.valueOf(it)]
-                                          .join(", ")
-		default                             : null
-  		}
+		if (v instanceof String) {
+		  v as String
+		  } else if (v instanceof java.util.List<?>) {
+		  	(v as java.util.List<?>)
+		    .filter[it !== null]
+		    .map[String.valueOf(it)]
+		    .join(", ")
+		    } else null
+		    }
 	}
-
-	def static void printSortedIntMap(StringBuilder sb, HashMap<String, Integer> map) {
-		val list = new ArrayList<Entry<String, Integer>>(map.entrySet)
-		list.sort [ a, b |
-			val c = Integer.compare(b.value, a.value)
-			if (c != 0) c else a.key.compareTo(b.key)
-		]
-		for (e : list) {
-			sb.append("  ").append(e.key).append(" -> ").append(e.value).append("\n")
-		}
-	}
-
-	def static void printSortedDoubleMap(StringBuilder sb, HashMap<String, Double> map) {
-		val list = new ArrayList<Entry<String, Double>>(map.entrySet)
-		list.sort [ a, b |
-			val c = Double.compare(b.value, a.value)
-			if (c != 0) c else a.key.compareTo(b.key)
-		]
-		for (e : list) {
-			sb.append("  ").append(e.key).append(" -> ").append(e.value).append("\n")
-		}
-	}
-}
-
-

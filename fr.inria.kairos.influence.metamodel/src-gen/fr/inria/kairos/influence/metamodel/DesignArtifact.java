@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getRef <em>Ref</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getChangeability <em>Changeability</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getDesignArtifact()
@@ -42,5 +43,27 @@ public interface DesignArtifact extends NamedElement {
 	 * @generated
 	 */
 	void setRef(EObject value);
+
+	/**
+	 * Returns the value of the '<em><b>Changeability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Changeability</em>' attribute.
+	 * @see #setChangeability(double)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getDesignArtifact_Changeability()
+	 * @model
+	 * @generated
+	 */
+	double getChangeability();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getChangeability <em>Changeability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Changeability</em>' attribute.
+	 * @see #getChangeability()
+	 * @generated
+	 */
+	void setChangeability(double value);
 
 } // DesignArtifact

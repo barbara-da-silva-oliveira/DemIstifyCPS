@@ -26,22 +26,25 @@ CompositeInfluence returns CompositeInfluence:
 	'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)* 
 ;
 
+
 Influence returns Influence:
 	'Influence' name=EString '#**' description+=EString ( "," description+=EString)* '**#'? 
-		'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
-						  ( "and" (("artifact" originatorArtifact+=[DesignArtifact|ID]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))* 
-		('metadata' ':' perElementMetadata+=Metadata ('and' perElementMetadata+=Metadata)*)?
+		'originators' ':' (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString]))
+						  ( "and" (("artifact" originatorArtifact+=[DesignArtifact|EString]) | ("phenomena" originatorPhenomena+=[PhysicalPhenomena|EString]) | ("system" "response" originatorSystemResponse+=[SystemResponse|EString])))* 
+		( 'metadata' ':' ( 'likelihood' ':' likelihoodPerElement+=EString (',' likelihoodPerElement+=EString)* )?
+    	(  'confidence' ':' confidence+=EString (',' confidence+=EString)* )?
+	)? 
 		ownedFunction=Function
 		'affects' affects+=SystemResponse ( "and" affects+=SystemResponse)* 
 	;
 
+
 Function:
-	'fun' name=ID '(' definition=EString ')' 
-;
+  'fun' name=ID '(' definition=EString ')' ;
 
 CompositeFunction:
-	'fun' name=ID '(' inputs+=[SystemResponse|EString] (','inputs+=[SystemResponse|EString])*')' 
-;
+  'compositeFun' name=ID '(' inputs+=[SystemResponse|EString] (',' inputs+=[SystemResponse|EString])* ')' ;
+  
 
 PhysicalPhenomena returns PhysicalPhenomena:
 	'Phenomenon'
@@ -50,42 +53,27 @@ PhysicalPhenomena returns PhysicalPhenomena:
 	;
 
 
-
-
 RequirementSatisfaction returns Requirement:
 	'Requirement' name=EString	':'
 	'satisfied' 'when' satisfaction+=EString ( "," satisfaction+=EString)* 
-	('metadata' ':' metadata+=EString)?
-	;
+  	( 'metadata' ':' metadata+=EString (',' metadata+=EString)* )?	
+  	;
 
 DesignArtifact returns DesignArtifact:
 	{DesignArtifact}
 	'DesignArtifact'
 	name=EString "->" ref=[ecore::EObject|QualifiedName]
+	('changeability' '=' changeability=DOUBLE)?
 	;
 	
-
 EString returns ecore::EString:
 	STRING | ID;
 
-
 terminal DOUBLE returns ecore::EDouble:
-    ('-')? INT ('.' INT)? (('E'|'e') ('+'|'-')? INT)?;
+    ('0'..'9')+ '.' ('0'..'9')+;
+    
+terminal fragment EXP: ('e'|'E') ('+'|'-')? INT;
 
-
-Metadata returns Metadata:
-    (
-      'artifact'        element=[DesignArtifact|ID]
-    | 'phenomena'       element=[PhysicalPhenomena|EString]
-    | 'system' 'response' element=[SystemResponse|EString]
-    )
-    (
-      ('with' | ',')?
-      ('likelihood' '=' likelihood=DOUBLE)?
-      (',' 'strength' '=' strength=DOUBLE)?
-      (',' 'confidence' '=' confidence=DOUBLE)?
-    )?
-;
 
 SystemResponse returns SystemResponse:
 	{SystemResponse}

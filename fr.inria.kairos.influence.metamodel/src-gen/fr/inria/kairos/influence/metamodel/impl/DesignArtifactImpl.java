@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl#getChangeability <em>Changeability</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,6 +35,26 @@ public class DesignArtifactImpl extends NamedElementImpl implements DesignArtifa
 	 * @ordered
 	 */
 	protected EObject ref;
+
+	/**
+	 * The default value of the '{@link #getChangeability() <em>Changeability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChangeability()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double CHANGEABILITY_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getChangeability() <em>Changeability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChangeability()
+	 * @generated
+	 * @ordered
+	 */
+	protected double changeability = CHANGEABILITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,12 +122,38 @@ public class DesignArtifactImpl extends NamedElementImpl implements DesignArtifa
 	 * @generated
 	 */
 	@Override
+	public double getChangeability() {
+		return changeability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setChangeability(double newChangeability) {
+		double oldChangeability = changeability;
+		changeability = newChangeability;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.DESIGN_ARTIFACT__CHANGEABILITY,
+					oldChangeability, changeability));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case MetamodelPackage.DESIGN_ARTIFACT__REF:
 			if (resolve)
 				return getRef();
 			return basicGetRef();
+		case MetamodelPackage.DESIGN_ARTIFACT__CHANGEABILITY:
+			return getChangeability();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,6 +170,9 @@ public class DesignArtifactImpl extends NamedElementImpl implements DesignArtifa
 		case MetamodelPackage.DESIGN_ARTIFACT__REF:
 			setRef((EObject) newValue);
 			return;
+		case MetamodelPackage.DESIGN_ARTIFACT__CHANGEABILITY:
+			setChangeability((Double) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -138,6 +188,9 @@ public class DesignArtifactImpl extends NamedElementImpl implements DesignArtifa
 		case MetamodelPackage.DESIGN_ARTIFACT__REF:
 			setRef((EObject) null);
 			return;
+		case MetamodelPackage.DESIGN_ARTIFACT__CHANGEABILITY:
+			setChangeability(CHANGEABILITY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -152,8 +205,27 @@ public class DesignArtifactImpl extends NamedElementImpl implements DesignArtifa
 		switch (featureID) {
 		case MetamodelPackage.DESIGN_ARTIFACT__REF:
 			return ref != null;
+		case MetamodelPackage.DESIGN_ARTIFACT__CHANGEABILITY:
+			return changeability != CHANGEABILITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (changeability: ");
+		result.append(changeability);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DesignArtifactImpl

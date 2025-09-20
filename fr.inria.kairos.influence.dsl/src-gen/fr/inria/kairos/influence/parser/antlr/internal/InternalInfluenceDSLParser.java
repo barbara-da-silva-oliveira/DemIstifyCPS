@@ -21,45 +21,51 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_DOUBLE", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'InfluenceModel'", "'Composite'", "'Influence'", "'#**'", "','", "'**#'", "'encapsulate'", "'affects'", "'and'", "'originators'", "':'", "'artifact'", "'phenomena'", "'system'", "'response'", "'fun'", "'('", "')'", "'Phenomenon'", "'Requirement'", "'satisfied'", "'when'", "'metadata'", "'DesignArtifact'", "'->'", "'used'", "'in'", "'.'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_DOUBLE", "RULE_STRING", "RULE_INT", "RULE_EXP", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'InfluenceModel'", "'Composite'", "'Influence'", "'#**'", "','", "'**#'", "'encapsulate'", "'affects'", "'and'", "'originators'", "':'", "'artifact'", "'phenomena'", "'system'", "'response'", "'metadata'", "'likelihood'", "'confidence'", "'fun'", "'('", "')'", "'compositeFun'", "'Phenomenon'", "'Requirement'", "'satisfied'", "'when'", "'DesignArtifact'", "'->'", "'changeability'", "'='", "'used'", "'in'", "'.'"
     };
-    public static final int RULE_STRING=5;
-    public static final int RULE_SL_COMMENT=9;
+    public static final int RULE_EXP=8;
     public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__37=37;
-    public static final int RULE_DOUBLE=7;
     public static final int T__16=16;
-    public static final int T__38=38;
     public static final int T__17=17;
-    public static final int T__39=39;
     public static final int T__18=18;
-    public static final int T__33=33;
-    public static final int T__12=12;
-    public static final int T__34=34;
     public static final int T__13=13;
-    public static final int T__35=35;
     public static final int T__14=14;
-    public static final int T__36=36;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
     public static final int RULE_ID=4;
-    public static final int RULE_WS=10;
-    public static final int RULE_ANY_OTHER=11;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=6;
+    public static final int RULE_INT=7;
     public static final int T__29=29;
     public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=8;
+    public static final int RULE_ML_COMMENT=9;
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
+    public static final int RULE_STRING=6;
+    public static final int RULE_SL_COMMENT=10;
+    public static final int T__37=37;
+    public static final int RULE_DOUBLE=5;
+    public static final int T__38=38;
+    public static final int T__39=39;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
+    public static final int T__36=36;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_WS=11;
+    public static final int RULE_ANY_OTHER=12;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -174,7 +180,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,12,FOLLOW_3); 
+            otherlv_1=(Token)match(input,13,FOLLOW_3); 
 
             			newLeafNode(otherlv_1, grammarAccess.getInfluenceModelAccess().getInfluenceModelKeyword_1());
             		
@@ -214,23 +220,23 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             do {
                 int alt1=5;
                 switch ( input.LA(1) ) {
-                case 35:
+                case 39:
                     {
                     alt1=1;
                     }
                     break;
-                case 31:
+                case 36:
                     {
                     alt1=2;
                     }
                     break;
-                case 30:
+                case 35:
                     {
                     alt1=3;
                     }
                     break;
-                case 13:
                 case 14:
+                case 15:
                     {
                     alt1=4;
                     }
@@ -472,10 +478,10 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==14) ) {
+            if ( (LA2_0==15) ) {
                 alt2=1;
             }
-            else if ( (LA2_0==13) ) {
+            else if ( (LA2_0==14) ) {
                 alt2=2;
             }
             else {
@@ -615,11 +621,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             // InternalInfluenceDSL.g:244:2: (otherlv_0= 'Composite' otherlv_1= 'Influence' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '#**' ( (lv_description_4_0= ruleEString ) ) (otherlv_5= ',' ( (lv_description_6_0= ruleEString ) ) )* (otherlv_7= '**#' )? otherlv_8= 'encapsulate' ( ( ruleEString ) )* ( (lv_ownedFunction_10_0= ruleCompositeFunction ) ) otherlv_11= 'affects' ( (lv_affects_12_0= ruleSystemResponse ) ) (otherlv_13= 'and' ( (lv_affects_14_0= ruleSystemResponse ) ) )* )
             // InternalInfluenceDSL.g:245:3: otherlv_0= 'Composite' otherlv_1= 'Influence' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '#**' ( (lv_description_4_0= ruleEString ) ) (otherlv_5= ',' ( (lv_description_6_0= ruleEString ) ) )* (otherlv_7= '**#' )? otherlv_8= 'encapsulate' ( ( ruleEString ) )* ( (lv_ownedFunction_10_0= ruleCompositeFunction ) ) otherlv_11= 'affects' ( (lv_affects_12_0= ruleSystemResponse ) ) (otherlv_13= 'and' ( (lv_affects_14_0= ruleSystemResponse ) ) )*
             {
-            otherlv_0=(Token)match(input,13,FOLLOW_5); 
+            otherlv_0=(Token)match(input,14,FOLLOW_5); 
 
             			newLeafNode(otherlv_0, grammarAccess.getCompositeInfluenceAccess().getCompositeKeyword_0());
             		
-            otherlv_1=(Token)match(input,14,FOLLOW_3); 
+            otherlv_1=(Token)match(input,15,FOLLOW_3); 
 
             			newLeafNode(otherlv_1, grammarAccess.getCompositeInfluenceAccess().getInfluenceKeyword_1());
             		
@@ -654,7 +660,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,15,FOLLOW_3); 
+            otherlv_3=(Token)match(input,16,FOLLOW_3); 
 
             			newLeafNode(otherlv_3, grammarAccess.getCompositeInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_3());
             		
@@ -695,7 +701,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==16) ) {
+                if ( (LA3_0==17) ) {
                     alt3=1;
                 }
 
@@ -704,7 +710,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalInfluenceDSL.g:296:4: otherlv_5= ',' ( (lv_description_6_0= ruleEString ) )
             	    {
-            	    otherlv_5=(Token)match(input,16,FOLLOW_3); 
+            	    otherlv_5=(Token)match(input,17,FOLLOW_3); 
 
             	    				newLeafNode(otherlv_5, grammarAccess.getCompositeInfluenceAccess().getCommaKeyword_5_0());
             	    			
@@ -752,14 +758,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==17) ) {
+            if ( (LA4_0==18) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
                     // InternalInfluenceDSL.g:321:4: otherlv_7= '**#'
                     {
-                    otherlv_7=(Token)match(input,17,FOLLOW_8); 
+                    otherlv_7=(Token)match(input,18,FOLLOW_8); 
 
                     				newLeafNode(otherlv_7, grammarAccess.getCompositeInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_6());
                     			
@@ -769,7 +775,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,18,FOLLOW_9); 
+            otherlv_8=(Token)match(input,19,FOLLOW_9); 
 
             			newLeafNode(otherlv_8, grammarAccess.getCompositeInfluenceAccess().getEncapsulateKeyword_7());
             		
@@ -779,7 +785,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( ((LA5_0>=RULE_ID && LA5_0<=RULE_STRING)) ) {
+                if ( (LA5_0==RULE_ID||LA5_0==RULE_STRING) ) {
                     alt5=1;
                 }
 
@@ -850,7 +856,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_11=(Token)match(input,19,FOLLOW_11); 
+            otherlv_11=(Token)match(input,20,FOLLOW_11); 
 
             			newLeafNode(otherlv_11, grammarAccess.getCompositeInfluenceAccess().getAffectsKeyword_10());
             		
@@ -891,7 +897,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
-                if ( (LA6_0==20) ) {
+                if ( (LA6_0==21) ) {
                     alt6=1;
                 }
 
@@ -900,7 +906,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalInfluenceDSL.g:389:4: otherlv_13= 'and' ( (lv_affects_14_0= ruleSystemResponse ) )
             	    {
-            	    otherlv_13=(Token)match(input,20,FOLLOW_11); 
+            	    otherlv_13=(Token)match(input,21,FOLLOW_11); 
 
             	    				newLeafNode(otherlv_13, grammarAccess.getCompositeInfluenceAccess().getAndKeyword_12_0());
             	    			
@@ -1003,7 +1009,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInfluence"
-    // InternalInfluenceDSL.g:424:1: ruleInfluence returns [EObject current=null] : (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* ( (lv_ownedFunction_24_0= ruleFunction ) ) otherlv_25= 'affects' ( (lv_affects_26_0= ruleSystemResponse ) ) (otherlv_27= 'and' ( (lv_affects_28_0= ruleSystemResponse ) ) )* ) ;
+    // InternalInfluenceDSL.g:424:1: ruleInfluence returns [EObject current=null] : (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( ( ruleEString ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* (otherlv_24= 'metadata' otherlv_25= ':' (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )? (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )? )? ( (lv_ownedFunction_36_0= ruleFunction ) ) otherlv_37= 'affects' ( (lv_affects_38_0= ruleSystemResponse ) ) (otherlv_39= 'and' ( (lv_affects_40_0= ruleSystemResponse ) ) )* ) ;
     public final EObject ruleInfluence() throws RecognitionException {
         EObject current = null;
 
@@ -1014,42 +1020,56 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_7=null;
         Token otherlv_8=null;
         Token otherlv_9=null;
-        Token otherlv_10=null;
         Token otherlv_11=null;
         Token otherlv_13=null;
         Token otherlv_14=null;
         Token otherlv_16=null;
         Token otherlv_17=null;
-        Token otherlv_18=null;
         Token otherlv_19=null;
         Token otherlv_21=null;
         Token otherlv_22=null;
+        Token otherlv_24=null;
         Token otherlv_25=null;
+        Token otherlv_26=null;
         Token otherlv_27=null;
+        Token otherlv_29=null;
+        Token otherlv_31=null;
+        Token otherlv_32=null;
+        Token otherlv_34=null;
+        Token otherlv_37=null;
+        Token otherlv_39=null;
         AntlrDatatypeRuleToken lv_name_1_0 = null;
 
         AntlrDatatypeRuleToken lv_description_3_0 = null;
 
         AntlrDatatypeRuleToken lv_description_5_0 = null;
 
-        EObject lv_ownedFunction_24_0 = null;
+        AntlrDatatypeRuleToken lv_likelihoodPerElement_28_0 = null;
 
-        EObject lv_affects_26_0 = null;
+        AntlrDatatypeRuleToken lv_likelihoodPerElement_30_0 = null;
 
-        EObject lv_affects_28_0 = null;
+        AntlrDatatypeRuleToken lv_confidence_33_0 = null;
+
+        AntlrDatatypeRuleToken lv_confidence_35_0 = null;
+
+        EObject lv_ownedFunction_36_0 = null;
+
+        EObject lv_affects_38_0 = null;
+
+        EObject lv_affects_40_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:430:2: ( (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* ( (lv_ownedFunction_24_0= ruleFunction ) ) otherlv_25= 'affects' ( (lv_affects_26_0= ruleSystemResponse ) ) (otherlv_27= 'and' ( (lv_affects_28_0= ruleSystemResponse ) ) )* ) )
-            // InternalInfluenceDSL.g:431:2: (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* ( (lv_ownedFunction_24_0= ruleFunction ) ) otherlv_25= 'affects' ( (lv_affects_26_0= ruleSystemResponse ) ) (otherlv_27= 'and' ( (lv_affects_28_0= ruleSystemResponse ) ) )* )
+            // InternalInfluenceDSL.g:430:2: ( (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( ( ruleEString ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* (otherlv_24= 'metadata' otherlv_25= ':' (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )? (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )? )? ( (lv_ownedFunction_36_0= ruleFunction ) ) otherlv_37= 'affects' ( (lv_affects_38_0= ruleSystemResponse ) ) (otherlv_39= 'and' ( (lv_affects_40_0= ruleSystemResponse ) ) )* ) )
+            // InternalInfluenceDSL.g:431:2: (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( ( ruleEString ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* (otherlv_24= 'metadata' otherlv_25= ':' (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )? (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )? )? ( (lv_ownedFunction_36_0= ruleFunction ) ) otherlv_37= 'affects' ( (lv_affects_38_0= ruleSystemResponse ) ) (otherlv_39= 'and' ( (lv_affects_40_0= ruleSystemResponse ) ) )* )
             {
-            // InternalInfluenceDSL.g:431:2: (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* ( (lv_ownedFunction_24_0= ruleFunction ) ) otherlv_25= 'affects' ( (lv_affects_26_0= ruleSystemResponse ) ) (otherlv_27= 'and' ( (lv_affects_28_0= ruleSystemResponse ) ) )* )
-            // InternalInfluenceDSL.g:432:3: otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* ( (lv_ownedFunction_24_0= ruleFunction ) ) otherlv_25= 'affects' ( (lv_affects_26_0= ruleSystemResponse ) ) (otherlv_27= 'and' ( (lv_affects_28_0= ruleSystemResponse ) ) )*
+            // InternalInfluenceDSL.g:431:2: (otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( ( ruleEString ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* (otherlv_24= 'metadata' otherlv_25= ':' (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )? (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )? )? ( (lv_ownedFunction_36_0= ruleFunction ) ) otherlv_37= 'affects' ( (lv_affects_38_0= ruleSystemResponse ) ) (otherlv_39= 'and' ( (lv_affects_40_0= ruleSystemResponse ) ) )* )
+            // InternalInfluenceDSL.g:432:3: otherlv_0= 'Influence' ( (lv_name_1_0= ruleEString ) ) otherlv_2= '#**' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* (otherlv_6= '**#' )? otherlv_7= 'originators' otherlv_8= ':' ( (otherlv_9= 'artifact' ( ( ruleEString ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) ) (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )* (otherlv_24= 'metadata' otherlv_25= ':' (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )? (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )? )? ( (lv_ownedFunction_36_0= ruleFunction ) ) otherlv_37= 'affects' ( (lv_affects_38_0= ruleSystemResponse ) ) (otherlv_39= 'and' ( (lv_affects_40_0= ruleSystemResponse ) ) )*
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_3); 
+            otherlv_0=(Token)match(input,15,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getInfluenceAccess().getInfluenceKeyword_0());
             		
@@ -1084,7 +1104,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,15,FOLLOW_3); 
+            otherlv_2=(Token)match(input,16,FOLLOW_3); 
 
             			newLeafNode(otherlv_2, grammarAccess.getInfluenceAccess().getNumberSignAsteriskAsteriskKeyword_2());
             		
@@ -1125,7 +1145,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==16) ) {
+                if ( (LA7_0==17) ) {
                     alt7=1;
                 }
 
@@ -1134,7 +1154,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // InternalInfluenceDSL.g:479:4: otherlv_4= ',' ( (lv_description_5_0= ruleEString ) )
             	    {
-            	    otherlv_4=(Token)match(input,16,FOLLOW_3); 
+            	    otherlv_4=(Token)match(input,17,FOLLOW_3); 
 
             	    				newLeafNode(otherlv_4, grammarAccess.getInfluenceAccess().getCommaKeyword_4_0());
             	    			
@@ -1182,14 +1202,14 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==17) ) {
+            if ( (LA8_0==18) ) {
                 alt8=1;
             }
             switch (alt8) {
                 case 1 :
                     // InternalInfluenceDSL.g:504:4: otherlv_6= '**#'
                     {
-                    otherlv_6=(Token)match(input,17,FOLLOW_14); 
+                    otherlv_6=(Token)match(input,18,FOLLOW_14); 
 
                     				newLeafNode(otherlv_6, grammarAccess.getInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_5());
                     			
@@ -1199,28 +1219,28 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,21,FOLLOW_15); 
+            otherlv_7=(Token)match(input,22,FOLLOW_15); 
 
             			newLeafNode(otherlv_7, grammarAccess.getInfluenceAccess().getOriginatorsKeyword_6());
             		
-            otherlv_8=(Token)match(input,22,FOLLOW_16); 
+            otherlv_8=(Token)match(input,23,FOLLOW_16); 
 
             			newLeafNode(otherlv_8, grammarAccess.getInfluenceAccess().getColonKeyword_7());
             		
-            // InternalInfluenceDSL.g:517:3: ( (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) )
+            // InternalInfluenceDSL.g:517:3: ( (otherlv_9= 'artifact' ( ( ruleEString ) ) ) | (otherlv_11= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) ) )
             int alt9=3;
             switch ( input.LA(1) ) {
-            case 23:
+            case 24:
                 {
                 alt9=1;
                 }
                 break;
-            case 24:
+            case 25:
                 {
                 alt9=2;
                 }
                 break;
-            case 25:
+            case 26:
                 {
                 alt9=3;
                 }
@@ -1234,29 +1254,36 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt9) {
                 case 1 :
-                    // InternalInfluenceDSL.g:518:4: (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) )
+                    // InternalInfluenceDSL.g:518:4: (otherlv_9= 'artifact' ( ( ruleEString ) ) )
                     {
-                    // InternalInfluenceDSL.g:518:4: (otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) ) )
-                    // InternalInfluenceDSL.g:519:5: otherlv_9= 'artifact' ( (otherlv_10= RULE_ID ) )
+                    // InternalInfluenceDSL.g:518:4: (otherlv_9= 'artifact' ( ( ruleEString ) ) )
+                    // InternalInfluenceDSL.g:519:5: otherlv_9= 'artifact' ( ( ruleEString ) )
                     {
-                    otherlv_9=(Token)match(input,23,FOLLOW_17); 
+                    otherlv_9=(Token)match(input,24,FOLLOW_3); 
 
                     					newLeafNode(otherlv_9, grammarAccess.getInfluenceAccess().getArtifactKeyword_8_0_0());
                     				
-                    // InternalInfluenceDSL.g:523:5: ( (otherlv_10= RULE_ID ) )
-                    // InternalInfluenceDSL.g:524:6: (otherlv_10= RULE_ID )
+                    // InternalInfluenceDSL.g:523:5: ( ( ruleEString ) )
+                    // InternalInfluenceDSL.g:524:6: ( ruleEString )
                     {
-                    // InternalInfluenceDSL.g:524:6: (otherlv_10= RULE_ID )
-                    // InternalInfluenceDSL.g:525:7: otherlv_10= RULE_ID
+                    // InternalInfluenceDSL.g:524:6: ( ruleEString )
+                    // InternalInfluenceDSL.g:525:7: ruleEString
                     {
 
                     							if (current==null) {
                     								current = createModelElement(grammarAccess.getInfluenceRule());
                     							}
                     						
-                    otherlv_10=(Token)match(input,RULE_ID,FOLLOW_18); 
 
-                    							newLeafNode(otherlv_10, grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_8_0_1_0());
+                    							newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_8_0_1_0());
+                    						
+                    pushFollow(FOLLOW_17);
+                    ruleEString();
+
+                    state._fsp--;
+
+
+                    							afterParserOrEnumRuleCall();
                     						
 
                     }
@@ -1271,20 +1298,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalInfluenceDSL.g:538:4: (otherlv_11= 'phenomena' ( ( ruleEString ) ) )
+                    // InternalInfluenceDSL.g:541:4: (otherlv_11= 'phenomena' ( ( ruleEString ) ) )
                     {
-                    // InternalInfluenceDSL.g:538:4: (otherlv_11= 'phenomena' ( ( ruleEString ) ) )
-                    // InternalInfluenceDSL.g:539:5: otherlv_11= 'phenomena' ( ( ruleEString ) )
+                    // InternalInfluenceDSL.g:541:4: (otherlv_11= 'phenomena' ( ( ruleEString ) ) )
+                    // InternalInfluenceDSL.g:542:5: otherlv_11= 'phenomena' ( ( ruleEString ) )
                     {
-                    otherlv_11=(Token)match(input,24,FOLLOW_3); 
+                    otherlv_11=(Token)match(input,25,FOLLOW_3); 
 
                     					newLeafNode(otherlv_11, grammarAccess.getInfluenceAccess().getPhenomenaKeyword_8_1_0());
                     				
-                    // InternalInfluenceDSL.g:543:5: ( ( ruleEString ) )
-                    // InternalInfluenceDSL.g:544:6: ( ruleEString )
+                    // InternalInfluenceDSL.g:546:5: ( ( ruleEString ) )
+                    // InternalInfluenceDSL.g:547:6: ( ruleEString )
                     {
-                    // InternalInfluenceDSL.g:544:6: ( ruleEString )
-                    // InternalInfluenceDSL.g:545:7: ruleEString
+                    // InternalInfluenceDSL.g:547:6: ( ruleEString )
+                    // InternalInfluenceDSL.g:548:7: ruleEString
                     {
 
                     							if (current==null) {
@@ -1294,7 +1321,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
                     							newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_8_1_1_0());
                     						
-                    pushFollow(FOLLOW_18);
+                    pushFollow(FOLLOW_17);
                     ruleEString();
 
                     state._fsp--;
@@ -1315,24 +1342,24 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalInfluenceDSL.g:561:4: (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) )
+                    // InternalInfluenceDSL.g:564:4: (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) )
                     {
-                    // InternalInfluenceDSL.g:561:4: (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) )
-                    // InternalInfluenceDSL.g:562:5: otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) )
+                    // InternalInfluenceDSL.g:564:4: (otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) ) )
+                    // InternalInfluenceDSL.g:565:5: otherlv_13= 'system' otherlv_14= 'response' ( ( ruleEString ) )
                     {
-                    otherlv_13=(Token)match(input,25,FOLLOW_19); 
+                    otherlv_13=(Token)match(input,26,FOLLOW_18); 
 
                     					newLeafNode(otherlv_13, grammarAccess.getInfluenceAccess().getSystemKeyword_8_2_0());
                     				
-                    otherlv_14=(Token)match(input,26,FOLLOW_3); 
+                    otherlv_14=(Token)match(input,27,FOLLOW_3); 
 
                     					newLeafNode(otherlv_14, grammarAccess.getInfluenceAccess().getResponseKeyword_8_2_1());
                     				
-                    // InternalInfluenceDSL.g:570:5: ( ( ruleEString ) )
-                    // InternalInfluenceDSL.g:571:6: ( ruleEString )
+                    // InternalInfluenceDSL.g:573:5: ( ( ruleEString ) )
+                    // InternalInfluenceDSL.g:574:6: ( ruleEString )
                     {
-                    // InternalInfluenceDSL.g:571:6: ( ruleEString )
-                    // InternalInfluenceDSL.g:572:7: ruleEString
+                    // InternalInfluenceDSL.g:574:6: ( ruleEString )
+                    // InternalInfluenceDSL.g:575:7: ruleEString
                     {
 
                     							if (current==null) {
@@ -1342,7 +1369,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
                     							newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseCrossReference_8_2_2_0());
                     						
-                    pushFollow(FOLLOW_18);
+                    pushFollow(FOLLOW_17);
                     ruleEString();
 
                     state._fsp--;
@@ -1365,39 +1392,39 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalInfluenceDSL.g:588:3: (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )*
+            // InternalInfluenceDSL.g:591:3: (otherlv_16= 'and' ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) ) )*
             loop11:
             do {
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0==20) ) {
+                if ( (LA11_0==21) ) {
                     alt11=1;
                 }
 
 
                 switch (alt11) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:589:4: otherlv_16= 'and' ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) )
+            	    // InternalInfluenceDSL.g:592:4: otherlv_16= 'and' ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) )
             	    {
-            	    otherlv_16=(Token)match(input,20,FOLLOW_16); 
+            	    otherlv_16=(Token)match(input,21,FOLLOW_16); 
 
             	    				newLeafNode(otherlv_16, grammarAccess.getInfluenceAccess().getAndKeyword_9_0());
             	    			
-            	    // InternalInfluenceDSL.g:593:4: ( (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) )
+            	    // InternalInfluenceDSL.g:596:4: ( (otherlv_17= 'artifact' ( ( ruleEString ) ) ) | (otherlv_19= 'phenomena' ( ( ruleEString ) ) ) | (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) ) )
             	    int alt10=3;
             	    switch ( input.LA(1) ) {
-            	    case 23:
+            	    case 24:
             	        {
             	        alt10=1;
             	        }
             	        break;
-            	    case 24:
+            	    case 25:
             	        {
             	        alt10=2;
             	        }
             	        break;
-            	    case 25:
+            	    case 26:
             	        {
             	        alt10=3;
             	        }
@@ -1411,29 +1438,36 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             	    switch (alt10) {
             	        case 1 :
-            	            // InternalInfluenceDSL.g:594:5: (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) )
+            	            // InternalInfluenceDSL.g:597:5: (otherlv_17= 'artifact' ( ( ruleEString ) ) )
             	            {
-            	            // InternalInfluenceDSL.g:594:5: (otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) ) )
-            	            // InternalInfluenceDSL.g:595:6: otherlv_17= 'artifact' ( (otherlv_18= RULE_ID ) )
+            	            // InternalInfluenceDSL.g:597:5: (otherlv_17= 'artifact' ( ( ruleEString ) ) )
+            	            // InternalInfluenceDSL.g:598:6: otherlv_17= 'artifact' ( ( ruleEString ) )
             	            {
-            	            otherlv_17=(Token)match(input,23,FOLLOW_17); 
+            	            otherlv_17=(Token)match(input,24,FOLLOW_3); 
 
             	            						newLeafNode(otherlv_17, grammarAccess.getInfluenceAccess().getArtifactKeyword_9_1_0_0());
             	            					
-            	            // InternalInfluenceDSL.g:599:6: ( (otherlv_18= RULE_ID ) )
-            	            // InternalInfluenceDSL.g:600:7: (otherlv_18= RULE_ID )
+            	            // InternalInfluenceDSL.g:602:6: ( ( ruleEString ) )
+            	            // InternalInfluenceDSL.g:603:7: ( ruleEString )
             	            {
-            	            // InternalInfluenceDSL.g:600:7: (otherlv_18= RULE_ID )
-            	            // InternalInfluenceDSL.g:601:8: otherlv_18= RULE_ID
+            	            // InternalInfluenceDSL.g:603:7: ( ruleEString )
+            	            // InternalInfluenceDSL.g:604:8: ruleEString
             	            {
 
             	            								if (current==null) {
             	            									current = createModelElement(grammarAccess.getInfluenceRule());
             	            								}
             	            							
-            	            otherlv_18=(Token)match(input,RULE_ID,FOLLOW_18); 
 
-            	            								newLeafNode(otherlv_18, grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0());
+            	            								newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorArtifactDesignArtifactCrossReference_9_1_0_1_0());
+            	            							
+            	            pushFollow(FOLLOW_17);
+            	            ruleEString();
+
+            	            state._fsp--;
+
+
+            	            								afterParserOrEnumRuleCall();
             	            							
 
             	            }
@@ -1448,20 +1482,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalInfluenceDSL.g:614:5: (otherlv_19= 'phenomena' ( ( ruleEString ) ) )
+            	            // InternalInfluenceDSL.g:620:5: (otherlv_19= 'phenomena' ( ( ruleEString ) ) )
             	            {
-            	            // InternalInfluenceDSL.g:614:5: (otherlv_19= 'phenomena' ( ( ruleEString ) ) )
-            	            // InternalInfluenceDSL.g:615:6: otherlv_19= 'phenomena' ( ( ruleEString ) )
+            	            // InternalInfluenceDSL.g:620:5: (otherlv_19= 'phenomena' ( ( ruleEString ) ) )
+            	            // InternalInfluenceDSL.g:621:6: otherlv_19= 'phenomena' ( ( ruleEString ) )
             	            {
-            	            otherlv_19=(Token)match(input,24,FOLLOW_3); 
+            	            otherlv_19=(Token)match(input,25,FOLLOW_3); 
 
             	            						newLeafNode(otherlv_19, grammarAccess.getInfluenceAccess().getPhenomenaKeyword_9_1_1_0());
             	            					
-            	            // InternalInfluenceDSL.g:619:6: ( ( ruleEString ) )
-            	            // InternalInfluenceDSL.g:620:7: ( ruleEString )
+            	            // InternalInfluenceDSL.g:625:6: ( ( ruleEString ) )
+            	            // InternalInfluenceDSL.g:626:7: ( ruleEString )
             	            {
-            	            // InternalInfluenceDSL.g:620:7: ( ruleEString )
-            	            // InternalInfluenceDSL.g:621:8: ruleEString
+            	            // InternalInfluenceDSL.g:626:7: ( ruleEString )
+            	            // InternalInfluenceDSL.g:627:8: ruleEString
             	            {
 
             	            								if (current==null) {
@@ -1471,7 +1505,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             	            								newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorPhenomenaPhysicalPhenomenaCrossReference_9_1_1_1_0());
             	            							
-            	            pushFollow(FOLLOW_18);
+            	            pushFollow(FOLLOW_17);
             	            ruleEString();
 
             	            state._fsp--;
@@ -1492,24 +1526,24 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 3 :
-            	            // InternalInfluenceDSL.g:637:5: (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) )
+            	            // InternalInfluenceDSL.g:643:5: (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) )
             	            {
-            	            // InternalInfluenceDSL.g:637:5: (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) )
-            	            // InternalInfluenceDSL.g:638:6: otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) )
+            	            // InternalInfluenceDSL.g:643:5: (otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) ) )
+            	            // InternalInfluenceDSL.g:644:6: otherlv_21= 'system' otherlv_22= 'response' ( ( ruleEString ) )
             	            {
-            	            otherlv_21=(Token)match(input,25,FOLLOW_19); 
+            	            otherlv_21=(Token)match(input,26,FOLLOW_18); 
 
             	            						newLeafNode(otherlv_21, grammarAccess.getInfluenceAccess().getSystemKeyword_9_1_2_0());
             	            					
-            	            otherlv_22=(Token)match(input,26,FOLLOW_3); 
+            	            otherlv_22=(Token)match(input,27,FOLLOW_3); 
 
             	            						newLeafNode(otherlv_22, grammarAccess.getInfluenceAccess().getResponseKeyword_9_1_2_1());
             	            					
-            	            // InternalInfluenceDSL.g:646:6: ( ( ruleEString ) )
-            	            // InternalInfluenceDSL.g:647:7: ( ruleEString )
+            	            // InternalInfluenceDSL.g:652:6: ( ( ruleEString ) )
+            	            // InternalInfluenceDSL.g:653:7: ( ruleEString )
             	            {
-            	            // InternalInfluenceDSL.g:647:7: ( ruleEString )
-            	            // InternalInfluenceDSL.g:648:8: ruleEString
+            	            // InternalInfluenceDSL.g:653:7: ( ruleEString )
+            	            // InternalInfluenceDSL.g:654:8: ruleEString
             	            {
 
             	            								if (current==null) {
@@ -1519,7 +1553,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             	            								newCompositeNode(grammarAccess.getInfluenceAccess().getOriginatorSystemResponseSystemResponseCrossReference_9_1_2_2_0());
             	            							
-            	            pushFollow(FOLLOW_18);
+            	            pushFollow(FOLLOW_17);
             	            ruleEString();
 
             	            state._fsp--;
@@ -1551,17 +1585,272 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalInfluenceDSL.g:665:3: ( (lv_ownedFunction_24_0= ruleFunction ) )
-            // InternalInfluenceDSL.g:666:4: (lv_ownedFunction_24_0= ruleFunction )
+            // InternalInfluenceDSL.g:671:3: (otherlv_24= 'metadata' otherlv_25= ':' (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )? (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )? )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
+
+            if ( (LA16_0==28) ) {
+                alt16=1;
+            }
+            switch (alt16) {
+                case 1 :
+                    // InternalInfluenceDSL.g:672:4: otherlv_24= 'metadata' otherlv_25= ':' (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )? (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )?
+                    {
+                    otherlv_24=(Token)match(input,28,FOLLOW_15); 
+
+                    				newLeafNode(otherlv_24, grammarAccess.getInfluenceAccess().getMetadataKeyword_10_0());
+                    			
+                    otherlv_25=(Token)match(input,23,FOLLOW_19); 
+
+                    				newLeafNode(otherlv_25, grammarAccess.getInfluenceAccess().getColonKeyword_10_1());
+                    			
+                    // InternalInfluenceDSL.g:680:4: (otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )* )?
+                    int alt13=2;
+                    int LA13_0 = input.LA(1);
+
+                    if ( (LA13_0==29) ) {
+                        alt13=1;
+                    }
+                    switch (alt13) {
+                        case 1 :
+                            // InternalInfluenceDSL.g:681:5: otherlv_26= 'likelihood' otherlv_27= ':' ( (lv_likelihoodPerElement_28_0= ruleEString ) ) (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )*
+                            {
+                            otherlv_26=(Token)match(input,29,FOLLOW_15); 
+
+                            					newLeafNode(otherlv_26, grammarAccess.getInfluenceAccess().getLikelihoodKeyword_10_2_0());
+                            				
+                            otherlv_27=(Token)match(input,23,FOLLOW_3); 
+
+                            					newLeafNode(otherlv_27, grammarAccess.getInfluenceAccess().getColonKeyword_10_2_1());
+                            				
+                            // InternalInfluenceDSL.g:689:5: ( (lv_likelihoodPerElement_28_0= ruleEString ) )
+                            // InternalInfluenceDSL.g:690:6: (lv_likelihoodPerElement_28_0= ruleEString )
+                            {
+                            // InternalInfluenceDSL.g:690:6: (lv_likelihoodPerElement_28_0= ruleEString )
+                            // InternalInfluenceDSL.g:691:7: lv_likelihoodPerElement_28_0= ruleEString
+                            {
+
+                            							newCompositeNode(grammarAccess.getInfluenceAccess().getLikelihoodPerElementEStringParserRuleCall_10_2_2_0());
+                            						
+                            pushFollow(FOLLOW_20);
+                            lv_likelihoodPerElement_28_0=ruleEString();
+
+                            state._fsp--;
+
+
+                            							if (current==null) {
+                            								current = createModelElementForParent(grammarAccess.getInfluenceRule());
+                            							}
+                            							add(
+                            								current,
+                            								"likelihoodPerElement",
+                            								lv_likelihoodPerElement_28_0,
+                            								"fr.inria.kairos.influence.InfluenceDSL.EString");
+                            							afterParserOrEnumRuleCall();
+                            						
+
+                            }
+
+
+                            }
+
+                            // InternalInfluenceDSL.g:708:5: (otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) ) )*
+                            loop12:
+                            do {
+                                int alt12=2;
+                                int LA12_0 = input.LA(1);
+
+                                if ( (LA12_0==17) ) {
+                                    alt12=1;
+                                }
+
+
+                                switch (alt12) {
+                            	case 1 :
+                            	    // InternalInfluenceDSL.g:709:6: otherlv_29= ',' ( (lv_likelihoodPerElement_30_0= ruleEString ) )
+                            	    {
+                            	    otherlv_29=(Token)match(input,17,FOLLOW_3); 
+
+                            	    						newLeafNode(otherlv_29, grammarAccess.getInfluenceAccess().getCommaKeyword_10_2_3_0());
+                            	    					
+                            	    // InternalInfluenceDSL.g:713:6: ( (lv_likelihoodPerElement_30_0= ruleEString ) )
+                            	    // InternalInfluenceDSL.g:714:7: (lv_likelihoodPerElement_30_0= ruleEString )
+                            	    {
+                            	    // InternalInfluenceDSL.g:714:7: (lv_likelihoodPerElement_30_0= ruleEString )
+                            	    // InternalInfluenceDSL.g:715:8: lv_likelihoodPerElement_30_0= ruleEString
+                            	    {
+
+                            	    								newCompositeNode(grammarAccess.getInfluenceAccess().getLikelihoodPerElementEStringParserRuleCall_10_2_3_1_0());
+                            	    							
+                            	    pushFollow(FOLLOW_20);
+                            	    lv_likelihoodPerElement_30_0=ruleEString();
+
+                            	    state._fsp--;
+
+
+                            	    								if (current==null) {
+                            	    									current = createModelElementForParent(grammarAccess.getInfluenceRule());
+                            	    								}
+                            	    								add(
+                            	    									current,
+                            	    									"likelihoodPerElement",
+                            	    									lv_likelihoodPerElement_30_0,
+                            	    									"fr.inria.kairos.influence.InfluenceDSL.EString");
+                            	    								afterParserOrEnumRuleCall();
+                            	    							
+
+                            	    }
+
+
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    break loop12;
+                                }
+                            } while (true);
+
+
+                            }
+                            break;
+
+                    }
+
+                    // InternalInfluenceDSL.g:734:4: (otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )* )?
+                    int alt15=2;
+                    int LA15_0 = input.LA(1);
+
+                    if ( (LA15_0==30) ) {
+                        alt15=1;
+                    }
+                    switch (alt15) {
+                        case 1 :
+                            // InternalInfluenceDSL.g:735:5: otherlv_31= 'confidence' otherlv_32= ':' ( (lv_confidence_33_0= ruleEString ) ) (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )*
+                            {
+                            otherlv_31=(Token)match(input,30,FOLLOW_15); 
+
+                            					newLeafNode(otherlv_31, grammarAccess.getInfluenceAccess().getConfidenceKeyword_10_3_0());
+                            				
+                            otherlv_32=(Token)match(input,23,FOLLOW_3); 
+
+                            					newLeafNode(otherlv_32, grammarAccess.getInfluenceAccess().getColonKeyword_10_3_1());
+                            				
+                            // InternalInfluenceDSL.g:743:5: ( (lv_confidence_33_0= ruleEString ) )
+                            // InternalInfluenceDSL.g:744:6: (lv_confidence_33_0= ruleEString )
+                            {
+                            // InternalInfluenceDSL.g:744:6: (lv_confidence_33_0= ruleEString )
+                            // InternalInfluenceDSL.g:745:7: lv_confidence_33_0= ruleEString
+                            {
+
+                            							newCompositeNode(grammarAccess.getInfluenceAccess().getConfidenceEStringParserRuleCall_10_3_2_0());
+                            						
+                            pushFollow(FOLLOW_21);
+                            lv_confidence_33_0=ruleEString();
+
+                            state._fsp--;
+
+
+                            							if (current==null) {
+                            								current = createModelElementForParent(grammarAccess.getInfluenceRule());
+                            							}
+                            							add(
+                            								current,
+                            								"confidence",
+                            								lv_confidence_33_0,
+                            								"fr.inria.kairos.influence.InfluenceDSL.EString");
+                            							afterParserOrEnumRuleCall();
+                            						
+
+                            }
+
+
+                            }
+
+                            // InternalInfluenceDSL.g:762:5: (otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) ) )*
+                            loop14:
+                            do {
+                                int alt14=2;
+                                int LA14_0 = input.LA(1);
+
+                                if ( (LA14_0==17) ) {
+                                    alt14=1;
+                                }
+
+
+                                switch (alt14) {
+                            	case 1 :
+                            	    // InternalInfluenceDSL.g:763:6: otherlv_34= ',' ( (lv_confidence_35_0= ruleEString ) )
+                            	    {
+                            	    otherlv_34=(Token)match(input,17,FOLLOW_3); 
+
+                            	    						newLeafNode(otherlv_34, grammarAccess.getInfluenceAccess().getCommaKeyword_10_3_3_0());
+                            	    					
+                            	    // InternalInfluenceDSL.g:767:6: ( (lv_confidence_35_0= ruleEString ) )
+                            	    // InternalInfluenceDSL.g:768:7: (lv_confidence_35_0= ruleEString )
+                            	    {
+                            	    // InternalInfluenceDSL.g:768:7: (lv_confidence_35_0= ruleEString )
+                            	    // InternalInfluenceDSL.g:769:8: lv_confidence_35_0= ruleEString
+                            	    {
+
+                            	    								newCompositeNode(grammarAccess.getInfluenceAccess().getConfidenceEStringParserRuleCall_10_3_3_1_0());
+                            	    							
+                            	    pushFollow(FOLLOW_21);
+                            	    lv_confidence_35_0=ruleEString();
+
+                            	    state._fsp--;
+
+
+                            	    								if (current==null) {
+                            	    									current = createModelElementForParent(grammarAccess.getInfluenceRule());
+                            	    								}
+                            	    								add(
+                            	    									current,
+                            	    									"confidence",
+                            	    									lv_confidence_35_0,
+                            	    									"fr.inria.kairos.influence.InfluenceDSL.EString");
+                            	    								afterParserOrEnumRuleCall();
+                            	    							
+
+                            	    }
+
+
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    break loop14;
+                                }
+                            } while (true);
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // InternalInfluenceDSL.g:789:3: ( (lv_ownedFunction_36_0= ruleFunction ) )
+            // InternalInfluenceDSL.g:790:4: (lv_ownedFunction_36_0= ruleFunction )
             {
-            // InternalInfluenceDSL.g:666:4: (lv_ownedFunction_24_0= ruleFunction )
-            // InternalInfluenceDSL.g:667:5: lv_ownedFunction_24_0= ruleFunction
+            // InternalInfluenceDSL.g:790:4: (lv_ownedFunction_36_0= ruleFunction )
+            // InternalInfluenceDSL.g:791:5: lv_ownedFunction_36_0= ruleFunction
             {
 
-            					newCompositeNode(grammarAccess.getInfluenceAccess().getOwnedFunctionFunctionParserRuleCall_10_0());
+            					newCompositeNode(grammarAccess.getInfluenceAccess().getOwnedFunctionFunctionParserRuleCall_11_0());
             				
             pushFollow(FOLLOW_10);
-            lv_ownedFunction_24_0=ruleFunction();
+            lv_ownedFunction_36_0=ruleFunction();
 
             state._fsp--;
 
@@ -1572,7 +1861,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"ownedFunction",
-            						lv_ownedFunction_24_0,
+            						lv_ownedFunction_36_0,
             						"fr.inria.kairos.influence.InfluenceDSL.Function");
             					afterParserOrEnumRuleCall();
             				
@@ -1582,21 +1871,21 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_25=(Token)match(input,19,FOLLOW_11); 
+            otherlv_37=(Token)match(input,20,FOLLOW_11); 
 
-            			newLeafNode(otherlv_25, grammarAccess.getInfluenceAccess().getAffectsKeyword_11());
+            			newLeafNode(otherlv_37, grammarAccess.getInfluenceAccess().getAffectsKeyword_12());
             		
-            // InternalInfluenceDSL.g:688:3: ( (lv_affects_26_0= ruleSystemResponse ) )
-            // InternalInfluenceDSL.g:689:4: (lv_affects_26_0= ruleSystemResponse )
+            // InternalInfluenceDSL.g:812:3: ( (lv_affects_38_0= ruleSystemResponse ) )
+            // InternalInfluenceDSL.g:813:4: (lv_affects_38_0= ruleSystemResponse )
             {
-            // InternalInfluenceDSL.g:689:4: (lv_affects_26_0= ruleSystemResponse )
-            // InternalInfluenceDSL.g:690:5: lv_affects_26_0= ruleSystemResponse
+            // InternalInfluenceDSL.g:813:4: (lv_affects_38_0= ruleSystemResponse )
+            // InternalInfluenceDSL.g:814:5: lv_affects_38_0= ruleSystemResponse
             {
 
-            					newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_12_0());
+            					newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_13_0());
             				
             pushFollow(FOLLOW_12);
-            lv_affects_26_0=ruleSystemResponse();
+            lv_affects_38_0=ruleSystemResponse();
 
             state._fsp--;
 
@@ -1607,7 +1896,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             					add(
             						current,
             						"affects",
-            						lv_affects_26_0,
+            						lv_affects_38_0,
             						"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
             					afterParserOrEnumRuleCall();
             				
@@ -1617,36 +1906,36 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalInfluenceDSL.g:707:3: (otherlv_27= 'and' ( (lv_affects_28_0= ruleSystemResponse ) ) )*
-            loop12:
+            // InternalInfluenceDSL.g:831:3: (otherlv_39= 'and' ( (lv_affects_40_0= ruleSystemResponse ) ) )*
+            loop17:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-                if ( (LA12_0==20) ) {
-                    alt12=1;
+                if ( (LA17_0==21) ) {
+                    alt17=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt17) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:708:4: otherlv_27= 'and' ( (lv_affects_28_0= ruleSystemResponse ) )
+            	    // InternalInfluenceDSL.g:832:4: otherlv_39= 'and' ( (lv_affects_40_0= ruleSystemResponse ) )
             	    {
-            	    otherlv_27=(Token)match(input,20,FOLLOW_11); 
+            	    otherlv_39=(Token)match(input,21,FOLLOW_11); 
 
-            	    				newLeafNode(otherlv_27, grammarAccess.getInfluenceAccess().getAndKeyword_13_0());
+            	    				newLeafNode(otherlv_39, grammarAccess.getInfluenceAccess().getAndKeyword_14_0());
             	    			
-            	    // InternalInfluenceDSL.g:712:4: ( (lv_affects_28_0= ruleSystemResponse ) )
-            	    // InternalInfluenceDSL.g:713:5: (lv_affects_28_0= ruleSystemResponse )
+            	    // InternalInfluenceDSL.g:836:4: ( (lv_affects_40_0= ruleSystemResponse ) )
+            	    // InternalInfluenceDSL.g:837:5: (lv_affects_40_0= ruleSystemResponse )
             	    {
-            	    // InternalInfluenceDSL.g:713:5: (lv_affects_28_0= ruleSystemResponse )
-            	    // InternalInfluenceDSL.g:714:6: lv_affects_28_0= ruleSystemResponse
+            	    // InternalInfluenceDSL.g:837:5: (lv_affects_40_0= ruleSystemResponse )
+            	    // InternalInfluenceDSL.g:838:6: lv_affects_40_0= ruleSystemResponse
             	    {
 
-            	    						newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_13_1_0());
+            	    						newCompositeNode(grammarAccess.getInfluenceAccess().getAffectsSystemResponseParserRuleCall_14_1_0());
             	    					
             	    pushFollow(FOLLOW_12);
-            	    lv_affects_28_0=ruleSystemResponse();
+            	    lv_affects_40_0=ruleSystemResponse();
 
             	    state._fsp--;
 
@@ -1657,7 +1946,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	    						add(
             	    							current,
             	    							"affects",
-            	    							lv_affects_28_0,
+            	    							lv_affects_40_0,
             	    							"fr.inria.kairos.influence.InfluenceDSL.SystemResponse");
             	    						afterParserOrEnumRuleCall();
             	    					
@@ -1672,7 +1961,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop17;
                 }
             } while (true);
 
@@ -1699,7 +1988,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFunction"
-    // InternalInfluenceDSL.g:736:1: entryRuleFunction returns [EObject current=null] : iv_ruleFunction= ruleFunction EOF ;
+    // InternalInfluenceDSL.g:860:1: entryRuleFunction returns [EObject current=null] : iv_ruleFunction= ruleFunction EOF ;
     public final EObject entryRuleFunction() throws RecognitionException {
         EObject current = null;
 
@@ -1707,8 +1996,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:736:49: (iv_ruleFunction= ruleFunction EOF )
-            // InternalInfluenceDSL.g:737:2: iv_ruleFunction= ruleFunction EOF
+            // InternalInfluenceDSL.g:860:49: (iv_ruleFunction= ruleFunction EOF )
+            // InternalInfluenceDSL.g:861:2: iv_ruleFunction= ruleFunction EOF
             {
              newCompositeNode(grammarAccess.getFunctionRule()); 
             pushFollow(FOLLOW_1);
@@ -1735,7 +2024,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunction"
-    // InternalInfluenceDSL.g:743:1: ruleFunction returns [EObject current=null] : (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' ) ;
+    // InternalInfluenceDSL.g:867:1: ruleFunction returns [EObject current=null] : (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' ) ;
     public final EObject ruleFunction() throws RecognitionException {
         EObject current = null;
 
@@ -1750,23 +2039,23 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:749:2: ( (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' ) )
-            // InternalInfluenceDSL.g:750:2: (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' )
+            // InternalInfluenceDSL.g:873:2: ( (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' ) )
+            // InternalInfluenceDSL.g:874:2: (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' )
             {
-            // InternalInfluenceDSL.g:750:2: (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' )
-            // InternalInfluenceDSL.g:751:3: otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')'
+            // InternalInfluenceDSL.g:874:2: (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')' )
+            // InternalInfluenceDSL.g:875:3: otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( (lv_definition_3_0= ruleEString ) ) otherlv_4= ')'
             {
-            otherlv_0=(Token)match(input,27,FOLLOW_17); 
+            otherlv_0=(Token)match(input,31,FOLLOW_22); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFunctionAccess().getFunKeyword_0());
             		
-            // InternalInfluenceDSL.g:755:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalInfluenceDSL.g:756:4: (lv_name_1_0= RULE_ID )
+            // InternalInfluenceDSL.g:879:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalInfluenceDSL.g:880:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalInfluenceDSL.g:756:4: (lv_name_1_0= RULE_ID )
-            // InternalInfluenceDSL.g:757:5: lv_name_1_0= RULE_ID
+            // InternalInfluenceDSL.g:880:4: (lv_name_1_0= RULE_ID )
+            // InternalInfluenceDSL.g:881:5: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_20); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_23); 
 
             					newLeafNode(lv_name_1_0, grammarAccess.getFunctionAccess().getNameIDTerminalRuleCall_1_0());
             				
@@ -1786,20 +2075,20 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,28,FOLLOW_3); 
+            otherlv_2=(Token)match(input,32,FOLLOW_3); 
 
             			newLeafNode(otherlv_2, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_2());
             		
-            // InternalInfluenceDSL.g:777:3: ( (lv_definition_3_0= ruleEString ) )
-            // InternalInfluenceDSL.g:778:4: (lv_definition_3_0= ruleEString )
+            // InternalInfluenceDSL.g:901:3: ( (lv_definition_3_0= ruleEString ) )
+            // InternalInfluenceDSL.g:902:4: (lv_definition_3_0= ruleEString )
             {
-            // InternalInfluenceDSL.g:778:4: (lv_definition_3_0= ruleEString )
-            // InternalInfluenceDSL.g:779:5: lv_definition_3_0= ruleEString
+            // InternalInfluenceDSL.g:902:4: (lv_definition_3_0= ruleEString )
+            // InternalInfluenceDSL.g:903:5: lv_definition_3_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getFunctionAccess().getDefinitionEStringParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_24);
             lv_definition_3_0=ruleEString();
 
             state._fsp--;
@@ -1821,7 +2110,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,29,FOLLOW_2); 
+            otherlv_4=(Token)match(input,33,FOLLOW_2); 
 
             			newLeafNode(otherlv_4, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4());
             		
@@ -1848,7 +2137,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCompositeFunction"
-    // InternalInfluenceDSL.g:804:1: entryRuleCompositeFunction returns [EObject current=null] : iv_ruleCompositeFunction= ruleCompositeFunction EOF ;
+    // InternalInfluenceDSL.g:928:1: entryRuleCompositeFunction returns [EObject current=null] : iv_ruleCompositeFunction= ruleCompositeFunction EOF ;
     public final EObject entryRuleCompositeFunction() throws RecognitionException {
         EObject current = null;
 
@@ -1856,8 +2145,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:804:58: (iv_ruleCompositeFunction= ruleCompositeFunction EOF )
-            // InternalInfluenceDSL.g:805:2: iv_ruleCompositeFunction= ruleCompositeFunction EOF
+            // InternalInfluenceDSL.g:928:58: (iv_ruleCompositeFunction= ruleCompositeFunction EOF )
+            // InternalInfluenceDSL.g:929:2: iv_ruleCompositeFunction= ruleCompositeFunction EOF
             {
              newCompositeNode(grammarAccess.getCompositeFunctionRule()); 
             pushFollow(FOLLOW_1);
@@ -1884,7 +2173,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompositeFunction"
-    // InternalInfluenceDSL.g:811:1: ruleCompositeFunction returns [EObject current=null] : (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' ) ;
+    // InternalInfluenceDSL.g:935:1: ruleCompositeFunction returns [EObject current=null] : (otherlv_0= 'compositeFun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' ) ;
     public final EObject ruleCompositeFunction() throws RecognitionException {
         EObject current = null;
 
@@ -1898,23 +2187,23 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:817:2: ( (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' ) )
-            // InternalInfluenceDSL.g:818:2: (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )
+            // InternalInfluenceDSL.g:941:2: ( (otherlv_0= 'compositeFun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' ) )
+            // InternalInfluenceDSL.g:942:2: (otherlv_0= 'compositeFun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )
             {
-            // InternalInfluenceDSL.g:818:2: (otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )
-            // InternalInfluenceDSL.g:819:3: otherlv_0= 'fun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')'
+            // InternalInfluenceDSL.g:942:2: (otherlv_0= 'compositeFun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')' )
+            // InternalInfluenceDSL.g:943:3: otherlv_0= 'compositeFun' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '(' ( ( ruleEString ) ) (otherlv_4= ',' ( ( ruleEString ) ) )* otherlv_6= ')'
             {
-            otherlv_0=(Token)match(input,27,FOLLOW_17); 
+            otherlv_0=(Token)match(input,34,FOLLOW_22); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getCompositeFunctionAccess().getFunKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getCompositeFunctionAccess().getCompositeFunKeyword_0());
             		
-            // InternalInfluenceDSL.g:823:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalInfluenceDSL.g:824:4: (lv_name_1_0= RULE_ID )
+            // InternalInfluenceDSL.g:947:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalInfluenceDSL.g:948:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalInfluenceDSL.g:824:4: (lv_name_1_0= RULE_ID )
-            // InternalInfluenceDSL.g:825:5: lv_name_1_0= RULE_ID
+            // InternalInfluenceDSL.g:948:4: (lv_name_1_0= RULE_ID )
+            // InternalInfluenceDSL.g:949:5: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_20); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_23); 
 
             					newLeafNode(lv_name_1_0, grammarAccess.getCompositeFunctionAccess().getNameIDTerminalRuleCall_1_0());
             				
@@ -1934,15 +2223,15 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,28,FOLLOW_3); 
+            otherlv_2=(Token)match(input,32,FOLLOW_3); 
 
             			newLeafNode(otherlv_2, grammarAccess.getCompositeFunctionAccess().getLeftParenthesisKeyword_2());
             		
-            // InternalInfluenceDSL.g:845:3: ( ( ruleEString ) )
-            // InternalInfluenceDSL.g:846:4: ( ruleEString )
+            // InternalInfluenceDSL.g:969:3: ( ( ruleEString ) )
+            // InternalInfluenceDSL.g:970:4: ( ruleEString )
             {
-            // InternalInfluenceDSL.g:846:4: ( ruleEString )
-            // InternalInfluenceDSL.g:847:5: ruleEString
+            // InternalInfluenceDSL.g:970:4: ( ruleEString )
+            // InternalInfluenceDSL.g:971:5: ruleEString
             {
 
             					if (current==null) {
@@ -1952,7 +2241,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseCrossReference_3_0());
             				
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_25);
             ruleEString();
 
             state._fsp--;
@@ -1966,30 +2255,30 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalInfluenceDSL.g:861:3: (otherlv_4= ',' ( ( ruleEString ) ) )*
-            loop13:
+            // InternalInfluenceDSL.g:985:3: (otherlv_4= ',' ( ( ruleEString ) ) )*
+            loop18:
             do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-                if ( (LA13_0==16) ) {
-                    alt13=1;
+                if ( (LA18_0==17) ) {
+                    alt18=1;
                 }
 
 
-                switch (alt13) {
+                switch (alt18) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:862:4: otherlv_4= ',' ( ( ruleEString ) )
+            	    // InternalInfluenceDSL.g:986:4: otherlv_4= ',' ( ( ruleEString ) )
             	    {
-            	    otherlv_4=(Token)match(input,16,FOLLOW_3); 
+            	    otherlv_4=(Token)match(input,17,FOLLOW_3); 
 
             	    				newLeafNode(otherlv_4, grammarAccess.getCompositeFunctionAccess().getCommaKeyword_4_0());
             	    			
-            	    // InternalInfluenceDSL.g:866:4: ( ( ruleEString ) )
-            	    // InternalInfluenceDSL.g:867:5: ( ruleEString )
+            	    // InternalInfluenceDSL.g:990:4: ( ( ruleEString ) )
+            	    // InternalInfluenceDSL.g:991:5: ( ruleEString )
             	    {
-            	    // InternalInfluenceDSL.g:867:5: ( ruleEString )
-            	    // InternalInfluenceDSL.g:868:6: ruleEString
+            	    // InternalInfluenceDSL.g:991:5: ( ruleEString )
+            	    // InternalInfluenceDSL.g:992:6: ruleEString
             	    {
 
             	    						if (current==null) {
@@ -1999,7 +2288,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             	    						newCompositeNode(grammarAccess.getCompositeFunctionAccess().getInputsSystemResponseCrossReference_4_1_0());
             	    					
-            	    pushFollow(FOLLOW_22);
+            	    pushFollow(FOLLOW_25);
             	    ruleEString();
 
             	    state._fsp--;
@@ -2018,11 +2307,11 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop13;
+            	    break loop18;
                 }
             } while (true);
 
-            otherlv_6=(Token)match(input,29,FOLLOW_2); 
+            otherlv_6=(Token)match(input,33,FOLLOW_2); 
 
             			newLeafNode(otherlv_6, grammarAccess.getCompositeFunctionAccess().getRightParenthesisKeyword_5());
             		
@@ -2049,7 +2338,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePhysicalPhenomena"
-    // InternalInfluenceDSL.g:891:1: entryRulePhysicalPhenomena returns [EObject current=null] : iv_rulePhysicalPhenomena= rulePhysicalPhenomena EOF ;
+    // InternalInfluenceDSL.g:1015:1: entryRulePhysicalPhenomena returns [EObject current=null] : iv_rulePhysicalPhenomena= rulePhysicalPhenomena EOF ;
     public final EObject entryRulePhysicalPhenomena() throws RecognitionException {
         EObject current = null;
 
@@ -2057,8 +2346,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:891:58: (iv_rulePhysicalPhenomena= rulePhysicalPhenomena EOF )
-            // InternalInfluenceDSL.g:892:2: iv_rulePhysicalPhenomena= rulePhysicalPhenomena EOF
+            // InternalInfluenceDSL.g:1015:58: (iv_rulePhysicalPhenomena= rulePhysicalPhenomena EOF )
+            // InternalInfluenceDSL.g:1016:2: iv_rulePhysicalPhenomena= rulePhysicalPhenomena EOF
             {
              newCompositeNode(grammarAccess.getPhysicalPhenomenaRule()); 
             pushFollow(FOLLOW_1);
@@ -2085,7 +2374,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePhysicalPhenomena"
-    // InternalInfluenceDSL.g:898:1: rulePhysicalPhenomena returns [EObject current=null] : (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? ) ;
+    // InternalInfluenceDSL.g:1022:1: rulePhysicalPhenomena returns [EObject current=null] : (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? ) ;
     public final EObject rulePhysicalPhenomena() throws RecognitionException {
         EObject current = null;
 
@@ -2103,26 +2392,26 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:904:2: ( (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? ) )
-            // InternalInfluenceDSL.g:905:2: (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? )
+            // InternalInfluenceDSL.g:1028:2: ( (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? ) )
+            // InternalInfluenceDSL.g:1029:2: (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? )
             {
-            // InternalInfluenceDSL.g:905:2: (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? )
-            // InternalInfluenceDSL.g:906:3: otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )?
+            // InternalInfluenceDSL.g:1029:2: (otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )? )
+            // InternalInfluenceDSL.g:1030:3: otherlv_0= 'Phenomenon' ( (lv_name_1_0= ruleEString ) ) (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )?
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_3); 
+            otherlv_0=(Token)match(input,35,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getPhysicalPhenomenaAccess().getPhenomenonKeyword_0());
             		
-            // InternalInfluenceDSL.g:910:3: ( (lv_name_1_0= ruleEString ) )
-            // InternalInfluenceDSL.g:911:4: (lv_name_1_0= ruleEString )
+            // InternalInfluenceDSL.g:1034:3: ( (lv_name_1_0= ruleEString ) )
+            // InternalInfluenceDSL.g:1035:4: (lv_name_1_0= ruleEString )
             {
-            // InternalInfluenceDSL.g:911:4: (lv_name_1_0= ruleEString )
-            // InternalInfluenceDSL.g:912:5: lv_name_1_0= ruleEString
+            // InternalInfluenceDSL.g:1035:4: (lv_name_1_0= ruleEString )
+            // InternalInfluenceDSL.g:1036:5: lv_name_1_0= ruleEString
             {
 
             					newCompositeNode(grammarAccess.getPhysicalPhenomenaAccess().getNameEStringParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_23);
+            pushFollow(FOLLOW_26);
             lv_name_1_0=ruleEString();
 
             state._fsp--;
@@ -2144,31 +2433,31 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalInfluenceDSL.g:929:3: (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // InternalInfluenceDSL.g:1053:3: (otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )* )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA15_0==22) ) {
-                alt15=1;
+            if ( (LA20_0==23) ) {
+                alt20=1;
             }
-            switch (alt15) {
+            switch (alt20) {
                 case 1 :
-                    // InternalInfluenceDSL.g:930:4: otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )*
+                    // InternalInfluenceDSL.g:1054:4: otherlv_2= ':' ( (lv_description_3_0= ruleEString ) ) (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )*
                     {
-                    otherlv_2=(Token)match(input,22,FOLLOW_3); 
+                    otherlv_2=(Token)match(input,23,FOLLOW_3); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getPhysicalPhenomenaAccess().getColonKeyword_2_0());
                     			
-                    // InternalInfluenceDSL.g:934:4: ( (lv_description_3_0= ruleEString ) )
-                    // InternalInfluenceDSL.g:935:5: (lv_description_3_0= ruleEString )
+                    // InternalInfluenceDSL.g:1058:4: ( (lv_description_3_0= ruleEString ) )
+                    // InternalInfluenceDSL.g:1059:5: (lv_description_3_0= ruleEString )
                     {
-                    // InternalInfluenceDSL.g:935:5: (lv_description_3_0= ruleEString )
-                    // InternalInfluenceDSL.g:936:6: lv_description_3_0= ruleEString
+                    // InternalInfluenceDSL.g:1059:5: (lv_description_3_0= ruleEString )
+                    // InternalInfluenceDSL.g:1060:6: lv_description_3_0= ruleEString
                     {
 
                     						newCompositeNode(grammarAccess.getPhysicalPhenomenaAccess().getDescriptionEStringParserRuleCall_2_1_0());
                     					
-                    pushFollow(FOLLOW_24);
+                    pushFollow(FOLLOW_27);
                     lv_description_3_0=ruleEString();
 
                     state._fsp--;
@@ -2190,35 +2479,35 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalInfluenceDSL.g:953:4: (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )*
-                    loop14:
+                    // InternalInfluenceDSL.g:1077:4: (otherlv_4= ',' ( (lv_description_5_0= ruleEString ) ) )*
+                    loop19:
                     do {
-                        int alt14=2;
-                        int LA14_0 = input.LA(1);
+                        int alt19=2;
+                        int LA19_0 = input.LA(1);
 
-                        if ( (LA14_0==16) ) {
-                            alt14=1;
+                        if ( (LA19_0==17) ) {
+                            alt19=1;
                         }
 
 
-                        switch (alt14) {
+                        switch (alt19) {
                     	case 1 :
-                    	    // InternalInfluenceDSL.g:954:5: otherlv_4= ',' ( (lv_description_5_0= ruleEString ) )
+                    	    // InternalInfluenceDSL.g:1078:5: otherlv_4= ',' ( (lv_description_5_0= ruleEString ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,16,FOLLOW_3); 
+                    	    otherlv_4=(Token)match(input,17,FOLLOW_3); 
 
                     	    					newLeafNode(otherlv_4, grammarAccess.getPhysicalPhenomenaAccess().getCommaKeyword_2_2_0());
                     	    				
-                    	    // InternalInfluenceDSL.g:958:5: ( (lv_description_5_0= ruleEString ) )
-                    	    // InternalInfluenceDSL.g:959:6: (lv_description_5_0= ruleEString )
+                    	    // InternalInfluenceDSL.g:1082:5: ( (lv_description_5_0= ruleEString ) )
+                    	    // InternalInfluenceDSL.g:1083:6: (lv_description_5_0= ruleEString )
                     	    {
-                    	    // InternalInfluenceDSL.g:959:6: (lv_description_5_0= ruleEString )
-                    	    // InternalInfluenceDSL.g:960:7: lv_description_5_0= ruleEString
+                    	    // InternalInfluenceDSL.g:1083:6: (lv_description_5_0= ruleEString )
+                    	    // InternalInfluenceDSL.g:1084:7: lv_description_5_0= ruleEString
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getPhysicalPhenomenaAccess().getDescriptionEStringParserRuleCall_2_2_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_24);
+                    	    pushFollow(FOLLOW_27);
                     	    lv_description_5_0=ruleEString();
 
                     	    state._fsp--;
@@ -2232,806 +2521,6 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
                     	    								"description",
                     	    								lv_description_5_0,
                     	    								"fr.inria.kairos.influence.InfluenceDSL.EString");
-                    	    							afterParserOrEnumRuleCall();
-                    	    						
-
-                    	    }
-
-
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop14;
-                        }
-                    } while (true);
-
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "rulePhysicalPhenomena"
-
-
-    // $ANTLR start "entryRuleRequirementSatisfaction"
-    // InternalInfluenceDSL.g:983:1: entryRuleRequirementSatisfaction returns [EObject current=null] : iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF ;
-    public final EObject entryRuleRequirementSatisfaction() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleRequirementSatisfaction = null;
-
-
-        try {
-            // InternalInfluenceDSL.g:983:64: (iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF )
-            // InternalInfluenceDSL.g:984:2: iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF
-            {
-             newCompositeNode(grammarAccess.getRequirementSatisfactionRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleRequirementSatisfaction=ruleRequirementSatisfaction();
-
-            state._fsp--;
-
-             current =iv_ruleRequirementSatisfaction; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleRequirementSatisfaction"
-
-
-    // $ANTLR start "ruleRequirementSatisfaction"
-    // InternalInfluenceDSL.g:990:1: ruleRequirementSatisfaction returns [EObject current=null] : (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) )? ) ;
-    public final EObject ruleRequirementSatisfaction() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_0=null;
-        Token otherlv_2=null;
-        Token otherlv_3=null;
-        Token otherlv_4=null;
-        Token otherlv_6=null;
-        Token otherlv_8=null;
-        Token otherlv_9=null;
-        AntlrDatatypeRuleToken lv_name_1_0 = null;
-
-        AntlrDatatypeRuleToken lv_satisfaction_5_0 = null;
-
-        AntlrDatatypeRuleToken lv_satisfaction_7_0 = null;
-
-        AntlrDatatypeRuleToken lv_metadata_10_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalInfluenceDSL.g:996:2: ( (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) )? ) )
-            // InternalInfluenceDSL.g:997:2: (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) )? )
-            {
-            // InternalInfluenceDSL.g:997:2: (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) )? )
-            // InternalInfluenceDSL.g:998:3: otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) )?
-            {
-            otherlv_0=(Token)match(input,31,FOLLOW_3); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getRequirementSatisfactionAccess().getRequirementKeyword_0());
-            		
-            // InternalInfluenceDSL.g:1002:3: ( (lv_name_1_0= ruleEString ) )
-            // InternalInfluenceDSL.g:1003:4: (lv_name_1_0= ruleEString )
-            {
-            // InternalInfluenceDSL.g:1003:4: (lv_name_1_0= ruleEString )
-            // InternalInfluenceDSL.g:1004:5: lv_name_1_0= ruleEString
-            {
-
-            					newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getNameEStringParserRuleCall_1_0());
-            				
-            pushFollow(FOLLOW_15);
-            lv_name_1_0=ruleEString();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
-            					}
-            					set(
-            						current,
-            						"name",
-            						lv_name_1_0,
-            						"fr.inria.kairos.influence.InfluenceDSL.EString");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            otherlv_2=(Token)match(input,22,FOLLOW_25); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_2());
-            		
-            otherlv_3=(Token)match(input,32,FOLLOW_26); 
-
-            			newLeafNode(otherlv_3, grammarAccess.getRequirementSatisfactionAccess().getSatisfiedKeyword_3());
-            		
-            otherlv_4=(Token)match(input,33,FOLLOW_3); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getRequirementSatisfactionAccess().getWhenKeyword_4());
-            		
-            // InternalInfluenceDSL.g:1033:3: ( (lv_satisfaction_5_0= ruleEString ) )
-            // InternalInfluenceDSL.g:1034:4: (lv_satisfaction_5_0= ruleEString )
-            {
-            // InternalInfluenceDSL.g:1034:4: (lv_satisfaction_5_0= ruleEString )
-            // InternalInfluenceDSL.g:1035:5: lv_satisfaction_5_0= ruleEString
-            {
-
-            					newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_5_0());
-            				
-            pushFollow(FOLLOW_27);
-            lv_satisfaction_5_0=ruleEString();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
-            					}
-            					add(
-            						current,
-            						"satisfaction",
-            						lv_satisfaction_5_0,
-            						"fr.inria.kairos.influence.InfluenceDSL.EString");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            // InternalInfluenceDSL.g:1052:3: (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )*
-            loop16:
-            do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
-
-                if ( (LA16_0==16) ) {
-                    alt16=1;
-                }
-
-
-                switch (alt16) {
-            	case 1 :
-            	    // InternalInfluenceDSL.g:1053:4: otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) )
-            	    {
-            	    otherlv_6=(Token)match(input,16,FOLLOW_3); 
-
-            	    				newLeafNode(otherlv_6, grammarAccess.getRequirementSatisfactionAccess().getCommaKeyword_6_0());
-            	    			
-            	    // InternalInfluenceDSL.g:1057:4: ( (lv_satisfaction_7_0= ruleEString ) )
-            	    // InternalInfluenceDSL.g:1058:5: (lv_satisfaction_7_0= ruleEString )
-            	    {
-            	    // InternalInfluenceDSL.g:1058:5: (lv_satisfaction_7_0= ruleEString )
-            	    // InternalInfluenceDSL.g:1059:6: lv_satisfaction_7_0= ruleEString
-            	    {
-
-            	    						newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_6_1_0());
-            	    					
-            	    pushFollow(FOLLOW_27);
-            	    lv_satisfaction_7_0=ruleEString();
-
-            	    state._fsp--;
-
-
-            	    						if (current==null) {
-            	    							current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
-            	    						}
-            	    						add(
-            	    							current,
-            	    							"satisfaction",
-            	    							lv_satisfaction_7_0,
-            	    							"fr.inria.kairos.influence.InfluenceDSL.EString");
-            	    						afterParserOrEnumRuleCall();
-            	    					
-
-            	    }
-
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop16;
-                }
-            } while (true);
-
-            // InternalInfluenceDSL.g:1077:3: (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
-
-            if ( (LA17_0==34) ) {
-                alt17=1;
-            }
-            switch (alt17) {
-                case 1 :
-                    // InternalInfluenceDSL.g:1078:4: otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) )
-                    {
-                    otherlv_8=(Token)match(input,34,FOLLOW_15); 
-
-                    				newLeafNode(otherlv_8, grammarAccess.getRequirementSatisfactionAccess().getMetadataKeyword_7_0());
-                    			
-                    otherlv_9=(Token)match(input,22,FOLLOW_3); 
-
-                    				newLeafNode(otherlv_9, grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_7_1());
-                    			
-                    // InternalInfluenceDSL.g:1086:4: ( (lv_metadata_10_0= ruleEString ) )
-                    // InternalInfluenceDSL.g:1087:5: (lv_metadata_10_0= ruleEString )
-                    {
-                    // InternalInfluenceDSL.g:1087:5: (lv_metadata_10_0= ruleEString )
-                    // InternalInfluenceDSL.g:1088:6: lv_metadata_10_0= ruleEString
-                    {
-
-                    						newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getMetadataEStringParserRuleCall_7_2_0());
-                    					
-                    pushFollow(FOLLOW_2);
-                    lv_metadata_10_0=ruleEString();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
-                    						}
-                    						add(
-                    							current,
-                    							"metadata",
-                    							lv_metadata_10_0,
-                    							"fr.inria.kairos.influence.InfluenceDSL.EString");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleRequirementSatisfaction"
-
-
-    // $ANTLR start "entryRuleDesignArtifact"
-    // InternalInfluenceDSL.g:1110:1: entryRuleDesignArtifact returns [EObject current=null] : iv_ruleDesignArtifact= ruleDesignArtifact EOF ;
-    public final EObject entryRuleDesignArtifact() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleDesignArtifact = null;
-
-
-        try {
-            // InternalInfluenceDSL.g:1110:55: (iv_ruleDesignArtifact= ruleDesignArtifact EOF )
-            // InternalInfluenceDSL.g:1111:2: iv_ruleDesignArtifact= ruleDesignArtifact EOF
-            {
-             newCompositeNode(grammarAccess.getDesignArtifactRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleDesignArtifact=ruleDesignArtifact();
-
-            state._fsp--;
-
-             current =iv_ruleDesignArtifact; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleDesignArtifact"
-
-
-    // $ANTLR start "ruleDesignArtifact"
-    // InternalInfluenceDSL.g:1117:1: ruleDesignArtifact returns [EObject current=null] : ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) ) ;
-    public final EObject ruleDesignArtifact() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        AntlrDatatypeRuleToken lv_name_2_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalInfluenceDSL.g:1123:2: ( ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) ) )
-            // InternalInfluenceDSL.g:1124:2: ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) )
-            {
-            // InternalInfluenceDSL.g:1124:2: ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) )
-            // InternalInfluenceDSL.g:1125:3: () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) )
-            {
-            // InternalInfluenceDSL.g:1125:3: ()
-            // InternalInfluenceDSL.g:1126:4: 
-            {
-
-            				current = forceCreateModelElement(
-            					grammarAccess.getDesignArtifactAccess().getDesignArtifactAction_0(),
-            					current);
-            			
-
-            }
-
-            otherlv_1=(Token)match(input,35,FOLLOW_3); 
-
-            			newLeafNode(otherlv_1, grammarAccess.getDesignArtifactAccess().getDesignArtifactKeyword_1());
-            		
-            // InternalInfluenceDSL.g:1136:3: ( (lv_name_2_0= ruleEString ) )
-            // InternalInfluenceDSL.g:1137:4: (lv_name_2_0= ruleEString )
-            {
-            // InternalInfluenceDSL.g:1137:4: (lv_name_2_0= ruleEString )
-            // InternalInfluenceDSL.g:1138:5: lv_name_2_0= ruleEString
-            {
-
-            					newCompositeNode(grammarAccess.getDesignArtifactAccess().getNameEStringParserRuleCall_2_0());
-            				
-            pushFollow(FOLLOW_28);
-            lv_name_2_0=ruleEString();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getDesignArtifactRule());
-            					}
-            					set(
-            						current,
-            						"name",
-            						lv_name_2_0,
-            						"fr.inria.kairos.influence.InfluenceDSL.EString");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            otherlv_3=(Token)match(input,36,FOLLOW_17); 
-
-            			newLeafNode(otherlv_3, grammarAccess.getDesignArtifactAccess().getHyphenMinusGreaterThanSignKeyword_3());
-            		
-            // InternalInfluenceDSL.g:1159:3: ( ( ruleQualifiedName ) )
-            // InternalInfluenceDSL.g:1160:4: ( ruleQualifiedName )
-            {
-            // InternalInfluenceDSL.g:1160:4: ( ruleQualifiedName )
-            // InternalInfluenceDSL.g:1161:5: ruleQualifiedName
-            {
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getDesignArtifactRule());
-            					}
-            				
-
-            					newCompositeNode(grammarAccess.getDesignArtifactAccess().getRefEObjectCrossReference_4_0());
-            				
-            pushFollow(FOLLOW_2);
-            ruleQualifiedName();
-
-            state._fsp--;
-
-
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleDesignArtifact"
-
-
-    // $ANTLR start "entryRuleEString"
-    // InternalInfluenceDSL.g:1179:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
-    public final String entryRuleEString() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleEString = null;
-
-
-        try {
-            // InternalInfluenceDSL.g:1179:47: (iv_ruleEString= ruleEString EOF )
-            // InternalInfluenceDSL.g:1180:2: iv_ruleEString= ruleEString EOF
-            {
-             newCompositeNode(grammarAccess.getEStringRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleEString=ruleEString();
-
-            state._fsp--;
-
-             current =iv_ruleEString.getText(); 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleEString"
-
-
-    // $ANTLR start "ruleEString"
-    // InternalInfluenceDSL.g:1186:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
-    public final AntlrDatatypeRuleToken ruleEString() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token this_STRING_0=null;
-        Token this_ID_1=null;
-
-
-        	enterRule();
-
-        try {
-            // InternalInfluenceDSL.g:1192:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
-            // InternalInfluenceDSL.g:1193:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
-            {
-            // InternalInfluenceDSL.g:1193:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
-            int alt18=2;
-            int LA18_0 = input.LA(1);
-
-            if ( (LA18_0==RULE_STRING) ) {
-                alt18=1;
-            }
-            else if ( (LA18_0==RULE_ID) ) {
-                alt18=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
-
-                throw nvae;
-            }
-            switch (alt18) {
-                case 1 :
-                    // InternalInfluenceDSL.g:1194:3: this_STRING_0= RULE_STRING
-                    {
-                    this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
-
-                    			current.merge(this_STRING_0);
-                    		
-
-                    			newLeafNode(this_STRING_0, grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0());
-                    		
-
-                    }
-                    break;
-                case 2 :
-                    // InternalInfluenceDSL.g:1202:3: this_ID_1= RULE_ID
-                    {
-                    this_ID_1=(Token)match(input,RULE_ID,FOLLOW_2); 
-
-                    			current.merge(this_ID_1);
-                    		
-
-                    			newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1());
-                    		
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleEString"
-
-
-    // $ANTLR start "entryRuleSystemResponse"
-    // InternalInfluenceDSL.g:1213:1: entryRuleSystemResponse returns [EObject current=null] : iv_ruleSystemResponse= ruleSystemResponse EOF ;
-    public final EObject entryRuleSystemResponse() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleSystemResponse = null;
-
-
-        try {
-            // InternalInfluenceDSL.g:1213:55: (iv_ruleSystemResponse= ruleSystemResponse EOF )
-            // InternalInfluenceDSL.g:1214:2: iv_ruleSystemResponse= ruleSystemResponse EOF
-            {
-             newCompositeNode(grammarAccess.getSystemResponseRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleSystemResponse=ruleSystemResponse();
-
-            state._fsp--;
-
-             current =iv_ruleSystemResponse; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleSystemResponse"
-
-
-    // $ANTLR start "ruleSystemResponse"
-    // InternalInfluenceDSL.g:1220:1: ruleSystemResponse returns [EObject current=null] : ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? ) ;
-    public final EObject ruleSystemResponse() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_1=null;
-        Token otherlv_2=null;
-        Token otherlv_4=null;
-        Token otherlv_5=null;
-        Token otherlv_7=null;
-        AntlrDatatypeRuleToken lv_name_3_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalInfluenceDSL.g:1226:2: ( ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? ) )
-            // InternalInfluenceDSL.g:1227:2: ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? )
-            {
-            // InternalInfluenceDSL.g:1227:2: ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? )
-            // InternalInfluenceDSL.g:1228:3: () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )?
-            {
-            // InternalInfluenceDSL.g:1228:3: ()
-            // InternalInfluenceDSL.g:1229:4: 
-            {
-
-            				current = forceCreateModelElement(
-            					grammarAccess.getSystemResponseAccess().getSystemResponseAction_0(),
-            					current);
-            			
-
-            }
-
-            otherlv_1=(Token)match(input,25,FOLLOW_19); 
-
-            			newLeafNode(otherlv_1, grammarAccess.getSystemResponseAccess().getSystemKeyword_1());
-            		
-            otherlv_2=(Token)match(input,26,FOLLOW_3); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getSystemResponseAccess().getResponseKeyword_2());
-            		
-            // InternalInfluenceDSL.g:1243:3: ( (lv_name_3_0= ruleEString ) )
-            // InternalInfluenceDSL.g:1244:4: (lv_name_3_0= ruleEString )
-            {
-            // InternalInfluenceDSL.g:1244:4: (lv_name_3_0= ruleEString )
-            // InternalInfluenceDSL.g:1245:5: lv_name_3_0= ruleEString
-            {
-
-            					newCompositeNode(grammarAccess.getSystemResponseAccess().getNameEStringParserRuleCall_3_0());
-            				
-            pushFollow(FOLLOW_29);
-            lv_name_3_0=ruleEString();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getSystemResponseRule());
-            					}
-            					set(
-            						current,
-            						"name",
-            						lv_name_3_0,
-            						"fr.inria.kairos.influence.InfluenceDSL.EString");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            // InternalInfluenceDSL.g:1262:3: (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
-
-            if ( (LA20_0==37) ) {
-                alt20=1;
-            }
-            switch (alt20) {
-                case 1 :
-                    // InternalInfluenceDSL.g:1263:4: otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )*
-                    {
-                    otherlv_4=(Token)match(input,37,FOLLOW_30); 
-
-                    				newLeafNode(otherlv_4, grammarAccess.getSystemResponseAccess().getUsedKeyword_4_0());
-                    			
-                    otherlv_5=(Token)match(input,38,FOLLOW_3); 
-
-                    				newLeafNode(otherlv_5, grammarAccess.getSystemResponseAccess().getInKeyword_4_1());
-                    			
-                    // InternalInfluenceDSL.g:1271:4: ( ( ruleEString ) )
-                    // InternalInfluenceDSL.g:1272:5: ( ruleEString )
-                    {
-                    // InternalInfluenceDSL.g:1272:5: ( ruleEString )
-                    // InternalInfluenceDSL.g:1273:6: ruleEString
-                    {
-
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getSystemResponseRule());
-                    						}
-                    					
-
-                    						newCompositeNode(grammarAccess.getSystemResponseAccess().getUsedInRequirementCrossReference_4_2_0());
-                    					
-                    pushFollow(FOLLOW_12);
-                    ruleEString();
-
-                    state._fsp--;
-
-
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-                    // InternalInfluenceDSL.g:1287:4: (otherlv_7= 'and' ( ( ruleEString ) ) )*
-                    loop19:
-                    do {
-                        int alt19=2;
-                        int LA19_0 = input.LA(1);
-
-                        if ( (LA19_0==20) ) {
-                            int LA19_1 = input.LA(2);
-
-                            if ( ((LA19_1>=RULE_ID && LA19_1<=RULE_STRING)) ) {
-                                alt19=1;
-                            }
-
-
-                        }
-
-
-                        switch (alt19) {
-                    	case 1 :
-                    	    // InternalInfluenceDSL.g:1288:5: otherlv_7= 'and' ( ( ruleEString ) )
-                    	    {
-                    	    otherlv_7=(Token)match(input,20,FOLLOW_3); 
-
-                    	    					newLeafNode(otherlv_7, grammarAccess.getSystemResponseAccess().getAndKeyword_4_3_0());
-                    	    				
-                    	    // InternalInfluenceDSL.g:1292:5: ( ( ruleEString ) )
-                    	    // InternalInfluenceDSL.g:1293:6: ( ruleEString )
-                    	    {
-                    	    // InternalInfluenceDSL.g:1293:6: ( ruleEString )
-                    	    // InternalInfluenceDSL.g:1294:7: ruleEString
-                    	    {
-
-                    	    							if (current==null) {
-                    	    								current = createModelElement(grammarAccess.getSystemResponseRule());
-                    	    							}
-                    	    						
-
-                    	    							newCompositeNode(grammarAccess.getSystemResponseAccess().getUsedInRequirementCrossReference_4_3_1_0());
-                    	    						
-                    	    pushFollow(FOLLOW_12);
-                    	    ruleEString();
-
-                    	    state._fsp--;
-
-
                     	    							afterParserOrEnumRuleCall();
                     	    						
 
@@ -3074,11 +2563,927 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
+    // $ANTLR end "rulePhysicalPhenomena"
+
+
+    // $ANTLR start "entryRuleRequirementSatisfaction"
+    // InternalInfluenceDSL.g:1107:1: entryRuleRequirementSatisfaction returns [EObject current=null] : iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF ;
+    public final EObject entryRuleRequirementSatisfaction() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleRequirementSatisfaction = null;
+
+
+        try {
+            // InternalInfluenceDSL.g:1107:64: (iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF )
+            // InternalInfluenceDSL.g:1108:2: iv_ruleRequirementSatisfaction= ruleRequirementSatisfaction EOF
+            {
+             newCompositeNode(grammarAccess.getRequirementSatisfactionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleRequirementSatisfaction=ruleRequirementSatisfaction();
+
+            state._fsp--;
+
+             current =iv_ruleRequirementSatisfaction; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleRequirementSatisfaction"
+
+
+    // $ANTLR start "ruleRequirementSatisfaction"
+    // InternalInfluenceDSL.g:1114:1: ruleRequirementSatisfaction returns [EObject current=null] : (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )* )? ) ;
+    public final EObject ruleRequirementSatisfaction() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
+        Token otherlv_11=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+        AntlrDatatypeRuleToken lv_satisfaction_5_0 = null;
+
+        AntlrDatatypeRuleToken lv_satisfaction_7_0 = null;
+
+        AntlrDatatypeRuleToken lv_metadata_10_0 = null;
+
+        AntlrDatatypeRuleToken lv_metadata_12_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalInfluenceDSL.g:1120:2: ( (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )* )? ) )
+            // InternalInfluenceDSL.g:1121:2: (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )* )? )
+            {
+            // InternalInfluenceDSL.g:1121:2: (otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )* )? )
+            // InternalInfluenceDSL.g:1122:3: otherlv_0= 'Requirement' ( (lv_name_1_0= ruleEString ) ) otherlv_2= ':' otherlv_3= 'satisfied' otherlv_4= 'when' ( (lv_satisfaction_5_0= ruleEString ) ) (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )* (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )* )?
+            {
+            otherlv_0=(Token)match(input,36,FOLLOW_3); 
+
+            			newLeafNode(otherlv_0, grammarAccess.getRequirementSatisfactionAccess().getRequirementKeyword_0());
+            		
+            // InternalInfluenceDSL.g:1126:3: ( (lv_name_1_0= ruleEString ) )
+            // InternalInfluenceDSL.g:1127:4: (lv_name_1_0= ruleEString )
+            {
+            // InternalInfluenceDSL.g:1127:4: (lv_name_1_0= ruleEString )
+            // InternalInfluenceDSL.g:1128:5: lv_name_1_0= ruleEString
+            {
+
+            					newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getNameEStringParserRuleCall_1_0());
+            				
+            pushFollow(FOLLOW_15);
+            lv_name_1_0=ruleEString();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
+            					}
+            					set(
+            						current,
+            						"name",
+            						lv_name_1_0,
+            						"fr.inria.kairos.influence.InfluenceDSL.EString");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,23,FOLLOW_28); 
+
+            			newLeafNode(otherlv_2, grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_2());
+            		
+            otherlv_3=(Token)match(input,37,FOLLOW_29); 
+
+            			newLeafNode(otherlv_3, grammarAccess.getRequirementSatisfactionAccess().getSatisfiedKeyword_3());
+            		
+            otherlv_4=(Token)match(input,38,FOLLOW_3); 
+
+            			newLeafNode(otherlv_4, grammarAccess.getRequirementSatisfactionAccess().getWhenKeyword_4());
+            		
+            // InternalInfluenceDSL.g:1157:3: ( (lv_satisfaction_5_0= ruleEString ) )
+            // InternalInfluenceDSL.g:1158:4: (lv_satisfaction_5_0= ruleEString )
+            {
+            // InternalInfluenceDSL.g:1158:4: (lv_satisfaction_5_0= ruleEString )
+            // InternalInfluenceDSL.g:1159:5: lv_satisfaction_5_0= ruleEString
+            {
+
+            					newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_5_0());
+            				
+            pushFollow(FOLLOW_30);
+            lv_satisfaction_5_0=ruleEString();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
+            					}
+            					add(
+            						current,
+            						"satisfaction",
+            						lv_satisfaction_5_0,
+            						"fr.inria.kairos.influence.InfluenceDSL.EString");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            // InternalInfluenceDSL.g:1176:3: (otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) ) )*
+            loop21:
+            do {
+                int alt21=2;
+                int LA21_0 = input.LA(1);
+
+                if ( (LA21_0==17) ) {
+                    alt21=1;
+                }
+
+
+                switch (alt21) {
+            	case 1 :
+            	    // InternalInfluenceDSL.g:1177:4: otherlv_6= ',' ( (lv_satisfaction_7_0= ruleEString ) )
+            	    {
+            	    otherlv_6=(Token)match(input,17,FOLLOW_3); 
+
+            	    				newLeafNode(otherlv_6, grammarAccess.getRequirementSatisfactionAccess().getCommaKeyword_6_0());
+            	    			
+            	    // InternalInfluenceDSL.g:1181:4: ( (lv_satisfaction_7_0= ruleEString ) )
+            	    // InternalInfluenceDSL.g:1182:5: (lv_satisfaction_7_0= ruleEString )
+            	    {
+            	    // InternalInfluenceDSL.g:1182:5: (lv_satisfaction_7_0= ruleEString )
+            	    // InternalInfluenceDSL.g:1183:6: lv_satisfaction_7_0= ruleEString
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getSatisfactionEStringParserRuleCall_6_1_0());
+            	    					
+            	    pushFollow(FOLLOW_30);
+            	    lv_satisfaction_7_0=ruleEString();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
+            	    						}
+            	    						add(
+            	    							current,
+            	    							"satisfaction",
+            	    							lv_satisfaction_7_0,
+            	    							"fr.inria.kairos.influence.InfluenceDSL.EString");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop21;
+                }
+            } while (true);
+
+            // InternalInfluenceDSL.g:1201:3: (otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )* )?
+            int alt23=2;
+            int LA23_0 = input.LA(1);
+
+            if ( (LA23_0==28) ) {
+                alt23=1;
+            }
+            switch (alt23) {
+                case 1 :
+                    // InternalInfluenceDSL.g:1202:4: otherlv_8= 'metadata' otherlv_9= ':' ( (lv_metadata_10_0= ruleEString ) ) (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )*
+                    {
+                    otherlv_8=(Token)match(input,28,FOLLOW_15); 
+
+                    				newLeafNode(otherlv_8, grammarAccess.getRequirementSatisfactionAccess().getMetadataKeyword_7_0());
+                    			
+                    otherlv_9=(Token)match(input,23,FOLLOW_3); 
+
+                    				newLeafNode(otherlv_9, grammarAccess.getRequirementSatisfactionAccess().getColonKeyword_7_1());
+                    			
+                    // InternalInfluenceDSL.g:1210:4: ( (lv_metadata_10_0= ruleEString ) )
+                    // InternalInfluenceDSL.g:1211:5: (lv_metadata_10_0= ruleEString )
+                    {
+                    // InternalInfluenceDSL.g:1211:5: (lv_metadata_10_0= ruleEString )
+                    // InternalInfluenceDSL.g:1212:6: lv_metadata_10_0= ruleEString
+                    {
+
+                    						newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getMetadataEStringParserRuleCall_7_2_0());
+                    					
+                    pushFollow(FOLLOW_27);
+                    lv_metadata_10_0=ruleEString();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
+                    						}
+                    						add(
+                    							current,
+                    							"metadata",
+                    							lv_metadata_10_0,
+                    							"fr.inria.kairos.influence.InfluenceDSL.EString");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+                    // InternalInfluenceDSL.g:1229:4: (otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) ) )*
+                    loop22:
+                    do {
+                        int alt22=2;
+                        int LA22_0 = input.LA(1);
+
+                        if ( (LA22_0==17) ) {
+                            alt22=1;
+                        }
+
+
+                        switch (alt22) {
+                    	case 1 :
+                    	    // InternalInfluenceDSL.g:1230:5: otherlv_11= ',' ( (lv_metadata_12_0= ruleEString ) )
+                    	    {
+                    	    otherlv_11=(Token)match(input,17,FOLLOW_3); 
+
+                    	    					newLeafNode(otherlv_11, grammarAccess.getRequirementSatisfactionAccess().getCommaKeyword_7_3_0());
+                    	    				
+                    	    // InternalInfluenceDSL.g:1234:5: ( (lv_metadata_12_0= ruleEString ) )
+                    	    // InternalInfluenceDSL.g:1235:6: (lv_metadata_12_0= ruleEString )
+                    	    {
+                    	    // InternalInfluenceDSL.g:1235:6: (lv_metadata_12_0= ruleEString )
+                    	    // InternalInfluenceDSL.g:1236:7: lv_metadata_12_0= ruleEString
+                    	    {
+
+                    	    							newCompositeNode(grammarAccess.getRequirementSatisfactionAccess().getMetadataEStringParserRuleCall_7_3_1_0());
+                    	    						
+                    	    pushFollow(FOLLOW_27);
+                    	    lv_metadata_12_0=ruleEString();
+
+                    	    state._fsp--;
+
+
+                    	    							if (current==null) {
+                    	    								current = createModelElementForParent(grammarAccess.getRequirementSatisfactionRule());
+                    	    							}
+                    	    							add(
+                    	    								current,
+                    	    								"metadata",
+                    	    								lv_metadata_12_0,
+                    	    								"fr.inria.kairos.influence.InfluenceDSL.EString");
+                    	    							afterParserOrEnumRuleCall();
+                    	    						
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop22;
+                        }
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleRequirementSatisfaction"
+
+
+    // $ANTLR start "entryRuleDesignArtifact"
+    // InternalInfluenceDSL.g:1259:1: entryRuleDesignArtifact returns [EObject current=null] : iv_ruleDesignArtifact= ruleDesignArtifact EOF ;
+    public final EObject entryRuleDesignArtifact() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleDesignArtifact = null;
+
+
+        try {
+            // InternalInfluenceDSL.g:1259:55: (iv_ruleDesignArtifact= ruleDesignArtifact EOF )
+            // InternalInfluenceDSL.g:1260:2: iv_ruleDesignArtifact= ruleDesignArtifact EOF
+            {
+             newCompositeNode(grammarAccess.getDesignArtifactRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleDesignArtifact=ruleDesignArtifact();
+
+            state._fsp--;
+
+             current =iv_ruleDesignArtifact; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleDesignArtifact"
+
+
+    // $ANTLR start "ruleDesignArtifact"
+    // InternalInfluenceDSL.g:1266:1: ruleDesignArtifact returns [EObject current=null] : ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) (otherlv_5= 'changeability' otherlv_6= '=' ( (lv_changeability_7_0= RULE_DOUBLE ) ) )? ) ;
+    public final EObject ruleDesignArtifact() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token lv_changeability_7_0=null;
+        AntlrDatatypeRuleToken lv_name_2_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalInfluenceDSL.g:1272:2: ( ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) (otherlv_5= 'changeability' otherlv_6= '=' ( (lv_changeability_7_0= RULE_DOUBLE ) ) )? ) )
+            // InternalInfluenceDSL.g:1273:2: ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) (otherlv_5= 'changeability' otherlv_6= '=' ( (lv_changeability_7_0= RULE_DOUBLE ) ) )? )
+            {
+            // InternalInfluenceDSL.g:1273:2: ( () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) (otherlv_5= 'changeability' otherlv_6= '=' ( (lv_changeability_7_0= RULE_DOUBLE ) ) )? )
+            // InternalInfluenceDSL.g:1274:3: () otherlv_1= 'DesignArtifact' ( (lv_name_2_0= ruleEString ) ) otherlv_3= '->' ( ( ruleQualifiedName ) ) (otherlv_5= 'changeability' otherlv_6= '=' ( (lv_changeability_7_0= RULE_DOUBLE ) ) )?
+            {
+            // InternalInfluenceDSL.g:1274:3: ()
+            // InternalInfluenceDSL.g:1275:4: 
+            {
+
+            				current = forceCreateModelElement(
+            					grammarAccess.getDesignArtifactAccess().getDesignArtifactAction_0(),
+            					current);
+            			
+
+            }
+
+            otherlv_1=(Token)match(input,39,FOLLOW_3); 
+
+            			newLeafNode(otherlv_1, grammarAccess.getDesignArtifactAccess().getDesignArtifactKeyword_1());
+            		
+            // InternalInfluenceDSL.g:1285:3: ( (lv_name_2_0= ruleEString ) )
+            // InternalInfluenceDSL.g:1286:4: (lv_name_2_0= ruleEString )
+            {
+            // InternalInfluenceDSL.g:1286:4: (lv_name_2_0= ruleEString )
+            // InternalInfluenceDSL.g:1287:5: lv_name_2_0= ruleEString
+            {
+
+            					newCompositeNode(grammarAccess.getDesignArtifactAccess().getNameEStringParserRuleCall_2_0());
+            				
+            pushFollow(FOLLOW_31);
+            lv_name_2_0=ruleEString();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getDesignArtifactRule());
+            					}
+            					set(
+            						current,
+            						"name",
+            						lv_name_2_0,
+            						"fr.inria.kairos.influence.InfluenceDSL.EString");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_3=(Token)match(input,40,FOLLOW_22); 
+
+            			newLeafNode(otherlv_3, grammarAccess.getDesignArtifactAccess().getHyphenMinusGreaterThanSignKeyword_3());
+            		
+            // InternalInfluenceDSL.g:1308:3: ( ( ruleQualifiedName ) )
+            // InternalInfluenceDSL.g:1309:4: ( ruleQualifiedName )
+            {
+            // InternalInfluenceDSL.g:1309:4: ( ruleQualifiedName )
+            // InternalInfluenceDSL.g:1310:5: ruleQualifiedName
+            {
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getDesignArtifactRule());
+            					}
+            				
+
+            					newCompositeNode(grammarAccess.getDesignArtifactAccess().getRefEObjectCrossReference_4_0());
+            				
+            pushFollow(FOLLOW_32);
+            ruleQualifiedName();
+
+            state._fsp--;
+
+
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            // InternalInfluenceDSL.g:1324:3: (otherlv_5= 'changeability' otherlv_6= '=' ( (lv_changeability_7_0= RULE_DOUBLE ) ) )?
+            int alt24=2;
+            int LA24_0 = input.LA(1);
+
+            if ( (LA24_0==41) ) {
+                alt24=1;
+            }
+            switch (alt24) {
+                case 1 :
+                    // InternalInfluenceDSL.g:1325:4: otherlv_5= 'changeability' otherlv_6= '=' ( (lv_changeability_7_0= RULE_DOUBLE ) )
+                    {
+                    otherlv_5=(Token)match(input,41,FOLLOW_33); 
+
+                    				newLeafNode(otherlv_5, grammarAccess.getDesignArtifactAccess().getChangeabilityKeyword_5_0());
+                    			
+                    otherlv_6=(Token)match(input,42,FOLLOW_34); 
+
+                    				newLeafNode(otherlv_6, grammarAccess.getDesignArtifactAccess().getEqualsSignKeyword_5_1());
+                    			
+                    // InternalInfluenceDSL.g:1333:4: ( (lv_changeability_7_0= RULE_DOUBLE ) )
+                    // InternalInfluenceDSL.g:1334:5: (lv_changeability_7_0= RULE_DOUBLE )
+                    {
+                    // InternalInfluenceDSL.g:1334:5: (lv_changeability_7_0= RULE_DOUBLE )
+                    // InternalInfluenceDSL.g:1335:6: lv_changeability_7_0= RULE_DOUBLE
+                    {
+                    lv_changeability_7_0=(Token)match(input,RULE_DOUBLE,FOLLOW_2); 
+
+                    						newLeafNode(lv_changeability_7_0, grammarAccess.getDesignArtifactAccess().getChangeabilityDOUBLETerminalRuleCall_5_2_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getDesignArtifactRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"changeability",
+                    							lv_changeability_7_0,
+                    							"fr.inria.kairos.influence.InfluenceDSL.DOUBLE");
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleDesignArtifact"
+
+
+    // $ANTLR start "entryRuleEString"
+    // InternalInfluenceDSL.g:1356:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
+    public final String entryRuleEString() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleEString = null;
+
+
+        try {
+            // InternalInfluenceDSL.g:1356:47: (iv_ruleEString= ruleEString EOF )
+            // InternalInfluenceDSL.g:1357:2: iv_ruleEString= ruleEString EOF
+            {
+             newCompositeNode(grammarAccess.getEStringRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleEString=ruleEString();
+
+            state._fsp--;
+
+             current =iv_ruleEString.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEString"
+
+
+    // $ANTLR start "ruleEString"
+    // InternalInfluenceDSL.g:1363:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
+    public final AntlrDatatypeRuleToken ruleEString() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_STRING_0=null;
+        Token this_ID_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalInfluenceDSL.g:1369:2: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
+            // InternalInfluenceDSL.g:1370:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            {
+            // InternalInfluenceDSL.g:1370:2: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            int alt25=2;
+            int LA25_0 = input.LA(1);
+
+            if ( (LA25_0==RULE_STRING) ) {
+                alt25=1;
+            }
+            else if ( (LA25_0==RULE_ID) ) {
+                alt25=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 25, 0, input);
+
+                throw nvae;
+            }
+            switch (alt25) {
+                case 1 :
+                    // InternalInfluenceDSL.g:1371:3: this_STRING_0= RULE_STRING
+                    {
+                    this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
+
+                    			current.merge(this_STRING_0);
+                    		
+
+                    			newLeafNode(this_STRING_0, grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalInfluenceDSL.g:1379:3: this_ID_1= RULE_ID
+                    {
+                    this_ID_1=(Token)match(input,RULE_ID,FOLLOW_2); 
+
+                    			current.merge(this_ID_1);
+                    		
+
+                    			newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEString"
+
+
+    // $ANTLR start "entryRuleSystemResponse"
+    // InternalInfluenceDSL.g:1390:1: entryRuleSystemResponse returns [EObject current=null] : iv_ruleSystemResponse= ruleSystemResponse EOF ;
+    public final EObject entryRuleSystemResponse() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleSystemResponse = null;
+
+
+        try {
+            // InternalInfluenceDSL.g:1390:55: (iv_ruleSystemResponse= ruleSystemResponse EOF )
+            // InternalInfluenceDSL.g:1391:2: iv_ruleSystemResponse= ruleSystemResponse EOF
+            {
+             newCompositeNode(grammarAccess.getSystemResponseRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleSystemResponse=ruleSystemResponse();
+
+            state._fsp--;
+
+             current =iv_ruleSystemResponse; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSystemResponse"
+
+
+    // $ANTLR start "ruleSystemResponse"
+    // InternalInfluenceDSL.g:1397:1: ruleSystemResponse returns [EObject current=null] : ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? ) ;
+    public final EObject ruleSystemResponse() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        Token otherlv_7=null;
+        AntlrDatatypeRuleToken lv_name_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalInfluenceDSL.g:1403:2: ( ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? ) )
+            // InternalInfluenceDSL.g:1404:2: ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? )
+            {
+            // InternalInfluenceDSL.g:1404:2: ( () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )? )
+            // InternalInfluenceDSL.g:1405:3: () otherlv_1= 'system' otherlv_2= 'response' ( (lv_name_3_0= ruleEString ) ) (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )?
+            {
+            // InternalInfluenceDSL.g:1405:3: ()
+            // InternalInfluenceDSL.g:1406:4: 
+            {
+
+            				current = forceCreateModelElement(
+            					grammarAccess.getSystemResponseAccess().getSystemResponseAction_0(),
+            					current);
+            			
+
+            }
+
+            otherlv_1=(Token)match(input,26,FOLLOW_18); 
+
+            			newLeafNode(otherlv_1, grammarAccess.getSystemResponseAccess().getSystemKeyword_1());
+            		
+            otherlv_2=(Token)match(input,27,FOLLOW_3); 
+
+            			newLeafNode(otherlv_2, grammarAccess.getSystemResponseAccess().getResponseKeyword_2());
+            		
+            // InternalInfluenceDSL.g:1420:3: ( (lv_name_3_0= ruleEString ) )
+            // InternalInfluenceDSL.g:1421:4: (lv_name_3_0= ruleEString )
+            {
+            // InternalInfluenceDSL.g:1421:4: (lv_name_3_0= ruleEString )
+            // InternalInfluenceDSL.g:1422:5: lv_name_3_0= ruleEString
+            {
+
+            					newCompositeNode(grammarAccess.getSystemResponseAccess().getNameEStringParserRuleCall_3_0());
+            				
+            pushFollow(FOLLOW_35);
+            lv_name_3_0=ruleEString();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getSystemResponseRule());
+            					}
+            					set(
+            						current,
+            						"name",
+            						lv_name_3_0,
+            						"fr.inria.kairos.influence.InfluenceDSL.EString");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            // InternalInfluenceDSL.g:1439:3: (otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )* )?
+            int alt27=2;
+            int LA27_0 = input.LA(1);
+
+            if ( (LA27_0==43) ) {
+                alt27=1;
+            }
+            switch (alt27) {
+                case 1 :
+                    // InternalInfluenceDSL.g:1440:4: otherlv_4= 'used' otherlv_5= 'in' ( ( ruleEString ) ) (otherlv_7= 'and' ( ( ruleEString ) ) )*
+                    {
+                    otherlv_4=(Token)match(input,43,FOLLOW_36); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getSystemResponseAccess().getUsedKeyword_4_0());
+                    			
+                    otherlv_5=(Token)match(input,44,FOLLOW_3); 
+
+                    				newLeafNode(otherlv_5, grammarAccess.getSystemResponseAccess().getInKeyword_4_1());
+                    			
+                    // InternalInfluenceDSL.g:1448:4: ( ( ruleEString ) )
+                    // InternalInfluenceDSL.g:1449:5: ( ruleEString )
+                    {
+                    // InternalInfluenceDSL.g:1449:5: ( ruleEString )
+                    // InternalInfluenceDSL.g:1450:6: ruleEString
+                    {
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getSystemResponseRule());
+                    						}
+                    					
+
+                    						newCompositeNode(grammarAccess.getSystemResponseAccess().getUsedInRequirementCrossReference_4_2_0());
+                    					
+                    pushFollow(FOLLOW_12);
+                    ruleEString();
+
+                    state._fsp--;
+
+
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+                    // InternalInfluenceDSL.g:1464:4: (otherlv_7= 'and' ( ( ruleEString ) ) )*
+                    loop26:
+                    do {
+                        int alt26=2;
+                        int LA26_0 = input.LA(1);
+
+                        if ( (LA26_0==21) ) {
+                            int LA26_1 = input.LA(2);
+
+                            if ( (LA26_1==RULE_ID||LA26_1==RULE_STRING) ) {
+                                alt26=1;
+                            }
+
+
+                        }
+
+
+                        switch (alt26) {
+                    	case 1 :
+                    	    // InternalInfluenceDSL.g:1465:5: otherlv_7= 'and' ( ( ruleEString ) )
+                    	    {
+                    	    otherlv_7=(Token)match(input,21,FOLLOW_3); 
+
+                    	    					newLeafNode(otherlv_7, grammarAccess.getSystemResponseAccess().getAndKeyword_4_3_0());
+                    	    				
+                    	    // InternalInfluenceDSL.g:1469:5: ( ( ruleEString ) )
+                    	    // InternalInfluenceDSL.g:1470:6: ( ruleEString )
+                    	    {
+                    	    // InternalInfluenceDSL.g:1470:6: ( ruleEString )
+                    	    // InternalInfluenceDSL.g:1471:7: ruleEString
+                    	    {
+
+                    	    							if (current==null) {
+                    	    								current = createModelElement(grammarAccess.getSystemResponseRule());
+                    	    							}
+                    	    						
+
+                    	    							newCompositeNode(grammarAccess.getSystemResponseAccess().getUsedInRequirementCrossReference_4_3_1_0());
+                    	    						
+                    	    pushFollow(FOLLOW_12);
+                    	    ruleEString();
+
+                    	    state._fsp--;
+
+
+                    	    							afterParserOrEnumRuleCall();
+                    	    						
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop26;
+                        }
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
     // $ANTLR end "ruleSystemResponse"
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // InternalInfluenceDSL.g:1314:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // InternalInfluenceDSL.g:1491:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -3086,8 +3491,8 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalInfluenceDSL.g:1314:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // InternalInfluenceDSL.g:1315:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // InternalInfluenceDSL.g:1491:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // InternalInfluenceDSL.g:1492:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
              newCompositeNode(grammarAccess.getQualifiedNameRule()); 
             pushFollow(FOLLOW_1);
@@ -3114,7 +3519,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // InternalInfluenceDSL.g:1321:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    // InternalInfluenceDSL.g:1498:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3126,40 +3531,40 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalInfluenceDSL.g:1327:2: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
-            // InternalInfluenceDSL.g:1328:2: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // InternalInfluenceDSL.g:1504:2: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // InternalInfluenceDSL.g:1505:2: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             {
-            // InternalInfluenceDSL.g:1328:2: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
-            // InternalInfluenceDSL.g:1329:3: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            // InternalInfluenceDSL.g:1505:2: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // InternalInfluenceDSL.g:1506:3: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_31); 
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_37); 
 
             			current.merge(this_ID_0);
             		
 
             			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
             		
-            // InternalInfluenceDSL.g:1336:3: (kw= '.' this_ID_2= RULE_ID )*
-            loop21:
+            // InternalInfluenceDSL.g:1513:3: (kw= '.' this_ID_2= RULE_ID )*
+            loop28:
             do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( (LA21_0==39) ) {
-                    alt21=1;
+                if ( (LA28_0==45) ) {
+                    alt28=1;
                 }
 
 
-                switch (alt21) {
+                switch (alt28) {
             	case 1 :
-            	    // InternalInfluenceDSL.g:1337:4: kw= '.' this_ID_2= RULE_ID
+            	    // InternalInfluenceDSL.g:1514:4: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,39,FOLLOW_17); 
+            	    kw=(Token)match(input,45,FOLLOW_22); 
 
             	    				current.merge(kw);
             	    				newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0());
             	    			
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_31); 
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_37); 
 
             	    				current.merge(this_ID_2);
             	    			
@@ -3171,7 +3576,7 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop21;
+            	    break loop28;
                 }
             } while (true);
 
@@ -3203,34 +3608,40 @@ public class InternalInfluenceDSLParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000030L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00000008C0006002L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000070000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000008000030L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000230000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000003800000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000008100000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000020010000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000400002L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000400010002L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000002000000002L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000008000000002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000050L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x000000980000C002L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x00000000000E0000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000400000050L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000460000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000007000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000090200000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x00000000F0200000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x00000000D0220000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000090220000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000200020000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000800002L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000010020002L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000080000000002L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000200000000002L});
 
 }

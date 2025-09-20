@@ -1,43 +1,27 @@
 package fr.inria.kairos.influence;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.xtend.lib.annotations.AccessorType;
 import org.eclipse.xtend.lib.annotations.Accessors;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
 public class MetadataUtil {
-  /**
-   * Artifact/phenomenon weights.
-   */
-  @Accessors(AccessorType.PUBLIC_GETTER)
+  @Accessors
   public static class Weights {
-    private double likelihood = 1.0;
+    private final double likelihood = 1.0;
 
-    private double strength = 1.0;
+    private final double strength = 1.0;
 
-    private double confidence = 1.0;
-
-    @Override
-    public String toString() {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("(likelihood=");
-      _builder.append(this.likelihood);
-      _builder.append(", strength=");
-      _builder.append(this.strength);
-      _builder.append(", confidence=");
-      _builder.append(this.confidence);
-      _builder.append(")");
-      return _builder.toString();
-    }
+    private final double confidence = 1.0;
 
     @Pure
     public double getLikelihood() {
@@ -55,67 +39,126 @@ public class MetadataUtil {
     }
   }
 
+  /**
+   * Parsed likelihoods per element type.
+   */
+  @Accessors
+  public static class PerElement {
+    private final HashMap<String, Double> artifacts = new HashMap<String, Double>();
+
+    private final HashMap<String, Double> phenomena = new HashMap<String, Double>();
+
+    private final HashMap<String, Double> systemResponses = new HashMap<String, Double>();
+
+    @Pure
+    public HashMap<String, Double> getArtifacts() {
+      return this.artifacts;
+    }
+
+    @Pure
+    public HashMap<String, Double> getPhenomena() {
+      return this.phenomena;
+    }
+
+    @Pure
+    public HashMap<String, Double> getSystemResponses() {
+      return this.systemResponses;
+    }
+  }
+
   private static final String NUMBER = "[-+]?\\d*\\.?\\d+(?:[eE][-+]?\\d+)?";
 
-  private static final Pattern KEYVAL_LSC = Pattern.compile(
-    (("(?i)\\b(likelihood|strength|confidence)\\b\\s*=\\s*(" + MetadataUtil.NUMBER) + ")"));
-
   /**
-   * Parse artifact/phenomenon/system-response metadata: "likelihood=0.7, strength=0.8, confidence=0.9".
+   * Accept items like: "artifact motorSpeed 0.8", "system response \"TTC\" 0.9", "phenomena 'wind' 0.3"
    */
-  public static MetadataUtil.Weights parseWeights(final String meta) {
-    MetadataUtil.Weights _xblockexpression = null;
+  private static final Pattern ITEM = Pattern.compile(
+    (((("(?is)^\\s*(artifact|phenomena|system\\s+response)\\s+" + 
+      "(?:\"([^\"]+)\"|\'([^\']+)\'|(.+?))\\s+") + 
+      "(") + MetadataUtil.NUMBER) + ")\\s*$"));
+
+  public static MetadataUtil.PerElement parsePerElement(final List<String> items) {
+    MetadataUtil.PerElement _xblockexpression = null;
     {
-      final MetadataUtil.Weights w = new MetadataUtil.Weights();
-      if ((meta == null)) {
-        return w;
+      final MetadataUtil.PerElement out = new MetadataUtil.PerElement();
+      if ((items == null)) {
+        return out;
       }
-      String s = meta.trim();
-      if ((s.startsWith("{") && s.endsWith("}"))) {
-        int _length = s.length();
-        int _minus = (_length - 1);
-        s = s.substring(1, _minus).trim();
-      }
-      if (((s.startsWith("\"") && s.endsWith("\"")) || (s.startsWith("\'") && s.endsWith("\'")))) {
-        int _length_1 = s.length();
-        int _minus_1 = (_length_1 - 1);
-        s = s.substring(1, _minus_1);
-      }
-      final Matcher m = MetadataUtil.KEYVAL_LSC.matcher(s);
-      while (m.find()) {
-        {
-          final String key = m.group(1).toLowerCase();
-          final double v = Double.parseDouble(m.group(2));
-          if (key != null) {
-            switch (key) {
-              case "likelihood":
-                w.likelihood = v;
-                break;
-              case "strength":
-                w.strength = v;
-                break;
-              case "confidence":
-                w.confidence = v;
-                break;
+      for (final String raw : items) {
+        if ((raw != null)) {
+          final String s = raw.trim();
+          boolean _isEmpty = s.isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            final Matcher m = MetadataUtil.ITEM.matcher(s);
+            boolean _matches = m.matches();
+            if (_matches) {
+              final String kind = m.group(1).toLowerCase();
+              String _xifexpression = null;
+              String _group = m.group(2);
+              boolean _tripleNotEquals = (_group != null);
+              if (_tripleNotEquals) {
+                _xifexpression = m.group(2);
+              } else {
+                String _xifexpression_1 = null;
+                String _group_1 = m.group(3);
+                boolean _tripleNotEquals_1 = (_group_1 != null);
+                if (_tripleNotEquals_1) {
+                  _xifexpression_1 = m.group(3);
+                } else {
+                  String _xifexpression_2 = null;
+                  String _group_2 = m.group(4);
+                  boolean _tripleNotEquals_2 = (_group_2 != null);
+                  if (_tripleNotEquals_2) {
+                    _xifexpression_2 = m.group(4);
+                  } else {
+                    _xifexpression_2 = "";
+                  }
+                  _xifexpression_1 = _xifexpression_2;
+                }
+                _xifexpression = _xifexpression_1;
+              }
+              final String name = _xifexpression.trim();
+              final double v = Double.parseDouble(m.group(5));
+              if (kind != null) {
+                switch (kind) {
+                  case "artifact":
+                    out.artifacts.put(name, Double.valueOf(v));
+                    break;
+                  case "phenomena":
+                    out.phenomena.put(name, Double.valueOf(v));
+                    break;
+                  case "system response":
+                    out.systemResponses.put(name, Double.valueOf(v));
+                    break;
+                }
+              }
             }
           }
         }
       }
-      _xblockexpression = w;
+      _xblockexpression = out;
     }
     return _xblockexpression;
   }
 
   /**
-   * Returns numeric requirement priority if present (null if absent). Accepts: priority=0.85
+   * Convenience if you store a single CSV string instead of a list attribute.
    */
+  public static MetadataUtil.PerElement parsePerElementCSV(final String csv) {
+    MetadataUtil.PerElement _xblockexpression = null;
+    {
+      if (((csv == null) || csv.trim().isEmpty())) {
+        return new MetadataUtil.PerElement();
+      }
+      _xblockexpression = MetadataUtil.parsePerElement(Arrays.<String>asList(csv.split("\\s*,\\s*")));
+    }
+    return _xblockexpression;
+  }
+
   public static Double extractPriorityNumber(final String meta) {
     return MetadataUtil.extractDouble(meta, "priority");
   }
 
-  /**
-   * Returns labeled requirement priority if present (null if absent). Accepts: priority=high|medium|low
-   */
   public static String extractPriorityLabel(final String meta) {
     return MetadataUtil.extractWord(meta, "priority");
   }
@@ -145,9 +188,6 @@ public class MetadataUtil {
     return _xblockexpression;
   }
 
-  /**
-   * key = word or key = "word"  String or null if absent.
-   */
   public static String extractWord(final String meta, final String key) {
     String _xblockexpression = null;
     {
@@ -171,9 +211,6 @@ public class MetadataUtil {
     return _xblockexpression;
   }
 
-  /**
-   * trims and strips surrounding braces/quotes if the dev added them.
-   */
   private static String sanitize(final String meta) {
     String _xblockexpression = null;
     {
@@ -229,7 +266,7 @@ public class MetadataUtil {
   }
 
   /**
-   * Safely get 'metadata' as a single String from any EObject. Joins lists with ", ".
+   * Requirement metadata lists.
    */
   public static String metadataSafe(final EObject o) {
     String _xblockexpression = null;

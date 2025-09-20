@@ -5,12 +5,15 @@ package fr.inria.kairos.influence.metamodel.provider;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
 import fr.inria.kairos.influence.metamodel.MetamodelFactory;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 

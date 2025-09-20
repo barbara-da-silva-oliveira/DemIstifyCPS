@@ -96,98 +96,6 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Influence} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InfluenceItemProvider influenceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Influence}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInfluenceAdapter() {
-		if (influenceItemProvider == null) {
-			influenceItemProvider = new InfluenceItemProvider(this);
-		}
-
-		return influenceItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Function} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FunctionItemProvider functionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Function}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFunctionAdapter() {
-		if (functionItemProvider == null) {
-			functionItemProvider = new FunctionItemProvider(this);
-		}
-
-		return functionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.CompositeFunction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CompositeFunctionItemProvider compositeFunctionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.CompositeFunction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCompositeFunctionAdapter() {
-		if (compositeFunctionItemProvider == null) {
-			compositeFunctionItemProvider = new CompositeFunctionItemProvider(this);
-		}
-
-		return compositeFunctionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Metadata} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MetadataItemProvider metadataItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Metadata}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMetadataAdapter() {
-		if (metadataItemProvider == null) {
-			metadataItemProvider = new MetadataItemProvider(this);
-		}
-
-		return metadataItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SystemResponse} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -300,6 +208,75 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 		}
 
 		return compositeInfluenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Influence} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InfluenceItemProvider influenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Influence}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInfluenceAdapter() {
+		if (influenceItemProvider == null) {
+			influenceItemProvider = new InfluenceItemProvider(this);
+		}
+
+		return influenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Function} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionItemProvider functionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Function}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionAdapter() {
+		if (functionItemProvider == null) {
+			functionItemProvider = new FunctionItemProvider(this);
+		}
+
+		return functionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.CompositeFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CompositeFunctionItemProvider compositeFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.CompositeFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCompositeFunctionAdapter() {
+		if (compositeFunctionItemProvider == null) {
+			compositeFunctionItemProvider = new CompositeFunctionItemProvider(this);
+		}
+
+		return compositeFunctionItemProvider;
 	}
 
 	/**
@@ -425,8 +402,6 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 			functionItemProvider.dispose();
 		if (compositeFunctionItemProvider != null)
 			compositeFunctionItemProvider.dispose();
-		if (metadataItemProvider != null)
-			metadataItemProvider.dispose();
 	}
 
 }

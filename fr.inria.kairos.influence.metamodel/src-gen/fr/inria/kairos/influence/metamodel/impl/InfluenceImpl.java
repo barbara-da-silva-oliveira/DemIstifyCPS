@@ -5,7 +5,6 @@ package fr.inria.kairos.influence.metamodel.impl;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Function;
 import fr.inria.kairos.influence.metamodel.Influence;
-import fr.inria.kairos.influence.metamodel.Metadata;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.SystemResponse;
@@ -16,9 +15,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOriginatorArtifact <em>Originator Artifact</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOriginatorSystemResponse <em>Originator System Response</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOwnedFunction <em>Owned Function</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getPerElementMetadata <em>Per Element Metadata</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getLikelihoodPerElement <em>Likelihood Per Element</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getConfidence <em>Confidence</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,14 +76,23 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	protected Function ownedFunction;
 
 	/**
-	 * The cached value of the '{@link #getPerElementMetadata() <em>Per Element Metadata</em>}' containment reference list.
+	 * The cached value of the '{@link #getLikelihoodPerElement() <em>Likelihood Per Element</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPerElementMetadata()
+	 * @see #getLikelihoodPerElement()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Metadata> perElementMetadata;
+	protected EList<String> likelihoodPerElement;
+	/**
+	 * The cached value of the '{@link #getConfidence() <em>Confidence</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfidence()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> confidence;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,12 +213,25 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	 * @generated
 	 */
 	@Override
-	public EList<Metadata> getPerElementMetadata() {
-		if (perElementMetadata == null) {
-			perElementMetadata = new EObjectContainmentEList<Metadata>(Metadata.class, this,
-					MetamodelPackage.INFLUENCE__PER_ELEMENT_METADATA);
+	public EList<String> getLikelihoodPerElement() {
+		if (likelihoodPerElement == null) {
+			likelihoodPerElement = new EDataTypeUniqueEList<String>(String.class, this,
+					MetamodelPackage.INFLUENCE__LIKELIHOOD_PER_ELEMENT);
 		}
-		return perElementMetadata;
+		return likelihoodPerElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<String> getConfidence() {
+		if (confidence == null) {
+			confidence = new EDataTypeUniqueEList<String>(String.class, this, MetamodelPackage.INFLUENCE__CONFIDENCE);
+		}
+		return confidence;
 	}
 
 	/**
@@ -223,8 +244,6 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE__OWNED_FUNCTION:
 			return basicSetOwnedFunction(null, msgs);
-		case MetamodelPackage.INFLUENCE__PER_ELEMENT_METADATA:
-			return ((InternalEList<?>) getPerElementMetadata()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -245,8 +264,10 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 			return getOriginatorSystemResponse();
 		case MetamodelPackage.INFLUENCE__OWNED_FUNCTION:
 			return getOwnedFunction();
-		case MetamodelPackage.INFLUENCE__PER_ELEMENT_METADATA:
-			return getPerElementMetadata();
+		case MetamodelPackage.INFLUENCE__LIKELIHOOD_PER_ELEMENT:
+			return getLikelihoodPerElement();
+		case MetamodelPackage.INFLUENCE__CONFIDENCE:
+			return getConfidence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -275,9 +296,13 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 		case MetamodelPackage.INFLUENCE__OWNED_FUNCTION:
 			setOwnedFunction((Function) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE__PER_ELEMENT_METADATA:
-			getPerElementMetadata().clear();
-			getPerElementMetadata().addAll((Collection<? extends Metadata>) newValue);
+		case MetamodelPackage.INFLUENCE__LIKELIHOOD_PER_ELEMENT:
+			getLikelihoodPerElement().clear();
+			getLikelihoodPerElement().addAll((Collection<? extends String>) newValue);
+			return;
+		case MetamodelPackage.INFLUENCE__CONFIDENCE:
+			getConfidence().clear();
+			getConfidence().addAll((Collection<? extends String>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -303,8 +328,11 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 		case MetamodelPackage.INFLUENCE__OWNED_FUNCTION:
 			setOwnedFunction((Function) null);
 			return;
-		case MetamodelPackage.INFLUENCE__PER_ELEMENT_METADATA:
-			getPerElementMetadata().clear();
+		case MetamodelPackage.INFLUENCE__LIKELIHOOD_PER_ELEMENT:
+			getLikelihoodPerElement().clear();
+			return;
+		case MetamodelPackage.INFLUENCE__CONFIDENCE:
+			getConfidence().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -326,10 +354,31 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 			return originatorSystemResponse != null && !originatorSystemResponse.isEmpty();
 		case MetamodelPackage.INFLUENCE__OWNED_FUNCTION:
 			return ownedFunction != null;
-		case MetamodelPackage.INFLUENCE__PER_ELEMENT_METADATA:
-			return perElementMetadata != null && !perElementMetadata.isEmpty();
+		case MetamodelPackage.INFLUENCE__LIKELIHOOD_PER_ELEMENT:
+			return likelihoodPerElement != null && !likelihoodPerElement.isEmpty();
+		case MetamodelPackage.INFLUENCE__CONFIDENCE:
+			return confidence != null && !confidence.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (likelihoodPerElement: ");
+		result.append(likelihoodPerElement);
+		result.append(", confidence: ");
+		result.append(confidence);
+		result.append(')');
+		return result.toString();
 	}
 
 } //InfluenceImpl

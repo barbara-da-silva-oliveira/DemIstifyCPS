@@ -10,8 +10,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link fr.inria.kairos.influence.metamodel.DesignArtifact} object.
@@ -42,6 +45,7 @@ public class DesignArtifactItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addRefPropertyDescriptor(object);
+			addChangeabilityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -59,6 +63,22 @@ public class DesignArtifactItemProvider extends NamedElementItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_DesignArtifact_ref_feature",
 								"_UI_DesignArtifact_type"),
 						MetamodelPackage.Literals.DESIGN_ARTIFACT__REF, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Changeability feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addChangeabilityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_DesignArtifact_changeability_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_DesignArtifact_changeability_feature",
+								"_UI_DesignArtifact_type"),
+						MetamodelPackage.Literals.DESIGN_ARTIFACT__CHANGEABILITY, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -105,6 +125,12 @@ public class DesignArtifactItemProvider extends NamedElementItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(DesignArtifact.class)) {
+		case MetamodelPackage.DESIGN_ARTIFACT__CHANGEABILITY:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		}
 		super.notifyChanged(notification);
 	}
 

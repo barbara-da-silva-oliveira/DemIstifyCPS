@@ -17,7 +17,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact <em>Originator Artifact</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorSystemResponse <em>Originator System Response</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction <em>Owned Function</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getPerElementMetadata <em>Per Element Metadata</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getLikelihoodPerElement <em>Likelihood Per Element</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getConfidence <em>Confidence</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence()
@@ -85,15 +86,27 @@ public interface Influence extends AbstractInfluence {
 	void setOwnedFunction(Function value);
 
 	/**
-	 * Returns the value of the '<em><b>Per Element Metadata</b></em>' containment reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Metadata}.
+	 * Returns the value of the '<em><b>Likelihood Per Element</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Per Element Metadata</em>' containment reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_PerElementMetadata()
-	 * @model containment="true"
+	 * @return the value of the '<em>Likelihood Per Element</em>' attribute list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_LikelihoodPerElement()
+	 * @model
 	 * @generated
 	 */
-	EList<Metadata> getPerElementMetadata();
+	EList<String> getLikelihoodPerElement();
+
+	/**
+	 * Returns the value of the '<em><b>Confidence</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Confidence</em>' attribute list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_Confidence()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getConfidence();
 
 } // Influence

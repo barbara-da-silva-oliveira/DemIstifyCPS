@@ -41,10 +41,8 @@ Workflow {
 
 			fragment = exporting.QualifiedNamesFragment2 auto-inject {}
 			
-			fragment = scoping.ImportNamespacesScopingFragment2 auto-inject {
-		
-			}
-
+			fragment = scoping.ImportNamespacesScopingFragment2 auto-inject {}
+			
 			formatter = {
 				generateStub = true
 				generateXtendStub = true

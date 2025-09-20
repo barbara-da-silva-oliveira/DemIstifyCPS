@@ -19,6 +19,7 @@ import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
+import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.Requirement;
 import fr.inria.kairos.influence.metamodel.SystemResponse;
 
@@ -78,8 +79,6 @@ public class InfluenceDSLValidator extends AbstractInfluenceDSLValidator {
                 		null,
                 		-1
                 		);
-                
-                
             }
         }
     }
@@ -144,12 +143,12 @@ public class InfluenceDSLValidator extends AbstractInfluenceDSLValidator {
             	}
             	
             	info(
-            			"If you modify artifact '" + src.getName() + "', you will affect '" + tgt.getName() + " which itself has impact "+ tgtImpact, inf, 
+            			"If you modify artifact '" + src.getName() + "', you will affect '" + tgt.getName() + " which itself originates "+ tgtImpact, inf, 
                         MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_ARTIFACT
                     );
             	
             	info(
-            			"If you modify artifact '" + src.getName() + "', you will affect '" + tgt.getName() + " which itself has impact "+ tgtImpact,
+            			"If you modify artifact '" + src.getName() + "', you will affect '" + tgt.getName() + " which itself originates "+ tgtImpact,
             			src, 
             			MetamodelPackage.Literals.DESIGN_ARTIFACT__REF
                     );
@@ -167,13 +166,86 @@ public class InfluenceDSLValidator extends AbstractInfluenceDSLValidator {
 				} catch (CoreException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+					}
             	
 
             }
         }
     }
+    
+    
+    @Check
+    public void checkPhenomena(Influence inf) {
+        for (PhysicalPhenomena src : inf.getOriginatorPhenomena()) {
+            for (SystemResponse tgt : inf.getAffects()) {
+            	
+            	Integer tgtImpact = 0;
+            	if (inf.eContainer() instanceof InfluenceModel) {
+	            	for (AbstractInfluence inf2 : ((InfluenceModel)inf.eContainer()).getOwnedInfluences()) {
+	                    if (inf2 instanceof Influence) {
+		            		if (((Influence) inf2).getOriginatorSystemResponse().contains(tgt)) {    
+		                    	tgtImpact++;
+		                    }
+	                    }else {
+	                    	System.err.println("warning: Composite Influences in /fr.inria.kairos.influence.dsl/src/fr/inria/kairos/influence/validation/InfluenceDSLValidator.java is not handled");
+	                    }
+	                }
+            	}else {
+            		info(
+                			"checkChangePhenomena should be adapted tohandle Composite influence" , inf, 
+                            MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_PHENOMENA
+                        );
+            	}
+            	
+            	info(
+            			"Phenomena '" + src.getName() + "', affects '" + tgt.getName() + " which itself originates "+ tgtImpact, inf, 
+                        MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_PHENOMENA
+                    );
+            	
+            	info(
+            			"Phenomena '" + src.getName() + "',  affects '" + tgt.getName() + " which itself originates "+ tgtImpact,
+            			src, 
+            			MetamodelPackage.Literals.PHYSICAL_PHENOMENA__DESCRIPTION
+                    );
+            	
+            	
 
+            }
+        }
+    }
+    
+   
+    
+    @Check
+    public void checkRequirementSensibility(Requirement req) {
+        int reqSens = 0;
+        java.util.Set<String> srNames = new java.util.LinkedHashSet<>();
+        InfluenceModel model = org.eclipse.xtext.EcoreUtil2.getContainerOfType(req, InfluenceModel.class);
+        if (model != null) {
+            for (AbstractInfluence inf2 : model.getOwnedInfluences()) {
+                if (inf2 instanceof Influence) {
+                    for (SystemResponse sr : ((Influence) inf2).getAffects()) {
+                        if (sr.getUsedIn() != null && sr.getUsedIn().contains(req)) { 
+                        	reqSens++;
+                        	String n = sr.getName();
+                        	srNames.add(n);
+                        }
+                    }
+
+                    
+                }
+                
+            }
+        }
+        String list = srNames.isEmpty() ? "" : " via: " + String.join(", ", srNames);
+        info("Requirement affected by " + reqSens + " system response(s): " + list + "." ,
+                req, 
+                MetamodelPackage.Literals.NAMED_ELEMENT__NAME,
+                -1);
+        
+    }
+    
+    
 }
             	
 //            	

@@ -10,7 +10,6 @@ import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Function;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
-import fr.inria.kairos.influence.metamodel.Metadata;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.Requirement;
@@ -58,9 +57,6 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 				return; 
 			case MetamodelPackage.INFLUENCE_MODEL:
 				sequence_InfluenceModel(context, (InfluenceModel) semanticObject); 
-				return; 
-			case MetamodelPackage.METADATA:
-				sequence_Metadata(context, (Metadata) semanticObject); 
 				return; 
 			case MetamodelPackage.PHYSICAL_PHENOMENA:
 				sequence_PhysicalPhenomena(context, (PhysicalPhenomena) semanticObject); 
@@ -119,20 +115,11 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     DesignArtifact returns DesignArtifact
 	 *
 	 * Constraint:
-	 *     (name=EString ref=[EObject|QualifiedName])
+	 *     (name=EString ref=[EObject|QualifiedName] changeability=DOUBLE?)
 	 * </pre>
 	 */
 	protected void sequence_DesignArtifact(ISerializationContext context, DesignArtifact semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MetamodelPackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MetamodelPackage.Literals.NAMED_ELEMENT__NAME));
-			if (transientValues.isValueTransient(semanticObject, MetamodelPackage.Literals.DESIGN_ARTIFACT__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MetamodelPackage.Literals.DESIGN_ARTIFACT__REF));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDesignArtifactAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getDesignArtifactAccess().getRefEObjectQualifiedNameParserRuleCall_4_0_1(), semanticObject.eGet(MetamodelPackage.Literals.DESIGN_ARTIFACT__REF, false));
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -192,12 +179,18 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *         name=EString 
 	 *         description+=EString 
 	 *         description+=EString* 
-	 *         (originatorArtifact+=[DesignArtifact|ID] | originatorPhenomena+=[PhysicalPhenomena|EString] | originatorSystemResponse+=[SystemResponse|EString]) 
-	 *         originatorArtifact+=[DesignArtifact|ID]? 
+	 *         (
+	 *             originatorArtifact+=[DesignArtifact|EString] | 
+	 *             originatorPhenomena+=[PhysicalPhenomena|EString] | 
+	 *             originatorSystemResponse+=[SystemResponse|EString]
+	 *         ) 
+	 *         originatorArtifact+=[DesignArtifact|EString]? 
 	 *         (
 	 *             (originatorPhenomena+=[PhysicalPhenomena|EString] | originatorSystemResponse+=[SystemResponse|EString])? 
-	 *             originatorArtifact+=[DesignArtifact|ID]?
+	 *             originatorArtifact+=[DesignArtifact|EString]?
 	 *         )* 
+	 *         (likelihoodPerElement+=EString likelihoodPerElement+=EString*)? 
+	 *         (confidence+=EString confidence+=EString*)? 
 	 *         ownedFunction=Function 
 	 *         affects+=SystemResponse 
 	 *         affects+=SystemResponse*
@@ -205,25 +198,6 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 * </pre>
 	 */
 	protected void sequence_Influence(ISerializationContext context, Influence semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Metadata returns Metadata
-	 *
-	 * Constraint:
-	 *     (
-	 *         (element=[DesignArtifact|ID] | element=[PhysicalPhenomena|EString] | element=[SystemResponse|EString]) 
-	 *         likelihood=DOUBLE? 
-	 *         strength=DOUBLE? 
-	 *         confidence=DOUBLE?
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_Metadata(ISerializationContext context, Metadata semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -248,7 +222,7 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     RequirementSatisfaction returns Requirement
 	 *
 	 * Constraint:
-	 *     (name=EString satisfaction+=EString satisfaction+=EString* metadata+=EString?)
+	 *     (name=EString satisfaction+=EString satisfaction+=EString* (metadata+=EString metadata+=EString*)?)
 	 * </pre>
 	 */
 	protected void sequence_RequirementSatisfaction(ISerializationContext context, Requirement semanticObject) {

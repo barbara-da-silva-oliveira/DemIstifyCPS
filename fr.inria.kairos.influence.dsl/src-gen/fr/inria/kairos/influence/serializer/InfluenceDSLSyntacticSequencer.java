@@ -11,7 +11,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -23,14 +23,14 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected InfluenceDSLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q;
 	protected AbstractElementAlias match_Influence_AsteriskAsteriskNumberSignKeyword_5_q;
-	protected AbstractElementAlias match_Metadata___CommaKeyword_1_0_1_or_WithKeyword_1_0_0__q;
+	protected AbstractElementAlias match_Influence___MetadataKeyword_10_0_ColonKeyword_10_1__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (InfluenceDSLGrammarAccess) access;
 		match_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q = new TokenAlias(false, true, grammarAccess.getCompositeInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_6());
 		match_Influence_AsteriskAsteriskNumberSignKeyword_5_q = new TokenAlias(false, true, grammarAccess.getInfluenceAccess().getAsteriskAsteriskNumberSignKeyword_5());
-		match_Metadata___CommaKeyword_1_0_1_or_WithKeyword_1_0_0__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getMetadataAccess().getCommaKeyword_1_0_1()), new TokenAlias(false, false, grammarAccess.getMetadataAccess().getWithKeyword_1_0_0()));
+		match_Influence___MetadataKeyword_10_0_ColonKeyword_10_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInfluenceAccess().getMetadataKeyword_10_0()), new TokenAlias(false, false, grammarAccess.getInfluenceAccess().getColonKeyword_10_1()));
 	}
 	
 	@Override
@@ -49,8 +49,8 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_CompositeInfluence_AsteriskAsteriskNumberSignKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Influence_AsteriskAsteriskNumberSignKeyword_5_q.equals(syntax))
 				emit_Influence_AsteriskAsteriskNumberSignKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Metadata___CommaKeyword_1_0_1_or_WithKeyword_1_0_0__q.equals(syntax))
-				emit_Metadata___CommaKeyword_1_0_1_or_WithKeyword_1_0_0__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Influence___MetadataKeyword_10_0_ColonKeyword_10_1__q.equals(syntax))
+				emit_Influence___MetadataKeyword_10_0_ColonKeyword_10_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -76,7 +76,7 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '**#'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     description+=EString (ambiguity) 'originators' ':' 'artifact' originatorArtifact+=[DesignArtifact|ID]
+	 *     description+=EString (ambiguity) 'originators' ':' 'artifact' originatorArtifact+=[DesignArtifact|EString]
 	 *     description+=EString (ambiguity) 'originators' ':' 'phenomena' originatorPhenomena+=[PhysicalPhenomena|EString]
 	 *     description+=EString (ambiguity) 'originators' ':' 'system' 'response' originatorSystemResponse+=[SystemResponse|EString]
 	 
@@ -89,25 +89,16 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     ('with' | ',')?
+	 *     ('metadata' ':')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     element=[DesignArtifact|ID] (ambiguity) ',' 'confidence' '=' confidence=DOUBLE
-	 *     element=[DesignArtifact|ID] (ambiguity) ',' 'strength' '=' strength=DOUBLE
-	 *     element=[DesignArtifact|ID] (ambiguity) 'likelihood' '=' likelihood=DOUBLE
-	 *     element=[DesignArtifact|ID] (ambiguity) (rule end)
-	 *     element=[PhysicalPhenomena|EString] (ambiguity) ',' 'confidence' '=' confidence=DOUBLE
-	 *     element=[PhysicalPhenomena|EString] (ambiguity) ',' 'strength' '=' strength=DOUBLE
-	 *     element=[PhysicalPhenomena|EString] (ambiguity) 'likelihood' '=' likelihood=DOUBLE
-	 *     element=[PhysicalPhenomena|EString] (ambiguity) (rule end)
-	 *     element=[SystemResponse|EString] (ambiguity) ',' 'confidence' '=' confidence=DOUBLE
-	 *     element=[SystemResponse|EString] (ambiguity) ',' 'strength' '=' strength=DOUBLE
-	 *     element=[SystemResponse|EString] (ambiguity) 'likelihood' '=' likelihood=DOUBLE
-	 *     element=[SystemResponse|EString] (ambiguity) (rule end)
+	 *     originatorArtifact+=[DesignArtifact|EString] (ambiguity) ownedFunction=Function
+	 *     originatorPhenomena+=[PhysicalPhenomena|EString] (ambiguity) ownedFunction=Function
+	 *     originatorSystemResponse+=[SystemResponse|EString] (ambiguity) ownedFunction=Function
 	 
 	 * </pre>
 	 */
-	protected void emit_Metadata___CommaKeyword_1_0_1_or_WithKeyword_1_0_0__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Influence___MetadataKeyword_10_0_ColonKeyword_10_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
