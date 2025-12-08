@@ -1,0 +1,86 @@
+ Requirement Evaluation
+
+i1
+SRP `DistanceToStop` = 0.020496
+Inputs:
+ motorSpeed = 0.300000
+ mass = 0.045000
+ frontalArea = 0.019488
+ frictionCoef = 0.600000
+ slopeAngleRad = -0.349100
+ dragCoefficient = 0.800000
+ gravityAccel = 9.810000
+ airDensity = 1.293000
+ Changeability / Flexibility (if available):
+ motorSpeed = 0.60
+ mass = 0.50
+ frontalArea = 0.20
+ frictionCoef = 0.40
+ slopeAngleRad = 0.70
+ dragCoefficient = 0.00
+ gravityAccel = 0.00
+ airDensity = 0.00
+ Margin: N/A (no requirement linked)
+
+i2
+SRP `MarginCollision` = 0.039504
+Inputs:
+ detectionThreshold = 0.060000
+ DistanceToStop = 0.020496
+ Changeability / Flexibility (if available):
+ detectionThreshold = 0.90
+ Margin = -0.010496
+ Sensitivities:
+ airDensity = 0.000146
+ detectionThreshold = 1.000000
+ dragCoefficient = 0.000235
+ frictionCoef = 0.086052
+ frontalArea = 0.009656
+ gravityAccel = 0.002070
+ mass = -0.004182
+ motorSpeed = -0.135383
+ slopeAngleRad = 0.104846
+ Classification (increase ↑):
+  airDensity: benefits (↑ helps)
+  detectionThreshold: benefits (↑ helps)
+  dragCoefficient: benefits (↑ helps)
+  frictionCoef: benefits (↑ helps)
+  frontalArea: benefits (↑ helps)
+  gravityAccel: benefits (↑ helps)
+  mass: prejudices (↑ hurts)
+  motorSpeed: prejudices (↑ hurts)
+  slopeAngleRad: benefits (↑ helps)
+
+## i3
+ Skipped function numeric evaluation, since returnType = Text.
+ Structural advice based on graph topology:
+  (no linked requirement for SRP MotionWhileScanning)
+
+## i4
+ Skipped function numeric evaluation, since returnType = Text.
+ Structural advice based on graph topology:
+  (no linked requirement for SRP WavePropagation)
+
+## i5
+ Skipped function numeric evaluation, since returnType = Text.
+ Structural advice based on graph topology:
+== Structural evaluation for i5 -> MotionDuringTxRx ==
+  ObstacleAvoidance: noise (flexibility=0.80, 2 hops), delayStaticDetection (changeability=0.70, 3 hops), slopeAngleRad (flexibility=0.70, 4 hops), motorSpeed (changeability=0.60, 4 hops), sweepingDelay (changeability=0.50, 1 hops), humidity (flexibility=0.50, 2 hops), temperature (flexibility=0.50, 2 hops), mass (changeability=0.50, 4 hops), ultrasonicSensor (changeability=0.40, 2 hops), frictionCoef (flexibility=0.40, 4 hops), frontalArea (changeability=0.20, 4 hops), airDensity (flexibility=0.00, 4 hops), dragCoefficient (flexibility=0.00, 4 hops), gravityAccel (flexibility=0.00, 4 hops)
+
+## i6
+ Skipped function numeric evaluation, since returnType = Text.
+ Structural advice based on graph topology:
+  (no linked requirement for SRP TravelSpeed)
+
+## i7
+ Skipped function numeric evaluation, since returnType = Text.
+ Structural advice based on graph topology:
+== Structural evaluation for i7 -> ExplorationTime ==
+  EfficientExploration: detectionThreshold (changeability=0.90, 1 hops), motor (changeability=0.70, 2 hops), slopeAngleRad (flexibility=0.70, 2 hops), motorSpeed (changeability=0.60, 2 hops), mass (changeability=0.50, 2 hops), frictionCoef (flexibility=0.40, 2 hops), frontalArea (changeability=0.20, 2 hops), airDensity (flexibility=0.00, 2 hops), dragCoefficient (flexibility=0.00, 2 hops), gravityAccel (flexibility=0.00, 2 hops)
+
+## i8
+ Skipped function numeric evaluation, since returnType = Text.
+ Structural advice based on graph topology:
+== Structural evaluation for i8 -> CoverageQuality ==
+  ObstacleAvoidance: noise (flexibility=0.80, 2 hops), delayStaticDetection (changeability=0.70, 3 hops), slopeAngleRad (flexibility=0.70, 4 hops), motorSpeed (changeability=0.60, 4 hops), sweepingDelay (changeability=0.50, 1 hops), humidity (flexibility=0.50, 2 hops), temperature (flexibility=0.50, 2 hops), mass (changeability=0.50, 4 hops), ultrasonicSensor (changeability=0.40, 2 hops), frictionCoef (flexibility=0.40, 4 hops), computeDistance (changeability=0.20, 1 hops), frontalArea (changeability=0.20, 4 hops), airDensity (flexibility=0.00, 4 hops), dragCoefficient (flexibility=0.00, 4 hops), gravityAccel (flexibility=0.00, 4 hops)
+

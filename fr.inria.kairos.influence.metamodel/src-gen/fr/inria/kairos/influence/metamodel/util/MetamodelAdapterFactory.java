@@ -77,13 +77,13 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSystemResponse(SystemResponse object) {
-			return createSystemResponseAdapter();
+		public Adapter caseSRPInputParticipant(SRPInputParticipant object) {
+			return createSRPInputParticipantAdapter();
 		}
 
 		@Override
-		public Adapter casePhysicalPhenomena(PhysicalPhenomena object) {
-			return createPhysicalPhenomenaAdapter();
+		public Adapter caseEnvironmentalFactorParticipant(EnvironmentalFactorParticipant object) {
+			return createEnvironmentalFactorParticipantAdapter();
 		}
 
 		@Override
@@ -92,8 +92,8 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseDesignArtifact(DesignArtifact object) {
-			return createDesignArtifactAdapter();
+		public Adapter caseArtifactParticipant(ArtifactParticipant object) {
+			return createArtifactParticipantAdapter();
 		}
 
 		@Override
@@ -112,13 +112,28 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseFunction(Function object) {
-			return createFunctionAdapter();
+		public Adapter caseParticipant(Participant object) {
+			return createParticipantAdapter();
 		}
 
 		@Override
-		public Adapter caseCompositeFunction(CompositeFunction object) {
-			return createCompositeFunctionAdapter();
+		public Adapter caseDesignArtifact(DesignArtifact object) {
+			return createDesignArtifactAdapter();
+		}
+
+		@Override
+		public Adapter caseSystemResponseProperty(SystemResponseProperty object) {
+			return createSystemResponsePropertyAdapter();
+		}
+
+		@Override
+		public Adapter caseEnvironmentalFactor(EnvironmentalFactor object) {
+			return createEnvironmentalFactorAdapter();
+		}
+
+		@Override
+		public Adapter caseInfluenceFunction(InfluenceFunction object) {
+			return createInfluenceFunctionAdapter();
 		}
 
 		@Override
@@ -169,6 +184,34 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.SRPInputParticipant <em>SRP Input Participant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.SRPInputParticipant
+	 * @generated
+	 */
+	public Adapter createSRPInputParticipantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant <em>Environmental Factor Participant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant
+	 * @generated
+	 */
+	public Adapter createEnvironmentalFactorParticipantAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.Influence <em>Influence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -183,58 +226,30 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.Function <em>Function</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.Participant <em>Participant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.Function
+	 * @see fr.inria.kairos.influence.metamodel.Participant
 	 * @generated
 	 */
-	public Adapter createFunctionAdapter() {
+	public Adapter createParticipantAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.CompositeFunction <em>Composite Function</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.InfluenceFunction <em>Influence Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.CompositeFunction
+	 * @see fr.inria.kairos.influence.metamodel.InfluenceFunction
 	 * @generated
 	 */
-	public Adapter createCompositeFunctionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.SystemResponse <em>System Response</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.SystemResponse
-	 * @generated
-	 */
-	public Adapter createSystemResponseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena <em>Physical Phenomena</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.PhysicalPhenomena
-	 * @generated
-	 */
-	public Adapter createPhysicalPhenomenaAdapter() {
+	public Adapter createInfluenceFunctionAdapter() {
 		return null;
 	}
 
@@ -253,6 +268,20 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.ArtifactParticipant <em>Artifact Participant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.ArtifactParticipant
+	 * @generated
+	 */
+	public Adapter createArtifactParticipantAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.DesignArtifact <em>Design Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -263,6 +292,34 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDesignArtifactAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.SystemResponseProperty <em>System Response Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.SystemResponseProperty
+	 * @generated
+	 */
+	public Adapter createSystemResponsePropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor <em>Environmental Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactor
+	 * @generated
+	 */
+	public Adapter createEnvironmentalFactorAdapter() {
 		return null;
 	}
 

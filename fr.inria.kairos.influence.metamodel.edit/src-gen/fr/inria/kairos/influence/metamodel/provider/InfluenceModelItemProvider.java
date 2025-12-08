@@ -63,8 +63,9 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_REQUIREMENTS);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA);
+			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ARTIFACTS);
+			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_SR_PS);
 		}
 		return childrenFeatures;
 	}
@@ -130,8 +131,9 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 		switch (notification.getFeatureID(InfluenceModel.class)) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -159,11 +161,14 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 				MetamodelFactory.eINSTANCE.createRequirement()));
 
 		newChildDescriptors
-				.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA,
-						MetamodelFactory.eINSTANCE.createPhysicalPhenomena()));
+				.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS,
+						MetamodelFactory.eINSTANCE.createEnvironmentalFactor()));
 
 		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ARTIFACTS,
 				MetamodelFactory.eINSTANCE.createDesignArtifact()));
+
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_SR_PS,
+				MetamodelFactory.eINSTANCE.createSystemResponseProperty()));
 	}
 
 }

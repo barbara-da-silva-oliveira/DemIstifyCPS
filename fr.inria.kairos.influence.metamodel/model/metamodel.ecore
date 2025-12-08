@@ -1,71 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="metamodel" nsURI="http://kairos.inria.fr/influences" nsPrefix="metamodel">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="InfluenceModel" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluences" upperBound="-1"
         eType="#//AbstractInfluence" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRequirements" upperBound="-1"
         eType="#//Requirement" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalPhenomena"
-        upperBound="-1" eType="#//PhysicalPhenomena" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEnvironmentalFactors"
+        upperBound="-1" eType="#//EnvironmentalFactor" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedArtifacts" upperBound="-1"
         eType="#//DesignArtifact" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSRPs" upperBound="-1"
+        eType="#//SystemResponseProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractInfluence" abstract="true" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedTo" upperBound="-1"
-        eType="#//Requirement" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="affects" lowerBound="1"
-        upperBound="-1" eType="#//SystemResponse" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemResponse" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="usedIn" upperBound="-1"
-        eType="#//Requirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SRPInputParticipant" eSuperTypes="#//Participant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//SystemResponseProperty"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalPhenomena" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnvironmentalFactorParticipant" eSuperTypes="#//Participant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//EnvironmentalFactor"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="satisfaction" lowerBound="1"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metadata" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="satisfaction" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" lowerBound="1"
+        eType="#//LanguageType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DesignArtifact" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changeability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArtifactParticipant" eSuperTypes="#//Participant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//DesignArtifact"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeInfluence" eSuperTypes="#//AbstractInfluence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="internalInfluences" lowerBound="2"
         upperBound="-1" eType="#//AbstractInfluence"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedFunction" lowerBound="1"
-        eType="#//CompositeFunction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluenceFunction"
+        lowerBound="1" eType="#//InfluenceFunction" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Influence" eSuperTypes="#//AbstractInfluence">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorPhenomena" upperBound="-1"
-        eType="#//PhysicalPhenomena"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorArtifact" upperBound="-1"
-        eType="#//DesignArtifact"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originatorSystemResponse"
-        upperBound="-1" eType="#//SystemResponse"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedFunction" lowerBound="1"
-        eType="#//Function" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="likelihoodPerElement" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="confidence" upperBound="-1"
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="ParticipationPattern"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="ParticipationPattern" value="&#xA;&#x9;&#x9;&#x9;self.ownedParticipants->exists(p | p.oclIsKindOf(ArtifactParticipant)) and &#xA;&#x9;&#x9;&#x9;(self.ownedParticipants->exists(p | p.oclIsKindOf(EnvironmentalFactorParticipant)))&#xA;&#x9;&#x9;&#x9;or self.ownedParticipants->exists(p |p.oclIsKindOf(SRPInputParticipant))"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluenceFunction"
+        lowerBound="1" eType="#//InfluenceFunction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParticipants" lowerBound="1"
+        upperBound="-1" eType="#//Participant" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputSRP" lowerBound="1"
+        eType="#//SystemResponseProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Participant" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="likelihood" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="confidence" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DesignArtifact" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changeability" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemResponseProperty" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constrainedBy" upperBound="-1"
+        eType="#//Requirement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnvironmentalFactor" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flexibility" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompositeFunction" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="#//SystemResponse"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InfluenceFunction" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="LanguageReturn"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="LanguageReturn" value="&#xA;&#x9;&#x9;&#x9;if self.language = LanguageType::JavaNumericExpression then&#xA;&#x9;        &#x9;self.returnType = ValueType::Real&#xA;&#x9;        else &#xA;&#x9;        &#x9;self.returnType = ValueType::Text&#xA;&#x9;        endif&#xA;        "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="returnType" lowerBound="1"
+        eType="#//ValueType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" lowerBound="1"
+        eType="#//LanguageType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ValueType">
+    <eLiterals name="Real"/>
+    <eLiterals name="Text" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LanguageType">
+    <eLiterals name="NaturalLanguage"/>
+    <eLiterals name="JavaNumericExpression" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

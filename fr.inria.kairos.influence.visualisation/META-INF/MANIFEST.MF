@@ -8,7 +8,6 @@ Export-Package: fr.inria.kairos.influence.visualisation.klighd.synthesis,
  fr.inria.kairos.influence.visualisation.klighd.synthesis.util
 Automatic-Module-Name: fr.inriai.kairos.influence.visualisation
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Bundle-ActivationPolicy: lazy
 Require-Bundle: de.cau.cs.kieler.klighd;bundle-version="2.0.0",
  de.cau.cs.kieler.klighd.krendering.extensions;bundle-version="2.0.0",
  com.google.guava,

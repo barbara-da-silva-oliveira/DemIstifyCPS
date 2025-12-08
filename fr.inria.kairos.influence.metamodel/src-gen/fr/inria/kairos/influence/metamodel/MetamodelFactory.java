@@ -31,6 +31,24 @@ public interface MetamodelFactory extends EFactory {
 	InfluenceModel createInfluenceModel();
 
 	/**
+	 * Returns a new object of class '<em>SRP Input Participant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>SRP Input Participant</em>'.
+	 * @generated
+	 */
+	SRPInputParticipant createSRPInputParticipant();
+
+	/**
+	 * Returns a new object of class '<em>Environmental Factor Participant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Environmental Factor Participant</em>'.
+	 * @generated
+	 */
+	EnvironmentalFactorParticipant createEnvironmentalFactorParticipant();
+
+	/**
 	 * Returns a new object of class '<em>Influence</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,40 +58,13 @@ public interface MetamodelFactory extends EFactory {
 	Influence createInfluence();
 
 	/**
-	 * Returns a new object of class '<em>Function</em>'.
+	 * Returns a new object of class '<em>Influence Function</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Function</em>'.
+	 * @return a new object of class '<em>Influence Function</em>'.
 	 * @generated
 	 */
-	Function createFunction();
-
-	/**
-	 * Returns a new object of class '<em>Composite Function</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Composite Function</em>'.
-	 * @generated
-	 */
-	CompositeFunction createCompositeFunction();
-
-	/**
-	 * Returns a new object of class '<em>System Response</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Response</em>'.
-	 * @generated
-	 */
-	SystemResponse createSystemResponse();
-
-	/**
-	 * Returns a new object of class '<em>Physical Phenomena</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Phenomena</em>'.
-	 * @generated
-	 */
-	PhysicalPhenomena createPhysicalPhenomena();
+	InfluenceFunction createInfluenceFunction();
 
 	/**
 	 * Returns a new object of class '<em>Requirement</em>'.
@@ -85,6 +76,15 @@ public interface MetamodelFactory extends EFactory {
 	Requirement createRequirement();
 
 	/**
+	 * Returns a new object of class '<em>Artifact Participant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Artifact Participant</em>'.
+	 * @generated
+	 */
+	ArtifactParticipant createArtifactParticipant();
+
+	/**
 	 * Returns a new object of class '<em>Design Artifact</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,6 +92,24 @@ public interface MetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	DesignArtifact createDesignArtifact();
+
+	/**
+	 * Returns a new object of class '<em>System Response Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>System Response Property</em>'.
+	 * @generated
+	 */
+	SystemResponseProperty createSystemResponseProperty();
+
+	/**
+	 * Returns a new object of class '<em>Environmental Factor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Environmental Factor</em>'.
+	 * @generated
+	 */
+	EnvironmentalFactor createEnvironmentalFactor();
 
 	/**
 	 * Returns a new object of class '<em>Composite Influence</em>'.

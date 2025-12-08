@@ -29,7 +29,7 @@ public interface DesignArtifact extends NamedElement {
 	 * @return the value of the '<em>Ref</em>' reference.
 	 * @see #setRef(EObject)
 	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getDesignArtifact_Ref()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EObject getRef();
@@ -51,7 +51,7 @@ public interface DesignArtifact extends NamedElement {
 	 * @return the value of the '<em>Changeability</em>' attribute.
 	 * @see #setChangeability(double)
 	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getDesignArtifact_Changeability()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	double getChangeability();

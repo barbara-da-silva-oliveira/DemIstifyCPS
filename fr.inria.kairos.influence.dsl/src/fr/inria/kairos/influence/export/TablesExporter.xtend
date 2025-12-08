@@ -12,21 +12,29 @@ import java.util.Map
 import java.util.TreeMap
 import java.util.ArrayList
 import fr.inria.kairos.influence.analysis.ImpactMetrics
-import fr.inria.kairos.influence.analysis.CompensationFinder
 import fr.inria.kairos.influence.analysis.RequirementTraceability
+import fr.inria.kairos.influence.analysis.GraphBuilder
 
 class TablesExporter {
 
+
+	private def GraphBuilder.Result buildGraph(Resource res) {
+		new GraphBuilder().build(res)
+	}
+	private def ImpactMetrics.Result metrics(Resource res) {
+		new ImpactMetrics().compute(res, buildGraph(res))
+	}
+
  // 1) Impact metrics (counts and weighted)
 	def void exportImpactCSVs(Resource res, IFileSystemAccess2 fsa, String folder) {
-	    val m = new ImpactMetrics().compute(res)
+	    val m = metrics(res)
 	
 	    // counts
 		writeMapIntCSV(fsa, folder + "/impact_artifacts.csv",
 	      "artifact,count", new TreeMap<String, Integer>(m.impactArtifacts))
 	
-	    writeMapIntCSV(fsa, folder + "/impact_phenomena.csv",
-	      "phenomenon,count", new TreeMap<String, Integer>(m.impactPhenomena))
+	    writeMapIntCSV(fsa, folder + "/impact_env.csv",
+	      "phenomenon,count", new TreeMap<String, Integer>(m.impactEnvFactors))
 	
 	    writeMapIntCSV(fsa, folder + "/sensitive_requirements.csv",
 	      "requirement,count", new TreeMap<String, Integer>(m.sensRequirements))
@@ -35,36 +43,37 @@ class TablesExporter {
 	    writeMapDoubleCSV(fsa, folder + "/impact_artifacts_weighted.csv",
 	      "artifact,weight", new TreeMap<String, Double>(m.impactArtifactsW))
 	
-	    writeMapDoubleCSV(fsa, folder + "/impact_phenomena_weighted.csv",
-	      "phenomenon,weight", new TreeMap<String, Double>(m.impactPhenomenaW))
+	    writeMapDoubleCSV(fsa, folder + "/impact_env_weighted.csv",
+	      "phenomenon,weight", new TreeMap<String, Double>(m.impactEnvFactorsW))
 	
 	    writeMapDoubleCSV(fsa, folder + "/sensitive_requirements_weighted.csv",
 	      "requirement,weight", new TreeMap<String, Double>(m.sensRequirementsW))
 	}
 
 // Best compensator per requirement (max changeability) CSV
-	def void exportHardestCompensatorByReqCSV(
-	    Resource res,
-	    IFileSystemAccess2 fsa,
-	    String outPath,
-	    Map<String, LinkedHashSet<String>> reqToSRs,
-	    Map<String, LinkedHashSet<String>> inEdges
-	  ) {
-	    val cf = new CompensationFinder
-	    val hardest = cf.bestCompensatorByChangeability(res, reqToSRs, inEdges)
-	    // header
-	    val sb = new StringBuilder("requirement,compensator,changeability\n")
-	    // rows
-	    for (req : new java.util.TreeSet<String>(hardest.keySet)) {
-	      val p = hardest.get(req) // Pair<String, Double>
-	      if (p !== null) {
-	        sb.append(csv(req)).append(',')
-	          .append(csv(p.key)).append(',')
-	          .append(fmtDouble(p.value)).append('\n')
-	      }
-    	}
-    	fsa.generateFile(outPath, sb.toString)
-  	}
+//	def void exportHardestCompensatorByReqCSV(
+//	    Resource res,
+//	    IFileSystemAccess2 fsa,
+//	    String outPath,
+//	    Map<String, LinkedHashSet<String>> reqToSRs,
+//	    Map<String, LinkedHashSet<String>> inEdges
+//	  ) {
+//	    val cf = new CompensationFinder
+//	    val hardest = cf.bestCompensatorByChangeability(res, reqToSRs, inEdges)
+//	    // header
+//	    val sb = new StringBuilder("requirement,compensator,changeability\n")
+//	    // rows
+//	    for (req : new java.util.TreeSet<String>(hardest.keySet)) {
+//	      val p = hardest.get(req) // Pair<String, Double>
+//	      if (p !== null) {
+//	        sb.append(csv(req)).append(',')
+//	          .append(csv(p.key)).append(',')
+//	          .append(fmtDouble(p.value)).append('\n')
+//	      }
+//    	}
+//    	fsa.generateFile(outPath, sb.toString)
+//  	}
+
 
 // Candidate compensators (upstream artifacts) per requirement with min hops -> CSV
 	def void exportCandidatesByReqCSV(
@@ -74,7 +83,8 @@ class TablesExporter {
 	    Map<String, LinkedHashSet<String>> reqToSRs,
 	    Map<String, LinkedHashSet<String>> inEdges
 	  ) {
-		val tracer = new RequirementTraceability
+		 val graph  = buildGraph(res)                            
+  		val tracer = new RequirementTraceability(graph)
 	    val sb = new StringBuilder("requirement,artifact,min_hops\n")
 	
 	    for (reqName : new java.util.TreeSet<String>(reqToSRs.keySet)) {
@@ -126,7 +136,8 @@ class TablesExporter {
 			val agg = new java.util.HashMap<String, Integer>()
 	    	val srs = reqToSRs.get(reqName)
 	    	if (srs !== null) {
-		        val tracer = new RequirementTraceability
+		        val graph  = buildGraph(res)                           
+  				val tracer = new RequirementTraceability(graph)
 		        for (srName : srs) {
 		          val m = tracer.upstreamArtifacts("SR:" + srName, inEdges)
 		          for (e : m.entrySet) {

@@ -96,49 +96,49 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SystemResponse} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SRPInputParticipant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SystemResponseItemProvider systemResponseItemProvider;
+	protected SRPInputParticipantItemProvider srpInputParticipantItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.SystemResponse}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.SRPInputParticipant}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSystemResponseAdapter() {
-		if (systemResponseItemProvider == null) {
-			systemResponseItemProvider = new SystemResponseItemProvider(this);
+	public Adapter createSRPInputParticipantAdapter() {
+		if (srpInputParticipantItemProvider == null) {
+			srpInputParticipantItemProvider = new SRPInputParticipantItemProvider(this);
 		}
 
-		return systemResponseItemProvider;
+		return srpInputParticipantItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PhysicalPhenomenaItemProvider physicalPhenomenaItemProvider;
+	protected EnvironmentalFactorParticipantItemProvider environmentalFactorParticipantItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPhysicalPhenomenaAdapter() {
-		if (physicalPhenomenaItemProvider == null) {
-			physicalPhenomenaItemProvider = new PhysicalPhenomenaItemProvider(this);
+	public Adapter createEnvironmentalFactorParticipantAdapter() {
+		if (environmentalFactorParticipantItemProvider == null) {
+			environmentalFactorParticipantItemProvider = new EnvironmentalFactorParticipantItemProvider(this);
 		}
 
-		return physicalPhenomenaItemProvider;
+		return environmentalFactorParticipantItemProvider;
 	}
 
 	/**
@@ -165,6 +165,29 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ArtifactParticipant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ArtifactParticipantItemProvider artifactParticipantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.ArtifactParticipant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createArtifactParticipantAdapter() {
+		if (artifactParticipantItemProvider == null) {
+			artifactParticipantItemProvider = new ArtifactParticipantItemProvider(this);
+		}
+
+		return artifactParticipantItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.DesignArtifact} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -185,6 +208,52 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 		}
 
 		return designArtifactItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SystemResponseProperty} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SystemResponsePropertyItemProvider systemResponsePropertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.SystemResponseProperty}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSystemResponsePropertyAdapter() {
+		if (systemResponsePropertyItemProvider == null) {
+			systemResponsePropertyItemProvider = new SystemResponsePropertyItemProvider(this);
+		}
+
+		return systemResponsePropertyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EnvironmentalFactorItemProvider environmentalFactorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEnvironmentalFactorAdapter() {
+		if (environmentalFactorItemProvider == null) {
+			environmentalFactorItemProvider = new EnvironmentalFactorItemProvider(this);
+		}
+
+		return environmentalFactorItemProvider;
 	}
 
 	/**
@@ -234,49 +303,26 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Function} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.InfluenceFunction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FunctionItemProvider functionItemProvider;
+	protected InfluenceFunctionItemProvider influenceFunctionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Function}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.InfluenceFunction}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createFunctionAdapter() {
-		if (functionItemProvider == null) {
-			functionItemProvider = new FunctionItemProvider(this);
+	public Adapter createInfluenceFunctionAdapter() {
+		if (influenceFunctionItemProvider == null) {
+			influenceFunctionItemProvider = new InfluenceFunctionItemProvider(this);
 		}
 
-		return functionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.CompositeFunction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CompositeFunctionItemProvider compositeFunctionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.CompositeFunction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCompositeFunctionAdapter() {
-		if (compositeFunctionItemProvider == null) {
-			compositeFunctionItemProvider = new CompositeFunctionItemProvider(this);
-		}
-
-		return compositeFunctionItemProvider;
+		return influenceFunctionItemProvider;
 	}
 
 	/**
@@ -386,22 +432,26 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	public void dispose() {
 		if (influenceModelItemProvider != null)
 			influenceModelItemProvider.dispose();
-		if (systemResponseItemProvider != null)
-			systemResponseItemProvider.dispose();
-		if (physicalPhenomenaItemProvider != null)
-			physicalPhenomenaItemProvider.dispose();
+		if (srpInputParticipantItemProvider != null)
+			srpInputParticipantItemProvider.dispose();
+		if (environmentalFactorParticipantItemProvider != null)
+			environmentalFactorParticipantItemProvider.dispose();
 		if (requirementItemProvider != null)
 			requirementItemProvider.dispose();
-		if (designArtifactItemProvider != null)
-			designArtifactItemProvider.dispose();
+		if (artifactParticipantItemProvider != null)
+			artifactParticipantItemProvider.dispose();
 		if (compositeInfluenceItemProvider != null)
 			compositeInfluenceItemProvider.dispose();
 		if (influenceItemProvider != null)
 			influenceItemProvider.dispose();
-		if (functionItemProvider != null)
-			functionItemProvider.dispose();
-		if (compositeFunctionItemProvider != null)
-			compositeFunctionItemProvider.dispose();
+		if (designArtifactItemProvider != null)
+			designArtifactItemProvider.dispose();
+		if (systemResponsePropertyItemProvider != null)
+			systemResponsePropertyItemProvider.dispose();
+		if (environmentalFactorItemProvider != null)
+			environmentalFactorItemProvider.dispose();
+		if (influenceFunctionItemProvider != null)
+			influenceFunctionItemProvider.dispose();
 	}
 
 }

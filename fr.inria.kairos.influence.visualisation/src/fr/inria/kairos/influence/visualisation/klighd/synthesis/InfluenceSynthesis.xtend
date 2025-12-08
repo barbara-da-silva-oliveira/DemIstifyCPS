@@ -39,15 +39,19 @@ import fr.inria.kairos.influence.metamodel.Influence
 import fr.inria.kairos.influence.metamodel.AbstractInfluence
 import fr.inria.kairos.influence.visualisation.klighd.synthesis.styles.InfluenceShapeExtensions
 import fr.inria.kairos.influence.visualisation.klighd.synthesis.styles.InfluenceStyleExtensions
-import fr.inria.kairos.influence.metamodel.PhysicalPhenomena
+import fr.inria.kairos.influence.metamodel.EnvironmentalFactor
 import de.cau.cs.kieler.klighd.kgraph.util.KGraphUtil
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
+
 import fr.inria.kairos.influence.metamodel.CompositeInfluence
-import fr.inria.kairos.influence.metamodel.SystemResponse
 import fr.inria.kairos.influence.metamodel.Requirement
-import fr.inria.kairos.influence.metamodel.Function
+import fr.inria.kairos.influence.metamodel.InfluenceFunction
 import fr.inria.kairos.influence.metamodel.CompositeFunction
+import fr.inria.kairos.influence.metamodel.ArtifactParticipant
+import fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant
+import fr.inria.kairos.influence.metamodel.SRPInputParticipant
+import fr.inria.kairos.influence.metamodel.SystemResponseProperty
 
 /**
  * Diagram synthesis for Influence programs.
@@ -55,6 +59,7 @@ import fr.inria.kairos.influence.metamodel.CompositeFunction
  * @author{Alexander Schulz-Rosengarten <als@informatik.uni-kiel.de>}
  * and adapted by
  * @author{Julien Deantoni <julien.deantoni@univ-cotedazur.fr>}
+ * @author{Barbara da Silva Oliveira <barbara.da-silva-oliveira@inria.fr>}
  */
 @ViewSynthesisShared
 class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
@@ -148,12 +153,19 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 					rootNode.children += artNode
 					elemToNode.put(artifact, artNode)
 				}
-				for (phenomena : main.ownedPhysicalPhenomena) {
-					var pheNode = phenomena.createPhenomena
+				for (factor : main.ownedEnvironmentalFactors) {
+					var pheNode = factor.createEnvironmentalFactor
 					rootNode.children += pheNode
-					elemToNode.put(phenomena, pheNode)
+					elemToNode.put(factor, pheNode)
 
 				}
+				
+				for (srp : main.ownedSRPs) {
+        			val srpNode = srp.createSystemResponseNode
+        			rootNode.children += srpNode
+        			elemToNode.put(srp, srpNode)
+      			}
+      			
 				for (AbstractInfluence absInf : main.ownedInfluences) {
 					var infNode = absInf.createInfluencePass1
 					rootNode.children += infNode
@@ -165,29 +177,27 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 				for (AbstractInfluence absInf : main.ownedInfluences) {
 					absInf.createInfluencePass3
 				}
+				
 				for (Requirement req : main.ownedRequirements) {
 					var reqNode = req.createRequirement
 					rootNode.children += reqNode
 					elemToNode.put(req, reqNode)
 				}
-				for (AbstractInfluence absInf : main.ownedInfluences) {
-					for (sr : absInf.affects) {
-						if (sr.usedIn.size() > 0) {
-							for (req : sr.usedIn) {
-								var srNode = elemToNode.get(sr)
-								var reqNode = elemToNode.get(req)
-								var dest = reqNode.addPort() => [
-									setLayoutOption(CoreOptions.PORT_SIDE, PortSide.SOUTH)
-								]
-								var src = srNode.addPort() => [
-									setLayoutOption(CoreOptions.PORT_SIDE, PortSide.NORTH)
-								]
-								createDelayEdge().connect(src, dest)
-							}
-						}
+				for (srp : main.ownedSRPs) {
+					if (srp.constrainedBy.size() > 0) {
+						var srNode = elemToNode.get(srp)
+						for (req : srp.constrainedBy) {
+				            val reqNode = elemToNode.get(req)
+				            if (srNode !== null && reqNode !== null) {
+				            
+				            val dest = reqNode.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST) ]
+				            val src  = srNode.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST) ]
+				            createDelayEdge().connect(src, dest)			
+				            }
 					}
 				}
-			} else {
+			} 
+			}else {
 				val messageNode = KGraphUtil.createInitializedNode()
 				messageNode.addErrorMessage(
 					fr.inria.kairos.influence.visualisation.klighd.synthesis.InfluenceSynthesis.TEXT_NO_INFLUENCE_MODEL,
@@ -245,190 +255,323 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 
 	private dispatch def KNode createInfluencePass1(Influence influence) {
 		val node = KGraphUtil.createInitializedNode()
-		node.associateWith(influence)
-		node.ID = influence.name
-
-		val label = influence.createNamedElementLabel
-
-		if (influence === null) {
-			node.addErrorMessage(TEXT_REACTOR_NULL, null)
-		} else {
-			val figure = node.addInfluenceFigure(influence, label)
-			var childArea = figure.addChildArea()
-			var funNode = influence.ownedFunction.createFunction
-			node.children.add(funNode)
-			for (or : influence.originatorArtifact) {
-				var dest = node.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-				]
-				var src = elemToNode.get(or).addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-				]
-				var edge = createArrowEdge().connect(src, dest)
-				node.incomingEdges.add(edge)
-				elemToNode.get(or).outgoingEdges.add(edge)
-			}
-			for (or : influence.originatorPhenomena) {
-				var dest = node.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-				]
-				var src = elemToNode.get(or).addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-				]
-				var edge = createArrowEdge().connect(src, dest)
-				node.incomingEdges.add(edge)
-				elemToNode.get(or).outgoingEdges.add(edge)
-			}
-
-			node.configureInterfaceNodeLayout()
-
-			// Additional layout adjustment for main node
-			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
-			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
-			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
-				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
-				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
-			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-
-			if (!SHOW_HYPERLINKS.booleanValue) {
-				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
-					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
-			}
+	  	node.associateWith(influence)
+	  	node.ID = influence.name
+	
+		  val label = influence.createNamedElementLabel
+		
+		  if (influence === null) {
+		    node.addErrorMessage(TEXT_REACTOR_NULL, null)
+		  } else {
+		    val figure = node.addInfluenceFigure(influence, label)
+		    figure.addChildArea()
+		
+		    // Function
+		    val funNode = influence.ownedInfluenceFunction.createInfluenceFunction
+		    node.children.add(funNode)
+		
+		    // Participants: Artifact & EnvironmentalFactor INTO Influence
+		    for (p : influence.ownedParticipants) {
+		      switch p {
+		        ArtifactParticipant: {
+		          val a = p.target
+		          if (a !== null) {
+		            val dest = node.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST) ]
+		            val src  = elemToNode.get(a).addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST) ]
+		            val edge = createArrowEdge().connect(src, dest)
+		            node.incomingEdges.add(edge)
+		          }
+		        }
+		        EnvironmentalFactorParticipant: {
+		          val ef = p.target
+		          if (ef !== null) {
+		            val dest = node.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST) ]
+		            val src  = elemToNode.get(ef).addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST) ]
+		            val edge = createArrowEdge().connect(src, dest)
+		            node.incomingEdges.add(edge)
+		          }
+		        }
+//		       SRPInputParticipant: {
+//		       	val srp = p.target
+//            	if (srp !== null) {
+//                	var srNode = elemToNode.get(srp)
+//                	if (srNode === null) {
+//                    	srNode = srp.createSystemResponseNode
+//                    	node.parent.children += srNode
+//                    	elemToNode.put(srp, srNode)
+//                	}
+//                val dest = node.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST) ]
+//                val src  = srNode.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST) ]
+//                createArrowEdge.connect(src, dest)
+//            }
+//            
+//            }
+		        default: { /* SRP inputs handled in pass 3 */ }
+		      }
+		    }
+		
+		    node.configureInterfaceNodeLayout()
+		
+		    // (layout options unchanged)
+		    node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+		    node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+		    node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+		    node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+		    node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+		    node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+		    node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+		    node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+		    node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+		    if (!SHOW_HYPERLINKS.booleanValue) {
+		      node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+		      node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+		    }
+		  }
+		return node
 		}
 
-		return node
-	}
+//
+//	private dispatch def KNode createInfluencePass1(Influence influence) {
+//		val node = KGraphUtil.createInitializedNode()
+//		node.associateWith(influence)
+//		node.ID = influence.name
+//
+//		val label = influence.createNamedElementLabel
+//
+//		if (influence === null) {
+//			node.addErrorMessage(TEXT_REACTOR_NULL, null)
+//		} else {
+//			val figure = node.addInfluenceFigure(influence, label)
+//			var childArea = figure.addChildArea()
+//			var funNode = influence.ownedFunction.createFunction
+//			node.children.add(funNode)
+//			for (or : influence.originatorArtifact) {
+//				var dest = node.addPort() => [
+//					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+//				]
+//				var src = elemToNode.get(or).addPort() => [
+//					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+//				]
+//				var edge = createArrowEdge().connect(src, dest)
+//				node.incomingEdges.add(edge)
+//				elemToNode.get(or).outgoingEdges.add(edge)
+//			}
+//			for (or : influence.originatorPhenomena) {
+//				var dest = node.addPort() => [
+//					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+//				]
+//				var src = elemToNode.get(or).addPort() => [
+//					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+//				]
+//				var edge = createArrowEdge().connect(src, dest)
+//				node.incomingEdges.add(edge)
+//				elemToNode.get(or).outgoingEdges.add(edge)
+//			}
+//
+//			node.configureInterfaceNodeLayout()
+//
+//			// Additional layout adjustment for main node
+//			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+//			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+//			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+//			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+//			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+//				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+//			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+//			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+//				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+//			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+//			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+//
+//			if (!SHOW_HYPERLINKS.booleanValue) {
+//				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+//				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+//					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+//			}
+//		}
+//
+//		return node
+//	}
 
 	private dispatch def KNode createInfluencePass2(Influence influence) {
-		val node = elemToNode.get(influence)
 
-		for (sr : influence.affects) {
-			var srNode = sr.createSystemResponseNode
-			node.parent.children.add(srNode)
-			elemToNode.put(sr, srNode)
-			var dest = srNode.addPort() => [
-				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-			]
-			var src = node.addPort() => [
-				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-			]
-			var edge = createArrowEdge().connect(src, dest)
-			node.incomingEdges.add(edge)
-
-		}
-
+	  	val node = elemToNode.get(influence)
+		val srp = influence.outputSRP
+		if (srp !== null) {
+			val srpNode = elemToNode.get(srp)
+		    if (srpNode !== null) {
+		    	val dest = srpNode.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST) ]
+		    	val src  = node.addPort    => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST) ]
+		   		val edge = createArrowEdge().connect(src, dest)
+		      // node.outgoingEdges.add(edge)   // optional
+		    }
+		  }
 		return node
 	}
 
 	private dispatch def KNode createInfluencePass3(Influence influence) {
 		val node = elemToNode.get(influence)
 
-		for (or : influence.originatorSystemResponse) {
-			var dest = node.addPort() => [
-				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-			]
-			var src = elemToNode.get(or).addPort() => [
-				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-			]
-			var edge = createArrowEdge().connect(src, dest)
-			node.incomingEdges.add(edge)
-
-		}
-
+		for (p : influence.ownedParticipants) {
+		    if (p instanceof SRPInputParticipant) {
+		    	val srp = p.target
+		    	val srpNode = if (srp !== null) elemToNode.get(srp) else null
+		    	if (srpNode !== null) {
+		        val dest = node.addPort   => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST) ]
+		        val src  = srpNode.addPort=> [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST) ]
+		        val e = createArrowEdge().connect(src, dest)
+		        node.incomingEdges += e
+        		}
+		    }
+  		}
 		return node
 	}
+
+
 
 	private dispatch def KNode createInfluencePass1(CompositeInfluence influence) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(influence)
 		node.ID = influence.name
-
+		
 		val label = influence.createNamedElementLabel
-
+		
 		if (influence === null) {
-			node.addErrorMessage(TEXT_REACTOR_NULL, null)
+		    node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
-			val figure = node.addCompositeInfluenceFigure(influence, label)
-			figure.addChildArea()
-
-			for (internInf : influence.internalInfluences) {
-				var infNode = elemToNode.get(internInf)
-				node.children.add(infNode)
-				if (internInf instanceof Influence) {
-					for (or : internInf.originatorArtifact) {
-//						var src = elemToNode.get(or).addInvisiblePort() => [
-//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-//						]
-//						var dest = node.addInvisiblePort() => [
-//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-//						]
-//						createInvisibleEdge().connect(src,dest)
-						var orNode = elemToNode.get(or)
-						node.children.add(orNode)
-					}
-					for (or : internInf.originatorPhenomena) {
-//						var src = elemToNode.get(or).addInvisiblePort() => [
-//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-//						]
-//						var dest = node.addInvisiblePort() => [
-//							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-//						]
-//						createInvisibleEdge().connect(src,dest)
-						var orNode = elemToNode.get(or)
-						node.children.add(orNode)
-					}
-				}
-
-			}
-
-			node.configureInterfaceNodeLayout()
-
-			// Additional layout adjustment for main node
-			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
-			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
-			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
-				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
-				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
-			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-
-			if (!SHOW_HYPERLINKS.booleanValue) {
-				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
-					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
-			}
+		    val figure = node.addCompositeInfluenceFigure(influence, label)
+		    figure.addChildArea()
+		
+		    for (internInf : influence.internalInfluences) {
+		      val infNode = elemToNode.get(internInf)
+		      node.children += infNode
+		
+		      if (internInf instanceof Influence) {
+		        // bring visible sources inside the composite box
+		        for (p : internInf.ownedParticipants) {
+		          switch p {
+		            ArtifactParticipant: {
+		              val a = p.target
+		              if (a !== null) node.children += elemToNode.get(a)
+		            }
+		            EnvironmentalFactorParticipant: {
+		              val ef = p.target
+		              if (ef !== null) node.children += elemToNode.get(ef)
+		            }
+		            SRPInputParticipant: {
+		              val s = p.target
+		              if (s !== null) node.children += elemToNode.get(s)
+		            }
+		            default: {}
+		          }
+		        }
+		      }
+		    }
+		
+		    node.configureInterfaceNodeLayout()
+		    // (same layout options as before)
+		    node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+		    node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+		    node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+		    node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+		    node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING, EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+		    node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+		    node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS, LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+		    node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+		    node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+		    if (!SHOW_HYPERLINKS.booleanValue) {
+		      node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+		      node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT, LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+		    }
+		  }
+		  return node
 		}
-
-		return node
-	}
+	
+//	private dispatch def KNode createInfluencePass1(CompositeInfluence influence) {
+//		val node = KGraphUtil.createInitializedNode()
+//		node.associateWith(influence)
+//		node.ID = influence.name
+//
+//		val label = influence.createNamedElementLabel
+//
+//		if (influence === null) {
+//			node.addErrorMessage(TEXT_REACTOR_NULL, null)
+//		} else {
+//			val figure = node.addCompositeInfluenceFigure(influence, label)
+//			figure.addChildArea()
+//
+//			for (internInf : influence.internalInfluences) {
+//				var infNode = elemToNode.get(internInf)
+//				node.children.add(infNode)
+//				if (internInf instanceof Influence) {
+//					for (or : internInf.originatorArtifact) {
+////						var src = elemToNode.get(or).addInvisiblePort() => [
+////							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+////						]
+////						var dest = node.addInvisiblePort() => [
+////							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+////						]
+////						createInvisibleEdge().connect(src,dest)
+//						var orNode = elemToNode.get(or)
+//						node.children.add(orNode)
+//					}
+//					for (or : internInf.originatorPhenomena) {
+////						var src = elemToNode.get(or).addInvisiblePort() => [
+////							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+////						]
+////						var dest = node.addInvisiblePort() => [
+////							setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+////						]
+////						createInvisibleEdge().connect(src,dest)
+//						var orNode = elemToNode.get(or)
+//						node.children.add(orNode)
+//					}
+//				}
+//
+//			}
+//
+//			node.configureInterfaceNodeLayout()
+//
+//			// Additional layout adjustment for main node
+//			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+//			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+//			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+//			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+//			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+//				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+//			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+//			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+//				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+//			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+//			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+//
+//			if (!SHOW_HYPERLINKS.booleanValue) {
+//				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+//				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+//					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+//			}
+//		}
+//
+//		return node
+//	}
 
 	private dispatch def KNode createInfluencePass2(CompositeInfluence influence) {
 		val node = elemToNode.get(influence)
 
-		for (sr : influence.affects) {
-			var srNode = sr.createSystemResponseNode
-			node.parent.children.add(srNode)
-			elemToNode.put(sr, srNode)
-			var dest = srNode.addPort() => [
-				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-			]
-			var src = node.addPort() => [
-				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-			]
-			var edge = createArrowEdge().connect(src, dest)
-			node.incomingEdges.add(edge)
-
-		}
+//		for (sr : influence.affects) {
+//			var srNode = sr.createSystemResponseNode
+//			node.parent.children.add(srNode)
+//			elemToNode.put(sr, srNode)
+//			var dest = srNode.addPort() => [
+//				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+//			]
+//			var src = node.addPort() => [
+//				setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+//			]
+//			var edge = createArrowEdge().connect(src, dest)
+//			node.incomingEdges.add(edge)
+//
+//		}
 
 		return node
 	}
@@ -436,7 +579,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 	private dispatch def KNode createInfluencePass3(CompositeInfluence influence) {
 		val node = elemToNode.get(influence)
 
-		var funNode = influence.ownedFunction.createFunction
+		var funNode = influence.ownedInfluenceFunction.createInfluenceFunction
 		node.children.add(funNode)
 
 		return node
@@ -480,17 +623,17 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return node
 	}
 
-	private dispatch def KNode createFunction(Function fun) {
+	private dispatch def KNode createInfluenceFunction(InfluenceFunction fun) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(fun)
 		node.ID = fun.name
 
-		val label = fun.createFunctionLabel
+		val label = fun.createInfluenceFunctionLabel
 
 		if (fun === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
-			val figure = node.addFunctionFigure(fun, label)
+			val figure = node.addInfluenceFunctionFigure(fun, label)
 			figure.addChildArea()
 
 			node.configureInterfaceNodeLayout()
@@ -518,7 +661,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return node
 	}
 
-	private dispatch def KNode createFunction(CompositeFunction fun) {
+	private dispatch def KNode createInfluenceFunction(CompositeFunction fun) {
 		val node = KGraphUtil.createInitializedNode()
 		node.associateWith(fun)
 		node.ID = fun.name
@@ -605,17 +748,17 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		// reactorNodes.add(0, node.children.head)
 	}
 
-	private def KNode createPhenomena(PhysicalPhenomena phenomena) {
+	private def KNode createEnvironmentalFactor(EnvironmentalFactor ef) {
 		val node = KGraphUtil.createInitializedNode()
-		node.associateWith(phenomena)
-		node.ID = phenomena.name
+		node.associateWith(ef)
+		node.ID = ef.name
 
-		val label = phenomena.createNamedElementLabel
+		val label = ef.createNamedElementLabel
 
-		if (phenomena === null) {
+		if (ef === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
-			val figure = node.addPhenomenaFigure(phenomena, label)
+			val figure = node.addPhenomenaFigure(ef, label)
 			figure.addChildArea()
 
 			node.configureInterfaceNodeLayout()
@@ -643,17 +786,17 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return node
 	}
 
-	private def KNode createSystemResponseNode(SystemResponse sr) {
+	private def KNode createSystemResponseNode(SystemResponseProperty srp) {
 		val node = KGraphUtil.createInitializedNode()
-		node.associateWith(sr)
-		node.ID = sr.name
+		node.associateWith(srp)
+		node.ID = srp.name
 
-		val label = sr.createNamedElementLabel
+		val label = srp.createNamedElementLabel
 
-		if (sr === null) {
+		if (srp === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
-			val figure = node.addSystemResponseFigure(sr, label)
+			val figure = node.addSystemResponseFigure(srp, label)
 			figure.addChildArea()
 
 			node.configureInterfaceNodeLayout()
@@ -832,7 +975,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return b.toString()
 	}
 
-	private def String createFunctionLabel(Function fun) {
+	private def String createInfluenceFunctionLabel(InfluenceFunction fun) {
 		val b = new StringBuilder
 		b.append(fun === null
 			? "<NULL>"

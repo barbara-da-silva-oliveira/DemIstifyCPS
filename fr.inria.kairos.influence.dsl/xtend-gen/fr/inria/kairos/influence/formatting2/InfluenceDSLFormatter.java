@@ -6,11 +6,13 @@ package fr.inria.kairos.influence.formatting2;
 import com.google.inject.Inject;
 import fr.inria.kairos.influence.metamodel.AbstractInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
+import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
 import fr.inria.kairos.influence.metamodel.Influence;
+import fr.inria.kairos.influence.metamodel.InfluenceFunction;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
-import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
+import fr.inria.kairos.influence.metamodel.Participant;
 import fr.inria.kairos.influence.metamodel.Requirement;
-import fr.inria.kairos.influence.metamodel.SystemResponse;
+import fr.inria.kairos.influence.metamodel.SystemResponseProperty;
 import fr.inria.kairos.influence.services.InfluenceDSLGrammarAccess;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
@@ -27,33 +29,41 @@ public class InfluenceDSLFormatter extends AbstractFormatter2 {
   @Extension
   private InfluenceDSLGrammarAccess _influenceDSLGrammarAccess;
 
-  protected void _format(final InfluenceModel influenceModel, @Extension final IFormattableDocument document) {
-    EList<AbstractInfluence> _ownedInfluences = influenceModel.getOwnedInfluences();
-    for (final AbstractInfluence influence : _ownedInfluences) {
-      document.<AbstractInfluence>format(influence);
+  protected void _format(final InfluenceModel model, @Extension final IFormattableDocument document) {
+    EList<AbstractInfluence> _ownedInfluences = model.getOwnedInfluences();
+    for (final AbstractInfluence inf : _ownedInfluences) {
+      document.<AbstractInfluence>format(inf);
     }
-    EList<Requirement> _ownedRequirements = influenceModel.getOwnedRequirements();
-    for (final Requirement requirementSatisfaction : _ownedRequirements) {
-      document.<Requirement>format(requirementSatisfaction);
+    EList<Requirement> _ownedRequirements = model.getOwnedRequirements();
+    for (final Requirement req : _ownedRequirements) {
+      document.<Requirement>format(req);
     }
-    EList<PhysicalPhenomena> _ownedPhysicalPhenomena = influenceModel.getOwnedPhysicalPhenomena();
-    for (final PhysicalPhenomena cyberPhysicalPhenomena : _ownedPhysicalPhenomena) {
-      document.<PhysicalPhenomena>format(cyberPhysicalPhenomena);
+    EList<EnvironmentalFactor> _ownedEnvironmentalFactors = model.getOwnedEnvironmentalFactors();
+    for (final EnvironmentalFactor ef : _ownedEnvironmentalFactors) {
+      document.<EnvironmentalFactor>format(ef);
     }
-    EList<DesignArtifact> _ownedArtifacts = influenceModel.getOwnedArtifacts();
-    for (final DesignArtifact artifact : _ownedArtifacts) {
-      document.<DesignArtifact>format(artifact);
+    EList<DesignArtifact> _ownedArtifacts = model.getOwnedArtifacts();
+    for (final DesignArtifact da : _ownedArtifacts) {
+      document.<DesignArtifact>format(da);
+    }
+    EList<SystemResponseProperty> _ownedSRPs = model.getOwnedSRPs();
+    for (final SystemResponseProperty srp : _ownedSRPs) {
+      document.<SystemResponseProperty>format(srp);
     }
   }
 
   protected void _format(final Influence influence, @Extension final IFormattableDocument document) {
-    EList<SystemResponse> _affects = influence.getAffects();
-    for (final SystemResponse systemResponse : _affects) {
-      document.<SystemResponse>format(systemResponse);
+    InfluenceFunction _ownedInfluenceFunction = influence.getOwnedInfluenceFunction();
+    if (_ownedInfluenceFunction!=null) {
+      document.<InfluenceFunction>format(_ownedInfluenceFunction);
     }
-    EList<SystemResponse> _affects_1 = influence.getAffects();
-    for (final SystemResponse systemResponse_1 : _affects_1) {
-      document.<SystemResponse>format(systemResponse_1);
+    EList<Participant> _ownedParticipants = influence.getOwnedParticipants();
+    for (final Participant p : _ownedParticipants) {
+      document.<Participant>format(p);
+    }
+    SystemResponseProperty _outputSRP = influence.getOutputSRP();
+    if (_outputSRP!=null) {
+      document.<SystemResponseProperty>format(_outputSRP);
     }
   }
 

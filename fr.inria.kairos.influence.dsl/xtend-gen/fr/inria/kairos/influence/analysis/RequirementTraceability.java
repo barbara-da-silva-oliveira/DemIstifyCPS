@@ -1,213 +1,304 @@
 package fr.inria.kairos.influence.analysis;
 
-import fr.inria.kairos.influence.metamodel.DesignArtifact;
-import fr.inria.kairos.influence.metamodel.Influence;
-import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
-import fr.inria.kairos.influence.metamodel.Requirement;
-import fr.inria.kairos.influence.metamodel.SystemResponse;
+import fr.inria.kairos.influence.analysis.GraphBuilder;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.function.Function;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
+import java.util.Set;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 
 @SuppressWarnings("all")
 public class RequirementTraceability {
-  private static class NodeDepth {
-    private final String node;
+  public static class WorkItem {
+    public final String nodeId;
 
-    private final int depth;
+    public final int hops;
 
-    public NodeDepth(final String n, final int d) {
-      this.node = n;
-      this.depth = d;
+    public WorkItem(final String nodeId, final int hops) {
+      this.nodeId = nodeId;
+      this.hops = hops;
     }
   }
 
-  public static class TraceData {
-    public final Map<String, LinkedHashSet<String>> inEdges;
+  public static class TracePath {
+    public final String requirementId;
 
-    public final Map<String, LinkedHashSet<String>> outEdges;
+    public final String srpId;
 
-    public final Map<String, LinkedHashSet<String>> reqToSRs;
+    public final String influenceId;
 
-    public TraceData(final Map<String, LinkedHashSet<String>> inEdges, final Map<String, LinkedHashSet<String>> outEdges, final Map<String, LinkedHashSet<String>> reqToSRs) {
-      this.inEdges = inEdges;
-      this.outEdges = outEdges;
-      this.reqToSRs = reqToSRs;
+    public final String artifactId;
+
+    public TracePath(final String requirementId, final String srpId, final String influenceId, final String artifactId) {
+      this.requirementId = requirementId;
+      this.srpId = srpId;
+      this.influenceId = influenceId;
+      this.artifactId = artifactId;
     }
   }
 
-  public RequirementTraceability.TraceData buildTrace(final Resource resource) {
-    RequirementTraceability.TraceData _xblockexpression = null;
-    {
-      final HashMap<String, LinkedHashSet<String>> outEdges = new HashMap<String, LinkedHashSet<String>>();
-      final HashMap<String, LinkedHashSet<String>> inEdges = new HashMap<String, LinkedHashSet<String>>();
-      final HashMap<String, LinkedHashSet<String>> reqToSRs = new HashMap<String, LinkedHashSet<String>>();
-      final TreeIterator<EObject> it = resource.getAllContents();
-      while (it.hasNext()) {
+  public static class UpstreamVariables {
+    public final Iterable<String> artifactIds;
+
+    public final Iterable<String> factorIds;
+
+    public UpstreamVariables(final Iterable<String> artifactIds, final Iterable<String> factorIds) {
+      this.artifactIds = artifactIds;
+      this.factorIds = factorIds;
+    }
+  }
+
+  private final GraphBuilder.Result canonicalGraph;
+
+  public RequirementTraceability(final GraphBuilder.Result graphBundle) {
+    this.canonicalGraph = graphBundle;
+  }
+
+  public Iterable<RequirementTraceability.TracePath> traceRequirementToArtifacts(final String requirementSimpleName) {
+    final String requirementId = RequirementTraceability.toRequirementId(requirementSimpleName);
+    final ArrayList<RequirementTraceability.TracePath> collectedPaths = CollectionLiterals.<RequirementTraceability.TracePath>newArrayList();
+    if ((this.canonicalGraph == null)) {
+      return collectedPaths;
+    }
+    final LinkedHashSet<String> srpIdsConstrainedByRequirement = this.canonicalGraph.inEdges.get(requirementId);
+    if ((srpIdsConstrainedByRequirement != null)) {
+      for (final String srpId : srpIdsConstrainedByRequirement) {
         {
-          final EObject o = it.next();
-          if ((o instanceof Influence)) {
-            final Influence inf = ((Influence) o);
-            EList<SystemResponse> _affects = inf.getAffects();
-            for (final SystemResponse sr : _affects) {
-              if (((sr != null) && (sr.getName() != null))) {
-                RequirementTraceability.addAdj(outEdges, inEdges, RequirementTraceability.toI(inf.getName()), RequirementTraceability.toSR(sr.getName()));
-                EList<Requirement> _usedIn = sr.getUsedIn();
-                for (final Requirement r : _usedIn) {
-                  if (((r != null) && (r.getName() != null))) {
-                    RequirementTraceability.addAdj(outEdges, inEdges, RequirementTraceability.toSR(sr.getName()), RequirementTraceability.toR(r.getName()));
-                    final Function<String, LinkedHashSet<String>> _function = (String it_1) -> {
-                      return new LinkedHashSet<String>();
-                    };
-                    reqToSRs.computeIfAbsent(r.getName(), _function).add(sr.getName());
-                  }
-                }
-              }
-            }
-            EList<DesignArtifact> _originatorArtifact = inf.getOriginatorArtifact();
-            for (final DesignArtifact a : _originatorArtifact) {
-              String _name = null;
-              if (a!=null) {
-                _name=a.getName();
-              }
-              boolean _tripleNotEquals = (_name != null);
-              if (_tripleNotEquals) {
-                RequirementTraceability.addAdj(outEdges, inEdges, RequirementTraceability.toA(a.getName()), RequirementTraceability.toI(inf.getName()));
-              }
-            }
-            EList<PhysicalPhenomena> _originatorPhenomena = inf.getOriginatorPhenomena();
-            for (final PhysicalPhenomena p : _originatorPhenomena) {
-              String _name_1 = null;
-              if (p!=null) {
-                _name_1=p.getName();
-              }
-              boolean _tripleNotEquals_1 = (_name_1 != null);
-              if (_tripleNotEquals_1) {
-                RequirementTraceability.addAdj(outEdges, inEdges, RequirementTraceability.toP(p.getName()), RequirementTraceability.toI(inf.getName()));
-              }
-            }
-            EList<SystemResponse> _originatorSystemResponse = inf.getOriginatorSystemResponse();
-            for (final SystemResponse sr0 : _originatorSystemResponse) {
-              String _name_2 = null;
-              if (sr0!=null) {
-                _name_2=sr0.getName();
-              }
-              boolean _tripleNotEquals_2 = (_name_2 != null);
-              if (_tripleNotEquals_2) {
-                RequirementTraceability.addAdj(outEdges, inEdges, RequirementTraceability.toSR(sr0.getName()), RequirementTraceability.toI(inf.getName()));
-              }
-            }
-            EList<SystemResponse> _affects_1 = inf.getAffects();
-            for (final SystemResponse sr_1 : _affects_1) {
-              EList<SystemResponse> _originatorSystemResponse_1 = inf.getOriginatorSystemResponse();
-              for (final SystemResponse sr0_1 : _originatorSystemResponse_1) {
-                boolean _and = false;
-                String _name_3 = null;
-                if (sr_1!=null) {
-                  _name_3=sr_1.getName();
-                }
-                boolean _tripleNotEquals_3 = (_name_3 != null);
-                if (!_tripleNotEquals_3) {
-                  _and = false;
-                } else {
-                  String _name_4 = null;
-                  if (sr0_1!=null) {
-                    _name_4=sr0_1.getName();
-                  }
-                  boolean _tripleNotEquals_4 = (_name_4 != null);
-                  _and = _tripleNotEquals_4;
-                }
-                if (_and) {
-                  RequirementTraceability.addAdj(outEdges, inEdges, RequirementTraceability.toSR(sr0_1.getName()), RequirementTraceability.toSR(sr_1.getName()));
-                }
-              }
-            }
-          }
-        }
-      }
-      _xblockexpression = new RequirementTraceability.TraceData(inEdges, outEdges, reqToSRs);
-    }
-    return _xblockexpression;
-  }
-
-  public HashMap<String, Integer> upstreamArtifacts(final String srNode, final Map<String, LinkedHashSet<String>> inEdges) {
-    HashMap<String, Integer> _xblockexpression = null;
-    {
-      final HashMap<String, Integer> result = new HashMap<String, Integer>();
-      final HashSet<String> visited = new HashSet<String>();
-      final ArrayDeque<RequirementTraceability.NodeDepth> q = new ArrayDeque<RequirementTraceability.NodeDepth>();
-      visited.add(srNode);
-      RequirementTraceability.NodeDepth _nodeDepth = new RequirementTraceability.NodeDepth(srNode, 0);
-      q.add(_nodeDepth);
-      while ((!q.isEmpty())) {
-        {
-          final RequirementTraceability.NodeDepth cur = q.removeFirst();
-          final LinkedHashSet<String> preds = inEdges.get(cur.node);
-          if ((preds != null)) {
-            for (final String p : preds) {
-              boolean _add = visited.add(p);
-              if (_add) {
-                boolean _startsWith = p.startsWith("A:");
+          final String producerInfluenceId = this.canonicalGraph.srp2inf.get(srpId);
+          if ((producerInfluenceId != null)) {
+            final LinkedHashSet<String> incomingToInfluence = this.canonicalGraph.inEdges.get(producerInfluenceId);
+            if ((incomingToInfluence != null)) {
+              for (final String upstreamNodeId : incomingToInfluence) {
+                boolean _startsWith = upstreamNodeId.startsWith("A:");
                 if (_startsWith) {
-                  final String name = p.substring(2);
-                  final Integer old = result.get(name);
-                  if (((old == null) || ((cur.depth + 1) < (old).intValue()))) {
-                    result.put(name, Integer.valueOf((cur.depth + 1)));
-                  }
+                  RequirementTraceability.TracePath _tracePath = new RequirementTraceability.TracePath(requirementId, srpId, producerInfluenceId, upstreamNodeId);
+                  collectedPaths.add(_tracePath);
+                } else {
                 }
-                RequirementTraceability.NodeDepth _nodeDepth_1 = new RequirementTraceability.NodeDepth(p, (cur.depth + 1));
-                q.add(_nodeDepth_1);
               }
+            } else {
+            }
+          } else {
+          }
+        }
+      }
+    } else {
+    }
+    return collectedPaths;
+  }
+
+  public Iterable<RequirementTraceability.TracePath> traceArtifactToRequirements(final String artifactSimpleName) {
+    final String artifactId = RequirementTraceability.toArtifactId(artifactSimpleName);
+    final ArrayList<RequirementTraceability.TracePath> collectedPaths = CollectionLiterals.<RequirementTraceability.TracePath>newArrayList();
+    final LinkedHashSet<String> influenceIdsConsumedByArtifact = this.canonicalGraph.outEdges.get(artifactId);
+    if ((influenceIdsConsumedByArtifact != null)) {
+      for (final String influenceId : influenceIdsConsumedByArtifact) {
+        {
+          final LinkedHashSet<String> srpOutputsOfInfluence = this.canonicalGraph.outEdges.get(influenceId);
+          if ((srpOutputsOfInfluence != null)) {
+            for (final String srpId : srpOutputsOfInfluence) {
+              boolean _startsWith = srpId.startsWith("SR:");
+              if (_startsWith) {
+                final LinkedHashSet<String> requirementIdsConstrainedBySrp = this.canonicalGraph.outEdges.get(srpId);
+                if ((requirementIdsConstrainedBySrp != null)) {
+                  for (final String requirementId : requirementIdsConstrainedBySrp) {
+                    boolean _startsWith_1 = requirementId.startsWith("R:");
+                    if (_startsWith_1) {
+                      RequirementTraceability.TracePath _tracePath = new RequirementTraceability.TracePath(requirementId, srpId, influenceId, artifactId);
+                      collectedPaths.add(_tracePath);
+                    } else {
+                    }
+                  }
+                } else {
+                }
+              } else {
+              }
+            }
+          } else {
+          }
+        }
+      }
+    } else {
+    }
+    return collectedPaths;
+  }
+
+  public Map<String, Integer> upstreamArtifacts(final String srpId, final Map<String, LinkedHashSet<String>> inEdges) {
+    return this.upstreamByPrefix(srpId, inEdges, "A:");
+  }
+
+  public Map<String, Integer> upstreamEnvironmentalFactors(final String srpId, final Map<String, LinkedHashSet<String>> inEdges) {
+    return this.upstreamByPrefix(srpId, inEdges, "E:");
+  }
+
+  private Map<String, Integer> upstreamByPrefix(final String srpId, final Map<String, LinkedHashSet<String>> inEdges, final String wantedPrefix) {
+    final HashMap<String, Integer> distances = new HashMap<String, Integer>();
+    final HashSet<String> visitedSrps = new HashSet<String>();
+    final ArrayDeque<RequirementTraceability.WorkItem> worklist = new ArrayDeque<RequirementTraceability.WorkItem>();
+    if ((srpId == null)) {
+      return distances;
+    } else {
+      if ((inEdges == null)) {
+        return distances;
+      } else {
+        final LinkedHashSet<String> incomingToSrp = inEdges.get(srpId);
+        if ((incomingToSrp == null)) {
+          return distances;
+        } else {
+          for (final String n : incomingToSrp) {
+            if (((n != null) && n.startsWith("I:"))) {
+              RequirementTraceability.WorkItem _workItem = new RequirementTraceability.WorkItem(n, 0);
+              worklist.add(_workItem);
+            } else {
             }
           }
         }
       }
-      _xblockexpression = result;
+    }
+    while ((!worklist.isEmpty())) {
+      {
+        final RequirementTraceability.WorkItem item = worklist.removeFirst();
+        final String influenceId = item.nodeId;
+        final int hopsSoFar = item.hops;
+        final LinkedHashSet<String> incomingToInfluence = inEdges.get(influenceId);
+        if ((incomingToInfluence != null)) {
+          final int nextHops = (hopsSoFar + 1);
+          for (final String u : incomingToInfluence) {
+            if ((u == null)) {
+            } else {
+              boolean _startsWith = u.startsWith(wantedPrefix);
+              if (_startsWith) {
+                final Integer prev = distances.get(u);
+                if (((prev == null) || (nextHops < (prev).intValue()))) {
+                  distances.put(u, Integer.valueOf(nextHops));
+                } else {
+                }
+              } else {
+                boolean _startsWith_1 = u.startsWith("SR:");
+                if (_startsWith_1) {
+                  boolean _contains = visitedSrps.contains(u);
+                  boolean _not = (!_contains);
+                  if (_not) {
+                    visitedSrps.add(u);
+                    final LinkedHashSet<String> inc = inEdges.get(u);
+                    if ((inc != null)) {
+                      for (final String maybeInf : inc) {
+                        if (((maybeInf != null) && maybeInf.startsWith("I:"))) {
+                          RequirementTraceability.WorkItem _workItem_1 = new RequirementTraceability.WorkItem(maybeInf, nextHops);
+                          worklist.add(_workItem_1);
+                        } else {
+                        }
+                      }
+                    } else {
+                    }
+                  } else {
+                  }
+                } else {
+                }
+              }
+            }
+          }
+        } else {
+        }
+      }
+    }
+    return distances;
+  }
+
+  public RequirementTraceability.UpstreamVariables findUpstreamBaseVariables(final String srpSimpleName) {
+    final String rootSrpId = RequirementTraceability.toSrpId(srpSimpleName);
+    final Set<String> visitedSrpIds = new HashSet<String>();
+    visitedSrpIds.add(rootSrpId);
+    final Set<String> upstreamArtifactIds = new HashSet<String>();
+    final Set<String> upstreamFactorIds = new HashSet<String>();
+    this.depthFirstCollectUpstream(rootSrpId, visitedSrpIds, upstreamArtifactIds, upstreamFactorIds);
+    return new RequirementTraceability.UpstreamVariables(upstreamArtifactIds, upstreamFactorIds);
+  }
+
+  private void depthFirstCollectUpstream(final String currentSrpId, final Set<String> visitedSrpIds, final Set<String> collectedArtifactIds, final Set<String> collectedFactorIds) {
+    final String producerInfluenceId = this.canonicalGraph.srp2inf.get(currentSrpId);
+    if ((producerInfluenceId != null)) {
+      final LinkedHashSet<String> incomingNodeIds = this.canonicalGraph.inEdges.get(producerInfluenceId);
+      if ((incomingNodeIds != null)) {
+        for (final String upstreamNodeId : incomingNodeIds) {
+          boolean _startsWith = upstreamNodeId.startsWith("A:");
+          if (_startsWith) {
+            collectedArtifactIds.add(upstreamNodeId);
+          } else {
+            boolean _startsWith_1 = upstreamNodeId.startsWith("E:");
+            if (_startsWith_1) {
+              collectedFactorIds.add(upstreamNodeId);
+            } else {
+              boolean _startsWith_2 = upstreamNodeId.startsWith("SR:");
+              if (_startsWith_2) {
+                boolean _contains = visitedSrpIds.contains(upstreamNodeId);
+                boolean _not = (!_contains);
+                if (_not) {
+                  visitedSrpIds.add(upstreamNodeId);
+                  this.depthFirstCollectUpstream(upstreamNodeId, visitedSrpIds, collectedArtifactIds, collectedFactorIds);
+                } else {
+                }
+              } else {
+              }
+            }
+          }
+        }
+      } else {
+      }
+    } else {
+    }
+  }
+
+  public Iterable<String[]> buildImpactSummaryTableForRequirement(final String requirementSimpleName) {
+    final ArrayList<String[]> rows = CollectionLiterals.<String[]>newArrayList();
+    Iterable<RequirementTraceability.TracePath> _traceRequirementToArtifacts = this.traceRequirementToArtifacts(requirementSimpleName);
+    for (final RequirementTraceability.TracePath p : _traceRequirementToArtifacts) {
+      String _stripPrefix = RequirementTraceability.stripPrefix(p.requirementId);
+      String _stripPrefix_1 = RequirementTraceability.stripPrefix(p.srpId);
+      String _stripPrefix_2 = RequirementTraceability.stripPrefix(p.influenceId);
+      String _stripPrefix_3 = RequirementTraceability.stripPrefix(p.artifactId);
+      rows.add(
+        ((String[])Conversions.unwrapArray(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(_stripPrefix, _stripPrefix_1, _stripPrefix_2, _stripPrefix_3)), String.class)));
+    }
+    return rows;
+  }
+
+  private static String toArtifactId(final String simple) {
+    return ("A:" + simple);
+  }
+
+  private static String toFactorId(final String simple) {
+    return ("E:" + simple);
+  }
+
+  private static String toSrpId(final String simple) {
+    return ("SR:" + simple);
+  }
+
+  private static String toRequirementId(final String simple) {
+    return ("R:" + simple);
+  }
+
+  private static String stripPrefix(final String id) {
+    String _xblockexpression = null;
+    {
+      if ((id == null)) {
+        return "";
+      }
+      final int i = id.indexOf(":");
+      String _xifexpression = null;
+      if (((i >= 0) && ((i + 1) < id.length()))) {
+        _xifexpression = id.substring((i + 1));
+      } else {
+        _xifexpression = id;
+      }
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
-  }
-
-  private static void addAdj(final Map<String, LinkedHashSet<String>> outE, final Map<String, LinkedHashSet<String>> inE, final String from, final String to) {
-    LinkedHashSet<String> os = outE.get(from);
-    if ((os == null)) {
-      LinkedHashSet<String> _linkedHashSet = new LinkedHashSet<String>();
-      os = _linkedHashSet;
-      outE.put(from, os);
-    }
-    os.add(to);
-    LinkedHashSet<String> is = inE.get(to);
-    if ((is == null)) {
-      LinkedHashSet<String> _linkedHashSet_1 = new LinkedHashSet<String>();
-      is = _linkedHashSet_1;
-      inE.put(to, is);
-    }
-    is.add(from);
-  }
-
-  private static String toA(final String n) {
-    return ("A:" + n);
-  }
-
-  private static String toP(final String n) {
-    return ("P:" + n);
-  }
-
-  private static String toSR(final String n) {
-    return ("SR:" + n);
-  }
-
-  private static String toR(final String n) {
-    return ("R:" + n);
-  }
-
-  private static String toI(final String n) {
-    return ("I:" + n);
   }
 }

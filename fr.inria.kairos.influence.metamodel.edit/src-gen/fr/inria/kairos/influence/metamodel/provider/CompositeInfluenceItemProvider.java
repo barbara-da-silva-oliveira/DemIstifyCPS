@@ -61,7 +61,7 @@ public class CompositeInfluenceItemProvider extends AbstractInfluenceItemProvide
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__OWNED_FUNCTION);
+			childrenFeatures.add(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION);
 		}
 		return childrenFeatures;
 	}
@@ -125,7 +125,7 @@ public class CompositeInfluenceItemProvider extends AbstractInfluenceItemProvide
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CompositeInfluence.class)) {
-		case MetamodelPackage.COMPOSITE_INFLUENCE__OWNED_FUNCTION:
+		case MetamodelPackage.COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -143,8 +143,9 @@ public class CompositeInfluenceItemProvider extends AbstractInfluenceItemProvide
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__OWNED_FUNCTION,
-				MetamodelFactory.eINSTANCE.createCompositeFunction()));
+		newChildDescriptors
+				.add(createChildParameter(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION,
+						MetamodelFactory.eINSTANCE.createInfluenceFunction()));
 	}
 
 }

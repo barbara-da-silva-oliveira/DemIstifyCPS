@@ -1,7 +1,9 @@
 package fr.inria.kairos.influence.export;
 
 import java.io.StringWriter;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -14,7 +16,7 @@ import org.jgrapht.nio.dot.DOTExporter;
 
 @SuppressWarnings("all")
 public class DotExporter {
-  public void exportGraphToDot(final DefaultDirectedGraph<String, DefaultEdge> graph, final Map<String, String> vertexLabels, final Map<DefaultEdge, String> edgeLabels, final IFileSystemAccess2 fsa, final String filename) {
+  public void exportGraphToDot(final DefaultDirectedGraph<String, DefaultEdge> graph, final Map<String, String> vertexLabels, final Map<DefaultEdge, String> edgeLabels, final Map<String, String> nodeToOrigin, final Map<String, String> nodeSourceModel, final Map<DefaultEdge, String> edgeToOrigin, final Map<DefaultEdge, Double> edgeWeights, final IFileSystemAccess2 fsa, final String filename) {
     final Function<String, String> _function = (String v) -> {
       return DotExporter.safeId(v);
     };
@@ -39,6 +41,15 @@ public class DotExporter {
         }
         final String lbl = _orDefault;
         a.put("label", DefaultAttribute.createAttribute(lbl));
+        String _get = null;
+        if (nodeSourceModel!=null) {
+          _get=nodeSourceModel.get(v);
+        }
+        final String srcModel = _get;
+        if ((srcModel != null)) {
+          a.put("srcModel", DefaultAttribute.createAttribute(srcModel));
+          a.put("tooltip", DefaultAttribute.createAttribute(srcModel));
+        }
         _xblockexpression = a;
       }
       return _xblockexpression;
@@ -56,6 +67,24 @@ public class DotExporter {
         if ((lbl != null)) {
           a.put("label", DefaultAttribute.createAttribute(lbl));
         }
+        String _get_1 = null;
+        if (edgeToOrigin!=null) {
+          _get_1=edgeToOrigin.get(e);
+        }
+        final String src = _get_1;
+        if ((src != null)) {
+          a.put("src", DefaultAttribute.createAttribute(src));
+          a.put("tooltip", DefaultAttribute.createAttribute(src));
+        }
+        Double _get_2 = null;
+        if (edgeWeights!=null) {
+          _get_2=edgeWeights.get(e);
+        }
+        final Double w = _get_2;
+        if ((w != null)) {
+          final String ws = String.format(Locale.ROOT, "%.3f", w);
+          a.put("weight", DefaultAttribute.createAttribute(ws));
+        }
         _xblockexpression = a;
       }
       return _xblockexpression;
@@ -64,6 +93,14 @@ public class DotExporter {
     final StringWriter w = new StringWriter();
     dot.exportGraph(graph, w);
     fsa.generateFile(filename, w.toString());
+  }
+
+  public void exportGraphToDot(final DefaultDirectedGraph<String, DefaultEdge> graph, final Map<String, String> vertexLabels, final Map<DefaultEdge, String> edgeLabels, final IFileSystemAccess2 fsa, final String filename) {
+    this.exportGraphToDot(graph, vertexLabels, edgeLabels, 
+      Collections.<String, String>emptyMap(), 
+      Collections.<String, String>emptyMap(), 
+      Collections.<DefaultEdge, String>emptyMap(), 
+      Collections.<DefaultEdge, Double>emptyMap(), fsa, filename);
   }
 
   private static String safeId(final String v) {

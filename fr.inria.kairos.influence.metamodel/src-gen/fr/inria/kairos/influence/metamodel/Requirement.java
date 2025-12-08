@@ -2,8 +2,6 @@
  */
 package fr.inria.kairos.influence.metamodel;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Requirement</b></em>'.
@@ -13,8 +11,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Requirement#getDescription <em>Description</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Requirement#getSatisfaction <em>Satisfaction</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Requirement#getMetadata <em>Metadata</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Requirement#getLanguage <em>Language</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getRequirement()
@@ -23,27 +22,72 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Requirement extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Satisfaction</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Satisfaction</em>' attribute list.
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getRequirement_Description()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Requirement#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Satisfaction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Satisfaction</em>' attribute.
+	 * @see #setSatisfaction(String)
 	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getRequirement_Satisfaction()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<String> getSatisfaction();
+	String getSatisfaction();
 
 	/**
-	 * Returns the value of the '<em><b>Metadata</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Requirement#getSatisfaction <em>Satisfaction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Metadata</em>' attribute list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getRequirement_Metadata()
-	 * @model
+	 * @param value the new value of the '<em>Satisfaction</em>' attribute.
+	 * @see #getSatisfaction()
 	 * @generated
 	 */
-	EList<String> getMetadata();
+	void setSatisfaction(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Language</b></em>' attribute.
+	 * The literals are from the enumeration {@link fr.inria.kairos.influence.metamodel.LanguageType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Language</em>' attribute.
+	 * @see fr.inria.kairos.influence.metamodel.LanguageType
+	 * @see #setLanguage(LanguageType)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getRequirement_Language()
+	 * @model required="true"
+	 * @generated
+	 */
+	LanguageType getLanguage();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Requirement#getLanguage <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Language</em>' attribute.
+	 * @see fr.inria.kairos.influence.metamodel.LanguageType
+	 * @see #getLanguage()
+	 * @generated
+	 */
+	void setLanguage(LanguageType value);
 
 } // Requirement

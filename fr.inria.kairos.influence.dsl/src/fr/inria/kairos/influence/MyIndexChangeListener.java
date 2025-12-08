@@ -172,7 +172,7 @@ public class MyIndexChangeListener implements IResourceDescription.Event.Listene
 					try {
 						input = editorRef.getEditorInput();
 					} catch (PartInitException e) {
-						// TODO Auto-generated catch block
+						// Auto-generated catch block
 						e.printStackTrace();
 					}
 					if (input instanceof IFileEditorInput) {

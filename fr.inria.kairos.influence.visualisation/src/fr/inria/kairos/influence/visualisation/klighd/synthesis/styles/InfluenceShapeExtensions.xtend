@@ -36,14 +36,19 @@ import org.eclipse.xtend.lib.annotations.Data
 import static extension de.cau.cs.kieler.klighd.syntheses.DiagramSyntheses.*
 import fr.inria.kairos.influence.metamodel.DesignArtifact
 import static fr.inria.kairos.influence.visualisation.klighd.synthesis.InfluenceSynthesis.*
-import fr.inria.kairos.influence.metamodel.PhysicalPhenomena
 import fr.inria.kairos.influence.metamodel.Influence
 import com.google.inject.Inject
+import fr.inria.kairos.influence.metamodel.EnvironmentalFactor
+import fr.inria.kairos.influence.metamodel.SystemResponseProperty
+import fr.inria.kairos.influence.metamodel.ArtifactParticipant
+import fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant
+import fr.inria.kairos.influence.metamodel.SRPInputParticipant
+
 import fr.inria.kairos.influence.metamodel.CompositeInfluence
-import fr.inria.kairos.influence.metamodel.SystemResponse
 import fr.inria.kairos.influence.metamodel.Requirement
-import fr.inria.kairos.influence.metamodel.Function
+import fr.inria.kairos.influence.metamodel.InfluenceFunction
 import fr.inria.kairos.influence.metamodel.CompositeFunction
+import fr.inria.kairos.influence.metamodel.InfluenceFunction
 
 /**
  * Extension class that provides shapes and figures for the Lingua France diagram synthesis.
@@ -164,11 +169,7 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 					underlineSelectionStyle
 				]
 				
-				//if (model.federated) {
-					addCloudIcon() => [
-						setGridPlacementData().from(LEFT, 3, 0, TOP, 0, 0).to(RIGHT, 0, 0, BOTTOM, 0, 0)
-					]
-					placement.numColumns = 2
+				
 					
 //					if (model.host !== null && SHOW_REACTOR_HOST.booleanValue) {
 //						addText(model.host.toText()) => [
@@ -188,7 +189,7 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 	/**
 	 * Creates the function frame.
 	 */
-	def addFunctionFigure(KNode node, Function fun, String text) {
+	def addInfluenceFunctionFigure(KNode node, InfluenceFunction fun, String text) {
 		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
 		val figure = node.addRoundedRectangle(8, 8, 1) => [
 			setGridPlacement(1)
@@ -236,7 +237,7 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 			addRectangle() => [ // Centered child container
 				invisible = true
 				setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0)
-				val placement = setGridPlacement(1)
+				
 				
 				addText(text) => [
 					suppressSelectability
@@ -284,7 +285,7 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 	/**
 	 * Creates the physical phenomena frame.
 	 */
-	def addPhenomenaFigure(KNode node, PhysicalPhenomena phenomena, String text) {
+	def addPhenomenaFigure(KNode node, EnvironmentalFactor ef, String text) {
 		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
 		val figure = node.addRoundedRectangle(8, 8, 1) => [
 			setGridPlacement(1)
@@ -300,14 +301,20 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 			addRectangle() => [ // Centered child container
 				invisible = true
 				setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0)
-				val placement = setGridPlacement(1)
 				
 				addText(text) => [
 					suppressSelectability
 					underlineSelectionStyle
 				]
+				val placement = setGridPlacement(1)
+					//if (model.federated) {
+					addCloudIcon() => [
+						setGridPlacementData().from(LEFT, 3, 0, TOP, 0, 0).to(RIGHT, 0, 0, BOTTOM, 0, 0)
+					]
+					placement.numColumns = 2
 				
 			]
+				
 		]
 		
 		return figure
@@ -316,7 +323,7 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 /**
 	 * Creates the physical phenomena frame.
 	 */
-	def addSystemResponseFigure(KNode node, SystemResponse sr, String text) {
+	def addSystemResponseFigure(KNode node, SystemResponseProperty srp, String text) {
 		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
 		val figure = node.addRoundedRectangle(8, 8, 1) => [
 			setGridPlacement(1)

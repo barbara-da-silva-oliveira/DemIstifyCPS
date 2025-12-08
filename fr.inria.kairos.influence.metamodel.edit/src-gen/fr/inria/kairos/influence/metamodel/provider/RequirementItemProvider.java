@@ -44,10 +44,27 @@ public class RequirementItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDescriptionPropertyDescriptor(object);
 			addSatisfactionPropertyDescriptor(object);
-			addMetadataPropertyDescriptor(object);
+			addLanguagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Requirement_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Requirement_description_feature",
+								"_UI_Requirement_type"),
+						MetamodelPackage.Literals.REQUIREMENT__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -67,18 +84,18 @@ public class RequirementItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Metadata feature.
+	 * This adds a property descriptor for the Language feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMetadataPropertyDescriptor(Object object) {
+	protected void addLanguagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Requirement_metadata_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Requirement_metadata_feature",
+						getResourceLocator(), getString("_UI_Requirement_language_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Requirement_language_feature",
 								"_UI_Requirement_type"),
-						MetamodelPackage.Literals.REQUIREMENT__METADATA, true, false, false,
+						MetamodelPackage.Literals.REQUIREMENT__LANGUAGE, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -128,8 +145,9 @@ public class RequirementItemProvider extends NamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Requirement.class)) {
+		case MetamodelPackage.REQUIREMENT__DESCRIPTION:
 		case MetamodelPackage.REQUIREMENT__SATISFACTION:
-		case MetamodelPackage.REQUIREMENT__METADATA:
+		case MetamodelPackage.REQUIREMENT__LANGUAGE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

@@ -2,6 +2,8 @@
  */
 package fr.inria.kairos.influence.metamodel;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -13,100 +15,79 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorPhenomena <em>Originator Phenomena</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorArtifact <em>Originator Artifact</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOriginatorSystemResponse <em>Originator System Response</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction <em>Owned Function</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getLikelihoodPerElement <em>Likelihood Per Element</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getConfidence <em>Confidence</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedParticipants <em>Owned Participants</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOutputSRP <em>Output SRP</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ParticipationPattern'"
  * @generated
  */
 public interface Influence extends AbstractInfluence {
 
 	/**
-	 * Returns the value of the '<em><b>Originator Phenomena</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.PhysicalPhenomena}.
+	 * Returns the value of the '<em><b>Owned Influence Function</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Originator Phenomena</em>' reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OriginatorPhenomena()
-	 * @model
-	 * @generated
-	 */
-	EList<PhysicalPhenomena> getOriginatorPhenomena();
-
-	/**
-	 * Returns the value of the '<em><b>Originator Artifact</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.DesignArtifact}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Originator Artifact</em>' reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OriginatorArtifact()
-	 * @model
-	 * @generated
-	 */
-	EList<DesignArtifact> getOriginatorArtifact();
-
-	/**
-	 * Returns the value of the '<em><b>Originator System Response</b></em>' reference list.
-	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.SystemResponse}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Originator System Response</em>' reference list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OriginatorSystemResponse()
-	 * @model
-	 * @generated
-	 */
-	EList<SystemResponse> getOriginatorSystemResponse();
-
-	/**
-	 * Returns the value of the '<em><b>Owned Function</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Function</em>' containment reference.
-	 * @see #setOwnedFunction(Function)
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OwnedFunction()
+	 * @return the value of the '<em>Owned Influence Function</em>' containment reference.
+	 * @see #setOwnedInfluenceFunction(InfluenceFunction)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OwnedInfluenceFunction()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Function getOwnedFunction();
+	InfluenceFunction getOwnedInfluenceFunction();
 
 	/**
-	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedFunction <em>Owned Function</em>}' containment reference.
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Function</em>' containment reference.
-	 * @see #getOwnedFunction()
+	 * @param value the new value of the '<em>Owned Influence Function</em>' containment reference.
+	 * @see #getOwnedInfluenceFunction()
 	 * @generated
 	 */
-	void setOwnedFunction(Function value);
+	void setOwnedInfluenceFunction(InfluenceFunction value);
 
 	/**
-	 * Returns the value of the '<em><b>Likelihood Per Element</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Owned Participants</b></em>' containment reference list.
+	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Participant}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Likelihood Per Element</em>' attribute list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_LikelihoodPerElement()
-	 * @model
+	 * @return the value of the '<em>Owned Participants</em>' containment reference list.
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OwnedParticipants()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<String> getLikelihoodPerElement();
+	EList<Participant> getOwnedParticipants();
 
 	/**
-	 * Returns the value of the '<em><b>Confidence</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Output SRP</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Confidence</em>' attribute list.
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_Confidence()
-	 * @model
+	 * @return the value of the '<em>Output SRP</em>' reference.
+	 * @see #setOutputSRP(SystemResponseProperty)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OutputSRP()
+	 * @model required="true"
 	 * @generated
 	 */
-	EList<String> getConfidence();
+	SystemResponseProperty getOutputSRP();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Influence#getOutputSRP <em>Output SRP</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output SRP</em>' reference.
+	 * @see #getOutputSRP()
+	 * @generated
+	 */
+	void setOutputSRP(SystemResponseProperty value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.ownedParticipants-&gt;exists(p | p.oclIsKindOf(ArtifactParticipant)) and \n\t\t\t(self.ownedParticipants-&gt;exists(p | p.oclIsKindOf(EnvironmentalFactorParticipant)))\n\t\t\tor self.ownedParticipants-&gt;exists(p |p.oclIsKindOf(SRPInputParticipant))'"
+	 * @generated
+	 */
+	boolean ParticipationPattern(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Influence

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject
 import java.util.LinkedHashSet
 import java.util.TreeSet
 import java.util.Collection
+import fr.inria.kairos.influence.metamodel.ArtifactParticipant
 
 class StakeholdersOwner {
 
@@ -32,13 +33,13 @@ class StakeholdersOwner {
 	      val iName = safeName(inf)
 	
 	      // Take originator artifacts directly from the feature
-	      val originators = readArtifactsFeature(inf, "originatorArtifact")
+	      val artifacts = collectArtifactsFromParticipants(inf)
 	
-	      if (originators.empty) {
+	      if (artifacts.empty) {
 	      	rows.add(new Row(iName, 0, ""))
 	      } else {
 	      	val modelUris = new TreeSet<String>()
-	        for (da : originators) {
+	        for (da : artifacts) {
 	          val target = readRefEObject(da)           // <-- the referenced EObject
 	          if (target !== null) {
 				modelUris.add(modelUriOf(target))       // file/URI of the referenced model
@@ -67,15 +68,14 @@ class StakeholdersOwner {
 	    if (n !== null) n else "<unnamed-influence>"
   	}
 
-	private def LinkedHashSet<DesignArtifact> readArtifactsFeature(EObject host, String featureName) {
+	private def LinkedHashSet<DesignArtifact> collectArtifactsFromParticipants(Influence inf) {
 	    val out = new LinkedHashSet<DesignArtifact>()
-	    val f = host.eClass.getEStructuralFeature(featureName)
-	    if (f === null) return out
-	    val v = host.eGet(f)
-	    switch v {
-	      Collection<?>: for (e : v) if (e instanceof DesignArtifact) out.add(e as DesignArtifact)
-	      DesignArtifact: out.add(v as DesignArtifact)
-	      default: {}
+	    if (inf === null) return out
+	    for (p : inf.ownedParticipants) {
+	      if (p instanceof ArtifactParticipant) {
+	        val a = (p as ArtifactParticipant).target
+	        if (a !== null) out.add(a)
+	      }
 	    }
 	    out
   	}

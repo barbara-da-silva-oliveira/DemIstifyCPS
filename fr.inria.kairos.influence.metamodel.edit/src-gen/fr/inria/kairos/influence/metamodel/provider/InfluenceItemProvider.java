@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -47,91 +46,24 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOriginatorPhenomenaPropertyDescriptor(object);
-			addOriginatorArtifactPropertyDescriptor(object);
-			addOriginatorSystemResponsePropertyDescriptor(object);
-			addLikelihoodPerElementPropertyDescriptor(object);
-			addConfidencePropertyDescriptor(object);
+			addOutputSRPPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Originator Phenomena feature.
+	 * This adds a property descriptor for the Output SRP feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOriginatorPhenomenaPropertyDescriptor(Object object) {
+	protected void addOutputSRPPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_originatorPhenomena_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_originatorPhenomena_feature",
+						getResourceLocator(), getString("_UI_Influence_outputSRP_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Influence_outputSRP_feature",
 								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_PHENOMENA, true, false, true, null, null,
-						null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Originator Artifact feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOriginatorArtifactPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_originatorArtifact_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_originatorArtifact_feature",
-								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_ARTIFACT, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Originator System Response feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOriginatorSystemResponsePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_Influence_originatorSystemResponse_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Influence_originatorSystemResponse_feature",
-						"_UI_Influence_type"),
-				MetamodelPackage.Literals.INFLUENCE__ORIGINATOR_SYSTEM_RESPONSE, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Likelihood Per Element feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLikelihoodPerElementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_likelihoodPerElement_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_likelihoodPerElement_feature",
-								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__LIKELIHOOD_PER_ELEMENT, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Confidence feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConfidencePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Influence_confidence_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Influence_confidence_feature",
-								"_UI_Influence_type"),
-						MetamodelPackage.Literals.INFLUENCE__CONFIDENCE, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						MetamodelPackage.Literals.INFLUENCE__OUTPUT_SRP, true, false, true, null, null, null));
 	}
 
 	/**
@@ -146,7 +78,8 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__OWNED_FUNCTION);
+			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__OWNED_INFLUENCE_FUNCTION);
+			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS);
 		}
 		return childrenFeatures;
 	}
@@ -210,11 +143,8 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Influence.class)) {
-		case MetamodelPackage.INFLUENCE__LIKELIHOOD_PER_ELEMENT:
-		case MetamodelPackage.INFLUENCE__CONFIDENCE:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case MetamodelPackage.INFLUENCE__OWNED_FUNCTION:
+		case MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION:
+		case MetamodelPackage.INFLUENCE__OWNED_PARTICIPANTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -232,8 +162,17 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_FUNCTION,
-				MetamodelFactory.eINSTANCE.createFunction()));
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_INFLUENCE_FUNCTION,
+				MetamodelFactory.eINSTANCE.createInfluenceFunction()));
+
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS,
+				MetamodelFactory.eINSTANCE.createSRPInputParticipant()));
+
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS,
+				MetamodelFactory.eINSTANCE.createEnvironmentalFactorParticipant()));
+
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS,
+				MetamodelFactory.eINSTANCE.createArtifactParticipant()));
 	}
 
 }

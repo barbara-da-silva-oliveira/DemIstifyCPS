@@ -1,14 +1,16 @@
 package fr.inria.kairos.influence.analysis;
 
 import com.google.common.collect.Iterables;
+import fr.inria.kairos.influence.metamodel.ArtifactParticipant;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.Influence;
+import fr.inria.kairos.influence.metamodel.Participant;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.TreeSet;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -42,14 +44,14 @@ public class StakeholdersOwner {
       for (final Influence inf : _filter) {
         {
           final String iName = this.safeName(inf);
-          final LinkedHashSet<DesignArtifact> originators = this.readArtifactsFeature(inf, "originatorArtifact");
-          boolean _isEmpty = originators.isEmpty();
+          final LinkedHashSet<DesignArtifact> artifacts = this.collectArtifactsFromParticipants(inf);
+          boolean _isEmpty = artifacts.isEmpty();
           if (_isEmpty) {
             StakeholdersOwner.Row _row = new StakeholdersOwner.Row(iName, 0, "");
             rows.add(_row);
           } else {
             final TreeSet<String> modelUris = new TreeSet<String>();
-            for (final DesignArtifact da : originators) {
+            for (final DesignArtifact da : artifacts) {
               {
                 final EObject target = this.readRefEObject(da);
                 if ((target != null)) {
@@ -97,31 +99,21 @@ public class StakeholdersOwner {
     return _xblockexpression;
   }
 
-  private LinkedHashSet<DesignArtifact> readArtifactsFeature(final EObject host, final String featureName) {
+  private LinkedHashSet<DesignArtifact> collectArtifactsFromParticipants(final Influence inf) {
     LinkedHashSet<DesignArtifact> _xblockexpression = null;
     {
       final LinkedHashSet<DesignArtifact> out = new LinkedHashSet<DesignArtifact>();
-      final EStructuralFeature f = host.eClass().getEStructuralFeature(featureName);
-      if ((f == null)) {
+      if ((inf == null)) {
         return out;
       }
-      final Object v = host.eGet(f);
-      boolean _matched = false;
-      if (v instanceof Collection) {
-        _matched=true;
-        for (final Object e : ((Collection<?>)v)) {
-          if ((e instanceof DesignArtifact)) {
-            out.add(((DesignArtifact) e));
+      EList<Participant> _ownedParticipants = inf.getOwnedParticipants();
+      for (final Participant p : _ownedParticipants) {
+        if ((p instanceof ArtifactParticipant)) {
+          final DesignArtifact a = ((ArtifactParticipant) p).getTarget();
+          if ((a != null)) {
+            out.add(a);
           }
         }
-      }
-      if (!_matched) {
-        if (v instanceof DesignArtifact) {
-          _matched=true;
-          out.add(((DesignArtifact) v));
-        }
-      }
-      if (!_matched) {
       }
       _xblockexpression = out;
     }

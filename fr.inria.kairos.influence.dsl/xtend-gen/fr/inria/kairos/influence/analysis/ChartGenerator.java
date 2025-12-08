@@ -6,9 +6,9 @@ import fr.inria.kairos.influence.metamodel.Influence;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Method;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -16,47 +16,53 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.labels.StandardXYToolTipGenerator;
-import org.jfree.chart.labels.XYItemLabelGenerator;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYBubbleRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.xy.DefaultXYZDataset;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYZDataset;
 
 @SuppressWarnings("all")
 public class ChartGenerator {
   public static class InfRow {
-    public final String originator;
+    public final String prejudicial;
 
     public final String compensator;
 
     public final double changeability;
 
     public InfRow(final String o, final String c, final double z) {
-      this.originator = o;
+      this.prejudicial = o;
       this.compensator = c;
       this.changeability = z;
     }
   }
 
+  private GraphBuilder.Result buildGraph(final Resource res) {
+    return new GraphBuilder().build(res);
+  }
+
+  private ImpactMetrics.Result metrics(final Resource res) {
+    ImpactMetrics.Result _xblockexpression = null;
+    {
+      final GraphBuilder.Result gb = this.buildGraph(res);
+      _xblockexpression = new ImpactMetrics().compute(res, gb);
+    }
+    return _xblockexpression;
+  }
+
   public void exportImpactBarPng(final Resource res, final IFileSystemAccess2 fsa, final String path, final int w, final int h) {
     try {
-      final Map<String, Integer> impact = new ImpactMetrics().compute(res).impactArtifacts;
+      final ImpactMetrics.Result m = this.metrics(res);
+      final Map<String, Integer> impact = m.impactArtifacts;
       boolean _isEmpty = impact.isEmpty();
       if (_isEmpty) {
         return;
@@ -79,16 +85,21 @@ public class ChartGenerator {
 
   public void exportPropagationImpactBarPng(final Resource res, final IFileSystemAccess2 fsa, final String path, final int w, final int h) {
     try {
-      final Map<String, Integer> impact = new ImpactMetrics().compute(res).impactArtifactsPropagated;
-      boolean _isEmpty = impact.isEmpty();
-      if (_isEmpty) {
+      final ImpactMetrics.Result m = this.metrics(res);
+      final Map<String, Integer> prop = m.impactArtifactsPropagated;
+      if (((prop == null) || prop.isEmpty())) {
         return;
       }
       final DefaultCategoryDataset ds = new DefaultCategoryDataset();
-      Set<Map.Entry<String, Integer>> _entrySet = new TreeMap<String, Integer>(impact).entrySet();
+      final TreeMap<String, Number> sorted = new TreeMap<String, Number>();
+      Set<Map.Entry<String, Integer>> _entrySet = prop.entrySet();
       for (final Map.Entry<String, Integer> e : _entrySet) {
         Integer _value = e.getValue();
-        ds.addValue(((Number) _value), "Direct+Indirect", e.getKey());
+        sorted.put(e.getKey(), ((Number) _value));
+      }
+      Set<Map.Entry<String, Number>> _entrySet_1 = sorted.entrySet();
+      for (final Map.Entry<String, Number> e_1 : _entrySet_1) {
+        ds.addValue(e_1.getValue(), "Direct + Indirect", e_1.getKey());
       }
       final JFreeChart chart = ChartFactory.createBarChart(
         "Propagated Impact by Artifact", "Artifact", "Influences (direct + cascaded)", ds);
@@ -102,16 +113,21 @@ public class ChartGenerator {
 
   public void exportOnlyIndirectImpactBarPng(final Resource res, final IFileSystemAccess2 fsa, final String path, final int w, final int h) {
     try {
-      final Map<String, Integer> impact = new ImpactMetrics().compute(res).impactArtifactsPropagated;
-      boolean _isEmpty = impact.isEmpty();
-      if (_isEmpty) {
+      final ImpactMetrics.Result m = this.metrics(res);
+      final Map<String, Integer> ind = m.impactArtifactsIndirect;
+      if (((ind == null) || ind.isEmpty())) {
         return;
       }
       final DefaultCategoryDataset ds = new DefaultCategoryDataset();
-      Set<Map.Entry<String, Integer>> _entrySet = new TreeMap<String, Integer>(impact).entrySet();
+      final TreeMap<String, Number> sorted = new TreeMap<String, Number>();
+      Set<Map.Entry<String, Integer>> _entrySet = ind.entrySet();
       for (final Map.Entry<String, Integer> e : _entrySet) {
         Integer _value = e.getValue();
-        ds.addValue(((Number) _value), "Direct+Indirect", e.getKey());
+        sorted.put(e.getKey(), ((Number) _value));
+      }
+      Set<Map.Entry<String, Number>> _entrySet_1 = sorted.entrySet();
+      for (final Map.Entry<String, Number> e_1 : _entrySet_1) {
+        ds.addValue(e_1.getValue(), "Indirect only", e_1.getKey());
       }
       final JFreeChart chart = ChartFactory.createBarChart(
         "Propagated Impact by Artifact", "Artifact", "Influences (direct + cascaded)", ds);
@@ -125,9 +141,9 @@ public class ChartGenerator {
 
   public void exportPhenomenaBarPng(final Resource res, final IFileSystemAccess2 fsa, final String path, final int w, final int h) {
     try {
-      final Map<String, Integer> impact = new ImpactMetrics().compute(res).impactPhenomena;
-      boolean _isEmpty = impact.isEmpty();
-      if (_isEmpty) {
+      final ImpactMetrics.Result m = this.metrics(res);
+      final Map<String, Integer> impact = m.impactEnvFactors;
+      if (((impact == null) || impact.isEmpty())) {
         return;
       }
       final DefaultCategoryDataset ds = new DefaultCategoryDataset();
@@ -137,7 +153,7 @@ public class ChartGenerator {
         ds.addValue(((Number) _value), "Impact", e.getKey());
       }
       final JFreeChart chart = ChartFactory.createBarChart(
-        "Impact by Phenomena", "Phenomena", "Origin count", ds);
+        "Impact by Environment Factor", "Environment Factor", "Participant count", ds);
       final ByteArrayOutputStream baos = new ByteArrayOutputStream();
       ChartUtils.writeChartAsPNG(baos, chart, w, h);
       this.writeBinary(fsa, path, baos.toByteArray());
@@ -150,7 +166,8 @@ public class ChartGenerator {
     ArrayList<ChartGenerator.InfRow> _xblockexpression = null;
     {
       final ArrayList<ChartGenerator.InfRow> out = new ArrayList<ChartGenerator.InfRow>();
-      final RequirementTraceability tracer = new RequirementTraceability();
+      final GraphBuilder.Result graph = this.buildGraph(res);
+      final RequirementTraceability tracer = new RequirementTraceability(graph);
       final Map<String, DesignArtifact> daIndex = this.indexArtifacts(res);
       Iterable<Influence> _filter = Iterables.<Influence>filter(IteratorExtensions.<EObject>toIterable(res.getAllContents()), Influence.class);
       for (final Influence inf : _filter) {
@@ -160,18 +177,12 @@ public class ChartGenerator {
           boolean _not = (!_isEmpty);
           if (_not) {
             final LinkedHashSet<String> cand = new LinkedHashSet<String>();
-            final EStructuralFeature affectsF = inf.eClass().getEStructuralFeature("affects");
-            if ((affectsF != null)) {
-              Object _eGet = inf.eGet(affectsF);
-              final Collection<?> srs = ((Collection<?>) _eGet);
-              if ((srs != null)) {
-                for (final Object sr : srs) {
-                  {
-                    final String srName = this.readName(((EObject) sr));
-                    if ((srName != null)) {
-                      cand.addAll(tracer.upstreamArtifacts(("SR:" + srName), inEdges).keySet());
-                    }
-                  }
+            final ArrayList<EObject> srs = this.srsFromInfluence(inf);
+            for (final EObject sr : srs) {
+              {
+                final String srName = this.readName(((EObject) sr));
+                if ((srName != null)) {
+                  cand.addAll(tracer.upstreamArtifacts(("SR:" + srName), inEdges).keySet());
                 }
               }
             }
@@ -208,105 +219,73 @@ public class ChartGenerator {
     return _xblockexpression;
   }
 
-  public List<ChartGenerator.InfRow> exportInfluenceBubblesPng(final Resource res, final Map<String, LinkedHashSet<String>> reqToSRs, final Map<String, LinkedHashSet<String>> inEdges, final IFileSystemAccess2 fsa, final String path, final int w, final int h) {
-    try {
-      List<ChartGenerator.InfRow> _xblockexpression = null;
-      {
-        final List<ChartGenerator.InfRow> rows = this.bestCompensatorPerInfluence(res, reqToSRs, inEdges);
-        boolean _isEmpty = rows.isEmpty();
-        if (_isEmpty) {
-          return rows;
-        }
-        final TreeSet<String> names = new TreeSet<String>();
-        for (final ChartGenerator.InfRow r : rows) {
-          {
-            names.add(r.originator);
-            names.add(r.compensator);
-          }
-        }
-        final LinkedHashMap<String, Integer> nameToIdx = new LinkedHashMap<String, Integer>();
-        int idx = 0;
-        for (final String n : names) {
-          {
-            nameToIdx.put(n, Integer.valueOf(idx));
-            idx = (idx + 1);
-          }
-        }
-        final int N = rows.size();
-        final double[] X = new double[N];
-        final double[] Y = new double[N];
-        final double[] Z = new double[N];
-        int i = 0;
-        for (final ChartGenerator.InfRow r_1 : rows) {
-          {
-            X[i] = nameToIdx.get(r_1.originator).doubleValue();
-            Y[i] = nameToIdx.get(r_1.compensator).doubleValue();
-            Z[i] = r_1.changeability;
-            i = (i + 1);
-          }
-        }
-        final DefaultXYZDataset ds = new DefaultXYZDataset();
-        ds.addSeries("Influences", new double[][] { X, Y, Z });
-        final NumberAxis xAxis = new NumberAxis("Originator");
-        xAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        final NumberAxis yAxis = new NumberAxis("Compensator");
-        yAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        final XYBubbleRenderer renderer = new XYBubbleRenderer(XYBubbleRenderer.SCALE_ON_BOTH_AXES);
-        final LinkedHashMap<Integer, String> idxToName = new LinkedHashMap<Integer, String>();
-        int j = 0;
-        for (final String nm : names) {
-          {
-            idxToName.put(Integer.valueOf(j), nm);
-            j = (j + 1);
-          }
-        }
-        renderer.setDefaultItemLabelsVisible(true);
-        renderer.setDefaultItemLabelGenerator(new XYItemLabelGenerator() {
-          @Override
-          public String generateLabel(final XYDataset dataset, final int series, final int item) {
-            String _xblockexpression = null;
-            {
-              final int ox = dataset.getX(series, item).intValue();
-              final int oy = dataset.getY(series, item).intValue();
-              String _xifexpression = null;
-              boolean _containsKey = idxToName.containsKey(Integer.valueOf(ox));
-              if (_containsKey) {
-                _xifexpression = idxToName.get(Integer.valueOf(ox));
-              } else {
-                _xifexpression = String.valueOf(ox);
+  public Map<String, LinkedHashMap<String, Double>> allCompensatorsByOriginator(final Resource res, final Map<String, LinkedHashSet<String>> reqToSRs, final Map<String, LinkedHashSet<String>> inEdges) {
+    LinkedHashMap<String, LinkedHashMap<String, Double>> _xblockexpression = null;
+    {
+      final LinkedHashMap<String, LinkedHashMap<String, Double>> out = new LinkedHashMap<String, LinkedHashMap<String, Double>>();
+      final GraphBuilder.Result graph = this.buildGraph(res);
+      final RequirementTraceability tracer = new RequirementTraceability(graph);
+      final Map<String, DesignArtifact> daIndex = this.indexArtifacts(res);
+      Iterable<Influence> _filter = Iterables.<Influence>filter(IteratorExtensions.<EObject>toIterable(res.getAllContents()), Influence.class);
+      for (final Influence inf : _filter) {
+        {
+          final LinkedHashSet<String> originators = this.namesFromArtifactFeature(inf, "originatorArtifact");
+          boolean _isEmpty = originators.isEmpty();
+          if (_isEmpty) {
+          } else {
+            final LinkedHashSet<String> cand = new LinkedHashSet<String>();
+            final ArrayList<EObject> srs = this.srsFromInfluence(inf);
+            for (final EObject sr : srs) {
+              {
+                final String srName = this.readName(((EObject) sr));
+                if ((srName != null)) {
+                  cand.addAll(tracer.upstreamArtifacts(("SR:" + srName), inEdges).keySet());
+                }
               }
-              final String orgName = _xifexpression;
-              String _xifexpression_1 = null;
-              boolean _containsKey_1 = idxToName.containsKey(Integer.valueOf(oy));
-              if (_containsKey_1) {
-                _xifexpression_1 = idxToName.get(Integer.valueOf(oy));
-              } else {
-                _xifexpression_1 = String.valueOf(oy);
-              }
-              final String cmpName = _xifexpression_1;
-              final double z = ((XYZDataset) dataset).getZValue(series, item);
-              String _format = new DecimalFormat("#.##").format(z);
-              String _plus = (((((("originator " + orgName) + " -> ") + " compensator ") + cmpName) + " [") + _format);
-              _xblockexpression = (_plus + "]");
             }
-            return _xblockexpression;
+            boolean _isEmpty_1 = cand.isEmpty();
+            if (_isEmpty_1) {
+            } else {
+              final LinkedHashMap<String, Double> compToChange = new LinkedHashMap<String, Double>();
+              for (final String nm : cand) {
+                {
+                  final DesignArtifact da = daIndex.get(nm);
+                  double c = 0.5;
+                  if ((da != null)) {
+                    c = this.readChangeability(da);
+                  }
+                  final Double prev = compToChange.get(nm);
+                  if (((prev == null) || (c > (prev).doubleValue()))) {
+                    compToChange.put(nm, Double.valueOf(c));
+                  }
+                }
+              }
+              for (final String o : originators) {
+                {
+                  LinkedHashMap<String, Double> bucket = out.get(o);
+                  if ((bucket == null)) {
+                    LinkedHashMap<String, Double> _linkedHashMap = new LinkedHashMap<String, Double>();
+                    bucket = _linkedHashMap;
+                    out.put(o, bucket);
+                  }
+                  Set<Map.Entry<String, Double>> _entrySet = compToChange.entrySet();
+                  for (final Map.Entry<String, Double> e : _entrySet) {
+                    {
+                      final Double prev = bucket.get(e.getKey());
+                      if (((prev == null) || (e.getValue().compareTo(prev) > 0))) {
+                        bucket.put(e.getKey(), e.getValue());
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-        });
-        StandardXYToolTipGenerator _standardXYToolTipGenerator = new StandardXYToolTipGenerator();
-        renderer.setDefaultToolTipGenerator(_standardXYToolTipGenerator);
-        final XYPlot plot = new XYPlot(ds, xAxis, yAxis, renderer);
-        final JFreeChart chart = new JFreeChart(
-          "Originator vs Compensator (bubble size = changeability)", 
-          JFreeChart.DEFAULT_TITLE_FONT, plot, false);
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ChartUtils.writeChartAsPNG(baos, chart, w, h);
-        this.writeBinary(fsa, path, baos.toByteArray());
-        _xblockexpression = rows;
+        }
       }
-      return _xblockexpression;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
+      _xblockexpression = out;
     }
+    return _xblockexpression;
   }
 
   private Map<String, DesignArtifact> indexArtifacts(final Resource res) {
@@ -440,5 +419,73 @@ public class ChartGenerator {
         throw Exceptions.sneakyThrow(_t);
       }
     }
+  }
+
+  private ArrayList<EObject> srsFromInfluence(final EObject inf) {
+    ArrayList<EObject> _xblockexpression = null;
+    {
+      final ArrayList<EObject> out = new ArrayList<EObject>();
+      if ((inf == null)) {
+        return out;
+      }
+      for (final String fn : Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("affects", "affectsSR", "affectsSRP", "affectedSRs", "affectsSystemResponse"))) {
+        {
+          EClass _eClass = inf.eClass();
+          EStructuralFeature _eStructuralFeature = null;
+          if (_eClass!=null) {
+            _eStructuralFeature=_eClass.getEStructuralFeature(fn);
+          }
+          final EStructuralFeature f = _eStructuralFeature;
+          if ((f != null)) {
+            final Object v = inf.eGet(f);
+            boolean _matched = false;
+            if (v instanceof Collection) {
+              _matched=true;
+              for (final Object e : ((Collection<?>)v)) {
+                if ((e instanceof EObject)) {
+                  out.add(((EObject) e));
+                }
+              }
+            }
+            if (!_matched) {
+              if (v instanceof EObject) {
+                _matched=true;
+                out.add(((EObject) v));
+              }
+            }
+            if (!_matched) {
+            }
+            boolean _isEmpty = out.isEmpty();
+            boolean _not = (!_isEmpty);
+            if (_not) {
+              return out;
+            }
+          }
+        }
+      }
+      for (final String fn_1 : Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("outputSRP", "output", "resultSR", "resultSRP"))) {
+        {
+          EClass _eClass = inf.eClass();
+          EStructuralFeature _eStructuralFeature = null;
+          if (_eClass!=null) {
+            _eStructuralFeature=_eClass.getEStructuralFeature(fn_1);
+          }
+          final EStructuralFeature f = _eStructuralFeature;
+          if ((f != null)) {
+            final Object v = inf.eGet(f);
+            if ((v instanceof EObject)) {
+              out.add(((EObject) v));
+            }
+            boolean _isEmpty = out.isEmpty();
+            boolean _not = (!_isEmpty);
+            if (_not) {
+              return out;
+            }
+          }
+        }
+      }
+      _xblockexpression = out;
+    }
+    return _xblockexpression;
   }
 }

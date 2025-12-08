@@ -84,20 +84,24 @@ public class MetamodelSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.SYSTEM_RESPONSE: {
-			SystemResponse systemResponse = (SystemResponse) theEObject;
-			T result = caseSystemResponse(systemResponse);
+		case MetamodelPackage.SRP_INPUT_PARTICIPANT: {
+			SRPInputParticipant srpInputParticipant = (SRPInputParticipant) theEObject;
+			T result = caseSRPInputParticipant(srpInputParticipant);
 			if (result == null)
-				result = caseNamedElement(systemResponse);
+				result = caseParticipant(srpInputParticipant);
+			if (result == null)
+				result = caseNamedElement(srpInputParticipant);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.PHYSICAL_PHENOMENA: {
-			PhysicalPhenomena physicalPhenomena = (PhysicalPhenomena) theEObject;
-			T result = casePhysicalPhenomena(physicalPhenomena);
+		case MetamodelPackage.ENVIRONMENTAL_FACTOR_PARTICIPANT: {
+			EnvironmentalFactorParticipant environmentalFactorParticipant = (EnvironmentalFactorParticipant) theEObject;
+			T result = caseEnvironmentalFactorParticipant(environmentalFactorParticipant);
 			if (result == null)
-				result = caseNamedElement(physicalPhenomena);
+				result = caseParticipant(environmentalFactorParticipant);
+			if (result == null)
+				result = caseNamedElement(environmentalFactorParticipant);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -111,11 +115,13 @@ public class MetamodelSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.DESIGN_ARTIFACT: {
-			DesignArtifact designArtifact = (DesignArtifact) theEObject;
-			T result = caseDesignArtifact(designArtifact);
+		case MetamodelPackage.ARTIFACT_PARTICIPANT: {
+			ArtifactParticipant artifactParticipant = (ArtifactParticipant) theEObject;
+			T result = caseArtifactParticipant(artifactParticipant);
 			if (result == null)
-				result = caseNamedElement(designArtifact);
+				result = caseParticipant(artifactParticipant);
+			if (result == null)
+				result = caseNamedElement(artifactParticipant);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -149,20 +155,47 @@ public class MetamodelSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.FUNCTION: {
-			Function function = (Function) theEObject;
-			T result = caseFunction(function);
+		case MetamodelPackage.PARTICIPANT: {
+			Participant participant = (Participant) theEObject;
+			T result = caseParticipant(participant);
 			if (result == null)
-				result = caseNamedElement(function);
+				result = caseNamedElement(participant);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case MetamodelPackage.COMPOSITE_FUNCTION: {
-			CompositeFunction compositeFunction = (CompositeFunction) theEObject;
-			T result = caseCompositeFunction(compositeFunction);
+		case MetamodelPackage.DESIGN_ARTIFACT: {
+			DesignArtifact designArtifact = (DesignArtifact) theEObject;
+			T result = caseDesignArtifact(designArtifact);
 			if (result == null)
-				result = caseNamedElement(compositeFunction);
+				result = caseNamedElement(designArtifact);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.SYSTEM_RESPONSE_PROPERTY: {
+			SystemResponseProperty systemResponseProperty = (SystemResponseProperty) theEObject;
+			T result = caseSystemResponseProperty(systemResponseProperty);
+			if (result == null)
+				result = caseNamedElement(systemResponseProperty);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.ENVIRONMENTAL_FACTOR: {
+			EnvironmentalFactor environmentalFactor = (EnvironmentalFactor) theEObject;
+			T result = caseEnvironmentalFactor(environmentalFactor);
+			if (result == null)
+				result = caseNamedElement(environmentalFactor);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.INFLUENCE_FUNCTION: {
+			InfluenceFunction influenceFunction = (InfluenceFunction) theEObject;
+			T result = caseInfluenceFunction(influenceFunction);
+			if (result == null)
+				result = caseNamedElement(influenceFunction);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -203,6 +236,36 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>SRP Input Participant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>SRP Input Participant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSRPInputParticipant(SRPInputParticipant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Environmental Factor Participant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Environmental Factor Participant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEnvironmentalFactorParticipant(EnvironmentalFactorParticipant object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Influence</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -218,62 +281,32 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Participant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Participant</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFunction(Function object) {
+	public T caseParticipant(Participant object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Composite Function</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Influence Function</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Composite Function</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Influence Function</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCompositeFunction(CompositeFunction object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Response</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Response</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemResponse(SystemResponse object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Physical Phenomena</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Physical Phenomena</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePhysicalPhenomena(PhysicalPhenomena object) {
+	public T caseInfluenceFunction(InfluenceFunction object) {
 		return null;
 	}
 
@@ -293,6 +326,21 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Artifact Participant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Artifact Participant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseArtifactParticipant(ArtifactParticipant object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Design Artifact</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -304,6 +352,36 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDesignArtifact(DesignArtifact object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>System Response Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>System Response Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSystemResponseProperty(SystemResponseProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Environmental Factor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Environmental Factor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEnvironmentalFactor(EnvironmentalFactor object) {
 		return null;
 	}
 

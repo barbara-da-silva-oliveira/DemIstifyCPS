@@ -1,6 +1,6 @@
 package fr.inria.kairos.influence.export;
 
-import fr.inria.kairos.influence.analysis.CompensationFinder;
+import fr.inria.kairos.influence.analysis.GraphBuilder;
 import fr.inria.kairos.influence.analysis.ImpactMetrics;
 import fr.inria.kairos.influence.analysis.RequirementTraceability;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
@@ -24,13 +24,21 @@ import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public class TablesExporter {
+  private GraphBuilder.Result buildGraph(final Resource res) {
+    return new GraphBuilder().build(res);
+  }
+
+  private ImpactMetrics.Result metrics(final Resource res) {
+    return new ImpactMetrics().compute(res, this.buildGraph(res));
+  }
+
   public void exportImpactCSVs(final Resource res, final IFileSystemAccess2 fsa, final String folder) {
-    final ImpactMetrics.Result m = new ImpactMetrics().compute(res);
+    final ImpactMetrics.Result m = this.metrics(res);
     TreeMap<String, Integer> _treeMap = new TreeMap<String, Integer>(m.impactArtifacts);
     this.writeMapIntCSV(fsa, (folder + "/impact_artifacts.csv"), 
       "artifact,count", _treeMap);
-    TreeMap<String, Integer> _treeMap_1 = new TreeMap<String, Integer>(m.impactPhenomena);
-    this.writeMapIntCSV(fsa, (folder + "/impact_phenomena.csv"), 
+    TreeMap<String, Integer> _treeMap_1 = new TreeMap<String, Integer>(m.impactEnvFactors);
+    this.writeMapIntCSV(fsa, (folder + "/impact_env.csv"), 
       "phenomenon,count", _treeMap_1);
     TreeMap<String, Integer> _treeMap_2 = new TreeMap<String, Integer>(m.sensRequirements);
     this.writeMapIntCSV(fsa, (folder + "/sensitive_requirements.csv"), 
@@ -38,33 +46,17 @@ public class TablesExporter {
     TreeMap<String, Double> _treeMap_3 = new TreeMap<String, Double>(m.impactArtifactsW);
     this.writeMapDoubleCSV(fsa, (folder + "/impact_artifacts_weighted.csv"), 
       "artifact,weight", _treeMap_3);
-    TreeMap<String, Double> _treeMap_4 = new TreeMap<String, Double>(m.impactPhenomenaW);
-    this.writeMapDoubleCSV(fsa, (folder + "/impact_phenomena_weighted.csv"), 
+    TreeMap<String, Double> _treeMap_4 = new TreeMap<String, Double>(m.impactEnvFactorsW);
+    this.writeMapDoubleCSV(fsa, (folder + "/impact_env_weighted.csv"), 
       "phenomenon,weight", _treeMap_4);
     TreeMap<String, Double> _treeMap_5 = new TreeMap<String, Double>(m.sensRequirementsW);
     this.writeMapDoubleCSV(fsa, (folder + "/sensitive_requirements_weighted.csv"), 
       "requirement,weight", _treeMap_5);
   }
 
-  public void exportHardestCompensatorByReqCSV(final Resource res, final IFileSystemAccess2 fsa, final String outPath, final Map<String, LinkedHashSet<String>> reqToSRs, final Map<String, LinkedHashSet<String>> inEdges) {
-    final CompensationFinder cf = new CompensationFinder();
-    final Map<String, Pair<String, Double>> hardest = cf.bestCompensatorByChangeability(res, reqToSRs, inEdges);
-    final StringBuilder sb = new StringBuilder("requirement,compensator,changeability\n");
-    Set<String> _keySet = hardest.keySet();
-    TreeSet<String> _treeSet = new TreeSet<String>(_keySet);
-    for (final String req : _treeSet) {
-      {
-        final Pair<String, Double> p = hardest.get(req);
-        if ((p != null)) {
-          sb.append(this.csv(req)).append(",").append(this.csv(p.getKey())).append(",").append(this.fmtDouble(p.getValue())).append("\n");
-        }
-      }
-    }
-    fsa.generateFile(outPath, sb.toString());
-  }
-
   public void exportCandidatesByReqCSV(final Resource res, final IFileSystemAccess2 fsa, final String outPath, final Map<String, LinkedHashSet<String>> reqToSRs, final Map<String, LinkedHashSet<String>> inEdges) {
-    final RequirementTraceability tracer = new RequirementTraceability();
+    final GraphBuilder.Result graph = this.buildGraph(res);
+    final RequirementTraceability tracer = new RequirementTraceability(graph);
     final StringBuilder sb = new StringBuilder("requirement,artifact,min_hops\n");
     Set<String> _keySet = reqToSRs.keySet();
     TreeSet<String> _treeSet = new TreeSet<String>(_keySet);
@@ -75,7 +67,7 @@ public class TablesExporter {
         if ((srs != null)) {
           for (final String srName : srs) {
             {
-              final HashMap<String, Integer> m = tracer.upstreamArtifacts(("SR:" + srName), inEdges);
+              final Map<String, Integer> m = tracer.upstreamArtifacts(("SR:" + srName), inEdges);
               Set<Map.Entry<String, Integer>> _entrySet = m.entrySet();
               for (final Map.Entry<String, Integer> e : _entrySet) {
                 {
@@ -133,10 +125,11 @@ public class TablesExporter {
         final HashMap<String, Integer> agg = new HashMap<String, Integer>();
         final LinkedHashSet<String> srs = reqToSRs.get(reqName);
         if ((srs != null)) {
-          final RequirementTraceability tracer = new RequirementTraceability();
+          final GraphBuilder.Result graph = this.buildGraph(res);
+          final RequirementTraceability tracer = new RequirementTraceability(graph);
           for (final String srName : srs) {
             {
-              final HashMap<String, Integer> m = tracer.upstreamArtifacts(("SR:" + srName), inEdges);
+              final Map<String, Integer> m = tracer.upstreamArtifacts(("SR:" + srName), inEdges);
               Set<Map.Entry<String, Integer>> _entrySet = m.entrySet();
               for (final Map.Entry<String, Integer> e : _entrySet) {
                 {

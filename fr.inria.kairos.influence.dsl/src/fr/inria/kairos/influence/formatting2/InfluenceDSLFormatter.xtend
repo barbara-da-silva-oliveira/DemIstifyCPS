@@ -14,30 +14,19 @@ class InfluenceDSLFormatter extends AbstractFormatter2 {
 	
 	@Inject extension InfluenceDSLGrammarAccess
 
-	def dispatch void format(InfluenceModel influenceModel, extension IFormattableDocument document) {
-		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (influence : influenceModel.ownedInfluences) {
-			influence.format
-		}
-		for (requirementSatisfaction : influenceModel.ownedRequirements) {
-			requirementSatisfaction.format
-		}
-		for (cyberPhysicalPhenomena : influenceModel.ownedPhysicalPhenomena) {
-			cyberPhysicalPhenomena.format
-		}
-		for (artifact : influenceModel.ownedArtifacts) {
-			artifact.format
-		}
-	}
-
+    def dispatch void format(InfluenceModel model, extension IFormattableDocument document) {
+        // Visit all top-level elements
+        for (inf : model.ownedInfluences)          inf.format
+        for (req : model.ownedRequirements)        req.format
+        for (ef  : model.ownedEnvironmentalFactors) ef.format
+        for (da  : model.ownedArtifacts)           da.format
+        for (srp : model.ownedSRPs)                srp.format
+    }
+    
 	def dispatch void format(Influence influence, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (systemResponse : influence.affects) {
-			systemResponse.format
-		}
-		for (systemResponse : influence.affects) {
-			systemResponse.format
-		}
-	}
-	
+		influence.ownedInfluenceFunction?.format
+        for (p : influence.ownedParticipants) p.format
+        influence.outputSRP?.format
+    }
 }

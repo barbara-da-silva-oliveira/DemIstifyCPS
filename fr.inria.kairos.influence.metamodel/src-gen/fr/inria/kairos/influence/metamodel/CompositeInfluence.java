@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences <em>Internal Influences</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedFunction <em>Owned Function</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getCompositeInfluence()
@@ -35,25 +35,25 @@ public interface CompositeInfluence extends AbstractInfluence {
 	EList<AbstractInfluence> getInternalInfluences();
 
 	/**
-	 * Returns the value of the '<em><b>Owned Function</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Owned Influence Function</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Function</em>' containment reference.
-	 * @see #setOwnedFunction(CompositeFunction)
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getCompositeInfluence_OwnedFunction()
+	 * @return the value of the '<em>Owned Influence Function</em>' containment reference.
+	 * @see #setOwnedInfluenceFunction(InfluenceFunction)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getCompositeInfluence_OwnedInfluenceFunction()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	CompositeFunction getOwnedFunction();
+	InfluenceFunction getOwnedInfluenceFunction();
 
 	/**
-	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedFunction <em>Owned Function</em>}' containment reference.
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Function</em>' containment reference.
-	 * @see #getOwnedFunction()
+	 * @param value the new value of the '<em>Owned Influence Function</em>' containment reference.
+	 * @see #getOwnedInfluenceFunction()
 	 * @generated
 	 */
-	void setOwnedFunction(CompositeFunction value);
+	void setOwnedInfluenceFunction(InfluenceFunction value);
 
 } // CompositeInfluence

@@ -4,11 +4,12 @@ package fr.inria.kairos.influence.metamodel.impl;
 
 import fr.inria.kairos.influence.metamodel.AbstractInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
+import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-import fr.inria.kairos.influence.metamodel.PhysicalPhenomena;
 import fr.inria.kairos.influence.metamodel.Requirement;
 
+import fr.inria.kairos.influence.metamodel.SystemResponseProperty;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -29,8 +30,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedInfluences <em>Owned Influences</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedRequirements <em>Owned Requirements</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedPhysicalPhenomena <em>Owned Physical Phenomena</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedEnvironmentalFactors <em>Owned Environmental Factors</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedArtifacts <em>Owned Artifacts</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedSRPs <em>Owned SR Ps</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,14 +59,14 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	protected EList<Requirement> ownedRequirements;
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalPhenomena() <em>Owned Physical Phenomena</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedEnvironmentalFactors() <em>Owned Environmental Factors</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalPhenomena()
+	 * @see #getOwnedEnvironmentalFactors()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PhysicalPhenomena> ownedPhysicalPhenomena;
+	protected EList<EnvironmentalFactor> ownedEnvironmentalFactors;
 
 	/**
 	 * The cached value of the '{@link #getOwnedArtifacts() <em>Owned Artifacts</em>}' containment reference list.
@@ -75,6 +77,16 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	 * @ordered
 	 */
 	protected EList<DesignArtifact> ownedArtifacts;
+
+	/**
+	 * The cached value of the '{@link #getOwnedSRPs() <em>Owned SR Ps</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedSRPs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SystemResponseProperty> ownedSRPs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,12 +141,12 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	 * @generated
 	 */
 	@Override
-	public EList<PhysicalPhenomena> getOwnedPhysicalPhenomena() {
-		if (ownedPhysicalPhenomena == null) {
-			ownedPhysicalPhenomena = new EObjectContainmentEList<PhysicalPhenomena>(PhysicalPhenomena.class, this,
-					MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA);
+	public EList<EnvironmentalFactor> getOwnedEnvironmentalFactors() {
+		if (ownedEnvironmentalFactors == null) {
+			ownedEnvironmentalFactors = new EObjectContainmentEList<EnvironmentalFactor>(EnvironmentalFactor.class,
+					this, MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS);
 		}
-		return ownedPhysicalPhenomena;
+		return ownedEnvironmentalFactors;
 	}
 
 	/**
@@ -157,16 +169,32 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	 * @generated
 	 */
 	@Override
+	public EList<SystemResponseProperty> getOwnedSRPs() {
+		if (ownedSRPs == null) {
+			ownedSRPs = new EObjectContainmentEList<SystemResponseProperty>(SystemResponseProperty.class, this,
+					MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS);
+		}
+		return ownedSRPs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			return ((InternalEList<?>) getOwnedInfluences()).basicRemove(otherEnd, msgs);
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
 			return ((InternalEList<?>) getOwnedRequirements()).basicRemove(otherEnd, msgs);
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
-			return ((InternalEList<?>) getOwnedPhysicalPhenomena()).basicRemove(otherEnd, msgs);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
+			return ((InternalEList<?>) getOwnedEnvironmentalFactors()).basicRemove(otherEnd, msgs);
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return ((InternalEList<?>) getOwnedArtifacts()).basicRemove(otherEnd, msgs);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
+			return ((InternalEList<?>) getOwnedSRPs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -183,10 +211,12 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 			return getOwnedInfluences();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
 			return getOwnedRequirements();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
-			return getOwnedPhysicalPhenomena();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
+			return getOwnedEnvironmentalFactors();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return getOwnedArtifacts();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
+			return getOwnedSRPs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -208,13 +238,17 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 			getOwnedRequirements().clear();
 			getOwnedRequirements().addAll((Collection<? extends Requirement>) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
-			getOwnedPhysicalPhenomena().clear();
-			getOwnedPhysicalPhenomena().addAll((Collection<? extends PhysicalPhenomena>) newValue);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
+			getOwnedEnvironmentalFactors().clear();
+			getOwnedEnvironmentalFactors().addAll((Collection<? extends EnvironmentalFactor>) newValue);
 			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			getOwnedArtifacts().clear();
 			getOwnedArtifacts().addAll((Collection<? extends DesignArtifact>) newValue);
+			return;
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
+			getOwnedSRPs().clear();
+			getOwnedSRPs().addAll((Collection<? extends SystemResponseProperty>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -234,11 +268,14 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
 			getOwnedRequirements().clear();
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
-			getOwnedPhysicalPhenomena().clear();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
+			getOwnedEnvironmentalFactors().clear();
 			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			getOwnedArtifacts().clear();
+			return;
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
+			getOwnedSRPs().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -256,10 +293,12 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 			return ownedInfluences != null && !ownedInfluences.isEmpty();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
 			return ownedRequirements != null && !ownedRequirements.isEmpty();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_PHYSICAL_PHENOMENA:
-			return ownedPhysicalPhenomena != null && !ownedPhysicalPhenomena.isEmpty();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
+			return ownedEnvironmentalFactors != null && !ownedEnvironmentalFactors.isEmpty();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return ownedArtifacts != null && !ownedArtifacts.isEmpty();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
+			return ownedSRPs != null && !ownedSRPs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
