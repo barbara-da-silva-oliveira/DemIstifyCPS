@@ -6,3 +6,11 @@
 /.InfluenceDSLMathTest.java._trace
 /.InfluenceDSLGraphTest.java._trace
 /.InfluenceDSLTraceabilityTest.java._trace
+/.InfluenceDSLGraphTest.xtendbin
+/.InfluenceDSLMathTest.xtendbin
+/.InfluenceDSLParsingTest.xtendbin
+/.InfluenceDSLTraceabilityTest.xtendbin
+/InfluenceDSLGraphTest.java
+/InfluenceDSLMathTest.java
+/InfluenceDSLParsingTest.java
+/InfluenceDSLTraceabilityTest.java

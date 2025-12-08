@@ -6,8 +6,7 @@ Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.xtext.example.mydsl.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.xtext.example.mydsl.ui,
- fr.inria.kairos.influence.metamodel,
+Require-Bundle: fr.inria.kairos.influence.metamodel,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.ui.testing,
  org.eclipse.xtext.xbase.testing,

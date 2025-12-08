@@ -1,0 +1,131 @@
+grammar fr.inria.kairos.influence.InfluenceDSL with org.eclipse.xtext.common.Terminals
+
+import "http://kairos.inria.fr/influences" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+InfluenceModel returns InfluenceModel:
+	{InfluenceModel}
+	'InfluenceModel'
+	name=EString
+		(
+	    (  ownedSRPs+=SystemResponseProperty
+	     | ownedInfluences+=AbstractInfluence
+	     | ownedRequirements+=Requirement
+	     | ownedEnvironmentalFactors+=EnvironmentalFactor
+	     | ownedArtifacts+=DesignArtifact
+	    )
+	    ( ',' (  ownedSRPs+=SystemResponseProperty
+	           | ownedInfluences+=AbstractInfluence
+	           | ownedRequirements+=Requirement
+	           | ownedEnvironmentalFactors+=EnvironmentalFactor
+	           | ownedArtifacts+=DesignArtifact
+	     	)
+	    )*
+	    ( ',' )?
+	  )?
+		;
+
+AbstractInfluence returns AbstractInfluence:
+	CompositeInfluence | Influence;
+
+
+Participant returns Participant:
+	SRPInputParticipant | EnvironmentalFactorParticipant | ArtifactParticipant;
+
+EString returns ecore::EString:
+	STRING | ID;
+
+Requirement returns Requirement:
+	'Requirement'
+	name=EString
+	'description' description=EString
+	'satisfied' 'when' satisfaction=EString 'languageType' language=LanguageType
+	//	('metadata' ':' metadata+=EString ( "," metadata+=EString)* )?
+	;
+
+EnvironmentalFactor returns EnvironmentalFactor:
+	{EnvironmentalFactor}
+	'EnvironmentalFactor'
+	name=EString
+    'description' description=EString
+    ('flexibility' flexibility=EDouble)?
+    ('value' value=EDouble)?
+    ('unit' unit=EString)?
+;
+
+ArtifactParticipant returns ArtifactParticipant:
+	'ArtifactParticipant'
+		target=[DesignArtifact|EString]
+		('weight' weight=EDouble)?
+		('likelihood' likelihood=EDouble)?
+		('confidence' confidence=EDouble)?
+			
+	;
+
+SystemResponseProperty returns SystemResponseProperty:
+	'SystemResponseProperty'
+	name=EString
+		'description' description=EString
+		('constrainedBy' constrainedBy+=[Requirement|QualifiedName] ( "," constrainedBy+=[Requirement|QualifiedName])*)?
+	;
+
+CompositeInfluence returns CompositeInfluence:
+	'CompositeInfluence'
+	name=EString
+		'description' ':' description+=EString ( "," description+=EString)* 
+		'internalInfluences' '(' internalInfluences+=[AbstractInfluence|EString] ( "," internalInfluences+=[AbstractInfluence|EString])* ')' 
+		'ownedInfluenceFunction' ownedInfluenceFunction=InfluenceFunction
+	;
+
+Influence returns Influence:
+	'Influence'
+	name=EString
+		'#**' description+=EString ( "," description+=EString)* '**#'?
+		'participants' ':' ownedParticipants+=Participant ( "," ownedParticipants+=Participant)* ";"
+		'influenceFunction' ownedInfluenceFunction=InfluenceFunction ";"
+		'affects' outputSRP=[SystemResponseProperty|QualifiedName]
+	;
+
+InfluenceFunction returns InfluenceFunction:
+	name=EString
+	':'
+		'definition' definition=EString
+		'returnType' returnType=ValueType
+		'languageType' language=LanguageType
+	;
+
+enum ValueType returns ValueType: Real = 'Real' | Text = 'Text';
+
+enum LanguageType returns LanguageType: NaturalLanguage = 'NaturalLanguage' | JavaNumericExpression = 'JavaNumericExpression' ; 
+
+EDouble returns ecore::EDouble:
+	'-'? INT? '.' INT (('E'|'e') '-'? INT)?;
+
+SRPInputParticipant returns SRPInputParticipant:
+	'SRPInputParticipant'
+		target=[SystemResponseProperty|QualifiedName]
+		('weight' weight=EDouble)?
+		('likelihood' likelihood=EDouble)?
+		('confidence' confidence=EDouble)?
+	;
+
+EnvironmentalFactorParticipant returns EnvironmentalFactorParticipant:
+	'EnvironmentalFactorParticipant'
+		target=[EnvironmentalFactor|QualifiedName]
+		('weight' weight=EDouble)?
+		('likelihood' likelihood=EDouble)?
+		('confidence' confidence=EDouble)?
+		
+	;
+
+DesignArtifact returns DesignArtifact:
+	{DesignArtifact}
+	'DesignArtifact' name=EString
+		'->' ref=[ecore::EObject|EString]
+		('changeability' changeability=EDouble)?
+	;
+
+	
+QualifiedName:
+    ID ('.' ID)*
+;

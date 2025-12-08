@@ -9,15 +9,12 @@
 			<accessrule kind="accessible" pattern="org/jgrapht/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/graalvm-jdk-21">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-17-openjdk-amd64">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry exported="true" kind="lib" path="thirdparty/orson-charts-2.1.1/target/org.jfree.chart3d-2.1.1-SNAPSHOT.jar"/>
-	<classpathentry exported="true" kind="lib" path="thirdparty/orson-charts-2.1.1/target/org.jfree.chart3d-2.1.1-SNAPSHOT-javadoc.jar"/>
-	<classpathentry exported="true" kind="lib" path="thirdparty/jfreechart-1.5.6/target/jfreechart-1.5.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="thirdparty/python-lib/antlr4_python3_runtime-4.13.2-py3-none-any.whl"/>
 	<classpathentry exported="true" kind="lib" path="thirdparty/python-lib/sympy-1.12-py3-none-any.whl"/>
 	<classpathentry exported="true" kind="lib" path="thirdparty/graal-sdk.jar"/>
