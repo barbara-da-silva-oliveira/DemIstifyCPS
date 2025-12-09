@@ -22,7 +22,7 @@ and to run analyses (traceability, impact, and quantitative sensitivity) over th
   - EMF / Ecore tools,
   - Xtext tooling,
   - standard Eclipse Java tooling.
-- KLighD (Kieler Lightweight Diagrams) plug-ins for graph visualization (install via Eclipse update sites).
+- KLighD (Kieler Lightweight Diagrams) plug-ins for graph visualization, refer to [KLighD](https://github.com/kieler/KLighD)
 - Git client (optional but recommended) to clone the repository.
 
 ### 2.2. Example using SysML v2 (textual editors and diagrams)
