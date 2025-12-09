@@ -1,9 +1,0 @@
-influence,model_count,models
-i1,2,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Behavior/ActivityWheelControl.sysml; platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Structure/Cherokey4WDModel.sysml
-i2,1,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Behavior/ActivityDynamicDetection.sysml
-i3,1,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Behavior/ActivityStaticDetection.sysml
-i4,1,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Structure/Cherokey4WDModel.sysml
-i5,1,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Behavior/ActivityDynamicDetection.sysml
-i6,2,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Behavior/ActivityWheelControl.sysml; platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Structure/Cherokey4WDModel.sysml
-i7,1,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Behavior/ActivityDynamicDetection.sysml
-i8,1,platform:/resource/fr.inria.kairos.cherokey4WDProject/Cherokey4WD/Cherokey4WD_Behavior/ActivityDynamicDetection.sysml
