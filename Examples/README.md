@@ -90,7 +90,6 @@ affects MotionWhileScanning
   `DistanceToStop` (from i1), `delayStaticDetection`.
 - **Output SRP:** `MotionWhileScanning` – how much the robot is still moving while static detection is active.
 - **Function:** Natural-language description (Text).
-- **Intuition:** If static detection starts too early (small `delayStaticDetection`) while the robot still needs time to brake (`DistanceToStop` large), the robot is still moving during supposedly “static” scans. This degrades distance accuracy and indirectly challenges `ObstacleAvoidance`.
 
 ---
 
@@ -110,8 +109,6 @@ affects WavePropagation
   `ultrasonicSensor`, `MotionWhileScanning` (from i3), `temperature`, `humidity`, `noise`.
 - **Output SRP:** `WavePropagation` – quality and reliability of the ultrasonic wave propagation.
 - **Function:** Natural-language description (Text).
-- **Intuition:** Sensor type, motion during scan, and environmental conditions (temperature, humidity, acoustic noise) jointly influence how well ultrasonic pulses propagate and are received.
-
 ---
 
 ### i5 - Sensor motion during transmission and reception
@@ -127,7 +124,6 @@ affects MotionDuringTxRx
   `WavePropagation` (from i4), `sweepingDelay`.
 - **Output SRP:** `MotionDuringTxRx` – how much the sensor/head moves while a pulse is in flight.
 - **Requirement link:** `MotionDuringTxRx` is constrained by `ObstacleAvoidance`.
-- **Intuition:** If the sweep is too fast or wave propagation is poor, the sensor may move significantly during transmit/receive. This can distort distance estimates and increase the risk of unsafe maneuvers.
 
 Chain:  
 `DistanceToStop` -> `MotionWhileScanning` -> `WavePropagation` -> `MotionDuringTxRx` -> `ObstacleAvoidance`.
