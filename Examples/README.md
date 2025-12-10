@@ -14,6 +14,19 @@ The robot must satisfy two high-level requirements:
 - **ObstacleAvoidance**  
   The robot should detect obstacles and avoid them, maintaining a minimum distance of 5 cm to any obstacle at any time.
 
+The behavior of the system is described as follows. When it begins operation, it enters `Normal Mode`, in which three system parts are active: `Normal Move`, `Wheel Controller`, and `Dynamic Detection`. `Normal Move` stars with a forward command, `Wheel Controller` generates the corresponding pulse-width modulation (PWM) signals for the left and right wheel motors, while in parallel `Dynamic Detection` performs a front sweep, which is narrow in this stage. The developers of these components determine various parameters such as the desired `motorSpeed` and obstacle distance detection thresholds. If no obstacle is closer than the threshold, the robot continues forward.
+
+When an obstacle is detected, the system transitions to `Obstacle Mode`. In this mode, the `Avoidance Move` sends a `Stop` command to the `Wheel Controller`, which sets the `motorSpeed` to zero. The system then activates `Static Detection`. In `Static Detection`, the system performs a wider sensor sweep to realize more precise distance estimations.
+
+After the complition of `Static Detection`, the system enters`Avoidance Mode`. The `Avoidance Strategy` processes the distance data and determine which maneuvers are necessary to avoid the obstacle. It issues commands to the `Avoidance Move`, which forwards them to `Wheel Controller`. After the avoidance maneuvers are executed, if no further obstacles have been detected, the system returns to `Normal Mode` and resumes forward movement. If some obstacle were detected then the system transitions to the `Obstacle Mode`, and `Avoidance Move` sends a `Stop` command.
+
+
+<img width="300" height="230" alt="Screenshot from 2025-12-10 15-38-07" src="https://github.com/user-attachments/assets/a05a6fd3-03ea-4195-a2ae-297960e717a3" />
+<img width="310" height="230" alt="Screenshot from 2025-12-10 15-38-17" src="https://github.com/user-attachments/assets/c2f08f7c-af87-4410-aed6-f4e89886a3e2" />
+<img width="320" height="260" alt="Screenshot from 2025-12-10 15-38-31" src="https://github.com/user-attachments/assets/07d0e177-01e3-473c-8e06-439d06d9ac54" />
+
+
+
 The behavior and structure of the robot are modeled in SysML (wheel control, dynamic/static detection, avoidance strategies). The Influence model adds an orthogonal view that links:
 
 - design parameters (artifacts in the SysML models),
@@ -22,12 +35,6 @@ The behavior and structure of the robot are modeled in SysML (wheel control, dyn
 - and requirements.
 
 ---
-<img width="1005" height="328" alt="Screenshot from 2025-12-10 15-38-50" src="https://github.com/user-attachments/assets/314d42c8-32bb-4d25-9814-64be3af97d4c" />
-<img width="818" height="427" alt="Screenshot from 2025-12-10 15-38-07" src="https://github.com/user-attachments/assets/a05a6fd3-03ea-4195-a2ae-297960e717a3" />
-<img width="890" height="426" alt="Screenshot from 2025-12-10 15-38-17" src="https://github.com/user-attachments/assets/c2f08f7c-af87-4410-aed6-f4e89886a3e2" />
-<img width="903" height="438" alt="Screenshot from 2025-12-10 15-38-31" src="https://github.com/user-attachments/assets/07d0e177-01e3-473c-8e06-439d06d9ac54" />
-<img width="1005" height="328" alt="Screenshot from 2025-12-10 15-38-50" src="https://github.com/user-attachments/assets/a0d2d413-18ee-4ffe-8f06-2a794063e07f" />
-
 
 
 ## 2. Design Artifacts and Environment Factors
@@ -51,11 +58,6 @@ This section summarizes each influence in the model and how they relate artifact
 
 Changes to artifacts `motorSpeed`, `mass`, `frontalArea` and environmental factors such as `surfaceFriction`, `slopeInclination`, and `aerodynamicDrag` determine the SRP `DistanceToStop`, the distance the robot needs to fully stop. For instance, during operation, it was observed that higher speed, low friction, and downward slopes increase `DistanceToStop`.
    
-   
-```text
-Influence i1 ... affects DistanceToStop
-```
-
 - **Participants:**  
   `motorSpeed`, `mass`, `frontalArea`, `frictionCoef`, `slopeAngleRad`,  
   `dragCoefficient`, `gravityAccel`, `airDensity`.
@@ -68,11 +70,6 @@ Influence i1 ... affects DistanceToStop
 
 
 The input SRP `i1.DistanceToStop`, together with `detectionThreshold`, affects the SRP `MarginCollision`. When in operation, if the robot travels a long distance before it completely stops and the `detectionThreshold` is short, the `MarginCollision` is reduced. This signals a collision risk and impacts the satisfaction of the requirement `ObstacleAvoidance`.
-
-```text
-Influence i2 ... participants: detectionThreshold, SRPInput DistanceToStop
-affects MarginCollision
-```
 
 - **Participants:**  
   `detectionThreshold`, `DistanceToStop` (from i1).
@@ -92,11 +89,6 @@ Chain:
 
 ### i3 - Motion during static detection
 The input SRP `i1.DistanceToStop`, together with the delay to start the detection activity when the robot is commanded to stop, `delayStaticDetection`, influences the SRP `MotionWhileScanning`. If the scans start before the robot is fully stopped, it will not calculate accurate distances, potentially causing the dissatisfaction of the requirement `ObstacleAvoidance`.
- 
-```text
-Influence i3 ... participants: DistanceToStop, delayStaticDetection
-affects MotionWhileScanning
-```
 
 - **Participants:**  
   `DistanceToStop` (from i1), `delayStaticDetection`.
@@ -110,13 +102,6 @@ affects MotionWhileScanning
 
 Changes in `ultrasonicSensor`, together with `temperature`, `humidity`, and `acousticNoise`, influence the SRP `WavePropagation`. Specific choices of `ultrasonicSensor` types, together with high temperatures and humidity, and high levels of `acousticNoise`, shape the `WavePropagation`. Motion during scanning (`MotionWhileScanning`) also affects wave propagation quality.
 
-   
-```text
-Influence i4 ... participants: ultrasonicSensor,
-                           MotionWhileScanning, temperature, humidity, noise
-affects WavePropagation
-```
-
 - **Participants:**  
   `ultrasonicSensor`, `MotionWhileScanning` (from i3), `temperature`, `humidity`, `noise`.
 - **Output SRP:** `WavePropagation` – quality and reliability of the ultrasonic wave propagation.
@@ -127,11 +112,6 @@ affects WavePropagation
 
 The input SRP `i4.WavePropagation`, together with `sweepingDelay`, leads to the emergence of the SRP `MotionDuringTxRx`, which may distort distance estimates.
  
-```text
-Influence i5 ... participants: WavePropagation, sweepingDelay
-affects MotionDuringTxRx
-```
-
 - **Participants:**  
   `WavePropagation` (from i4), `sweepingDelay`.
 - **Output SRP:** `MotionDuringTxRx` – how much the sensor/head moves while a pulse is in flight.
@@ -145,13 +125,6 @@ Chain:
 ### i6 - Effective travel speed
 
 Using (essentially) the same physical participants as influence i1, this influence determines the SRP `TravelSpeed`. Under the same conditions exemplified in i1, the effective travel speed is increased or decreased depending on friction, slope, and drag.
-    
-```text
-Influence i6 ... participants: motorSpeed, mass, frontalArea, motor,
-                               frictionCoef, slopeAngleRad, dragCoefficient,
-                               gravityAccel, airDensity
-affects TravelSpeed
-```
 
 - **Participants:**  
   `motorSpeed`, `mass`, `frontalArea`, `motor`,  
@@ -164,11 +137,6 @@ affects TravelSpeed
 ### i7 - Total exploration time
 
 The input SRP `i6.TravelSpeed`, together with the artifact `detectionThreshold`, determines the SRP `ExplorationTime`. Higher travel speed shortens the total travel time, while a tighter `detectionThreshold` (which causes more frequent slowdowns or stops) increases `ExplorationTime`. This impacts the satisfaction of the requirement `EfficientExploration`.
-
-```text
-Influence i7 ... participants: TravelSpeed, detectionThreshold
-affects ExplorationTime
-```
 
 - **Participants:**  
   `TravelSpeed` (from i6), `detectionThreshold`.
@@ -185,11 +153,6 @@ physics and terrain -> **i6.TravelSpeed** -> **i7.ExplorationTime** -> `Efficien
 
 `sweepingDelay` and `computeDistance`, together with the propagated input SRP `i4.WavePropagation`, impact the SRP `CoverageQuality`. During detection while the robot is moving, longer `sweepingDelay` and longer `computeDistance` steps lower the precision of the area coverage, influencing `CoverageQuality`, and possibly affecting the satisfaction of the requirement `ObstacleAvoidance`.
 
-
-```text
-Influence i8 ... participants: WavePropagation, sweepingDelay, computeDistance
-affects CoverageQuality
-```
 
 - **Participants:**  
   `WavePropagation` (from i4), `sweepingDelay`, `computeDistance`.
