@@ -22,8 +22,11 @@ The behavior and structure of the robot are modeled in SysML (wheel control, dyn
 - and requirements.
 
 ---
-
-<img width="917" height="427" alt="image" src="https://github.com/user-attachments/assets/238b8401-4895-43a4-91a3-b32572ca8004" />
+<img width="1005" height="328" alt="Screenshot from 2025-12-10 15-38-50" src="https://github.com/user-attachments/assets/314d42c8-32bb-4d25-9814-64be3af97d4c" />
+<img width="818" height="427" alt="Screenshot from 2025-12-10 15-38-07" src="https://github.com/user-attachments/assets/a05a6fd3-03ea-4195-a2ae-297960e717a3" />
+<img width="890" height="426" alt="Screenshot from 2025-12-10 15-38-17" src="https://github.com/user-attachments/assets/c2f08f7c-af87-4410-aed6-f4e89886a3e2" />
+<img width="903" height="438" alt="Screenshot from 2025-12-10 15-38-31" src="https://github.com/user-attachments/assets/07d0e177-01e3-473c-8e06-439d06d9ac54" />
+<img width="1005" height="328" alt="Screenshot from 2025-12-10 15-38-50" src="https://github.com/user-attachments/assets/a0d2d413-18ee-4ffe-8f06-2a794063e07f" />
 
 
 
@@ -79,6 +82,11 @@ affects MarginCollision
 
 Chain:  
 `motorSpeed`, `mass`, terrain and air -> **i1.DistanceToStop** -> **i2.MarginCollision** -> `ObstacleAvoidance`.
+
+
+<img width="917" height="427" alt="image" src="https://github.com/user-attachments/assets/238b8401-4895-43a4-91a3-b32572ca8004" />
+
+
 
 ---
 
