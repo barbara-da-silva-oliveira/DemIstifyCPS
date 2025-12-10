@@ -23,6 +23,10 @@ The behavior and structure of the robot are modeled in SysML (wheel control, dyn
 
 ---
 
+<img width="917" height="427" alt="image" src="https://github.com/user-attachments/assets/238b8401-4895-43a4-91a3-b32572ca8004" />
+
+
+
 ## 2. Design Artifacts and Environment Factors
 
 We refer to a set of design artifacts from the SysML models that influence the robot operation.
