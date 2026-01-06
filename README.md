@@ -1,4 +1,4 @@
-# DemIstify Domain Specific Language
+# DemIstifyCPS Domain Specific Language
 
 This document describes the DemIstifyCPS DSL and Eclipse-based tooling.
 

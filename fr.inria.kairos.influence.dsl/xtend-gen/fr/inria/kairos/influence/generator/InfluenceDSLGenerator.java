@@ -225,7 +225,10 @@ public class InfluenceDSLGenerator extends AbstractGenerator {
       }
     }
     final StructuralRequirementEvaluation structural = new StructuralRequirementEvaluation();
-    final StringBuilder numericLog = new StringBuilder(" Requirement Evaluation\n\n");
+    final StringBuilder numericLog = new StringBuilder("Requirement Evaluation\n\n");
+    numericLog.append(" Structural evaluation per requirement \n");
+    structural.appendPerRequirement(resource, graphBundle, numericLog);
+    numericLog.append("\n Each influence evaluation \n");
     Iterable<Influence> _filter = Iterables.<Influence>filter(modelRoot.getOwnedInfluences(), Influence.class);
     for (final Influence inf : _filter) {
       {
@@ -394,6 +397,8 @@ public class InfluenceDSLGenerator extends AbstractGenerator {
                   }
                 }
                 numericLog.append("\n");
+                numericLog.append(" Structural advice based on graph topology:\n");
+                structural.appendForInfluence(resource, graphBundle, inf, numericLog);
               } catch (final Throwable _t) {
                 if (_t instanceof Throwable) {
                   final Throwable t = (Throwable)_t;

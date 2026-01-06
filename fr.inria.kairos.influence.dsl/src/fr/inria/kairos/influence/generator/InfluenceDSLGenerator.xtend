@@ -158,9 +158,11 @@ class InfluenceDSLGenerator extends AbstractGenerator {
 	    // Cycle detection
 	    detectCycle(jgraphtGraph)
 	
+	
+	
 	    //  Numeric evaluation of each Influence
 	    val modelRoot = resource.contents.head as fr.inria.kairos.influence.metamodel.InfluenceModel
-	
+		
 	    val globalScenario = new LinkedHashMap<String, Double>
 	    // 1) Environmental factors
 	    for (ef : modelRoot.ownedEnvironmentalFactors) {
@@ -184,8 +186,14 @@ class InfluenceDSLGenerator extends AbstractGenerator {
 	        // no reference, skip
 	      }
 	    }
-		val structural = new StructuralRequirementEvaluation
-	    val numericLog = new StringBuilder(" Requirement Evaluation\n\n")
+	    
+	        // === Global structural section (per requirement) ===
+	    val structural = new StructuralRequirementEvaluation
+	    val numericLog = new StringBuilder("Requirement Evaluation\n\n")
+	    numericLog.append(" Structural evaluation per requirement \n")
+	    structural.appendPerRequirement(resource, graphBundle, numericLog)
+	    numericLog.append("\n Each influence evaluation \n")
+	    
 	    for (inf : modelRoot.ownedInfluences.filter(fr.inria.kairos.influence.metamodel.Influence)) {
 	      val localScenario = new LinkedHashMap<String, Double>(globalScenario)
 	      val fn = inf.ownedInfluenceFunction
@@ -278,7 +286,10 @@ class InfluenceDSLGenerator extends AbstractGenerator {
 	              }
 	            }
 	            numericLog.append("\n")
-	
+				
+				numericLog.append(" Structural advice based on graph topology:\n")
+    			structural.appendForInfluence(resource, graphBundle, inf, numericLog)
+				
 	          } catch (Throwable t) {
 	            val sw = new java.io.StringWriter
 	            t.printStackTrace(new java.io.PrintWriter(sw))
