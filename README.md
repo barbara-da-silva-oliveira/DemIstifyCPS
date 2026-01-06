@@ -1,8 +1,6 @@
 # DemIstifyCPS Domain Specific Language
 
-This document describes the DemIstifyCPS DSL and Eclipse-based tooling.
-
-The DSL allows developers to specify **Influence Models** that relate:
+The DemIstifyCPS DSL allows developers to specify **Influence Models** that relate:
 
 - design artifacts in existing MBSE models,
 - environmental factors,
