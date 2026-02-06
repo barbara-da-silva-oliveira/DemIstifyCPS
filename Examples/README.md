@@ -3,7 +3,6 @@
 We detail the influences found for the Cherokey 4WD exploration robot, and explain how they are encoded in the `explorationRobot.inf` InfluenceModel using the DemIstifyCPS DSL. The model makes explicit how design artifacts and environmental factors jointly shape system response properties that are constrained by requirements.
 
 ---
-
 ## 1. Use case overview
 
 The robot must satisfy two high-level requirements:
@@ -14,17 +13,11 @@ The robot must satisfy two high-level requirements:
 - **ObstacleAvoidance**  
   The robot should detect obstacles and avoid them, maintaining a minimum distance of 5 cm to any obstacle at any time.
 
-The behavior of the system is described as follows. When it begins operation, it enters `Normal Mode`, in which three system parts are active: `Normal Move`, `Wheel Controller`, and `Dynamic Detection`. `Normal Move` stars with a forward command, `Wheel Controller` generates the corresponding pulse-width modulation (PWM) signals for the left and right wheel motors, while in parallel `Dynamic Detection` performs a front sweep, which is narrow in this stage. The developers of these components determine various parameters such as the desired `motorSpeed` and obstacle distance detection thresholds. If no obstacle is closer than the threshold, the robot continues forward.
+The behavior of the system is described as follows. When it begins operation, it enters `Normal Mode`, with `Normal Move`, `Wheel Controller`, and `Dynamic Detection` active. `Normal Move` stars with a forward command, `Wheel Controller` generates PWM signals for motors, while `Dynamic Detection` performs a front sweep, which is narrow in this stage. According to their own requirements, developers tune `motorSpeed` and obstacle `distance detection` thresholds.
 
-When an obstacle is detected, the system transitions to `Obstacle Mode`. In this mode, the `Avoidance Move` sends a `Stop` command to the `Wheel Controller`, which sets the `motorSpeed` to zero. The system then activates `Static Detection`. In `Static Detection`, the system performs a wider sensor sweep to realize more precise distance estimations.
+If there is an obstacle, the system transitions to `Obstacle Mode`, which sends command to stop the robot to the `Wheel Controller`. The system activates `Static Detection`. In `Static Detection`, the system performs a wider sensor sweep to realize more precise distance estimations.
 
-After the complition of `Static Detection`, the system enters`Avoidance Mode`. The `Avoidance Strategy` processes the distance data and determine which maneuvers are necessary to avoid the obstacle. It issues commands to the `Avoidance Move`, which forwards them to `Wheel Controller`. After the avoidance maneuvers are executed, if no further obstacles have been detected, the system returns to `Normal Mode` and resumes forward movement. If some obstacle were detected then the system transitions to the `Obstacle Mode`, and `Avoidance Move` sends a `Stop` command.
-
-
-<img width="300" height="230" alt="Screenshot from 2025-12-10 15-38-07" src="https://github.com/user-attachments/assets/a05a6fd3-03ea-4195-a2ae-297960e717a3" />
-<img width="310" height="230" alt="Screenshot from 2025-12-10 15-38-17" src="https://github.com/user-attachments/assets/c2f08f7c-af87-4410-aed6-f4e89886a3e2" />
-<img width="320" height="260" alt="Screenshot from 2025-12-10 15-38-31" src="https://github.com/user-attachments/assets/07d0e177-01e3-473c-8e06-439d06d9ac54" />
-
+After the complition of `Static Detection`, the system starts `Avoidance Mode`. The `Avoidance Strategy` determine the maneuvers required to avoid the detected obstacle. It issues commands to `Avoidance Move`, which then forwards to `Wheel Controller`. After the maneuvers are finished, the system continues to `Normal Mode`.
 
 
 The behavior and structure of the robot are modeled in SysML (wheel control, dynamic/static detection, avoidance strategies). The Influence model adds an orthogonal view that links:
@@ -35,7 +28,6 @@ The behavior and structure of the robot are modeled in SysML (wheel control, dyn
 - and requirements.
 
 ---
-
 
 ## 2. Design Artifacts and Environment Factors
 
@@ -50,8 +42,6 @@ We also include environmental factors that are not part of the design models, co
 
 
 ## 3. Influence examples (i1–i8)
-
-This section summarizes each influence in the model and how they relate artifacts, environment, SRPs, and requirements.
 
 ### i1 - Braking dynamics
 
@@ -79,11 +69,6 @@ The input SRP `i1.DistanceToStop`, together with `detectionThreshold`, affects t
 
 Chain:  
 `motorSpeed`, `mass`, terrain and air -> **i1.DistanceToStop** -> **i2.MarginCollision** -> `ObstacleAvoidance`.
-
-
-<img width="917" height="427" alt="image" src="https://github.com/user-attachments/assets/238b8401-4895-43a4-91a3-b32572ca8004" />
-
-
 
 ---
 
