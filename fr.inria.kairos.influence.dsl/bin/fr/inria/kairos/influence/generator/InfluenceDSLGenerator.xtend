@@ -33,7 +33,7 @@ import fr.inria.kairos.influence.analysis.StructuralRequirementEvaluation
 class InfluenceDSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-
+	
     //  Build the canonical graph
 		val graphBuilder = new GraphBuilder
 	    val graphBundle  = graphBuilder.build(resource) // GraphBuilder.Result

@@ -16,7 +16,7 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//LanguageType">
       <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//LanguageType/NaturalLanguage"/>
-      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//LanguageType/MathExpression"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//LanguageType/JavaNumericExpression"/>
     </genEnums>
     <genClasses ecoreClass="metamodel.ecore#//InfluenceModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedInfluences"/>
