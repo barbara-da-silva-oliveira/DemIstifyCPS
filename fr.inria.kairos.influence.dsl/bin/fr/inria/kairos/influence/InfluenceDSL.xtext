@@ -39,7 +39,6 @@ Requirement returns Requirement:
 	'Requirement'
 	name=EString
 	'description' description=EString
-	'satisfied' 'when' satisfaction=EString 'languageType' language=LanguageType
 	//	('metadata' ':' metadata+=EString ( "," metadata+=EString)* )?
 	;
 
@@ -63,11 +62,22 @@ ArtifactParticipant returns ArtifactParticipant:
 	;
 
 SystemResponseProperty returns SystemResponseProperty:
-	'SystemResponseProperty'
-	name=EString
-		'description' description=EString
-		('constrainedBy' constrainedBy+=[Requirement|QualifiedName] ( "," constrainedBy+=[Requirement|QualifiedName])*)?
-	;
+    'SystemResponseProperty'
+    name=EString
+    'description' description=EString
+    (
+        'satisfactionCriteria' '{'
+            ownedSatisfactionCriteria+=SatisfactionCriterion*
+        '}'
+    )?
+;
+
+SatisfactionCriterion returns SatisfactionCriterion:
+    'SatisfactionCriterion' name=EString
+    'for' requirement=[ecore::EObject|QualifiedName]
+    ('description' description=EString)?
+	'satisfied' 'when' marginDefinition=EString 'languageType' language=LanguageType
+;
 
 CompositeInfluence returns CompositeInfluence:
 	'CompositeInfluence'
