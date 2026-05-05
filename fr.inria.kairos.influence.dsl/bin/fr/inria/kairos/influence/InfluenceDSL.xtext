@@ -115,7 +115,7 @@ SRPInputParticipant returns SRPInputParticipant:
 	'SRPInputParticipant'
 		target=[SystemResponseProperty|QualifiedName]
 		('weight' weight=EDouble)?
-		('likelihood' likelihood=EDouble)?
+	//	('likelihood' likelihood=EDouble)?
 		('confidence' confidence=EDouble)?
 	;
 
@@ -123,10 +123,11 @@ EnvironmentalFactorParticipant returns EnvironmentalFactorParticipant:
 	'EnvironmentalFactorParticipant'
 		target=[EnvironmentalFactor|QualifiedName]
 		('weight' weight=EDouble)?
-		('likelihood' likelihood=EDouble)?
+	//	('likelihood' likelihood=EDouble)?
 		('confidence' confidence=EDouble)?
 		
 	;
+
 
 DesignArtifact returns DesignArtifact:
 	{DesignArtifact}
@@ -134,6 +135,16 @@ DesignArtifact returns DesignArtifact:
 		'->' ref=[ecore::EObject|EString]
 		('changeability' changeability=EDouble)?
 	;
+
+
+Stakeholder returns Stakeholder:
+    'Stakeholder' name=EString
+    'role' role=EString
+    ('ownsArtifacts' ownsArtifacts+=[DesignArtifact|QualifiedName]
+        (',' ownsArtifacts+=[DesignArtifact|QualifiedName])*)?
+    ('ownsRequirements' ownsRequirements+=[RequirementRef|QualifiedName]
+        (',' ownsRequirements+=[RequirementRef|QualifiedName])*)?
+;
 
 	
 QualifiedName:
