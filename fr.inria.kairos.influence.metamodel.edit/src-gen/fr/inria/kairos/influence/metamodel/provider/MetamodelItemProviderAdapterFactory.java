@@ -96,6 +96,29 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Influence} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InfluenceItemProvider influenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Influence}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInfluenceAdapter() {
+		if (influenceItemProvider == null) {
+			influenceItemProvider = new InfluenceItemProvider(this);
+		}
+
+		return influenceItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SRPInputParticipant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,6 +139,29 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 		}
 
 		return srpInputParticipantItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ArtifactParticipant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ArtifactParticipantItemProvider artifactParticipantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.ArtifactParticipant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createArtifactParticipantAdapter() {
+		if (artifactParticipantItemProvider == null) {
+			artifactParticipantItemProvider = new ArtifactParticipantItemProvider(this);
+		}
+
+		return artifactParticipantItemProvider;
 	}
 
 	/**
@@ -142,49 +188,49 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Requirement} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RequirementItemProvider requirementItemProvider;
+	protected SatisfactionCriterionItemProvider satisfactionCriterionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Requirement}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createRequirementAdapter() {
-		if (requirementItemProvider == null) {
-			requirementItemProvider = new RequirementItemProvider(this);
+	public Adapter createSatisfactionCriterionAdapter() {
+		if (satisfactionCriterionItemProvider == null) {
+			satisfactionCriterionItemProvider = new SatisfactionCriterionItemProvider(this);
 		}
 
-		return requirementItemProvider;
+		return satisfactionCriterionItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ArtifactParticipant} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.CompositeInfluence} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ArtifactParticipantItemProvider artifactParticipantItemProvider;
+	protected CompositeInfluenceItemProvider compositeInfluenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.ArtifactParticipant}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.CompositeInfluence}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createArtifactParticipantAdapter() {
-		if (artifactParticipantItemProvider == null) {
-			artifactParticipantItemProvider = new ArtifactParticipantItemProvider(this);
+	public Adapter createCompositeInfluenceAdapter() {
+		if (compositeInfluenceItemProvider == null) {
+			compositeInfluenceItemProvider = new CompositeInfluenceItemProvider(this);
 		}
 
-		return artifactParticipantItemProvider;
+		return compositeInfluenceItemProvider;
 	}
 
 	/**
@@ -257,72 +303,210 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.CompositeInfluence} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ParticipantRange} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CompositeInfluenceItemProvider compositeInfluenceItemProvider;
+	protected ParticipantRangeItemProvider participantRangeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.CompositeInfluence}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.ParticipantRange}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCompositeInfluenceAdapter() {
-		if (compositeInfluenceItemProvider == null) {
-			compositeInfluenceItemProvider = new CompositeInfluenceItemProvider(this);
+	public Adapter createParticipantRangeAdapter() {
+		if (participantRangeItemProvider == null) {
+			participantRangeItemProvider = new ParticipantRangeItemProvider(this);
 		}
 
-		return compositeInfluenceItemProvider;
+		return participantRangeItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.Influence} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ScalarValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InfluenceItemProvider influenceItemProvider;
+	protected ScalarValueItemProvider scalarValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.Influence}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.ScalarValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInfluenceAdapter() {
-		if (influenceItemProvider == null) {
-			influenceItemProvider = new InfluenceItemProvider(this);
+	public Adapter createScalarValueAdapter() {
+		if (scalarValueItemProvider == null) {
+			scalarValueItemProvider = new ScalarValueItemProvider(this);
 		}
 
-		return influenceItemProvider;
+		return scalarValueItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.InfluenceFunction} instances.
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.RangeValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InfluenceFunctionItemProvider influenceFunctionItemProvider;
+	protected RangeValueItemProvider rangeValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.InfluenceFunction}.
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.RangeValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInfluenceFunctionAdapter() {
-		if (influenceFunctionItemProvider == null) {
-			influenceFunctionItemProvider = new InfluenceFunctionItemProvider(this);
+	public Adapter createRangeValueAdapter() {
+		if (rangeValueItemProvider == null) {
+			rangeValueItemProvider = new RangeValueItemProvider(this);
 		}
 
-		return influenceFunctionItemProvider;
+		return rangeValueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.NaturalLanguageFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NaturalLanguageFunctionItemProvider naturalLanguageFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.NaturalLanguageFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNaturalLanguageFunctionAdapter() {
+		if (naturalLanguageFunctionItemProvider == null) {
+			naturalLanguageFunctionItemProvider = new NaturalLanguageFunctionItemProvider(this);
+		}
+
+		return naturalLanguageFunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ParticipantImpactFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParticipantImpactFunctionItemProvider participantImpactFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.ParticipantImpactFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParticipantImpactFunctionAdapter() {
+		if (participantImpactFunctionItemProvider == null) {
+			participantImpactFunctionItemProvider = new ParticipantImpactFunctionItemProvider(this);
+		}
+
+		return participantImpactFunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ParticipantRelativeImpact} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParticipantRelativeImpactItemProvider participantRelativeImpactItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.ParticipantRelativeImpact}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParticipantRelativeImpactAdapter() {
+		if (participantRelativeImpactItemProvider == null) {
+			participantRelativeImpactItemProvider = new ParticipantRelativeImpactItemProvider(this);
+		}
+
+		return participantRelativeImpactItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnalyticExpressionFunctionItemProvider analyticExpressionFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAnalyticExpressionFunctionAdapter() {
+		if (analyticExpressionFunctionItemProvider == null) {
+			analyticExpressionFunctionItemProvider = new AnalyticExpressionFunctionItemProvider(this);
+		}
+
+		return analyticExpressionFunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.MonotonicityTable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MonotonicityTableItemProvider monotonicityTableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.MonotonicityTable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMonotonicityTableAdapter() {
+		if (monotonicityTableItemProvider == null) {
+			monotonicityTableItemProvider = new MonotonicityTableItemProvider(this);
+		}
+
+		return monotonicityTableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.MonotonicityRow} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MonotonicityRowItemProvider monotonicityRowItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.MonotonicityRow}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMonotonicityRowAdapter() {
+		if (monotonicityRowItemProvider == null) {
+			monotonicityRowItemProvider = new MonotonicityRowItemProvider(this);
+		}
+
+		return monotonicityRowItemProvider;
 	}
 
 	/**
@@ -432,26 +616,42 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	public void dispose() {
 		if (influenceModelItemProvider != null)
 			influenceModelItemProvider.dispose();
-		if (srpInputParticipantItemProvider != null)
-			srpInputParticipantItemProvider.dispose();
-		if (environmentalFactorParticipantItemProvider != null)
-			environmentalFactorParticipantItemProvider.dispose();
-		if (requirementItemProvider != null)
-			requirementItemProvider.dispose();
-		if (artifactParticipantItemProvider != null)
-			artifactParticipantItemProvider.dispose();
-		if (compositeInfluenceItemProvider != null)
-			compositeInfluenceItemProvider.dispose();
 		if (influenceItemProvider != null)
 			influenceItemProvider.dispose();
+		if (srpInputParticipantItemProvider != null)
+			srpInputParticipantItemProvider.dispose();
+		if (artifactParticipantItemProvider != null)
+			artifactParticipantItemProvider.dispose();
+		if (environmentalFactorParticipantItemProvider != null)
+			environmentalFactorParticipantItemProvider.dispose();
+		if (satisfactionCriterionItemProvider != null)
+			satisfactionCriterionItemProvider.dispose();
+		if (compositeInfluenceItemProvider != null)
+			compositeInfluenceItemProvider.dispose();
 		if (designArtifactItemProvider != null)
 			designArtifactItemProvider.dispose();
 		if (systemResponsePropertyItemProvider != null)
 			systemResponsePropertyItemProvider.dispose();
 		if (environmentalFactorItemProvider != null)
 			environmentalFactorItemProvider.dispose();
-		if (influenceFunctionItemProvider != null)
-			influenceFunctionItemProvider.dispose();
+		if (participantRangeItemProvider != null)
+			participantRangeItemProvider.dispose();
+		if (scalarValueItemProvider != null)
+			scalarValueItemProvider.dispose();
+		if (rangeValueItemProvider != null)
+			rangeValueItemProvider.dispose();
+		if (naturalLanguageFunctionItemProvider != null)
+			naturalLanguageFunctionItemProvider.dispose();
+		if (participantImpactFunctionItemProvider != null)
+			participantImpactFunctionItemProvider.dispose();
+		if (participantRelativeImpactItemProvider != null)
+			participantRelativeImpactItemProvider.dispose();
+		if (analyticExpressionFunctionItemProvider != null)
+			analyticExpressionFunctionItemProvider.dispose();
+		if (monotonicityTableItemProvider != null)
+			monotonicityTableItemProvider.dispose();
+		if (monotonicityRowItemProvider != null)
+			monotonicityRowItemProvider.dispose();
 	}
 
 }

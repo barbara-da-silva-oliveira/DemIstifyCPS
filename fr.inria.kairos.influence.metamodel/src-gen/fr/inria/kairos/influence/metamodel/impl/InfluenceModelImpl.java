@@ -7,8 +7,7 @@ import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-import fr.inria.kairos.influence.metamodel.Requirement;
-
+import fr.inria.kairos.influence.metamodel.SatisfactionCriterion;
 import fr.inria.kairos.influence.metamodel.SystemResponseProperty;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -29,10 +28,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedInfluences <em>Owned Influences</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedRequirements <em>Owned Requirements</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedEnvironmentalFactors <em>Owned Environmental Factors</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedArtifacts <em>Owned Artifacts</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedSRPs <em>Owned SR Ps</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl#getOwnedSatisfactionCriteria <em>Owned Satisfaction Criteria</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,16 +46,6 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	 * @ordered
 	 */
 	protected EList<AbstractInfluence> ownedInfluences;
-
-	/**
-	 * The cached value of the '{@link #getOwnedRequirements() <em>Owned Requirements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRequirements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Requirement> ownedRequirements;
 
 	/**
 	 * The cached value of the '{@link #getOwnedEnvironmentalFactors() <em>Owned Environmental Factors</em>}' containment reference list.
@@ -89,6 +78,16 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	protected EList<SystemResponseProperty> ownedSRPs;
 
 	/**
+	 * The cached value of the '{@link #getOwnedSatisfactionCriteria() <em>Owned Satisfaction Criteria</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedSatisfactionCriteria()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SatisfactionCriterion> ownedSatisfactionCriteria;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -119,20 +118,6 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 					MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES);
 		}
 		return ownedInfluences;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Requirement> getOwnedRequirements() {
-		if (ownedRequirements == null) {
-			ownedRequirements = new EObjectContainmentEList<Requirement>(Requirement.class, this,
-					MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS);
-		}
-		return ownedRequirements;
 	}
 
 	/**
@@ -183,18 +168,32 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 	 * @generated
 	 */
 	@Override
+	public EList<SatisfactionCriterion> getOwnedSatisfactionCriteria() {
+		if (ownedSatisfactionCriteria == null) {
+			ownedSatisfactionCriteria = new EObjectContainmentEList<SatisfactionCriterion>(SatisfactionCriterion.class,
+					this, MetamodelPackage.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA);
+		}
+		return ownedSatisfactionCriteria;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			return ((InternalEList<?>) getOwnedInfluences()).basicRemove(otherEnd, msgs);
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
-			return ((InternalEList<?>) getOwnedRequirements()).basicRemove(otherEnd, msgs);
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
 			return ((InternalEList<?>) getOwnedEnvironmentalFactors()).basicRemove(otherEnd, msgs);
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return ((InternalEList<?>) getOwnedArtifacts()).basicRemove(otherEnd, msgs);
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
 			return ((InternalEList<?>) getOwnedSRPs()).basicRemove(otherEnd, msgs);
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA:
+			return ((InternalEList<?>) getOwnedSatisfactionCriteria()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -209,14 +208,14 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			return getOwnedInfluences();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
-			return getOwnedRequirements();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
 			return getOwnedEnvironmentalFactors();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return getOwnedArtifacts();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
 			return getOwnedSRPs();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA:
+			return getOwnedSatisfactionCriteria();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -234,10 +233,6 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 			getOwnedInfluences().clear();
 			getOwnedInfluences().addAll((Collection<? extends AbstractInfluence>) newValue);
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
-			getOwnedRequirements().clear();
-			getOwnedRequirements().addAll((Collection<? extends Requirement>) newValue);
-			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
 			getOwnedEnvironmentalFactors().clear();
 			getOwnedEnvironmentalFactors().addAll((Collection<? extends EnvironmentalFactor>) newValue);
@@ -249,6 +244,10 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
 			getOwnedSRPs().clear();
 			getOwnedSRPs().addAll((Collection<? extends SystemResponseProperty>) newValue);
+			return;
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA:
+			getOwnedSatisfactionCriteria().clear();
+			getOwnedSatisfactionCriteria().addAll((Collection<? extends SatisfactionCriterion>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -265,9 +264,6 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			getOwnedInfluences().clear();
 			return;
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
-			getOwnedRequirements().clear();
-			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
 			getOwnedEnvironmentalFactors().clear();
 			return;
@@ -276,6 +272,9 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 			return;
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
 			getOwnedSRPs().clear();
+			return;
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA:
+			getOwnedSatisfactionCriteria().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -291,14 +290,14 @@ public class InfluenceModelImpl extends NamedElementImpl implements InfluenceMod
 		switch (featureID) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
 			return ownedInfluences != null && !ownedInfluences.isEmpty();
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
-			return ownedRequirements != null && !ownedRequirements.isEmpty();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
 			return ownedEnvironmentalFactors != null && !ownedEnvironmentalFactors.isEmpty();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 			return ownedArtifacts != null && !ownedArtifacts.isEmpty();
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
 			return ownedSRPs != null && !ownedSRPs.isEmpty();
+		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA:
+			return ownedSatisfactionCriteria != null && !ownedSatisfactionCriteria.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

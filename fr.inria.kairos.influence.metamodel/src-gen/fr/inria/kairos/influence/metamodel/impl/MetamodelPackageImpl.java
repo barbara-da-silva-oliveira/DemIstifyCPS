@@ -3,23 +3,34 @@
 package fr.inria.kairos.influence.metamodel.impl;
 
 import fr.inria.kairos.influence.metamodel.AbstractInfluence;
+import fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction;
 import fr.inria.kairos.influence.metamodel.ArtifactParticipant;
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant;
+import fr.inria.kairos.influence.metamodel.FunctionRepresentation;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceFunction;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.LanguageType;
 import fr.inria.kairos.influence.metamodel.MetamodelFactory;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
+import fr.inria.kairos.influence.metamodel.MonotonicityRow;
+import fr.inria.kairos.influence.metamodel.MonotonicityTable;
 import fr.inria.kairos.influence.metamodel.NamedElement;
+import fr.inria.kairos.influence.metamodel.NaturalLanguageFunction;
 import fr.inria.kairos.influence.metamodel.Participant;
-import fr.inria.kairos.influence.metamodel.Requirement;
+import fr.inria.kairos.influence.metamodel.ParticipantImpactFunction;
+import fr.inria.kairos.influence.metamodel.ParticipantRange;
+import fr.inria.kairos.influence.metamodel.ParticipantRelativeImpact;
+import fr.inria.kairos.influence.metamodel.RangeValue;
 import fr.inria.kairos.influence.metamodel.SRPInputParticipant;
+import fr.inria.kairos.influence.metamodel.SatisfactionCriterion;
+import fr.inria.kairos.influence.metamodel.ScalarValue;
 import fr.inria.kairos.influence.metamodel.SystemResponseProperty;
-import fr.inria.kairos.influence.metamodel.ValueType;
+import fr.inria.kairos.influence.metamodel.TrendType;
+import fr.inria.kairos.influence.metamodel.ValueSpec;
 import fr.inria.kairos.influence.metamodel.util.MetamodelValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -72,6 +83,13 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass satisfactionCriterionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass influenceEClass = null;
 
 	/**
@@ -93,7 +111,77 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass requirementEClass = null;
+	private EClass participantRangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass valueSpecEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scalarValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass rangeValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass functionRepresentationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass naturalLanguageFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass participantImpactFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass participantRelativeImpactEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass analyticExpressionFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass monotonicityTableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass monotonicityRowEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,14 +216,14 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum valueTypeEEnum = null;
+	private EEnum languageTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum languageTypeEEnum = null;
+	private EEnum trendTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,7 +337,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluenceModel_OwnedRequirements() {
+	public EReference getInfluenceModel_OwnedEnvironmentalFactors() {
 		return (EReference) influenceModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -259,7 +347,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluenceModel_OwnedEnvironmentalFactors() {
+	public EReference getInfluenceModel_OwnedArtifacts() {
 		return (EReference) influenceModelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -269,7 +357,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluenceModel_OwnedArtifacts() {
+	public EReference getInfluenceModel_OwnedSRPs() {
 		return (EReference) influenceModelEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -279,7 +367,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluenceModel_OwnedSRPs() {
+	public EReference getInfluenceModel_OwnedSatisfactionCriteria() {
 		return (EReference) influenceModelEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -349,6 +437,66 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EReference getEnvironmentalFactorParticipant_AdmissibleSpace() {
+		return (EReference) environmentalFactorParticipantEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSatisfactionCriterion() {
+		return satisfactionCriterionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSatisfactionCriterion_RequirementRef() {
+		return (EReference) satisfactionCriterionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSatisfactionCriterion_Language() {
+		return (EAttribute) satisfactionCriterionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSatisfactionCriterion_MarginDefinition() {
+		return (EAttribute) satisfactionCriterionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSatisfactionCriterion_ConstrainedSRPs() {
+		return (EReference) satisfactionCriterionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getInfluence() {
 		return influenceEClass;
 	}
@@ -409,28 +557,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParticipant_Weight() {
-		return (EAttribute) participantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getParticipant_Likelihood() {
-		return (EAttribute) participantEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getParticipant_Confidence() {
-		return (EAttribute) participantEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) participantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -449,8 +577,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInfluenceFunction_Definition() {
-		return (EAttribute) influenceFunctionEClass.getEStructuralFeatures().get(0);
+	public EReference getInfluenceFunction_Representations() {
+		return (EReference) influenceFunctionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -459,8 +587,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInfluenceFunction_ReturnType() {
-		return (EAttribute) influenceFunctionEClass.getEStructuralFeatures().get(1);
+	public EClass getParticipantRange() {
+		return participantRangeEClass;
 	}
 
 	/**
@@ -469,8 +597,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInfluenceFunction_Language() {
-		return (EAttribute) influenceFunctionEClass.getEStructuralFeatures().get(2);
+	public EReference getParticipantRange_Value() {
+		return (EReference) participantRangeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -479,8 +607,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EOperation getInfluenceFunction__LanguageReturn__DiagnosticChain_Map() {
-		return influenceFunctionEClass.getEOperations().get(0);
+	public EReference getParticipantRange_Participant() {
+		return (EReference) participantRangeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -489,8 +617,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getRequirement() {
-		return requirementEClass;
+	public EClass getValueSpec() {
+		return valueSpecEClass;
 	}
 
 	/**
@@ -499,8 +627,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRequirement_Description() {
-		return (EAttribute) requirementEClass.getEStructuralFeatures().get(0);
+	public EAttribute getValueSpec_Unit() {
+		return (EAttribute) valueSpecEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -509,8 +637,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRequirement_Satisfaction() {
-		return (EAttribute) requirementEClass.getEStructuralFeatures().get(1);
+	public EClass getScalarValue() {
+		return scalarValueEClass;
 	}
 
 	/**
@@ -519,8 +647,308 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getRequirement_Language() {
-		return (EAttribute) requirementEClass.getEStructuralFeatures().get(2);
+	public EAttribute getScalarValue_Value() {
+		return (EAttribute) scalarValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getRangeValue() {
+		return rangeValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRangeValue_Lower() {
+		return (EAttribute) rangeValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRangeValue_Upper() {
+		return (EAttribute) rangeValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRangeValue_Nominal() {
+		return (EAttribute) rangeValueEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRangeValue_Step() {
+		return (EAttribute) rangeValueEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRangeValue_InclusiveLower() {
+		return (EAttribute) rangeValueEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRangeValue_InclusiveUpper() {
+		return (EAttribute) rangeValueEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFunctionRepresentation() {
+		return functionRepresentationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFunctionRepresentation_SourceUri() {
+		return (EAttribute) functionRepresentationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFunctionRepresentation_ApplicabilityDomain() {
+		return (EReference) functionRepresentationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFunctionRepresentation_Confidence() {
+		return (EAttribute) functionRepresentationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNaturalLanguageFunction() {
+		return naturalLanguageFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNaturalLanguageFunction_Definition() {
+		return (EAttribute) naturalLanguageFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getParticipantImpactFunction() {
+		return participantImpactFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getParticipantImpactFunction_ParticipantContribution() {
+		return (EReference) participantImpactFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getParticipantRelativeImpact() {
+		return participantRelativeImpactEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getParticipantRelativeImpact_Participant() {
+		return (EReference) participantRelativeImpactEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getParticipantRelativeImpact_Importance() {
+		return (EAttribute) participantRelativeImpactEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getParticipantRelativeImpact_Direction() {
+		return (EAttribute) participantRelativeImpactEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getParticipantRelativeImpact_Rationale() {
+		return (EAttribute) participantRelativeImpactEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAnalyticExpressionFunction() {
+		return analyticExpressionFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAnalyticExpressionFunction_Expression() {
+		return (EAttribute) analyticExpressionFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAnalyticExpressionFunction_ExpressionLanguage() {
+		return (EAttribute) analyticExpressionFunctionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMonotonicityTable() {
+		return monotonicityTableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMonotonicityTable_TableRows() {
+		return (EReference) monotonicityTableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMonotonicityRow() {
+		return monotonicityRowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMonotonicityRow_Condition() {
+		return (EReference) monotonicityRowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMonotonicityRow_Trend() {
+		return (EAttribute) monotonicityRowEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMonotonicityRow_VariedParticipant() {
+		return (EReference) monotonicityRowEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMonotonicityRow_Output() {
+		return (EReference) monotonicityRowEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -589,18 +1017,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getSystemResponseProperty_ConstrainedBy() {
-		return (EReference) systemResponsePropertyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getSystemResponseProperty_Description() {
-		return (EAttribute) systemResponsePropertyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) systemResponsePropertyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -629,38 +1047,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEnvironmentalFactor_Value() {
-		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getEnvironmentalFactor_Unit() {
-		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getEnvironmentalFactor_Flexibility() {
-		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getValueType() {
-		return valueTypeEEnum;
+		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -671,6 +1059,16 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	@Override
 	public EEnum getLanguageType() {
 		return languageTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getTrendType() {
+		return trendTypeEEnum;
 	}
 
 	/**
@@ -753,36 +1151,18 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		isCreated = true;
 
 		// Create classes and their features
+		namedElementEClass = createEClass(NAMED_ELEMENT);
+		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+
 		influenceModelEClass = createEClass(INFLUENCE_MODEL);
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_INFLUENCES);
-		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_REQUIREMENTS);
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS);
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_ARTIFACTS);
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_SR_PS);
+		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA);
 
 		abstractInfluenceEClass = createEClass(ABSTRACT_INFLUENCE);
 		createEAttribute(abstractInfluenceEClass, ABSTRACT_INFLUENCE__DESCRIPTION);
-
-		srpInputParticipantEClass = createEClass(SRP_INPUT_PARTICIPANT);
-		createEReference(srpInputParticipantEClass, SRP_INPUT_PARTICIPANT__TARGET);
-
-		environmentalFactorParticipantEClass = createEClass(ENVIRONMENTAL_FACTOR_PARTICIPANT);
-		createEReference(environmentalFactorParticipantEClass, ENVIRONMENTAL_FACTOR_PARTICIPANT__TARGET);
-
-		requirementEClass = createEClass(REQUIREMENT);
-		createEAttribute(requirementEClass, REQUIREMENT__DESCRIPTION);
-		createEAttribute(requirementEClass, REQUIREMENT__SATISFACTION);
-		createEAttribute(requirementEClass, REQUIREMENT__LANGUAGE);
-
-		artifactParticipantEClass = createEClass(ARTIFACT_PARTICIPANT);
-		createEReference(artifactParticipantEClass, ARTIFACT_PARTICIPANT__TARGET);
-
-		compositeInfluenceEClass = createEClass(COMPOSITE_INFLUENCE);
-		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES);
-		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION);
-
-		namedElementEClass = createEClass(NAMED_ELEMENT);
-		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
 		influenceEClass = createEClass(INFLUENCE);
 		createEReference(influenceEClass, INFLUENCE__OWNED_INFLUENCE_FUNCTION);
@@ -791,33 +1171,93 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		createEOperation(influenceEClass, INFLUENCE___PARTICIPATION_PATTERN__DIAGNOSTICCHAIN_MAP);
 
 		participantEClass = createEClass(PARTICIPANT);
-		createEAttribute(participantEClass, PARTICIPANT__WEIGHT);
-		createEAttribute(participantEClass, PARTICIPANT__LIKELIHOOD);
 		createEAttribute(participantEClass, PARTICIPANT__CONFIDENCE);
+
+		srpInputParticipantEClass = createEClass(SRP_INPUT_PARTICIPANT);
+		createEReference(srpInputParticipantEClass, SRP_INPUT_PARTICIPANT__TARGET);
+
+		artifactParticipantEClass = createEClass(ARTIFACT_PARTICIPANT);
+		createEReference(artifactParticipantEClass, ARTIFACT_PARTICIPANT__TARGET);
+
+		environmentalFactorParticipantEClass = createEClass(ENVIRONMENTAL_FACTOR_PARTICIPANT);
+		createEReference(environmentalFactorParticipantEClass, ENVIRONMENTAL_FACTOR_PARTICIPANT__TARGET);
+		createEReference(environmentalFactorParticipantEClass, ENVIRONMENTAL_FACTOR_PARTICIPANT__ADMISSIBLE_SPACE);
+
+		satisfactionCriterionEClass = createEClass(SATISFACTION_CRITERION);
+		createEReference(satisfactionCriterionEClass, SATISFACTION_CRITERION__REQUIREMENT_REF);
+		createEAttribute(satisfactionCriterionEClass, SATISFACTION_CRITERION__LANGUAGE);
+		createEAttribute(satisfactionCriterionEClass, SATISFACTION_CRITERION__MARGIN_DEFINITION);
+		createEReference(satisfactionCriterionEClass, SATISFACTION_CRITERION__CONSTRAINED_SR_PS);
+
+		compositeInfluenceEClass = createEClass(COMPOSITE_INFLUENCE);
+		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES);
+		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION);
 
 		designArtifactEClass = createEClass(DESIGN_ARTIFACT);
 		createEReference(designArtifactEClass, DESIGN_ARTIFACT__REF);
 		createEAttribute(designArtifactEClass, DESIGN_ARTIFACT__CHANGEABILITY);
 
 		systemResponsePropertyEClass = createEClass(SYSTEM_RESPONSE_PROPERTY);
-		createEReference(systemResponsePropertyEClass, SYSTEM_RESPONSE_PROPERTY__CONSTRAINED_BY);
 		createEAttribute(systemResponsePropertyEClass, SYSTEM_RESPONSE_PROPERTY__DESCRIPTION);
 
 		environmentalFactorEClass = createEClass(ENVIRONMENTAL_FACTOR);
 		createEAttribute(environmentalFactorEClass, ENVIRONMENTAL_FACTOR__DESCRIPTION);
-		createEAttribute(environmentalFactorEClass, ENVIRONMENTAL_FACTOR__VALUE);
-		createEAttribute(environmentalFactorEClass, ENVIRONMENTAL_FACTOR__UNIT);
 		createEAttribute(environmentalFactorEClass, ENVIRONMENTAL_FACTOR__FLEXIBILITY);
 
 		influenceFunctionEClass = createEClass(INFLUENCE_FUNCTION);
-		createEAttribute(influenceFunctionEClass, INFLUENCE_FUNCTION__DEFINITION);
-		createEAttribute(influenceFunctionEClass, INFLUENCE_FUNCTION__RETURN_TYPE);
-		createEAttribute(influenceFunctionEClass, INFLUENCE_FUNCTION__LANGUAGE);
-		createEOperation(influenceFunctionEClass, INFLUENCE_FUNCTION___LANGUAGE_RETURN__DIAGNOSTICCHAIN_MAP);
+		createEReference(influenceFunctionEClass, INFLUENCE_FUNCTION__REPRESENTATIONS);
+
+		participantRangeEClass = createEClass(PARTICIPANT_RANGE);
+		createEReference(participantRangeEClass, PARTICIPANT_RANGE__VALUE);
+		createEReference(participantRangeEClass, PARTICIPANT_RANGE__PARTICIPANT);
+
+		valueSpecEClass = createEClass(VALUE_SPEC);
+		createEAttribute(valueSpecEClass, VALUE_SPEC__UNIT);
+
+		scalarValueEClass = createEClass(SCALAR_VALUE);
+		createEAttribute(scalarValueEClass, SCALAR_VALUE__VALUE);
+
+		rangeValueEClass = createEClass(RANGE_VALUE);
+		createEAttribute(rangeValueEClass, RANGE_VALUE__LOWER);
+		createEAttribute(rangeValueEClass, RANGE_VALUE__UPPER);
+		createEAttribute(rangeValueEClass, RANGE_VALUE__NOMINAL);
+		createEAttribute(rangeValueEClass, RANGE_VALUE__STEP);
+		createEAttribute(rangeValueEClass, RANGE_VALUE__INCLUSIVE_LOWER);
+		createEAttribute(rangeValueEClass, RANGE_VALUE__INCLUSIVE_UPPER);
+
+		functionRepresentationEClass = createEClass(FUNCTION_REPRESENTATION);
+		createEAttribute(functionRepresentationEClass, FUNCTION_REPRESENTATION__SOURCE_URI);
+		createEReference(functionRepresentationEClass, FUNCTION_REPRESENTATION__APPLICABILITY_DOMAIN);
+		createEAttribute(functionRepresentationEClass, FUNCTION_REPRESENTATION__CONFIDENCE);
+
+		naturalLanguageFunctionEClass = createEClass(NATURAL_LANGUAGE_FUNCTION);
+		createEAttribute(naturalLanguageFunctionEClass, NATURAL_LANGUAGE_FUNCTION__DEFINITION);
+
+		participantImpactFunctionEClass = createEClass(PARTICIPANT_IMPACT_FUNCTION);
+		createEReference(participantImpactFunctionEClass, PARTICIPANT_IMPACT_FUNCTION__PARTICIPANT_CONTRIBUTION);
+
+		participantRelativeImpactEClass = createEClass(PARTICIPANT_RELATIVE_IMPACT);
+		createEReference(participantRelativeImpactEClass, PARTICIPANT_RELATIVE_IMPACT__PARTICIPANT);
+		createEAttribute(participantRelativeImpactEClass, PARTICIPANT_RELATIVE_IMPACT__IMPORTANCE);
+		createEAttribute(participantRelativeImpactEClass, PARTICIPANT_RELATIVE_IMPACT__DIRECTION);
+		createEAttribute(participantRelativeImpactEClass, PARTICIPANT_RELATIVE_IMPACT__RATIONALE);
+
+		analyticExpressionFunctionEClass = createEClass(ANALYTIC_EXPRESSION_FUNCTION);
+		createEAttribute(analyticExpressionFunctionEClass, ANALYTIC_EXPRESSION_FUNCTION__EXPRESSION);
+		createEAttribute(analyticExpressionFunctionEClass, ANALYTIC_EXPRESSION_FUNCTION__EXPRESSION_LANGUAGE);
+
+		monotonicityTableEClass = createEClass(MONOTONICITY_TABLE);
+		createEReference(monotonicityTableEClass, MONOTONICITY_TABLE__TABLE_ROWS);
+
+		monotonicityRowEClass = createEClass(MONOTONICITY_ROW);
+		createEReference(monotonicityRowEClass, MONOTONICITY_ROW__CONDITION);
+		createEAttribute(monotonicityRowEClass, MONOTONICITY_ROW__TREND);
+		createEReference(monotonicityRowEClass, MONOTONICITY_ROW__VARIED_PARTICIPANT);
+		createEReference(monotonicityRowEClass, MONOTONICITY_ROW__OUTPUT);
 
 		// Create enums
-		valueTypeEEnum = createEEnum(VALUE_TYPE);
 		languageTypeEEnum = createEEnum(LANGUAGE_TYPE);
+		trendTypeEEnum = createEEnum(TREND_TYPE);
 	}
 
 	/**
@@ -851,27 +1291,40 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		// Add supertypes to classes
 		influenceModelEClass.getESuperTypes().add(this.getNamedElement());
 		abstractInfluenceEClass.getESuperTypes().add(this.getNamedElement());
-		srpInputParticipantEClass.getESuperTypes().add(this.getParticipant());
-		environmentalFactorParticipantEClass.getESuperTypes().add(this.getParticipant());
-		requirementEClass.getESuperTypes().add(this.getNamedElement());
-		artifactParticipantEClass.getESuperTypes().add(this.getParticipant());
-		compositeInfluenceEClass.getESuperTypes().add(this.getAbstractInfluence());
 		influenceEClass.getESuperTypes().add(this.getAbstractInfluence());
 		participantEClass.getESuperTypes().add(this.getNamedElement());
+		srpInputParticipantEClass.getESuperTypes().add(this.getParticipant());
+		artifactParticipantEClass.getESuperTypes().add(this.getParticipant());
+		environmentalFactorParticipantEClass.getESuperTypes().add(this.getParticipant());
+		satisfactionCriterionEClass.getESuperTypes().add(this.getNamedElement());
+		compositeInfluenceEClass.getESuperTypes().add(this.getAbstractInfluence());
 		designArtifactEClass.getESuperTypes().add(this.getNamedElement());
 		systemResponsePropertyEClass.getESuperTypes().add(this.getNamedElement());
 		environmentalFactorEClass.getESuperTypes().add(this.getNamedElement());
 		influenceFunctionEClass.getESuperTypes().add(this.getNamedElement());
+		participantRangeEClass.getESuperTypes().add(this.getNamedElement());
+		scalarValueEClass.getESuperTypes().add(this.getValueSpec());
+		rangeValueEClass.getESuperTypes().add(this.getValueSpec());
+		naturalLanguageFunctionEClass.getESuperTypes().add(this.getFunctionRepresentation());
+		naturalLanguageFunctionEClass.getESuperTypes().add(this.getNamedElement());
+		participantImpactFunctionEClass.getESuperTypes().add(this.getFunctionRepresentation());
+		participantImpactFunctionEClass.getESuperTypes().add(this.getNamedElement());
+		analyticExpressionFunctionEClass.getESuperTypes().add(this.getFunctionRepresentation());
+		analyticExpressionFunctionEClass.getESuperTypes().add(this.getNamedElement());
+		monotonicityTableEClass.getESuperTypes().add(this.getFunctionRepresentation());
+		monotonicityTableEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(influenceModelEClass, InfluenceModel.class, "InfluenceModel", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInfluenceModel_OwnedInfluences(), this.getAbstractInfluence(), null, "ownedInfluences", null,
 				0, -1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInfluenceModel_OwnedRequirements(), this.getRequirement(), null, "ownedRequirements", null, 0,
-				-1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInfluenceModel_OwnedEnvironmentalFactors(), this.getEnvironmentalFactor(), null,
 				"ownedEnvironmentalFactors", null, 0, -1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -881,55 +1334,15 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getInfluenceModel_OwnedSRPs(), this.getSystemResponseProperty(), null, "ownedSRPs", null, 0, -1,
 				InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInfluenceModel_OwnedSatisfactionCriteria(), this.getSatisfactionCriterion(), null,
+				"ownedSatisfactionCriteria", null, 0, -1, InfluenceModel.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractInfluenceEClass, AbstractInfluence.class, "AbstractInfluence", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractInfluence_Description(), ecorePackage.getEString(), "description", null, 1, -1,
+		initEAttribute(getAbstractInfluence_Description(), ecorePackage.getEString(), "description", null, 1, 1,
 				AbstractInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(srpInputParticipantEClass, SRPInputParticipant.class, "SRPInputParticipant", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSRPInputParticipant_Target(), this.getSystemResponseProperty(), null, "target", null, 1, 1,
-				SRPInputParticipant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(environmentalFactorParticipantEClass, EnvironmentalFactorParticipant.class,
-				"EnvironmentalFactorParticipant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEnvironmentalFactorParticipant_Target(), this.getEnvironmentalFactor(), null, "target", null,
-				1, 1, EnvironmentalFactorParticipant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(requirementEClass, Requirement.class, "Requirement", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRequirement_Description(), ecorePackage.getEString(), "description", null, 1, 1,
-				Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRequirement_Satisfaction(), ecorePackage.getEString(), "satisfaction", null, 1, 1,
-				Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRequirement_Language(), this.getLanguageType(), "language", null, 1, 1, Requirement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(artifactParticipantEClass, ArtifactParticipant.class, "ArtifactParticipant", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getArtifactParticipant_Target(), this.getDesignArtifact(), null, "target", null, 1, 1,
-				ArtifactParticipant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(compositeInfluenceEClass, CompositeInfluence.class, "CompositeInfluence", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCompositeInfluence_InternalInfluences(), this.getAbstractInfluence(), null,
-				"internalInfluences", null, 2, -1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompositeInfluence_OwnedInfluenceFunction(), this.getInfluenceFunction(), null,
-				"ownedInfluenceFunction", null, 1, 1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(influenceEClass, Influence.class, "Influence", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -955,29 +1368,66 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		initEClass(participantEClass, Participant.class, "Participant", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParticipant_Weight(), ecorePackage.getEDouble(), "weight", null, 1, 1, Participant.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParticipant_Likelihood(), ecorePackage.getEDouble(), "likelihood", null, 1, 1,
+		initEAttribute(getParticipant_Confidence(), ecorePackage.getEDouble(), "confidence", null, 0, 1,
 				Participant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParticipant_Confidence(), ecorePackage.getEDouble(), "confidence", null, 1, 1,
-				Participant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(srpInputParticipantEClass, SRPInputParticipant.class, "SRPInputParticipant", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSRPInputParticipant_Target(), this.getSystemResponseProperty(), null, "target", null, 1, 1,
+				SRPInputParticipant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(artifactParticipantEClass, ArtifactParticipant.class, "ArtifactParticipant", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getArtifactParticipant_Target(), this.getDesignArtifact(), null, "target", null, 1, 1,
+				ArtifactParticipant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(environmentalFactorParticipantEClass, EnvironmentalFactorParticipant.class,
+				"EnvironmentalFactorParticipant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEnvironmentalFactorParticipant_Target(), this.getEnvironmentalFactor(), null, "target", null,
+				1, 1, EnvironmentalFactorParticipant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEnvironmentalFactorParticipant_AdmissibleSpace(), this.getValueSpec(), null,
+				"admissibleSpace", null, 0, 1, EnvironmentalFactorParticipant.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(satisfactionCriterionEClass, SatisfactionCriterion.class, "SatisfactionCriterion", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSatisfactionCriterion_RequirementRef(), ecorePackage.getEObject(), null, "requirementRef",
+				null, 0, 1, SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSatisfactionCriterion_Language(), this.getLanguageType(), "language", null, 1, 1,
+				SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSatisfactionCriterion_MarginDefinition(), ecorePackage.getEString(), "marginDefinition", null,
+				1, 1, SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSatisfactionCriterion_ConstrainedSRPs(), this.getSystemResponseProperty(), null,
+				"constrainedSRPs", null, 0, -1, SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compositeInfluenceEClass, CompositeInfluence.class, "CompositeInfluence", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompositeInfluence_InternalInfluences(), this.getAbstractInfluence(), null,
+				"internalInfluences", null, 2, -1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompositeInfluence_OwnedInfluenceFunction(), this.getInfluenceFunction(), null,
+				"ownedInfluenceFunction", null, 1, 1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(designArtifactEClass, DesignArtifact.class, "DesignArtifact", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDesignArtifact_Ref(), ecorePackage.getEObject(), null, "ref", null, 1, 1,
 				DesignArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDesignArtifact_Changeability(), ecorePackage.getEDouble(), "changeability", null, 1, 1,
+		initEAttribute(getDesignArtifact_Changeability(), ecorePackage.getEDouble(), "changeability", null, 0, 1,
 				DesignArtifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemResponsePropertyEClass, SystemResponseProperty.class, "SystemResponseProperty", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSystemResponseProperty_ConstrainedBy(), this.getRequirement(), null, "constrainedBy", null, 0,
-				-1, SystemResponseProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystemResponseProperty_Description(), ecorePackage.getEString(), "description", null, 1, 1,
 				SystemResponseProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -987,46 +1437,131 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEAttribute(getEnvironmentalFactor_Description(), ecorePackage.getEString(), "description", null, 1, 1,
 				EnvironmentalFactor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnvironmentalFactor_Value(), ecorePackage.getEDouble(), "value", null, 1, 1,
-				EnvironmentalFactor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnvironmentalFactor_Unit(), ecorePackage.getEString(), "unit", null, 0, 1,
-				EnvironmentalFactor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnvironmentalFactor_Flexibility(), ecorePackage.getEDouble(), "flexibility", null, 1, 1,
+		initEAttribute(getEnvironmentalFactor_Flexibility(), ecorePackage.getEDouble(), "flexibility", null, 0, 1,
 				EnvironmentalFactor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(influenceFunctionEClass, InfluenceFunction.class, "InfluenceFunction", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(influenceFunctionEClass, InfluenceFunction.class, "InfluenceFunction", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInfluenceFunction_Definition(), ecorePackage.getEString(), "definition", null, 1, 1,
-				InfluenceFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEReference(getInfluenceFunction_Representations(), this.getFunctionRepresentation(), null,
+				"representations", null, 0, -1, InfluenceFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(participantRangeEClass, ParticipantRange.class, "ParticipantRange", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParticipantRange_Value(), this.getValueSpec(), null, "value", null, 0, 1,
+				ParticipantRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParticipantRange_Participant(), this.getParticipant(), null, "participant", null, 0, 1,
+				ParticipantRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(valueSpecEClass, ValueSpec.class, "ValueSpec", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getValueSpec_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, ValueSpec.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scalarValueEClass, ScalarValue.class, "ScalarValue", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScalarValue_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, ScalarValue.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(rangeValueEClass, RangeValue.class, "RangeValue", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRangeValue_Lower(), ecorePackage.getEDouble(), "lower", null, 0, 1, RangeValue.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRangeValue_Upper(), ecorePackage.getEDouble(), "upper", null, 0, 1, RangeValue.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRangeValue_Nominal(), ecorePackage.getEDouble(), "nominal", null, 0, 1, RangeValue.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRangeValue_Step(), ecorePackage.getEDouble(), "step", null, 0, 1, RangeValue.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRangeValue_InclusiveLower(), ecorePackage.getEBoolean(), "inclusiveLower", null, 0, 1,
+				RangeValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInfluenceFunction_ReturnType(), this.getValueType(), "returnType", null, 1, 1,
-				InfluenceFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInfluenceFunction_Language(), this.getLanguageType(), "language", null, 1, 1,
-				InfluenceFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getRangeValue_InclusiveUpper(), ecorePackage.getEBoolean(), "inclusiveUpper", null, 0, 1,
+				RangeValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		op = initEOperation(getInfluenceFunction__LanguageReturn__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
-				"LanguageReturn", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEClass(functionRepresentationEClass, FunctionRepresentation.class, "FunctionRepresentation", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFunctionRepresentation_SourceUri(), ecorePackage.getEString(), "sourceUri", null, 0, 1,
+				FunctionRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionRepresentation_ApplicabilityDomain(), this.getParticipantRange(), null,
+				"applicabilityDomain", null, 0, -1, FunctionRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunctionRepresentation_Confidence(), ecorePackage.getEDouble(), "confidence", null, 0, 1,
+				FunctionRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(naturalLanguageFunctionEClass, NaturalLanguageFunction.class, "NaturalLanguageFunction",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNaturalLanguageFunction_Definition(), ecorePackage.getEString(), "definition", null, 0, 1,
+				NaturalLanguageFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(participantImpactFunctionEClass, ParticipantImpactFunction.class, "ParticipantImpactFunction",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParticipantImpactFunction_ParticipantContribution(), this.getParticipantRelativeImpact(),
+				null, "participantContribution", null, 0, -1, ParticipantImpactFunction.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(participantRelativeImpactEClass, ParticipantRelativeImpact.class, "ParticipantRelativeImpact",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getParticipantRelativeImpact_Participant(), this.getParticipant(), null, "participant", null, 0,
+				1, ParticipantRelativeImpact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParticipantRelativeImpact_Importance(), ecorePackage.getEDouble(), "importance", null, 0, 1,
+				ParticipantRelativeImpact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParticipantRelativeImpact_Direction(), this.getTrendType(), "direction", null, 0, 1,
+				ParticipantRelativeImpact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParticipantRelativeImpact_Rationale(), ecorePackage.getEString(), "rationale", null, 0, 1,
+				ParticipantRelativeImpact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(analyticExpressionFunctionEClass, AnalyticExpressionFunction.class, "AnalyticExpressionFunction",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnalyticExpressionFunction_Expression(), ecorePackage.getEString(), "expression", null, 0, 1,
+				AnalyticExpressionFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnalyticExpressionFunction_ExpressionLanguage(), this.getLanguageType(), "expressionLanguage",
+				null, 0, 1, AnalyticExpressionFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(monotonicityTableEClass, MonotonicityTable.class, "MonotonicityTable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMonotonicityTable_TableRows(), this.getMonotonicityRow(), null, "tableRows", null, 1, -1,
+				MonotonicityTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(monotonicityRowEClass, MonotonicityRow.class, "MonotonicityRow", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMonotonicityRow_Condition(), this.getParticipantRange(), null, "condition", null, 0, -1,
+				MonotonicityRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMonotonicityRow_Trend(), this.getTrendType(), "trend", null, 0, 1, MonotonicityRow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMonotonicityRow_VariedParticipant(), this.getParticipant(), null, "variedParticipant", null,
+				0, 1, MonotonicityRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMonotonicityRow_Output(), this.getSystemResponseProperty(), null, "output", null, 0, 1,
+				MonotonicityRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(valueTypeEEnum, ValueType.class, "ValueType");
-		addEEnumLiteral(valueTypeEEnum, ValueType.REAL);
-		addEEnumLiteral(valueTypeEEnum, ValueType.TEXT);
-
 		initEEnum(languageTypeEEnum, LanguageType.class, "LanguageType");
 		addEEnumLiteral(languageTypeEEnum, LanguageType.NATURAL_LANGUAGE);
 		addEEnumLiteral(languageTypeEEnum, LanguageType.JAVA_NUMERIC_EXPRESSION);
+
+		initEEnum(trendTypeEEnum, TrendType.class, "TrendType");
+		addEEnumLiteral(trendTypeEEnum, TrendType.INCREASING);
+		addEEnumLiteral(trendTypeEEnum, TrendType.DECREASING);
+		addEEnumLiteral(trendTypeEEnum, TrendType.FLAT);
+		addEEnumLiteral(trendTypeEEnum, TrendType.NOT_MONOTONIC);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1048,7 +1583,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation(this, source, new String[] {});
 		addAnnotation(influenceEClass, source, new String[] { "constraints", "ParticipationPattern" });
-		addAnnotation(influenceFunctionEClass, source, new String[] { "constraints", "LanguageReturn" });
 	}
 
 	/**
@@ -1061,8 +1595,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
 		addAnnotation(getInfluence__ParticipationPattern__DiagnosticChain_Map(), source, new String[] { "body",
 				"\n\t\t\tself.ownedParticipants->exists(p | p.oclIsKindOf(ArtifactParticipant)) and \n\t\t\t(self.ownedParticipants->exists(p | p.oclIsKindOf(EnvironmentalFactorParticipant)))\n\t\t\tor self.ownedParticipants->exists(p |p.oclIsKindOf(SRPInputParticipant))" });
-		addAnnotation(getInfluenceFunction__LanguageReturn__DiagnosticChain_Map(), source, new String[] { "body",
-				"\n\t\t\tif self.language = LanguageType::JavaNumericExpression then\n\t        \tself.returnType = ValueType::Real\n\t        else \n\t        \tself.returnType = ValueType::Text\n\t        endif\n        " });
 	}
 
 } //MetamodelPackageImpl

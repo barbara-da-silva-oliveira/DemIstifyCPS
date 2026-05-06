@@ -3,7 +3,6 @@
 package fr.inria.kairos.influence.metamodel.provider;
 
 import fr.inria.kairos.influence.metamodel.CompositeInfluence;
-import fr.inria.kairos.influence.metamodel.MetamodelFactory;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 
 import java.util.Collection;
@@ -142,10 +141,6 @@ public class CompositeInfluenceItemProvider extends AbstractInfluenceItemProvide
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors
-				.add(createChildParameter(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION,
-						MetamodelFactory.eINSTANCE.createInfluenceFunction()));
 	}
 
 }

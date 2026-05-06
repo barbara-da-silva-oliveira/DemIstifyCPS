@@ -51,7 +51,7 @@ public interface DesignArtifact extends NamedElement {
 	 * @return the value of the '<em>Changeability</em>' attribute.
 	 * @see #setChangeability(double)
 	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getDesignArtifact_Changeability()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	double getChangeability();

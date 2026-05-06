@@ -2,8 +2,6 @@
  */
 package fr.inria.kairos.influence.metamodel;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Abstract Influence</b></em>'.
@@ -22,15 +20,25 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface AbstractInfluence extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute list.
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
 	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getAbstractInfluence_Description()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<String> getDescription();
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // AbstractInfluence

@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -45,8 +46,25 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOwnedSatisfactionCriteriaPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Owned Satisfaction Criteria feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwnedSatisfactionCriteriaPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_InfluenceModel_ownedSatisfactionCriteria_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_InfluenceModel_ownedSatisfactionCriteria_feature", "_UI_InfluenceModel_type"),
+						MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA, true, false, true, null,
+						null, null));
 	}
 
 	/**
@@ -62,7 +80,6 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_REQUIREMENTS);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ARTIFACTS);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_SR_PS);
@@ -130,7 +147,6 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 
 		switch (notification.getFeatureID(InfluenceModel.class)) {
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_INFLUENCES:
-		case MetamodelPackage.INFLUENCE_MODEL__OWNED_REQUIREMENTS:
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS:
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_ARTIFACTS:
 		case MetamodelPackage.INFLUENCE_MODEL__OWNED_SR_PS:
@@ -152,13 +168,10 @@ public class InfluenceModelItemProvider extends NamedElementItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES,
-				MetamodelFactory.eINSTANCE.createCompositeInfluence()));
-
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES,
 				MetamodelFactory.eINSTANCE.createInfluence()));
 
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_REQUIREMENTS,
-				MetamodelFactory.eINSTANCE.createRequirement()));
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES,
+				MetamodelFactory.eINSTANCE.createCompositeInfluence()));
 
 		newChildDescriptors
 				.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS,

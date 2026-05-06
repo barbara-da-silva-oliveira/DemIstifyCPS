@@ -15,18 +15,18 @@
   <eClassifiers xsi:type="ecore:EClass" name="InfluenceModel" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluences" upperBound="-1"
         eType="#//AbstractInfluence" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRequirements" upperBound="-1"
-        eType="#//Requirement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEnvironmentalFactors"
         upperBound="-1" eType="#//EnvironmentalFactor" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedArtifacts" upperBound="-1"
         eType="#//DesignArtifact" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSRPs" upperBound="-1"
         eType="#//SystemResponseProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSatisfactionCriteria"
+        upperBound="-1" eType="#//SatisfactionCriterion" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractInfluence" abstract="true" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Influence" eSuperTypes="#//AbstractInfluence">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -59,14 +59,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="admissibleSpace" eType="#//ValueSpec"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCriterion" upperBound="-1"
-        eType="#//SatisfactionCriterion"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SatisfactionCriterion" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirementRef" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" lowerBound="1"
         eType="#//LanguageType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="marginDefinition" lowerBound="1"
@@ -122,26 +116,37 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionRepresentation" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceUri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participantValidityRegion"
-        upperBound="-1" eType="#//ParticipantRange"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applicabilityDomain" upperBound="-1"
+        eType="#//ParticipantRange" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="confidence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NaturalLanguageFunction" eSuperTypes="#//FunctionRepresentation">
+  <eClassifiers xsi:type="ecore:EClass" name="NaturalLanguageFunction" eSuperTypes="#//FunctionRepresentation #//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AnalyticExpressionFunction" eSuperTypes="#//FunctionRepresentation">
+  <eClassifiers xsi:type="ecore:EClass" name="ParticipantImpactFunction" eSuperTypes="#//FunctionRepresentation #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="participantContribution"
+        upperBound="-1" eType="#//ParticipantRelativeImpact" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParticipantRelativeImpact">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="participant" eType="#//Participant"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//TrendType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rationale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnalyticExpressionFunction" eSuperTypes="#//FunctionRepresentation #//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expressionLanguage" eType="#//LanguageType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MonotonicityRows">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rangeCondition" upperBound="-1"
-        eType="#//ParticipantRange"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" upperBound="-1"
-        eType="#//TrendType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variedParticipant" eType="#//Participant"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MonotonicityTable" eSuperTypes="#//FunctionRepresentation #//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableRows" lowerBound="1"
+        upperBound="-1" eType="#//MonotonicityRow" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MonotonicityTable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tableRows" eType="#//MonotonicityRows"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MonotonicityRow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" upperBound="-1"
+        eType="#//ParticipantRange" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="#//TrendType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variedParticipant" eType="#//Participant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//SystemResponseProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TrendType">
     <eLiterals name="Increasing"/>

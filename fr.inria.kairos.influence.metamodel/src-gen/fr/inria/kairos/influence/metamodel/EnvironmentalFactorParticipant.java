@@ -12,6 +12,7 @@ package fr.inria.kairos.influence.metamodel;
  * </p>
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant#getTarget <em>Target</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant#getAdmissibleSpace <em>Admissible Space</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getEnvironmentalFactorParticipant()
@@ -40,5 +41,27 @@ public interface EnvironmentalFactorParticipant extends Participant {
 	 * @generated
 	 */
 	void setTarget(EnvironmentalFactor value);
+
+	/**
+	 * Returns the value of the '<em><b>Admissible Space</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Admissible Space</em>' containment reference.
+	 * @see #setAdmissibleSpace(ValueSpec)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getEnvironmentalFactorParticipant_AdmissibleSpace()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ValueSpec getAdmissibleSpace();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant#getAdmissibleSpace <em>Admissible Space</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Admissible Space</em>' containment reference.
+	 * @see #getAdmissibleSpace()
+	 * @generated
+	 */
+	void setAdmissibleSpace(ValueSpec value);
 
 } // EnvironmentalFactorParticipant

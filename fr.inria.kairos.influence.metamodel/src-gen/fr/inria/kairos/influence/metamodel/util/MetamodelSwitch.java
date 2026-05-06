@@ -66,6 +66,13 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+		case MetamodelPackage.NAMED_ELEMENT: {
+			NamedElement namedElement = (NamedElement) theEObject;
+			T result = caseNamedElement(namedElement);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case MetamodelPackage.INFLUENCE_MODEL: {
 			InfluenceModel influenceModel = (InfluenceModel) theEObject;
 			T result = caseInfluenceModel(influenceModel);
@@ -80,66 +87,6 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			T result = caseAbstractInfluence(abstractInfluence);
 			if (result == null)
 				result = caseNamedElement(abstractInfluence);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.SRP_INPUT_PARTICIPANT: {
-			SRPInputParticipant srpInputParticipant = (SRPInputParticipant) theEObject;
-			T result = caseSRPInputParticipant(srpInputParticipant);
-			if (result == null)
-				result = caseParticipant(srpInputParticipant);
-			if (result == null)
-				result = caseNamedElement(srpInputParticipant);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.ENVIRONMENTAL_FACTOR_PARTICIPANT: {
-			EnvironmentalFactorParticipant environmentalFactorParticipant = (EnvironmentalFactorParticipant) theEObject;
-			T result = caseEnvironmentalFactorParticipant(environmentalFactorParticipant);
-			if (result == null)
-				result = caseParticipant(environmentalFactorParticipant);
-			if (result == null)
-				result = caseNamedElement(environmentalFactorParticipant);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.REQUIREMENT: {
-			Requirement requirement = (Requirement) theEObject;
-			T result = caseRequirement(requirement);
-			if (result == null)
-				result = caseNamedElement(requirement);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.ARTIFACT_PARTICIPANT: {
-			ArtifactParticipant artifactParticipant = (ArtifactParticipant) theEObject;
-			T result = caseArtifactParticipant(artifactParticipant);
-			if (result == null)
-				result = caseParticipant(artifactParticipant);
-			if (result == null)
-				result = caseNamedElement(artifactParticipant);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.COMPOSITE_INFLUENCE: {
-			CompositeInfluence compositeInfluence = (CompositeInfluence) theEObject;
-			T result = caseCompositeInfluence(compositeInfluence);
-			if (result == null)
-				result = caseAbstractInfluence(compositeInfluence);
-			if (result == null)
-				result = caseNamedElement(compositeInfluence);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MetamodelPackage.NAMED_ELEMENT: {
-			NamedElement namedElement = (NamedElement) theEObject;
-			T result = caseNamedElement(namedElement);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -160,6 +107,59 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			T result = caseParticipant(participant);
 			if (result == null)
 				result = caseNamedElement(participant);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.SRP_INPUT_PARTICIPANT: {
+			SRPInputParticipant srpInputParticipant = (SRPInputParticipant) theEObject;
+			T result = caseSRPInputParticipant(srpInputParticipant);
+			if (result == null)
+				result = caseParticipant(srpInputParticipant);
+			if (result == null)
+				result = caseNamedElement(srpInputParticipant);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.ARTIFACT_PARTICIPANT: {
+			ArtifactParticipant artifactParticipant = (ArtifactParticipant) theEObject;
+			T result = caseArtifactParticipant(artifactParticipant);
+			if (result == null)
+				result = caseParticipant(artifactParticipant);
+			if (result == null)
+				result = caseNamedElement(artifactParticipant);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.ENVIRONMENTAL_FACTOR_PARTICIPANT: {
+			EnvironmentalFactorParticipant environmentalFactorParticipant = (EnvironmentalFactorParticipant) theEObject;
+			T result = caseEnvironmentalFactorParticipant(environmentalFactorParticipant);
+			if (result == null)
+				result = caseParticipant(environmentalFactorParticipant);
+			if (result == null)
+				result = caseNamedElement(environmentalFactorParticipant);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.SATISFACTION_CRITERION: {
+			SatisfactionCriterion satisfactionCriterion = (SatisfactionCriterion) theEObject;
+			T result = caseSatisfactionCriterion(satisfactionCriterion);
+			if (result == null)
+				result = caseNamedElement(satisfactionCriterion);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.COMPOSITE_INFLUENCE: {
+			CompositeInfluence compositeInfluence = (CompositeInfluence) theEObject;
+			T result = caseCompositeInfluence(compositeInfluence);
+			if (result == null)
+				result = caseAbstractInfluence(compositeInfluence);
+			if (result == null)
+				result = caseNamedElement(compositeInfluence);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -196,6 +196,105 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			T result = caseInfluenceFunction(influenceFunction);
 			if (result == null)
 				result = caseNamedElement(influenceFunction);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.PARTICIPANT_RANGE: {
+			ParticipantRange participantRange = (ParticipantRange) theEObject;
+			T result = caseParticipantRange(participantRange);
+			if (result == null)
+				result = caseNamedElement(participantRange);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.VALUE_SPEC: {
+			ValueSpec valueSpec = (ValueSpec) theEObject;
+			T result = caseValueSpec(valueSpec);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.SCALAR_VALUE: {
+			ScalarValue scalarValue = (ScalarValue) theEObject;
+			T result = caseScalarValue(scalarValue);
+			if (result == null)
+				result = caseValueSpec(scalarValue);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.RANGE_VALUE: {
+			RangeValue rangeValue = (RangeValue) theEObject;
+			T result = caseRangeValue(rangeValue);
+			if (result == null)
+				result = caseValueSpec(rangeValue);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.FUNCTION_REPRESENTATION: {
+			FunctionRepresentation functionRepresentation = (FunctionRepresentation) theEObject;
+			T result = caseFunctionRepresentation(functionRepresentation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.NATURAL_LANGUAGE_FUNCTION: {
+			NaturalLanguageFunction naturalLanguageFunction = (NaturalLanguageFunction) theEObject;
+			T result = caseNaturalLanguageFunction(naturalLanguageFunction);
+			if (result == null)
+				result = caseFunctionRepresentation(naturalLanguageFunction);
+			if (result == null)
+				result = caseNamedElement(naturalLanguageFunction);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.PARTICIPANT_IMPACT_FUNCTION: {
+			ParticipantImpactFunction participantImpactFunction = (ParticipantImpactFunction) theEObject;
+			T result = caseParticipantImpactFunction(participantImpactFunction);
+			if (result == null)
+				result = caseFunctionRepresentation(participantImpactFunction);
+			if (result == null)
+				result = caseNamedElement(participantImpactFunction);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.PARTICIPANT_RELATIVE_IMPACT: {
+			ParticipantRelativeImpact participantRelativeImpact = (ParticipantRelativeImpact) theEObject;
+			T result = caseParticipantRelativeImpact(participantRelativeImpact);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.ANALYTIC_EXPRESSION_FUNCTION: {
+			AnalyticExpressionFunction analyticExpressionFunction = (AnalyticExpressionFunction) theEObject;
+			T result = caseAnalyticExpressionFunction(analyticExpressionFunction);
+			if (result == null)
+				result = caseFunctionRepresentation(analyticExpressionFunction);
+			if (result == null)
+				result = caseNamedElement(analyticExpressionFunction);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.MONOTONICITY_TABLE: {
+			MonotonicityTable monotonicityTable = (MonotonicityTable) theEObject;
+			T result = caseMonotonicityTable(monotonicityTable);
+			if (result == null)
+				result = caseFunctionRepresentation(monotonicityTable);
+			if (result == null)
+				result = caseNamedElement(monotonicityTable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case MetamodelPackage.MONOTONICITY_ROW: {
+			MonotonicityRow monotonicityRow = (MonotonicityRow) theEObject;
+			T result = caseMonotonicityRow(monotonicityRow);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -266,6 +365,21 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Satisfaction Criterion</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Satisfaction Criterion</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSatisfactionCriterion(SatisfactionCriterion object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Influence</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -311,17 +425,167 @@ public class MetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Requirement</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Participant Range</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Requirement</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Participant Range</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRequirement(Requirement object) {
+	public T caseParticipantRange(ParticipantRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value Spec</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value Spec</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValueSpec(ValueSpec object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scalar Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scalar Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScalarValue(ScalarValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Range Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Range Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRangeValue(RangeValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Function Representation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Function Representation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFunctionRepresentation(FunctionRepresentation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Natural Language Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Natural Language Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNaturalLanguageFunction(NaturalLanguageFunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Participant Impact Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Participant Impact Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParticipantImpactFunction(ParticipantImpactFunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Participant Relative Impact</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Participant Relative Impact</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParticipantRelativeImpact(ParticipantRelativeImpact object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Analytic Expression Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Analytic Expression Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnalyticExpressionFunction(AnalyticExpressionFunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Monotonicity Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Monotonicity Table</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMonotonicityTable(MonotonicityTable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Monotonicity Row</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Monotonicity Row</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMonotonicityRow(MonotonicityRow object) {
 		return null;
 	}
 

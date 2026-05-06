@@ -25,8 +25,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(InjectionExtension.class)
-@InjectWith(InfluenceDSLInjectorProvider.class)
+@ExtendWith(InjectionExtension.class)/* 
+@InjectWith(_InfluenceDSLInjectorProvider) */
 @SuppressWarnings("all")
 public class InfluenceDSLMathTest {
   @Inject

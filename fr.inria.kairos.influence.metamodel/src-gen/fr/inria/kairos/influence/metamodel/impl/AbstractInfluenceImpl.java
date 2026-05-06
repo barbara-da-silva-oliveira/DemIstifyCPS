@@ -4,11 +4,9 @@ package fr.inria.kairos.influence.metamodel.impl;
 
 import fr.inria.kairos.influence.metamodel.AbstractInfluence;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-import java.util.Collection;
-import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,14 +23,23 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  */
 public abstract class AbstractInfluenceImpl extends NamedElementImpl implements AbstractInfluence {
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute list.
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> description;
+	protected static final String DESCRIPTION_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,12 +66,22 @@ public abstract class AbstractInfluenceImpl extends NamedElementImpl implements 
 	 * @generated
 	 */
 	@Override
-	public EList<String> getDescription() {
-		if (description == null) {
-			description = new EDataTypeUniqueEList<String>(String.class, this,
-					MetamodelPackage.ABSTRACT_INFLUENCE__DESCRIPTION);
-		}
+	public String getDescription() {
 		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.ABSTRACT_INFLUENCE__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
@@ -91,8 +108,7 @@ public abstract class AbstractInfluenceImpl extends NamedElementImpl implements 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case MetamodelPackage.ABSTRACT_INFLUENCE__DESCRIPTION:
-			getDescription().clear();
-			getDescription().addAll((Collection<? extends String>) newValue);
+			setDescription((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -107,7 +123,7 @@ public abstract class AbstractInfluenceImpl extends NamedElementImpl implements 
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case MetamodelPackage.ABSTRACT_INFLUENCE__DESCRIPTION:
-			getDescription().clear();
+			setDescription(DESCRIPTION_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -122,7 +138,7 @@ public abstract class AbstractInfluenceImpl extends NamedElementImpl implements 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case MetamodelPackage.ABSTRACT_INFLUENCE__DESCRIPTION:
-			return description != null && !description.isEmpty();
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}

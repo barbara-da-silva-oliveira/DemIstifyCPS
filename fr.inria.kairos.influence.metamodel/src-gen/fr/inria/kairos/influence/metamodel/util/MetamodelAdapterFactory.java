@@ -67,6 +67,11 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected MetamodelSwitch<Adapter> modelSwitch = new MetamodelSwitch<Adapter>() {
 		@Override
+		public Adapter caseNamedElement(NamedElement object) {
+			return createNamedElementAdapter();
+		}
+
+		@Override
 		public Adapter caseInfluenceModel(InfluenceModel object) {
 			return createInfluenceModelAdapter();
 		}
@@ -77,18 +82,18 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseInfluence(Influence object) {
+			return createInfluenceAdapter();
+		}
+
+		@Override
+		public Adapter caseParticipant(Participant object) {
+			return createParticipantAdapter();
+		}
+
+		@Override
 		public Adapter caseSRPInputParticipant(SRPInputParticipant object) {
 			return createSRPInputParticipantAdapter();
-		}
-
-		@Override
-		public Adapter caseEnvironmentalFactorParticipant(EnvironmentalFactorParticipant object) {
-			return createEnvironmentalFactorParticipantAdapter();
-		}
-
-		@Override
-		public Adapter caseRequirement(Requirement object) {
-			return createRequirementAdapter();
 		}
 
 		@Override
@@ -97,23 +102,18 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseEnvironmentalFactorParticipant(EnvironmentalFactorParticipant object) {
+			return createEnvironmentalFactorParticipantAdapter();
+		}
+
+		@Override
+		public Adapter caseSatisfactionCriterion(SatisfactionCriterion object) {
+			return createSatisfactionCriterionAdapter();
+		}
+
+		@Override
 		public Adapter caseCompositeInfluence(CompositeInfluence object) {
 			return createCompositeInfluenceAdapter();
-		}
-
-		@Override
-		public Adapter caseNamedElement(NamedElement object) {
-			return createNamedElementAdapter();
-		}
-
-		@Override
-		public Adapter caseInfluence(Influence object) {
-			return createInfluenceAdapter();
-		}
-
-		@Override
-		public Adapter caseParticipant(Participant object) {
-			return createParticipantAdapter();
 		}
 
 		@Override
@@ -134,6 +134,61 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseInfluenceFunction(InfluenceFunction object) {
 			return createInfluenceFunctionAdapter();
+		}
+
+		@Override
+		public Adapter caseParticipantRange(ParticipantRange object) {
+			return createParticipantRangeAdapter();
+		}
+
+		@Override
+		public Adapter caseValueSpec(ValueSpec object) {
+			return createValueSpecAdapter();
+		}
+
+		@Override
+		public Adapter caseScalarValue(ScalarValue object) {
+			return createScalarValueAdapter();
+		}
+
+		@Override
+		public Adapter caseRangeValue(RangeValue object) {
+			return createRangeValueAdapter();
+		}
+
+		@Override
+		public Adapter caseFunctionRepresentation(FunctionRepresentation object) {
+			return createFunctionRepresentationAdapter();
+		}
+
+		@Override
+		public Adapter caseNaturalLanguageFunction(NaturalLanguageFunction object) {
+			return createNaturalLanguageFunctionAdapter();
+		}
+
+		@Override
+		public Adapter caseParticipantImpactFunction(ParticipantImpactFunction object) {
+			return createParticipantImpactFunctionAdapter();
+		}
+
+		@Override
+		public Adapter caseParticipantRelativeImpact(ParticipantRelativeImpact object) {
+			return createParticipantRelativeImpactAdapter();
+		}
+
+		@Override
+		public Adapter caseAnalyticExpressionFunction(AnalyticExpressionFunction object) {
+			return createAnalyticExpressionFunctionAdapter();
+		}
+
+		@Override
+		public Adapter caseMonotonicityTable(MonotonicityTable object) {
+			return createMonotonicityTableAdapter();
+		}
+
+		@Override
+		public Adapter caseMonotonicityRow(MonotonicityRow object) {
+			return createMonotonicityRowAdapter();
 		}
 
 		@Override
@@ -212,6 +267,20 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion <em>Satisfaction Criterion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.SatisfactionCriterion
+	 * @generated
+	 */
+	public Adapter createSatisfactionCriterionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.Influence <em>Influence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -254,16 +323,156 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.Requirement <em>Requirement</em>}'.
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.ParticipantRange <em>Participant Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fr.inria.kairos.influence.metamodel.Requirement
+	 * @see fr.inria.kairos.influence.metamodel.ParticipantRange
 	 * @generated
 	 */
-	public Adapter createRequirementAdapter() {
+	public Adapter createParticipantRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.ValueSpec <em>Value Spec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.ValueSpec
+	 * @generated
+	 */
+	public Adapter createValueSpecAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.ScalarValue <em>Scalar Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.ScalarValue
+	 * @generated
+	 */
+	public Adapter createScalarValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.RangeValue <em>Range Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.RangeValue
+	 * @generated
+	 */
+	public Adapter createRangeValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.FunctionRepresentation <em>Function Representation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.FunctionRepresentation
+	 * @generated
+	 */
+	public Adapter createFunctionRepresentationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.NaturalLanguageFunction <em>Natural Language Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.NaturalLanguageFunction
+	 * @generated
+	 */
+	public Adapter createNaturalLanguageFunctionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.ParticipantImpactFunction <em>Participant Impact Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.ParticipantImpactFunction
+	 * @generated
+	 */
+	public Adapter createParticipantImpactFunctionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.ParticipantRelativeImpact <em>Participant Relative Impact</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.ParticipantRelativeImpact
+	 * @generated
+	 */
+	public Adapter createParticipantRelativeImpactAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction <em>Analytic Expression Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction
+	 * @generated
+	 */
+	public Adapter createAnalyticExpressionFunctionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.MonotonicityTable <em>Monotonicity Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.MonotonicityTable
+	 * @generated
+	 */
+	public Adapter createMonotonicityTableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fr.inria.kairos.influence.metamodel.MonotonicityRow <em>Monotonicity Row</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fr.inria.kairos.influence.metamodel.MonotonicityRow
+	 * @generated
+	 */
+	public Adapter createMonotonicityRowAdapter() {
 		return null;
 	}
 

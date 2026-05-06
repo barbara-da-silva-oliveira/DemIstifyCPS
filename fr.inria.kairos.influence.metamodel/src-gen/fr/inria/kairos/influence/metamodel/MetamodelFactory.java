@@ -49,6 +49,15 @@ public interface MetamodelFactory extends EFactory {
 	EnvironmentalFactorParticipant createEnvironmentalFactorParticipant();
 
 	/**
+	 * Returns a new object of class '<em>Satisfaction Criterion</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Satisfaction Criterion</em>'.
+	 * @generated
+	 */
+	SatisfactionCriterion createSatisfactionCriterion();
+
+	/**
 	 * Returns a new object of class '<em>Influence</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,24 +65,6 @@ public interface MetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	Influence createInfluence();
-
-	/**
-	 * Returns a new object of class '<em>Influence Function</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Influence Function</em>'.
-	 * @generated
-	 */
-	InfluenceFunction createInfluenceFunction();
-
-	/**
-	 * Returns a new object of class '<em>Requirement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Requirement</em>'.
-	 * @generated
-	 */
-	Requirement createRequirement();
 
 	/**
 	 * Returns a new object of class '<em>Artifact Participant</em>'.
@@ -110,6 +101,87 @@ public interface MetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	EnvironmentalFactor createEnvironmentalFactor();
+
+	/**
+	 * Returns a new object of class '<em>Participant Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Participant Range</em>'.
+	 * @generated
+	 */
+	ParticipantRange createParticipantRange();
+
+	/**
+	 * Returns a new object of class '<em>Scalar Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scalar Value</em>'.
+	 * @generated
+	 */
+	ScalarValue createScalarValue();
+
+	/**
+	 * Returns a new object of class '<em>Range Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Range Value</em>'.
+	 * @generated
+	 */
+	RangeValue createRangeValue();
+
+	/**
+	 * Returns a new object of class '<em>Natural Language Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Natural Language Function</em>'.
+	 * @generated
+	 */
+	NaturalLanguageFunction createNaturalLanguageFunction();
+
+	/**
+	 * Returns a new object of class '<em>Participant Impact Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Participant Impact Function</em>'.
+	 * @generated
+	 */
+	ParticipantImpactFunction createParticipantImpactFunction();
+
+	/**
+	 * Returns a new object of class '<em>Participant Relative Impact</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Participant Relative Impact</em>'.
+	 * @generated
+	 */
+	ParticipantRelativeImpact createParticipantRelativeImpact();
+
+	/**
+	 * Returns a new object of class '<em>Analytic Expression Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Analytic Expression Function</em>'.
+	 * @generated
+	 */
+	AnalyticExpressionFunction createAnalyticExpressionFunction();
+
+	/**
+	 * Returns a new object of class '<em>Monotonicity Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Monotonicity Table</em>'.
+	 * @generated
+	 */
+	MonotonicityTable createMonotonicityTable();
+
+	/**
+	 * Returns a new object of class '<em>Monotonicity Row</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Monotonicity Row</em>'.
+	 * @generated
+	 */
+	MonotonicityRow createMonotonicityRow();
 
 	/**
 	 * Returns a new object of class '<em>Composite Influence</em>'.

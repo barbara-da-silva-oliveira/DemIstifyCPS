@@ -1,22 +1,11 @@
 package fr.inria.kairos.influence.analysis;
 
-import fr.inria.kairos.influence.metamodel.ArtifactParticipant;
 import fr.inria.kairos.influence.metamodel.DesignArtifact;
-import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
-import fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant;
 import fr.inria.kairos.influence.metamodel.Influence;
-import fr.inria.kairos.influence.metamodel.Participant;
-import fr.inria.kairos.influence.metamodel.Requirement;
-import fr.inria.kairos.influence.metamodel.SRPInputParticipant;
-import fr.inria.kairos.influence.metamodel.SystemResponseProperty;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.function.Function;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -72,216 +61,21 @@ public class GraphBuilder {
   }
 
   public GraphBuilder.Result build(final Resource resource) {
-    GraphBuilder.Result _xblockexpression = null;
-    {
-      final DefaultDirectedGraph<String, DefaultEdge> graph = new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
-      final HashMap<String, String> vertexLabels = new HashMap<String, String>();
-      final HashMap<DefaultEdge, String> edgeLabels = new HashMap<DefaultEdge, String>();
-      final HashMap<String, LinkedHashSet<String>> outEdges = new HashMap<String, LinkedHashSet<String>>();
-      final HashMap<String, LinkedHashSet<String>> inEdges = new HashMap<String, LinkedHashSet<String>>();
-      final HashMap<String, LinkedHashSet<String>> reqToSRs = new HashMap<String, LinkedHashSet<String>>();
-      final HashMap<String, String> nodeToOrigin = new HashMap<String, String>();
-      final HashMap<String, String> originToNode = new HashMap<String, String>();
-      final HashMap<DefaultEdge, String> edgeToOrigin = new HashMap<DefaultEdge, String>();
-      final HashMap<DefaultEdge, Double> edgeWeights = new HashMap<DefaultEdge, Double>();
-      final HashMap<String, String> nodeSourceModel = new HashMap<String, String>();
-      final HashMap<String, String> srp2inf = new HashMap<String, String>();
-      final TreeIterator<EObject> it = resource.getAllContents();
-      while (it.hasNext()) {
-        {
-          final EObject o = it.next();
-          if ((o instanceof Influence)) {
-            final Influence inf = ((Influence) o);
-            final String iNode = GraphBuilder.toI(inf.getName());
-            graph.addVertex(iNode);
-            vertexLabels.put(iNode, GraphBuilder.influenceLabel(inf));
-            GraphBuilder.setNodeOrigin(nodeToOrigin, originToNode, iNode, inf);
-            EList<Participant> _ownedParticipants = inf.getOwnedParticipants();
-            for (final Participant p : _ownedParticipants) {
-              if ((p instanceof ArtifactParticipant)) {
-                final ArtifactParticipant ap = ((ArtifactParticipant) p);
-                final DesignArtifact a = ap.getTarget();
-                if (((a != null) && (a.getName() != null))) {
-                  final String aNode = GraphBuilder.toA(a.getName());
-                  graph.addVertex(aNode);
-                  vertexLabels.putIfAbsent(aNode, aNode);
-                  GraphBuilder.setNodeOrigin(nodeToOrigin, originToNode, aNode, a);
-                  final DefaultEdge e = graph.addEdge(aNode, iNode);
-                  if ((e != null)) {
-                    final Double w0 = GraphBuilder.pickAnyWeight(ap);
-                    Double _xifexpression = null;
-                    if ((w0 == null)) {
-                      _xifexpression = null;
-                    } else {
-                      Double _xifexpression_1 = null;
-                      if (((w0).doubleValue() == 0.0)) {
-                        _xifexpression_1 = Double.valueOf(1.0);
-                      } else {
-                        _xifexpression_1 = w0;
-                      }
-                      _xifexpression = _xifexpression_1;
-                    }
-                    final Double w = _xifexpression;
-                    if ((w != null)) {
-                      edgeLabels.put(e, GraphBuilder.fmtD((w).doubleValue()));
-                      edgeWeights.put(e, w);
-                    }
-                    GraphBuilder.setEdgeOrigin(edgeToOrigin, e, ap);
-                  }
-                  GraphBuilder.addAdjEdge(outEdges, inEdges, aNode, iNode);
-                  final EObject target = GraphBuilder.readRefEObject(a);
-                  final String mUri = GraphBuilder.modelUriOf(target);
-                  if ((mUri != null)) {
-                    nodeSourceModel.put(aNode, mUri);
-                  }
-                }
-              } else {
-                if ((p instanceof EnvironmentalFactorParticipant)) {
-                  final EnvironmentalFactorParticipant ep = ((EnvironmentalFactorParticipant) p);
-                  final EnvironmentalFactor ef = ep.getTarget();
-                  if (((ef != null) && (ef.getName() != null))) {
-                    final String eNode = GraphBuilder.toE(ef.getName());
-                    graph.addVertex(eNode);
-                    vertexLabels.putIfAbsent(eNode, eNode);
-                    GraphBuilder.setNodeOrigin(nodeToOrigin, originToNode, eNode, ef);
-                    final DefaultEdge e_1 = graph.addEdge(eNode, iNode);
-                    if ((e_1 != null)) {
-                      final Double w0_1 = GraphBuilder.pickAnyWeight(ep);
-                      Double _xifexpression_2 = null;
-                      if ((w0_1 == null)) {
-                        _xifexpression_2 = null;
-                      } else {
-                        Double _xifexpression_3 = null;
-                        if (((w0_1).doubleValue() == 0.0)) {
-                          _xifexpression_3 = Double.valueOf(1.0);
-                        } else {
-                          _xifexpression_3 = w0_1;
-                        }
-                        _xifexpression_2 = _xifexpression_3;
-                      }
-                      final Double w_1 = _xifexpression_2;
-                      if ((w_1 != null)) {
-                        edgeLabels.put(e_1, GraphBuilder.fmtD((w_1).doubleValue()));
-                        edgeWeights.put(e_1, w_1);
-                      }
-                      GraphBuilder.setEdgeOrigin(edgeToOrigin, e_1, ep);
-                    }
-                    GraphBuilder.addAdjEdge(outEdges, inEdges, eNode, iNode);
-                  }
-                } else {
-                  if ((p instanceof SRPInputParticipant)) {
-                    final SRPInputParticipant sp = ((SRPInputParticipant) p);
-                    final SystemResponseProperty s = sp.getTarget();
-                    if (((s != null) && (s.getName() != null))) {
-                      final String srNode = GraphBuilder.toSR(s.getName());
-                      graph.addVertex(srNode);
-                      vertexLabels.putIfAbsent(srNode, srNode);
-                      GraphBuilder.setNodeOrigin(nodeToOrigin, originToNode, srNode, s);
-                      final DefaultEdge e_2 = graph.addEdge(srNode, iNode);
-                      if ((e_2 != null)) {
-                        edgeLabels.put(e_2, "input");
-                        GraphBuilder.setEdgeOrigin(edgeToOrigin, e_2, sp);
-                      }
-                      GraphBuilder.addAdjEdge(outEdges, inEdges, srNode, iNode);
-                      EList<Requirement> _constrainedBy = s.getConstrainedBy();
-                      for (final Requirement r : _constrainedBy) {
-                        if (((r != null) && (r.getName() != null))) {
-                          final String rNode = GraphBuilder.toR(r.getName());
-                          graph.addVertex(rNode);
-                          vertexLabels.putIfAbsent(rNode, rNode);
-                          GraphBuilder.setNodeOrigin(nodeToOrigin, originToNode, rNode, r);
-                          final DefaultEdge e2 = graph.addEdge(srNode, rNode);
-                          if ((e2 != null)) {
-                            edgeLabels.put(e2, "constrains");
-                            GraphBuilder.setEdgeOrigin(edgeToOrigin, e2, r);
-                          }
-                          GraphBuilder.addAdjEdge(outEdges, inEdges, srNode, rNode);
-                          final Function<String, LinkedHashSet<String>> _function = (String it_1) -> {
-                            return new LinkedHashSet<String>();
-                          };
-                          reqToSRs.computeIfAbsent(r.getName(), _function).add(s.getName());
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            final SystemResponseProperty out = inf.getOutputSRP();
-            if (((out != null) && (out.getName() != null))) {
-              final String srOut = GraphBuilder.toSR(out.getName());
-              graph.addVertex(srOut);
-              vertexLabels.putIfAbsent(srOut, srOut);
-              final DefaultEdge e_3 = graph.addEdge(iNode, srOut);
-              if ((e_3 != null)) {
-                edgeLabels.put(e_3, "produces");
-                GraphBuilder.setEdgeOrigin(edgeToOrigin, e_3, inf);
-              }
-              GraphBuilder.addAdjEdge(outEdges, inEdges, iNode, srOut);
-              srp2inf.put(srOut, iNode);
-              EList<Requirement> _constrainedBy_1 = out.getConstrainedBy();
-              for (final Requirement r_1 : _constrainedBy_1) {
-                if (((r_1 != null) && (r_1.getName() != null))) {
-                  final String rNode_1 = GraphBuilder.toR(r_1.getName());
-                  graph.addVertex(rNode_1);
-                  vertexLabels.putIfAbsent(rNode_1, rNode_1);
-                  final DefaultEdge e2_1 = graph.addEdge(srOut, rNode_1);
-                  if ((e2_1 != null)) {
-                    edgeLabels.put(e2_1, "constrains");
-                    GraphBuilder.setEdgeOrigin(edgeToOrigin, e2_1, r_1);
-                  }
-                  GraphBuilder.addAdjEdge(outEdges, inEdges, srOut, rNode_1);
-                  final Function<String, LinkedHashSet<String>> _function_1 = (String it_1) -> {
-                    return new LinkedHashSet<String>();
-                  };
-                  reqToSRs.computeIfAbsent(r_1.getName(), _function_1).add(out.getName());
-                }
-              }
-              EList<Participant> _ownedParticipants_1 = inf.getOwnedParticipants();
-              for (final Participant p_1 : _ownedParticipants_1) {
-                if ((p_1 instanceof ArtifactParticipant)) {
-                  final DesignArtifact a_1 = ((ArtifactParticipant) p_1).getTarget();
-                  String _name = null;
-                  if (a_1!=null) {
-                    _name=a_1.getName();
-                  }
-                  boolean _tripleNotEquals = (_name != null);
-                  if (_tripleNotEquals) {
-                    GraphBuilder.addAdjEdge(outEdges, inEdges, GraphBuilder.toA(a_1.getName()), srOut);
-                  }
-                } else {
-                  if ((p_1 instanceof EnvironmentalFactorParticipant)) {
-                    final EnvironmentalFactor ef_1 = ((EnvironmentalFactorParticipant) p_1).getTarget();
-                    String _name_1 = null;
-                    if (ef_1!=null) {
-                      _name_1=ef_1.getName();
-                    }
-                    boolean _tripleNotEquals_1 = (_name_1 != null);
-                    if (_tripleNotEquals_1) {
-                      GraphBuilder.addAdjEdge(outEdges, inEdges, GraphBuilder.toE(ef_1.getName()), srOut);
-                    }
-                  } else {
-                    if ((p_1 instanceof SRPInputParticipant)) {
-                      final SystemResponseProperty s_1 = ((SRPInputParticipant) p_1).getTarget();
-                      String _name_2 = null;
-                      if (s_1!=null) {
-                        _name_2=s_1.getName();
-                      }
-                      boolean _tripleNotEquals_2 = (_name_2 != null);
-                      if (_tripleNotEquals_2) {
-                        GraphBuilder.addAdjEdge(outEdges, inEdges, GraphBuilder.toSR(s_1.getName()), srOut);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      _xblockexpression = new GraphBuilder.Result(graph, vertexLabels, edgeLabels, outEdges, inEdges, reqToSRs, srp2inf, nodeToOrigin, originToNode, edgeToOrigin, edgeWeights, nodeSourceModel);
-    }
-    return _xblockexpression;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field constrainedBy is undefined for the type SystemResponseProperty"
+      + "\nThe method or field constrainedBy is undefined for the type SystemResponseProperty"
+      + "\n!== cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\n!== cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\n!== cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\n!== cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nname cannot be resolved");
   }
 
   public static void addAdjEdge(final Map<String, LinkedHashSet<String>> outE, final Map<String, LinkedHashSet<String>> inE, final String from, final String to) {

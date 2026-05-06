@@ -3,8 +3,8 @@
 package fr.inria.kairos.influence.metamodel.provider;
 
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
-
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -45,8 +45,6 @@ public class EnvironmentalFactorItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addDescriptionPropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
-			addUnitPropertyDescriptor(object);
 			addFlexibilityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -66,38 +64,6 @@ public class EnvironmentalFactorItemProvider extends NamedElementItemProvider {
 						"_UI_EnvironmentalFactor_type"),
 				MetamodelPackage.Literals.ENVIRONMENTAL_FACTOR__DESCRIPTION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_EnvironmentalFactor_value_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_EnvironmentalFactor_value_feature",
-								"_UI_EnvironmentalFactor_type"),
-						MetamodelPackage.Literals.ENVIRONMENTAL_FACTOR__VALUE, true, false, false,
-						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Unit feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUnitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_EnvironmentalFactor_unit_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_EnvironmentalFactor_unit_feature",
-								"_UI_EnvironmentalFactor_type"),
-						MetamodelPackage.Literals.ENVIRONMENTAL_FACTOR__UNIT, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -163,8 +129,6 @@ public class EnvironmentalFactorItemProvider extends NamedElementItemProvider {
 
 		switch (notification.getFeatureID(EnvironmentalFactor.class)) {
 		case MetamodelPackage.ENVIRONMENTAL_FACTOR__DESCRIPTION:
-		case MetamodelPackage.ENVIRONMENTAL_FACTOR__VALUE:
-		case MetamodelPackage.ENVIRONMENTAL_FACTOR__UNIT:
 		case MetamodelPackage.ENVIRONMENTAL_FACTOR__FLEXIBILITY:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
