@@ -162,6 +162,9 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_INFLUENCE_FUNCTION,
+				MetamodelFactory.eINSTANCE.createInfluenceFunction()));
+
 		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS,
 				MetamodelFactory.eINSTANCE.createSRPInputParticipant()));
 

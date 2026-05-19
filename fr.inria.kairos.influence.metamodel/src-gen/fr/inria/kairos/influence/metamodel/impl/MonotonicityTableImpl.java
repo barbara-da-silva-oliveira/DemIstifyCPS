@@ -5,8 +5,8 @@ package fr.inria.kairos.influence.metamodel.impl;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 import fr.inria.kairos.influence.metamodel.MonotonicityRow;
 import fr.inria.kairos.influence.metamodel.MonotonicityTable;
-
 import fr.inria.kairos.influence.metamodel.NamedElement;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -45,6 +46,7 @@ public class MonotonicityTableImpl extends FunctionRepresentationImpl implements
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,6 +56,7 @@ public class MonotonicityTableImpl extends FunctionRepresentationImpl implements
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getTableRows() <em>Table Rows</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

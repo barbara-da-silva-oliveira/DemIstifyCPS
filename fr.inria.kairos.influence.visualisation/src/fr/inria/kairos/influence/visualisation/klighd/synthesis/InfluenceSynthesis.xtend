@@ -45,14 +45,19 @@ import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 
 import fr.inria.kairos.influence.metamodel.CompositeInfluence
-import fr.inria.kairos.influence.metamodel.Requirement
 import fr.inria.kairos.influence.metamodel.InfluenceFunction
-import fr.inria.kairos.influence.metamodel.CompositeFunction
 import fr.inria.kairos.influence.metamodel.ArtifactParticipant
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant
 import fr.inria.kairos.influence.metamodel.SRPInputParticipant
 import fr.inria.kairos.influence.metamodel.SystemResponseProperty
-
+import fr.inria.kairos.influence.metamodel.SatisfactionCriterion
+import fr.inria.kairos.influence.metamodel.FunctionRepresentation
+import fr.inria.kairos.influence.metamodel.NaturalLanguageFunction
+import fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction
+import fr.inria.kairos.influence.metamodel.ParticipantImpactFunction
+import fr.inria.kairos.influence.metamodel.MonotonicityTable
+import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.util.EcoreUtil
 /**
  * Diagram synthesis for Influence programs.
  * adapted from LF program originnaly written by 
@@ -178,25 +183,36 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 					absInf.createInfluencePass3
 				}
 				
-				for (Requirement req : main.ownedRequirements) {
-					var reqNode = req.createRequirement
-					rootNode.children += reqNode
-					elemToNode.put(req, reqNode)
-				}
-				for (srp : main.ownedSRPs) {
-					if (srp.constrainedBy.size() > 0) {
-						var srNode = elemToNode.get(srp)
-						for (req : srp.constrainedBy) {
-				            val reqNode = elemToNode.get(req)
-				            if (srNode !== null && reqNode !== null) {
-				            
-				            val dest = reqNode.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST) ]
-				            val src  = srNode.addPort => [ setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST) ]
-				            createDelayEdge().connect(src, dest)			
-				            }
+				// Satisfaction criteria replace local Requirement nodes.
+			// They are the DSL-owned traceability/margin artifacts.
+			for (criterion : main.allSatisfactionCriteria) {
+				val criterionNode = criterion.createSatisfactionCriterion
+				rootNode.children += criterionNode
+				elemToNode.put(criterion, criterionNode)
+			}
+			
+			// SRP -> SatisfactionCriterion edges
+			for (criterion : main.allSatisfactionCriteria) {
+				val criterionNode = elemToNode.get(criterion)
+			
+				if (criterionNode !== null) {
+					for (srp : criterion.constrainedSrps) {
+						val srpNode = elemToNode.get(srp)
+			
+						if (srpNode !== null) {
+							val src = srpNode.addPort => [
+								setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+							]
+			
+							val dest = criterionNode.addPort => [
+								setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+							]
+			
+							createDelayEdge(criterion).connect(src, dest)
+						}
 					}
 				}
-			} 
+			}
 			}else {
 				val messageNode = KGraphUtil.createInitializedNode()
 				messageNode.addErrorMessage(
@@ -252,6 +268,59 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 
 		return rootNode
 	}
+	
+	private def Iterable<SatisfactionCriterion> allSatisfactionCriteria(InfluenceModel model) {
+		val result = newArrayList
+	
+		if (model !== null) {
+			val it = model.eAllContents
+	
+			while (it.hasNext) {
+				val obj = it.next
+	
+				if (obj instanceof SatisfactionCriterion) {
+					result += obj
+				}
+			}
+		}
+	
+		return result
+		}
+	
+	private def Iterable<SystemResponseProperty> constrainedSrps(SatisfactionCriterion criterion) {
+		val result = newLinkedHashSet
+	
+		if (criterion === null) {
+			return result
+		}
+
+	// Preferred new metamodel:
+	// SatisfactionCriterion.constrainedSRPs : SystemResponseProperty[*]
+		val feature = criterion.eClass.getEStructuralFeature("constrainedSRPs")
+	
+		if (feature !== null && criterion.eIsSet(feature)) {
+			val value = criterion.eGet(feature)
+	
+			if (value instanceof java.util.Collection<?>) {
+				for (item : value as java.util.Collection<?>) {
+					if (item instanceof SystemResponseProperty) {
+						result += item as SystemResponseProperty
+					}
+				}
+			} else if (value instanceof SystemResponseProperty) {
+				result += value as SystemResponseProperty
+			}
+		}
+
+	// Compatibility mode:
+	// SatisfactionCriterion is contained by SystemResponseProperty
+		if (result.empty && criterion.eContainer instanceof SystemResponseProperty) {
+			result += criterion.eContainer as SystemResponseProperty
+		}
+	
+		return result
+		}
+		
 
 	private dispatch def KNode createInfluencePass1(Influence influence) {
 		val node = KGraphUtil.createInitializedNode()
@@ -267,9 +336,10 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		    figure.addChildArea()
 		
 		    // Function
-		    val funNode = influence.ownedInfluenceFunction.createInfluenceFunction
-		    node.children.add(funNode)
-		
+			if (influence.ownedInfluenceFunction !== null) {
+				val funNode = influence.ownedInfluenceFunction.createInfluenceFunction
+				node.children.add(funNode)
+			}		
 		    // Participants: Artifact & EnvironmentalFactor INTO Influence
 		    for (p : influence.ownedParticipants) {
 		      switch p {
@@ -578,10 +648,11 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 
 	private dispatch def KNode createInfluencePass3(CompositeInfluence influence) {
 		val node = elemToNode.get(influence)
-
-		var funNode = influence.ownedInfluenceFunction.createInfluenceFunction
-		node.children.add(funNode)
-
+		
+		if (influence.ownedInfluenceFunction !== null) {
+			val funNode = influence.ownedInfluenceFunction.createInfluenceFunction
+			node.children.add(funNode)
+		}
 		return node
 	}
 
@@ -661,31 +732,21 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return node
 	}
 
-	private dispatch def KNode createInfluenceFunction(CompositeFunction fun) {
+	private def KNode createSatisfactionCriterion(SatisfactionCriterion criterion) {
 		val node = KGraphUtil.createInitializedNode()
-		node.associateWith(fun)
-		node.ID = fun.name
-
-		val label = fun.createNamedElementLabel
-
-		if (fun === null) {
+		node.associateWith(criterion)
+		node.ID = "SC_" + criterion.safeName
+	
+		val label = criterion.createSatisfactionCriterionLabel
+	
+		if (criterion === null) {
 			node.addErrorMessage(TEXT_REACTOR_NULL, null)
 		} else {
-			val figure = node.addCompositeFunctionFigure(fun, label)
+			val figure = node.addSatisfactionCriterionFigure(criterion, label)
 			figure.addChildArea()
-			for (input : fun.inputs) {
-				var src = elemToNode.get(input).addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-				]
-				var dest = node.addPort() => [
-					setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-				]
-				createArrowEdge().connect(src, dest)
-			}
-
+	
 			node.configureInterfaceNodeLayout()
-
-			// Additional layout adjustment for main node
+	
 			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
 			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
@@ -697,55 +758,15 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
 			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
 			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-
+	
 			if (!SHOW_HYPERLINKS.booleanValue) {
 				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
 				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
 					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
 			}
 		}
-
+	
 		return node
-	}
-
-	private def KNode createRequirement(Requirement req) {
-		val node = KGraphUtil.createInitializedNode()
-		node.associateWith(req)
-		node.ID = req.name
-
-		val label = req.createNamedElementLabel
-
-		if (req === null) {
-			node.addErrorMessage(TEXT_REACTOR_NULL, null)
-		} else {
-			val figure = node.addRequirementFigure(req, label)
-			figure.addChildArea()
-
-			node.configureInterfaceNodeLayout()
-
-			// Additional layout adjustment for main node
-			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
-			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
-			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
-				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
-				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
-			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
-
-			if (!SHOW_HYPERLINKS.booleanValue) {
-				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
-					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
-			}
-		}
-
-		return node // To allow ordering, we need box layout but we also need layered layout for ports thus wrap all node
-		// TODO use rect packing in the future
-		// reactorNodes.add(0, node.children.head)
 	}
 
 	private def KNode createEnvironmentalFactor(EnvironmentalFactor ef) {
@@ -822,6 +843,29 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		}
 
 		return node
+	}
+	
+	private def String createInfluenceFunctionLabel(InfluenceFunction fun) {
+		val b = new StringBuilder
+	
+		if (fun === null) {
+			b.append("<NULL>")
+			return b.toString
+		}
+	
+		b.append(fun.safeName)
+	
+		val reps = fun.representations
+	
+		if (reps !== null && !reps.empty) {
+			for (rep : reps) {
+				b.append("\n").append(rep.representationLabel)
+			}
+		} else {
+			b.append("\n<no representation>")
+		}
+	
+		return b.toString
 	}
 
 //	private def Collection<KNode> createInterfaceNode(
@@ -975,15 +1019,75 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return b.toString()
 	}
 
-	private def String createInfluenceFunctionLabel(InfluenceFunction fun) {
-		val b = new StringBuilder
-		b.append(fun === null
-			? "<NULL>"
-			: fun.name ?: "<Unresolved Element>")
-		b.append("(" + fun.definition + ")")
-		return b.toString()
+	private def String representationLabel(FunctionRepresentation rep) {
+		if (rep === null) {
+			return "<null representation>"
+		}
+	
+		switch rep {
+			NaturalLanguageFunction: {
+				"NL: " + shorten(rep.stringFeature("definition"), 56)
+			}
+	
+			AnalyticExpressionFunction: {
+				"Expr: " + shorten(rep.stringFeature("expression"), 56)
+			}
+	
+			ParticipantImpactFunction: {
+				val count = rep.contributionCount
+				"Impact weights: " + count
+			}
+	
+			MonotonicityTable: {
+				val count = rep.rowCount
+				"Monotonicity rows: " + count
+			}
+	
+			default: {
+				rep.eClass.name
+			}
+		}
 	}
 
+	private def int contributionCount(ParticipantImpactFunction f) {
+		val feature = f.eClass.getEStructuralFeature("participantContribution")
+	
+		if (feature === null || !f.eIsSet(feature)) {
+			return 0
+		}
+	
+		val value = f.eGet(feature)
+	
+		if (value instanceof java.util.Collection<?>) {
+			return (value as java.util.Collection<?>).size
+		}
+	
+		if (value !== null) {
+			return 1
+		}
+	
+		return 0
+	}
+	
+	private def int rowCount(MonotonicityTable table) {
+		val feature = table.eClass.getEStructuralFeature("tableRows")
+	
+		if (feature === null || !table.eIsSet(feature)) {
+			return 0
+		}
+	
+		val value = table.eGet(feature)
+	
+		if (value instanceof java.util.Collection<?>) {
+			return (value as java.util.Collection<?>).size
+		}
+	
+		if (value !== null) {
+			return 1
+		}
+	
+		return 0
+	}
 //	private def addParameterList(KContainerRendering container, List<Parameter> parameters) {
 //		var cols = 1
 //		try {
@@ -1166,6 +1270,131 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		port.setSize(3, 3) // invisible
 		return port
 	}
+	
+	private def String createSatisfactionCriterionLabel(SatisfactionCriterion criterion) {
+		val b = new StringBuilder
+	
+		b.append(criterion.safeName)
+	
+		val reqRef = criterion.requirementRefObject
+		val reqLabel = reqRef.labelOfEObject
+	
+		if (reqLabel !== null && !reqLabel.empty) {
+			b.append("\nreq: ").append(shorten(reqLabel, 48))
+		}
+	
+		val margin = criterion.stringFeature("marginDefinition")
+	
+		if (margin !== null && !margin.trim.empty) {
+			b.append("\nM: ").append(shorten(margin, 48))
+		}
+	
+		val lang = criterion.stringFeature("language")
+	
+		if (lang !== null && !lang.trim.empty) {
+			b.append("\n").append(lang)
+		}
+	
+		return b.toString
+	}
+	private def EObject requirementRefObject(SatisfactionCriterion criterion) {
+		if (criterion === null) {
+			return null
+		}
+	
+		var feature = criterion.eClass.getEStructuralFeature("requirementRef")
+	
+		// Compatibility with older grammar if it was called "requirement"
+		if (feature === null) {
+			feature = criterion.eClass.getEStructuralFeature("requirement")
+		}
+	
+		if (feature === null || !criterion.eIsSet(feature)) {
+			return null
+		}
+	
+		val value = criterion.eGet(feature)
+	
+		if (value instanceof EObject) {
+			return value as EObject
+		}
+	
+		return null
+	}
+
+	private def String stringFeature(EObject obj, String featureName) {
+		if (obj === null || featureName === null) {
+			return null
+		}
+	
+		val feature = obj.eClass.getEStructuralFeature(featureName)
+	
+		if (feature === null || !obj.eIsSet(feature)) {
+			return null
+		}
+	
+		val value = obj.eGet(feature)
+	
+		if (value !== null) {
+			return String.valueOf(value)
+		}
+	
+		return null
+	}
+
+	private def String safeName(EObject obj) {
+		if (obj === null) {
+			return "<null>"
+		}
+	
+		val nameFeature = obj.eClass.getEStructuralFeature("name")
+	
+		if (nameFeature !== null && obj.eIsSet(nameFeature)) {
+			val value = obj.eGet(nameFeature)
+	
+			if (value !== null) {
+				return String.valueOf(value)
+			}
+		}
+	
+		return obj.eClass.name
+	}
+	
+	private def String labelOfEObject(EObject obj) {
+		if (obj === null) {
+			return ""
+		}
+	
+		val nameFeature = obj.eClass.getEStructuralFeature("name")
+	
+		if (nameFeature !== null && obj.eIsSet(nameFeature)) {
+			val value = obj.eGet(nameFeature)
+	
+			if (value !== null) {
+				return String.valueOf(value)
+			}
+		}
+	
+		val uri = EcoreUtil.getURI(obj)
+	
+		if (uri !== null) {
+			return uri.toString
+		}
+	
+		return obj.eClass.name
+	}
+
+	private def String shorten(String s, int max) {
+		if (s === null) {
+			return ""
+		}
+	
+		if (s.length <= max) {
+			return s
+		}
+		return s.substring(0, max - 3) + "..."
+	}
+
 
 //	private def KNode addErrorComment(KNode node, String message) {
 //		val comment = KGraphUtil.createInitializedNode()

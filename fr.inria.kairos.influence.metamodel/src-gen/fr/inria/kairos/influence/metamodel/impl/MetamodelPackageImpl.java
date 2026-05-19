@@ -31,7 +31,9 @@ import fr.inria.kairos.influence.metamodel.ScalarValue;
 import fr.inria.kairos.influence.metamodel.SystemResponseProperty;
 import fr.inria.kairos.influence.metamodel.TrendType;
 import fr.inria.kairos.influence.metamodel.ValueSpec;
+
 import fr.inria.kairos.influence.metamodel.util.MetamodelValidator;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -39,8 +41,8 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.EValidator;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -50,6 +52,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass namedElementEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,7 +78,28 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass influenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass participantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass srpInputParticipantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass artifactParticipantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,14 +120,28 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass influenceEClass = null;
+	private EClass compositeInfluenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass participantEClass = null;
+	private EClass designArtifactEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass systemResponsePropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass environmentalFactorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -188,34 +232,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass artifactParticipantEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass designArtifactEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass systemResponsePropertyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass environmentalFactorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum languageTypeEEnum = null;
 
 	/**
@@ -224,20 +240,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	private EEnum trendTypeEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass compositeInfluenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass namedElementEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -309,6 +311,26 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(MetamodelPackage.eNS_URI, theMetamodelPackage);
 		return theMetamodelPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNamedElement() {
+		return namedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNamedElement_Name() {
+		return (EAttribute) namedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -397,6 +419,76 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EClass getInfluence() {
+		return influenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInfluence_OwnedInfluenceFunction() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInfluence_OwnedParticipants() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInfluence_OutputSRP() {
+		return (EReference) influenceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getInfluence__ParticipationPattern__DiagnosticChain_Map() {
+		return influenceEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getParticipant() {
+		return participantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getParticipant_Confidence() {
+		return (EAttribute) participantEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getSRPInputParticipant() {
 		return srpInputParticipantEClass;
 	}
@@ -409,6 +501,26 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	@Override
 	public EReference getSRPInputParticipant_Target() {
 		return (EReference) srpInputParticipantEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getArtifactParticipant() {
+		return artifactParticipantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getArtifactParticipant_Target() {
+		return (EReference) artifactParticipantEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -497,8 +609,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getInfluence() {
-		return influenceEClass;
+	public EClass getCompositeInfluence() {
+		return compositeInfluenceEClass;
 	}
 
 	/**
@@ -507,8 +619,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_OwnedInfluenceFunction() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(0);
+	public EReference getCompositeInfluence_InternalInfluences() {
+		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -517,8 +629,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_OwnedParticipants() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(1);
+	public EReference getCompositeInfluence_OwnedInfluenceFunction() {
+		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -527,8 +639,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_OutputSRP() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(2);
+	public EClass getDesignArtifact() {
+		return designArtifactEClass;
 	}
 
 	/**
@@ -537,8 +649,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EOperation getInfluence__ParticipationPattern__DiagnosticChain_Map() {
-		return influenceEClass.getEOperations().get(0);
+	public EReference getDesignArtifact_Ref() {
+		return (EReference) designArtifactEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -547,8 +659,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getParticipant() {
-		return participantEClass;
+	public EAttribute getDesignArtifact_Changeability() {
+		return (EAttribute) designArtifactEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -557,8 +669,48 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParticipant_Confidence() {
-		return (EAttribute) participantEClass.getEStructuralFeatures().get(0);
+	public EClass getSystemResponseProperty() {
+		return systemResponsePropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSystemResponseProperty_Description() {
+		return (EAttribute) systemResponsePropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEnvironmentalFactor() {
+		return environmentalFactorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEnvironmentalFactor_Description() {
+		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEnvironmentalFactor_Flexibility() {
+		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -957,106 +1109,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getArtifactParticipant() {
-		return artifactParticipantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getArtifactParticipant_Target() {
-		return (EReference) artifactParticipantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getDesignArtifact() {
-		return designArtifactEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getDesignArtifact_Ref() {
-		return (EReference) designArtifactEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDesignArtifact_Changeability() {
-		return (EAttribute) designArtifactEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getSystemResponseProperty() {
-		return systemResponsePropertyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSystemResponseProperty_Description() {
-		return (EAttribute) systemResponsePropertyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getEnvironmentalFactor() {
-		return environmentalFactorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getEnvironmentalFactor_Description() {
-		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getEnvironmentalFactor_Flexibility() {
-		return (EAttribute) environmentalFactorEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getLanguageType() {
 		return languageTypeEEnum;
 	}
@@ -1069,56 +1121,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	@Override
 	public EEnum getTrendType() {
 		return trendTypeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCompositeInfluence() {
-		return compositeInfluenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCompositeInfluence_InternalInfluences() {
-		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCompositeInfluence_OwnedInfluenceFunction() {
-		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getNamedElement() {
-		return namedElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getNamedElement_Name() {
-		return (EAttribute) namedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1441,7 +1443,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 				EnvironmentalFactor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(influenceFunctionEClass, InfluenceFunction.class, "InfluenceFunction", IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(influenceFunctionEClass, InfluenceFunction.class, "InfluenceFunction", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInfluenceFunction_Representations(), this.getFunctionRepresentation(), null,
 				"representations", null, 0, -1, InfluenceFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,

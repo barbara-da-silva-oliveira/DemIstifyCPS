@@ -151,7 +151,7 @@ public class MetamodelTables extends AbstractTables
 		public static final EcoreExecutorType _EnvironmentalFactorParticipant = new EcoreExecutorType(MetamodelPackage.Literals.ENVIRONMENTAL_FACTOR_PARTICIPANT, PACKAGE, 0);
 		public static final EcoreExecutorType _FunctionRepresentation = new EcoreExecutorType(MetamodelPackage.Literals.FUNCTION_REPRESENTATION, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorType _Influence = new EcoreExecutorType(MetamodelPackage.Literals.INFLUENCE, PACKAGE, 0);
-		public static final EcoreExecutorType _InfluenceFunction = new EcoreExecutorType(MetamodelPackage.Literals.INFLUENCE_FUNCTION, PACKAGE, 0 | ExecutorType.ABSTRACT);
+		public static final EcoreExecutorType _InfluenceFunction = new EcoreExecutorType(MetamodelPackage.Literals.INFLUENCE_FUNCTION, PACKAGE, 0);
 		public static final EcoreExecutorType _InfluenceModel = new EcoreExecutorType(MetamodelPackage.Literals.INFLUENCE_MODEL, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _LanguageType = new EcoreExecutorEnumeration(MetamodelPackage.Literals.LANGUAGE_TYPE, PACKAGE, 0);
 		public static final EcoreExecutorType _MonotonicityRow = new EcoreExecutorType(MetamodelPackage.Literals.MONOTONICITY_ROW, PACKAGE, 0);

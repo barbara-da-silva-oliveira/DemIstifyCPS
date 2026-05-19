@@ -77,6 +77,8 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 			return createSystemResponseProperty();
 		case MetamodelPackage.ENVIRONMENTAL_FACTOR:
 			return createEnvironmentalFactor();
+		case MetamodelPackage.INFLUENCE_FUNCTION:
+			return createInfluenceFunction();
 		case MetamodelPackage.PARTICIPANT_RANGE:
 			return createParticipantRange();
 		case MetamodelPackage.SCALAR_VALUE:
@@ -151,9 +153,31 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * @generated
 	 */
 	@Override
+	public Influence createInfluence() {
+		InfluenceImpl influence = new InfluenceImpl();
+		return influence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public SRPInputParticipant createSRPInputParticipant() {
 		SRPInputParticipantImpl srpInputParticipant = new SRPInputParticipantImpl();
 		return srpInputParticipant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ArtifactParticipant createArtifactParticipant() {
+		ArtifactParticipantImpl artifactParticipant = new ArtifactParticipantImpl();
+		return artifactParticipant;
 	}
 
 	/**
@@ -184,20 +208,9 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * @generated
 	 */
 	@Override
-	public Influence createInfluence() {
-		InfluenceImpl influence = new InfluenceImpl();
-		return influence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ArtifactParticipant createArtifactParticipant() {
-		ArtifactParticipantImpl artifactParticipant = new ArtifactParticipantImpl();
-		return artifactParticipant;
+	public CompositeInfluence createCompositeInfluence() {
+		CompositeInfluenceImpl compositeInfluence = new CompositeInfluenceImpl();
+		return compositeInfluence;
 	}
 
 	/**
@@ -231,6 +244,17 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	public EnvironmentalFactor createEnvironmentalFactor() {
 		EnvironmentalFactorImpl environmentalFactor = new EnvironmentalFactorImpl();
 		return environmentalFactor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public InfluenceFunction createInfluenceFunction() {
+		InfluenceFunctionImpl influenceFunction = new InfluenceFunctionImpl();
+		return influenceFunction;
 	}
 
 	/**
@@ -374,17 +398,6 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 */
 	public String convertTrendTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CompositeInfluence createCompositeInfluence() {
-		CompositeInfluenceImpl compositeInfluence = new CompositeInfluenceImpl();
-		return compositeInfluence;
 	}
 
 	/**

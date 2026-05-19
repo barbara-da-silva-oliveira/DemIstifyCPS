@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluenceFunction()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface InfluenceFunction extends NamedElement {

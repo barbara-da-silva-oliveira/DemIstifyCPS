@@ -8,7 +8,7 @@ import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 
 import com.google.inject.Binder;
 
-/**
+/*
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class InfluenceDSLRuntimeModule extends AbstractInfluenceDSLRuntimeModule {

@@ -225,46 +225,6 @@ public interface MetamodelPackage extends EPackage {
 	int ABSTRACT_INFLUENCE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.ParticipantImpl <em>Participant</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.ParticipantImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getParticipant()
-	 * @generated
-	 */
-	int PARTICIPANT = 4;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SRPInputParticipantImpl <em>SRP Input Participant</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.SRPInputParticipantImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSRPInputParticipant()
-	 * @generated
-	 */
-	int SRP_INPUT_PARTICIPANT = 5;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorParticipantImpl <em>Environmental Factor Participant</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorParticipantImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEnvironmentalFactorParticipant()
-	 * @generated
-	 */
-	int ENVIRONMENTAL_FACTOR_PARTICIPANT = 7;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl <em>Satisfaction Criterion</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSatisfactionCriterion()
-	 * @generated
-	 */
-	int SATISFACTION_CRITERION = 8;
-
-	/**
 	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -273,56 +233,6 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	int INFLUENCE = 3;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl <em>Artifact Participant</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getArtifactParticipant()
-	 * @generated
-	 */
-	int ARTIFACT_PARTICIPANT = 6;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl <em>Design Artifact</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getDesignArtifact()
-	 * @generated
-	 */
-	int DESIGN_ARTIFACT = 10;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl <em>System Response Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSystemResponseProperty()
-	 * @generated
-	 */
-	int SYSTEM_RESPONSE_PROPERTY = 11;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl <em>Environmental Factor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEnvironmentalFactor()
-	 * @generated
-	 */
-	int ENVIRONMENTAL_FACTOR = 12;
-
-	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl <em>Composite Influence</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeInfluence()
-	 * @generated
-	 */
-	int COMPOSITE_INFLUENCE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -397,6 +307,16 @@ public interface MetamodelPackage extends EPackage {
 	int INFLUENCE_OPERATION_COUNT = ABSTRACT_INFLUENCE_OPERATION_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.ParticipantImpl <em>Participant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.ParticipantImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getParticipant()
+	 * @generated
+	 */
+	int PARTICIPANT = 4;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -431,6 +351,16 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARTICIPANT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SRPInputParticipantImpl <em>SRP Input Participant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.SRPInputParticipantImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSRPInputParticipant()
+	 * @generated
+	 */
+	int SRP_INPUT_PARTICIPANT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -478,6 +408,16 @@ public interface MetamodelPackage extends EPackage {
 	int SRP_INPUT_PARTICIPANT_OPERATION_COUNT = PARTICIPANT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl <em>Artifact Participant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getArtifactParticipant()
+	 * @generated
+	 */
+	int ARTIFACT_PARTICIPANT = 6;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -521,6 +461,16 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARTIFACT_PARTICIPANT_OPERATION_COUNT = PARTICIPANT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorParticipantImpl <em>Environmental Factor Participant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorParticipantImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEnvironmentalFactorParticipant()
+	 * @generated
+	 */
+	int ENVIRONMENTAL_FACTOR_PARTICIPANT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -575,6 +525,16 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENVIRONMENTAL_FACTOR_PARTICIPANT_OPERATION_COUNT = PARTICIPANT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl <em>Satisfaction Criterion</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSatisfactionCriterion()
+	 * @generated
+	 */
+	int SATISFACTION_CRITERION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -640,6 +600,16 @@ public interface MetamodelPackage extends EPackage {
 	int SATISFACTION_CRITERION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl <em>Composite Influence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeInfluence()
+	 * @generated
+	 */
+	int COMPOSITE_INFLUENCE = 9;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -694,14 +664,14 @@ public interface MetamodelPackage extends EPackage {
 	int COMPOSITE_INFLUENCE_OPERATION_COUNT = ABSTRACT_INFLUENCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceFunctionImpl <em>Influence Function</em>}' class.
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl <em>Design Artifact</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fr.inria.kairos.influence.metamodel.impl.InfluenceFunctionImpl
-	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getInfluenceFunction()
+	 * @see fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getDesignArtifact()
 	 * @generated
 	 */
-	int INFLUENCE_FUNCTION = 13;
+	int DESIGN_ARTIFACT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -749,6 +719,16 @@ public interface MetamodelPackage extends EPackage {
 	int DESIGN_ARTIFACT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl <em>System Response Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSystemResponseProperty()
+	 * @generated
+	 */
+	int SYSTEM_RESPONSE_PROPERTY = 11;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -783,6 +763,16 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_RESPONSE_PROPERTY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl <em>Environmental Factor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEnvironmentalFactor()
+	 * @generated
+	 */
+	int ENVIRONMENTAL_FACTOR = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -828,6 +818,16 @@ public interface MetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENVIRONMENTAL_FACTOR_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceFunctionImpl <em>Influence Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fr.inria.kairos.influence.metamodel.impl.InfluenceFunctionImpl
+	 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getInfluenceFunction()
+	 * @generated
+	 */
+	int INFLUENCE_FUNCTION = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1599,6 +1599,27 @@ public interface MetamodelPackage extends EPackage {
 	int TREND_TYPE = 26;
 
 	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Named Element</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.NamedElement
+	 * @generated
+	 */
+	EClass getNamedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.NamedElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.NamedElement#getName()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EAttribute getNamedElement_Name();
+
+	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.InfluenceModel <em>Influence Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1685,6 +1706,80 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getAbstractInfluence_Description();
 
 	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Influence <em>Influence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Influence</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence
+	 * @generated
+	 */
+	EClass getInfluence();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Owned Influence Function</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction()
+	 * @see #getInfluence()
+	 * @generated
+	 */
+	EReference getInfluence_OwnedInfluenceFunction();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedParticipants <em>Owned Participants</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Participants</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getOwnedParticipants()
+	 * @see #getInfluence()
+	 * @generated
+	 */
+	EReference getInfluence_OwnedParticipants();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.Influence#getOutputSRP <em>Output SRP</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Output SRP</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#getOutputSRP()
+	 * @see #getInfluence()
+	 * @generated
+	 */
+	EReference getInfluence_OutputSRP();
+
+	/**
+	 * Returns the meta object for the '{@link fr.inria.kairos.influence.metamodel.Influence#ParticipationPattern(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Participation Pattern</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Participation Pattern</em>' operation.
+	 * @see fr.inria.kairos.influence.metamodel.Influence#ParticipationPattern(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getInfluence__ParticipationPattern__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Participant <em>Participant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Participant</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Participant
+	 * @generated
+	 */
+	EClass getParticipant();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Participant#getConfidence <em>Confidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Confidence</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.Participant#getConfidence()
+	 * @see #getParticipant()
+	 * @generated
+	 */
+	EAttribute getParticipant_Confidence();
+
+	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.SRPInputParticipant <em>SRP Input Participant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1704,6 +1799,27 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSRPInputParticipant_Target();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.ArtifactParticipant <em>Artifact Participant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Artifact Participant</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.ArtifactParticipant
+	 * @generated
+	 */
+	EClass getArtifactParticipant();
+
+	/**
+	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.ArtifactParticipant#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.ArtifactParticipant#getTarget()
+	 * @see #getArtifactParticipant()
+	 * @generated
+	 */
+	EReference getArtifactParticipant_Target();
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant <em>Environmental Factor Participant</em>}'.
@@ -1792,78 +1908,121 @@ public interface MetamodelPackage extends EPackage {
 	EReference getSatisfactionCriterion_ConstrainedSRPs();
 
 	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Influence <em>Influence</em>}'.
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence <em>Composite Influence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Influence</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence
+	 * @return the meta object for class '<em>Composite Influence</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence
 	 * @generated
 	 */
-	EClass getInfluence();
+	EClass getCompositeInfluence();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}'.
+	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences <em>Internal Influences</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Internal Influences</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences()
+	 * @see #getCompositeInfluence()
+	 * @generated
+	 */
+	EReference getCompositeInfluence_InternalInfluences();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Owned Influence Function</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction()
-	 * @see #getInfluence()
+	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction()
+	 * @see #getCompositeInfluence()
 	 * @generated
 	 */
-	EReference getInfluence_OwnedInfluenceFunction();
+	EReference getCompositeInfluence_OwnedInfluenceFunction();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedParticipants <em>Owned Participants</em>}'.
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.DesignArtifact <em>Design Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Participants</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getOwnedParticipants()
-	 * @see #getInfluence()
+	 * @return the meta object for class '<em>Design Artifact</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact
 	 * @generated
 	 */
-	EReference getInfluence_OwnedParticipants();
+	EClass getDesignArtifact();
 
 	/**
-	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.Influence#getOutputSRP <em>Output SRP</em>}'.
+	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getRef <em>Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Output SRP</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getOutputSRP()
-	 * @see #getInfluence()
+	 * @return the meta object for the reference '<em>Ref</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact#getRef()
+	 * @see #getDesignArtifact()
 	 * @generated
 	 */
-	EReference getInfluence_OutputSRP();
+	EReference getDesignArtifact_Ref();
 
 	/**
-	 * Returns the meta object for the '{@link fr.inria.kairos.influence.metamodel.Influence#ParticipationPattern(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Participation Pattern</em>}' operation.
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getChangeability <em>Changeability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Participation Pattern</em>' operation.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#ParticipationPattern(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @return the meta object for the attribute '<em>Changeability</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact#getChangeability()
+	 * @see #getDesignArtifact()
 	 * @generated
 	 */
-	EOperation getInfluence__ParticipationPattern__DiagnosticChain_Map();
+	EAttribute getDesignArtifact_Changeability();
 
 	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.Participant <em>Participant</em>}'.
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.SystemResponseProperty <em>System Response Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Participant</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Participant
+	 * @return the meta object for class '<em>System Response Property</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.SystemResponseProperty
 	 * @generated
 	 */
-	EClass getParticipant();
+	EClass getSystemResponseProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.Participant#getConfidence <em>Confidence</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.SystemResponseProperty#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Confidence</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Participant#getConfidence()
-	 * @see #getParticipant()
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.SystemResponseProperty#getDescription()
+	 * @see #getSystemResponseProperty()
 	 * @generated
 	 */
-	EAttribute getParticipant_Confidence();
+	EAttribute getSystemResponseProperty_Description();
+
+	/**
+	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor <em>Environmental Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Environmental Factor</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactor
+	 * @generated
+	 */
+	EClass getEnvironmentalFactor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getDescription()
+	 * @see #getEnvironmentalFactor()
+	 * @generated
+	 */
+	EAttribute getEnvironmentalFactor_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getFlexibility <em>Flexibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Flexibility</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getFlexibility()
+	 * @see #getEnvironmentalFactor()
+	 * @generated
+	 */
+	EAttribute getEnvironmentalFactor_Flexibility();
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.InfluenceFunction <em>Influence Function</em>}'.
@@ -2283,112 +2442,6 @@ public interface MetamodelPackage extends EPackage {
 	EReference getMonotonicityRow_Output();
 
 	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.ArtifactParticipant <em>Artifact Participant</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Artifact Participant</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.ArtifactParticipant
-	 * @generated
-	 */
-	EClass getArtifactParticipant();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.ArtifactParticipant#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.ArtifactParticipant#getTarget()
-	 * @see #getArtifactParticipant()
-	 * @generated
-	 */
-	EReference getArtifactParticipant_Target();
-
-	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.DesignArtifact <em>Design Artifact</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Design Artifact</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact
-	 * @generated
-	 */
-	EClass getDesignArtifact();
-
-	/**
-	 * Returns the meta object for the reference '{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getRef <em>Ref</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Ref</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact#getRef()
-	 * @see #getDesignArtifact()
-	 * @generated
-	 */
-	EReference getDesignArtifact_Ref();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.DesignArtifact#getChangeability <em>Changeability</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Changeability</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.DesignArtifact#getChangeability()
-	 * @see #getDesignArtifact()
-	 * @generated
-	 */
-	EAttribute getDesignArtifact_Changeability();
-
-	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.SystemResponseProperty <em>System Response Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>System Response Property</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.SystemResponseProperty
-	 * @generated
-	 */
-	EClass getSystemResponseProperty();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.SystemResponseProperty#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.SystemResponseProperty#getDescription()
-	 * @see #getSystemResponseProperty()
-	 * @generated
-	 */
-	EAttribute getSystemResponseProperty_Description();
-
-	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor <em>Environmental Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Environmental Factor</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactor
-	 * @generated
-	 */
-	EClass getEnvironmentalFactor();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getDescription()
-	 * @see #getEnvironmentalFactor()
-	 * @generated
-	 */
-	EAttribute getEnvironmentalFactor_Description();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getFlexibility <em>Flexibility</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Flexibility</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.EnvironmentalFactor#getFlexibility()
-	 * @see #getEnvironmentalFactor()
-	 * @generated
-	 */
-	EAttribute getEnvironmentalFactor_Flexibility();
-
-	/**
 	 * Returns the meta object for enum '{@link fr.inria.kairos.influence.metamodel.LanguageType <em>Language Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2407,59 +2460,6 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getTrendType();
-
-	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence <em>Composite Influence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Composite Influence</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence
-	 * @generated
-	 */
-	EClass getCompositeInfluence();
-
-	/**
-	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences <em>Internal Influences</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Internal Influences</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence#getInternalInfluences()
-	 * @see #getCompositeInfluence()
-	 * @generated
-	 */
-	EReference getCompositeInfluence_InternalInfluences();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Owned Influence Function</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction()
-	 * @see #getCompositeInfluence()
-	 * @generated
-	 */
-	EReference getCompositeInfluence_OwnedInfluenceFunction();
-
-	/**
-	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.NamedElement <em>Named Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Named Element</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.NamedElement
-	 * @generated
-	 */
-	EClass getNamedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.NamedElement#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.NamedElement#getName()
-	 * @see #getNamedElement()
-	 * @generated
-	 */
-	EAttribute getNamedElement_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2484,6 +2484,24 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.NamedElementImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getNamedElement()
+		 * @generated
+		 */
+		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
+
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceModelImpl <em>Influence Model</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2555,6 +2573,67 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute ABSTRACT_INFLUENCE__DESCRIPTION = eINSTANCE.getAbstractInfluence_Description();
 
 		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.InfluenceImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getInfluence()
+		 * @generated
+		 */
+		EClass INFLUENCE = eINSTANCE.getInfluence();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Influence Function</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFLUENCE__OWNED_INFLUENCE_FUNCTION = eINSTANCE.getInfluence_OwnedInfluenceFunction();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Participants</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFLUENCE__OWNED_PARTICIPANTS = eINSTANCE.getInfluence_OwnedParticipants();
+
+		/**
+		 * The meta object literal for the '<em><b>Output SRP</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFLUENCE__OUTPUT_SRP = eINSTANCE.getInfluence_OutputSRP();
+
+		/**
+		 * The meta object literal for the '<em><b>Participation Pattern</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INFLUENCE___PARTICIPATION_PATTERN__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getInfluence__ParticipationPattern__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.ParticipantImpl <em>Participant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.ParticipantImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getParticipant()
+		 * @generated
+		 */
+		EClass PARTICIPANT = eINSTANCE.getParticipant();
+
+		/**
+		 * The meta object literal for the '<em><b>Confidence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARTICIPANT__CONFIDENCE = eINSTANCE.getParticipant_Confidence();
+
+		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.SRPInputParticipantImpl <em>SRP Input Participant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2571,6 +2650,24 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SRP_INPUT_PARTICIPANT__TARGET = eINSTANCE.getSRPInputParticipant_Target();
+
+		/**
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl <em>Artifact Participant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getArtifactParticipant()
+		 * @generated
+		 */
+		EClass ARTIFACT_PARTICIPANT = eINSTANCE.getArtifactParticipant();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARTIFACT_PARTICIPANT__TARGET = eINSTANCE.getArtifactParticipant_Target();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorParticipantImpl <em>Environmental Factor Participant</em>}' class.
@@ -2642,14 +2739,22 @@ public interface MetamodelPackage extends EPackage {
 		EReference SATISFACTION_CRITERION__CONSTRAINED_SR_PS = eINSTANCE.getSatisfactionCriterion_ConstrainedSRPs();
 
 		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl <em>Influence</em>}' class.
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl <em>Composite Influence</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.InfluenceImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getInfluence()
+		 * @see fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeInfluence()
 		 * @generated
 		 */
-		EClass INFLUENCE = eINSTANCE.getInfluence();
+		EClass COMPOSITE_INFLUENCE = eINSTANCE.getCompositeInfluence();
+
+		/**
+		 * The meta object literal for the '<em><b>Internal Influences</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = eINSTANCE.getCompositeInfluence_InternalInfluences();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Influence Function</b></em>' containment reference feature.
@@ -2657,50 +2762,78 @@ public interface MetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INFLUENCE__OWNED_INFLUENCE_FUNCTION = eINSTANCE.getInfluence_OwnedInfluenceFunction();
+		EReference COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION = eINSTANCE
+				.getCompositeInfluence_OwnedInfluenceFunction();
 
 		/**
-		 * The meta object literal for the '<em><b>Owned Participants</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl <em>Design Artifact</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getDesignArtifact()
+		 * @generated
+		 */
+		EClass DESIGN_ARTIFACT = eINSTANCE.getDesignArtifact();
+
+		/**
+		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INFLUENCE__OWNED_PARTICIPANTS = eINSTANCE.getInfluence_OwnedParticipants();
+		EReference DESIGN_ARTIFACT__REF = eINSTANCE.getDesignArtifact_Ref();
 
 		/**
-		 * The meta object literal for the '<em><b>Output SRP</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Changeability</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INFLUENCE__OUTPUT_SRP = eINSTANCE.getInfluence_OutputSRP();
+		EAttribute DESIGN_ARTIFACT__CHANGEABILITY = eINSTANCE.getDesignArtifact_Changeability();
 
 		/**
-		 * The meta object literal for the '<em><b>Participation Pattern</b></em>' operation.
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl <em>System Response Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSystemResponseProperty()
+		 * @generated
+		 */
+		EClass SYSTEM_RESPONSE_PROPERTY = eINSTANCE.getSystemResponseProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation INFLUENCE___PARTICIPATION_PATTERN__DIAGNOSTICCHAIN_MAP = eINSTANCE
-				.getInfluence__ParticipationPattern__DiagnosticChain_Map();
+		EAttribute SYSTEM_RESPONSE_PROPERTY__DESCRIPTION = eINSTANCE.getSystemResponseProperty_Description();
 
 		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.ParticipantImpl <em>Participant</em>}' class.
+		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl <em>Environmental Factor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.ParticipantImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getParticipant()
+		 * @see fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl
+		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEnvironmentalFactor()
 		 * @generated
 		 */
-		EClass PARTICIPANT = eINSTANCE.getParticipant();
+		EClass ENVIRONMENTAL_FACTOR = eINSTANCE.getEnvironmentalFactor();
 
 		/**
-		 * The meta object literal for the '<em><b>Confidence</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARTICIPANT__CONFIDENCE = eINSTANCE.getParticipant_Confidence();
+		EAttribute ENVIRONMENTAL_FACTOR__DESCRIPTION = eINSTANCE.getEnvironmentalFactor_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Flexibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENVIRONMENTAL_FACTOR__FLEXIBILITY = eINSTANCE.getEnvironmentalFactor_Flexibility();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.InfluenceFunctionImpl <em>Influence Function</em>}' class.
@@ -3042,94 +3175,6 @@ public interface MetamodelPackage extends EPackage {
 		EReference MONOTONICITY_ROW__OUTPUT = eINSTANCE.getMonotonicityRow_Output();
 
 		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl <em>Artifact Participant</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.ArtifactParticipantImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getArtifactParticipant()
-		 * @generated
-		 */
-		EClass ARTIFACT_PARTICIPANT = eINSTANCE.getArtifactParticipant();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ARTIFACT_PARTICIPANT__TARGET = eINSTANCE.getArtifactParticipant_Target();
-
-		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl <em>Design Artifact</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getDesignArtifact()
-		 * @generated
-		 */
-		EClass DESIGN_ARTIFACT = eINSTANCE.getDesignArtifact();
-
-		/**
-		 * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DESIGN_ARTIFACT__REF = eINSTANCE.getDesignArtifact_Ref();
-
-		/**
-		 * The meta object literal for the '<em><b>Changeability</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DESIGN_ARTIFACT__CHANGEABILITY = eINSTANCE.getDesignArtifact_Changeability();
-
-		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl <em>System Response Property</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.SystemResponsePropertyImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getSystemResponseProperty()
-		 * @generated
-		 */
-		EClass SYSTEM_RESPONSE_PROPERTY = eINSTANCE.getSystemResponseProperty();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SYSTEM_RESPONSE_PROPERTY__DESCRIPTION = eINSTANCE.getSystemResponseProperty_Description();
-
-		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl <em>Environmental Factor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.EnvironmentalFactorImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getEnvironmentalFactor()
-		 * @generated
-		 */
-		EClass ENVIRONMENTAL_FACTOR = eINSTANCE.getEnvironmentalFactor();
-
-		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENVIRONMENTAL_FACTOR__DESCRIPTION = eINSTANCE.getEnvironmentalFactor_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Flexibility</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENVIRONMENTAL_FACTOR__FLEXIBILITY = eINSTANCE.getEnvironmentalFactor_Flexibility();
-
-		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.LanguageType <em>Language Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3148,51 +3193,6 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TREND_TYPE = eINSTANCE.getTrendType();
-
-		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl <em>Composite Influence</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.CompositeInfluenceImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getCompositeInfluence()
-		 * @generated
-		 */
-		EClass COMPOSITE_INFLUENCE = eINSTANCE.getCompositeInfluence();
-
-		/**
-		 * The meta object literal for the '<em><b>Internal Influences</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = eINSTANCE.getCompositeInfluence_InternalInfluences();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Influence Function</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION = eINSTANCE
-				.getCompositeInfluence_OwnedInfluenceFunction();
-
-		/**
-		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.NamedElementImpl <em>Named Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see fr.inria.kairos.influence.metamodel.impl.NamedElementImpl
-		 * @see fr.inria.kairos.influence.metamodel.impl.MetamodelPackageImpl#getNamedElement()
-		 * @generated
-		 */
-		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 	}
 

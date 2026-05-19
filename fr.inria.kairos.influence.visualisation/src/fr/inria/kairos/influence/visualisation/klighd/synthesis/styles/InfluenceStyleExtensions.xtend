@@ -26,7 +26,14 @@ import org.eclipse.elk.graph.properties.Property
 
 import static extension org.eclipse.emf.ecore.util.EcoreUtil.copy
 import com.google.inject.Inject
-
+import fr.inria.kairos.influence.metamodel.SatisfactionCriterion
+import fr.inria.kairos.influence.metamodel.FunctionRepresentation
+import fr.inria.kairos.influence.metamodel.NaturalLanguageFunction
+import fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction
+import fr.inria.kairos.influence.metamodel.ParticipantImpactFunction
+import fr.inria.kairos.influence.metamodel.MonotonicityTable
+import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.util.EcoreUtil
 /**
  * Extension class that provides styles and coloring for the Lingua France diagram synthesis.
  * 

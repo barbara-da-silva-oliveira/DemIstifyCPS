@@ -46,6 +46,7 @@ EString returns ecore::EString:
 /* SRP */
 
 SystemResponseProperty returns SystemResponseProperty:
+	{SystemResponseProperty}
     'SystemResponseProperty'
     name=EString
     'description' description=EString
@@ -57,13 +58,22 @@ SystemResponseProperty returns SystemResponseProperty:
 SatisfactionCriterion returns SatisfactionCriterion:
     'SatisfactionCriterion'
     name=EString
-    'for' requirementRef=[ecore::EObject|EString]
+    'for' requirementRef=[ecore::EObject|QualifiedName]
     'constrains' constrainedSRPs+=[SystemResponseProperty|QualifiedName]
         (',' constrainedSRPs+=[SystemResponseProperty|QualifiedName])*
     'satisfied' 'when' marginDefinition=EString
     'languageType' language=LanguageType
 ;
 
+
+
+//SatisfactionCriterion returns SatisfactionCriterion:
+//    'SatisfactionCriterion' name=EString
+//    'for' requirementRef=[ecore::EObject|QualifiedName]
+//    ('description' description=EString)?
+//    'satisfied' 'when' marginDefinition=EString
+//    'languageType' language=LanguageType
+//;
 
 /* Environment and artifacts */
 
@@ -76,31 +86,34 @@ EnvironmentalFactor returns EnvironmentalFactor:
 ;
 
 DesignArtifact returns DesignArtifact:
-	{DesignArtifact}
-	'DesignArtifact'
-	name=EString
-	'->' ref=[ecore::EObject|EString]
-	('changeability' changeability=EDouble)?
+    {DesignArtifact}
+    'DesignArtifact' name=EString
+    '->' ref=[ecore::EObject|QualifiedName]
+        ('changeability' changeability=EDouble)?
 ;
 
 
-/* Participants */
+/* Participants */																																																																
 
 ArtifactParticipant returns ArtifactParticipant:
 	'ArtifactParticipant'
-	target=[DesignArtifact|EString]
+	name=EString
+	'target' target=[DesignArtifact|QualifiedName] // maintenant j'utilise cette référence dans participantrelativeimpact
+	//target=[DesignArtifact|EString]
 	('confidence' confidence=EDouble)?
 ;
 
 SRPInputParticipant returns SRPInputParticipant:
 	'SRPInputParticipant'
-	target=[SystemResponseProperty|QualifiedName]
+	name=EString
+	'target' target=[SystemResponseProperty|QualifiedName]
 	('confidence' confidence=EDouble)?
 ;
 
 EnvironmentalFactorParticipant returns EnvironmentalFactorParticipant:
 	'EnvironmentalFactorParticipant'
-	target=[EnvironmentalFactor|QualifiedName]
+	name=EString
+	'target' target=[EnvironmentalFactor|QualifiedName]
 	('confidence' confidence=EDouble)?
 	('admissibleSpace' admissibleSpace=ValueSpec)?
 ;
@@ -176,6 +189,7 @@ CompositeInfluence returns CompositeInfluence:
 /* Influence functions */
 
 InfluenceFunction returns InfluenceFunction:
+	 {InfluenceFunction} // force la creation de l'objet
 	name=EString
 	':'
 	'representations'

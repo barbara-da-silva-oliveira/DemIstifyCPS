@@ -303,6 +303,29 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.InfluenceFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InfluenceFunctionItemProvider influenceFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link fr.inria.kairos.influence.metamodel.InfluenceFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInfluenceFunctionAdapter() {
+		if (influenceFunctionItemProvider == null) {
+			influenceFunctionItemProvider = new InfluenceFunctionItemProvider(this);
+		}
+
+		return influenceFunctionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link fr.inria.kairos.influence.metamodel.ParticipantRange} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -634,6 +657,8 @@ public class MetamodelItemProviderAdapterFactory extends MetamodelAdapterFactory
 			systemResponsePropertyItemProvider.dispose();
 		if (environmentalFactorItemProvider != null)
 			environmentalFactorItemProvider.dispose();
+		if (influenceFunctionItemProvider != null)
+			influenceFunctionItemProvider.dispose();
 		if (participantRangeItemProvider != null)
 			participantRangeItemProvider.dispose();
 		if (scalarValueItemProvider != null)

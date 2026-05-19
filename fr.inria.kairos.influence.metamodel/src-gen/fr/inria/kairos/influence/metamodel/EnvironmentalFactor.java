@@ -20,7 +20,6 @@ package fr.inria.kairos.influence.metamodel;
  * @generated
  */
 public interface EnvironmentalFactor extends NamedElement {
-
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -64,4 +63,5 @@ public interface EnvironmentalFactor extends NamedElement {
 	 * @generated
 	 */
 	void setFlexibility(double value);
+
 } // EnvironmentalFactor

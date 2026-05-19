@@ -45,10 +45,9 @@ import fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant
 import fr.inria.kairos.influence.metamodel.SRPInputParticipant
 
 import fr.inria.kairos.influence.metamodel.CompositeInfluence
-import fr.inria.kairos.influence.metamodel.Requirement
 import fr.inria.kairos.influence.metamodel.InfluenceFunction
-import fr.inria.kairos.influence.metamodel.CompositeFunction
 import fr.inria.kairos.influence.metamodel.InfluenceFunction
+import fr.inria.kairos.influence.metamodel.SatisfactionCriterion
 
 /**
  * Extension class that provides shapes and figures for the Lingua France diagram synthesis.
@@ -221,66 +220,73 @@ class InfluenceShapeExtensions extends AbstractSynthesisExtensions {
 	/**
 	 * Creates the function frame.
 	 */
-	def addCompositeFunctionFigure(KNode node, CompositeFunction fun, String text) {
-		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
-		val figure = node.addRoundedRectangle(8, 8, 1) => [
-			setGridPlacement(1)
-			lineWidth = 1
-			foreground = Colors.CHARTREUSE_4
-			boldLineSelectionStyle
-		]
-		
-		figure.addRectangle() => [
-			invisible = true
-			setGridPlacementData().from(LEFT, padding, 0, TOP, padding, 0).to(RIGHT, padding, 0, BOTTOM, 4, 0)
-			
-			addRectangle() => [ // Centered child container
-				invisible = true
-				setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0)
-				
-				
-				addText(text) => [
-					suppressSelectability
-					underlineSelectionStyle
-				]
-				
-			]
-		]
-		
-		return figure
-	}
 	
-	
-	/**
-	 * Creates the requirement frame.
-	 */
-	def addRequirementFigure(KNode node, Requirement req, String text) {
+	def addSatisfactionCriterionFigure(KNode node, SatisfactionCriterion criterion, String text) {
 		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
+	
 		val figure = node.addRoundedRectangle(8, 8, 1) => [
 			setGridPlacement(1)
 			lineWidth = 1
 			foreground = Colors.PURPLE_3
 			boldLineSelectionStyle
 		]
-		
+	
 		figure.addRectangle() => [
 			invisible = true
-			setGridPlacementData().from(LEFT, padding, 0, TOP, padding, 0).to(RIGHT, padding, 0, BOTTOM, 4, 0)
-			
-			addRectangle() => [ // Centered child container
+			setGridPlacementData()
+				.from(LEFT, padding, 0, TOP, padding, 0)
+				.to(RIGHT, padding, 0, BOTTOM, 4, 0)
+	
+			addRectangle() => [
 				invisible = true
-				setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0)
-				val placement = setGridPlacement(1)
-				
+				setPointPlacementData(
+					LEFT, 0, 0.5f,
+					TOP, 0, 0.5f,
+					H_CENTRAL, V_CENTRAL,
+					0, 0, 0, 0
+				)
+	
+				setGridPlacement(1)
+	
 				addText(text) => [
 					suppressSelectability
 					underlineSelectionStyle
 				]
 			]
 		]
-		
+	
 		return figure
 	}
+	/**
+	 * Creates the requirement frame.
+	 */
+//	def addRequirementFigure(KNode node, Requirement req, String text) {
+//		val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
+//		val figure = node.addRoundedRectangle(8, 8, 1) => [
+//			setGridPlacement(1)
+//			lineWidth = 1
+//			foreground = Colors.PURPLE_3
+//			boldLineSelectionStyle
+//		]
+//		
+//		figure.addRectangle() => [
+//			invisible = true
+//			setGridPlacementData().from(LEFT, padding, 0, TOP, padding, 0).to(RIGHT, padding, 0, BOTTOM, 4, 0)
+//			
+//			addRectangle() => [ // Centered child container
+//				invisible = true
+//				setPointPlacementData(LEFT, 0, 0.5f, TOP, 0, 0.5f, H_CENTRAL, V_CENTRAL, 0, 0, 0, 0)
+//				val placement = setGridPlacement(1)
+//				
+//				addText(text) => [
+//					suppressSelectability
+//					underlineSelectionStyle
+//				]
+//			]
+//		]
+//		
+//		return figure
+//	}
 	
 	/**
 	 * Creates the physical phenomena frame.

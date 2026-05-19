@@ -5,11 +5,11 @@ package fr.inria.kairos.influence.metamodel.impl;
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactorParticipant;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-
 import fr.inria.kairos.influence.metamodel.ValueSpec;
-import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 

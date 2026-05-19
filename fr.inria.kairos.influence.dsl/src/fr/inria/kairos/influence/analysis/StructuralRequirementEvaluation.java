@@ -1,174 +1,467 @@
 package fr.inria.kairos.influence.analysis;
 
-import fr.inria.kairos.influence.analysis.GraphBuilder;
-import fr.inria.kairos.influence.analysis.RequirementTraceability;
 import fr.inria.kairos.influence.metamodel.Influence;
-import fr.inria.kairos.influence.metamodel.InfluenceModel;
-import fr.inria.kairos.influence.metamodel.Requirement;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeSet;
 
-// Structural requirement evaluation
+/*
+ * Structural requirement evaluation.
+ *
+ * This analysis is purely graph-based.
+ *
+ * It does not depend on a local Requirement EClass anymore.
+ * Requirements are represented as graph nodes:
+ *
+ *   R:<requirementLabel>
+ *
+ * created by GraphBuilder from:
+ *
+ *   SatisfactionCriterion.requirementRef
+ *   SatisfactionCriterion.constrainedSRPs
+ *
+ * Structural logic:
+ *
+ *   Requirement R
+ *      <- constrained SRPs
+ *      <- producing influences
+ *      <- upstream participants
+ *
+ * Then participants are ranked by:
+ *
+ *   Artifact          -> changeability
+ *   EnvironmentalFactor -> flexibility
+ */
+
 public final class StructuralRequirementEvaluation {
 
-	public void appendPerRequirement(Resource resource, GraphBuilder.Result g, StringBuilder out) {
-	    out.append("== Structural evaluation per requirement ==\n");
-	    var reqNames = new ArrayList<>(g.reqToSRs.keySet());
-	    Collections.sort(reqNames);
-	    var trace = new RequirementTraceability(g);
+	public void appendPerRequirement(Resource resource, GraphBuilder.Result graph, StringBuilder out) {
+		out.append("== Structural evaluation per requirement ==\n");
 
-	    for (String req : reqNames) {
-	      Map<String,Integer> min = new HashMap<>();
-	      var srps = g.reqToSRs.getOrDefault(req, new LinkedHashSet<>());
+		if (graph == null || graph.reqToSRs == null || graph.reqToSRs.isEmpty()) {
+			out.append("  (no requirement traceability available)\n\n");
+			return;
+		}
 
-	      for (String srpSimple : srps) {
-	        final String srpId = "SR:" + srpSimple;
-	        mergeMin(min, trace.upstreamArtifacts(srpId, g.inEdges));
-	        mergeMin(min, trace.upstreamEnvironmentalFactors(srpId, g.inEdges));
-	      }
+		List<String> requirementNames = new ArrayList<>(graph.reqToSRs.keySet());
+		Collections.sort(requirementNames);
 
-	      var ranked = rank(min, g.nodeToOrigin, resource);
-	      out.append("  ").append(req).append(": ");
-	      if (ranked.isEmpty()) { out.append("(none)\n"); continue; }
+		RequirementTraceability traceability = new RequirementTraceability(graph);
 
-	      var parts = new ArrayList<String>();
-	      for (Cand c : ranked) {
-	        String name  = c.id.substring(2);
-	        String label = c.id.startsWith("A:") ? "changeability" : "flexibility";
-	        String valStr = c.value >= 0 ? fmt(c.value) : "N/A";
-	        
-	        // Hops included for info
-	        parts.add(name + " (" + label + "=" + valStr + ", " + c.hops + " hops)");
-	      }
-	      out.append(String.join(", ", parts)).append("\n");
-	    }
-	    out.append("\n");
-	  }
+		for (String requirementName : requirementNames) {
+			Map<String, Integer> minHopByNode = new HashMap<>();
 
-	  // For a single (terminal) influence: print per-linked requirement structural advice.
-	  public void appendForInfluence(Resource resource, GraphBuilder.Result g, Influence inf, StringBuilder out) {
-	    final var srp = inf.getOutputSRP();
-	    if (srp == null || srp.getName() == null) {
-	      out.append("  (no output SRP)\n\n");
-	      return;
-	    }
-	    final String srpId = "SR:" + srp.getName();
-	    List<Requirement> reqs = srp.getConstrainedBy();
-	    if (reqs == null || reqs.isEmpty()) {
-	      out.append("  (no linked requirement for SRP ").append(srp.getName()).append(")\n\n");
-	      return;
-	    }
-	    out.append("== Structural evaluation for ")
-	       .append(inf.getName()).append(" -> ").append(srp.getName()).append(" ==\n");
+			LinkedHashSet<String> srps = graph.reqToSRs.getOrDefault(
+				requirementName,
+				new LinkedHashSet<>()
+			);
 
-	    var trace = new RequirementTraceability(g);
-	    Map<String,Integer> min = new HashMap<>();
-	    mergeMin(min, trace.upstreamArtifacts(srpId, g.inEdges));
-	    mergeMin(min, trace.upstreamEnvironmentalFactors(srpId, g.inEdges));
-	    var ranked = rank(min, g.nodeToOrigin, resource);
+			for (String srpName : srps) {
+				String srpId = normalizeSrpId(srpName);
 
-	    for (Requirement R : reqs) {
-	    	out.append("  ").append(R.getName()).append(": ");
-	    	if (ranked.isEmpty()) { out.append("(none)\n"); continue; }
+				mergeMin(
+					minHopByNode,
+					traceability.upstreamArtifacts(srpId, graph.inEdges)
+				);
 
-	      var parts = new ArrayList<String>();
-	      for (Cand c : ranked) {
-	    	  String name  = c.id.substring(2);
-	    	  String label = c.id.startsWith("A:") ? "changeability" : "flexibility";
-	    	  String valStr = c.value >= 0 ? fmt(c.value) : "N/A";
-	        
-	    	  // Hops included for info
-	    	  parts.add(name + " (" + label + "=" + valStr + ", " + c.hops + " hops)");
-	      }
-	      out.append(String.join(", ", parts)).append("\n");
-	    }
-	    out.append("\n");
-	  }
+				mergeMin(
+					minHopByNode,
+					traceability.upstreamEnvironmentalFactors(srpId, graph.inEdges)
+				);
+			}
 
-  // ---------- internals ----------
+			List<Cand> ranked = rank(minHopByNode, graph.nodeToOrigin, resource);
 
-	private static void mergeMin(Map<String,Integer> acc, Map<String,Integer> add) {
-	    if (add == null) return;
-	    for (var e : add.entrySet()) acc.merge(e.getKey(), e.getValue(), Math::min);
-	  }
-  
-	private List<Cand> rank(Map<String,Integer> minHops,
-          Map<String,String> nodeToOriginUri,
-          Resource resource) {
-		var out = new ArrayList<Cand>();
-		for (var e : minHops.entrySet()) {
-		final String id  = e.getKey();
-		final int hops   = e.getValue();
-		
-		double val = -1.0; 
-		if (nodeToOriginUri != null && resource != null) {
-			String uriStr = nodeToOriginUri.get(id);
-			if (uriStr != null) {
-				EObject eo = resolve(resource, uriStr);
-				if (eo != null) {
-					if (id.startsWith("A:")) {
-					val = read01(eo, "changeability");
-					} else if (id.startsWith("E:")) {
-					val = read01(eo, "flexibility");
+			out.append("  ")
+				.append(displayRequirement(requirementName))
+				.append(": ");
+
+			if (ranked.isEmpty()) {
+				out.append("(none)\n");
+			} else {
+				List<String> parts = new ArrayList<>();
+
+				for (Cand candidate : ranked) {
+					String name = stripKnownPrefix(candidate.id);
+					String label = candidate.id.startsWith("A:")
+						? "changeability"
+						: "flexibility";
+
+					String valueText = candidate.value >= 0
+						? fmt(candidate.value)
+						: "N/A";
+
+					parts.add(
+						name
+						+ " ("
+						+ label
+						+ "="
+						+ valueText
+						+ ", "
+						+ candidate.hops
+						+ " hops)"
+					);
+				}
+
+				out.append(String.join(", ", parts)).append("\n");
+			}
+		}
+
+		out.append("\n");
+	}
+
+	/*
+	 * For a single influence, print structural advice for each requirement
+	 * linked to the influence output SRP.
+	 *
+	 *   graph.reqToSRs
+	 *   or SR -> R edges created from SatisfactionCriterion
+	 */
+	public void appendForInfluence(
+		Resource resource,
+		GraphBuilder.Result graph,
+		Influence influence,
+		StringBuilder out
+	) {
+		if (influence == null) {
+			out.append("  (no influence)\n\n");
+			return;
+		}
+
+		if (graph == null) {
+			out.append("  (no graph available)\n\n");
+			return;
+		}
+
+		var outputSrp = influence.getOutputSRP();
+
+		if (outputSrp == null || outputSrp.getName() == null) {
+			out.append("  (no output SRP)\n\n");
+			return;
+		}
+
+		String srpName = outputSrp.getName();
+		String srpId = normalizeSrpId(srpName);
+
+		List<String> requirementNames = requirementsForSrp(graph, srpName);
+
+		if (requirementNames.isEmpty()) {
+			out.append("  (no linked requirement for SRP ")
+				.append(srpName)
+				.append(")\n\n");
+			return;
+		}
+
+		out.append("== Structural evaluation for ")
+			.append(influence.getName())
+			.append(" -> ")
+			.append(srpName)
+			.append(" ==\n");
+
+		RequirementTraceability traceability = new RequirementTraceability(graph);
+
+		Map<String, Integer> minHopByNode = new HashMap<>();
+
+		mergeMin(
+			minHopByNode,
+			traceability.upstreamArtifacts(srpId, graph.inEdges)
+		);
+
+		mergeMin(
+			minHopByNode,
+			traceability.upstreamEnvironmentalFactors(srpId, graph.inEdges)
+		);
+
+		List<Cand> ranked = rank(minHopByNode, graph.nodeToOrigin, resource);
+
+		for (String requirementName : requirementNames) {
+			out.append("  ")
+				.append(displayRequirement(requirementName))
+				.append(": ");
+
+			if (ranked.isEmpty()) {
+				out.append("(none)\n");
+			} else {
+				List<String> parts = new ArrayList<>();
+
+				for (Cand candidate : ranked) {
+					String name = stripKnownPrefix(candidate.id);
+					String label = candidate.id.startsWith("A:")
+						? "changeability"
+						: "flexibility";
+
+					String valueText = candidate.value >= 0
+						? fmt(candidate.value)
+						: "N/A";
+
+					parts.add(
+						name
+						+ " ("
+						+ label
+						+ "="
+						+ valueText
+						+ ", "
+						+ candidate.hops
+						+ " hops)"
+					);
+				}
+
+				out.append(String.join(", ", parts)).append("\n");
+			}
+		}
+
+		out.append("\n");
+	}
+
+	// ---------------------------------------------------------------------
+	// Requirement lookup
+	// ---------------------------------------------------------------------
+
+	private static List<String> requirementsForSrp(GraphBuilder.Result graph, String srpSimpleName) {
+		TreeSet<String> requirements = new TreeSet<>();
+
+		if (graph == null || srpSimpleName == null) {
+			return new ArrayList<>(requirements);
+		}
+
+		String srpId = normalizeSrpId(srpSimpleName);
+		String srpNameWithoutPrefix = stripKnownPrefix(srpId);
+
+		/*
+		 * Primary source:
+		 *
+		 *   graph.reqToSRs:
+		 *     requirementLabel -> srpSimpleName[*]
+		 */
+		if (graph.reqToSRs != null) {
+			for (Map.Entry<String, LinkedHashSet<String>> entry : graph.reqToSRs.entrySet()) {
+				String requirementName = entry.getKey();
+				LinkedHashSet<String> srps = entry.getValue();
+
+				if (srps != null) {
+					for (String candidateSrp : srps) {
+						String normalizedCandidate = stripKnownPrefix(normalizeSrpId(candidateSrp));
+
+						if (srpNameWithoutPrefix.equals(normalizedCandidate)) {
+							requirements.add(requirementName);
+						}
 					}
 				}
 			}
 		}
-		out.add(new Cand(id, hops, val));
+
+		/*
+		 * Secondary source:
+		 *
+		 *   graph.outEdges:
+		 *     SR:<srp> -> R:<requirement>
+		 *
+		 * This makes the method robust even if reqToSRs changes later.
+		 */
+		if (graph.outEdges != null) {
+			LinkedHashSet<String> outgoing = graph.outEdges.get(srpId);
+
+			if (outgoing != null) {
+				for (String nodeId : outgoing) {
+					if (nodeId != null && nodeId.startsWith("R:")) {
+						requirements.add(stripKnownPrefix(nodeId));
+					}
+				}
+			}
 		}
-    
-	    out.sort((x,y) -> {
-	        // 1. Primary Sort: Value Descending (Highest Changeability first)
-	        int c = Double.compare(y.value, x.value); 
-	        if (c != 0) return c;
-	        
-	        // 2. Secondary Sort: When participant is closer to satisfaction of requirement -> means less changes in the chain
-	        // This only happens if changeability is exactly the same.
-	        c = Integer.compare(x.hops, y.hops); 
-	        if (c != 0) return c;
-	        
-	        return x.id.compareTo(y.id);
-	      });
-	    return out;
-	    }
-	private static EObject resolve(Resource res, String uriStr) {
-	    try {
-	      if (res == null || res.getResourceSet() == null) return null;
-	      return res.getResourceSet().getEObject(URI.createURI(uriStr), true);
-	    } catch (Exception e) {
-	      return null;
-	    }
-	  }
 
-	private static double read01(EObject eo, String feature) {
-	    EStructuralFeature f = eo.eClass().getEStructuralFeature(feature);
-	    if (f == null) return -1;
-	    Object v = eo.eGet(f);
-	    if (v instanceof Number n) return clamp01(n.doubleValue());
-	    if (v instanceof String s) {
-	      try { return clamp01(Double.parseDouble(s.trim())); } catch (Exception ignored) {}
-	    }
-	    return -1;
-	  }
-
-	private static double clamp01(double x){ return x < 0 ? 0 : (x > 1 ? 1 : x); }
-	private static String fmt(double x){ 
-		return String.format(Locale.US, "%.2f", x); 
+		return new ArrayList<>(requirements);
 	}
-	private static final class Cand {
-	    final String id; 
-	    final int hops; 
-	    final double value; 
-	    
-	    Cand(String id, int hops, double value){ 
-	        this.id=id; 
-	        this.hops=hops; 
-	        this.value=value; 
-	    }
-	  }
-}
 
+	// ---------------------------------------------------------------------
+	// Ranking
+	// ---------------------------------------------------------------------
+
+	private static void mergeMin(Map<String, Integer> accumulator, Map<String, Integer> values) {
+		if (values == null) {
+			return;
+		}
+
+		for (Map.Entry<String, Integer> entry : values.entrySet()) {
+			accumulator.merge(entry.getKey(), entry.getValue(), Math::min);
+		}
+	}
+
+	private List<Cand> rank(
+		Map<String, Integer> minHops,
+		Map<String, String> nodeToOriginUri,
+		Resource resource
+	) {
+		List<Cand> candidates = new ArrayList<>();
+
+		for (Map.Entry<String, Integer> entry : minHops.entrySet()) {
+			String nodeId = entry.getKey();
+			int hops = entry.getValue();
+
+			double value = -1.0;
+
+			if (nodeToOriginUri != null && resource != null) {
+				String uriString = nodeToOriginUri.get(nodeId);
+
+				if (uriString != null) {
+					EObject object = resolve(resource, uriString);
+
+					if (object != null) {
+						if (nodeId.startsWith("A:")) {
+							value = read01(object, "changeability");
+						} else if (nodeId.startsWith("E:")) {
+							value = read01(object, "flexibility");
+						}
+					}
+				}
+			}
+
+			candidates.add(new Cand(nodeId, hops, value));
+		}
+
+		candidates.sort((left, right) -> {
+			/*
+			 * 1. Higher changeability/flexibility first.
+			 * Unknown value = -1, so it naturally goes last.
+			 */
+			int cmp = Double.compare(right.value, left.value);
+
+			if (cmp != 0) {
+				return cmp;
+			}
+
+			/*
+			 * 2. Shorter path first.
+			 * A closer participant usually means fewer chained changes.
+			 */
+			cmp = Integer.compare(left.hops, right.hops);
+
+			if (cmp != 0) {
+				return cmp;
+			}
+
+			return left.id.compareTo(right.id);
+		});
+
+		return candidates;
+	}
+
+	private static EObject resolve(Resource resource, String uriString) {
+		try {
+			if (resource == null || resource.getResourceSet() == null) {
+				return null;
+			}
+
+			return resource.getResourceSet().getEObject(URI.createURI(uriString), true);
+		} catch (Exception ignored) {
+			return null;
+		}
+	}
+
+	private static double read01(EObject object, String featureName) {
+		if (object == null || featureName == null) {
+			return -1;
+		}
+
+		EStructuralFeature feature = object.eClass().getEStructuralFeature(featureName);
+
+		if (feature == null) {
+			return -1;
+		}
+
+		Object value = object.eGet(feature);
+
+		if (value instanceof Number number) {
+			return clamp01(number.doubleValue());
+		}
+
+		if (value instanceof String text) {
+			try {
+				return clamp01(Double.parseDouble(text.trim()));
+			} catch (Exception ignored) {
+				return -1;
+			}
+		}
+
+		return -1;
+	}
+
+	// ---------------------------------------------------------------------
+	// ID helpers
+	// ---------------------------------------------------------------------
+
+	private static String normalizeSrpId(String value) {
+		if (value == null) {
+			return null;
+		}
+
+		if (value.startsWith("SR:")) {
+			return value;
+		}
+
+		return "SR:" + value;
+	}
+
+	private static String stripKnownPrefix(String id) {
+		if (id == null) {
+			return "";
+		}
+
+		if (id.startsWith("SR:")) {
+			return id.substring(3);
+		}
+
+		if (
+			id.startsWith("A:")
+			|| id.startsWith("E:")
+			|| id.startsWith("I:")
+			|| id.startsWith("R:")
+		) {
+			return id.substring(2);
+		}
+
+		return id;
+	}
+
+	private static String displayRequirement(String requirementNameOrId) {
+		return stripKnownPrefix(requirementNameOrId);
+	}
+
+	private static double clamp01(double value) {
+		if (value < 0) {
+			return 0;
+		}
+
+		if (value > 1) {
+			return 1;
+		}
+
+		return value;
+	}
+
+	private static String fmt(double value) {
+		return String.format(Locale.US, "%.2f", value);
+	}
+
+	private static final class Cand {
+		final String id;
+		final int hops;
+		final double value;
+
+		Cand(String id, int hops, double value) {
+			this.id = id;
+			this.hops = hops;
+			this.value = value;
+		}
+	}
+}

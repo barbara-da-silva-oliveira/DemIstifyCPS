@@ -16,3 +16,8 @@
 /InfoExporter.java
 /JsonExporter.java
 /TablesExporter.java
+/.MetricsReportExporter.java._trace
+/.InfluenceReportExporter.java._trace
+/.ValueSpecPrinter.java._trace
+/.InfluenceArtifactOriginExporter.java._trace
+/.AnalyticRequirementImpactExporter.java._trace

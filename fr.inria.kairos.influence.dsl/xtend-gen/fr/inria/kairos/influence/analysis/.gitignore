@@ -23,3 +23,8 @@
 /ImpactMetrics.java
 /RequirementTraceability.java
 /StakeholdersOwner.java
+/.ArtifactOriginExporter.java._trace
+/.InfluenceArtifactOriginExporter.java._trace
+/.UpstreamDistanceAnalyzer.java._trace
+/.CandidateCompensatorAnalyzer.java._trace
+/.GraphCycleAnalyzer.java._trace

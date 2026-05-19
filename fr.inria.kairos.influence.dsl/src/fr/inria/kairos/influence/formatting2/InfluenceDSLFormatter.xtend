@@ -17,7 +17,7 @@ class InfluenceDSLFormatter extends AbstractFormatter2 {
     def dispatch void format(InfluenceModel model, extension IFormattableDocument document) {
         // Visit all top-level elements
         for (inf : model.ownedInfluences)          inf.format
-        for (req : model.ownedRequirements)        req.format
+        for (req : model.ownedSatisfactionCriteria)        req.format
         for (ef  : model.ownedEnvironmentalFactors) ef.format
         for (da  : model.ownedArtifacts)           da.format
         for (srp : model.ownedSRPs)                srp.format

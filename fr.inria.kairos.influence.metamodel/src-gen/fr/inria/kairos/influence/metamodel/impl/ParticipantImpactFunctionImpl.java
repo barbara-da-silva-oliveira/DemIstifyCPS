@@ -6,16 +6,19 @@ import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 import fr.inria.kairos.influence.metamodel.NamedElement;
 import fr.inria.kairos.influence.metamodel.ParticipantImpactFunction;
 import fr.inria.kairos.influence.metamodel.ParticipantRelativeImpact;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -43,6 +46,7 @@ public class ParticipantImpactFunctionImpl extends FunctionRepresentationImpl im
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,6 +56,7 @@ public class ParticipantImpactFunctionImpl extends FunctionRepresentationImpl im
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getParticipantContribution() <em>Participant Contribution</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

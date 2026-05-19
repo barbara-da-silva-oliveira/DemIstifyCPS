@@ -4,7 +4,7 @@
 package fr.inria.kairos.influence;
 
 
-/**
+/*
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
 public class InfluenceDSLStandaloneSetup extends InfluenceDSLStandaloneSetupGenerated {

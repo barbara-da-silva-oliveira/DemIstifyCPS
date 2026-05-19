@@ -31,6 +31,15 @@ public interface MetamodelFactory extends EFactory {
 	InfluenceModel createInfluenceModel();
 
 	/**
+	 * Returns a new object of class '<em>Influence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Influence</em>'.
+	 * @generated
+	 */
+	Influence createInfluence();
+
+	/**
 	 * Returns a new object of class '<em>SRP Input Participant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38,6 +47,15 @@ public interface MetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	SRPInputParticipant createSRPInputParticipant();
+
+	/**
+	 * Returns a new object of class '<em>Artifact Participant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Artifact Participant</em>'.
+	 * @generated
+	 */
+	ArtifactParticipant createArtifactParticipant();
 
 	/**
 	 * Returns a new object of class '<em>Environmental Factor Participant</em>'.
@@ -58,22 +76,13 @@ public interface MetamodelFactory extends EFactory {
 	SatisfactionCriterion createSatisfactionCriterion();
 
 	/**
-	 * Returns a new object of class '<em>Influence</em>'.
+	 * Returns a new object of class '<em>Composite Influence</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Influence</em>'.
+	 * @return a new object of class '<em>Composite Influence</em>'.
 	 * @generated
 	 */
-	Influence createInfluence();
-
-	/**
-	 * Returns a new object of class '<em>Artifact Participant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Artifact Participant</em>'.
-	 * @generated
-	 */
-	ArtifactParticipant createArtifactParticipant();
+	CompositeInfluence createCompositeInfluence();
 
 	/**
 	 * Returns a new object of class '<em>Design Artifact</em>'.
@@ -101,6 +110,15 @@ public interface MetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	EnvironmentalFactor createEnvironmentalFactor();
+
+	/**
+	 * Returns a new object of class '<em>Influence Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Influence Function</em>'.
+	 * @generated
+	 */
+	InfluenceFunction createInfluenceFunction();
 
 	/**
 	 * Returns a new object of class '<em>Participant Range</em>'.
@@ -182,15 +200,6 @@ public interface MetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	MonotonicityRow createMonotonicityRow();
-
-	/**
-	 * Returns a new object of class '<em>Composite Influence</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Composite Influence</em>'.
-	 * @generated
-	 */
-	CompositeInfluence createCompositeInfluence();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -4,11 +4,16 @@
 package fr.inria.kairos.influence.formatting2;
 
 import com.google.inject.Inject;
+import fr.inria.kairos.influence.metamodel.AbstractInfluence;
+import fr.inria.kairos.influence.metamodel.DesignArtifact;
+import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceFunction;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.Participant;
+import fr.inria.kairos.influence.metamodel.SatisfactionCriterion;
 import fr.inria.kairos.influence.metamodel.SystemResponseProperty;
+import fr.inria.kairos.influence.services.InfluenceDSLGrammarAccess;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -22,12 +27,29 @@ import org.eclipse.xtext.xbase.lib.XbaseGenerated;
 public class InfluenceDSLFormatter extends AbstractFormatter2 {
   @Inject
   @Extension
-  private /* InfluenceDSLGrammarAccess */Object _influenceDSLGrammarAccess;
+  private InfluenceDSLGrammarAccess _influenceDSLGrammarAccess;
 
   protected void _format(final InfluenceModel model, @Extension final IFormattableDocument document) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field ownedRequirements is undefined for the type InfluenceModel"
-      + "\nformat cannot be resolved");
+    EList<AbstractInfluence> _ownedInfluences = model.getOwnedInfluences();
+    for (final AbstractInfluence inf : _ownedInfluences) {
+      document.<AbstractInfluence>format(inf);
+    }
+    EList<SatisfactionCriterion> _ownedSatisfactionCriteria = model.getOwnedSatisfactionCriteria();
+    for (final SatisfactionCriterion req : _ownedSatisfactionCriteria) {
+      document.<SatisfactionCriterion>format(req);
+    }
+    EList<EnvironmentalFactor> _ownedEnvironmentalFactors = model.getOwnedEnvironmentalFactors();
+    for (final EnvironmentalFactor ef : _ownedEnvironmentalFactors) {
+      document.<EnvironmentalFactor>format(ef);
+    }
+    EList<DesignArtifact> _ownedArtifacts = model.getOwnedArtifacts();
+    for (final DesignArtifact da : _ownedArtifacts) {
+      document.<DesignArtifact>format(da);
+    }
+    EList<SystemResponseProperty> _ownedSRPs = model.getOwnedSRPs();
+    for (final SystemResponseProperty srp : _ownedSRPs) {
+      document.<SystemResponseProperty>format(srp);
+    }
   }
 
   protected void _format(final Influence influence, @Extension final IFormattableDocument document) {

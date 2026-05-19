@@ -4,8 +4,11 @@ package fr.inria.kairos.influence.metamodel.impl;
 
 import fr.inria.kairos.influence.metamodel.EnvironmentalFactor;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -32,6 +35,7 @@ public class EnvironmentalFactorImpl extends NamedElementImpl implements Environ
 	 * @ordered
 	 */
 	protected static final String DESCRIPTION_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -41,6 +45,7 @@ public class EnvironmentalFactorImpl extends NamedElementImpl implements Environ
 	 * @ordered
 	 */
 	protected String description = DESCRIPTION_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getFlexibility() <em>Flexibility</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,6 +55,7 @@ public class EnvironmentalFactorImpl extends NamedElementImpl implements Environ
 	 * @ordered
 	 */
 	protected static final double FLEXIBILITY_EDEFAULT = 0.0;
+
 	/**
 	 * The cached value of the '{@link #getFlexibility() <em>Flexibility</em>}' attribute.
 	 * <!-- begin-user-doc -->

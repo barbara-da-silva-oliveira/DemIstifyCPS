@@ -5,8 +5,8 @@ package fr.inria.kairos.influence.metamodel.impl;
 import fr.inria.kairos.influence.metamodel.AnalyticExpressionFunction;
 import fr.inria.kairos.influence.metamodel.LanguageType;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
-
 import fr.inria.kairos.influence.metamodel.NamedElement;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

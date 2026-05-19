@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
 import java.util.HashMap
 import fr.inria.kairos.influence.metamodel.Influence
-import fr.inria.kairos.influence.analysis.InfluenceEvaluator
+import fr.inria.kairos.influence.analysis.AnalyticRequirementImpactAnalyzer
 import org.junit.jupiter.api.BeforeEach
 import org.eclipse.emf.ecore.EPackage
 import fr.inria.kairos.influence.metamodel.MetamodelPackage
@@ -100,7 +100,7 @@ class InfluenceDSLTraceabilityTest {
             .findFirst[it.outputSRP.name == "BrakingDist"]
 
         // 3. Evaluate
-        val result = InfluenceEvaluator.evaluateChainWithRequirement(model, terminalInf, scenario)
+        val result = AnalyticRequirementImpactAnalyzer.evaluateChainWithRequirement(model, terminalInf, scenario)
 
         // 4. Assert Traceability
         // The gradient map contains keys for ALL variables that affect the outcome.

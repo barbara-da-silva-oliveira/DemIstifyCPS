@@ -2,7 +2,7 @@ package fr.inria.kairos.influence.tests;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import fr.inria.kairos.influence.analysis.InfluenceEvaluator;
+import fr.inria.kairos.influence.analysis.AnalyticRequirementImpactAnalyzer;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
@@ -23,8 +23,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(InjectionExtension.class)/* 
-@InjectWith(_InfluenceDSLInjectorProvider) */
+@ExtendWith(InjectionExtension.class)
+@InjectWith(InfluenceDSLInjectorProvider.class)
 @SuppressWarnings("all")
 public class InfluenceDSLTraceabilityTest {
   @Inject
@@ -163,7 +163,7 @@ public class InfluenceDSLTraceabilityTest {
         return Boolean.valueOf(Objects.equals(_name, "BrakingDist"));
       };
       final Influence terminalInf = IterableExtensions.<Influence>findFirst(Iterables.<Influence>filter(model.getOwnedInfluences(), Influence.class), _function);
-      final InfluenceEvaluator.EvalResult result = InfluenceEvaluator.evaluateChainWithRequirement(model, terminalInf, scenario);
+      final AnalyticRequirementImpactAnalyzer.CriterionAnalysisResult result = AnalyticRequirementImpactAnalyzer.evaluateChainWithRequirement(model, terminalInf, scenario);
       Assertions.assertTrue(result.grad.containsKey("WheelSize"), 
         "Traceability Failed: WheelSize (Root) not found in sensitivity analysis of BrakingDist (Leaf)");
       Assertions.assertTrue(result.grad.containsKey("Rain"), 

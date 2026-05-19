@@ -11,11 +11,12 @@ import org.junit.jupiter.api.^extension.ExtendWith
 import java.util.HashMap
 import fr.inria.kairos.influence.metamodel.Influence
 
-import fr.inria.kairos.influence.analysis.InfluenceEvaluator
-import fr.inria.kairos.influence.analysis.JavaExprEvaluator
+import fr.inria.kairos.influence.analysis.AnalyticRequirementImpactAnalyzer
 import org.junit.jupiter.api.BeforeEach
 import org.eclipse.emf.ecore.EPackage
 import fr.inria.kairos.influence.metamodel.MetamodelPackage
+import fr.inria.kairos.influence.analysis.NumericExpressionEvaluator
+import fr.inria.kairos.influence.analysis.AnalyticRequirementImpactAnalyzer
 
 @ExtendWith(InjectionExtension)
 @InjectWith(InfluenceDSLInjectorProvider)
@@ -39,13 +40,13 @@ class InfluenceDSLMathTest {
     def void testMathEngine() {
         // 1. Test basic arithmetic and precedence
         val expr1 = "10 + 5 * 2" 
-        val ast1 = JavaExprEvaluator.compile(expr1)
-        Assertions.assertEquals(20.0, JavaExprEvaluator.eval(ast1, new HashMap()), 0.001)
+        val ast1 = NumericExpressionEvaluator.compile(expr1)
+        Assertions.assertEquals(20.0, NumericExpressionEvaluator.eval(ast1, new HashMap()), 0.001)
 
         // 2. Test functions (min/max)
         val expr2 = "max(10, 20) + min(5, 1)"
-        val ast2 = JavaExprEvaluator.compile(expr2)
-        Assertions.assertEquals(21.0, JavaExprEvaluator.eval(ast2, new HashMap()), 0.001)
+        val ast2 = NumericExpressionEvaluator.compile(expr2)
+        Assertions.assertEquals(21.0, NumericExpressionEvaluator.eval(ast2, new HashMap()), 0.001)
 
         // 3. Test Variable Substitution
         val expr3 = "(A + B) * 2"
@@ -53,8 +54,8 @@ class InfluenceDSLMathTest {
         vars.put("A", 10.0)
         vars.put("B", 5.0)
         
-        val ast3 = JavaExprEvaluator.compile(expr3)
-        Assertions.assertEquals(30.0, JavaExprEvaluator.eval(ast3, vars), 0.001)
+        val ast3 = NumericExpressionEvaluator.compile(expr3)
+        Assertions.assertEquals(30.0, NumericExpressionEvaluator.eval(ast3, vars), 0.001)
     }
 
     /**
@@ -116,7 +117,7 @@ class InfluenceDSLMathTest {
         Assertions.assertNotNull(terminalInf, "Could not find Influence affecting 'BrakingDistance'")
 
         // --- 4. Run the Evaluator ---
-        val result = InfluenceEvaluator.evaluateChainWithRequirement(
+        val result = AnalyticRequirementImpactAnalyzer.evaluateChainWithRequirement(
             model, 
             terminalInf, 
             scenario

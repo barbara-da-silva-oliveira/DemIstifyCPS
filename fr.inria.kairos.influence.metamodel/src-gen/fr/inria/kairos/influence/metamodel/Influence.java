@@ -3,6 +3,7 @@
 package fr.inria.kairos.influence.metamodel;
 
 import java.util.Map;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
@@ -25,7 +26,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Influence extends AbstractInfluence {
-
 	/**
 	 * Returns the value of the '<em><b>Owned Influence Function</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

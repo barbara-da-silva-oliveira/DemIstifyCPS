@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="fr/inria/kairos/influence/validation/InfluenceDSLValidator.java" kind="src" path="src"/>
+	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="src" path="xtend-gen"/>
 	<classpathentry exported="true" kind="lib" path="thirdparty/jgrapht-1.5.2/lib/jgrapht-io-1.5.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="thirdparty/jgrapht-1.5.2/lib/jgrapht-core-1.5.2.jar">

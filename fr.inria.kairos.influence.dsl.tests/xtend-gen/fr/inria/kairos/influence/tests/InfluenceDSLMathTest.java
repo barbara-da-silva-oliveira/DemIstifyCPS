@@ -2,8 +2,8 @@ package fr.inria.kairos.influence.tests;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import fr.inria.kairos.influence.analysis.InfluenceEvaluator;
-import fr.inria.kairos.influence.analysis.JavaExprEvaluator;
+import fr.inria.kairos.influence.analysis.AnalyticRequirementImpactAnalyzer;
+import fr.inria.kairos.influence.analysis.NumericExpressionEvaluator;
 import fr.inria.kairos.influence.metamodel.Influence;
 import fr.inria.kairos.influence.metamodel.InfluenceModel;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
@@ -25,8 +25,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(InjectionExtension.class)/* 
-@InjectWith(_InfluenceDSLInjectorProvider) */
+@ExtendWith(InjectionExtension.class)
+@InjectWith(InfluenceDSLInjectorProvider.class)
 @SuppressWarnings("all")
 public class InfluenceDSLMathTest {
   @Inject
@@ -47,19 +47,19 @@ public class InfluenceDSLMathTest {
   @Test
   public void testMathEngine() {
     final String expr1 = "10 + 5 * 2";
-    final JavaExprEvaluator.Expr ast1 = JavaExprEvaluator.compile(expr1);
+    final NumericExpressionEvaluator.Expr ast1 = NumericExpressionEvaluator.compile(expr1);
     HashMap<String, Double> _hashMap = new HashMap<String, Double>();
-    Assertions.assertEquals(20.0, JavaExprEvaluator.eval(ast1, _hashMap), 0.001);
+    Assertions.assertEquals(20.0, NumericExpressionEvaluator.eval(ast1, _hashMap), 0.001);
     final String expr2 = "max(10, 20) + min(5, 1)";
-    final JavaExprEvaluator.Expr ast2 = JavaExprEvaluator.compile(expr2);
+    final NumericExpressionEvaluator.Expr ast2 = NumericExpressionEvaluator.compile(expr2);
     HashMap<String, Double> _hashMap_1 = new HashMap<String, Double>();
-    Assertions.assertEquals(21.0, JavaExprEvaluator.eval(ast2, _hashMap_1), 0.001);
+    Assertions.assertEquals(21.0, NumericExpressionEvaluator.eval(ast2, _hashMap_1), 0.001);
     final String expr3 = "(A + B) * 2";
     final HashMap<String, Double> vars = new HashMap<String, Double>();
     vars.put("A", Double.valueOf(10.0));
     vars.put("B", Double.valueOf(5.0));
-    final JavaExprEvaluator.Expr ast3 = JavaExprEvaluator.compile(expr3);
-    Assertions.assertEquals(30.0, JavaExprEvaluator.eval(ast3, vars), 0.001);
+    final NumericExpressionEvaluator.Expr ast3 = NumericExpressionEvaluator.compile(expr3);
+    Assertions.assertEquals(30.0, NumericExpressionEvaluator.eval(ast3, vars), 0.001);
   }
 
   /**
@@ -159,7 +159,7 @@ public class InfluenceDSLMathTest {
       };
       final Influence terminalInf = IterableExtensions.<Influence>findFirst(Iterables.<Influence>filter(model.getOwnedInfluences(), Influence.class), _function);
       Assertions.assertNotNull(terminalInf, "Could not find Influence affecting \'BrakingDistance\'");
-      final InfluenceEvaluator.EvalResult result = InfluenceEvaluator.evaluateChainWithRequirement(model, terminalInf, scenario);
+      final AnalyticRequirementImpactAnalyzer.CriterionAnalysisResult result = AnalyticRequirementImpactAnalyzer.evaluateChainWithRequirement(model, terminalInf, scenario);
       InputOutput.<String>println(result.trace);
       Assertions.assertEquals(24.0, result.srpValue, 0.001, "SRP Value calculation incorrect");
       Assertions.assertEquals(26.0, result.margin, 0.001, "Margin calculation incorrect");
