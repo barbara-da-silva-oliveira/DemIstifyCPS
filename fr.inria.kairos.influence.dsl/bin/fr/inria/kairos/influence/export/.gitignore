@@ -21,3 +21,5 @@
 /.ValueSpecPrinter.java._trace
 /.InfluenceArtifactOriginExporter.java._trace
 /.AnalyticRequirementImpactExporter.java._trace
+/.DashboardDataExporter.java._trace
+/.GentelellaDashboardExporter.java._trace
