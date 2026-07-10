@@ -4,8 +4,6 @@ package fr.inria.kairos.influence.metamodel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Monotonicity Row</b></em>'.
@@ -19,13 +17,16 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getTrend <em>Trend</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getVariedParticipant <em>Varied Participant</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getOutput <em>Output</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getLocalSlope <em>Local Slope</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getNLevels <em>NLevels</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getRationale <em>Rationale</em>}</li>
  * </ul>
  *
  * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getMonotonicityRow()
  * @model
  * @generated
  */
-public interface MonotonicityRow extends EObject {
+public interface MonotonicityRow extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.ParticipantRange}.
@@ -106,5 +107,71 @@ public interface MonotonicityRow extends EObject {
 	 * @generated
 	 */
 	void setOutput(SystemResponseProperty value);
+
+	/**
+	 * Returns the value of the '<em><b>Local Slope</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Local Slope</em>' attribute.
+	 * @see #setLocalSlope(double)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getMonotonicityRow_LocalSlope()
+	 * @model
+	 * @generated
+	 */
+	double getLocalSlope();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getLocalSlope <em>Local Slope</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Local Slope</em>' attribute.
+	 * @see #getLocalSlope()
+	 * @generated
+	 */
+	void setLocalSlope(double value);
+
+	/**
+	 * Returns the value of the '<em><b>NLevels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>NLevels</em>' attribute.
+	 * @see #setNLevels(int)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getMonotonicityRow_NLevels()
+	 * @model
+	 * @generated
+	 */
+	int getNLevels();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getNLevels <em>NLevels</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>NLevels</em>' attribute.
+	 * @see #getNLevels()
+	 * @generated
+	 */
+	void setNLevels(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Rationale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rationale</em>' attribute.
+	 * @see #setRationale(String)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getMonotonicityRow_Rationale()
+	 * @model
+	 * @generated
+	 */
+	String getRationale();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getRationale <em>Rationale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rationale</em>' attribute.
+	 * @see #getRationale()
+	 * @generated
+	 */
+	void setRationale(String value);
 
 } // MonotonicityRow

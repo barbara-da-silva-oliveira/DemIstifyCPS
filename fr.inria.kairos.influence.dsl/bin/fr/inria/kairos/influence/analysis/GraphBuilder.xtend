@@ -56,8 +56,6 @@ class GraphBuilder {
 			 * Weights now come from:
 			 *   ParticipantImpactFunction.participantContribution.importance
 			 *
-			 * Not from confidence, because confidence is epistemic confidence,
-			 * not impact magnitude. Finally, the numbers have jobs.
 			 */
 			for (p : inf.ownedParticipants) {
 				switch p {
@@ -173,8 +171,7 @@ class GraphBuilder {
 				 * originators -> output SRP
 				 *
 				 * This is not added as a visible graph edge, only as adjacency
-				 * for analyses. Yes, slightly magical, but it preserves your old
-				 * analysis behavior without making the DOT graph look like pasta.
+				 * for analyses.
 				 */
 				for (p : inf.ownedParticipants) {
 					switch p {
@@ -421,7 +418,7 @@ class GraphBuilder {
 	}
 
 	/*
-	 * Reflection-based so it survives during your migration if constrainedSRPs
+	 * Reflection-based so it survives if constrainedSRPs
 	 * is temporarily single-valued or multi-valued.
 	 *
 	 * Recommended Ecore:
@@ -551,8 +548,7 @@ class GraphBuilder {
 		}
 
 		/*
-		 * If several impact functions exist, take the one with highest confidence.
-		 * Later, you can refine this with applicabilityDomain.
+		 * If several impact functions exist, take the one with highest confidence, later to define with applicabilityDomain.
 		 */
 		impactFunctions.sort [ a, b |
 			java.lang.Double.compare(b.confidence, a.confidence)

@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl#getRequirementRef <em>Requirement Ref</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl#getLanguage <em>Language</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl#getMarginDefinition <em>Margin Definition</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl#getCriterionDefinition <em>Criterion Definition</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.SatisfactionCriterionImpl#getConstrainedSRPs <em>Constrained SR Ps</em>}</li>
  * </ul>
  *
@@ -56,7 +56,7 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LanguageType LANGUAGE_EDEFAULT = LanguageType.NATURAL_LANGUAGE;
+	protected static final LanguageType LANGUAGE_EDEFAULT = LanguageType.JAVA_NUMERIC_EXPRESSION;
 
 	/**
 	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
@@ -69,24 +69,24 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 	protected LanguageType language = LANGUAGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMarginDefinition() <em>Margin Definition</em>}' attribute.
+	 * The default value of the '{@link #getCriterionDefinition() <em>Criterion Definition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMarginDefinition()
+	 * @see #getCriterionDefinition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MARGIN_DEFINITION_EDEFAULT = null;
+	protected static final String CRITERION_DEFINITION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMarginDefinition() <em>Margin Definition</em>}' attribute.
+	 * The cached value of the '{@link #getCriterionDefinition() <em>Criterion Definition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMarginDefinition()
+	 * @see #getCriterionDefinition()
 	 * @generated
 	 * @ordered
 	 */
-	protected String marginDefinition = MARGIN_DEFINITION_EDEFAULT;
+	protected String criterionDefinition = CRITERION_DEFINITION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getConstrainedSRPs() <em>Constrained SR Ps</em>}' reference list.
@@ -190,8 +190,8 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 	 * @generated
 	 */
 	@Override
-	public String getMarginDefinition() {
-		return marginDefinition;
+	public String getCriterionDefinition() {
+		return criterionDefinition;
 	}
 
 	/**
@@ -200,12 +200,13 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 	 * @generated
 	 */
 	@Override
-	public void setMarginDefinition(String newMarginDefinition) {
-		String oldMarginDefinition = marginDefinition;
-		marginDefinition = newMarginDefinition;
+	public void setCriterionDefinition(String newCriterionDefinition) {
+		String oldCriterionDefinition = criterionDefinition;
+		criterionDefinition = newCriterionDefinition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					MetamodelPackage.SATISFACTION_CRITERION__MARGIN_DEFINITION, oldMarginDefinition, marginDefinition));
+					MetamodelPackage.SATISFACTION_CRITERION__CRITERION_DEFINITION, oldCriterionDefinition,
+					criterionDefinition));
 	}
 
 	/**
@@ -236,8 +237,8 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 			return basicGetRequirementRef();
 		case MetamodelPackage.SATISFACTION_CRITERION__LANGUAGE:
 			return getLanguage();
-		case MetamodelPackage.SATISFACTION_CRITERION__MARGIN_DEFINITION:
-			return getMarginDefinition();
+		case MetamodelPackage.SATISFACTION_CRITERION__CRITERION_DEFINITION:
+			return getCriterionDefinition();
 		case MetamodelPackage.SATISFACTION_CRITERION__CONSTRAINED_SR_PS:
 			return getConstrainedSRPs();
 		}
@@ -259,8 +260,8 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 		case MetamodelPackage.SATISFACTION_CRITERION__LANGUAGE:
 			setLanguage((LanguageType) newValue);
 			return;
-		case MetamodelPackage.SATISFACTION_CRITERION__MARGIN_DEFINITION:
-			setMarginDefinition((String) newValue);
+		case MetamodelPackage.SATISFACTION_CRITERION__CRITERION_DEFINITION:
+			setCriterionDefinition((String) newValue);
 			return;
 		case MetamodelPackage.SATISFACTION_CRITERION__CONSTRAINED_SR_PS:
 			getConstrainedSRPs().clear();
@@ -284,8 +285,8 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 		case MetamodelPackage.SATISFACTION_CRITERION__LANGUAGE:
 			setLanguage(LANGUAGE_EDEFAULT);
 			return;
-		case MetamodelPackage.SATISFACTION_CRITERION__MARGIN_DEFINITION:
-			setMarginDefinition(MARGIN_DEFINITION_EDEFAULT);
+		case MetamodelPackage.SATISFACTION_CRITERION__CRITERION_DEFINITION:
+			setCriterionDefinition(CRITERION_DEFINITION_EDEFAULT);
 			return;
 		case MetamodelPackage.SATISFACTION_CRITERION__CONSTRAINED_SR_PS:
 			getConstrainedSRPs().clear();
@@ -306,9 +307,9 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 			return requirementRef != null;
 		case MetamodelPackage.SATISFACTION_CRITERION__LANGUAGE:
 			return language != LANGUAGE_EDEFAULT;
-		case MetamodelPackage.SATISFACTION_CRITERION__MARGIN_DEFINITION:
-			return MARGIN_DEFINITION_EDEFAULT == null ? marginDefinition != null
-					: !MARGIN_DEFINITION_EDEFAULT.equals(marginDefinition);
+		case MetamodelPackage.SATISFACTION_CRITERION__CRITERION_DEFINITION:
+			return CRITERION_DEFINITION_EDEFAULT == null ? criterionDefinition != null
+					: !CRITERION_DEFINITION_EDEFAULT.equals(criterionDefinition);
 		case MetamodelPackage.SATISFACTION_CRITERION__CONSTRAINED_SR_PS:
 			return constrainedSRPs != null && !constrainedSRPs.isEmpty();
 		}
@@ -328,8 +329,8 @@ public class SatisfactionCriterionImpl extends NamedElementImpl implements Satis
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (language: ");
 		result.append(language);
-		result.append(", marginDefinition: ");
-		result.append(marginDefinition);
+		result.append(", criterionDefinition: ");
+		result.append(criterionDefinition);
 		result.append(')');
 		return result.toString();
 	}

@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedParticipants <em>Owned Participants</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.Influence#getOutputSRP <em>Output SRP</em>}</li>
  * </ul>
@@ -26,28 +25,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Influence extends AbstractInfluence {
-	/**
-	 * Returns the value of the '<em><b>Owned Influence Function</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Influence Function</em>' containment reference.
-	 * @see #setOwnedInfluenceFunction(InfluenceFunction)
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getInfluence_OwnedInfluenceFunction()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	InfluenceFunction getOwnedInfluenceFunction();
-
-	/**
-	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Influence Function</em>' containment reference.
-	 * @see #getOwnedInfluenceFunction()
-	 * @generated
-	 */
-	void setOwnedInfluenceFunction(InfluenceFunction value);
-
 	/**
 	 * Returns the value of the '<em><b>Owned Participants</b></em>' containment reference list.
 	 * The list contents are of type {@link fr.inria.kairos.influence.metamodel.Participant}.

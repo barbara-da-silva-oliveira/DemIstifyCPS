@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -37,11 +35,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.MonotonicityRowImpl#getTrend <em>Trend</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.MonotonicityRowImpl#getVariedParticipant <em>Varied Participant</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.MonotonicityRowImpl#getOutput <em>Output</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.MonotonicityRowImpl#getLocalSlope <em>Local Slope</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.MonotonicityRowImpl#getNLevels <em>NLevels</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.impl.MonotonicityRowImpl#getRationale <em>Rationale</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements MonotonicityRow {
+public class MonotonicityRowImpl extends NamedElementImpl implements MonotonicityRow {
 	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -91,6 +92,66 @@ public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected SystemResponseProperty output;
+
+	/**
+	 * The default value of the '{@link #getLocalSlope() <em>Local Slope</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocalSlope()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double LOCAL_SLOPE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getLocalSlope() <em>Local Slope</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocalSlope()
+	 * @generated
+	 * @ordered
+	 */
+	protected double localSlope = LOCAL_SLOPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getNLevels() <em>NLevels</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNLevels()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NLEVELS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getNLevels() <em>NLevels</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNLevels()
+	 * @generated
+	 * @ordered
+	 */
+	protected int nLevels = NLEVELS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRationale() <em>Rationale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRationale()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RATIONALE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRationale() <em>Rationale</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRationale()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rationale = RATIONALE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,6 +301,78 @@ public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
+	public double getLocalSlope() {
+		return localSlope;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLocalSlope(double newLocalSlope) {
+		double oldLocalSlope = localSlope;
+		localSlope = newLocalSlope;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.MONOTONICITY_ROW__LOCAL_SLOPE,
+					oldLocalSlope, localSlope));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getNLevels() {
+		return nLevels;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setNLevels(int newNLevels) {
+		int oldNLevels = nLevels;
+		nLevels = newNLevels;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.MONOTONICITY_ROW__NLEVELS,
+					oldNLevels, nLevels));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getRationale() {
+		return rationale;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRationale(String newRationale) {
+		String oldRationale = rationale;
+		rationale = newRationale;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.MONOTONICITY_ROW__RATIONALE,
+					oldRationale, rationale));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case MetamodelPackage.MONOTONICITY_ROW__CONDITION:
@@ -268,6 +401,12 @@ public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements
 			if (resolve)
 				return getOutput();
 			return basicGetOutput();
+		case MetamodelPackage.MONOTONICITY_ROW__LOCAL_SLOPE:
+			return getLocalSlope();
+		case MetamodelPackage.MONOTONICITY_ROW__NLEVELS:
+			return getNLevels();
+		case MetamodelPackage.MONOTONICITY_ROW__RATIONALE:
+			return getRationale();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -294,6 +433,15 @@ public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements
 		case MetamodelPackage.MONOTONICITY_ROW__OUTPUT:
 			setOutput((SystemResponseProperty) newValue);
 			return;
+		case MetamodelPackage.MONOTONICITY_ROW__LOCAL_SLOPE:
+			setLocalSlope((Double) newValue);
+			return;
+		case MetamodelPackage.MONOTONICITY_ROW__NLEVELS:
+			setNLevels((Integer) newValue);
+			return;
+		case MetamodelPackage.MONOTONICITY_ROW__RATIONALE:
+			setRationale((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -318,6 +466,15 @@ public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements
 		case MetamodelPackage.MONOTONICITY_ROW__OUTPUT:
 			setOutput((SystemResponseProperty) null);
 			return;
+		case MetamodelPackage.MONOTONICITY_ROW__LOCAL_SLOPE:
+			setLocalSlope(LOCAL_SLOPE_EDEFAULT);
+			return;
+		case MetamodelPackage.MONOTONICITY_ROW__NLEVELS:
+			setNLevels(NLEVELS_EDEFAULT);
+			return;
+		case MetamodelPackage.MONOTONICITY_ROW__RATIONALE:
+			setRationale(RATIONALE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -338,6 +495,12 @@ public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements
 			return variedParticipant != null;
 		case MetamodelPackage.MONOTONICITY_ROW__OUTPUT:
 			return output != null;
+		case MetamodelPackage.MONOTONICITY_ROW__LOCAL_SLOPE:
+			return localSlope != LOCAL_SLOPE_EDEFAULT;
+		case MetamodelPackage.MONOTONICITY_ROW__NLEVELS:
+			return nLevels != NLEVELS_EDEFAULT;
+		case MetamodelPackage.MONOTONICITY_ROW__RATIONALE:
+			return RATIONALE_EDEFAULT == null ? rationale != null : !RATIONALE_EDEFAULT.equals(rationale);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -355,6 +518,12 @@ public class MonotonicityRowImpl extends MinimalEObjectImpl.Container implements
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (trend: ");
 		result.append(trend);
+		result.append(", localSlope: ");
+		result.append(localSlope);
+		result.append(", nLevels: ");
+		result.append(nLevels);
+		result.append(", rationale: ");
+		result.append(rationale);
 		result.append(')');
 		return result.toString();
 	}

@@ -16,6 +16,7 @@ Bundle-ClassPath: .,
  thirdparty/polyglot-25.0.0.jar,
  thirdparty/python-lib,
  thirdparty/exp4j-0.4.8.jar
+ thirdparty/gson-2.11.0.jar
 Require-Bundle: fr.inria.kairos.influence.metamodel,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,
@@ -27,7 +28,9 @@ Require-Bundle: fr.inria.kairos.influence.metamodel,
  org.eclipse.ui.ide;bundle-version="3.22.100",
  org.eclipse.emf.validation;bundle-version="1.8.3",
  org.eclipse.emf.mwe2.launch,
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: fr.inria.kairos.influence.services,
  fr.inria.kairos.influence.scoping,
@@ -39,6 +42,7 @@ Export-Package: fr.inria.kairos.influence.services,
  fr.inria.kairos.influence,
  fr.inria.kairos.influence.formatting2,
  fr.inria.kairos.influence.parser.antlr,
+ fr.inria.kairos.influence.patch,
  org.jgrapht,
  org.jgrapht.graph
 Import-Package: org.apache.log4j

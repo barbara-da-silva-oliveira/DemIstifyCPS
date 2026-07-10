@@ -265,7 +265,7 @@ public final class AnalyticRequirementImpactAnalyzer {
 	    trace.append("Criterion: ").append(criterion.getName()).append("\n");
 	    trace.append("Requirement: ").append(requirementName).append("\n");
 
-	    String marginExpr = criterion.getMarginDefinition();
+	    String marginExpr = criterion.getCriterionDefinition();
 	    LanguageType lang = criterion.getLanguage();
 
 	    if (marginExpr == null || marginExpr.trim().isEmpty()) {

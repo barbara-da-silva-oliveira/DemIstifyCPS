@@ -1,0 +1,138 @@
+Analytic Requirement Impact Analysis
+====================================
+
+Scenario construction
+=====================
+
+Artifact values extracted from DesignArtifact.ref:
+  motorSpeed = 0.200000
+  detectionThreshold = 0.070000
+  delayStaticDetection = 0.000000
+  sweepingDelay = <missing numeric value from referenced EObject>
+  computeDistance = 0.000000
+  ultrasonicSensor = 0.040000
+  motor = <missing numeric value from referenced EObject>
+  mass = 0.450000
+  frontalArea = 0.019488
+
+Environmental factors:
+  Values are taken from EnvironmentalFactorParticipant.admissibleSpace when available.
+  If a factor has no admissibleSpace and no scenario value, the analytic evaluation will fail for that influence.
+
+
+Analytic influence evaluations
+==============================
+
+------------------------------------------------------------
+Influence: i1
+------------------------------------------------------------
+
+Multi-requirement influence evaluation
+Influence: i1
+Output SRP: DistanceToStop
+
+No SatisfactionCriterion constrains output SRP DistanceToStop.
+
+------------------------------------------------------------
+Influence: i2
+------------------------------------------------------------
+
+Multi-requirement influence evaluation
+Influence: i2
+Output SRP: MarginCollision
+
+Influence chain evaluation
+Terminal influence: i2 -> SRP: MarginCollision
+[evalSRP] MarginCollision from f2_marginExpression: detectionThreshold - DistanceToStop
+  i2_detectionThreshold -> detectionThreshold = 0.070000
+[evalSRP] DistanceToStop from f1_brakingExpression: mass*motorSpeed^2 / (2*gravityAccel*mass*frictionCoef*cos(slopeAngleRad) + 2*gravityAccel*mass*sin(slopeAngleRad) + frontalArea*dragCoefficient*airDensity*motorSpeed^2)
+  i1_motorSpeed -> motorSpeed = 0.200000
+  i1_mass -> mass = 0.450000
+  i1_frontalArea -> frontalArea = 0.019488
+  i1_frictionCoef -> frictionCoef = 0.600000
+  i1_slopeAngleRad -> slopeAngleRad = -0.349100
+  i1_dragCoefficient -> dragCoefficient = 0.800000
+  i1_gravityAccel -> gravityAccel = 9.810000
+  i1_airDensity -> airDensity = 1.293000
+=> DistanceToStop = 0.009190
+
+  i2_DistanceToStop -> DistanceToStop = 0.009190
+=> MarginCollision = 0.060810
+
+SRP MarginCollision = 0.060810
+
+Criterion: ObstacleAvoidanceClearanceCriterion
+Requirement: ObstacleAvoidance
+Margin expression M(x): MarginCollision - 0.05
+Convention: M >= 0 means satisfied, M < 0 means violated.
+
+[evalMargin] variables needed: [MarginCollision]
+[evalSRP] MarginCollision from f2_marginExpression: detectionThreshold - DistanceToStop
+  i2_detectionThreshold -> detectionThreshold = 0.070000
+[evalSRP] DistanceToStop from f1_brakingExpression: mass*motorSpeed^2 / (2*gravityAccel*mass*frictionCoef*cos(slopeAngleRad) + 2*gravityAccel*mass*sin(slopeAngleRad) + frontalArea*dragCoefficient*airDensity*motorSpeed^2)
+  i1_motorSpeed -> motorSpeed = 0.200000
+  i1_mass -> mass = 0.450000
+  i1_frontalArea -> frontalArea = 0.019488
+  i1_frictionCoef -> frictionCoef = 0.600000
+  i1_slopeAngleRad -> slopeAngleRad = -0.349100
+  i1_dragCoefficient -> dragCoefficient = 0.800000
+  i1_gravityAccel -> gravityAccel = 9.810000
+  i1_airDensity -> airDensity = 1.293000
+=> DistanceToStop = 0.009190
+
+  i2_DistanceToStop -> DistanceToStop = 0.009190
+=> MarginCollision = 0.060810
+
+[evalMargin] M({MarginCollision=0.06081019834742766}) = 0.010810
+
+Margin M = 0.010810  SATISFIED
+
+Decomposed sensitivities dM/dx 
+i1_airDensity: h=0.000001 M(+h)=0.010810 M(-h)=0.010810 dM/di1_airDensity≈0.000003
+i1_dragCoefficient: h=0.000001 M(+h)=0.010810 M(-h)=0.010810 dM/di1_dragCoefficient≈0.000005
+i1_frictionCoef: h=0.000001 M(+h)=0.010810 M(-h)=0.010810 dM/di1_frictionCoef≈0.038925
+i1_frontalArea: h=0.000001 M(+h)=0.010810 M(-h)=0.010810 dM/di1_frontalArea≈0.000194
+i1_gravityAccel: h=0.000010 M(+h)=0.010810 M(-h)=0.010810 dM/di1_gravityAccel≈0.000936
+i1_mass: h=0.000001 M(+h)=0.010810 M(-h)=0.010810 dM/di1_mass≈-0.000008
+i1_motorSpeed: h=0.000001 M(+h)=0.010810 M(-h)=0.010810 dM/di1_motorSpeed≈-0.091860
+i1_slopeAngleRad: h=0.000001 M(+h)=0.010810 M(-h)=0.010810 dM/di1_slopeAngleRad≈0.047427
+i2_detectionThreshold: h=0.000001 M(+h)=0.010811 M(-h)=0.010809 dM/di2_detectionThreshold≈1.000000
+
+== Qualitative classification if variable increases ==
+i1_airDensity: benefits (increase helps satisfaction)
+i1_dragCoefficient: benefits (increase helps satisfaction)
+i1_frictionCoef: benefits (increase helps satisfaction)
+i1_frontalArea: benefits (increase helps satisfaction)
+i1_gravityAccel: benefits (increase helps satisfaction)
+i1_mass: prejudices (increase hurts satisfaction)
+i1_motorSpeed: prejudices (increase hurts satisfaction)
+i1_slopeAngleRad: benefits (increase helps satisfaction)
+i2_detectionThreshold: benefits (increase helps satisfaction)
+
+Trade-off analysis
+No trade-off detected among evaluated requirements.
+
+Skipping influence i3: no AnalyticExpressionFunction representation.
+
+Skipping influence i4: no AnalyticExpressionFunction representation.
+
+Skipping influence i5: no AnalyticExpressionFunction representation.
+
+Skipping influence i6: no AnalyticExpressionFunction representation.
+
+Skipping influence i7: no AnalyticExpressionFunction representation.
+
+Skipping influence i8: no AnalyticExpressionFunction representation.
+
+
+
+Global cross-requirement trade-off summary
+==========================================
+
+No cross-requirement trade-off detected from analytic evaluations.
+
+Interpretation:
+  positive dM/dx => increasing x helps satisfaction
+  negative dM/dx => increasing x hurts satisfaction
+  M >= 0 => satisfied
+  M < 0  => violated

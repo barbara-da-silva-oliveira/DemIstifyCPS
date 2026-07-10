@@ -289,7 +289,7 @@ public class GraphBuilder {
   }
 
   /**
-   * Reflection-based so it survives during your migration if constrainedSRPs
+   * Reflection-based so it survives if constrainedSRPs
    * is temporarily single-valued or multi-valued.
    * 
    * Recommended Ecore:

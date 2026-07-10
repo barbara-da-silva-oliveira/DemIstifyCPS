@@ -409,8 +409,18 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EReference getAbstractInfluence_OwnedInfluenceFunction() {
+		return (EReference) abstractInfluenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getAbstractInfluence_Description() {
-		return (EAttribute) abstractInfluenceEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) abstractInfluenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -429,7 +439,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_OwnedInfluenceFunction() {
+	public EReference getInfluence_OwnedParticipants() {
 		return (EReference) influenceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -439,18 +449,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getInfluence_OwnedParticipants() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getInfluence_OutputSRP() {
-		return (EReference) influenceEClass.getEStructuralFeatures().get(2);
+		return (EReference) influenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -589,7 +589,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
-	public EAttribute getSatisfactionCriterion_MarginDefinition() {
+	public EAttribute getSatisfactionCriterion_CriterionDefinition() {
 		return (EAttribute) satisfactionCriterionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -621,16 +621,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	@Override
 	public EReference getCompositeInfluence_InternalInfluences() {
 		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCompositeInfluence_OwnedInfluenceFunction() {
-		return (EReference) compositeInfluenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1109,6 +1099,36 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * @generated
 	 */
 	@Override
+	public EAttribute getMonotonicityRow_LocalSlope() {
+		return (EAttribute) monotonicityRowEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMonotonicityRow_NLevels() {
+		return (EAttribute) monotonicityRowEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMonotonicityRow_Rationale() {
+		return (EAttribute) monotonicityRowEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getLanguageType() {
 		return languageTypeEEnum;
 	}
@@ -1164,10 +1184,10 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		createEReference(influenceModelEClass, INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA);
 
 		abstractInfluenceEClass = createEClass(ABSTRACT_INFLUENCE);
+		createEReference(abstractInfluenceEClass, ABSTRACT_INFLUENCE__OWNED_INFLUENCE_FUNCTION);
 		createEAttribute(abstractInfluenceEClass, ABSTRACT_INFLUENCE__DESCRIPTION);
 
 		influenceEClass = createEClass(INFLUENCE);
-		createEReference(influenceEClass, INFLUENCE__OWNED_INFLUENCE_FUNCTION);
 		createEReference(influenceEClass, INFLUENCE__OWNED_PARTICIPANTS);
 		createEReference(influenceEClass, INFLUENCE__OUTPUT_SRP);
 		createEOperation(influenceEClass, INFLUENCE___PARTICIPATION_PATTERN__DIAGNOSTICCHAIN_MAP);
@@ -1188,12 +1208,11 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		satisfactionCriterionEClass = createEClass(SATISFACTION_CRITERION);
 		createEReference(satisfactionCriterionEClass, SATISFACTION_CRITERION__REQUIREMENT_REF);
 		createEAttribute(satisfactionCriterionEClass, SATISFACTION_CRITERION__LANGUAGE);
-		createEAttribute(satisfactionCriterionEClass, SATISFACTION_CRITERION__MARGIN_DEFINITION);
+		createEAttribute(satisfactionCriterionEClass, SATISFACTION_CRITERION__CRITERION_DEFINITION);
 		createEReference(satisfactionCriterionEClass, SATISFACTION_CRITERION__CONSTRAINED_SR_PS);
 
 		compositeInfluenceEClass = createEClass(COMPOSITE_INFLUENCE);
 		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES);
-		createEReference(compositeInfluenceEClass, COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION);
 
 		designArtifactEClass = createEClass(DESIGN_ARTIFACT);
 		createEReference(designArtifactEClass, DESIGN_ARTIFACT__REF);
@@ -1256,6 +1275,9 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		createEAttribute(monotonicityRowEClass, MONOTONICITY_ROW__TREND);
 		createEReference(monotonicityRowEClass, MONOTONICITY_ROW__VARIED_PARTICIPANT);
 		createEReference(monotonicityRowEClass, MONOTONICITY_ROW__OUTPUT);
+		createEAttribute(monotonicityRowEClass, MONOTONICITY_ROW__LOCAL_SLOPE);
+		createEAttribute(monotonicityRowEClass, MONOTONICITY_ROW__NLEVELS);
+		createEAttribute(monotonicityRowEClass, MONOTONICITY_ROW__RATIONALE);
 
 		// Create enums
 		languageTypeEEnum = createEEnum(LANGUAGE_TYPE);
@@ -1315,6 +1337,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		analyticExpressionFunctionEClass.getESuperTypes().add(this.getNamedElement());
 		monotonicityTableEClass.getESuperTypes().add(this.getFunctionRepresentation());
 		monotonicityTableEClass.getESuperTypes().add(this.getNamedElement());
+		monotonicityRowEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE,
@@ -1342,15 +1365,15 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 
 		initEClass(abstractInfluenceEClass, AbstractInfluence.class, "AbstractInfluence", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractInfluence_OwnedInfluenceFunction(), this.getInfluenceFunction(), null,
+				"ownedInfluenceFunction", null, 1, 1, AbstractInfluence.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractInfluence_Description(), ecorePackage.getEString(), "description", null, 1, 1,
 				AbstractInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(influenceEClass, Influence.class, "Influence", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInfluence_OwnedInfluenceFunction(), this.getInfluenceFunction(), null,
-				"ownedInfluenceFunction", null, 1, 1, Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInfluence_OwnedParticipants(), this.getParticipant(), null, "ownedParticipants", null, 1, -1,
 				Influence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1403,9 +1426,9 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEAttribute(getSatisfactionCriterion_Language(), this.getLanguageType(), "language", null, 1, 1,
 				SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSatisfactionCriterion_MarginDefinition(), ecorePackage.getEString(), "marginDefinition", null,
-				1, 1, SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSatisfactionCriterion_CriterionDefinition(), ecorePackage.getEString(), "criterionDefinition",
+				null, 1, 1, SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSatisfactionCriterion_ConstrainedSRPs(), this.getSystemResponseProperty(), null,
 				"constrainedSRPs", null, 0, -1, SatisfactionCriterion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1415,9 +1438,6 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getCompositeInfluence_InternalInfluences(), this.getAbstractInfluence(), null,
 				"internalInfluences", null, 2, -1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompositeInfluence_OwnedInfluenceFunction(), this.getInfluenceFunction(), null,
-				"ownedInfluenceFunction", null, 1, 1, CompositeInfluence.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(designArtifactEClass, DesignArtifact.class, "DesignArtifact", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1553,11 +1573,21 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		initEReference(getMonotonicityRow_Output(), this.getSystemResponseProperty(), null, "output", null, 0, 1,
 				MonotonicityRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMonotonicityRow_LocalSlope(), ecorePackage.getEDouble(), "localSlope", null, 0, 1,
+				MonotonicityRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMonotonicityRow_NLevels(), ecorePackage.getEInt(), "nLevels", null, 0, 1,
+				MonotonicityRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMonotonicityRow_Rationale(), ecorePackage.getEString(), "rationale", null, 0, 1,
+				MonotonicityRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(languageTypeEEnum, LanguageType.class, "LanguageType");
-		addEEnumLiteral(languageTypeEEnum, LanguageType.NATURAL_LANGUAGE);
 		addEEnumLiteral(languageTypeEEnum, LanguageType.JAVA_NUMERIC_EXPRESSION);
+		addEEnumLiteral(languageTypeEEnum, LanguageType.OCL);
+		addEEnumLiteral(languageTypeEEnum, LanguageType.NATURAL_LANGUAGE);
 
 		initEEnum(trendTypeEEnum, TrendType.class, "TrendType");
 		addEEnumLiteral(trendTypeEEnum, TrendType.INCREASING);

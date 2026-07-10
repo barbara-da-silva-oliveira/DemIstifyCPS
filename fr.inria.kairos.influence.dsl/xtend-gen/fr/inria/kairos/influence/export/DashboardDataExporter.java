@@ -244,7 +244,7 @@ public class DashboardDataExporter {
         sb.append("      \"name\": ").append(this.jsonString(criterion.getName())).append(",\n");
         sb.append("      \"requirement\": ").append(this.jsonString(this.requirementLabel(criterion.getRequirementRef()))).append(",\n");
         sb.append("      \"requirementUri\": ").append(this.jsonString(this.uriOf(criterion.getRequirementRef()))).append(",\n");
-        sb.append("      \"marginDefinition\": ").append(this.jsonString(criterion.getMarginDefinition())).append(",\n");
+        sb.append("      \"marginDefinition\": ").append(this.jsonString(criterion.getCriterionDefinition())).append(",\n");
         sb.append("      \"language\": ").append(this.jsonString(String.valueOf(criterion.getLanguage()))).append(",\n");
         sb.append("      \"constrainedSRPs\": ");
         final Function1<SystemResponseProperty, String> _function = (SystemResponseProperty it) -> {

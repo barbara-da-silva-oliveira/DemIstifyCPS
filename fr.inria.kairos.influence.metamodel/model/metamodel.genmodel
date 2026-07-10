@@ -13,6 +13,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//LanguageType">
       <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//LanguageType/NaturalLanguage"/>
       <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//LanguageType/JavaNumericExpression"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//LanguageType/OCL"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//TrendType">
       <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//TrendType/Increasing"/>
@@ -31,10 +32,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//InfluenceModel/ownedSatisfactionCriteria"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//AbstractInfluence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//AbstractInfluence/ownedInfluenceFunction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//AbstractInfluence/description"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Influence">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/ownedInfluenceFunction"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/ownedParticipants"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Influence/outputSRP"/>
     </genClasses>
@@ -54,12 +55,11 @@
     <genClasses ecoreClass="metamodel.ecore#//SatisfactionCriterion">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//SatisfactionCriterion/requirementRef"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//SatisfactionCriterion/language"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//SatisfactionCriterion/marginDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//SatisfactionCriterion/criterionDefinition"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//SatisfactionCriterion/constrainedSRPs"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//CompositeInfluence">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeInfluence/internalInfluences"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//CompositeInfluence/ownedInfluenceFunction"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//DesignArtifact">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//DesignArtifact/ref"/>
@@ -122,6 +122,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//MonotonicityRow/trend"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//MonotonicityRow/variedParticipant"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//MonotonicityRow/output"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//MonotonicityRow/localSlope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//MonotonicityRow/nLevels"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//MonotonicityRow/rationale"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

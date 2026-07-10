@@ -7,7 +7,6 @@ import fr.inria.kairos.influence.analysis.ImpactMetrics;
 import fr.inria.kairos.influence.export.AnalyticRequirementImpactExporter;
 import fr.inria.kairos.influence.export.DashboardDataExporter;
 import fr.inria.kairos.influence.export.DotExporter;
-import fr.inria.kairos.influence.export.GentelellaDashboardExporter;
 import fr.inria.kairos.influence.export.InfluenceArtifactOriginExporter;
 import fr.inria.kairos.influence.export.InfluenceReportExporter;
 import fr.inria.kairos.influence.export.JsonExporter;
@@ -26,7 +25,7 @@ public class InfluenceGenerationPipeline {
     this.exportInfluenceKnowledge(resource, fsa);
     this.exportAnalyticRequirementImpact(resource, fsa);
     this.runGraphDiagnostics(graphBundle);
-    this.exportDashboard(resource, graphBundle, fsa);
+    this.exportDashboardData(resource, graphBundle, fsa);
   }
 
   private void exportGraphs(final GraphBuilder.Result graphBundle, final IFileSystemAccess2 fsa) {
@@ -73,8 +72,7 @@ public class InfluenceGenerationPipeline {
     new GraphCycleAnalyzer().detectCycle(graphBundle.graph);
   }
 
-  private void exportDashboard(final Resource resource, final GraphBuilder.Result graphBundle, final IFileSystemAccess2 fsa) {
+  private void exportDashboardData(final Resource resource, final GraphBuilder.Result graphBundle, final IFileSystemAccess2 fsa) {
     new DashboardDataExporter().export(resource, graphBundle, fsa, "dashboard/data");
-    new GentelellaDashboardExporter().export(fsa, "dashboard/site");
   }
 }

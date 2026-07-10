@@ -25,6 +25,8 @@
         upperBound="-1" eType="#//SatisfactionCriterion" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractInfluence" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluenceFunction"
+        lowerBound="1" eType="#//InfluenceFunction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -35,8 +37,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="ParticipationPattern" value="&#xA;&#x9;&#x9;&#x9;self.ownedParticipants->exists(p | p.oclIsKindOf(ArtifactParticipant)) and &#xA;&#x9;&#x9;&#x9;(self.ownedParticipants->exists(p | p.oclIsKindOf(EnvironmentalFactorParticipant)))&#xA;&#x9;&#x9;&#x9;or self.ownedParticipants->exists(p |p.oclIsKindOf(SRPInputParticipant))"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluenceFunction"
-        lowerBound="1" eType="#//InfluenceFunction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParticipants" lowerBound="1"
         upperBound="-1" eType="#//Participant" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputSRP" lowerBound="1"
@@ -61,18 +61,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SatisfactionCriterion" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirementRef" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="criterionDefinition" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" lowerBound="1"
         eType="#//LanguageType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="marginDefinition" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constrainedSRPs" upperBound="-1"
         eType="#//SystemResponseProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeInfluence" eSuperTypes="#//AbstractInfluence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="internalInfluences" lowerBound="2"
         upperBound="-1" eType="#//AbstractInfluence"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInfluenceFunction"
-        lowerBound="1" eType="#//InfluenceFunction" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DesignArtifact" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
@@ -92,8 +90,9 @@
         eType="#//FunctionRepresentation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LanguageType">
-    <eLiterals name="NaturalLanguage"/>
-    <eLiterals name="JavaNumericExpression" value="1"/>
+    <eLiterals name="JavaNumericExpression"/>
+    <eLiterals name="OCL" value="1"/>
+    <eLiterals name="NaturalLanguage" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParticipantRange" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ValueSpec"
@@ -141,12 +140,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="tableRows" lowerBound="1"
         upperBound="-1" eType="#//MonotonicityRow" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MonotonicityRow">
+  <eClassifiers xsi:type="ecore:EClass" name="MonotonicityRow" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" upperBound="-1"
         eType="#//ParticipantRange" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="#//TrendType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variedParticipant" eType="#//Participant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//SystemResponseProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localSlope" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nLevels" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rationale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TrendType">
     <eLiterals name="Increasing"/>

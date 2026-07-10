@@ -431,7 +431,6 @@ class RequirementTraceability {
 		public val String influenceId
 
 		/*
-		 * Can be:
 		 *   A:<artifact>
 		 *   E:<environmentalFactor>
 		 *

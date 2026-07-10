@@ -296,6 +296,8 @@ public class MetamodelSwitch<T> extends Switch<T> {
 			MonotonicityRow monotonicityRow = (MonotonicityRow) theEObject;
 			T result = caseMonotonicityRow(monotonicityRow);
 			if (result == null)
+				result = caseNamedElement(monotonicityRow);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}

@@ -90,6 +90,7 @@ public class MetamodelTables extends AbstractTables
 	public static final /*@NonInvalid*/ ClassId CLSSid_SystemResponseProperty = MetamodelTables.PACKid_http_c_s_s_kairos_inria_fr_s_influences.getClassId("SystemResponseProperty", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_ValueSpec = MetamodelTables.PACKid_http_c_s_s_kairos_inria_fr_s_influences.getClassId("ValueSpec", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EDouble = MetamodelTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EDouble", 0);
+	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = MetamodelTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_LanguageType = MetamodelTables.PACKid_http_c_s_s_kairos_inria_fr_s_influences.getEnumerationId("LanguageType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_TrendType = MetamodelTables.PACKid_http_c_s_s_kairos_inria_fr_s_influences.getEnumerationId("TrendType");
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
@@ -289,6 +290,7 @@ public class MetamodelTables extends AbstractTables
 		private static final ExecutorFragment _LanguageType__OclType = new ExecutorFragment(Types._LanguageType, OCLstdlibTables.Types._OclType);
 
 		private static final ExecutorFragment _MonotonicityRow__MonotonicityRow = new ExecutorFragment(Types._MonotonicityRow, MetamodelTables.Types._MonotonicityRow);
+		private static final ExecutorFragment _MonotonicityRow__NamedElement = new ExecutorFragment(Types._MonotonicityRow, MetamodelTables.Types._NamedElement);
 		private static final ExecutorFragment _MonotonicityRow__OclAny = new ExecutorFragment(Types._MonotonicityRow, OCLstdlibTables.Types._OclAny);
 		private static final ExecutorFragment _MonotonicityRow__OclElement = new ExecutorFragment(Types._MonotonicityRow, OCLstdlibTables.Types._OclElement);
 
@@ -434,8 +436,9 @@ public class MetamodelTables extends AbstractTables
 		}
 
 		public static final ExecutorProperty _AbstractInfluence__description = new EcoreExecutorProperty(MetamodelPackage.Literals.ABSTRACT_INFLUENCE__DESCRIPTION, Types._AbstractInfluence, 0);
-		public static final ExecutorProperty _AbstractInfluence__CompositeInfluence__internalInfluences = new ExecutorPropertyWithImplementation("CompositeInfluence", Types._AbstractInfluence, 1, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES));
-		public static final ExecutorProperty _AbstractInfluence__InfluenceModel__ownedInfluences = new ExecutorPropertyWithImplementation("InfluenceModel", Types._AbstractInfluence, 2, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES));
+		public static final ExecutorProperty _AbstractInfluence__ownedInfluenceFunction = new EcoreExecutorProperty(MetamodelPackage.Literals.ABSTRACT_INFLUENCE__OWNED_INFLUENCE_FUNCTION, Types._AbstractInfluence, 1);
+		public static final ExecutorProperty _AbstractInfluence__CompositeInfluence__internalInfluences = new ExecutorPropertyWithImplementation("CompositeInfluence", Types._AbstractInfluence, 2, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES));
+		public static final ExecutorProperty _AbstractInfluence__InfluenceModel__ownedInfluences = new ExecutorPropertyWithImplementation("InfluenceModel", Types._AbstractInfluence, 3, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_INFLUENCES));
 
 		public static final ExecutorProperty _AnalyticExpressionFunction__expression = new EcoreExecutorProperty(MetamodelPackage.Literals.ANALYTIC_EXPRESSION_FUNCTION__EXPRESSION, Types._AnalyticExpressionFunction, 0);
 		public static final ExecutorProperty _AnalyticExpressionFunction__expressionLanguage = new EcoreExecutorProperty(MetamodelPackage.Literals.ANALYTIC_EXPRESSION_FUNCTION__EXPRESSION_LANGUAGE, Types._AnalyticExpressionFunction, 1);
@@ -443,7 +446,6 @@ public class MetamodelTables extends AbstractTables
 		public static final ExecutorProperty _ArtifactParticipant__target = new EcoreExecutorProperty(MetamodelPackage.Literals.ARTIFACT_PARTICIPANT__TARGET, Types._ArtifactParticipant, 0);
 
 		public static final ExecutorProperty _CompositeInfluence__internalInfluences = new EcoreExecutorProperty(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES, Types._CompositeInfluence, 0);
-		public static final ExecutorProperty _CompositeInfluence__ownedInfluenceFunction = new EcoreExecutorProperty(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION, Types._CompositeInfluence, 1);
 
 		public static final ExecutorProperty _DesignArtifact__changeability = new EcoreExecutorProperty(MetamodelPackage.Literals.DESIGN_ARTIFACT__CHANGEABILITY, Types._DesignArtifact, 0);
 		public static final ExecutorProperty _DesignArtifact__ref = new EcoreExecutorProperty(MetamodelPackage.Literals.DESIGN_ARTIFACT__REF, Types._DesignArtifact, 1);
@@ -464,12 +466,10 @@ public class MetamodelTables extends AbstractTables
 		public static final ExecutorProperty _FunctionRepresentation__InfluenceFunction__representations = new ExecutorPropertyWithImplementation("InfluenceFunction", Types._FunctionRepresentation, 3, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.INFLUENCE_FUNCTION__REPRESENTATIONS));
 
 		public static final ExecutorProperty _Influence__outputSRP = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE__OUTPUT_SRP, Types._Influence, 0);
-		public static final ExecutorProperty _Influence__ownedInfluenceFunction = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE__OWNED_INFLUENCE_FUNCTION, Types._Influence, 1);
-		public static final ExecutorProperty _Influence__ownedParticipants = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS, Types._Influence, 2);
+		public static final ExecutorProperty _Influence__ownedParticipants = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS, Types._Influence, 1);
 
 		public static final ExecutorProperty _InfluenceFunction__representations = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE_FUNCTION__REPRESENTATIONS, Types._InfluenceFunction, 0);
-		public static final ExecutorProperty _InfluenceFunction__CompositeInfluence__ownedInfluenceFunction = new ExecutorPropertyWithImplementation("CompositeInfluence", Types._InfluenceFunction, 1, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION));
-		public static final ExecutorProperty _InfluenceFunction__Influence__ownedInfluenceFunction = new ExecutorPropertyWithImplementation("Influence", Types._InfluenceFunction, 2, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.INFLUENCE__OWNED_INFLUENCE_FUNCTION));
+		public static final ExecutorProperty _InfluenceFunction__AbstractInfluence__ownedInfluenceFunction = new ExecutorPropertyWithImplementation("AbstractInfluence", Types._InfluenceFunction, 1, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.ABSTRACT_INFLUENCE__OWNED_INFLUENCE_FUNCTION));
 
 		public static final ExecutorProperty _InfluenceModel__ownedArtifacts = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ARTIFACTS, Types._InfluenceModel, 0);
 		public static final ExecutorProperty _InfluenceModel__ownedEnvironmentalFactors = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_ENVIRONMENTAL_FACTORS, Types._InfluenceModel, 1);
@@ -478,10 +478,13 @@ public class MetamodelTables extends AbstractTables
 		public static final ExecutorProperty _InfluenceModel__ownedSatisfactionCriteria = new EcoreExecutorProperty(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA, Types._InfluenceModel, 4);
 
 		public static final ExecutorProperty _MonotonicityRow__condition = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__CONDITION, Types._MonotonicityRow, 0);
-		public static final ExecutorProperty _MonotonicityRow__output = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__OUTPUT, Types._MonotonicityRow, 1);
-		public static final ExecutorProperty _MonotonicityRow__trend = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__TREND, Types._MonotonicityRow, 2);
-		public static final ExecutorProperty _MonotonicityRow__variedParticipant = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__VARIED_PARTICIPANT, Types._MonotonicityRow, 3);
-		public static final ExecutorProperty _MonotonicityRow__MonotonicityTable__tableRows = new ExecutorPropertyWithImplementation("MonotonicityTable", Types._MonotonicityRow, 4, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.MONOTONICITY_TABLE__TABLE_ROWS));
+		public static final ExecutorProperty _MonotonicityRow__localSlope = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__LOCAL_SLOPE, Types._MonotonicityRow, 1);
+		public static final ExecutorProperty _MonotonicityRow__nLevels = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__NLEVELS, Types._MonotonicityRow, 2);
+		public static final ExecutorProperty _MonotonicityRow__output = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__OUTPUT, Types._MonotonicityRow, 3);
+		public static final ExecutorProperty _MonotonicityRow__rationale = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__RATIONALE, Types._MonotonicityRow, 4);
+		public static final ExecutorProperty _MonotonicityRow__trend = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__TREND, Types._MonotonicityRow, 5);
+		public static final ExecutorProperty _MonotonicityRow__variedParticipant = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_ROW__VARIED_PARTICIPANT, Types._MonotonicityRow, 6);
+		public static final ExecutorProperty _MonotonicityRow__MonotonicityTable__tableRows = new ExecutorPropertyWithImplementation("MonotonicityTable", Types._MonotonicityRow, 7, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.MONOTONICITY_TABLE__TABLE_ROWS));
 
 		public static final ExecutorProperty _MonotonicityTable__tableRows = new EcoreExecutorProperty(MetamodelPackage.Literals.MONOTONICITY_TABLE__TABLE_ROWS, Types._MonotonicityTable, 0);
 
@@ -518,8 +521,8 @@ public class MetamodelTables extends AbstractTables
 		public static final ExecutorProperty _SRPInputParticipant__target = new EcoreExecutorProperty(MetamodelPackage.Literals.SRP_INPUT_PARTICIPANT__TARGET, Types._SRPInputParticipant, 0);
 
 		public static final ExecutorProperty _SatisfactionCriterion__constrainedSRPs = new EcoreExecutorProperty(MetamodelPackage.Literals.SATISFACTION_CRITERION__CONSTRAINED_SR_PS, Types._SatisfactionCriterion, 0);
-		public static final ExecutorProperty _SatisfactionCriterion__language = new EcoreExecutorProperty(MetamodelPackage.Literals.SATISFACTION_CRITERION__LANGUAGE, Types._SatisfactionCriterion, 1);
-		public static final ExecutorProperty _SatisfactionCriterion__marginDefinition = new EcoreExecutorProperty(MetamodelPackage.Literals.SATISFACTION_CRITERION__MARGIN_DEFINITION, Types._SatisfactionCriterion, 2);
+		public static final ExecutorProperty _SatisfactionCriterion__criterionDefinition = new EcoreExecutorProperty(MetamodelPackage.Literals.SATISFACTION_CRITERION__CRITERION_DEFINITION, Types._SatisfactionCriterion, 1);
+		public static final ExecutorProperty _SatisfactionCriterion__language = new EcoreExecutorProperty(MetamodelPackage.Literals.SATISFACTION_CRITERION__LANGUAGE, Types._SatisfactionCriterion, 2);
 		public static final ExecutorProperty _SatisfactionCriterion__requirementRef = new EcoreExecutorProperty(MetamodelPackage.Literals.SATISFACTION_CRITERION__REQUIREMENT_REF, Types._SatisfactionCriterion, 3);
 		public static final ExecutorProperty _SatisfactionCriterion__InfluenceModel__ownedSatisfactionCriteria = new ExecutorPropertyWithImplementation("InfluenceModel", Types._SatisfactionCriterion, 4, new EcoreLibraryOppositeProperty(MetamodelPackage.Literals.INFLUENCE_MODEL__OWNED_SATISFACTION_CRITERIA));
 
@@ -671,9 +674,10 @@ public class MetamodelTables extends AbstractTables
 			{
 				Fragments._MonotonicityRow__OclAny /* 0 */,
 				Fragments._MonotonicityRow__OclElement /* 1 */,
-				Fragments._MonotonicityRow__MonotonicityRow /* 2 */
+				Fragments._MonotonicityRow__NamedElement /* 2 */,
+				Fragments._MonotonicityRow__MonotonicityRow /* 3 */
 			};
-		private static final int /*@NonNull*/ [] __MonotonicityRow = { 1,1,1 };
+		private static final int /*@NonNull*/ [] __MonotonicityRow = { 1,1,1,1 };
 
 		private static final ExecutorFragment /*@NonNull*/ [] _MonotonicityTable =
 			{
@@ -1271,6 +1275,7 @@ public class MetamodelTables extends AbstractTables
 		};
 
 		private static final ExecutorOperation /*@NonNull*/ [] _MonotonicityRow__MonotonicityRow = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MonotonicityRow__NamedElement = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _MonotonicityRow__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1855,6 +1860,7 @@ public class MetamodelTables extends AbstractTables
 			Fragments._LanguageType__OclType.initOperations(_LanguageType__OclType);
 
 			Fragments._MonotonicityRow__MonotonicityRow.initOperations(_MonotonicityRow__MonotonicityRow);
+			Fragments._MonotonicityRow__NamedElement.initOperations(_MonotonicityRow__NamedElement);
 			Fragments._MonotonicityRow__OclAny.initOperations(_MonotonicityRow__OclAny);
 			Fragments._MonotonicityRow__OclElement.initOperations(_MonotonicityRow__OclElement);
 
@@ -1952,7 +1958,8 @@ public class MetamodelTables extends AbstractTables
 			MetamodelTables.Properties._AbstractInfluence__description,
 			MetamodelTables.Properties._NamedElement__name,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
-			OCLstdlibTables.Properties._OclElement__oclContents
+			OCLstdlibTables.Properties._OclElement__oclContents,
+			MetamodelTables.Properties._AbstractInfluence__ownedInfluenceFunction
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _AnalyticExpressionFunction = {
@@ -1980,7 +1987,7 @@ public class MetamodelTables extends AbstractTables
 			MetamodelTables.Properties._NamedElement__name,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
-			MetamodelTables.Properties._CompositeInfluence__ownedInfluenceFunction
+			MetamodelTables.Properties._AbstractInfluence__ownedInfluenceFunction
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _DesignArtifact = {
@@ -2022,7 +2029,7 @@ public class MetamodelTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
 			MetamodelTables.Properties._Influence__outputSRP,
-			MetamodelTables.Properties._Influence__ownedInfluenceFunction,
+			MetamodelTables.Properties._AbstractInfluence__ownedInfluenceFunction,
 			MetamodelTables.Properties._Influence__ownedParticipants
 		};
 
@@ -2051,9 +2058,13 @@ public class MetamodelTables extends AbstractTables
 
 		private static final ExecutorProperty /*@NonNull*/ [] _MonotonicityRow = {
 			MetamodelTables.Properties._MonotonicityRow__condition,
+			MetamodelTables.Properties._MonotonicityRow__localSlope,
+			MetamodelTables.Properties._MonotonicityRow__nLevels,
+			MetamodelTables.Properties._NamedElement__name,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
 			MetamodelTables.Properties._MonotonicityRow__output,
+			MetamodelTables.Properties._MonotonicityRow__rationale,
 			MetamodelTables.Properties._MonotonicityRow__trend,
 			MetamodelTables.Properties._MonotonicityRow__variedParticipant
 		};
@@ -2140,8 +2151,8 @@ public class MetamodelTables extends AbstractTables
 
 		private static final ExecutorProperty /*@NonNull*/ [] _SatisfactionCriterion = {
 			MetamodelTables.Properties._SatisfactionCriterion__constrainedSRPs,
+			MetamodelTables.Properties._SatisfactionCriterion__criterionDefinition,
 			MetamodelTables.Properties._SatisfactionCriterion__language,
-			MetamodelTables.Properties._SatisfactionCriterion__marginDefinition,
 			MetamodelTables.Properties._NamedElement__name,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
@@ -2223,11 +2234,13 @@ public class MetamodelTables extends AbstractTables
 			FragmentProperties.init();
 		}
 
-		public static final EcoreExecutorEnumerationLiteral _LanguageType__NaturalLanguage = new EcoreExecutorEnumerationLiteral(MetamodelPackage.Literals.LANGUAGE_TYPE.getEEnumLiteral("NaturalLanguage"), Types._LanguageType, 0);
-		public static final EcoreExecutorEnumerationLiteral _LanguageType__JavaNumericExpression = new EcoreExecutorEnumerationLiteral(MetamodelPackage.Literals.LANGUAGE_TYPE.getEEnumLiteral("JavaNumericExpression"), Types._LanguageType, 1);
+		public static final EcoreExecutorEnumerationLiteral _LanguageType__JavaNumericExpression = new EcoreExecutorEnumerationLiteral(MetamodelPackage.Literals.LANGUAGE_TYPE.getEEnumLiteral("JavaNumericExpression"), Types._LanguageType, 0);
+		public static final EcoreExecutorEnumerationLiteral _LanguageType__OCL = new EcoreExecutorEnumerationLiteral(MetamodelPackage.Literals.LANGUAGE_TYPE.getEEnumLiteral("OCL"), Types._LanguageType, 1);
+		public static final EcoreExecutorEnumerationLiteral _LanguageType__NaturalLanguage = new EcoreExecutorEnumerationLiteral(MetamodelPackage.Literals.LANGUAGE_TYPE.getEEnumLiteral("NaturalLanguage"), Types._LanguageType, 2);
 		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _LanguageType = {
-			_LanguageType__NaturalLanguage,
-			_LanguageType__JavaNumericExpression
+			_LanguageType__JavaNumericExpression,
+			_LanguageType__OCL,
+			_LanguageType__NaturalLanguage
 		};
 
 		public static final EcoreExecutorEnumerationLiteral _TrendType__Increasing = new EcoreExecutorEnumerationLiteral(MetamodelPackage.Literals.TREND_TYPE.getEEnumLiteral("Increasing"), Types._TrendType, 0);

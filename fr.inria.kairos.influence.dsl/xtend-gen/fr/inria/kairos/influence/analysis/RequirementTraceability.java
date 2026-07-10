@@ -33,8 +33,7 @@ public class RequirementTraceability {
     public final String influenceId;
 
     /**
-     * Can be:
-     *   A:<artifact>
+     * A:<artifact>
      *   E:<environmentalFactor>
      * 
      * Historically this field was named artifactId.

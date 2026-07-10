@@ -3,7 +3,6 @@
 package fr.inria.kairos.influence.metamodel.impl;
 
 import fr.inria.kairos.influence.metamodel.Influence;
-import fr.inria.kairos.influence.metamodel.InfluenceFunction;
 import fr.inria.kairos.influence.metamodel.MetamodelPackage;
 import fr.inria.kairos.influence.metamodel.MetamodelTables;
 import fr.inria.kairos.influence.metamodel.Participant;
@@ -58,7 +57,6 @@ import org.eclipse.ocl.pivot.values.OrderedSetValue;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOwnedInfluenceFunction <em>Owned Influence Function</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOwnedParticipants <em>Owned Participants</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.impl.InfluenceImpl#getOutputSRP <em>Output SRP</em>}</li>
  * </ul>
@@ -66,16 +64,6 @@ import org.eclipse.ocl.pivot.values.OrderedSetValue;
  * @generated
  */
 public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
-	/**
-	 * The cached value of the '{@link #getOwnedInfluenceFunction() <em>Owned Influence Function</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedInfluenceFunction()
-	 * @generated
-	 * @ordered
-	 */
-	protected InfluenceFunction ownedInfluenceFunction;
-
 	/**
 	 * The cached value of the '{@link #getOwnedParticipants() <em>Owned Participants</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -113,60 +101,6 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	@Override
 	protected EClass eStaticClass() {
 		return MetamodelPackage.Literals.INFLUENCE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public InfluenceFunction getOwnedInfluenceFunction() {
-		return ownedInfluenceFunction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOwnedInfluenceFunction(InfluenceFunction newOwnedInfluenceFunction,
-			NotificationChain msgs) {
-		InfluenceFunction oldOwnedInfluenceFunction = ownedInfluenceFunction;
-		ownedInfluenceFunction = newOwnedInfluenceFunction;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION, oldOwnedInfluenceFunction,
-					newOwnedInfluenceFunction);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setOwnedInfluenceFunction(InfluenceFunction newOwnedInfluenceFunction) {
-		if (newOwnedInfluenceFunction != ownedInfluenceFunction) {
-			NotificationChain msgs = null;
-			if (ownedInfluenceFunction != null)
-				msgs = ((InternalEObject) ownedInfluenceFunction).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION, null, msgs);
-			if (newOwnedInfluenceFunction != null)
-				msgs = ((InternalEObject) newOwnedInfluenceFunction).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION, null, msgs);
-			msgs = basicSetOwnedInfluenceFunction(newOwnedInfluenceFunction, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION,
-					newOwnedInfluenceFunction, newOwnedInfluenceFunction));
 	}
 
 	/**
@@ -420,8 +354,6 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION:
-			return basicSetOwnedInfluenceFunction(null, msgs);
 		case MetamodelPackage.INFLUENCE__OWNED_PARTICIPANTS:
 			return ((InternalEList<?>) getOwnedParticipants()).basicRemove(otherEnd, msgs);
 		}
@@ -436,8 +368,6 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION:
-			return getOwnedInfluenceFunction();
 		case MetamodelPackage.INFLUENCE__OWNED_PARTICIPANTS:
 			return getOwnedParticipants();
 		case MetamodelPackage.INFLUENCE__OUTPUT_SRP:
@@ -457,9 +387,6 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION:
-			setOwnedInfluenceFunction((InfluenceFunction) newValue);
-			return;
 		case MetamodelPackage.INFLUENCE__OWNED_PARTICIPANTS:
 			getOwnedParticipants().clear();
 			getOwnedParticipants().addAll((Collection<? extends Participant>) newValue);
@@ -479,9 +406,6 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION:
-			setOwnedInfluenceFunction((InfluenceFunction) null);
-			return;
 		case MetamodelPackage.INFLUENCE__OWNED_PARTICIPANTS:
 			getOwnedParticipants().clear();
 			return;
@@ -500,8 +424,6 @@ public class InfluenceImpl extends AbstractInfluenceImpl implements Influence {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION:
-			return ownedInfluenceFunction != null;
 		case MetamodelPackage.INFLUENCE__OWNED_PARTICIPANTS:
 			return ownedParticipants != null && !ownedParticipants.isEmpty();
 		case MetamodelPackage.INFLUENCE__OUTPUT_SRP:

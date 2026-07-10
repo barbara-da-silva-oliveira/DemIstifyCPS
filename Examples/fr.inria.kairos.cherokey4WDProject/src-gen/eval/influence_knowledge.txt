@@ -1,0 +1,83 @@
+Influence Knowledge Report
+
+## i1
+Output SRP: DistanceToStop
+Participants:
+ - ArtifactParticipant i1_motorSpeed -> motorSpeed
+ - ArtifactParticipant i1_mass -> mass
+ - ArtifactParticipant i1_frontalArea -> frontalArea
+ - EnvironmentalFactorParticipant i1_frictionCoef -> frictionCoef admissibleSpace=[0.2..1.0] coefficient
+ - EnvironmentalFactorParticipant i1_slopeAngleRad -> slopeAngleRad admissibleSpace=[-0.3491..0.3491] rad
+ - EnvironmentalFactorParticipant i1_dragCoefficient -> dragCoefficient admissibleSpace=0.8 coefficient
+ - EnvironmentalFactorParticipant i1_gravityAccel -> gravityAccel admissibleSpace=9.81 m/s2
+ - EnvironmentalFactorParticipant i1_airDensity -> airDensity admissibleSpace=[1.15..1.3] kg/m3
+Function representations:
+ - AnalyticExpressionFunction: mass*motorSpeed^2 / (2*gravityAccel*mass*frictionCoef*cos(slopeAngleRad) + 2*gravityAccel*mass*sin(slopeAngleRad) + frontalArea*dragCoefficient*airDensity*motorSpeed^2) [JavaNumericExpression]
+
+## i2
+Output SRP: MarginCollision
+Participants:
+ - ArtifactParticipant i2_detectionThreshold -> detectionThreshold
+ - SRPInputParticipant i2_DistanceToStop -> DistanceToStop
+Function representations:
+ - AnalyticExpressionFunction: detectionThreshold - DistanceToStop [JavaNumericExpression]
+
+## i3
+Output SRP: MotionWhileScanning
+Participants:
+ - SRPInputParticipant i3_DistanceToStop -> DistanceToStop
+ - ArtifactParticipant i3_delayStaticDetection -> delayStaticDetection
+Function representations:
+ - NaturalLanguageFunction: If the robot needs more distance or time to stop than expected, static detection may start while the robot is still moving. Increasing the delay before static detection mitigates this residual motion.
+
+## i4
+Output SRP: WavePropagation
+Participants:
+ - ArtifactParticipant i4_ultrasonicSensor -> ultrasonicSensor
+ - SRPInputParticipant i4_MotionWhileScanning -> MotionWhileScanning
+ - EnvironmentalFactorParticipant i4_temperature -> temperature admissibleSpace=[0.0..40.0] degC
+ - EnvironmentalFactorParticipant i4_humidity -> humidity admissibleSpace=[20.0..90.0] percent
+ - EnvironmentalFactorParticipant i4_noise -> noise admissibleSpace=[30.0..90.0] dB
+Function representations:
+ - NaturalLanguageFunction: The ultrasonic sensor measurement quality depends on wave propagation conditions. Temperature and humidity affect sound propagation, acoustic noise interferes with echo detection, and residual motion while scanning can distort the measured distance map.
+
+## i5
+Output SRP: MotionDuringTxRx
+Participants:
+ - SRPInputParticipant i5_WavePropagation -> WavePropagation
+ - ArtifactParticipant i5_sweepingDelay -> sweepingDelay
+Function representations:
+ - NaturalLanguageFunction: If the sweeping delay is too short with respect to ultrasonic propagation and echo reception, the sensor may move while a pulse is still travelling, which produces distorted measurements.
+
+## i6
+Output SRP: TravelSpeed
+Participants:
+ - ArtifactParticipant i6_motorSpeed -> motorSpeed
+ - ArtifactParticipant i6_mass -> mass
+ - ArtifactParticipant i6_frontalArea -> frontalArea
+ - ArtifactParticipant i6_motor -> motor
+ - EnvironmentalFactorParticipant i6_frictionCoef -> frictionCoef admissibleSpace=[0.2..1.0] coefficient
+ - EnvironmentalFactorParticipant i6_slopeAngleRad -> slopeAngleRad admissibleSpace=[-0.3491..0.3491] rad
+ - EnvironmentalFactorParticipant i6_dragCoefficient -> dragCoefficient admissibleSpace=0.8 coefficient
+ - EnvironmentalFactorParticipant i6_gravityAccel -> gravityAccel admissibleSpace=9.81 m/s2
+ - EnvironmentalFactorParticipant i6_airDensity -> airDensity admissibleSpace=[1.15..1.3] kg/m3
+Function representations:
+ - NaturalLanguageFunction: The effective travel speed is mainly driven by the configured motor speed, but it is reduced or altered by mass, motor characteristics, slope, wheel-floor friction, and aerodynamic drag.
+
+## i7
+Output SRP: ExplorationTime
+Participants:
+ - SRPInputParticipant i7_TravelSpeed -> TravelSpeed
+ - ArtifactParticipant i7_detectionThreshold -> detectionThreshold
+Function representations:
+ - NaturalLanguageFunction: Exploration time decreases when effective travel speed increases, but it can increase when the detection threshold is too conservative because the robot performs more stops and avoidance maneuvers.
+
+## i8
+Output SRP: CoverageQuality
+Participants:
+ - SRPInputParticipant i8_WavePropagation -> WavePropagation
+ - ArtifactParticipant i8_sweepingDelay -> sweepingDelay
+ - ArtifactParticipant i8_computeDistance -> computeDistance
+Function representations:
+ - NaturalLanguageFunction: Coverage quality depends on the reliability of ultrasonic wave propagation, the timing of the sweeping motion, and the correctness of the distance computation. Poor sensing or excessive sweeping delay can reduce effective coverage.
+

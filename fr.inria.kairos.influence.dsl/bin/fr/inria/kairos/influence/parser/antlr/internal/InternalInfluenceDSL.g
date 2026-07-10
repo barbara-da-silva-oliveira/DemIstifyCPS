@@ -614,28 +614,28 @@ ruleSatisfactionCriterion returns [EObject current=null]
 				)
 			)
 		)*
-		otherlv_8='satisfied'
+		otherlv_8='criterion'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getSatisfactionCriterionAccess().getSatisfiedKeyword_7());
+			newLeafNode(otherlv_8, grammarAccess.getSatisfactionCriterionAccess().getCriterionKeyword_7());
 		}
-		otherlv_9='when'
+		otherlv_9='definition'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getSatisfactionCriterionAccess().getWhenKeyword_8());
+			newLeafNode(otherlv_9, grammarAccess.getSatisfactionCriterionAccess().getDefinitionKeyword_8());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSatisfactionCriterionAccess().getMarginDefinitionEStringParserRuleCall_9_0());
+					newCompositeNode(grammarAccess.getSatisfactionCriterionAccess().getCriterionDefinitionEStringParserRuleCall_9_0());
 				}
-				lv_marginDefinition_10_0=ruleEString
+				lv_criterionDefinition_10_0=ruleEString
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSatisfactionCriterionRule());
 					}
 					set(
 						$current,
-						"marginDefinition",
-						lv_marginDefinition_10_0,
+						"criterionDefinition",
+						lv_criterionDefinition_10_0,
 						"fr.inria.kairos.influence.InfluenceDSL.EString");
 					afterParserOrEnumRuleCall();
 				}
@@ -1822,9 +1822,9 @@ ruleCompositeInfluence returns [EObject current=null]
 		{
 			newLeafNode(otherlv_10, grammarAccess.getCompositeInfluenceAccess().getRightParenthesisKeyword_7());
 		}
-		otherlv_11='ownedInfluenceFunction'
+		otherlv_11='influenceFunction'
 		{
-			newLeafNode(otherlv_11, grammarAccess.getCompositeInfluenceAccess().getOwnedInfluenceFunctionKeyword_8());
+			newLeafNode(otherlv_11, grammarAccess.getCompositeInfluenceAccess().getInfluenceFunctionKeyword_8());
 		}
 		(
 			(
@@ -2925,20 +2925,106 @@ ruleMonotonicityRow returns [EObject current=null]
 			newLeafNode(otherlv_0, grammarAccess.getMonotonicityRowAccess().getMonotonicityRowKeyword_0());
 		}
 		(
-			otherlv_1='conditions'
+			(
+				{
+					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getNameEStringParserRuleCall_1_0());
+				}
+				lv_name_1_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMonotonicityRowRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_1_0,
+						"fr.inria.kairos.influence.InfluenceDSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMonotonicityRowAccess().getLeftCurlyBracketKeyword_2());
+		}
+		otherlv_3='variedParticipant'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getMonotonicityRowAccess().getVariedParticipantKeyword_3());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMonotonicityRowRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getVariedParticipantParticipantCrossReference_4_0());
+				}
+				ruleQualifiedName
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_5='output'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getMonotonicityRowAccess().getOutputKeyword_5());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getMonotonicityRowRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getOutputSystemResponsePropertyCrossReference_6_0());
+				}
+				ruleQualifiedName
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_7='condition'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getMonotonicityRowAccess().getConditionKeyword_7());
+		}
+		otherlv_8='('
+		{
+			newLeafNode(otherlv_8, grammarAccess.getMonotonicityRowAccess().getLeftParenthesisKeyword_8());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getConditionParticipantRangeParserRuleCall_9_0());
+				}
+				lv_condition_9_0=ruleParticipantRange
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMonotonicityRowRule());
+					}
+					add(
+						$current,
+						"condition",
+						lv_condition_9_0,
+						"fr.inria.kairos.influence.InfluenceDSL.ParticipantRange");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_10=','
 			{
-				newLeafNode(otherlv_1, grammarAccess.getMonotonicityRowAccess().getConditionsKeyword_1_0());
-			}
-			otherlv_2='('
-			{
-				newLeafNode(otherlv_2, grammarAccess.getMonotonicityRowAccess().getLeftParenthesisKeyword_1_1());
+				newLeafNode(otherlv_10, grammarAccess.getMonotonicityRowAccess().getCommaKeyword_10_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMonotonicityRowAccess().getConditionParticipantRangeParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getMonotonicityRowAccess().getConditionParticipantRangeParserRuleCall_10_1_0());
 					}
-					lv_condition_3_0=ruleParticipantRange
+					lv_condition_11_0=ruleParticipantRange
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMonotonicityRowRule());
@@ -2946,92 +3032,29 @@ ruleMonotonicityRow returns [EObject current=null]
 						add(
 							$current,
 							"condition",
-							lv_condition_3_0,
+							lv_condition_11_0,
 							"fr.inria.kairos.influence.InfluenceDSL.ParticipantRange");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			(
-				otherlv_4=','
-				{
-					newLeafNode(otherlv_4, grammarAccess.getMonotonicityRowAccess().getCommaKeyword_1_3_0());
-				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getMonotonicityRowAccess().getConditionParticipantRangeParserRuleCall_1_3_1_0());
-						}
-						lv_condition_5_0=ruleParticipantRange
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getMonotonicityRowRule());
-							}
-							add(
-								$current,
-								"condition",
-								lv_condition_5_0,
-								"fr.inria.kairos.influence.InfluenceDSL.ParticipantRange");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-			)*
-			otherlv_6=')'
+		)*
+		(
+			otherlv_12=')'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getMonotonicityRowAccess().getRightParenthesisKeyword_1_4());
+				newLeafNode(otherlv_12, grammarAccess.getMonotonicityRowAccess().getRightParenthesisKeyword_11());
 			}
 		)?
-		otherlv_7='variedParticipant'
+		otherlv_13='trend'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getMonotonicityRowAccess().getVariedParticipantKeyword_2());
+			newLeafNode(otherlv_13, grammarAccess.getMonotonicityRowAccess().getTrendKeyword_12());
 		}
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMonotonicityRowRule());
-					}
+					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getTrendTrendTypeEnumRuleCall_13_0());
 				}
-				{
-					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getVariedParticipantParticipantCrossReference_3_0());
-				}
-				ruleQualifiedName
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_9='output'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getMonotonicityRowAccess().getOutputKeyword_4());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMonotonicityRowRule());
-					}
-				}
-				{
-					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getOutputSystemResponsePropertyCrossReference_5_0());
-				}
-				ruleQualifiedName
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_11='trend'
-		{
-			newLeafNode(otherlv_11, grammarAccess.getMonotonicityRowAccess().getTrendKeyword_6());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getMonotonicityRowAccess().getTrendTrendTypeEnumRuleCall_7_0());
-				}
-				lv_trend_12_0=ruleTrendType
+				lv_trend_14_0=ruleTrendType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMonotonicityRowRule());
@@ -3039,12 +3062,89 @@ ruleMonotonicityRow returns [EObject current=null]
 					set(
 						$current,
 						"trend",
-						lv_trend_12_0,
+						lv_trend_14_0,
 						"fr.inria.kairos.influence.InfluenceDSL.TrendType");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		(
+			otherlv_15='localSlope'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getMonotonicityRowAccess().getLocalSlopeKeyword_14_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMonotonicityRowAccess().getLocalSlopeEDoubleParserRuleCall_14_1_0());
+					}
+					lv_localSlope_16_0=ruleEDouble
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMonotonicityRowRule());
+						}
+						set(
+							$current,
+							"localSlope",
+							lv_localSlope_16_0,
+							"fr.inria.kairos.influence.InfluenceDSL.EDouble");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_17='nLevels'
+			{
+				newLeafNode(otherlv_17, grammarAccess.getMonotonicityRowAccess().getNLevelsKeyword_15_0());
+			}
+			(
+				(
+					lv_nLevels_18_0=RULE_INT
+					{
+						newLeafNode(lv_nLevels_18_0, grammarAccess.getMonotonicityRowAccess().getNLevelsINTTerminalRuleCall_15_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMonotonicityRowRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"nLevels",
+							lv_nLevels_18_0,
+							"org.eclipse.xtext.common.Terminals.INT");
+					}
+				)
+			)
+		)?
+		(
+			otherlv_19='rationale'
+			{
+				newLeafNode(otherlv_19, grammarAccess.getMonotonicityRowAccess().getRationaleKeyword_16_0());
+			}
+			(
+				(
+					lv_rationale_20_0=RULE_STRING
+					{
+						newLeafNode(lv_rationale_20_0, grammarAccess.getMonotonicityRowAccess().getRationaleSTRINGTerminalRuleCall_16_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMonotonicityRowRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"rationale",
+							lv_rationale_20_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+		)?
+		otherlv_21='}'
+		{
+			newLeafNode(otherlv_21, grammarAccess.getMonotonicityRowAccess().getRightCurlyBracketKeyword_17());
+		}
 	)
 ;
 
@@ -3231,18 +3331,26 @@ ruleLanguageType returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='NaturalLanguage'
+			enumLiteral_0='JavaNumericExpression'
 			{
-				$current = grammarAccess.getLanguageTypeAccess().getNaturalLanguageEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getLanguageTypeAccess().getNaturalLanguageEnumLiteralDeclaration_0());
+				$current = grammarAccess.getLanguageTypeAccess().getJavaNumericExpressionEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getLanguageTypeAccess().getJavaNumericExpressionEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
-			enumLiteral_1='JavaNumericExpression'
+			enumLiteral_1='NaturalLanguage'
 			{
-				$current = grammarAccess.getLanguageTypeAccess().getJavaNumericExpressionEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getLanguageTypeAccess().getJavaNumericExpressionEnumLiteralDeclaration_1());
+				$current = grammarAccess.getLanguageTypeAccess().getNaturalLanguageEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getLanguageTypeAccess().getNaturalLanguageEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='OCL'
+			{
+				$current = grammarAccess.getLanguageTypeAccess().getOCLEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getLanguageTypeAccess().getOCLEnumLiteralDeclaration_2());
 			}
 		)
 	)

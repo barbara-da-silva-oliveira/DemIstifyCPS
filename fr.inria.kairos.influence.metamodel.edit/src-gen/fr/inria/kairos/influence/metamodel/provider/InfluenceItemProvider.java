@@ -78,7 +78,6 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__OWNED_INFLUENCE_FUNCTION);
 			childrenFeatures.add(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS);
 		}
 		return childrenFeatures;
@@ -143,7 +142,6 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Influence.class)) {
-		case MetamodelPackage.INFLUENCE__OWNED_INFLUENCE_FUNCTION:
 		case MetamodelPackage.INFLUENCE__OWNED_PARTICIPANTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -161,9 +159,6 @@ public class InfluenceItemProvider extends AbstractInfluenceItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_INFLUENCE_FUNCTION,
-				MetamodelFactory.eINSTANCE.createInfluenceFunction()));
 
 		newChildDescriptors.add(createChildParameter(MetamodelPackage.Literals.INFLUENCE__OWNED_PARTICIPANTS,
 				MetamodelFactory.eINSTANCE.createSRPInputParticipant()));

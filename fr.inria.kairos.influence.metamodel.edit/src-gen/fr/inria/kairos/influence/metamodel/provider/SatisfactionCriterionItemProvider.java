@@ -46,7 +46,7 @@ public class SatisfactionCriterionItemProvider extends NamedElementItemProvider 
 
 			addRequirementRefPropertyDescriptor(object);
 			addLanguagePropertyDescriptor(object);
-			addMarginDefinitionPropertyDescriptor(object);
+			addCriterionDefinitionPropertyDescriptor(object);
 			addConstrainedSRPsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -85,19 +85,19 @@ public class SatisfactionCriterionItemProvider extends NamedElementItemProvider 
 	}
 
 	/**
-	 * This adds a property descriptor for the Margin Definition feature.
+	 * This adds a property descriptor for the Criterion Definition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMarginDefinitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_SatisfactionCriterion_marginDefinition_feature"),
-						getString("_UI_PropertyDescriptor_description",
-								"_UI_SatisfactionCriterion_marginDefinition_feature", "_UI_SatisfactionCriterion_type"),
-						MetamodelPackage.Literals.SATISFACTION_CRITERION__MARGIN_DEFINITION, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	protected void addCriterionDefinitionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SatisfactionCriterion_criterionDefinition_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_SatisfactionCriterion_criterionDefinition_feature",
+						"_UI_SatisfactionCriterion_type"),
+				MetamodelPackage.Literals.SATISFACTION_CRITERION__CRITERION_DEFINITION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class SatisfactionCriterionItemProvider extends NamedElementItemProvider 
 
 		switch (notification.getFeatureID(SatisfactionCriterion.class)) {
 		case MetamodelPackage.SATISFACTION_CRITERION__LANGUAGE:
-		case MetamodelPackage.SATISFACTION_CRITERION__MARGIN_DEFINITION:
+		case MetamodelPackage.SATISFACTION_CRITERION__CRITERION_DEFINITION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

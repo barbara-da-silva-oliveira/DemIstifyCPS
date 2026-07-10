@@ -27,7 +27,7 @@ class InfluenceGenerationPipeline {
 		exportInfluenceKnowledge(resource, fsa)
 		exportAnalyticRequirementImpact(resource, fsa)
 		runGraphDiagnostics(graphBundle)
-		exportDashboard(resource, graphBundle, fsa)
+		exportDashboardData(resource, graphBundle, fsa)
 	}
 
 	private def void exportGraphs(GraphBuilder.Result graphBundle, IFileSystemAccess2 fsa) {
@@ -89,13 +89,17 @@ class InfluenceGenerationPipeline {
 		new GraphCycleAnalyzer().detectCycle(graphBundle.graph)
 	}
 	
-	private def void exportDashboard(Resource resource, GraphBuilder.Result graphBundle, IFileSystemAccess2 fsa) {
-    	new DashboardDataExporter()
-        	.export(resource, graphBundle, fsa, "dashboard/data")
-        	
-        new GentelellaDashboardExporter()
-			.export(fsa, "dashboard/site")
-        	
+	private def void exportDashboardData(Resource resource, GraphBuilder.Result graphBundle, IFileSystemAccess2 fsa) {
+		new DashboardDataExporter()
+			.export(resource, graphBundle, fsa, "dashboard/data")
 	}
+//	private def void exportDashboard(Resource resource, GraphBuilder.Result graphBundle, IFileSystemAccess2 fsa) {
+//    	new DashboardDataExporter()
+//        	.export(resource, graphBundle, fsa, "dashboard/data")
+//        	
+//        new GentelellaDashboardExporter()
+//			.export(fsa, "dashboard/site")
+//        	
+//	}
 
 }

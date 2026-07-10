@@ -198,13 +198,22 @@ public interface MetamodelPackage extends EPackage {
 	int ABSTRACT_INFLUENCE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Owned Influence Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_INFLUENCE__OWNED_INFLUENCE_FUNCTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_INFLUENCE__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int ABSTRACT_INFLUENCE__DESCRIPTION = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Influence</em>' class.
@@ -213,7 +222,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_INFLUENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_INFLUENCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Abstract Influence</em>' class.
@@ -244,6 +253,15 @@ public interface MetamodelPackage extends EPackage {
 	int INFLUENCE__NAME = ABSTRACT_INFLUENCE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Owned Influence Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFLUENCE__OWNED_INFLUENCE_FUNCTION = ABSTRACT_INFLUENCE__OWNED_INFLUENCE_FUNCTION;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -253,22 +271,13 @@ public interface MetamodelPackage extends EPackage {
 	int INFLUENCE__DESCRIPTION = ABSTRACT_INFLUENCE__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Owned Influence Function</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFLUENCE__OWNED_INFLUENCE_FUNCTION = ABSTRACT_INFLUENCE_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Owned Participants</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__OWNED_PARTICIPANTS = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
+	int INFLUENCE__OWNED_PARTICIPANTS = ABSTRACT_INFLUENCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Output SRP</b></em>' reference.
@@ -277,7 +286,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE__OUTPUT_SRP = ABSTRACT_INFLUENCE_FEATURE_COUNT + 2;
+	int INFLUENCE__OUTPUT_SRP = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Influence</em>' class.
@@ -286,7 +295,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 3;
+	int INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Participation Pattern</em>' operation.
@@ -564,13 +573,13 @@ public interface MetamodelPackage extends EPackage {
 	int SATISFACTION_CRITERION__LANGUAGE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Margin Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Criterion Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SATISFACTION_CRITERION__MARGIN_DEFINITION = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SATISFACTION_CRITERION__CRITERION_DEFINITION = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Constrained SR Ps</b></em>' reference list.
@@ -619,6 +628,15 @@ public interface MetamodelPackage extends EPackage {
 	int COMPOSITE_INFLUENCE__NAME = ABSTRACT_INFLUENCE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Owned Influence Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION = ABSTRACT_INFLUENCE__OWNED_INFLUENCE_FUNCTION;
+
+	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -637,22 +655,13 @@ public interface MetamodelPackage extends EPackage {
 	int COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = ABSTRACT_INFLUENCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Influence Function</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Composite Influence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 2;
+	int COMPOSITE_INFLUENCE_FEATURE_COUNT = ABSTRACT_INFLUENCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Composite Influence</em>' class.
@@ -1525,13 +1534,22 @@ public interface MetamodelPackage extends EPackage {
 	int MONOTONICITY_ROW = 24;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MONOTONICITY_ROW__NAME = NAMED_ELEMENT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MONOTONICITY_ROW__CONDITION = 0;
+	int MONOTONICITY_ROW__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Trend</b></em>' attribute.
@@ -1540,7 +1558,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MONOTONICITY_ROW__TREND = 1;
+	int MONOTONICITY_ROW__TREND = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Varied Participant</b></em>' reference.
@@ -1549,7 +1567,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MONOTONICITY_ROW__VARIED_PARTICIPANT = 2;
+	int MONOTONICITY_ROW__VARIED_PARTICIPANT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Output</b></em>' reference.
@@ -1558,7 +1576,34 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MONOTONICITY_ROW__OUTPUT = 3;
+	int MONOTONICITY_ROW__OUTPUT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Local Slope</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MONOTONICITY_ROW__LOCAL_SLOPE = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>NLevels</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MONOTONICITY_ROW__NLEVELS = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Rationale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MONOTONICITY_ROW__RATIONALE = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Monotonicity Row</em>' class.
@@ -1567,7 +1612,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MONOTONICITY_ROW_FEATURE_COUNT = 4;
+	int MONOTONICITY_ROW_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Monotonicity Row</em>' class.
@@ -1576,7 +1621,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MONOTONICITY_ROW_OPERATION_COUNT = 0;
+	int MONOTONICITY_ROW_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fr.inria.kairos.influence.metamodel.LanguageType <em>Language Type</em>}' enum.
@@ -1695,6 +1740,17 @@ public interface MetamodelPackage extends EPackage {
 	EClass getAbstractInfluence();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Owned Influence Function</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.AbstractInfluence#getOwnedInfluenceFunction()
+	 * @see #getAbstractInfluence()
+	 * @generated
+	 */
+	EReference getAbstractInfluence_OwnedInfluenceFunction();
+
+	/**
 	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1714,17 +1770,6 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getInfluence();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Owned Influence Function</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.Influence#getOwnedInfluenceFunction()
-	 * @see #getInfluence()
-	 * @generated
-	 */
-	EReference getInfluence_OwnedInfluenceFunction();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link fr.inria.kairos.influence.metamodel.Influence#getOwnedParticipants <em>Owned Participants</em>}'.
@@ -1886,15 +1931,15 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getSatisfactionCriterion_Language();
 
 	/**
-	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getMarginDefinition <em>Margin Definition</em>}'.
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getCriterionDefinition <em>Criterion Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Margin Definition</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getMarginDefinition()
+	 * @return the meta object for the attribute '<em>Criterion Definition</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getCriterionDefinition()
 	 * @see #getSatisfactionCriterion()
 	 * @generated
 	 */
-	EAttribute getSatisfactionCriterion_MarginDefinition();
+	EAttribute getSatisfactionCriterion_CriterionDefinition();
 
 	/**
 	 * Returns the meta object for the reference list '{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getConstrainedSRPs <em>Constrained SR Ps</em>}'.
@@ -1927,17 +1972,6 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCompositeInfluence_InternalInfluences();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Owned Influence Function</em>'.
-	 * @see fr.inria.kairos.influence.metamodel.CompositeInfluence#getOwnedInfluenceFunction()
-	 * @see #getCompositeInfluence()
-	 * @generated
-	 */
-	EReference getCompositeInfluence_OwnedInfluenceFunction();
 
 	/**
 	 * Returns the meta object for class '{@link fr.inria.kairos.influence.metamodel.DesignArtifact <em>Design Artifact</em>}'.
@@ -2442,6 +2476,39 @@ public interface MetamodelPackage extends EPackage {
 	EReference getMonotonicityRow_Output();
 
 	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getLocalSlope <em>Local Slope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Local Slope</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.MonotonicityRow#getLocalSlope()
+	 * @see #getMonotonicityRow()
+	 * @generated
+	 */
+	EAttribute getMonotonicityRow_LocalSlope();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getNLevels <em>NLevels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>NLevels</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.MonotonicityRow#getNLevels()
+	 * @see #getMonotonicityRow()
+	 * @generated
+	 */
+	EAttribute getMonotonicityRow_NLevels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link fr.inria.kairos.influence.metamodel.MonotonicityRow#getRationale <em>Rationale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rationale</em>'.
+	 * @see fr.inria.kairos.influence.metamodel.MonotonicityRow#getRationale()
+	 * @see #getMonotonicityRow()
+	 * @generated
+	 */
+	EAttribute getMonotonicityRow_Rationale();
+
+	/**
 	 * Returns the meta object for enum '{@link fr.inria.kairos.influence.metamodel.LanguageType <em>Language Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2565,6 +2632,15 @@ public interface MetamodelPackage extends EPackage {
 		EClass ABSTRACT_INFLUENCE = eINSTANCE.getAbstractInfluence();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Influence Function</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_INFLUENCE__OWNED_INFLUENCE_FUNCTION = eINSTANCE
+				.getAbstractInfluence_OwnedInfluenceFunction();
+
+		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2581,14 +2657,6 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INFLUENCE = eINSTANCE.getInfluence();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Influence Function</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INFLUENCE__OWNED_INFLUENCE_FUNCTION = eINSTANCE.getInfluence_OwnedInfluenceFunction();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Participants</b></em>' containment reference list feature.
@@ -2723,12 +2791,13 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute SATISFACTION_CRITERION__LANGUAGE = eINSTANCE.getSatisfactionCriterion_Language();
 
 		/**
-		 * The meta object literal for the '<em><b>Margin Definition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Criterion Definition</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SATISFACTION_CRITERION__MARGIN_DEFINITION = eINSTANCE.getSatisfactionCriterion_MarginDefinition();
+		EAttribute SATISFACTION_CRITERION__CRITERION_DEFINITION = eINSTANCE
+				.getSatisfactionCriterion_CriterionDefinition();
 
 		/**
 		 * The meta object literal for the '<em><b>Constrained SR Ps</b></em>' reference list feature.
@@ -2755,15 +2824,6 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPOSITE_INFLUENCE__INTERNAL_INFLUENCES = eINSTANCE.getCompositeInfluence_InternalInfluences();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Influence Function</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPOSITE_INFLUENCE__OWNED_INFLUENCE_FUNCTION = eINSTANCE
-				.getCompositeInfluence_OwnedInfluenceFunction();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.impl.DesignArtifactImpl <em>Design Artifact</em>}' class.
@@ -3173,6 +3233,30 @@ public interface MetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MONOTONICITY_ROW__OUTPUT = eINSTANCE.getMonotonicityRow_Output();
+
+		/**
+		 * The meta object literal for the '<em><b>Local Slope</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MONOTONICITY_ROW__LOCAL_SLOPE = eINSTANCE.getMonotonicityRow_LocalSlope();
+
+		/**
+		 * The meta object literal for the '<em><b>NLevels</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MONOTONICITY_ROW__NLEVELS = eINSTANCE.getMonotonicityRow_NLevels();
+
+		/**
+		 * The meta object literal for the '<em><b>Rationale</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MONOTONICITY_ROW__RATIONALE = eINSTANCE.getMonotonicityRow_Rationale();
 
 		/**
 		 * The meta object literal for the '{@link fr.inria.kairos.influence.metamodel.LanguageType <em>Language Type</em>}' enum.

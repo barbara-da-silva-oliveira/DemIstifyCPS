@@ -295,10 +295,15 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *
 	 * Constraint:
 	 *     (
-	 *         (condition+=ParticipantRange condition+=ParticipantRange*)? 
+	 *         name=EString 
 	 *         variedParticipant=[Participant|QualifiedName] 
 	 *         output=[SystemResponseProperty|QualifiedName] 
-	 *         trend=TrendType
+	 *         condition+=ParticipantRange 
+	 *         condition+=ParticipantRange* 
+	 *         trend=TrendType 
+	 *         localSlope=EDouble? 
+	 *         nLevels=INT? 
+	 *         rationale=STRING?
 	 *     )
 	 * </pre>
 	 */
@@ -461,7 +466,7 @@ public class InfluenceDSLSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *         requirementRef=[EObject|QualifiedName] 
 	 *         constrainedSRPs+=[SystemResponseProperty|QualifiedName] 
 	 *         constrainedSRPs+=[SystemResponseProperty|QualifiedName]* 
-	 *         marginDefinition=EString 
+	 *         criterionDefinition=EString 
 	 *         language=LanguageType
 	 *     )
 	 * </pre>

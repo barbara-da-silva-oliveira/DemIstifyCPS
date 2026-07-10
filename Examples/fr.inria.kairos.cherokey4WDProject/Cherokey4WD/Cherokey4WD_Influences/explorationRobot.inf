@@ -1,207 +1,223 @@
-// InfluenceModel
 InfluenceModel explorationRobot
 
-DesignArtifact motorSpeed -> "ActivityDiagramWheelControl.activityWheelControl.speedWheel"
-	changeability 0.6,
-DesignArtifact detectionThreshold -> "ActivityDiagramDynamicDetection.activityDynamicDetection.detectionThreshold"
-	changeability 0.9,
-DesignArtifact delayStaticDetection -> "ActivityDiagramStaticDetection.activityStaticDetection.stopRobot.delayStartStaticDetection"
-	changeability 0.7,
-DesignArtifact sweepingDelay -> "ActivityDiagramDynamicDetection.SweepDelay"
-	changeability 0.5,
-DesignArtifact computeDistance -> "ActivityDiagramDynamicDetection.activityDynamicDetection.computeDistance"
-	changeability 0.2,
-DesignArtifact ultrasonicSensor -> "Cherokey4WDModel.PartDefinitions.UltrasonicSensor"
-	changeability 0.4,
-//DesignArtifact battery -> "Cherokey4WDModel.PartDefinitions.Battery"
-//	changeability 0.5,
-DesignArtifact motor -> "Cherokey4WDModel.PartDefinitions.Motor"
-	changeability 0.7 ,
-DesignArtifact mass -> "Cherokey4WDModel.PartDefinitions.Cherokey4WD.mass"
-	changeability 0.5,
-DesignArtifact frontalArea -> "Cherokey4WDModel.PartDefinitions.Cherokey4WD.frontalArea"
-	changeability 0.2,
-	
-EnvironmentalFactor gravityAccel      
-	description "gravity"     
-	flexibility 0.0     
-	value 9.81,
-  EnvironmentalFactor frictionCoef     
-	description "friction"  
-	flexibility 0.4        
-	value 0.6,
-  EnvironmentalFactor slopeAngleRad  
-	description "slope(rad)"
-	flexibility 0.7   
-	value -0.3491,
-	//value 0.0
-	
-EnvironmentalFactor dragCoefficient    
-	description "drag coeff"  
-	flexibility 0.0       
-	value 0.8,
-  EnvironmentalFactor airDensity    
-	description "air density"      
-	flexibility 0.0       
-	value 1.293,
-  EnvironmentalFactor temperature    
-  	description "temperature" 
-  	flexibility 0.5      
-	value 21.0,
-EnvironmentalFactor humidity    
-  	description "humidity"  
-  	flexibility 0.5       
-	value 45.0,
-EnvironmentalFactor noise
-	description "ambient noise"  
-	flexibility 0.8      
-	value 55.0,
+DesignArtifact motorSpeed -> ActivityDiagramWheelControl.activityWheelControl.speedWheel changeability 0.6,
+DesignArtifact detectionThreshold -> ActivityDiagramDynamicDetection.activityDynamicDetection.detectionThreshold changeability 0.9,
+DesignArtifact delayStaticDetection -> ActivityDiagramStaticDetection.activityStaticDetection.stopRobot.delayStartStaticDetection changeability 0.7,
+DesignArtifact sweepingDelay -> ActivityDiagramDynamicDetection.SweepDelay changeability 0.5,
+DesignArtifact computeDistance -> ActivityDiagramDynamicDetection.activityDynamicDetection.computeDistance changeability 0.2,
+DesignArtifact ultrasonicSensor -> Cherokey4WDModel.PartDefinitions.UltrasonicSensor changeability 0.4,
+DesignArtifact motor -> Cherokey4WDModel.PartDefinitions.Motor changeability 0.7,
+DesignArtifact mass -> Cherokey4WDModel.PartDefinitions.Cherokey4WD.mass changeability 0.5,
+DesignArtifact frontalArea -> Cherokey4WDModel.PartDefinitions.Cherokey4WD.frontalArea changeability 0.2,
 
-Requirement EfficientExploration
-	description "The robot explores the environment efficiently, avoiding unnecessary maneuvers"
-	satisfied when "The robot explores the environment efficiently, avoiding unnecessary maneuvers" languageType NaturalLanguage,
+EnvironmentalFactor gravityAccel description "Gravity acceleration" flexibility 0.0,
+EnvironmentalFactor frictionCoef description "Friction coefficient between wheels and floor" flexibility 0.4,
+EnvironmentalFactor slopeAngleRad description "Ground slope angle in radians" flexibility 0.7,
+EnvironmentalFactor dragCoefficient description "Aerodynamic drag coefficient" flexibility 0.0,
+EnvironmentalFactor airDensity description "Air density" flexibility 0.0,
+EnvironmentalFactor temperature description "Outdoor temperature" flexibility 0.5,
+EnvironmentalFactor humidity description "Relative humidity" flexibility 0.5,
+EnvironmentalFactor noise description "Ambient acoustic noise" flexibility 0.8,
+SystemResponseProperty DistanceToStop description "Distance required for the robot to fully stop after the stop command",
+SystemResponseProperty MarginCollision description "Physical distance remaining from an obstacle after braking",
+SystemResponseProperty MotionWhileScanning description "Residual robot motion when static detection starts",
+SystemResponseProperty WavePropagation description "Quality of ultrasonic wave propagation and echo reception",
+SystemResponseProperty MotionDuringTxRx description "Residual sensor or robot motion while ultrasonic pulses are transmitted and received",
+SystemResponseProperty TravelSpeed description "Effective nominal travel speed of the robot in the operational context",
+SystemResponseProperty ExplorationTime description "Total time required to complete the exploration mission",
+SystemResponseProperty CoverageQuality description "Quality of spatial coverage obtained during exploration",
+
+SatisfactionCriterion ObstacleAvoidanceClearanceCriterion
+  for Requirements.ObstacleAvoidance
+  constrains MarginCollision
+  criterion definition "MarginCollision - 0.05"
+  languageType JavaNumericExpression,
+
+SatisfactionCriterion ObstacleAvoidanceCoverage
+  for Requirements.ObstacleAvoidance
+  constrains CoverageQuality
+  criterion definition "CoverageQuality must be superior than, so the robot does stop before obstacles"
+  languageType NaturalLanguage,
   
-Requirement ObstacleAvoidance
-	description "The robot should detect obstacles and avoid them, maintaining a minimum distance of 5cm to any obstacle at any time "
-	satisfied when "MarginCollision - 0.05 > 0" languageType JavaNumericExpression,
-  
-SystemResponseProperty DistanceToStop
-  description "Distance for the robot to completely brake",
-  
-SystemResponseProperty MarginCollision
-  description "ObstacleAvoidanceEfficiency proxy"
-  constrainedBy ObstacleAvoidance,
-  
-SystemResponseProperty MotionWhileScanning
-  description "Residual motion during static detection",
-SystemResponseProperty WavePropagation
-  description "Ultrasonic wave propagation",
-  
-SystemResponseProperty MotionDuringTxRx
-  description "Sensor moves while sending/receiving"
-  constrainedBy ObstacleAvoidance,
-  
-SystemResponseProperty TravelSpeed
-  description "Nominal travel speed",
-  
-SystemResponseProperty ExplorationTime
-  description "Total mission time"
-  constrainedBy EfficientExploration,
-  
-SystemResponseProperty CoverageQuality
-  description "Slow exploration / poor coverage"
-  constrainedBy ObstacleAvoidance ,
-  
+SatisfactionCriterion ObstacleAvoidanceSensingCriterion
+  for Requirements.ObstacleAvoidance
+  constrains MotionDuringTxRx, WavePropagation
+  criterion definition "Ultrasonic sensing must remain reliable while the robot is avoiding obstacles"
+  languageType NaturalLanguage,
+
+SatisfactionCriterion EfficientExplorationCriterion
+  for Requirements.EfficientExploration
+  constrains ExplorationTime, TravelSpeed
+  criterion definition "The robot should cover at least 30 square meters during a one-hour operation while avoiding unnecessary maneuvers"
+  languageType NaturalLanguage,
+
+
 Influence i1
-  #** "Observed when tuning motor speed in outdoor environment" **#
-    participants:
-    ArtifactParticipant motorSpeed  confidence 1.0,
-    ArtifactParticipant mass confidence 1.0,
-    ArtifactParticipant frontalArea confidence 1.0,
-    EnvironmentalFactorParticipant  frictionCoef confidence 1.0,
-    EnvironmentalFactorParticipant slopeAngleRad confidence 1.0,
-    EnvironmentalFactorParticipant dragCoefficient  confidence 1.0,
-  //  EnvironmentalFactorParticipant temperature  confidence 0.5,
-    EnvironmentalFactorParticipant gravityAccel confidence 1.0,
-    EnvironmentalFactorParticipant airDensity confidence 0.5;
-  influenceFunction "f1":
-    definition "mass*motorSpeed^2 / 
-	( 2*gravityAccel*mass*frictionCoef*cos(slopeAngleRad) 
-	+ 2*gravityAccel*mass*sin(slopeAngleRad) 
-+ frontalArea*dragCoefficient*airDensity*(motorSpeed)^2 )"
-    returnType Real 
-    languageType JavaNumericExpression;
-  affects DistanceToStop ,
+  #** "Braking dynamics observed when tuning motor speed in outdoor environments" **#
+  participants:
+    ArtifactParticipant i1_motorSpeed target motorSpeed confidence 1.0,
+    ArtifactParticipant i1_mass target mass confidence 1.0,
+    ArtifactParticipant i1_frontalArea target frontalArea confidence 1.0,
+    EnvironmentalFactorParticipant i1_frictionCoef target frictionCoef confidence 1.0 admissibleSpace range [0.2..1.0] nominal 0.6 step 0.1 unit "coefficient",
+    EnvironmentalFactorParticipant i1_slopeAngleRad target slopeAngleRad confidence 1.0 admissibleSpace range [-0.3491..0.3491] nominal -0.3491 step 0.0873 unit "rad",
+    EnvironmentalFactorParticipant i1_dragCoefficient target dragCoefficient confidence 1.0 admissibleSpace value 0.8 unit "coefficient",
+    EnvironmentalFactorParticipant i1_gravityAccel target gravityAccel confidence 1.0 admissibleSpace value 9.81 unit "m/s2",
+    EnvironmentalFactorParticipant i1_airDensity target airDensity confidence 0.5 admissibleSpace range [1.15..1.30] nominal 1.293 step 0.01 unit "kg/m3"
+  ;
+  influenceFunction f1:
+    representations(
+      AnalyticExpressionFunction f1_brakingExpression
+        sourceUri "physics.brakingDistance"
+        confidence 0.9
+        applicabilityDomain(
+          ParticipantRange f1_speedRange of i1_motorSpeed value range [0.0..1.0] nominal 0.2 step 0.05 unit "m/s",
+          ParticipantRange f1_frictionRange of i1_frictionCoef value range [0.2..1.0] nominal 0.6 step 0.1 unit "coefficient",
+          ParticipantRange f1_slopeRange of i1_slopeAngleRad value range [-0.3491..0.3491] nominal -0.3491 step 0.0873 unit "rad"
+        )
+        expression "mass*motorSpeed^2 / (2*gravityAccel*mass*frictionCoef*cos(slopeAngleRad) + 2*gravityAccel*mass*sin(slopeAngleRad) + frontalArea*dragCoefficient*airDensity*motorSpeed^2)"
+        expressionLanguage JavaNumericExpression);
+  affects DistanceToStop,
 
 Influence i2
-  #** "Detection threshold tuning and TimeToStop" **#
+  #** "Collision margin obtained from detection threshold and stopping distance" **#
   participants:
-    ArtifactParticipant detectionThreshold  confidence 1.0,
-    SRPInputParticipant DistanceToStop  confidence 1.0 ;
-  influenceFunction "f2":
-    definition "detectionThreshold - DistanceToStop"
-    returnType Real languageType JavaNumericExpression;
-  affects MarginCollision ,
-  
-  
-Influence i3
-  #** "Motor Speed to Distance Calculation Accuracy" **#
-   participants:
-    SRPInputParticipant DistanceToStop  confidence 1.0,
-    ArtifactParticipant delayStaticDetection confidence 1.0 ;
-  influenceFunction "f3":
-    definition "delayStaticDetection, DistanceToStop"
-    returnType Text languageType NaturalLanguage;
-  affects MotionWhileScanning  ,
+    ArtifactParticipant i2_detectionThreshold target detectionThreshold confidence 1.0,
+    SRPInputParticipant i2_DistanceToStop target DistanceToStop confidence 1.0
+  ;
+  influenceFunction f2:
+    representations(
+      AnalyticExpressionFunction f2_marginExpression
+        confidence 1.0
+        expression "detectionThreshold - DistanceToStop"
+        expressionLanguage JavaNumericExpression);
+//      ParticipantImpactFunction f2_participantImpact
+//        confidence 1.0
+//        participantContributions(
+//          ParticipantRelativeImpact participant i2_detectionThreshold importance 0.50 direction Increasing rationale "A larger detection threshold increases the available collision margin.",
+//          ParticipantRelativeImpact participant i2_DistanceToStop importance 0.50 direction Decreasing rationale "A larger stopping distance reduces the remaining margin to the obstacle."
+//        ));
+//      MonotonicityTable f2_monotonicity
+//        confidence 1.0
+//        tableRows(
+//          MonotonicityRow f2_r1 {
+//            variedParticipant i2_detectionThreshold
+//            output MarginCollision
+//            condition ( ParticipantRange f2_r1_thresholdDomain of i2_detectionThreshold value range [0.05..1.0] nominal 0.2 step 0.05 unit "m" )
+//            trend Increasing
+//            nLevels 5
+//            rationale "Increasing the detection threshold increases the margin if stopping distance is unchanged."
+//          },
+//          MonotonicityRow f2_r2 {
+//            variedParticipant i2_DistanceToStop
+//            output MarginCollision
+//            condition ( ParticipantRange f2_r2_stopDomain of i2_DistanceToStop value range [0.0..1.0] nominal 0.1 step 0.05 unit "m" )
+//            trend Decreasing
+//            nLevels 5
+//            rationale "Increasing stopping distance decreases the residual collision margin."
+//          }
+//        )
+//    )
+  affects MarginCollision,
 
-Influence i4 
-  #** "Ultrasonic Sensor to WavePropagation" **#
+Influence i3
+  #** "Residual motion when static detection starts before the robot is fully stopped" **#
   participants:
-    ArtifactParticipant ultrasonicSensor confidence 1.0,
-    SRPInputParticipant MotionWhileScanning confidence 1.0,
-    EnvironmentalFactorParticipant temperature confidence 0.5,
-    EnvironmentalFactorParticipant humidity confidence 0.5,
-    EnvironmentalFactorParticipant noise confidence 0.5 ;
-  influenceFunction "f4":
-    definition "temperature,
-    humidity, ultrasonicSensor
-acousticNoise, MotionWhileScanning, "
-    returnType Text languageType NaturalLanguage;
-  affects WavePropagation ,
+    SRPInputParticipant i3_DistanceToStop target DistanceToStop confidence 1.0,
+    ArtifactParticipant i3_delayStaticDetection target delayStaticDetection confidence 1.0
+  ;
+  influenceFunction f3:
+    representations(
+      NaturalLanguageFunction f3_motionDescription
+        confidence 0.8
+        definition "If the robot needs more distance or time to stop than expected, static detection may start while the robot is still moving. Increasing the delay before static detection mitigates this residual motion."
+        );
+//      ParticipantImpactFunction f3_participantImpact
+//        confidence 0.8
+//        participantContributions(
+//          ParticipantRelativeImpact participant i3_DistanceToStop importance 0.60 direction Increasing rationale "A longer stopping distance increases the likelihood of motion while scanning.",
+//          ParticipantRelativeImpact participant i3_delayStaticDetection importance 0.40 direction Decreasing rationale "Waiting longer before static detection reduces residual motion during scanning."
+  affects MotionWhileScanning,
+
+Influence i4
+  #** "Ultrasonic sensing quality under residual motion and environmental acoustic conditions" **#
+  participants:
+    ArtifactParticipant i4_ultrasonicSensor target ultrasonicSensor confidence 1.0,
+    SRPInputParticipant i4_MotionWhileScanning target MotionWhileScanning confidence 1.0,
+    EnvironmentalFactorParticipant i4_temperature target temperature confidence 0.5 admissibleSpace range [0.0..40.0] nominal 21.0 step 5.0 unit "degC",
+    EnvironmentalFactorParticipant i4_humidity target humidity confidence 0.5 admissibleSpace range [20.0..90.0] nominal 45.0 step 10.0 unit "percent",
+    EnvironmentalFactorParticipant i4_noise target noise confidence 0.5 admissibleSpace range [30.0..90.0] nominal 55.0 step 5.0 unit "dB"
+  ;
+  influenceFunction f4:
+    representations(
+      NaturalLanguageFunction f4_waveDescription
+        confidence 0.7
+        definition "The ultrasonic sensor measurement quality depends on wave propagation conditions. Temperature and humidity affect sound propagation, acoustic noise interferes with echo detection, and residual motion while scanning can distort the measured distance map."
+  		);
+  affects WavePropagation,
 
 Influence i5
-  #** "SweepingDelay to SweepingCoverageRate" **#
+  #** "Sweeping delay and wave propagation determine whether the sensor moves during ultrasonic transmission and reception" **#
   participants:
-    SRPInputParticipant WavePropagation  confidence 1.0,
-    ArtifactParticipant sweepingDelay  confidence 1.0;
-  influenceFunction "f5":
-    definition "WavePropagation, 
-    sweepingDelay"
-    returnType Text languageType NaturalLanguage;
-  affects MotionDuringTxRx ,
+    SRPInputParticipant i5_WavePropagation target WavePropagation confidence 1.0,
+    ArtifactParticipant i5_sweepingDelay target sweepingDelay confidence 1.0
+  ;
+  influenceFunction f5:
+    representations(
+      NaturalLanguageFunction f5_txrxDescription
+        confidence 0.75
+        definition "If the sweeping delay is too short with respect to ultrasonic propagation and echo reception, the sensor may move while a pulse is still travelling, which produces distorted measurements.");
+  affects MotionDuringTxRx,
+
+
+
 
 Influence i6
-  #** "Battery and motor speed to TravelSpeed" **#
+  #** "Effective travel speed under mechanical parameters and operational environment" **#
   participants:
-    ArtifactParticipant motorSpeed  confidence 1.0,
-    ArtifactParticipant mass confidence 1.0,
-    ArtifactParticipant frontalArea confidence 0.5,
- //   ArtifactParticipant battery confidence 0.5,
-    ArtifactParticipant motor confidence 0.5,
-    EnvironmentalFactorParticipant  frictionCoef confidence 1.0 ,
-    EnvironmentalFactorParticipant slopeAngleRad confidence  1.0 ,
-    EnvironmentalFactorParticipant dragCoefficient  confidence  1.0,
- //   EnvironmentalFactorParticipant  temperature  confidence 0.5,
-    EnvironmentalFactorParticipant gravityAccel confidence 1.0,
-    EnvironmentalFactorParticipant airDensity confidence 0.5;
-  influenceFunction "f6":
-    definition "mass*motorSpeed^2 / 
-    ( 2*gravityAccel*mass*frictionCoef*cos(slopeAngleRad) 
-+ 2*gravityAccel*mass*sin(slopeAngleRad) 
-+ A*dragCoefficient*airDensity*(motorSpeed)^2 )"
-    returnType Text languageType NaturalLanguage;
-  affects TravelSpeed ,
-  
+    ArtifactParticipant i6_motorSpeed target motorSpeed confidence 1.0,
+    ArtifactParticipant i6_mass target mass confidence 1.0,
+    ArtifactParticipant i6_frontalArea target frontalArea confidence 0.5,
+    ArtifactParticipant i6_motor target motor confidence 0.5,
+    EnvironmentalFactorParticipant i6_frictionCoef target frictionCoef confidence 1.0 admissibleSpace range [0.2..1.0] nominal 0.6 step 0.1 unit "coefficient",
+    EnvironmentalFactorParticipant i6_slopeAngleRad target slopeAngleRad confidence 1.0 admissibleSpace range [-0.3491..0.3491] nominal -0.3491 step 0.0873 unit "rad",
+    EnvironmentalFactorParticipant i6_dragCoefficient target dragCoefficient confidence 1.0 admissibleSpace value 0.8 unit "coefficient",
+    EnvironmentalFactorParticipant i6_gravityAccel target gravityAccel confidence 1.0 admissibleSpace value 9.81 unit "m/s2",
+    EnvironmentalFactorParticipant i6_airDensity target airDensity confidence 0.5 admissibleSpace range [1.15..1.30] nominal 1.293 step 0.01 unit "kg/m3"
+  ;
+  influenceFunction f6:
+    representations(
+      NaturalLanguageFunction f6_speedDescription
+        confidence 0.75
+        definition "The effective travel speed is mainly driven by the configured motor speed, but it is reduced or altered by mass, motor characteristics, slope, wheel-floor friction, and aerodynamic drag."
+    )
+  ;
+  affects TravelSpeed,
+
 Influence i7
-  #** "DetectionThreshold to EfficientExploration" **#
+  #** "Exploration time as a function of travel speed and obstacle detection threshold" **#
   participants:
-    SRPInputParticipant TravelSpeed  ,
-    ArtifactParticipant detectionThreshold   ;
-  influenceFunction "f7":
-    definition "TravelSpeed, 
-detectionThreshold"
-    returnType Text languageType NaturalLanguage;
-  affects ExplorationTime ,
-  
+    SRPInputParticipant i7_TravelSpeed target TravelSpeed confidence 1.0,
+    ArtifactParticipant i7_detectionThreshold target detectionThreshold confidence 1.0
+  ;
+  influenceFunction f7:
+    representations(
+      NaturalLanguageFunction f7_explorationTimeDescription
+        confidence 0.8
+        definition "Exploration time decreases when effective travel speed increases, but it can increase when the detection threshold is too conservative because the robot performs more stops and avoidance maneuvers."
+    )
+  ;
+  affects ExplorationTime,
+
 Influence i8
-  #** "Sweeping delay" **#
+  #** "Coverage quality determined by sensing quality, sweep timing, and distance computation" **#
   participants:
-  	SRPInputParticipant WavePropagation confidence 0.5,
-    ArtifactParticipant sweepingDelay confidence 1.0 ,
-    ArtifactParticipant computeDistance confidence 0.5 ;
-  influenceFunction "f8":
-    definition "sweepingDelay, 
-computeDistance, 
-WavePropagation"
-    returnType Text languageType NaturalLanguage;
-  affects CoverageQuality
+    SRPInputParticipant i8_WavePropagation target WavePropagation confidence 0.5,
+    ArtifactParticipant i8_sweepingDelay target sweepingDelay confidence 1.0,
+    ArtifactParticipant i8_computeDistance target computeDistance confidence 0.5
+  ;
+  influenceFunction f8:
+    representations(
+      NaturalLanguageFunction f8_coverageDescription
+        confidence 0.75
+        definition "Coverage quality depends on the reliability of ultrasonic wave propagation, the timing of the sweeping motion, and the correctness of the distance computation. Poor sensing or excessive sweeping delay can reduce effective coverage.");
+  affects CoverageQuality,

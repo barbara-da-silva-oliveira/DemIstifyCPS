@@ -11,6 +11,7 @@ package fr.inria.kairos.influence.metamodel;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getDescription <em>Description</em>}</li>
  * </ul>
  *
@@ -19,6 +20,28 @@ package fr.inria.kairos.influence.metamodel;
  * @generated
  */
 public interface AbstractInfluence extends NamedElement {
+	/**
+	 * Returns the value of the '<em><b>Owned Influence Function</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Influence Function</em>' containment reference.
+	 * @see #setOwnedInfluenceFunction(InfluenceFunction)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getAbstractInfluence_OwnedInfluenceFunction()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	InfluenceFunction getOwnedInfluenceFunction();
+
+	/**
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.AbstractInfluence#getOwnedInfluenceFunction <em>Owned Influence Function</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Owned Influence Function</em>' containment reference.
+	 * @see #getOwnedInfluenceFunction()
+	 * @generated
+	 */
+	void setOwnedInfluenceFunction(InfluenceFunction value);
+
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->

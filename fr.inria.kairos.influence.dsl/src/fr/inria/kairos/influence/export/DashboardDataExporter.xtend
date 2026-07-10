@@ -219,7 +219,7 @@ class DashboardDataExporter {
 			sb.append("      \"name\": ").append(jsonString(criterion.name)).append(",\n")
 			sb.append("      \"requirement\": ").append(jsonString(requirementLabel(criterion.requirementRef))).append(",\n")
 			sb.append("      \"requirementUri\": ").append(jsonString(uriOf(criterion.requirementRef))).append(",\n")
-			sb.append("      \"marginDefinition\": ").append(jsonString(criterion.marginDefinition)).append(",\n")
+			sb.append("      \"marginDefinition\": ").append(jsonString(criterion.criterionDefinition)).append(",\n")
 			sb.append("      \"language\": ").append(jsonString(String.valueOf(criterion.language))).append(",\n")
 			sb.append("      \"constrainedSRPs\": ")
 

@@ -77,7 +77,7 @@ public class AnalyticExpressionFunctionImpl extends FunctionRepresentationImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LanguageType EXPRESSION_LANGUAGE_EDEFAULT = LanguageType.NATURAL_LANGUAGE;
+	protected static final LanguageType EXPRESSION_LANGUAGE_EDEFAULT = LanguageType.JAVA_NUMERIC_EXPRESSION;
 
 	/**
 	 * The cached value of the '{@link #getExpressionLanguage() <em>Expression Language</em>}' attribute.

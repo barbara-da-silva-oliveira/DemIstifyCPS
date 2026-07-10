@@ -19,16 +19,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum LanguageType implements Enumerator {
 	/**
-	 * The '<em><b>Natural Language</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NATURAL_LANGUAGE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	NATURAL_LANGUAGE(0, "NaturalLanguage", "NaturalLanguage"),
-
-	/**
 	 * The '<em><b>Java Numeric Expression</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36,18 +26,25 @@ public enum LanguageType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	JAVA_NUMERIC_EXPRESSION(1, "JavaNumericExpression", "JavaNumericExpression");
-
+	JAVA_NUMERIC_EXPRESSION(0, "JavaNumericExpression", "JavaNumericExpression"),
 	/**
-	 * The '<em><b>Natural Language</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NATURAL_LANGUAGE
-	 * @model name="NaturalLanguage"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NATURAL_LANGUAGE_VALUE = 0;
+	* The '<em><b>OCL</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #OCL_VALUE
+	* @generated
+	* @ordered
+	*/
+	OCL(1, "OCL", "OCL"),
+	/**
+	* The '<em><b>Natural Language</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #NATURAL_LANGUAGE_VALUE
+	* @generated
+	* @ordered
+	*/
+	NATURAL_LANGUAGE(2, "NaturalLanguage", "NaturalLanguage");
 
 	/**
 	 * The '<em><b>Java Numeric Expression</b></em>' literal value.
@@ -58,7 +55,29 @@ public enum LanguageType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int JAVA_NUMERIC_EXPRESSION_VALUE = 1;
+	public static final int JAVA_NUMERIC_EXPRESSION_VALUE = 0;
+
+	/**
+	 * The '<em><b>OCL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OCL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OCL_VALUE = 1;
+
+	/**
+	 * The '<em><b>Natural Language</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NATURAL_LANGUAGE
+	 * @model name="NaturalLanguage"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NATURAL_LANGUAGE_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Language Type</b></em>' enumerators.
@@ -66,8 +85,8 @@ public enum LanguageType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final LanguageType[] VALUES_ARRAY = new LanguageType[] { NATURAL_LANGUAGE,
-			JAVA_NUMERIC_EXPRESSION, };
+	private static final LanguageType[] VALUES_ARRAY = new LanguageType[] { JAVA_NUMERIC_EXPRESSION, OCL,
+			NATURAL_LANGUAGE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Language Type</b></em>' enumerators.
@@ -123,10 +142,12 @@ public enum LanguageType implements Enumerator {
 	 */
 	public static LanguageType get(int value) {
 		switch (value) {
-		case NATURAL_LANGUAGE_VALUE:
-			return NATURAL_LANGUAGE;
 		case JAVA_NUMERIC_EXPRESSION_VALUE:
 			return JAVA_NUMERIC_EXPRESSION;
+		case OCL_VALUE:
+			return OCL;
+		case NATURAL_LANGUAGE_VALUE:
+			return NATURAL_LANGUAGE;
 		}
 		return null;
 	}

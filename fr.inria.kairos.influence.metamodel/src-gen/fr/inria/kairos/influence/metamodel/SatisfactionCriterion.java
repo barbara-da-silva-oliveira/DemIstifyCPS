@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getRequirementRef <em>Requirement Ref</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getLanguage <em>Language</em>}</li>
- *   <li>{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getMarginDefinition <em>Margin Definition</em>}</li>
+ *   <li>{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getCriterionDefinition <em>Criterion Definition</em>}</li>
  *   <li>{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getConstrainedSRPs <em>Constrained SR Ps</em>}</li>
  * </ul>
  *
@@ -74,26 +74,26 @@ public interface SatisfactionCriterion extends NamedElement {
 	void setLanguage(LanguageType value);
 
 	/**
-	 * Returns the value of the '<em><b>Margin Definition</b></em>' attribute.
+	 * Returns the value of the '<em><b>Criterion Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Margin Definition</em>' attribute.
-	 * @see #setMarginDefinition(String)
-	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getSatisfactionCriterion_MarginDefinition()
+	 * @return the value of the '<em>Criterion Definition</em>' attribute.
+	 * @see #setCriterionDefinition(String)
+	 * @see fr.inria.kairos.influence.metamodel.MetamodelPackage#getSatisfactionCriterion_CriterionDefinition()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getMarginDefinition();
+	String getCriterionDefinition();
 
 	/**
-	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getMarginDefinition <em>Margin Definition</em>}' attribute.
+	 * Sets the value of the '{@link fr.inria.kairos.influence.metamodel.SatisfactionCriterion#getCriterionDefinition <em>Criterion Definition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Margin Definition</em>' attribute.
-	 * @see #getMarginDefinition()
+	 * @param value the new value of the '<em>Criterion Definition</em>' attribute.
+	 * @see #getCriterionDefinition()
 	 * @generated
 	 */
-	void setMarginDefinition(String value);
+	void setCriterionDefinition(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Constrained SR Ps</b></em>' reference list.

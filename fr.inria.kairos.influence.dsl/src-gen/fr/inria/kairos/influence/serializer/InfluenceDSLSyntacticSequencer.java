@@ -21,11 +21,13 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected InfluenceDSLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_InfluenceModel_CommaKeyword_3_2_q;
+	protected AbstractElementAlias match_MonotonicityRow_RightParenthesisKeyword_11_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (InfluenceDSLGrammarAccess) access;
 		match_InfluenceModel_CommaKeyword_3_2_q = new TokenAlias(false, true, grammarAccess.getInfluenceModelAccess().getCommaKeyword_3_2());
+		match_MonotonicityRow_RightParenthesisKeyword_11_q = new TokenAlias(false, true, grammarAccess.getMonotonicityRowAccess().getRightParenthesisKeyword_11());
 	}
 	
 	@Override
@@ -42,6 +44,8 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_InfluenceModel_CommaKeyword_3_2_q.equals(syntax))
 				emit_InfluenceModel_CommaKeyword_3_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_MonotonicityRow_RightParenthesisKeyword_11_q.equals(syntax))
+				emit_MonotonicityRow_RightParenthesisKeyword_11_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -61,6 +65,20 @@ public class InfluenceDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * </pre>
 	 */
 	protected void emit_InfluenceModel_CommaKeyword_3_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ')'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     condition+=ParticipantRange (ambiguity) 'trend' trend=TrendType
+	 
+	 * </pre>
+	 */
+	protected void emit_MonotonicityRow_RightParenthesisKeyword_11_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

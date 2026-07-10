@@ -145,7 +145,8 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //    }
 	// -------------------------------------------------------------------------
 	private var elemToNode = new HashMap<EObject, KNode>()
-
+	private var reqRefToNode = new HashMap<EObject, KNode>()
+	private var reqKeyToNode = new HashMap<String, KNode>()
 	override KNode transform(InfluenceModel model) {
 		val rootNode = KGraphUtil.createInitializedNode()
 		elemToNode.put(model, rootNode)
@@ -183,47 +184,122 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 					absInf.createInfluencePass3
 				}
 				
-				// Satisfaction criteria replace local Requirement nodes.
+				// Satisfaction criteria replace local Requirement.
 			// They are the DSL-owned traceability/margin artifacts.
-			for (criterion : main.allSatisfactionCriteria) {
-				val criterionNode = criterion.createSatisfactionCriterion
-				rootNode.children += criterionNode
-				elemToNode.put(criterion, criterionNode)
-			}
 			
-			// SRP -> SatisfactionCriterion edges
-			for (criterion : main.allSatisfactionCriteria) {
-				val criterionNode = elemToNode.get(criterion)
+			val reqKeyToRepresentativeCriterion = new HashMap<String, SatisfactionCriterion>()
+			val reqKeyToSrps = new HashMap<String, java.util.LinkedHashSet<SystemResponseProperty>>()
 			
-				if (criterionNode !== null) {
+			// Collect all SRPs per referenced requirement.
+			for (criterion : main.allSatisfactionCriteria) {
+				val reqRef = criterion.requirementRef
+			
+				if (reqRef !== null) {
+					val reqKey = requirementKey(reqRef)
+			
+					if (!reqKeyToRepresentativeCriterion.containsKey(reqKey)) {
+						reqKeyToRepresentativeCriterion.put(reqKey, criterion)
+					}
+			
+					var srps = reqKeyToSrps.get(reqKey)
+					if (srps === null) {
+						srps = new java.util.LinkedHashSet<SystemResponseProperty>()
+						reqKeyToSrps.put(reqKey, srps)
+					}
+			
 					for (srp : criterion.constrainedSrps) {
-						val srpNode = elemToNode.get(srp)
-			
-						if (srpNode !== null) {
-							val src = srpNode.addPort => [
-								setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
-							]
-			
-							val dest = criterionNode.addPort => [
-								setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
-							]
-			
-							createDelayEdge(criterion).connect(src, dest)
+						if (srp !== null) {
+							srps.add(srp)
 						}
 					}
 				}
 			}
-			}else {
-				val messageNode = KGraphUtil.createInitializedNode()
-				messageNode.addErrorMessage(
-					fr.inria.kairos.influence.visualisation.klighd.synthesis.InfluenceSynthesis.TEXT_NO_INFLUENCE_MODEL,
-					null)
-				rootNode.children += messageNode
+			
+			// Create one visual requirement node per referenced requirement.
+			for (entry : reqKeyToRepresentativeCriterion.entrySet) {
+				val reqKey = entry.key
+				val criterion = entry.value
+			
+				if (!reqKeyToNode.containsKey(reqKey)) {
+					val reqNode = criterion.createRequirementNodeFromCriterion
+					rootNode.children += reqNode
+					reqKeyToNode.put(reqKey, reqNode)
+			
+					if (criterion.requirementRef !== null) {
+						elemToNode.put(criterion.requirementRef, reqNode)
+					}
+				}
 			}
+			
+			// Connect only terminal SRPs to requirement nodes.
+			val alreadyConnected = newHashSet
+			
+			for (entry : reqKeyToSrps.entrySet) {
+				val reqKey = entry.key
+				val reqNode = reqKeyToNode.get(reqKey)
+			
+				if (reqNode !== null) {
+					val terminalSrps = main.terminalSrpsForRequirement(entry.value)
+			
+					for (srp : terminalSrps) {
+						val srpNode = elemToNode.get(srp)
+			
+						if (srpNode !== null) {
+							val edgeKey = srp.name + "->" + reqKey
+			
+							if (!alreadyConnected.contains(edgeKey)) {
+								alreadyConnected += edgeKey
+			
+								val criterion = main.findCriterionForRequirementAndSrp(reqKey, srp)
+			
+								val src = reqNode.addPort => [
+									setLayoutOption(CoreOptions.PORT_SIDE, PortSide.SOUTH)
+								]
+			
+								val dest = srpNode.addPort => [
+									setLayoutOption(CoreOptions.PORT_SIDE, PortSide.NORTH)
+								]
+			
+								createRequirementTraceEdge(criterion).connect(src, dest)
+							}
+						}
+					}
+				}
+			}
+						
+			// SRP -> SatisfactionCriterion edges
+//			for (criterion : main.allSatisfactionCriteria) {
+//				val criterionNode = elemToNode.get(criterion)
+//			
+//				if (criterionNode !== null) {
+//					for (srp : criterion.constrainedSrps) {
+//						val srpNode = elemToNode.get(srp)
+//			
+//						if (srpNode !== null) {
+//							val src = srpNode.addPort => [
+//								setLayoutOption(CoreOptions.PORT_SIDE, PortSide.EAST)
+//							]
+//			
+//							val dest = criterionNode.addPort => [
+//								setLayoutOption(CoreOptions.PORT_SIDE, PortSide.WEST)
+//							]
+//			
+//							createDelayEdge(criterion).connect(src, dest)
+//						}
+//					}
+//				}
+//			}
+//			}else {
+//				val messageNode = KGraphUtil.createInitializedNode()
+//				messageNode.addErrorMessage(
+//					fr.inria.kairos.influence.visualisation.klighd.synthesis.InfluenceSynthesis.TEXT_NO_INFLUENCE_MODEL,
+//					null)
+//				rootNode.children += messageNode
+//			}
 
-
-			rootNode.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
-			rootNode.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+//comenting:
+//			rootNode.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+//			rootNode.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
 
 
 		// Show all reactors
@@ -256,7 +332,9 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 //			        rootNode.setLayoutOption(CoreOptions.SPACING_NODE_NODE, 25.0)
 //				}
 //			}
-//		   }
+//		   } 
+		}
+		
 		} catch (Exception e) {
 			e.printStackTrace
 
@@ -732,41 +810,82 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return node
 	}
 
-	private def KNode createSatisfactionCriterion(SatisfactionCriterion criterion) {
-		val node = KGraphUtil.createInitializedNode()
-		node.associateWith(criterion)
-		node.ID = "SC_" + criterion.safeName
+//	private def KNode createSatisfactionCriterion(SatisfactionCriterion criterion) {
+//		val node = KGraphUtil.createInitializedNode()
+//		node.associateWith(criterion)
+//		node.ID = "SC_" + criterion.safeName
+//	
+//		val label = criterion.createSatisfactionCriterionLabel
+//	
+//		if (criterion === null) {
+//			node.addErrorMessage(TEXT_REACTOR_NULL, null)
+//		} else {
+//			val figure = node.addSatisfactionCriterionFigure(criterion, label)
+//			figure.addChildArea()
+//	
+//			node.configureInterfaceNodeLayout()
+//	
+//			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+//			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+//			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+//			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+//			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+//				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+//			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+//			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+//				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+//			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+//			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+//	
+//			if (!SHOW_HYPERLINKS.booleanValue) {
+//				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+//				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+//					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+//			}
+//		}
+//	
+//		return node
+//	}
+
+	private def KNode createRequirementNodeFromCriterion(SatisfactionCriterion criterion) {
+	    val node = KGraphUtil.createInitializedNode()
+	    node.associateWith(criterion.requirementRef)
+	    node.ID = getRequirementNodeId(criterion)
 	
-		val label = criterion.createSatisfactionCriterionLabel
+	    val label = getRequirementLabel(criterion)
 	
-		if (criterion === null) {
-			node.addErrorMessage(TEXT_REACTOR_NULL, null)
-		} else {
-			val figure = node.addSatisfactionCriterionFigure(criterion, label)
-			figure.addChildArea()
+	    if (criterion === null || criterion.requirementRef === null) {
+	        node.addErrorMessage("Requirement reference is null", null)
+	    } else {
+	        val figure = node.addRequirementFigure(label)
+	        figure.addChildArea()
 	
-			node.configureInterfaceNodeLayout()
-	
-			node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
-			node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+	        node.configureInterfaceNodeLayout()
+			node.setLayoutOption(CoreOptions.COMMENT_BOX, true)
+
 			node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
-			node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
-				EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
-				LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
-			node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
-			node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+			node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(4, 6, 4, 6))
+			
+//	        node.setLayoutOption(CoreOptions.ALGORITHM, LayeredOptions.ALGORITHM_ID)
+//	        node.setLayoutOption(CoreOptions.DIRECTION, Direction.RIGHT)
+//	        node.setLayoutOption(CoreOptions.NODE_SIZE_CONSTRAINTS, EnumSet.of(SizeConstraint.MINIMUM_SIZE))
+//	        node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT, FixedAlignment.BALANCED)
+//	        node.setLayoutOption(LayeredOptions.NODE_PLACEMENT_BK_EDGE_STRAIGHTENING,
+//	            EdgeStraighteningStrategy.IMPROVE_STRAIGHTNESS)
+//	        node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE, LayeredOptions.SPACING_EDGE_NODE.^default * 1.1f)
+//	        node.setLayoutOption(LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS,
+//	            LayeredOptions.SPACING_EDGE_NODE_BETWEEN_LAYERS.^default * 1.1f)
+//	        node.setLayoutOption(LayeredOptions.CROSSING_MINIMIZATION_SEMI_INTERACTIVE, true)
+//	        node.setLayoutOption(LayeredOptions.EDGE_ROUTING, EdgeRouting.SPLINES)
+//	
+//	        if (!SHOW_HYPERLINKS.booleanValue) {
+//	            node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
+//	            node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
+//	                LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
+//	        }
+	    }
 	
-			if (!SHOW_HYPERLINKS.booleanValue) {
-				node.setLayoutOption(CoreOptions.PADDING, new ElkPadding(-1, 6, 6, 6))
-				node.setLayoutOption(LayeredOptions.SPACING_COMPONENT_COMPONENT,
-					LayeredOptions.SPACING_COMPONENT_COMPONENT.^default * 0.5f)
-			}
-		}
-	
-		return node
+	    return node
 	}
 
 	private def KNode createEnvironmentalFactor(EnvironmentalFactor ef) {
@@ -866,6 +985,42 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		}
 	
 		return b.toString
+	}
+	
+	
+	def addRequirementFigure(KNode node, String text) {
+    val padding = SHOW_HYPERLINKS.booleanValue ? 8 : 6
+    val figure = node.addRoundedRectangle(8, 8, 1) => [
+        setGridPlacement(1)
+        lineWidth = 1
+        foreground = Colors.PURPLE_3
+        boldLineSelectionStyle
+    ]
+
+    figure.addRectangle() => [
+        invisible = true
+        setGridPlacementData()
+            .from(LEFT, padding, 0, TOP, padding, 0)
+            .to(RIGHT, padding, 0, BOTTOM, 4, 0)
+
+        addRectangle() => [
+            invisible = true
+            setPointPlacementData(
+                LEFT, 0, 0.5f,
+                TOP, 0, 0.5f,
+                H_CENTRAL, V_CENTRAL,
+                0, 0, 0, 0
+            )
+
+            setGridPlacement(1)
+
+            addText(text) => [
+                noSelectionStyle()
+                underlineSelectionStyle()
+            ]
+        ]
+    ]
+	return figure
 	}
 
 //	private def Collection<KNode> createInterfaceNode(
@@ -1030,7 +1185,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 			}
 	
 			AnalyticExpressionFunction: {
-				"Expr: " + shorten(rep.stringFeature("expression"), 56)
+				"AE: " + shorten(rep.stringFeature("expression"), 56)
 			}
 	
 			ParticipantImpactFunction: {
@@ -1195,6 +1350,7 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		]
 	}
 
+
 	private def dispatch KEdge connect(KEdge edge, KNode src, KNode dst) {
 		edge.source = src
 		edge.target = dst
@@ -1271,32 +1427,32 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 		return port
 	}
 	
-	private def String createSatisfactionCriterionLabel(SatisfactionCriterion criterion) {
-		val b = new StringBuilder
-	
-		b.append(criterion.safeName)
-	
-		val reqRef = criterion.requirementRefObject
-		val reqLabel = reqRef.labelOfEObject
-	
-		if (reqLabel !== null && !reqLabel.empty) {
-			b.append("\nreq: ").append(shorten(reqLabel, 48))
-		}
-	
-		val margin = criterion.stringFeature("marginDefinition")
-	
-		if (margin !== null && !margin.trim.empty) {
-			b.append("\nM: ").append(shorten(margin, 48))
-		}
-	
-		val lang = criterion.stringFeature("language")
-	
-		if (lang !== null && !lang.trim.empty) {
-			b.append("\n").append(lang)
-		}
-	
-		return b.toString
-	}
+//	private def String createSatisfactionCriterionLabel(SatisfactionCriterion criterion) {
+//		val b = new StringBuilder
+//	
+//		b.append(criterion.safeName)
+//	
+//		val reqRef = criterion.requirementRefObject
+//		val reqLabel = reqRef.labelOfEObject
+//	
+//		if (reqLabel !== null && !reqLabel.empty) {
+//			b.append("\nreq: ").append(shorten(reqLabel, 48))
+//		}
+//	
+//		val margin = criterion.stringFeature("marginDefinition")
+//	
+//		if (margin !== null && !margin.trim.empty) {
+//			b.append("\nM: ").append(shorten(margin, 48))
+//		}
+//	
+//		val lang = criterion.stringFeature("language")
+//	
+//		if (lang !== null && !lang.trim.empty) {
+//			b.append("\n").append(lang)
+//		}
+//	
+//		return b.toString
+//	}
 	private def EObject requirementRefObject(SatisfactionCriterion criterion) {
 		if (criterion === null) {
 			return null
@@ -1396,6 +1552,187 @@ class InfluenceSynthesis extends AbstractDiagramSynthesis<InfluenceModel> {
 	}
 
 
+
+	private def String getRequirementLabel(SatisfactionCriterion criterion) {
+	    val reqRef = criterion.requirementRef
+	    if (reqRef === null) {
+	        return "<Unresolved Requirement>"
+	    }
+	
+	    // If it has a "name" feature, use it
+	    val nameFeature = reqRef.eClass.EAllStructuralFeatures.findFirst[it.name == "name"]
+	    if (nameFeature !== null) {
+	        val value = reqRef.eGet(nameFeature)
+	        if (value !== null) {
+	            return value.toString
+	        }
+	    }
+	
+	    return reqRef.eClass.name
+	}
+	
+	private def String getRequirementNodeId(SatisfactionCriterion criterion) {
+	    val reqRef = criterion.requirementRef
+	    if (reqRef === null) {
+	        return "unresolvedRequirement"
+	    }
+	
+	    val nameFeature = reqRef.eClass.EAllStructuralFeatures.findFirst[it.name == "name"]
+	    if (nameFeature !== null) {
+	        val value = reqRef.eGet(nameFeature)
+	        if (value !== null) {
+	            return value.toString
+	        }
+	    }
+	
+	    return reqRef.eClass.name + "_" + Integer.toHexString(System.identityHashCode(reqRef))
+	}
+	
+	private def createRequirementTraceEdge(Object associate) {
+		return createEdge => [
+			if (associate !== null) {
+				associateWith(associate)
+			}
+	
+			addPolyline() => [
+				lineWidth = 1.2f
+				lineStyle = LineStyle.DASH
+				foreground = Colors.PURPLE_3
+				boldLineSelectionStyle()
+			]
+		]
+	}
+	// new satisfaction criterion:
+	private def String requirementKey(EObject reqRef) {
+		if (reqRef === null) {
+			return "<unresolved-requirement>"
+		}
+	
+		val uri = org.eclipse.emf.ecore.util.EcoreUtil.getURI(reqRef)
+	
+		if (uri !== null) {
+			return uri.toString
+		}
+	
+		return reqRef.labelOfEObject
+	}
+	
+	private def Iterable<SystemResponseProperty> terminalSrpsForRequirement(
+	InfluenceModel model,
+	Iterable<SystemResponseProperty> candidateSrps
+	) {
+		val candidates = new java.util.LinkedHashSet<SystemResponseProperty>()
+	
+		for (srp : candidateSrps) {
+			if (srp !== null) {
+				candidates.add(srp)
+			}
+		}
+	
+		val terminal = new java.util.LinkedHashSet<SystemResponseProperty>()
+	
+		for (srp : candidates) {
+			if (!model.reachesAnotherCandidateSrp(srp, candidates)) {
+				terminal.add(srp)
+			}
+		}
+	
+		// Safety fallback. If everything was filtered by a cycle, show something.
+		if (terminal.empty) {
+			return candidates
+		}
+	
+		return terminal
+	}
+	private def boolean reachesAnotherCandidateSrp(
+	InfluenceModel model,
+	SystemResponseProperty start,
+	java.util.LinkedHashSet<SystemResponseProperty> candidates
+	) {
+		if (model === null || start === null || candidates === null) {
+			return false
+		}
+	
+		val visited = new java.util.HashSet<SystemResponseProperty>()
+		val queue = new java.util.ArrayDeque<SystemResponseProperty>()
+	
+		visited.add(start)
+		queue.add(start)
+	
+		while (!queue.empty) {
+			val current = queue.removeFirst
+	
+			for (absInf : model.ownedInfluences) {
+				if (absInf instanceof Influence) {
+					val inf = absInf as Influence
+	
+					if (inf.usesSrpInput(current)) {
+						val output = inf.outputSRP
+	
+						if (output !== null) {
+							if (output !== start && candidates.contains(output)) {
+								return true
+							}
+	
+							if (!visited.contains(output)) {
+								visited.add(output)
+								queue.add(output)
+							}
+						}
+					}
+				}
+			}
+		}
+	
+		return false
+	}
+	
+	
+	private def boolean usesSrpInput(Influence inf, SystemResponseProperty srp) {
+		if (inf === null || srp === null) {
+			return false
+		}
+	
+		var found = false
+	
+		for (p : inf.ownedParticipants) {
+			if (p instanceof SRPInputParticipant) {
+				val sp = p as SRPInputParticipant
+	
+				if (sp.target === srp) {
+					found = true
+				}
+			}
+		}
+	
+		return found
+	}
+	
+	private def SatisfactionCriterion findCriterionForRequirementAndSrp(
+	InfluenceModel model,
+	String reqKey,
+	SystemResponseProperty srp
+	) {
+		if (model === null || reqKey === null || srp === null) {
+			return null
+		}
+	
+		var SatisfactionCriterion found = null
+	
+		for (criterion : model.allSatisfactionCriteria) {
+			val reqRef = criterion.requirementRef
+	
+			if (reqRef !== null && requirementKey(reqRef) == reqKey) {
+				for (candidateSrp : criterion.constrainedSrps) {
+					if (candidateSrp === srp && found === null) {
+						found = criterion
+					}
+				}
+			}
+		}
+	
+		return found
+	}
 //	private def KNode addErrorComment(KNode node, String message) {
 //		val comment = KGraphUtil.createInitializedNode()
 //        comment.setLayoutOption(CoreOptions.COMMENT_BOX, true)

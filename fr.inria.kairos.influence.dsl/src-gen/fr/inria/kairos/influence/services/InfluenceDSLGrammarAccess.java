@@ -317,7 +317,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cDescriptionAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cDescriptionEStringParserRuleCall_4_0 = (RuleCall)cDescriptionAssignment_4.eContents().get(0);
 		
-		///* SRP */
 		//SystemResponseProperty returns SystemResponseProperty:
 		//    {SystemResponseProperty}
 		//    'SystemResponseProperty'
@@ -372,22 +371,21 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cConstrainedSRPsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final CrossReference cConstrainedSRPsSystemResponsePropertyCrossReference_6_1_0 = (CrossReference)cConstrainedSRPsAssignment_6_1.eContents().get(0);
 		private final RuleCall cConstrainedSRPsSystemResponsePropertyQualifiedNameParserRuleCall_6_1_0_1 = (RuleCall)cConstrainedSRPsSystemResponsePropertyCrossReference_6_1_0.eContents().get(1);
-		private final Keyword cSatisfiedKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cWhenKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cMarginDefinitionAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cMarginDefinitionEStringParserRuleCall_9_0 = (RuleCall)cMarginDefinitionAssignment_9.eContents().get(0);
+		private final Keyword cCriterionKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cDefinitionKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cCriterionDefinitionAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cCriterionDefinitionEStringParserRuleCall_9_0 = (RuleCall)cCriterionDefinitionAssignment_9.eContents().get(0);
 		private final Keyword cLanguageTypeKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		private final Assignment cLanguageAssignment_11 = (Assignment)cGroup.eContents().get(11);
 		private final RuleCall cLanguageLanguageTypeEnumRuleCall_11_0 = (RuleCall)cLanguageAssignment_11.eContents().get(0);
 		
-		///* Satisfaction criterion */
 		//SatisfactionCriterion returns SatisfactionCriterion:
 		//    'SatisfactionCriterion'
 		//    name=EString
 		//    'for' requirementRef=[ecore::EObject|QualifiedName]
 		//    'constrains' constrainedSRPs+=[SystemResponseProperty|QualifiedName]
 		//        (',' constrainedSRPs+=[SystemResponseProperty|QualifiedName])*
-		//    'satisfied' 'when' marginDefinition=EString
+		//    'criterion' 'definition' criterionDefinition=EString
 		//    'languageType' language=LanguageType
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -397,7 +395,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//'for' requirementRef=[ecore::EObject|QualifiedName]
 		//'constrains' constrainedSRPs+=[SystemResponseProperty|QualifiedName]
 		//    (',' constrainedSRPs+=[SystemResponseProperty|QualifiedName])*
-		//'satisfied' 'when' marginDefinition=EString
+		//'criterion' 'definition' criterionDefinition=EString
 		//'languageType' language=LanguageType
 		public Group getGroup() { return cGroup; }
 		
@@ -449,17 +447,17 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//QualifiedName
 		public RuleCall getConstrainedSRPsSystemResponsePropertyQualifiedNameParserRuleCall_6_1_0_1() { return cConstrainedSRPsSystemResponsePropertyQualifiedNameParserRuleCall_6_1_0_1; }
 		
-		//'satisfied'
-		public Keyword getSatisfiedKeyword_7() { return cSatisfiedKeyword_7; }
+		//'criterion'
+		public Keyword getCriterionKeyword_7() { return cCriterionKeyword_7; }
 		
-		//'when'
-		public Keyword getWhenKeyword_8() { return cWhenKeyword_8; }
+		//'definition'
+		public Keyword getDefinitionKeyword_8() { return cDefinitionKeyword_8; }
 		
-		//marginDefinition=EString
-		public Assignment getMarginDefinitionAssignment_9() { return cMarginDefinitionAssignment_9; }
+		//criterionDefinition=EString
+		public Assignment getCriterionDefinitionAssignment_9() { return cCriterionDefinitionAssignment_9; }
 		
 		//EString
-		public RuleCall getMarginDefinitionEStringParserRuleCall_9_0() { return cMarginDefinitionEStringParserRuleCall_9_0; }
+		public RuleCall getCriterionDefinitionEStringParserRuleCall_9_0() { return cCriterionDefinitionEStringParserRuleCall_9_0; }
 		
 		//'languageType'
 		public Keyword getLanguageTypeKeyword_10() { return cLanguageTypeKeyword_10; }
@@ -623,7 +621,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Assignment cConfidenceAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cConfidenceEDoubleParserRuleCall_4_1_0 = (RuleCall)cConfidenceAssignment_4_1.eContents().get(0);
 		
-		///* Participants */
 		//ArtifactParticipant returns ArtifactParticipant:
 		//    'ArtifactParticipant'
 		//    name=EString
@@ -823,7 +820,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final RuleCall cRangeValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cScalarValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		///* Values */
 		//ValueSpec returns ValueSpec:
 		//      RangeValue
 		//    | ScalarValue
@@ -1245,7 +1241,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final CrossReference cInternalInfluencesAbstractInfluenceCrossReference_6_1_0 = (CrossReference)cInternalInfluencesAssignment_6_1.eContents().get(0);
 		private final RuleCall cInternalInfluencesAbstractInfluenceQualifiedNameParserRuleCall_6_1_0_1 = (RuleCall)cInternalInfluencesAbstractInfluenceCrossReference_6_1_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cOwnedInfluenceFunctionKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cInfluenceFunctionKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		private final Assignment cOwnedInfluenceFunctionAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cOwnedInfluenceFunctionInfluenceFunctionParserRuleCall_9_0 = (RuleCall)cOwnedInfluenceFunctionAssignment_9.eContents().get(0);
 		
@@ -1260,7 +1256,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//        internalInfluences+=[AbstractInfluence|QualifiedName]
 		//        ( "," internalInfluences+=[AbstractInfluence|QualifiedName] )*
 		//    ')'
-		//    'ownedInfluenceFunction'
+		//    'influenceFunction'
 		//        ownedInfluenceFunction=InfluenceFunction
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -1275,7 +1271,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//    internalInfluences+=[AbstractInfluence|QualifiedName]
 		//    ( "," internalInfluences+=[AbstractInfluence|QualifiedName] )*
 		//')'
-		//'ownedInfluenceFunction'
+		//'influenceFunction'
 		//    ownedInfluenceFunction=InfluenceFunction
 		public Group getGroup() { return cGroup; }
 		
@@ -1338,8 +1334,8 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		//')'
 		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 		
-		//'ownedInfluenceFunction'
-		public Keyword getOwnedInfluenceFunctionKeyword_8() { return cOwnedInfluenceFunctionKeyword_8; }
+		//'influenceFunction'
+		public Keyword getInfluenceFunctionKeyword_8() { return cInfluenceFunctionKeyword_8; }
 		
 		//ownedInfluenceFunction=InfluenceFunction
 		public Assignment getOwnedInfluenceFunctionAssignment_9() { return cOwnedInfluenceFunctionAssignment_9; }
@@ -2171,127 +2167,202 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.MonotonicityRow");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cMonotonicityRowKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cConditionsKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cConditionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cConditionParticipantRangeParserRuleCall_1_2_0 = (RuleCall)cConditionAssignment_1_2.eContents().get(0);
-		private final Group cGroup_1_3 = (Group)cGroup_1.eContents().get(3);
-		private final Keyword cCommaKeyword_1_3_0 = (Keyword)cGroup_1_3.eContents().get(0);
-		private final Assignment cConditionAssignment_1_3_1 = (Assignment)cGroup_1_3.eContents().get(1);
-		private final RuleCall cConditionParticipantRangeParserRuleCall_1_3_1_0 = (RuleCall)cConditionAssignment_1_3_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
-		private final Keyword cVariedParticipantKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cVariedParticipantAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cVariedParticipantParticipantCrossReference_3_0 = (CrossReference)cVariedParticipantAssignment_3.eContents().get(0);
-		private final RuleCall cVariedParticipantParticipantQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cVariedParticipantParticipantCrossReference_3_0.eContents().get(1);
-		private final Keyword cOutputKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cOutputAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cOutputSystemResponsePropertyCrossReference_5_0 = (CrossReference)cOutputAssignment_5.eContents().get(0);
-		private final RuleCall cOutputSystemResponsePropertyQualifiedNameParserRuleCall_5_0_1 = (RuleCall)cOutputSystemResponsePropertyCrossReference_5_0.eContents().get(1);
-		private final Keyword cTrendKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cTrendAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cTrendTrendTypeEnumRuleCall_7_0 = (RuleCall)cTrendAssignment_7.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cVariedParticipantKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cVariedParticipantAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cVariedParticipantParticipantCrossReference_4_0 = (CrossReference)cVariedParticipantAssignment_4.eContents().get(0);
+		private final RuleCall cVariedParticipantParticipantQualifiedNameParserRuleCall_4_0_1 = (RuleCall)cVariedParticipantParticipantCrossReference_4_0.eContents().get(1);
+		private final Keyword cOutputKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cOutputAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cOutputSystemResponsePropertyCrossReference_6_0 = (CrossReference)cOutputAssignment_6.eContents().get(0);
+		private final RuleCall cOutputSystemResponsePropertyQualifiedNameParserRuleCall_6_0_1 = (RuleCall)cOutputSystemResponsePropertyCrossReference_6_0.eContents().get(1);
+		private final Keyword cConditionKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cLeftParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cConditionAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cConditionParticipantRangeParserRuleCall_9_0 = (RuleCall)cConditionAssignment_9.eContents().get(0);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cCommaKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cConditionAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cConditionParticipantRangeParserRuleCall_10_1_0 = (RuleCall)cConditionAssignment_10_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cTrendKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cTrendAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cTrendTrendTypeEnumRuleCall_13_0 = (RuleCall)cTrendAssignment_13.eContents().get(0);
+		private final Group cGroup_14 = (Group)cGroup.eContents().get(14);
+		private final Keyword cLocalSlopeKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
+		private final Assignment cLocalSlopeAssignment_14_1 = (Assignment)cGroup_14.eContents().get(1);
+		private final RuleCall cLocalSlopeEDoubleParserRuleCall_14_1_0 = (RuleCall)cLocalSlopeAssignment_14_1.eContents().get(0);
+		private final Group cGroup_15 = (Group)cGroup.eContents().get(15);
+		private final Keyword cNLevelsKeyword_15_0 = (Keyword)cGroup_15.eContents().get(0);
+		private final Assignment cNLevelsAssignment_15_1 = (Assignment)cGroup_15.eContents().get(1);
+		private final RuleCall cNLevelsINTTerminalRuleCall_15_1_0 = (RuleCall)cNLevelsAssignment_15_1.eContents().get(0);
+		private final Group cGroup_16 = (Group)cGroup.eContents().get(16);
+		private final Keyword cRationaleKeyword_16_0 = (Keyword)cGroup_16.eContents().get(0);
+		private final Assignment cRationaleAssignment_16_1 = (Assignment)cGroup_16.eContents().get(1);
+		private final RuleCall cRationaleSTRINGTerminalRuleCall_16_1_0 = (RuleCall)cRationaleAssignment_16_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
 		
+		////MonotonicityRow returns MonotonicityRow:
+		////    'MonotonicityRow'
+		////    (
+		////        'conditions'
+		////        '('
+		////            condition+=ParticipantRange
+		////            ( "," condition+=ParticipantRange )*
+		////        ')'
+		////    )?
+		////    'variedParticipant' variedParticipant=[Participant|QualifiedName]
+		////    'output' output=[SystemResponseProperty|QualifiedName]
+		////    'trend' trend=TrendType
+		////;
 		//MonotonicityRow returns MonotonicityRow:
 		//    'MonotonicityRow'
-		//    (
-		//        'conditions'
+		//    name=EString
+		//    '{'
+		//        'variedParticipant' variedParticipant=[Participant|QualifiedName]
+		//        'output' output=[SystemResponseProperty|QualifiedName]
+		//        'condition'
 		//        '('
 		//            condition+=ParticipantRange
 		//            ( "," condition+=ParticipantRange )*
-		//        ')'
-		//    )?
-		//    'variedParticipant' variedParticipant=[Participant|QualifiedName]
-		//    'output' output=[SystemResponseProperty|QualifiedName]
-		//    'trend' trend=TrendType
+		//        ')'?
+		//        'trend' trend=TrendType
+		//        ('localSlope' localSlope=EDouble)?
+		//        ('nLevels' nLevels=INT)?
+		//        ('rationale' rationale=STRING)?
+		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'MonotonicityRow'
-		//(
-		//    'conditions'
+		//name=EString
+		//'{'
+		//    'variedParticipant' variedParticipant=[Participant|QualifiedName]
+		//    'output' output=[SystemResponseProperty|QualifiedName]
+		//    'condition'
 		//    '('
 		//        condition+=ParticipantRange
 		//        ( "," condition+=ParticipantRange )*
-		//    ')'
-		//)?
-		//'variedParticipant' variedParticipant=[Participant|QualifiedName]
-		//'output' output=[SystemResponseProperty|QualifiedName]
-		//'trend' trend=TrendType
+		//    ')'?
+		//    'trend' trend=TrendType
+		//    ('localSlope' localSlope=EDouble)?
+		//    ('nLevels' nLevels=INT)?
+		//    ('rationale' rationale=STRING)?
+		//'}'
 		public Group getGroup() { return cGroup; }
 		
 		//'MonotonicityRow'
 		public Keyword getMonotonicityRowKeyword_0() { return cMonotonicityRowKeyword_0; }
 		
-		//(
-		//    'conditions'
-		//    '('
-		//        condition+=ParticipantRange
-		//        ( "," condition+=ParticipantRange )*
-		//    ')'
-		//)?
-		public Group getGroup_1() { return cGroup_1; }
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//'conditions'
-		public Keyword getConditionsKeyword_1_0() { return cConditionsKeyword_1_0; }
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
-		
-		//condition+=ParticipantRange
-		public Assignment getConditionAssignment_1_2() { return cConditionAssignment_1_2; }
-		
-		//ParticipantRange
-		public RuleCall getConditionParticipantRangeParserRuleCall_1_2_0() { return cConditionParticipantRangeParserRuleCall_1_2_0; }
-		
-		//( "," condition+=ParticipantRange )*
-		public Group getGroup_1_3() { return cGroup_1_3; }
-		
-		//","
-		public Keyword getCommaKeyword_1_3_0() { return cCommaKeyword_1_3_0; }
-		
-		//condition+=ParticipantRange
-		public Assignment getConditionAssignment_1_3_1() { return cConditionAssignment_1_3_1; }
-		
-		//ParticipantRange
-		public RuleCall getConditionParticipantRangeParserRuleCall_1_3_1_0() { return cConditionParticipantRangeParserRuleCall_1_3_1_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//'variedParticipant'
-		public Keyword getVariedParticipantKeyword_2() { return cVariedParticipantKeyword_2; }
+		public Keyword getVariedParticipantKeyword_3() { return cVariedParticipantKeyword_3; }
 		
 		//variedParticipant=[Participant|QualifiedName]
-		public Assignment getVariedParticipantAssignment_3() { return cVariedParticipantAssignment_3; }
+		public Assignment getVariedParticipantAssignment_4() { return cVariedParticipantAssignment_4; }
 		
 		//[Participant|QualifiedName]
-		public CrossReference getVariedParticipantParticipantCrossReference_3_0() { return cVariedParticipantParticipantCrossReference_3_0; }
+		public CrossReference getVariedParticipantParticipantCrossReference_4_0() { return cVariedParticipantParticipantCrossReference_4_0; }
 		
 		//QualifiedName
-		public RuleCall getVariedParticipantParticipantQualifiedNameParserRuleCall_3_0_1() { return cVariedParticipantParticipantQualifiedNameParserRuleCall_3_0_1; }
+		public RuleCall getVariedParticipantParticipantQualifiedNameParserRuleCall_4_0_1() { return cVariedParticipantParticipantQualifiedNameParserRuleCall_4_0_1; }
 		
 		//'output'
-		public Keyword getOutputKeyword_4() { return cOutputKeyword_4; }
+		public Keyword getOutputKeyword_5() { return cOutputKeyword_5; }
 		
 		//output=[SystemResponseProperty|QualifiedName]
-		public Assignment getOutputAssignment_5() { return cOutputAssignment_5; }
+		public Assignment getOutputAssignment_6() { return cOutputAssignment_6; }
 		
 		//[SystemResponseProperty|QualifiedName]
-		public CrossReference getOutputSystemResponsePropertyCrossReference_5_0() { return cOutputSystemResponsePropertyCrossReference_5_0; }
+		public CrossReference getOutputSystemResponsePropertyCrossReference_6_0() { return cOutputSystemResponsePropertyCrossReference_6_0; }
 		
 		//QualifiedName
-		public RuleCall getOutputSystemResponsePropertyQualifiedNameParserRuleCall_5_0_1() { return cOutputSystemResponsePropertyQualifiedNameParserRuleCall_5_0_1; }
+		public RuleCall getOutputSystemResponsePropertyQualifiedNameParserRuleCall_6_0_1() { return cOutputSystemResponsePropertyQualifiedNameParserRuleCall_6_0_1; }
+		
+		//'condition'
+		public Keyword getConditionKeyword_7() { return cConditionKeyword_7; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_8() { return cLeftParenthesisKeyword_8; }
+		
+		//condition+=ParticipantRange
+		public Assignment getConditionAssignment_9() { return cConditionAssignment_9; }
+		
+		//ParticipantRange
+		public RuleCall getConditionParticipantRangeParserRuleCall_9_0() { return cConditionParticipantRangeParserRuleCall_9_0; }
+		
+		//( "," condition+=ParticipantRange )*
+		public Group getGroup_10() { return cGroup_10; }
+		
+		//","
+		public Keyword getCommaKeyword_10_0() { return cCommaKeyword_10_0; }
+		
+		//condition+=ParticipantRange
+		public Assignment getConditionAssignment_10_1() { return cConditionAssignment_10_1; }
+		
+		//ParticipantRange
+		public RuleCall getConditionParticipantRangeParserRuleCall_10_1_0() { return cConditionParticipantRangeParserRuleCall_10_1_0; }
+		
+		//')'?
+		public Keyword getRightParenthesisKeyword_11() { return cRightParenthesisKeyword_11; }
 		
 		//'trend'
-		public Keyword getTrendKeyword_6() { return cTrendKeyword_6; }
+		public Keyword getTrendKeyword_12() { return cTrendKeyword_12; }
 		
 		//trend=TrendType
-		public Assignment getTrendAssignment_7() { return cTrendAssignment_7; }
+		public Assignment getTrendAssignment_13() { return cTrendAssignment_13; }
 		
 		//TrendType
-		public RuleCall getTrendTrendTypeEnumRuleCall_7_0() { return cTrendTrendTypeEnumRuleCall_7_0; }
+		public RuleCall getTrendTrendTypeEnumRuleCall_13_0() { return cTrendTrendTypeEnumRuleCall_13_0; }
+		
+		//('localSlope' localSlope=EDouble)?
+		public Group getGroup_14() { return cGroup_14; }
+		
+		//'localSlope'
+		public Keyword getLocalSlopeKeyword_14_0() { return cLocalSlopeKeyword_14_0; }
+		
+		//localSlope=EDouble
+		public Assignment getLocalSlopeAssignment_14_1() { return cLocalSlopeAssignment_14_1; }
+		
+		//EDouble
+		public RuleCall getLocalSlopeEDoubleParserRuleCall_14_1_0() { return cLocalSlopeEDoubleParserRuleCall_14_1_0; }
+		
+		//('nLevels' nLevels=INT)?
+		public Group getGroup_15() { return cGroup_15; }
+		
+		//'nLevels'
+		public Keyword getNLevelsKeyword_15_0() { return cNLevelsKeyword_15_0; }
+		
+		//nLevels=INT
+		public Assignment getNLevelsAssignment_15_1() { return cNLevelsAssignment_15_1; }
+		
+		//INT
+		public RuleCall getNLevelsINTTerminalRuleCall_15_1_0() { return cNLevelsINTTerminalRuleCall_15_1_0; }
+		
+		//('rationale' rationale=STRING)?
+		public Group getGroup_16() { return cGroup_16; }
+		
+		//'rationale'
+		public Keyword getRationaleKeyword_16_0() { return cRationaleKeyword_16_0; }
+		
+		//rationale=STRING
+		public Assignment getRationaleAssignment_16_1() { return cRationaleAssignment_16_1; }
+		
+		//STRING
+		public RuleCall getRationaleSTRINGTerminalRuleCall_16_1_0() { return cRationaleSTRINGTerminalRuleCall_16_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
 	}
 	public class EDoubleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.EDouble");
@@ -2315,7 +2386,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		private final Keyword cHyphenMinusKeyword_2_1_1 = (Keyword)cAlternatives_2_1.eContents().get(1);
 		private final RuleCall cINTTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
-		///* Datatypes */
 		//EDouble returns ecore::EDouble:
 		//    '-'? (INT ('.' INT?)? | '.' INT) (('E'|'e') ('+'|'-')? INT)?
 		//;
@@ -2432,33 +2502,42 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	public class LanguageTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.LanguageType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cNaturalLanguageEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cNaturalLanguageNaturalLanguageKeyword_0_0 = (Keyword)cNaturalLanguageEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cJavaNumericExpressionEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cJavaNumericExpressionJavaNumericExpressionKeyword_1_0 = (Keyword)cJavaNumericExpressionEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cJavaNumericExpressionEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cJavaNumericExpressionJavaNumericExpressionKeyword_0_0 = (Keyword)cJavaNumericExpressionEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cNaturalLanguageEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cNaturalLanguageNaturalLanguageKeyword_1_0 = (Keyword)cNaturalLanguageEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cOCLEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cOCLOCLKeyword_2_0 = (Keyword)cOCLEnumLiteralDeclaration_2.eContents().get(0);
 		
-		///* Enums */
 		//enum LanguageType returns LanguageType:
-		//      NaturalLanguage = 'NaturalLanguage'
-		//    | JavaNumericExpression = 'JavaNumericExpression'
+		//      JavaNumericExpression = 'JavaNumericExpression'
+		//     |  NaturalLanguage = 'NaturalLanguage'
+		//     | OCL = 'OCL'
 		//;
 		public EnumRule getRule() { return rule; }
 		
-		//  NaturalLanguage = 'NaturalLanguage'
-		//| JavaNumericExpression = 'JavaNumericExpression'
+		// JavaNumericExpression = 'JavaNumericExpression'
+		//|  NaturalLanguage = 'NaturalLanguage'
+		//| OCL = 'OCL'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//NaturalLanguage = 'NaturalLanguage'
-		public EnumLiteralDeclaration getNaturalLanguageEnumLiteralDeclaration_0() { return cNaturalLanguageEnumLiteralDeclaration_0; }
-		
-		//'NaturalLanguage'
-		public Keyword getNaturalLanguageNaturalLanguageKeyword_0_0() { return cNaturalLanguageNaturalLanguageKeyword_0_0; }
-		
 		//JavaNumericExpression = 'JavaNumericExpression'
-		public EnumLiteralDeclaration getJavaNumericExpressionEnumLiteralDeclaration_1() { return cJavaNumericExpressionEnumLiteralDeclaration_1; }
+		public EnumLiteralDeclaration getJavaNumericExpressionEnumLiteralDeclaration_0() { return cJavaNumericExpressionEnumLiteralDeclaration_0; }
 		
 		//'JavaNumericExpression'
-		public Keyword getJavaNumericExpressionJavaNumericExpressionKeyword_1_0() { return cJavaNumericExpressionJavaNumericExpressionKeyword_1_0; }
+		public Keyword getJavaNumericExpressionJavaNumericExpressionKeyword_0_0() { return cJavaNumericExpressionJavaNumericExpressionKeyword_0_0; }
+		
+		//NaturalLanguage = 'NaturalLanguage'
+		public EnumLiteralDeclaration getNaturalLanguageEnumLiteralDeclaration_1() { return cNaturalLanguageEnumLiteralDeclaration_1; }
+		
+		//'NaturalLanguage'
+		public Keyword getNaturalLanguageNaturalLanguageKeyword_1_0() { return cNaturalLanguageNaturalLanguageKeyword_1_0; }
+		
+		//OCL = 'OCL'
+		public EnumLiteralDeclaration getOCLEnumLiteralDeclaration_2() { return cOCLEnumLiteralDeclaration_2; }
+		
+		//'OCL'
+		public Keyword getOCLOCLKeyword_2_0() { return cOCLOCLKeyword_2_0; }
 	}
 	public class TrendTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "fr.inria.kairos.influence.InfluenceDSL.TrendType");
@@ -2676,7 +2755,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getEStringAccess().getRule();
 	}
 	
-	///* SRP */
 	//SystemResponseProperty returns SystemResponseProperty:
 	//    {SystemResponseProperty}
 	//    'SystemResponseProperty'
@@ -2691,14 +2769,13 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getSystemResponsePropertyAccess().getRule();
 	}
 	
-	///* Satisfaction criterion */
 	//SatisfactionCriterion returns SatisfactionCriterion:
 	//    'SatisfactionCriterion'
 	//    name=EString
 	//    'for' requirementRef=[ecore::EObject|QualifiedName]
 	//    'constrains' constrainedSRPs+=[SystemResponseProperty|QualifiedName]
 	//        (',' constrainedSRPs+=[SystemResponseProperty|QualifiedName])*
-	//    'satisfied' 'when' marginDefinition=EString
+	//    'criterion' 'definition' criterionDefinition=EString
 	//    'languageType' language=LanguageType
 	//;
 	public SatisfactionCriterionElements getSatisfactionCriterionAccess() {
@@ -2746,7 +2823,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getDesignArtifactAccess().getRule();
 	}
 	
-	///* Participants */
 	//ArtifactParticipant returns ArtifactParticipant:
 	//    'ArtifactParticipant'
 	//    name=EString
@@ -2791,7 +2867,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getEnvironmentalFactorParticipantAccess().getRule();
 	}
 	
-	///* Values */
 	//ValueSpec returns ValueSpec:
 	//      RangeValue
 	//    | ScalarValue
@@ -2885,7 +2960,7 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 	//        internalInfluences+=[AbstractInfluence|QualifiedName]
 	//        ( "," internalInfluences+=[AbstractInfluence|QualifiedName] )*
 	//    ')'
-	//    'ownedInfluenceFunction'
+	//    'influenceFunction'
 	//        ownedInfluenceFunction=InfluenceFunction
 	//;
 	public CompositeInfluenceElements getCompositeInfluenceAccess() {
@@ -3041,18 +3116,35 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getMonotonicityTableAccess().getRule();
 	}
 	
+	////MonotonicityRow returns MonotonicityRow:
+	////    'MonotonicityRow'
+	////    (
+	////        'conditions'
+	////        '('
+	////            condition+=ParticipantRange
+	////            ( "," condition+=ParticipantRange )*
+	////        ')'
+	////    )?
+	////    'variedParticipant' variedParticipant=[Participant|QualifiedName]
+	////    'output' output=[SystemResponseProperty|QualifiedName]
+	////    'trend' trend=TrendType
+	////;
 	//MonotonicityRow returns MonotonicityRow:
 	//    'MonotonicityRow'
-	//    (
-	//        'conditions'
+	//    name=EString
+	//    '{'
+	//        'variedParticipant' variedParticipant=[Participant|QualifiedName]
+	//        'output' output=[SystemResponseProperty|QualifiedName]
+	//        'condition'
 	//        '('
 	//            condition+=ParticipantRange
 	//            ( "," condition+=ParticipantRange )*
-	//        ')'
-	//    )?
-	//    'variedParticipant' variedParticipant=[Participant|QualifiedName]
-	//    'output' output=[SystemResponseProperty|QualifiedName]
-	//    'trend' trend=TrendType
+	//        ')'?
+	//        'trend' trend=TrendType
+	//        ('localSlope' localSlope=EDouble)?
+	//        ('nLevels' nLevels=INT)?
+	//        ('rationale' rationale=STRING)?
+	//    '}'
 	//;
 	public MonotonicityRowElements getMonotonicityRowAccess() {
 		return pMonotonicityRow;
@@ -3062,10 +3154,10 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getMonotonicityRowAccess().getRule();
 	}
 	
-	///* Enums */
 	//enum LanguageType returns LanguageType:
-	//      NaturalLanguage = 'NaturalLanguage'
-	//    | JavaNumericExpression = 'JavaNumericExpression'
+	//      JavaNumericExpression = 'JavaNumericExpression'
+	//     |  NaturalLanguage = 'NaturalLanguage'
+	//     | OCL = 'OCL'
 	//;
 	public LanguageTypeElements getLanguageTypeAccess() {
 		return eLanguageType;
@@ -3089,7 +3181,6 @@ public class InfluenceDSLGrammarAccess extends AbstractElementFinder.AbstractGra
 		return getTrendTypeAccess().getRule();
 	}
 	
-	///* Datatypes */
 	//EDouble returns ecore::EDouble:
 	//    '-'? (INT ('.' INT?)? | '.' INT) (('E'|'e') ('+'|'-')? INT)?
 	//;

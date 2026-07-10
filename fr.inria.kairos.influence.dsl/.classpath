@@ -9,7 +9,8 @@
 			<accessrule kind="accessible" pattern="org/jgrapht/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-17-openjdk-amd64">
+	<classpathentry kind="lib" path="thirdparty/gson-2.11.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -21,5 +22,9 @@
 	<classpathentry exported="true" kind="lib" path="thirdparty/truffle-api.jar"/>
 	<classpathentry kind="lib" path="thirdparty/polyglot-25.0.0.jar"/>
 	<classpathentry kind="lib" path="thirdparty/exp4j-0.4.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="thirdparty/orson-charts-2.1.1/target/org.jfree.chart3d-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="thirdparty/orson-charts-2.1.1/target/org.jfree.chart3d-2.1.1-SNAPSHOT-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="thirdparty/jfreechart-1.5.6/target/jfreechart-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="thirdparty/python-lib" sourcepath="thirdparty/python-lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

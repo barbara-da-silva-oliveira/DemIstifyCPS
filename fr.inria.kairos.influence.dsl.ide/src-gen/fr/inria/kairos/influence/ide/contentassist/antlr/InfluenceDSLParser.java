@@ -104,8 +104,10 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMonotonicityTableAccess().getGroup_4_3(), "rule__MonotonicityTable__Group_4_3__0");
 			builder.put(grammarAccess.getMonotonicityTableAccess().getGroup_8(), "rule__MonotonicityTable__Group_8__0");
 			builder.put(grammarAccess.getMonotonicityRowAccess().getGroup(), "rule__MonotonicityRow__Group__0");
-			builder.put(grammarAccess.getMonotonicityRowAccess().getGroup_1(), "rule__MonotonicityRow__Group_1__0");
-			builder.put(grammarAccess.getMonotonicityRowAccess().getGroup_1_3(), "rule__MonotonicityRow__Group_1_3__0");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getGroup_10(), "rule__MonotonicityRow__Group_10__0");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getGroup_14(), "rule__MonotonicityRow__Group_14__0");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getGroup_15(), "rule__MonotonicityRow__Group_15__0");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getGroup_16(), "rule__MonotonicityRow__Group_16__0");
 			builder.put(grammarAccess.getEDoubleAccess().getGroup(), "rule__EDouble__Group__0");
 			builder.put(grammarAccess.getEDoubleAccess().getGroup_1_0(), "rule__EDouble__Group_1_0__0");
 			builder.put(grammarAccess.getEDoubleAccess().getGroup_1_0_1(), "rule__EDouble__Group_1_0_1__0");
@@ -130,7 +132,7 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSatisfactionCriterionAccess().getRequirementRefAssignment_3(), "rule__SatisfactionCriterion__RequirementRefAssignment_3");
 			builder.put(grammarAccess.getSatisfactionCriterionAccess().getConstrainedSRPsAssignment_5(), "rule__SatisfactionCriterion__ConstrainedSRPsAssignment_5");
 			builder.put(grammarAccess.getSatisfactionCriterionAccess().getConstrainedSRPsAssignment_6_1(), "rule__SatisfactionCriterion__ConstrainedSRPsAssignment_6_1");
-			builder.put(grammarAccess.getSatisfactionCriterionAccess().getMarginDefinitionAssignment_9(), "rule__SatisfactionCriterion__MarginDefinitionAssignment_9");
+			builder.put(grammarAccess.getSatisfactionCriterionAccess().getCriterionDefinitionAssignment_9(), "rule__SatisfactionCriterion__CriterionDefinitionAssignment_9");
 			builder.put(grammarAccess.getSatisfactionCriterionAccess().getLanguageAssignment_11(), "rule__SatisfactionCriterion__LanguageAssignment_11");
 			builder.put(grammarAccess.getEnvironmentalFactorAccess().getNameAssignment_2(), "rule__EnvironmentalFactor__NameAssignment_2");
 			builder.put(grammarAccess.getEnvironmentalFactorAccess().getDescriptionAssignment_4(), "rule__EnvironmentalFactor__DescriptionAssignment_4");
@@ -205,11 +207,15 @@ public class InfluenceDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMonotonicityTableAccess().getApplicabilityDomainAssignment_4_3_1(), "rule__MonotonicityTable__ApplicabilityDomainAssignment_4_3_1");
 			builder.put(grammarAccess.getMonotonicityTableAccess().getTableRowsAssignment_7(), "rule__MonotonicityTable__TableRowsAssignment_7");
 			builder.put(grammarAccess.getMonotonicityTableAccess().getTableRowsAssignment_8_1(), "rule__MonotonicityTable__TableRowsAssignment_8_1");
-			builder.put(grammarAccess.getMonotonicityRowAccess().getConditionAssignment_1_2(), "rule__MonotonicityRow__ConditionAssignment_1_2");
-			builder.put(grammarAccess.getMonotonicityRowAccess().getConditionAssignment_1_3_1(), "rule__MonotonicityRow__ConditionAssignment_1_3_1");
-			builder.put(grammarAccess.getMonotonicityRowAccess().getVariedParticipantAssignment_3(), "rule__MonotonicityRow__VariedParticipantAssignment_3");
-			builder.put(grammarAccess.getMonotonicityRowAccess().getOutputAssignment_5(), "rule__MonotonicityRow__OutputAssignment_5");
-			builder.put(grammarAccess.getMonotonicityRowAccess().getTrendAssignment_7(), "rule__MonotonicityRow__TrendAssignment_7");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getNameAssignment_1(), "rule__MonotonicityRow__NameAssignment_1");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getVariedParticipantAssignment_4(), "rule__MonotonicityRow__VariedParticipantAssignment_4");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getOutputAssignment_6(), "rule__MonotonicityRow__OutputAssignment_6");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getConditionAssignment_9(), "rule__MonotonicityRow__ConditionAssignment_9");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getConditionAssignment_10_1(), "rule__MonotonicityRow__ConditionAssignment_10_1");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getTrendAssignment_13(), "rule__MonotonicityRow__TrendAssignment_13");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getLocalSlopeAssignment_14_1(), "rule__MonotonicityRow__LocalSlopeAssignment_14_1");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getNLevelsAssignment_15_1(), "rule__MonotonicityRow__NLevelsAssignment_15_1");
+			builder.put(grammarAccess.getMonotonicityRowAccess().getRationaleAssignment_16_1(), "rule__MonotonicityRow__RationaleAssignment_16_1");
 		}
 	}
 	

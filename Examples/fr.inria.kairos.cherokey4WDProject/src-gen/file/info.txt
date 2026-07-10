@@ -43,30 +43,30 @@ Impact of Environment Factor Propagated (origin count):
   temperature -> 3
 
 Sensibility of Requirements (counts):
-  ObstacleAvoidance -> 3
-  EfficientExploration -> 1
+  ObstacleAvoidance -> 4
+  EfficientExploration -> 2
 
-Impact of Artifacts Progagated (weighted):
+Impact of Artifacts Propagated (weighted):
+  frontalArea -> 8.0
   mass -> 8.0
   motorSpeed -> 8.0
-  frontalArea -> 7.0
   delayStaticDetection -> 4.0
   ultrasonicSensor -> 3.0
   detectionThreshold -> 2.0
+  motor -> 2.0
   sweepingDelay -> 2.0
-  motor -> 1.0
-  computeDistance -> 0.5
+  computeDistance -> 1.0
 
-Impact of Environment Factor Progagated (weighted):
+Impact of Environment Factor Propagated (weighted):
+  airDensity -> 8.0
   dragCoefficient -> 8.0
   frictionCoef -> 8.0
   gravityAccel -> 8.0
   slopeAngleRad -> 8.0
-  airDensity -> 4.0
-  humidity -> 1.5
-  noise -> 1.5
-  temperature -> 1.5
+  humidity -> 3.0
+  noise -> 3.0
+  temperature -> 3.0
 
 Candidate potential beneficial changes on participants traced per requirement:
-  EfficientExploration: A:detectionThreshold (1 hop), A:frontalArea (2 hops), A:mass (2 hops), A:motor (2 hops), A:motorSpeed (2 hops), E:airDensity (2 hops), E:dragCoefficient (2 hops), E:frictionCoef (2 hops), E:gravityAccel (2 hops), E:slopeAngleRad (2 hops)
-  ObstacleAvoidance: A:computeDistance (1 hop), A:detectionThreshold (1 hop), A:sweepingDelay (1 hop), A:frontalArea (2 hops), A:mass (2 hops), A:motorSpeed (2 hops), A:ultrasonicSensor (2 hops), E:airDensity (2 hops), E:dragCoefficient (2 hops), E:frictionCoef (2 hops), E:gravityAccel (2 hops), E:humidity (2 hops), E:noise (2 hops), E:slopeAngleRad (2 hops), E:temperature (2 hops), A:delayStaticDetection (3 hops)
+  EfficientExploration: A:detectionThreshold (1 hop), A:frontalArea (1 hop), A:mass (1 hop), A:motor (1 hop), A:motorSpeed (1 hop), E:airDensity (1 hop), E:dragCoefficient (1 hop), E:frictionCoef (1 hop), E:gravityAccel (1 hop), E:slopeAngleRad (1 hop)
+  ObstacleAvoidance: A:computeDistance (1 hop), A:detectionThreshold (1 hop), A:sweepingDelay (1 hop), A:ultrasonicSensor (1 hop), E:humidity (1 hop), E:noise (1 hop), E:temperature (1 hop), A:delayStaticDetection (2 hops), A:frontalArea (2 hops), A:mass (2 hops), A:motorSpeed (2 hops), E:airDensity (2 hops), E:dragCoefficient (2 hops), E:frictionCoef (2 hops), E:gravityAccel (2 hops), E:slopeAngleRad (2 hops)

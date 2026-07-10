@@ -43,8 +43,6 @@ EString returns ecore::EString:
 ;
 
 
-/* SRP */
-
 SystemResponseProperty returns SystemResponseProperty:
 	{SystemResponseProperty}
     'SystemResponseProperty'
@@ -53,15 +51,13 @@ SystemResponseProperty returns SystemResponseProperty:
 ;
 
 
-/* Satisfaction criterion */
-
 SatisfactionCriterion returns SatisfactionCriterion:
     'SatisfactionCriterion'
     name=EString
     'for' requirementRef=[ecore::EObject|QualifiedName]
     'constrains' constrainedSRPs+=[SystemResponseProperty|QualifiedName]
         (',' constrainedSRPs+=[SystemResponseProperty|QualifiedName])*
-    'satisfied' 'when' marginDefinition=EString
+    'criterion' 'definition' criterionDefinition=EString
     'languageType' language=LanguageType
 ;
 
@@ -93,8 +89,6 @@ DesignArtifact returns DesignArtifact:
 ;
 
 
-/* Participants */																																																																
-
 ArtifactParticipant returns ArtifactParticipant:
 	'ArtifactParticipant'
 	name=EString
@@ -118,8 +112,6 @@ EnvironmentalFactorParticipant returns EnvironmentalFactorParticipant:
 	('admissibleSpace' admissibleSpace=ValueSpec)?
 ;
 
-
-/* Values */
 
 ValueSpec returns ValueSpec:
 	  RangeValue
@@ -181,7 +173,7 @@ CompositeInfluence returns CompositeInfluence:
 	    internalInfluences+=[AbstractInfluence|QualifiedName]
 	    ( "," internalInfluences+=[AbstractInfluence|QualifiedName] )*
 	')'
-	'ownedInfluenceFunction'
+	'influenceFunction'
 	    ownedInfluenceFunction=InfluenceFunction
 ;
 
@@ -283,26 +275,43 @@ MonotonicityTable returns MonotonicityTable:
 	')'
 ;
 
+//MonotonicityRow returns MonotonicityRow:
+//	'MonotonicityRow'
+//	(
+//	    'conditions'
+//	    '('
+//	        condition+=ParticipantRange
+//	        ( "," condition+=ParticipantRange )*
+//	    ')'
+//	)?
+//	'variedParticipant' variedParticipant=[Participant|QualifiedName]
+//	'output' output=[SystemResponseProperty|QualifiedName]
+//	'trend' trend=TrendType
+//;
+
 MonotonicityRow returns MonotonicityRow:
-	'MonotonicityRow'
-	(
-	    'conditions'
+    'MonotonicityRow'
+    name=EString
+    '{'
+        'variedParticipant' variedParticipant=[Participant|QualifiedName]
+        'output' output=[SystemResponseProperty|QualifiedName]
+        'condition'
 	    '('
 	        condition+=ParticipantRange
 	        ( "," condition+=ParticipantRange )*
-	    ')'
-	)?
-	'variedParticipant' variedParticipant=[Participant|QualifiedName]
-	'output' output=[SystemResponseProperty|QualifiedName]
-	'trend' trend=TrendType
+	    ')'?
+        'trend' trend=TrendType
+        ('localSlope' localSlope=EDouble)?
+        ('nLevels' nLevels=INT)?
+        ('rationale' rationale=STRING)?
+    '}'
 ;
 
 
-/* Enums */
-
 enum LanguageType returns LanguageType:
-	  NaturalLanguage = 'NaturalLanguage'
-	| JavaNumericExpression = 'JavaNumericExpression'
+	  JavaNumericExpression = 'JavaNumericExpression'
+	 |  NaturalLanguage = 'NaturalLanguage'
+	 | OCL = 'OCL'
 ;
 
 enum TrendType returns TrendType:
@@ -313,8 +322,6 @@ enum TrendType returns TrendType:
 ;
 
 
-/* Datatypes */
-
 EDouble returns ecore::EDouble:
 	'-'? (INT ('.' INT?)? | '.' INT) (('E'|'e') ('+'|'-')? INT)?
 ;
@@ -323,7 +330,6 @@ EBoolean returns ecore::EBoolean:
 	  'true'
 	| 'false'
 ;
-
 QualifiedName:
     ID ('.' ID)*
 ;
